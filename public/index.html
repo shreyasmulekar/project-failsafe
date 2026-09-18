@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT FAILSAFE // ADITI-OS v4.2</title>
+  <link rel="stylesheet" href="css/terminal.css">
+</head>
+<body>
+  <!-- CRT Scanline Visual Effect -->
+  <div class="crt-overlay"></div>
+
+  <!-- Global AI Broadcast Toast -->
+  <div id="broadcast-toast" style="display:none; position:fixed; top:58px; left:50%; transform:translateX(-50%); background:#ff3366; color:white; font-family:var(--font-mono); padding:12px 24px; border-radius:6px; z-index:99999; box-shadow:0 0 25px rgba(255,51,102,0.8); font-weight:bold; font-size:13px; text-align:center;"></div>
+
+  <!-- Top System Bar -->
+  <header class="top-bar">
+    <div class="system-title">
+      <div class="system-status-dot"></div>
+      <span>ADITI-OS v4.2</span>
+    </div>
+
+    <!-- Stage Progress Stepper (1 to 11) -->
+    <div class="stage-stepper" id="stage-stepper-container" title="Mission Progression">
+      <!-- Populated dynamically by app.js -->
+    </div>
+
+    <!-- Live Mission Stopwatch -->
+    <div class="mission-clock-box">
+      <div class="clock-item">
+        <span class="clock-label">Time</span>
+        <span id="clock-elapsed" class="clock-val">00:00</span>
+      </div>
+      <div class="clock-item">
+        <span class="clock-label">Penalties</span>
+        <span id="clock-penalties" class="clock-val penalty">+0m</span>
+      </div>
+      <div class="clock-item">
+        <span class="clock-label">Score</span>
+        <span id="clock-adjusted" class="clock-val score">00:00</span>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="bar-actions">
+      <button id="btn-toggle-sound" class="btn-bar">🔊 SOUND: ON</button>
+      <button id="btn-toggle-crt" class="btn-bar">📺 CRT</button>
+      <button class="btn-bar terminal-btn" onclick="toggleCliDrawer()">>_ TERMINAL</button>
+      <button class="btn-bar highlight" onclick="showHintsModal()">💡 HELP DESK</button>
+      <button class="btn-bar" onclick="showAdminModal()">⚙️ ORGANIZER</button>
+    </div>
+  </header>
+
+  <!-- Desktop Workstation Area -->
+  <main class="desktop-container" id="desktop-icons-container">
+    <!-- Desktop icons populated dynamically by app.js -->
+  </main>
+
+  <!-- Interactive CLI Drawer (Bottom Terminal) -->
+  <div class="cli-drawer" id="cli-drawer">
+    <div class="cli-header">
+      <span>>_ ADITI FORENSIC COMMAND LINE // TERMINAL ACTIVE (Ctrl+K or Ctrl+` to toggle)</span>
+      <button class="win-btn close" onclick="toggleCliDrawer()"></button>
+    </div>
+    <div class="cli-body" id="cli-body-log">
+      <div>Type <strong style="color:var(--neon-cyan)">help</strong> to view available terminal commands.</div>
+      <div>Type <strong style="color:var(--neon-gold)">devmode</strong> to unlock all stages during testing.</div>
+    </div>
+    <div class="cli-input-row">
+      <span class="cli-prompt">aditi-os:~$</span>
+      <input type="text" id="cli-command-input" class="cli-input" placeholder="Type command here (e.g. status, unlock <key>, help)..." autocomplete="off">
+    </div>
+  </div>
+
+  <!-- Bottom Taskbar -->
+  <footer class="bottom-bar">
+    <div class="bottom-bar-left">
+      <span class="taskbar-badge">● SANDBOX ACTIVE</span>
+      <span id="status-team-info">AWAITING INVESTIGATOR LOGON</span>
+    </div>
+    <div>
+      <span style="color:var(--text-muted);">PROJECT FAILSAFE • IEEE WIE DIGITAL FORENSICS</span>
+    </div>
+  </footer>
+
+  <!-- MODAL: Team Registration -->
+  <div id="registration-modal" class="win-window active-window" style="display:none; top:50%; left:50%; transform:translate(-50%, -50%); width:480px; z-index:9000;">
+    <div class="win-header">
+      <div class="win-title">⚡ INVESTIGATOR CREDENTIAL AUTHENTICATION</div>
+    </div>
+    <div class="win-body">
+      <div style="text-align:center; margin-bottom:14px;">
+        <div style="font-size:36px; margin-bottom:6px;">🕵️‍♀️</div>
+        <h3 style="color:var(--neon-cyan); font-family:var(--font-mono); margin-bottom:4px;">PROJECT FAILSAFE</h3>
+        <p style="font-size:12px; color:var(--text-secondary); line-height:1.5;">
+          Dr. Aditi Sharma vanished 24 hours before public AI launch. You have emergency terminal access to trace her breadcrumbs.
+        </p>
+      </div>
+
+      <form onsubmit="registerTeam(event)">
+        <div style="margin-bottom:10px;">
+          <label style="font-family:var(--font-mono); font-size:11px; color:var(--neon-green);">TEAM NAME:</label>
+          <input type="text" id="reg-team-name" class="gate-input" style="width:100%; margin-top:4px;" required placeholder="e.g. Cyber Squad">
+        </div>
+        <div style="margin-bottom:10px;">
+          <label style="font-family:var(--font-mono); font-size:11px; color:var(--neon-green);">TEAM ID / DESK #:</label>
+          <input type="text" id="reg-team-id" class="gate-input" style="width:100%; margin-top:4px;" required placeholder="e.g. TEAM-07">
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-family:var(--font-mono); font-size:11px; color:var(--text-secondary);">INVESTIGATORS (3 MEMBERS):</label>
+          <input type="text" id="reg-members" class="gate-input" style="width:100%; margin-top:4px;" placeholder="Alice, Bob, Charlie">
+        </div>
+        <button type="submit" class="gate-btn" style="width:100%; padding:10px; font-size:13px;">
+          INITIALIZE TERMINAL SESSION
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Stage Gate Decryption -->
+  <div id="stage-gate-modal" class="win-window active-window" style="display:none; top:50%; left:50%; transform:translate(-50%, -50%); width:460px; z-index:8000;">
+    <div class="win-header">
+      <div class="win-title">🔒 DIRECTORY ENCRYPTED: STAGE <span id="gate-modal-stage-num">1</span></div>
+      <div class="win-controls">
+        <button class="win-btn close" onclick="document.getElementById('stage-gate-modal').style.display='none'"></button>
+      </div>
+    </div>
+    <div class="win-body">
+      <h4 id="gate-modal-stage-title" style="color:var(--neon-gold); font-family:var(--font-mono); margin-bottom:8px;"></h4>
+      <p id="gate-modal-prompt" style="font-size:13px; color:#cbd5e1; margin-bottom:14px; line-height:1.5;"></p>
+
+      <form id="gate-modal-form">
+        <input type="text" id="gate-modal-input" class="gate-input" style="width:100%; margin-bottom:10px;" placeholder="ENTER DECRYPTION KEY" required autocomplete="off">
+        <button type="submit" class="gate-btn" style="width:100%; padding:10px;">VERIFY & UNLOCK</button>
+      </form>
+      <div id="gate-modal-msg" class="gate-msg"></div>
+    </div>
+  </div>
+
+  <!-- MODAL: Help Desk & Hints -->
+  <div id="hints-modal" class="win-window active-window" style="display:none; top:50%; left:50%; transform:translate(-50%, -50%); width:480px; z-index:8500;">
+    <div class="win-header">
+      <div class="win-title">💡 EMERGENCY HELP DESK // HINT PROTOCOL</div>
+      <div class="win-controls">
+        <button class="win-btn close" onclick="document.getElementById('hints-modal').style.display='none'"></button>
+      </div>
+    </div>
+    <div class="win-body">
+      <div style="background:rgba(255,183,3,0.1); border:1px solid var(--neon-gold); padding:10px; border-radius:4px; font-family:var(--font-mono); font-size:11px; color:var(--neon-gold); margin-bottom:14px;">
+        ⚠️ HINT POLICY: Requesting a hint incurs a <strong>+2 MINUTE TIME PENALTY</strong> added to your team's adjusted final score.
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <label style="font-family:var(--font-mono); font-size:11px; color:var(--text-secondary);">SELECT STAGE:</label>
+        <select id="hint-stage-select" class="gate-input" style="width:100%; margin-top:4px;">
+          <option value="1">Stage 1: Vanished (Farewell.doc)</option>
+          <option value="2">Stage 2: The Trail (README.doc)</option>
+          <option value="3">Stage 3: The Timeline (Incident Logs)</option>
+          <option value="4">Stage 4: The Voice (Security Audit)</option>
+          <option value="5">Stage 5: Hello, Investigators (ADI Interface)</option>
+          <option value="6">Stage 6: Which Aditi Is Real? (Style Check)</option>
+          <option value="7">Stage 7: Morse From Aditi (audio_log_07)</option>
+          <option value="8">Stage 8: The Folder Maze (WHITE/A/D/I)</option>
+          <option value="9">Stage 9: Reality Is Edited (Version History)</option>
+          <option value="10">Stage 10: The Fake Kill Switch</option>
+          <option value="11">Stage 11: The WIE Failsafe</option>
+        </select>
+      </div>
+
+      <button class="btn-bar highlight" style="width:100%; justify-content:center; padding:10px;" onclick="requestHintForStage()">
+        REQUEST HINT (+2m PENALTY)
+      </button>
+
+      <div id="hint-display-box" style="margin-top:14px; background:#05080c; border:1px solid var(--border-subtle); padding:12px; border-radius:4px; font-family:var(--font-mono); font-size:12px; line-height:1.5;">
+        Select a stage and click Request Hint.
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Organizer Admin & Live Leaderboard -->
+  <div id="admin-window" class="win-window" style="display:none; top:50px; left:50%; transform:translateX(-50%); width:840px; height:540px; z-index:9500;">
+    <div class="win-header" style="background:#1e1b4b;">
+      <div class="win-title" style="color:#c7d2fe;">⚙️ ORGANIZER MASTER CONTROL // LIVE LEADERBOARD</div>
+      <div class="win-controls">
+        <button class="win-btn close" onclick="closeWindow('admin-window')"></button>
+      </div>
+    </div>
+    <div class="win-body">
+      <!-- Admin Login View -->
+      <div id="admin-login-view" style="max-width:320px; margin:40px auto; text-align:center;">
+        <h4 style="color:var(--neon-cyan); font-family:var(--font-mono); margin-bottom:12px;">ORGANIZER AUTHORIZATION</h4>
+        <form onsubmit="verifyAdminPin(event)">
+          <input type="password" id="admin-pin-input" class="gate-input" style="width:100%; margin-bottom:10px; text-align:center;" placeholder="ENTER ADMIN PIN" required>
+          <button type="submit" class="gate-btn" style="width:100%;">ACCESS CONSOLE</button>
+        </form>
+        <div style="font-size:11px; color:#64748b; margin-top:8px;">Default PIN: wie-admin-2026</div>
+      </div>
+
+      <!-- Admin Dashboard View -->
+      <div id="admin-dashboard-view" style="display:none; height:100%; display:flex; flex-direction:column;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <div style="font-family:var(--font-mono); font-size:13px; color:var(--neon-green); font-weight:bold;">
+            LIVE PARTICIPANT RANKINGS
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-bar" onclick="exportLeaderboardCSV()">📊 EXPORT CSV</button>
+            <button class="btn-bar highlight" onclick="toggleMasterKeys()">🔑 CHEAT SHEET</button>
+          </div>
+        </div>
+
+        <!-- Leaderboard Table -->
+        <div style="flex:1; overflow-y:auto; border:1px solid var(--border-subtle); border-radius:4px; margin-bottom:12px;">
+          <table id="admin-leaderboard-table" class="cyber-table">
+            <thead>
+              <tr>
+                <th style="width:50px;">RANK</th>
+                <th>TEAM</th>
+                <th>MEMBERS</th>
+                <th>STAGE</th>
+                <th>RAW TIME</th>
+                <th>HINTS</th>
+                <th>TRAPS</th>
+                <th>ADJUSTED SCORE</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-table-body">
+              <!-- Populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Master Password Cheatsheet Dropdown -->
+        <div id="master-solutions-sheet" style="display:none; background:#05080c; border:1px solid var(--neon-cyan); padding:12px; border-radius:4px; font-family:var(--font-mono); font-size:11px; margin-bottom:10px; max-height:160px; overflow-y:auto;">
+          <div style="color:var(--neon-cyan); font-weight:bold; margin-bottom:6px;">MASTER PASSWORD CHEAT SHEET:</div>
+          <div>Stage 1: <code>ORIGIN</code></div>
+          <div>Stage 2: <code>LOOK BEHIND THE DATE</code></div>
+          <div>Stage 3: <code>28/02/2025</code> or <code>02292025</code></div>
+          <div>Stage 4: <code>22:46</code></div>
+          <div>Stage 5: <code>WHITE</code></div>
+          <div>Stage 6: <code>AUTHENTIC</code></div>
+          <div>Stage 7: <code>WHITE</code> (Morse: DO NOT FOLLOW THE BLUE PATH)</div>
+          <div>Stage 8: <code>THE AI CAN MODIFY WHAT YOU SEE</code></div>
+          <div>Stage 9: <code>HISTORY</code> or <code>OVERRIDE FAILED</code></div>
+          <div>Stage 10: (Do not submit form!) Bypass / Proceed to Stage 11</div>
+          <div>Stage 11: <code>6-9-11</code> or <code>WISDOM-INTEGRITY-EMPOWERMENT</code></div>
+        </div>
+
+        <!-- Organizer Broadcast Tool -->
+        <form onsubmit="sendOrganizerBroadcast(event)" style="display:flex; gap:8px;">
+          <input type="text" id="broadcast-msg-input" class="gate-input" placeholder="Push live alert to all team screens (e.g. 'System reboot in 10 mins...')" required>
+          <button type="submit" class="gate-btn" style="background:var(--neon-cyan); color:#000;">BROADCAST</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/puzzles.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
