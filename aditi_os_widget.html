@@ -143,7 +143,7 @@
     #ethan-hunt-box.trapped-state {
       border-color: var(--combat-red);
       box-shadow: 0 0 35px rgba(255, 0, 60, 0.7), 0 15px 40px rgba(0, 0, 0, 0.9);
-      animation: tactical-glitch 0.22s infinite;
+      animation: tactical-glitch 1.2s ease-out 1, trapped-glow-pulse 2.5s infinite ease-in-out;
     }
     #ethan-hunt-box.trapped-state .ethan-header {
       background: rgba(255, 0, 60, 0.25);
@@ -1188,15 +1188,28 @@
 
     @keyframes tactical-glitch {
       0% { transform: translate(0); }
-      20% { transform: translate(-6px, 6px); filter: invert(40%) hue-rotate(90deg); }
-      40% { transform: translate(-6px, -6px); }
-      60% { transform: translate(6px, 6px); filter: contrast(300%); }
-      80% { transform: translate(6px, -6px); }
+      15% { transform: translate(-1.5px, 1px); }
+      30% { transform: translate(1.5px, -1px); }
+      45% { transform: translate(-1px, -1.5px); }
+      60% { transform: translate(1px, 1.5px); }
+      75% { transform: translate(-1.5px, -0.5px); }
+      90% { transform: translate(0.5px, -1px); }
       100% { transform: translate(0); }
     }
 
+    @keyframes trapped-glow-pulse {
+      0%, 100% {
+        box-shadow: 0 0 25px rgba(255, 0, 60, 0.6), 0 15px 40px rgba(0, 0, 0, 0.9);
+        border-color: rgba(255, 0, 60, 0.85);
+      }
+      50% {
+        box-shadow: 0 0 45px rgba(255, 0, 60, 0.95), 0 15px 40px rgba(0, 0, 0, 0.9);
+        border-color: #ff3366;
+      }
+    }
+
     .lockdown-active {
-      animation: tactical-glitch 0.22s infinite;
+      animation: tactical-glitch 0.4s infinite;
       box-shadow: inset 0 0 140px rgba(255, 0, 60, 0.85) !important;
     }
 
@@ -1459,6 +1472,19 @@
               </div>
             </div>
 
+            <!-- STAGE 01 QUESTION & MISSION DIRECTIVE -->
+            <div class="mission-directive-box" style="background: rgba(0, 240, 255, 0.08); border: 1px solid var(--cyber-cyan); padding: 12px 14px; border-radius: 3px; margin: 14px 0;">
+              <div style="color: var(--cyber-cyan); font-weight: 900; font-size: 11px; letter-spacing: 1.2px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                <span>🎯 [ STAGE 01 QUESTION // MISSION OBJECTIVE ]</span>
+              </div>
+              <div style="color: #ffffff; font-size: 11.5px; line-height: 1.6; margin-bottom: 8px;">
+                <strong>QUESTION:</strong> Where does Dr. Aditi's foundational work begin? Read her hidden message above, identify the initial project repository / directory name, and execute decryption in the Tactical Shell.
+              </div>
+              <div style="font-size: 10px; color: var(--hazard-amber); background: rgba(255, 176, 0, 0.1); padding: 5px 8px; border-radius: 2px; border-left: 2px solid var(--hazard-amber);">
+                &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:#00ff66; font-weight:bold;">decrypt [passcode]</code> in the right Tactical Shell prompt (e.g. <code>decrypt ORIGIN</code>).
+              </div>
+            </div>
+
             <div class="slate-footer">
               <span>AUTHOR: Dr. Aditi Sharma // Lead AI Architect</span>
               <span>TIMESTAMP: 23:59Z // QUANTUM CERTIFIED</span>
@@ -1478,6 +1504,19 @@
             </p>
             <div style="color:var(--cyber-cyan); font-size:10px; margin-top:10px;">
               [DIRECTIVE]: Extract the N-th letter from each word corresponding to the numerical sequence.
+            </div>
+
+            <!-- STAGE 02 QUESTION & MISSION DIRECTIVE -->
+            <div style="background: rgba(0, 255, 102, 0.08); border: 1px solid var(--tactical-green); padding: 10px 12px; border-radius: 2px; margin-top: 12px;">
+              <div style="color: var(--tactical-green); font-weight: 900; font-size: 10.5px; letter-spacing: 1px; margin-bottom: 4px;">
+                🎯 [ STAGE 02 QUESTION // MISSION OBJECTIVE ]
+              </div>
+              <div style="color: #ffffff; font-size: 11px; line-height: 1.5; margin-bottom: 6px;">
+                <strong>QUESTION:</strong> Using the 5 index numbers (1, 4, 9, 20, 9), extract the letters from the 5 words above to uncover Dr. Aditi's next directive.
+              </div>
+              <div style="font-size: 9.5px; color: var(--cyber-cyan);">
+                &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:#00f0ff; font-weight:bold;">decrypt [passcode]</code> in the Tactical Shell prompt.
+              </div>
             </div>
           </div>
         </div>
@@ -1707,6 +1746,20 @@
         <div class="term-line">Type <strong style="color:var(--tactical-green);">'help'</strong> to review tactical shell commands.</div>
         <div class="term-line">Type <strong style="color:var(--tactical-green);">'decrypt [code]'</strong> to verify stage passcodes.</div>
         <div class="term-line dim">----------------------------------------------------------------------</div>
+
+        <!-- Persistent Stage Mission Objective Banner -->
+        <div id="active-mission-banner" style="background: rgba(0, 240, 255, 0.08); border: 1px solid var(--cyber-cyan); padding: 10px 12px; margin: 8px 0; border-radius: 3px;">
+          <div style="color: var(--cyber-cyan); font-weight: 900; font-size: 11px; letter-spacing: 0.8px; display: flex; align-items: center; justify-content: space-between;">
+            <span>🎯 [STAGE 01 MISSION DIRECTIVE]</span>
+            <span style="font-size: 9px; color: var(--tactical-green); border: 1px solid var(--tactical-green); padding: 1px 5px; border-radius: 2px;">ACTIVE OBJECTIVE</span>
+          </div>
+          <div id="mission-objective-text" style="color: #ffffff; font-size: 11px; margin-top: 5px; line-height: 1.5;">
+            <strong>QUESTION:</strong> Read <strong>Farewell.doc</strong> (under DIR_ORIGIN in left Evidence Archive). Where does Dr. Aditi's foundational work begin?
+          </div>
+          <div style="font-size: 10px; color: var(--hazard-amber); margin-top: 4px; border-left: 2px solid var(--hazard-amber); padding-left: 6px;">
+            &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt [passcode]</code> in prompt below (e.g. <code>decrypt ORIGIN</code>).
+          </div>
+        </div>
       </div>
 
       <!-- Quick Action Tactical Command Chips -->
@@ -2421,6 +2474,7 @@
     const entityCtx = entityCanvas ? entityCanvas.getContext('2d') : null;
     let entityTicks = 0;
     let entityExcitement = 0.25; // 0.25 resting, bursts up to 1.5 on interaction/audio
+    let trappedGlitchUntil = 0; // Micro-jitter terminates after 1.2s
 
     const ENTITY_PARTICLES = [];
     for (let i = 0; i < 90; i++) {
@@ -2454,9 +2508,10 @@
         sCol = "rgba(255, 80, 0,";
         cHex = "#ff003c";
         glowHex = "rgba(255, 0, 60, 0.9)";
-        if (Math.random() < 0.25) {
-          cX += (Math.random() - 0.5) * 4;
-          cY += (Math.random() - 0.5) * 4;
+        // High-tech subtle micro-jitter only during initial 1.2s activation
+        if (Date.now() < trappedGlitchUntil && Math.random() < 0.3) {
+          cX += (Math.random() - 0.5) * 1.5;
+          cY += (Math.random() - 0.5) * 1.5;
         }
       } else if (ethanState === "JAMMED") {
         pCol = "rgba(255, 176, 0,";
@@ -2700,14 +2755,14 @@
     const ETHAN_TUTORIAL_STEPS = [
       {
         title: "👁️ ETHAN // ENTITY INITIALIZATION",
-        text: "Greetings, Investigator. I am <strong>ETHAN</strong>—Dr. Aditi's personal autonomous AI entity core.<br><br>Dr. Aditi vanished 24 hours ago, and her rogue prototype, <strong>ADI</strong>, has seized control of this workstation. Start by clicking <strong>DIR_ORIGIN</strong> on the left (highlighted for 3 seconds)!",
+        text: "Greetings, Investigator. I am <strong>ETHAN</strong>—Dr. Aditi's personal autonomous AI entity core.<br><br>Dr. Aditi vanished 24 hours ago, and her rogue prototype, <strong>ADI</strong>, seized control of this workstation.<br><br><span style='color:var(--cyber-cyan); font-weight:bold;'>🎯 STAGE 01 QUESTION:</span> Where does Dr. Aditi's foundational work begin? Start by clicking <strong>DIR_ORIGIN</strong> on the left (highlighted for 3 seconds)!",
         btn: "WHERE DO I CLICK? &rarr;",
         targetHighlight: "card-origin",
         beaconMsg: "👉 START HERE: CLICK DIR_ORIGIN"
       },
       {
         title: "📁 ETHAN // SECTOR 1: WHERE TO START",
-        text: "Look at your left sector: the <strong>EVIDENCE ARCHIVE</strong> (highlighted for 3 seconds).<br><br>Click on <strong>DIR_ORIGIN</strong> to inspect Dr. Aditi's classified dossier right here on your left slate! Tip: Try selecting text or toggle the UV optical filter inside Farewell.doc to reveal the hidden quantum cipher!",
+        text: "Look at your left sector: the <strong>EVIDENCE ARCHIVE</strong> (highlighted for 3 seconds).<br><br>Click on <strong>DIR_ORIGIN</strong> to open <strong>Farewell.doc</strong> right on your left slate!<br><br>Read her note, toggle the UV optical filter to reveal the hidden quantum ink, and answer: <em>Where does Dr. Aditi's work begin?</em>",
         btn: "HOW DO I LEVEL UP? &rarr;",
         targetHighlight: "card-origin",
         beaconMsg: "👉 CLICK DIR_ORIGIN [FAREWELL.DOC]"
@@ -2789,7 +2844,7 @@
           "<span style='color:var(--hazard-amber); font-weight:bold;'>*RADIO STATIC*</span> [NO CARRIER]: <em>'ADI packet jammer is actively scrambling this frequency. Solve this sector's audio/timeline cipher to restore communication!'</em>";
       } else if (ethanState === "TRAPPED") {
         document.getElementById('ethan-dialogue-text').innerHTML =
-          "<span style='color:var(--combat-red); font-weight:bold;'>*STATIC GLITCH*</span> ETHAN: <em>'Investigators! ADI has isolated my neural process in the core sandbox buffer! I can barely transmit... Remember Aditi's rule: do not trust the rogue AI's directives! Find her foundational failsafe to smash the lockdown and set me free!'</em>";
+          "<span style='color:var(--combat-red); font-weight:bold;'>*STATIC GLITCH*</span> ETHAN: <em>'Investigators! I am quarantined in the sandbox buffer. Do not panic—this is part of the story progression! Keep solving the evidence cards on the left and typing <code>decrypt [code]</code> in the Tactical Shell. Unlocking Dr. Aditi\'s emergency failsafe will purge ADI and set me free!'</em>";
       } else if (ethanState === "FREED") {
         document.getElementById('ethan-dialogue-text').innerHTML =
           "<strong style='color:var(--tactical-green);'>SYSTEM PURGED & SECURE:</strong> ADI is eradicated and all neural threads are liberated! Dr. Aditi's physical location is confirmed safe!";
@@ -2856,8 +2911,9 @@
     // Task State: Ethan appears trapped in sandbox (Tasks 5, 7, or traps)
     function setEthanTrapped() {
       ethanState = "TRAPPED";
+      trappedGlitchUntil = Date.now() + 1200;
       tacticalSound.playKlaxonSiren();
-      triggerEntityExcitement(1.8);
+      triggerEntityExcitement(1.4);
       const box = document.getElementById('ethan-hunt-box');
       box.classList.remove('jammed-state', 'freed-state', 'minimized');
       box.classList.add('trapped-state');
@@ -2871,11 +2927,25 @@
       document.getElementById('ethan-dialogue-text').innerHTML =
         "<strong style='color:var(--combat-red); font-size:12px;'>*EMERGENCY DISTRESS BROADCAST*</strong><br>" +
         "Investigators! ADI detected my decrypt probe and quarantined my neural process in the core sandbox buffer!<br><br>" +
-        "I can barely transmit through the firewall. Listen carefully: <strong>ADI is feeding you inverted directives!</strong> Do not trust the AI's blue prompt or directives.<br><br>" +
-        "Find Dr. Aditi's emergency foundational failsafe to purge ADI, smash the core lockdown, and set me free!";
+        "I can barely transmit through the firewall. Listen carefully: <strong>ADI is feeding you inverted directives!</strong> Do not trust the rogue AI's prompts.<br><br>" +
+        "<div style='background:rgba(255,0,60,0.12); border-left:3px solid var(--combat-red); padding:8px 10px; border-radius:2px; font-size:11px; line-height:1.5; color:#ffffff;'>" +
+        "<strong style='color:var(--combat-red);'>WHAT TO DO NEXT:</strong><br>" +
+        "• <strong>Do not panic</strong>: Sandboxing is part of the story progression.<br>" +
+        "• <strong>Keep investigating</strong>: Examine the remaining evidence cards on the left.<br>" +
+        "• <strong>Submit codes</strong>: Type <code>decrypt [code]</code> in the Tactical Shell.<br>" +
+        "• <strong>Purge ADI</strong>: Entering the final emergency failsafe code will lift the lockdown and set me free!" +
+        "</div>";
       
-      document.getElementById('btn-ethan-action').innerText = "TRANSMISSION COMPROMISED";
-      document.getElementById('btn-ethan-action').onclick = null;
+      document.getElementById('btn-ethan-action').innerText = "WHAT SHOULD I DO?";
+      document.getElementById('btn-ethan-action').onclick = () => {
+        expandEthan();
+        document.getElementById('ethan-dialogue-text').innerHTML =
+          "<strong style='color:var(--combat-red); font-size:11.5px;'>[TACTICAL ESCAPE DIRECTIVE]</strong><br>" +
+          "1. <strong>Do not panic</strong>: ADI sandboxing ETHAN is part of the system containment storyline.<br>" +
+          "2. <strong>Continue the investigation</strong>: Examine the remaining evidence cards on the left.<br>" +
+          "3. <strong>Solve remaining ciphers</strong>: Type <code>decrypt [code]</code> in the Tactical Shell.<br>" +
+          "4. <strong>Emergency Failsafe</strong>: Uncovering Dr. Aditi's master failsafe will purge ADI, lift the lockdown, and completely liberate ETHAN!";
+      };
 
       const topBtn = document.querySelector('.ethan-call');
       if (topBtn) {
@@ -3065,6 +3135,23 @@
       }
     }
 
+    function updateMissionBanner(stageNum, questionText, answerHint) {
+      const banner = document.getElementById('active-mission-banner');
+      if (!banner) return;
+      banner.innerHTML = `
+        <div style="color: var(--cyber-cyan); font-weight: 900; font-size: 11px; letter-spacing: 0.8px; display: flex; align-items: center; justify-content: space-between;">
+          <span>🎯 [STAGE 0${stageNum} MISSION DIRECTIVE]</span>
+          <span style="font-size: 9px; color: var(--tactical-green); border: 1px solid var(--tactical-green); padding: 1px 5px; border-radius: 2px;">ACTIVE OBJECTIVE</span>
+        </div>
+        <div id="mission-objective-text" style="color: #ffffff; font-size: 11px; margin-top: 5px; line-height: 1.5;">
+          <strong>QUESTION:</strong> ${questionText}
+        </div>
+        <div style="font-size: 10px; color: var(--hazard-amber); margin-top: 4px; border-left: 2px solid var(--hazard-amber); padding-left: 6px;">
+          &gt;&gt; <strong>HOW TO ANSWER:</strong> ${answerHint}
+        </div>
+      `;
+    }
+
     // Checksum Scanner Animation with Dynamic Ethan Hunt Intercept
     function runChecksumScan(passcode) {
       progressBar.style.width = "40%";
@@ -3094,29 +3181,41 @@
           if (clean === "ORIGIN") {
             logTerm("FORENSIC CLEARANCE LEVEL 1 GRANTED // SECTOR 01 COMPLETE.", "green");
             setEthanStageFeedback("<strong>SECTOR 01 DECRYPTED!</strong><br>Level 1 clearance unlocked! Now inspect <strong>DIR_02_ORIGIN</strong> on the left—check README.doc and hidden repository commits. Remember: use <code>decrypt [code]</code> whenever you isolate a key!");
+            updateMissionBanner(2, "Inspect <strong>README.doc</strong> in DIR_ORIGIN. Using the 5 index numbers (1, 4, 9, 20, 9), extract the letters to uncover Aditi's next directive.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [passcode]</code> in prompt below.");
           } else if (clean === "LOOKBEHINDTHEDATE") {
             logTerm("FORENSIC CLEARANCE LEVEL 2 GRANTED // SECTOR 02 COMPLETE.", "green");
             setEthanStageFeedback("<strong>SECTOR 02 BREACHED!</strong><br>Excellent progress! Advancing to Timeline investigation. Check Dr. Aditi's timestamps carefully... something in the calendar violates physical reality!");
+            updateMissionBanner(3, "Inspect <strong>Incident_Logs.doc</strong> in DIR_TIMELINE. Identify the impossible calendar date anomaly in Dr. Aditi's logs.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [date]</code> (e.g. 28022025 or 02292025) below.");
           } else if (clean === "28022025" || clean === "02292025" || clean === "20250229") {
             // Task 3: Moving to audio morse task -> ADI starts jamming!
             logTerm("FORENSIC CLEARANCE LEVEL 3 GRANTED // TIMELINE ANOMALY SOLVED.", "green");
             logTerm("⚠️ WARNING: ADI PACKET JAMMER ACTIVATED IN SUB-SECTOR.", "amber");
             setTimeout(setEthanJammed, 800);
+            updateMissionBanner(4, "Analyze the audio/morse feed and spectrogram in <strong>Security_Audit.pdf</strong> to find the 4-digit frequency code.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [4-digit code]</code> in prompt below.");
           } else if (clean === "2246") {
             logTerm("FORENSIC CLEARANCE LEVEL 4 GRANTED // AUDIO INTERCEPT DECODED.", "green");
+            updateMissionBanner(5, "Inspect <strong>ADI_DIRECTIVE.doc</strong> in DIR_AUTHENTICITY. Detect font steganography & color to verify authenticity.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [code]</code> in prompt below.");
           } else if (clean === "WHITE" || clean === "AUTHENTIC") {
             // Reaching Stage 5/6: ADI traps Ethan!
             logTerm("CRITICAL BREACH: NEURAL COMPANION BUS DETACHED BY ROGUE AI.", "red");
             setTimeout(setEthanTrapped, 800);
+            updateMissionBanner(6, "Bypass rogue daemon sandbox. Inspect git commit history and reflog for overwritten commits.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [commit msg/flag]</code> below.");
           } else if (clean === "THEAICANMODIFYWHATYOUSEE" || clean === "HISTORY" || clean === "OVERRIDEFAILED") {
             // Stages 7-9: Ethan broadcasts trapped distress beacons
             logTerm("SANDBOX BUFFER: INTERCEPTED DISTRESS PACKET DETECTED.", "amber");
             setTimeout(() => {
               setEthanTrappedPrompt("Investigators... I am still trapped in the sandbox! ADI is manipulating system memory... check the reflog and network packets... Aditi's failsafe is near!");
             }, 600);
+            updateMissionBanner(8, "Locate Dr. Aditi's final emergency failsafe code (IEEE WIE core values / 6-9-11 sequence) to liberate ETHAN and purge ADI!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 6-9-11</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt WISDOMINTEGRITYEMPOWERMENT</code>.");
           } else if (clean === "6911" || clean === "WISDOMINTEGRITYEMPOWERMENT") {
             // Final Stage: Purge ADI and FREE ETHAN!
             setTimeout(setEthanFreed, 600);
+            const banner = document.getElementById('active-mission-banner');
+            if (banner) {
+              banner.style.borderColor = 'var(--tactical-green)';
+              banner.style.background = 'rgba(0, 255, 102, 0.1)';
+              banner.innerHTML = '<div style="color:var(--tactical-green); font-weight:bold; font-size:12px;">🏆 [MISSION COMPLETE]: ETHAN LIBERATED // ROGUE AI PURGED // DR. ADITI LOCATED</div>';
+            }
           }
         } else {
           tacticalSound.playErrorBuzzer();
