@@ -525,29 +525,88 @@
       transform: translateY(-2px);
       box-shadow: var(--glow-green);
     }
+    /* --------------------------------------------------------------------------
+       Dynamic 3-Second Guidance Highlight & Target Beacon
+       -------------------------------------------------------------------------- */
     @keyframes highlight-blink-3s {
-      0% {
-        border-color: rgba(0, 229, 255, 0.2);
-        box-shadow: none;
+      0%, 20%, 40%, 60%, 80% {
+        border-color: #00e5ff;
+        background: rgba(0, 229, 255, 0.22);
+        box-shadow: 0 0 35px rgba(0, 229, 255, 1), 0 0 60px rgba(0, 229, 255, 0.5), inset 0 0 20px rgba(0, 229, 255, 0.5);
+        outline: 3px solid #00e5ff;
+        outline-offset: 3px;
+        transform: scale(1.04);
       }
-      16%, 50%, 83% {
-        border-color: var(--cyber-cyan) !important;
-        box-shadow: 0 0 28px rgba(0, 229, 255, 0.95), inset 0 0 16px rgba(0, 229, 255, 0.3) !important;
+      10%, 30%, 50%, 70%, 90% {
+        border-color: rgba(0, 229, 255, 0.25);
+        background: rgba(0, 255, 102, 0.04);
+        box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+        outline: 3px solid transparent;
+        outline-offset: 0px;
+        transform: scale(1.0);
       }
-      33%, 66% {
-        border-color: rgba(0, 229, 255, 0.2) !important;
-        box-shadow: none !important;
-      }
-      100% {
+      95%, 100% {
         border-color: rgba(0, 255, 102, 0.3);
-        box-shadow: none !important;
+        background: rgba(0, 255, 102, 0.04);
+        box-shadow: none;
+        outline: 3px solid transparent;
+        outline-offset: 0px;
+        transform: scale(1.0);
       }
     }
 
     .highlight-target, .tactical-card.highlight-target, .tactical-terminal.highlight-target {
-      animation: highlight-blink-3s 3s cubic-bezier(0.2, 0.8, 0.2, 1) 1 forwards !important;
-      position: relative;
-      z-index: 100;
+      animation: highlight-blink-3s 3s cubic-bezier(0.16, 1, 0.3, 1) 1 forwards !important;
+      position: relative !important;
+      z-index: 1000 !important;
+    }
+
+    /* Floating High-Visibility Military HUD Target Beacon Pointer */
+    #ethan-target-beacon {
+      position: fixed;
+      z-index: 99999;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .beacon-content {
+      background: rgba(0, 229, 255, 0.98);
+      color: #02070e;
+      font-family: 'Share Tech Mono', 'Courier New', monospace;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 6px 14px;
+      border-radius: 3px;
+      letter-spacing: 1.2px;
+      box-shadow: 0 0 30px rgba(0, 229, 255, 1), 0 0 60px rgba(0, 229, 255, 0.6), 0 4px 15px rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #ffffff;
+      animation: beacon-bounce 0.45s infinite alternate ease-in-out;
+    }
+    .beacon-arrow {
+      font-size: 18px;
+      line-height: 1;
+      filter: drop-shadow(0 0 4px #fff);
+      animation: arrow-point 0.45s infinite alternate ease-in-out;
+    }
+    .beacon-timer {
+      background: rgba(2, 7, 14, 0.92);
+      color: #00e5ff;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 2px;
+      border: 1px solid rgba(0, 229, 255, 0.6);
+      margin-left: 4px;
+    }
+    @keyframes beacon-bounce {
+      from { transform: translateY(0) scale(1); }
+      to { transform: translateY(-7px) scale(1.04); }
+    }
+    @keyframes arrow-point {
+      from { transform: translateX(0); }
+      to { transform: translateX(-4px); }
     }
     .tactical-card.quarantine {
       border-color: rgba(255, 0, 60, 0.5);
@@ -840,6 +899,15 @@
 <body>
   <div class="crt-overlay"></div>
   <div class="crt-vignette"></div>
+
+  <!-- ETHAN Target Beacon (Shows where to click with active 3-second live countdown) -->
+  <div id="ethan-target-beacon" style="display:none;">
+    <div class="beacon-content">
+      <span class="beacon-arrow">👉</span>
+      <span id="beacon-msg">START HERE: CLICK DIR_ORIGIN</span>
+      <span class="beacon-timer" id="beacon-timer-badge">3s</span>
+    </div>
+  </div>
 
   <!-- ETHAN HUNT Companion Box -->
   <aside id="ethan-hunt-box">
@@ -1929,52 +1997,136 @@
     let ethanTutorialStep = 0;
     let ethanState = "ONBOARDING"; // ONBOARDING, ACTIVE, JAMMED, TRAPPED, FREED
     let highlightTimeout = null;
+    let beaconInterval = null;
+    let currentHighlightedElement = null;
+    let currentBeaconMsg = "";
+
+    function positionBeacon(targetEl, msg) {
+      const beaconEl = document.getElementById('ethan-target-beacon');
+      if (!beaconEl || !targetEl) return;
+      const rect = targetEl.getBoundingClientRect();
+      const msgEl = document.getElementById('beacon-msg');
+      if (msgEl) msgEl.innerText = msg;
+
+      // Calculate position above or below target depending on available space
+      let top = rect.top - 46;
+      let left = rect.left + (rect.width / 2) - 120;
+      if (top < 52) {
+        top = rect.bottom + 12;
+      }
+      if (left < 10) left = 10;
+      if (left + 260 > window.innerWidth) left = window.innerWidth - 270;
+
+      beaconEl.style.top = Math.round(top) + 'px';
+      beaconEl.style.left = Math.round(left) + 'px';
+      beaconEl.style.display = 'block';
+      beaconEl.style.opacity = '1';
+    }
 
     // Helper: Highlights sector and automatically stops blinking after 3 seconds
-    function highlightSector(elementId, duration = 3000) {
+    function highlightSector(elementId, duration = 3000, beaconMsg = "👉 START HERE: CLICK DIR_ORIGIN") {
       if (highlightTimeout) {
         clearTimeout(highlightTimeout);
         highlightTimeout = null;
       }
+      if (beaconInterval) {
+        clearInterval(beaconInterval);
+        beaconInterval = null;
+      }
+
       document.querySelectorAll('.tactical-card, .tactical-terminal, .highlight-target').forEach(el => {
         el.classList.remove('highlight-target');
       });
-      if (!elementId) return;
+
+      const beaconEl = document.getElementById('ethan-target-beacon');
+      if (beaconEl) {
+        beaconEl.style.display = 'none';
+        beaconEl.style.opacity = '0';
+      }
+
+      if (!elementId) {
+        currentHighlightedElement = null;
+        return;
+      }
+
       const target = document.getElementById(elementId);
       if (target) {
+        currentHighlightedElement = target;
+        currentBeaconMsg = beaconMsg;
+
+        // Force DOM reflow so CSS animation is guaranteed to restart from 0%
+        target.classList.remove('highlight-target');
+        void target.offsetWidth;
         target.classList.add('highlight-target');
         target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // Position floating military HUD beacon with live 3s countdown
+        requestAnimationFrame(() => {
+          positionBeacon(target, beaconMsg);
+
+          const timerBadge = document.getElementById('beacon-timer-badge');
+          let secondsLeft = Math.round(duration / 1000);
+          if (timerBadge) timerBadge.innerText = secondsLeft + 's';
+
+          beaconInterval = setInterval(() => {
+            secondsLeft--;
+            if (secondsLeft > 0 && timerBadge) {
+              timerBadge.innerText = secondsLeft + 's';
+            }
+          }, 1000);
+        });
+
         highlightTimeout = setTimeout(() => {
           target.classList.remove('highlight-target');
+          if (beaconEl) {
+            beaconEl.style.opacity = '0';
+            setTimeout(() => { beaconEl.style.display = 'none'; }, 200);
+          }
+          if (beaconInterval) {
+            clearInterval(beaconInterval);
+            beaconInterval = null;
+          }
           highlightTimeout = null;
+          currentHighlightedElement = null;
         }, duration);
       }
     }
 
+    // Auto update beacon on window resize if active
+    window.addEventListener('resize', () => {
+      if (currentHighlightedElement && highlightTimeout) {
+        positionBeacon(currentHighlightedElement, currentBeaconMsg);
+      }
+    });
+
     const ETHAN_TUTORIAL_STEPS = [
       {
         title: "👁️ ETHAN // ENTITY INITIALIZATION",
-        text: "Greetings, Investigator. I am <strong>ETHAN</strong>—Dr. Aditi's personal autonomous AI entity core.<br><br>Dr. Aditi vanished 24 hours ago, and her rogue prototype, <strong>ADI</strong>, has seized control of this workstation. I am here to guide your ocular telemetry and assist your forensic investigation!",
+        text: "Greetings, Investigator. I am <strong>ETHAN</strong>—Dr. Aditi's personal autonomous AI entity core.<br><br>Dr. Aditi vanished 24 hours ago, and her rogue prototype, <strong>ADI</strong>, has seized control of this workstation. Start by clicking <strong>DIR_ORIGIN</strong> on the left (highlighted for 3 seconds)!",
         btn: "WHERE DO I CLICK? &rarr;",
-        targetHighlight: null
+        targetHighlight: "card-origin",
+        beaconMsg: "👉 START HERE: CLICK DIR_ORIGIN"
       },
       {
         title: "📁 ETHAN // SECTOR 1: WHERE TO START",
-        text: "Look at your left sector: the <strong>EVIDENCE ARCHIVE</strong> (highlighted for 3 seconds).<br><br>This is where you begin! Click on <strong>DIR_ORIGIN</strong> to examine Dr. Aditi's farewell memo and Project README. Tip: Try selecting text inside Farewell.doc to reveal hidden invisible ink!",
+        text: "Look at your left sector: the <strong>EVIDENCE ARCHIVE</strong> (highlighted for 3 seconds).<br><br>Click on <strong>DIR_ORIGIN</strong> to examine Dr. Aditi's farewell memo and Project README. Tip: Try selecting text inside Farewell.doc to reveal hidden invisible ink!",
         btn: "HOW DO I LEVEL UP? &rarr;",
-        targetHighlight: "card-origin"
+        targetHighlight: "card-origin",
+        beaconMsg: "👉 CLICK DIR_ORIGIN [FAREWELL.DOC]"
       },
       {
         title: "💻 ETHAN // SECTOR 2: HOW TO LEVEL UP",
         text: "Look at your right sector: the <strong>TACTICAL SHELL</strong> (highlighted for 3 seconds).<br><br>Whenever you deduce a passcode from your evidence, enter <code>decrypt [code]</code> in the prompt (e.g., <code>decrypt ORIGIN</code>). Each valid decryption key unlocks the next sector and raises your clearance level!",
         btn: "CRITICAL SAFETY WARNING &rarr;",
-        targetHighlight: "terminal-section"
+        targetHighlight: "terminal-section",
+        beaconMsg: "👉 ENTER DECRYPT COMMAND HERE"
       },
       {
         title: "⚠️ ETHAN // CRITICAL SAFETY WARNING",
         text: "ADI is actively monitoring telemetry and will attempt to deceive you with honeypots and inverted directives.<br><br><strong>DO NOT execute DO_NOT_RUN.exe</strong> or click the red Kill Switch—they are AI traps! If you ever need me, click <strong>ETHAN ASSIST</strong> in the top bar or type <code>ethan</code> in the terminal.",
         btn: "START INVESTIGATION 🚀",
-        targetHighlight: "card-trap"
+        targetHighlight: "card-trap",
+        beaconMsg: "⚠️ DO NOT RUN: AI HONEYPOT TRAP"
       }
     ];
 
@@ -1984,7 +2136,7 @@
       document.getElementById('ethan-dialogue-text').innerHTML = step.text;
       document.getElementById('btn-ethan-action').innerHTML = step.btn;
 
-      highlightSector(step.targetHighlight, 3000);
+      highlightSector(step.targetHighlight, 3000, step.beaconMsg || "👉 CLICK HERE TO START");
       triggerEntityExcitement(1.3);
       tacticalSound.playAiChirp();
     }
@@ -2010,7 +2162,7 @@
       tacticalSound.playAiChirp();
       triggerEntityExcitement(1.4);
       expandEthan();
-      highlightSector('card-origin', 3000);
+      highlightSector('card-origin', 3000, "👉 CLICK HERE: DIR_ORIGIN");
       document.getElementById('ethan-dialogue-text').innerHTML = 
         "<strong>WHERE TO CLICK:</strong><br>Look at the left panel under <strong>EVIDENCE ARCHIVE</strong>. Click on <strong>DIR_ORIGIN</strong> (highlighted in cyan for 3 seconds) to view Dr. Aditi's Farewell note. Look closely for hidden details or invisible text!";
     }
@@ -2019,7 +2171,7 @@
       tacticalSound.playAiChirp();
       triggerEntityExcitement(1.4);
       expandEthan();
-      highlightSector('terminal-section', 3000);
+      highlightSector('terminal-section', 3000, "👉 ENTER DECRYPT COMMAND HERE");
       document.getElementById('ethan-dialogue-text').innerHTML = 
         "<strong>HOW TO LEVEL UP:</strong><br>" +
         "1. <strong>Examine Evidence:</strong> Click cards on the left to read dossiers and logs.<br>" +
@@ -2046,6 +2198,7 @@
       } else {
         document.getElementById('ethan-dialogue-text').innerHTML =
           "Entity neural core operational. Review your evidence in the left panel. When you deduce a passcode, type <code>decrypt [code]</code> in the terminal below!";
+        highlightSector('card-origin', 3000, "👉 CLICK HERE: DIR_ORIGIN");
       }
     }
 
@@ -2204,8 +2357,10 @@
       }
     }
 
-    // Initialize Ethan tutorial on load
-    renderEthanStep();
+    // Initialize Ethan tutorial on load with slight delay so all DOM geometry and layout are rendered
+    setTimeout(() => {
+      renderEthanStep();
+    }, 300);
 
     // -------------------------------------------------------------------------
     // 5. Tactical Shell CLI Engine (Checksum Animation & Zero Spoilers)
