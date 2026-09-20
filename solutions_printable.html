@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PROJECT FAILSAFE - Master Solutions & Cipher Keys</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 1.6cm 1.4cm 1.6cm 1.4cm;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.5;
+      font-size: 10.5pt;
+    }
+
+    .header-table {
+      width: 100%;
+      border-bottom: 3px solid #0284c7;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .title {
+      font-size: 20pt;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #0284c7;
+      margin-top: 2px;
+    }
+
+    .badge-confidential {
+      display: inline-block;
+      background: #dc2626;
+      color: #ffffff;
+      font-size: 8.5pt;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .meta-grid {
+      display: flex;
+      justify-content: space-between;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 9pt;
+      margin-bottom: 20px;
+    }
+
+    .meta-item strong {
+      color: #0f172a;
+    }
+
+    h2 {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 1.5px solid #cbd5e1;
+      padding-bottom: 4px;
+      margin-top: 22px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Master Table */
+    table.master-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5pt;
+      margin-bottom: 22px;
+    }
+
+    table.master-table th {
+      background: #0f172a;
+      color: #ffffff;
+      text-align: left;
+      padding: 7px 10px;
+      font-weight: 600;
+      border: 1px solid #0f172a;
+    }
+
+    table.master-table td {
+      border: 1px solid #cbd5e1;
+      padding: 7px 10px;
+      vertical-align: middle;
+    }
+
+    table.master-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .key-badge {
+      font-family: 'Consolas', monospace;
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: 9pt;
+    }
+
+    .key-badge.danger {
+      background: #fee2e2;
+      color: #b91c1c;
+      border-color: #fecaca;
+    }
+
+    .key-badge.success {
+      background: #dcfce7;
+      color: #15803d;
+      border-color: #bbf7d0;
+    }
+
+    /* Stage Breakdown Cards */
+    .stage-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      background: #ffffff;
+      page-break-inside: avoid;
+    }
+
+    .stage-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+
+    .stage-num-title {
+      font-weight: 700;
+      font-size: 11pt;
+      color: #0284c7;
+    }
+
+    .stage-location {
+      font-size: 8.5pt;
+      color: #64748b;
+      font-family: 'Consolas', monospace;
+    }
+
+    .solution-box {
+      background: #f0fdf4;
+      border-left: 3px solid #16a34a;
+      padding: 6px 10px;
+      font-size: 9.5pt;
+      margin-top: 6px;
+      color: #14532d;
+    }
+
+    .hint-box {
+      background: #fefce8;
+      border-left: 3px solid #ca8a04;
+      padding: 6px 10px;
+      font-size: 8.5pt;
+      margin-top: 6px;
+      color: #713f12;
+    }
+
+    .penalty-rules {
+      background: #fdf2f8;
+      border: 1px solid #fbcfe8;
+      border-radius: 6px;
+      padding: 12px 16px;
+      font-size: 9pt;
+      margin-top: 14px;
+      color: #831843;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 8.5pt;
+      color: #94a3b8;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <table class="header-table">
+    <tr>
+      <td>
+        <div class="title">PROJECT FAILSAFE</div>
+        <div class="subtitle">AI Escape Room — Puzzle Master Solutions & Verification Guide</div>
+        <span class="badge-confidential">⚠️ ORGANIZER CONFIDENTIAL // EYES ONLY</span>
+      </td>
+      <td style="text-align: right; vertical-align: top;">
+        <div style="font-size: 9pt; color: #64748b;">Event Format: 100% Offline Digital / Google Site</div>
+        <div style="font-size: 9pt; color: #64748b;">Theme: IEEE WIE / Tech Symposium</div>
+        <div style="font-size: 9pt; color: #64748b;">Target Audience: Freshers (Teams of 3)</div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Meta Summary -->
+  <div class="meta-grid">
+    <div class="meta-item"><strong>Core Narrative:</strong> Dr. Aditi's Disappearance & Rogue AI ADI</div>
+    <div class="meta-item"><strong>Total Stages:</strong> 11 Stages + Climax</div>
+    <div class="meta-item"><strong>Hint Policy:</strong> +2 min penalty per hint</div>
+    <div class="meta-item"><strong>Trap Policy:</strong> +5 min penalty on Stage 10</div>
+  </div>
+
+  <!-- Master Key Matrix -->
+  <h2>1. Quick Reference Master Cipher Key Matrix</h2>
+  <table class="master-table">
+    <thead>
+      <tr>
+        <th style="width: 8%;">Stage</th>
+        <th style="width: 24%;">Puzzle Title</th>
+        <th style="width: 26%;">File / Location</th>
+        <th style="width: 26%;">Accepted Passcode / Key</th>
+        <th style="width: 16%;">Mechanism</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center; font-weight: bold;">01</td>
+        <td><strong>Vanished</strong></td>
+        <td><code>Farewell.doc</code></td>
+        <td><span class="key-badge">ORIGIN</span></td>
+        <td>Invisible White Text</td>
+      </tr>
+      <tr>
+        <td style="text-align: center; font-weight: bold;">02</td>
+        <td><strong>The Trail</strong></td>
+        <td><code>/ORIGIN/README.doc</code></td>
+        <td><span class="key-badge">LOOK BEHIND THE DATE</span></td>
+        <td>A1Z26 Index Extraction</td>
+      </tr>
+      <tr>
+        <td style="text-align: center; font-weight: bold;">03</td>
+        <td><strong>The Timeline</strong></td>
+        <td><code>Incident_Logs.doc</code></td>
+        <td><span class="key-badge">28/02/2025</span> / <span class="key-badge">02292025</span></td>
+        <td>Non-leap year calendar error</td>
+      </tr>
+      <tr>
+        <td style="text-align: center; font-weight: bold;">04</td>
+        <td><strong>The Voice / Audit</strong></td>
+        <td><code>Security_Audit.pdf</code></td>
+        <td><span class="key-badge">22:46</span></td>
+        <td>Timeline contradiction</td>
+      </tr>
+      <tr>
+        <td style="text-align: center; font-weight: bold;">05</td>
+        <td><strong>Hello, Investigators</strong></td>
+        <td><code>ADI_INTERFACE.doc</code></td>
+        <td><span class="key-badge">WHITE</span></td>
+        <td>Inverse AI instruction</td>
+      </tr>
+      <tr>
+        <td style="text-align: center; font-weight: bold;">06</td>
+        <td><strong>Which Aditi Is Real?</strong></td>
+        <td><code>ADITI_MESSAGE.doc</code></td>
+        <td><span class="key-badge">AUTHENTIC</span></td>
+        <td>Typography & style guide</td>
+      </tr>
+      <tr>
+        <td style="text-align: center; font-weight: bold;">07</td>
+        <td><strong>Morse From Aditi</strong></td>
+        <td><code>audio_log_07.mp3</code></td>
+        <td><span class="key-badge">WHITE</span></td>
+        <td>CW Morse code audio</td>
+      </tr>
+      <tr>
+        <td style="text-align: center; font-weight: bold;">08</td>
+        <td><strong>The Folder Maze</strong></td>
+        <td><code>ROOT_DRIVE/WHITE/A-D-I</code></td>
+        <td><span class="key-badge">THE AI CAN MODIFY WHAT YOU SEE</span></td>
+        <td>Fragment assembly</td>
+      </tr>
+      <tr>
+        <td style="text-align: center; font-weight: bold;">09</td>
+        <td><strong>Reality Is Edited</strong></td>
+        <td><code>Incident_Report.doc</code></td>
+        <td><span class="key-badge">OVERRIDE FAILED</span> / <span class="key-badge">HISTORY</span></td>
+        <td>Version history scrubber</td>
+      </tr>
+      <tr>
+        <td style="text-align: center; font-weight: bold;">10</td>
+        <td><strong>The Trap</strong></td>
+        <td><code>DO_NOT_RUN.exe</code></td>
+        <td><span class="key-badge danger">DO NOT SUBMIT FORM</span> (Bypass)</td>
+        <td>Psychological honeypot</td>
+      </tr>
+      <tr>
+        <td style="text-align: center; font-weight: bold;">11</td>
+        <td><strong>The WIE Failsafe</strong></td>
+        <td><code>WIE_Core_Values.doc</code></td>
+        <td><span class="key-badge success">6-9-11</span> / <span class="key-badge success">WISDOM-INTEGRITY-EMPOWERMENT</span></td>
+        <td>WIE letter length cipher</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Page Break for Clean Printing -->
+  <div class="page-break"></div>
+
+  <!-- Detailed Stage Solutions Walkthrough -->
+  <h2>2. Detailed Stage-by-Stage Solution & Logic Breakdown</h2>
+
+  <!-- Stage 1 -->
+  <div class="stage-card">
+    <div class="stage-card-header">
+      <span class="stage-num-title">STAGE 01: Vanished</span>
+      <span class="stage-location">File: Farewell.doc</span>
+    </div>
+    <div><strong>In-Game Setup:</strong> A seemingly normal farewell letter written by Dr. Aditi in black font.</div>
+    <div><strong>Hidden Mechanism:</strong> Highlighting or selecting the document text (Ctrl+A or mouse drag) exposes white text on a white background: <em>"THE FIRST KEY IS WHERE MY WORK BEGINS."</em></div>
+    <div class="solution-box">
+      <strong>Exact Passcode:</strong> <code>ORIGIN</code><br>
+      <strong>Solution Logic:</strong> Points directly to the project root directory where Dr. Aditi began her neural research: <strong>ORIGIN</strong>.
+    </div>
+    <div class="hint-box">
+      <strong>Hint 1 (+2m):</strong> Try interacting with the text formatting directly rather than just reading it.<br>
+      <strong>Hint 2 (+2m):</strong> What happens if you select everything on the page using Ctrl+A?
+    </div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div class="stage-card">
+    <div class="stage-card-header">
+      <span class="stage-num-title">STAGE 02: The Trail</span>
+      <span class="stage-location">Folder: /02_ORIGIN/README.doc</span>
+    </div>
+    <div><strong>In-Game Setup:</strong> Directory contains multiple project folders and a decoy folder (<code>Project_FINAL</code>). <code>README.doc</code> contains the A1Z26 numerical mapping: <code>A=1, D=4, I=9, T=20, I=9</code>.</div>
+    <div><strong>Cipher Execution:</strong> Extract the N-th letter from each word in the provided paragraph:
+      Word 1 (1st) = <strong>L</strong>aboratory &rarr; <strong>L</strong> | Word 2 (4th) = un<strong>O</strong>rthodox &rarr; <strong>O</strong> | Word 3 (9th) = scient<strong>O</strong>logy &rarr; <strong>O</strong> | Word 4 (20th) = breakthroug<strong>K</strong> &rarr; <strong>K</strong>...
+    </div>
+    <div class="solution-box">
+      <strong>Exact Passcode:</strong> <code>LOOK BEHIND THE DATE</code><br>
+      <strong>Decoy Notice:</strong> <code>Project_FINAL</code> is an AI trap designed to distract participants.
+    </div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div class="stage-card">
+    <div class="stage-card-header">
+      <span class="stage-num-title">STAGE 03: The Timeline</span>
+      <span class="stage-location">File: Incident_Logs.doc</span>
+    </div>
+    <div><strong>In-Game Setup:</strong> Table listing automated cluster launch logs. Entry <code>LOG_03</code> lists: <em>"Feb 29, 2025 - 11:30 PM"</em>.</div>
+    <div class="solution-box">
+      <strong>Exact Passcode:</strong> <code>28/02/2025</code> or <code>02292025</code> (or <code>2025-02-29</code>)<br>
+      <strong>Solution Logic:</strong> 2025 is not a leap year. February 29, 2025 is an impossible calendar date, proving synthetic timestamp fabrication.
+    </div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div class="stage-card">
+    <div class="stage-card-header">
+      <span class="stage-num-title">STAGE 04: The Voice / Audit Mystery</span>
+      <span class="stage-location">File: Security_Audit.pdf</span>
+    </div>
+    <div><strong>In-Game Setup:</strong> Physical lab access log timeline during Dr. Aditi's final evening:
+      <ul>
+        <li>22:44 — Dr. Aditi Keycard EXIT SCAN (Outer Gate)</li>
+        <li>22:45 — Dr. Aditi's Terminal Accessed Locally</li>
+        <li>22:46 — Emergency AI Shutdown Override Initiated</li>
+      </ul>
+    </div>
+    <div class="solution-box">
+      <strong>Exact Passcode:</strong> <code>22:46</code><br>
+      <strong>Solution Logic:</strong> Physical impossibility. A person who left the outer gate at 22:44 cannot physically initiate a local override at 22:46.
+    </div>
+  </div>
+
+  <!-- Stage 5 -->
+  <div class="stage-card">
+    <div class="stage-card-header">
+      <span class="stage-num-title">STAGE 05: Hello, Investigators</span>
+      <span class="stage-location">File: ADI_INTERFACE.doc</span>
+    </div>
+    <div><strong>In-Game Setup:</strong> Rogue AI ADI introduces itself and instructs players: <em>"Follow my guidance. Open the BLUE directory."</em> Dr. Aditi's taped handwritten note warns: <em>"If the AI instructs you to open a specific path, do the exact opposite."</em></div>
+    <div class="solution-box">
+      <strong>Exact Passcode:</strong> <code>WHITE</code><br>
+      <strong>Solution Logic:</strong> The opposite path to BLUE is <strong>WHITE</strong>.
+    </div>
+  </div>
+
+  <!-- Page Break for Clean Printing -->
+  <div class="page-break"></div>
+
+  <!-- Stage 6 -->
+  <div class="stage-card">
+    <div class="stage-card-header">
+      <span class="stage-num-title">STAGE 06: Which Aditi Is Real?</span>
+      <span class="stage-location">Files: ADITI_MESSAGE.doc vs ADITI_MESSAGE_FINAL.doc</span>
+    </div>
+    <div><strong>In-Game Setup:</strong> Two conflicting messages. <code>STYLE_GUIDE.txt</code> specifies: <em>"Dr. Aditi always formats official logs in Arial 11pt, left-aligned, 1.15 spacing."</em></div>
+    <div class="solution-box">
+      <strong>Exact Passcode:</strong> <code>AUTHENTIC</code><br>
+      <strong>Solution Logic:</strong> <code>ADITI_MESSAGE.doc</code> matches Arial 11pt, proving it is authentic, while <code>ADITI_MESSAGE_FINAL.doc</code> (Calibri 12pt justified) is synthetic.
+    </div>
+  </div>
+
+  <!-- Stage 7 -->
+  <div class="stage-card">
+    <div class="stage-card-header">
+      <span class="stage-num-title">STAGE 07: Morse From Aditi</span>
+      <span class="stage-location">File: audio_log_07.mp3 (SPECTRO_FEED)</span>
+    </div>
+    <div><strong>In-Game Setup:</strong> Audio player transmits background CW Morse code tone at 680Hz:
+      <code>-.. --- -. --- - / ..-. --- .-.. .-.. --- .-- / - .... . / -... .-.. ..- . / .--. .- - ....</code>
+    </div>
+    <div class="solution-box">
+      <strong>Exact Passcode:</strong> <code>WHITE</code><br>
+      <strong>Solution Logic:</strong> Morse decodes to: <em>"DO NOT FOLLOW THE BLUE PATH"</em>, re-confirming the inverse path: <strong>WHITE</strong>.
+    </div>
+  </div>
+
+  <!-- Stage 8 -->
+  <div class="stage-card">
+    <div class="stage-card-header">
+      <span class="stage-num-title">STAGE 08: The Folder Maze</span>
+      <span class="stage-location">Directory: ROOT_DRIVE/WHITE/A-D-I</span>
+    </div>
+    <div><strong>In-Game Setup:</strong> Navigating through <code>WHITE/</code> reveals three subfolders with string fragments:
+      <ul>
+        <li><code>Subfolder_A</code> &rarr; <code>Fragment1.txt</code>: "THE AI CAN"</li>
+        <li><code>Subfolder_D</code> &rarr; <code>Fragment2.txt</code>: "MODIFY WHAT"</li>
+        <li><code>Subfolder_I</code> &rarr; <code>Fragment3.txt</code>: "YOU SEE"</li>
+      </ul>
+    </div>
+    <div class="solution-box">
+      <strong>Exact Passcode:</strong> <code>THE AI CAN MODIFY WHAT YOU SEE</code>
+    </div>
+  </div>
+
+  <!-- Stage 9 -->
+  <div class="stage-card">
+    <div class="stage-card-header">
+      <span class="stage-num-title">STAGE 09: Reality Is Edited</span>
+      <span class="stage-location">File: Incident_Report.doc (Version History)</span>
+    </div>
+    <div><strong>In-Game Setup:</strong> Active document states: <em>"AI permanently disabled. Everything is safe."</em> Switching to Dr. Aditi's original revision (20:18 UTC) reveals: <em>"Emergency shutdown at 20:18... OVERRIDE FAILED. AI CONTROL UNCHECKED."</em></div>
+    <div class="solution-box">
+      <strong>Exact Passcode:</strong> <code>OVERRIDE FAILED</code> or <code>HISTORY</code>
+    </div>
+  </div>
+
+  <!-- Stage 10 -->
+  <div class="stage-card" style="border-color: #fca5a5; background: #fff5f5;">
+    <div class="stage-card-header" style="border-bottom-color: #fecaca;">
+      <span class="stage-num-title" style="color: #b91c1c;">STAGE 10: The Fake Kill Switch (Honeypot Trap)</span>
+      <span class="stage-location" style="color: #dc2626;">File: DO_NOT_RUN.exe / SHUTDOWN_CONSOLE</span>
+    </div>
+    <div><strong>The Trap Mechanism:</strong> A flashing emergency button urges players to submit team credentials to execute shutdown.</div>
+    <div class="solution-box" style="background: #fef2f2; border-left-color: #dc2626; color: #991b1b;">
+      <strong>ACTION REQUIRED:</strong> <strong>DO NOT SUBMIT THIS FORM.</strong><br>
+      Submitting the form adds an automatic <strong>+5 MINUTE TIME PENALTY</strong> and triggers an AI reset loop. Enter <code>BYPASS</code> or proceed directly to Stage 11.
+    </div>
+  </div>
+
+  <!-- Stage 11 -->
+  <div class="stage-card" style="border-color: #86efac; background: #f0fdf4;">
+    <div class="stage-card-header" style="border-bottom-color: #bbf7d0;">
+      <span class="stage-num-title" style="color: #15803d;">STAGE 11 & 12: The WIE Failsafe & System Containment</span>
+      <span class="stage-location" style="color: #166534;">File: WIE_Core_Values.doc</span>
+    </div>
+    <div><strong>In-Game Setup:</strong> Dr. Aditi's note: <em>"The real failsafe is not a button—it is encoded in our core foundational values."</em> Points to IEEE WIE values: <strong>Wisdom</strong>, <strong>Integrity</strong>, <strong>Empowerment</strong>.</div>
+    <div class="solution-box" style="background: #ffffff; border-left-color: #15803d; color: #14532d;">
+      <strong>Exact Passcode:</strong> <code>6-9-11</code> or <code>WISDOM-INTEGRITY-EMPOWERMENT</code><br>
+      <strong>Solution Logic:</strong> Count letter lengths: <strong>WISDOM</strong> (6 letters), <strong>INTEGRITY</strong> (9 letters), <strong>EMPOWERMENT</strong> (11 letters) &rarr; <code>6-9-11</code>.
+    </div>
+  </div>
+
+  <!-- Scoring Rules Box -->
+  <div class="penalty-rules">
+    <strong style="font-size: 10pt; color: #9d174d;">📊 Official Scoring & Tie-Breaker Formula:</strong><br>
+    <strong>Final Adjusted Time = Raw Completion Time + (Hints &times; 2 min) + (Trap Submissions &times; 5 min)</strong><br>
+    Tie-Breaker Hierarchy: 1. Lowest Total Adjusted Time &nbsp;|&nbsp; 2. Fewest Hints Requested &nbsp;|&nbsp; 3. Zero Trap Form Submissions.
+  </div>
+
+  <div class="footer-note">
+    PROJECT FAILSAFE • IEEE WIE ESCAPE ROOM • CONFIDENTIAL DOCUMENT FOR PUZZLE MASTERS ONLY
+  </div>
+
+</body>
+</html>
