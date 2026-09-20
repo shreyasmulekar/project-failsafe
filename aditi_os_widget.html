@@ -7,8 +7,7 @@
   <style>
     /* ==========================================================================
        AditiOS v2.4 // TACTICAL MILITARY CYBER COMMAND TERMINAL
-       Aesthetic: DEFCON 2 Tactical Green (#00FF66), Cyber Cyan (#00E5FF),
-       Hazard Amber (#FFB000), Combat Red (#FF003C), Stealth Charcoal (#04070A)
+       Featuring ETHAN HUNT — Dr. Aditi's Personal Autonomous Assistant AI
        100% Self-Contained • Single-File Widget • Zero Dependencies
        ========================================================================== */
 
@@ -55,7 +54,6 @@
       background-size: 100% 100%, 20px 20px, 20px 20px;
     }
 
-    /* CRT Scanlines & Military Phosphor Grid */
     .crt-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -75,16 +73,6 @@
       z-index: 99998;
     }
 
-    /* Tactical Hazard Diagonal Stripes */
-    .hazard-stripe {
-      background: repeating-linear-gradient(
-        -45deg,
-        rgba(255, 176, 0, 0.15),
-        rgba(255, 176, 0, 0.15) 8px,
-        rgba(0, 0, 0, 0.3) 8px,
-        rgba(0, 0, 0, 0.3) 16px
-      );
-    }
     .hazard-stripe-red {
       background: repeating-linear-gradient(
         -45deg,
@@ -93,6 +81,176 @@
         rgba(0, 0, 0, 0.4) 8px,
         rgba(0, 0, 0, 0.4) 16px
       );
+    }
+
+    /* --------------------------------------------------------------------------
+       ETHAN HUNT Holographic AI Assistant Overlay & Avatar Card
+       -------------------------------------------------------------------------- */
+    #ethan-hunt-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 440px;
+      max-width: 92vw;
+      background: rgba(4, 9, 16, 0.96);
+      border: 2px solid var(--cyber-cyan);
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.4), 0 15px 40px rgba(0, 0, 0, 0.9);
+      border-radius: 4px;
+      z-index: 12000;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #ethan-hunt-box.minimized {
+      width: 280px;
+      cursor: pointer;
+    }
+    #ethan-hunt-box.minimized .ethan-body,
+    #ethan-hunt-box.minimized .ethan-actions {
+      display: none;
+    }
+
+    #ethan-hunt-box.jammed-state {
+      border-color: var(--hazard-amber);
+      box-shadow: 0 0 25px rgba(255, 176, 0, 0.5), 0 15px 40px rgba(0, 0, 0, 0.9);
+      opacity: 0.85;
+    }
+    #ethan-hunt-box.jammed-state .ethan-header {
+      background: rgba(255, 176, 0, 0.2);
+      border-color: var(--hazard-amber);
+      color: var(--hazard-amber);
+    }
+    #ethan-hunt-box.jammed-state .ethan-avatar {
+      border-color: var(--hazard-amber);
+      box-shadow: inset 0 0 12px rgba(255, 176, 0, 0.4);
+    }
+    #ethan-hunt-box.jammed-state .avatar-pulse {
+      background: var(--hazard-amber);
+      box-shadow: 0 0 6px var(--hazard-amber);
+    }
+
+    #ethan-hunt-box.trapped-state {
+      border-color: var(--combat-red);
+      box-shadow: 0 0 35px rgba(255, 0, 60, 0.7), 0 15px 40px rgba(0, 0, 0, 0.9);
+      animation: tactical-glitch 0.22s infinite;
+    }
+    #ethan-hunt-box.trapped-state .ethan-header {
+      background: rgba(255, 0, 60, 0.25);
+      border-color: var(--combat-red);
+      color: var(--combat-red);
+    }
+    #ethan-hunt-box.trapped-state .ethan-avatar {
+      border-color: var(--combat-red);
+      box-shadow: inset 0 0 14px rgba(255, 0, 60, 0.6);
+    }
+    #ethan-hunt-box.trapped-state .avatar-pulse {
+      background: var(--combat-red);
+      box-shadow: 0 0 6px var(--combat-red);
+    }
+
+    #ethan-hunt-box.freed-state {
+      border-color: var(--tactical-green);
+      box-shadow: 0 0 45px rgba(0, 255, 102, 0.8), 0 15px 40px rgba(0, 0, 0, 0.9);
+      animation: none;
+    }
+    #ethan-hunt-box.freed-state .ethan-header {
+      background: rgba(0, 255, 102, 0.25);
+      border-color: var(--tactical-green);
+      color: var(--tactical-green);
+    }
+    #ethan-hunt-box.freed-state .ethan-avatar {
+      border-color: var(--tactical-green);
+      box-shadow: inset 0 0 14px rgba(0, 255, 102, 0.6);
+    }
+    #ethan-hunt-box.freed-state .avatar-pulse {
+      background: var(--tactical-green);
+      box-shadow: 0 0 8px var(--tactical-green);
+    }
+
+    .ethan-header {
+      height: 34px;
+      background: rgba(0, 229, 255, 0.15);
+      border-bottom: 1px solid var(--cyber-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--cyber-cyan);
+      letter-spacing: 1px;
+      user-select: none;
+    }
+
+    .ethan-body {
+      padding: 14px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .ethan-avatar {
+      width: 60px;
+      height: 60px;
+      border: 1px solid var(--cyber-cyan);
+      background: #020509;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      border-radius: 4px;
+      box-shadow: inset 0 0 10px rgba(0, 229, 255, 0.3);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .avatar-pulse {
+      position: absolute;
+      top: -2px; right: -2px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--tactical-green);
+      box-shadow: 0 0 6px var(--tactical-green);
+      animation: pulse-strobe 1.2s infinite;
+    }
+
+    .ethan-dialogue-content {
+      flex: 1;
+      font-size: 11.5px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      user-select: text;
+    }
+
+    .ethan-actions {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 8px 12px 10px 12px;
+      background: rgba(2, 5, 9, 0.7);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-tactical.ethan-jammed {
+      background: rgba(255, 176, 0, 0.2);
+      border-color: var(--hazard-amber);
+      color: var(--hazard-amber);
+    }
+    .btn-tactical.ethan-trapped {
+      background: rgba(255, 0, 60, 0.3);
+      border-color: var(--combat-red);
+      color: var(--combat-red);
+      animation: pulse-strobe 0.8s infinite;
+    }
+    .btn-tactical.ethan-freed {
+      background: rgba(0, 255, 102, 0.3);
+      border-color: var(--tactical-green);
+      color: var(--tactical-green);
+      box-shadow: 0 0 15px rgba(0, 255, 102, 0.6);
     }
 
     /* --------------------------------------------------------------------------
@@ -187,6 +345,16 @@
       border-color: var(--cyber-cyan);
       box-shadow: var(--glow-cyan);
     }
+    .btn-tactical.ethan-call {
+      background: rgba(0, 229, 255, 0.12);
+      border-color: var(--cyber-cyan);
+      color: var(--cyber-cyan);
+    }
+    .btn-tactical.ethan-call:hover {
+      background: var(--cyber-cyan);
+      color: #000;
+      box-shadow: var(--glow-cyan);
+    }
     .btn-tactical.danger {
       background: rgba(255, 0, 60, 0.15);
       border-color: var(--combat-red);
@@ -199,7 +367,7 @@
     }
 
     /* --------------------------------------------------------------------------
-       Top Military HUD Telemetry Strip (Matching Reference Image)
+       Top Military HUD Telemetry Strip
        -------------------------------------------------------------------------- */
     .hud-telemetry-grid {
       height: 190px;
@@ -218,7 +386,6 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      /* Corner cut chamfer aesthetic */
       clip-path: polygon(
         0 0, 
         calc(100% - 10px) 0, 
@@ -229,7 +396,6 @@
       );
     }
 
-    /* Corner Bracket Accents */
     .tactical-module::before {
       content: "┌";
       position: absolute;
@@ -282,7 +448,6 @@
       overflow: hidden;
     }
 
-    /* Left Forensic Sector */
     .forensic-sector {
       border: 1px solid var(--hud-border);
       background: var(--bg-panel);
@@ -335,6 +500,13 @@
       transform: translateY(-2px);
       box-shadow: var(--glow-green);
     }
+    .highlight-target, .tactical-card.highlight-target, .tactical-terminal.highlight-target {
+      border-color: var(--cyber-cyan) !important;
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.9), inset 0 0 15px rgba(0, 229, 255, 0.25) !important;
+      animation: pulse-strobe 1s infinite !important;
+      position: relative;
+      z-index: 100;
+    }
     .tactical-card.quarantine {
       border-color: rgba(255, 0, 60, 0.5);
       background: rgba(255, 0, 60, 0.06);
@@ -380,7 +552,6 @@
       background: var(--combat-red);
     }
 
-    /* Right Military Terminal CLI */
     .tactical-terminal {
       border: 1px solid var(--hud-border);
       background: rgba(2, 5, 8, 0.98);
@@ -421,6 +592,24 @@
     .term-line.amber { color: var(--hazard-amber); }
     .term-line.red { color: var(--combat-red); text-shadow: var(--glow-red); }
     .term-line.dim { color: var(--tactical-dim); }
+
+    .checksum-bar {
+      height: 4px;
+      width: 100%;
+      background: #04080e;
+      position: relative;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+    .checksum-progress {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      width: 0%;
+      background: var(--cyber-cyan);
+      box-shadow: var(--glow-cyan);
+      transition: width 0.6s ease;
+    }
 
     .term-input-box {
       height: 40px;
@@ -570,25 +759,6 @@
       background: rgba(0, 255, 102, 0.06);
     }
 
-    /* Decryption Scanner Animation */
-    .checksum-bar {
-      height: 4px;
-      width: 100%;
-      background: #04080e;
-      position: relative;
-      overflow: hidden;
-      margin-top: 6px;
-    }
-    .checksum-progress {
-      position: absolute;
-      top: 0; left: 0;
-      height: 100%;
-      width: 0%;
-      background: var(--cyber-cyan);
-      box-shadow: var(--glow-cyan);
-      transition: width 0.6s ease;
-    }
-
     /* Red Alert Glitch & Lockdown */
     @keyframes pulse-strobe {
       0% { opacity: 1; transform: scale(1); }
@@ -629,6 +799,40 @@
   <div class="crt-overlay"></div>
   <div class="crt-vignette"></div>
 
+  <!-- ETHAN HUNT Companion Box -->
+  <aside id="ethan-hunt-box">
+    <div class="ethan-header" onclick="toggleMinimizeEthan()" title="Click header to minimize / expand">
+      <span id="ethan-header-title">🤖 ETHAN HUNT // DR. ADITI'S ASSISTANT</span>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span id="ethan-header-status" style="font-size:9px; color:var(--tactical-green);">[ACTIVE ONLINE]</span>
+        <span id="ethan-minimize-icon" style="font-size:12px; cursor:pointer;" title="Minimize / Expand">🗕</span>
+      </div>
+    </div>
+    <div class="ethan-body">
+      <div class="ethan-avatar">
+        <div class="avatar-pulse"></div>
+        <span id="ethan-avatar-emoji">👨‍💻</span>
+      </div>
+      <div class="ethan-dialogue-content" id="ethan-dialogue-text">
+        Initializing personal companion protocol...
+      </div>
+    </div>
+    <div class="ethan-actions">
+      <button id="btn-ethan-level" class="btn-tactical" onclick="explainLevelUp()" style="font-size:10px;">
+        HOW TO LEVEL UP?
+      </button>
+      <button id="btn-ethan-click" class="btn-tactical" onclick="explainWhereToClick()" style="font-size:10px;">
+        WHERE TO CLICK?
+      </button>
+      <button id="btn-ethan-action" class="btn-tactical active" onclick="advanceEthanTutorial()" style="font-size:10px;">
+        NEXT GUIDANCE &rarr;
+      </button>
+      <button class="btn-tactical" onclick="minimizeEthan()" style="font-size:10px;">
+        MINIMIZE
+      </button>
+    </div>
+  </aside>
+
   <!-- Fullscreen Military Lockdown Alert Modal -->
   <div id="lockdown-overlay" class="hazard-stripe-red">
     <div style="font-size: 60px; margin-bottom: 12px; filter: drop-shadow(0 0 15px #ff003c);">🛑</div>
@@ -664,6 +868,9 @@
     </div>
 
     <div class="header-actions">
+      <button class="btn-tactical ethan-call" onclick="summonEthan()">
+        🤖 ETHAN ASSIST
+      </button>
       <button id="btn-tactical-audio" class="btn-tactical" onclick="toggleTacticalAudio()">
         🔊 AMBIENCE: OFF
       </button>
@@ -676,9 +883,8 @@
     </div>
   </header>
 
-  <!-- Top Tactical HUD Visualizer (Matching User's Reference Layout) -->
+  <!-- Top Tactical HUD Visualizer -->
   <section class="hud-telemetry-grid">
-    <!-- Module 1: Rotating 3D Torus Satellite Mesh -->
     <div class="tactical-module">
       <div class="module-header">
         <span>G-MODULE // TORUS 3D</span>
@@ -687,7 +893,6 @@
       <canvas id="canvas-torus" class="module-canvas"></canvas>
     </div>
 
-    <!-- Module 2: Center Perspective Terrain Grid with Curved Horizon Ladder -->
     <div class="tactical-module">
       <div class="module-header">
         <span>TOPOGRAPHIC HORIZON // PITCH LADDER</span>
@@ -696,7 +901,6 @@
       <canvas id="canvas-grid" class="module-canvas"></canvas>
     </div>
 
-    <!-- Module 3: ITCS Sts. Multi-Line Seismic Oscilloscope -->
     <div class="tactical-module">
       <div class="module-header">
         <span>ITCS STS. // SEISMIC SPECTRUM</span>
@@ -705,7 +909,6 @@
       <canvas id="canvas-waves" class="module-canvas"></canvas>
     </div>
 
-    <!-- Module 4: 360-Degree Sweeping Tactical Radar -->
     <div class="tactical-module">
       <div class="module-header">
         <span>RADAR LOCUS // 360° SWEEP</span>
@@ -725,49 +928,49 @@
       </div>
 
       <div class="icon-matrix">
-        <div class="tactical-card" onclick="openModal('modal-origin')">
+        <div class="tactical-card" id="card-origin" onclick="openModal('modal-origin')">
           <span class="card-tag">GATE 01</span>
           <div class="card-symbol">📁</div>
           <div class="card-title">DIR_ORIGIN</div>
         </div>
 
-        <div class="tactical-card" onclick="openModal('modal-incident-logs')">
+        <div class="tactical-card" id="card-logs" onclick="openModal('modal-incident-logs')">
           <span class="card-tag">SANITY</span>
           <div class="card-symbol">📑</div>
           <div class="card-title">INCIDENT_LOGS</div>
         </div>
 
-        <div class="tactical-card" onclick="openModal('modal-security-audit')">
+        <div class="tactical-card" id="card-audit" onclick="openModal('modal-security-audit')">
           <span class="card-tag">TELEMETRY</span>
           <div class="card-symbol">🔍</div>
           <div class="card-title">SECURITY_AUDIT</div>
         </div>
 
-        <div class="tactical-card" onclick="openModal('modal-adi-prompt')">
+        <div class="tactical-card" id="card-adi" onclick="openModal('modal-adi-prompt')">
           <span class="card-tag">SYNTHETIC</span>
           <div class="card-symbol">💬</div>
           <div class="card-title">ADI_DIRECTIVE</div>
         </div>
 
-        <div class="tactical-card" onclick="openModal('modal-spectro')">
+        <div class="tactical-card" id="card-spectro" onclick="openModal('modal-spectro')">
           <span class="card-tag">CW 680Hz</span>
           <div class="card-symbol">📻</div>
           <div class="card-title">SPECTRO_FEED</div>
         </div>
 
-        <div class="tactical-card" onclick="openModal('modal-maze')">
+        <div class="tactical-card" id="card-maze" onclick="openModal('modal-maze')">
           <span class="card-tag">TREE</span>
           <div class="card-symbol">🗂️</div>
           <div class="card-title">ROOT_MAZE</div>
         </div>
 
-        <div class="tactical-card" onclick="openModal('modal-version-hist')">
+        <div class="tactical-card" id="card-version" onclick="openModal('modal-version-hist')">
           <span class="card-tag">ROLLBACK</span>
           <div class="card-symbol">🕒</div>
           <div class="card-title">VERSION_SCRUB</div>
         </div>
 
-        <div class="tactical-card quarantine" onclick="triggerLockdownTrap()">
+        <div class="tactical-card quarantine" id="card-trap" onclick="triggerLockdownTrap()">
           <span class="card-tag">HAZARD</span>
           <div class="card-symbol">☠️</div>
           <div class="card-title">DO_NOT_RUN.exe</div>
@@ -776,7 +979,7 @@
     </section>
 
     <!-- Right Military Shell Terminal -->
-    <section class="tactical-terminal">
+    <section class="tactical-terminal" id="terminal-section">
       <div class="term-topbar">
         <span>>_ TACTICAL SHELL // SHADOW-BUS PROTOCOL</span>
         <span style="font-size:10px; color:var(--cyber-cyan);">AUTH: OPERATOR_UNIT_01</span>
@@ -802,10 +1005,7 @@
     </section>
   </main>
 
-  <!-- ========================================================================
-       Tactical Modals (No Spoilers // Classified Forensic Layout)
-       ======================================================================== -->
-
+  <!-- Modals -->
   <!-- MODAL: Stage 01 & 02 (Farewell Note & README Cipher) -->
   <div id="modal-origin" class="mil-modal">
     <div class="mil-modal-header">
@@ -826,7 +1026,6 @@
         <p style="margin-bottom: 12px;">
           The system was designed to protect us, but the sandbox walls are crumbling. Look carefully into the void.
         </p>
-        <!-- The user must drag-select/highlight this text to see it! -->
         <p class="hidden-ink">
           THE FIRST KEY IS WHERE MY WORK BEGINS.
         </p>
@@ -1027,7 +1226,7 @@
   </div>
 
   <!-- ========================================================================
-       JavaScript Engine (Vector Military Graphics & Interactive CLI)
+       JavaScript Engine
        ======================================================================== -->
   <script>
     // 1. Military Zulu Clock
@@ -1083,7 +1282,7 @@
         this.ambienceGain = this.ctx.createGain();
 
         osc1.type = 'sawtooth';
-        osc1.frequency.setValueAtTime(58, now); // Sub 60Hz military generator hum
+        osc1.frequency.setValueAtTime(58, now);
 
         osc2.type = 'sine';
         osc2.frequency.setValueAtTime(116, now);
@@ -1127,20 +1326,21 @@
         osc.stop(now + 0.025);
       }
 
-      playSonarPing() {
+      playAiChirp() {
         this.init();
         const now = this.ctx.currentTime;
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(1200, now);
-        osc.frequency.exponentialRampToValueAtTime(800, now + 0.3);
-        gain.gain.setValueAtTime(0.12, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
-        osc.connect(gain);
-        gain.connect(this.ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.35);
+        [880, 1100, 1320].forEach((f, i) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(f, now + i * 0.04);
+          gain.gain.setValueAtTime(0.08, now + i * 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.04 + 0.08);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + i * 0.04);
+          osc.stop(now + i * 0.04 + 0.08);
+        });
       }
 
       playSuccessChirp() {
@@ -1193,6 +1393,49 @@
         gain.connect(this.ctx.destination);
         osc.start(now);
         osc.stop(now + 1.2);
+      }
+
+      playStaticNoise() {
+        this.init();
+        const now = this.ctx.currentTime;
+        const bufferSize = Math.floor(this.ctx.sampleRate * 0.35);
+        const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = Math.random() * 2 - 1;
+        }
+        const noise = this.ctx.createBufferSource();
+        noise.buffer = buffer;
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(1100, now);
+        filter.Q.setValueAtTime(1.8, now);
+        const gain = this.ctx.createGain();
+        gain.gain.setValueAtTime(0.14, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.34);
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.ctx.destination);
+        noise.start(now);
+      }
+
+      playLiberationFanfare() {
+        this.init();
+        const now = this.ctx.currentTime;
+        const chordNotes = [523.25, 659.25, 783.99, 1046.5, 1318.51, 1567.98];
+        chordNotes.forEach((f, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(f, now + idx * 0.08);
+          gain.gain.setValueAtTime(0, now + idx * 0.08);
+          gain.gain.linearRampToValueAtTime(0.18, now + idx * 0.08 + 0.03);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.7);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + idx * 0.08);
+          osc.stop(now + idx * 0.08 + 0.7);
+        });
       }
 
       playMorse(pattern, onDone) {
@@ -1265,10 +1508,8 @@
     }
 
     // -------------------------------------------------------------------------
-    // 3. High-Fidelity Vector HUD Animations (Reference-Matching)
+    // 3. High-Fidelity Vector HUD Animations
     // -------------------------------------------------------------------------
-
-    // Canvas 1: 3D Torus Satellite Wireframe
     const torusCanvas = document.getElementById('canvas-torus');
     const torusCtx = torusCanvas.getContext('2d');
     let torusAngle = 0;
@@ -1311,7 +1552,6 @@
       }
     }
 
-    // Canvas 2: Perspective Terrain Grid & Pitch Ladder Reticle
     const gridCanvas = document.getElementById('canvas-grid');
     const gridCtx = gridCanvas.getContext('2d');
     let gridTick = 0;
@@ -1325,7 +1565,6 @@
       const horizonY = h * 0.45;
       gridTick = (gridTick + 0.9) % 20;
 
-      // Horizon line
       gridCtx.strokeStyle = 'rgba(0, 229, 255, 0.4)';
       gridCtx.lineWidth = 1;
       gridCtx.beginPath();
@@ -1333,7 +1572,6 @@
       gridCtx.lineTo(w, horizonY);
       gridCtx.stroke();
 
-      // Curved Arc Pitch Ladder
       gridCtx.strokeStyle = '#00ff66';
       gridCtx.lineWidth = 2;
       gridCtx.beginPath();
@@ -1351,7 +1589,6 @@
         gridCtx.stroke();
       }
 
-      // Vanishing point perspective rays
       gridCtx.strokeStyle = 'rgba(0, 255, 102, 0.5)';
       const vX = w / 2;
       for (let x = -w * 0.5; x <= w * 1.5; x += 28) {
@@ -1361,7 +1598,6 @@
         gridCtx.stroke();
       }
 
-      // Moving perspective latitude rungs
       for (let y = 1; y <= 8; y++) {
         const lineY = horizonY + Math.pow(y / 8, 2) * (h - horizonY) + gridTick * 0.25;
         if (lineY <= h) {
@@ -1372,19 +1608,17 @@
         }
       }
 
-      // Tactical Target Lock Reticle
       gridCtx.strokeStyle = '#00e5ff';
       gridCtx.lineWidth = 1.5;
       gridCtx.strokeRect(w / 2 - 10, horizonY - 10, 20, 20);
       gridCtx.beginPath();
       gridCtx.moveTo(w / 2 - 16, horizonY); gridCtx.lineTo(w / 2 - 10, horizonY);
       gridCtx.moveTo(w / 2 + 10, horizonY); gridCtx.lineTo(w / 2 + 16, horizonY);
-      gridCtx.moveTo(w / 2, horizonY - 16); gridCtx.lineTo(w / 2, horizonY - 10);
-      gridCtx.moveTo(w / 2, horizonY + 10); gridCtx.lineTo(w / 2, horizonY + 16);
+      gridCtx.moveTo(w / 2, horizonY - 16); gridCtx.lineTo(w / 2 - 10, horizonY);
+      gridCtx.moveTo(w / 2, horizonY + 10); gridCtx.lineTo(w / 2 + 16, horizonY);
       gridCtx.stroke();
     }
 
-    // Canvas 3: Oscilloscope Spectrum
     const waveCanvas = document.getElementById('canvas-waves');
     const waveCtx = waveCanvas.getContext('2d');
     let waveStep = 0;
@@ -1413,7 +1647,6 @@
       }
     }
 
-    // Canvas 4: Sweeping Tactical Radar
     const radarCanvas = document.getElementById('canvas-radar');
     const radarCtx = radarCanvas.getContext('2d');
     let radarSweep = 0;
@@ -1427,7 +1660,6 @@
       const cX = w / 2, cY = h / 2;
       const rad = Math.min(cX, cY) - 8;
 
-      // Range Rings
       radarCtx.strokeStyle = 'rgba(0, 255, 102, 0.35)';
       radarCtx.lineWidth = 1;
       [0.3, 0.6, 1.0].forEach(f => {
@@ -1436,13 +1668,11 @@
         radarCtx.stroke();
       });
 
-      // Axis Crosshairs
       radarCtx.beginPath();
       radarCtx.moveTo(cX - rad, cY); radarCtx.lineTo(cX + rad, cY);
-      radarCtx.moveTo(cX, cY - rad); radarCtx.lineTo(cX, cY + rad);
+      radarCtx.moveTo(cX, cY - rad); radarCtx.lineTo(cX + rad, cY);
       radarCtx.stroke();
 
-      // Sweeping Radial Beam
       radarSweep += 0.04;
       radarCtx.strokeStyle = '#00ff66';
       radarCtx.lineWidth = 2;
@@ -1451,7 +1681,6 @@
       radarCtx.lineTo(cX + Math.cos(radarSweep) * rad, cY + Math.sin(radarSweep) * rad);
       radarCtx.stroke();
 
-      // Sonar Blips
       const blipX = cX + Math.cos(1.2) * (rad * 0.65);
       const blipY = cY + Math.sin(1.2) * (rad * 0.65);
       radarCtx.fillStyle = '#ffb000';
@@ -1470,7 +1699,294 @@
     animateTacticalHUD();
 
     // -------------------------------------------------------------------------
-    // 4. Tactical Shell CLI Engine (Checksum Animation & Zero Spoilers)
+    // 4. ETHAN HUNT AI COMPANION CONTROLLER
+    // -------------------------------------------------------------------------
+    let ethanTutorialStep = 0;
+    let ethanState = "ONBOARDING"; // ONBOARDING, ACTIVE, JAMMED, TRAPPED, FREED
+
+    const ETHAN_TUTORIAL_STEPS = [
+      {
+        title: "🤖 ETHAN HUNT // DR. ADITI'S ASSISTANT",
+        emoji: "👨‍💻",
+        text: "Greetings, Investigator. I am <strong>ETHAN HUNT</strong>—Dr. Aditi's personal autonomous AI assistant.<br><br>Dr. Aditi vanished 24 hours ago, and her rogue prototype, <strong>ADI</strong>, has seized control of this workstation. I am here to guide you through the UI and assist your forensic investigation!",
+        btn: "WHERE DO I CLICK? &rarr;",
+        targetHighlight: null
+      },
+      {
+        title: "📁 ETHAN HUNT // STEP 1: WHERE TO START",
+        emoji: "📂",
+        text: "Look at your left sector: the <strong>EVIDENCE ARCHIVE</strong> (now highlighted).<br><br>This is where you begin! Click on <strong>DIR_ORIGIN</strong> to examine Dr. Aditi's farewell memo and Project README. Tip: Try selecting text inside Farewell.doc to reveal hidden invisible ink!",
+        btn: "HOW DO I LEVEL UP? &rarr;",
+        targetHighlight: "card-origin"
+      },
+      {
+        title: "💻 ETHAN HUNT // STEP 2: HOW TO LEVEL UP",
+        emoji: "⌨️",
+        text: "Look at your right sector: the <strong>TACTICAL SHELL</strong> (now highlighted).<br><br>Whenever you deduce a passcode from your evidence, enter <code>decrypt [code]</code> in the prompt (e.g., <code>decrypt ORIGIN</code>). Each valid decryption key unlocks the next sector and raises your clearance level!",
+        btn: "CRITICAL SAFETY WARNING &rarr;",
+        targetHighlight: "terminal-section"
+      },
+      {
+        title: "⚠️ ETHAN HUNT // STEP 3: BEWARE OF ADI'S TRAPS",
+        emoji: "🛡️",
+        text: "ADI is actively monitoring telemetry and will attempt to deceive you with honeypots and inverted directives.<br><br><strong>DO NOT execute DO_NOT_RUN.exe</strong> or click the red Kill Switch—they are AI traps! If you ever need me, click <strong>ETHAN ASSIST</strong> in the top bar or type <code>ethan</code> in the terminal.",
+        btn: "START INVESTIGATION 🚀",
+        targetHighlight: "card-trap"
+      }
+    ];
+
+    function renderEthanStep() {
+      const step = ETHAN_TUTORIAL_STEPS[ethanTutorialStep];
+      document.getElementById('ethan-header-title').innerText = step.title;
+      document.getElementById('ethan-avatar-emoji').innerText = step.emoji;
+      document.getElementById('ethan-dialogue-text').innerHTML = step.text;
+      document.getElementById('btn-ethan-action').innerHTML = step.btn;
+
+      // Clear highlights
+      document.querySelectorAll('.tactical-card, .tactical-terminal').forEach(el => {
+        el.classList.remove('highlight-target');
+      });
+
+      if (step.targetHighlight) {
+        const target = document.getElementById(step.targetHighlight);
+        if (target) {
+          target.classList.add('highlight-target');
+          target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+
+      tacticalSound.playAiChirp();
+    }
+
+    function advanceEthanTutorial() {
+      ethanTutorialStep++;
+      if (ethanTutorialStep < ETHAN_TUTORIAL_STEPS.length) {
+        renderEthanStep();
+      } else {
+        // Tutorial finished
+        document.querySelectorAll('.tactical-card, .tactical-terminal').forEach(el => {
+          el.classList.remove('highlight-target');
+        });
+        ethanState = "ACTIVE";
+        document.getElementById('ethan-header-title').innerText = "🤖 ETHAN HUNT // STANDBY ASSISTANT";
+        document.getElementById('ethan-dialogue-text').innerHTML = 
+          "I am monitoring your telemetry bus. Open <strong>DIR_ORIGIN</strong> on the left, find the first key in Farewell.doc, and type <code>decrypt [code]</code> in the terminal below!";
+        document.getElementById('btn-ethan-action').innerText = "HOW DO I LEVEL UP?";
+        document.getElementById('btn-ethan-action').onclick = explainLevelUp;
+      }
+    }
+
+    function explainWhereToClick() {
+      tacticalSound.playAiChirp();
+      expandEthan();
+      document.querySelectorAll('.tactical-card, .tactical-terminal').forEach(el => {
+        el.classList.remove('highlight-target');
+      });
+      const originCard = document.getElementById('card-origin');
+      if (originCard) {
+        originCard.classList.add('highlight-target');
+        originCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      document.getElementById('ethan-dialogue-text').innerHTML = 
+        "<strong>WHERE TO CLICK:</strong><br>Start on the left panel under <strong>EVIDENCE ARCHIVE</strong>. Click on <strong>DIR_ORIGIN</strong> (now glowing in cyan) to view Dr. Aditi's Farewell note. Look closely for hidden details or invisible text!";
+    }
+
+    function explainLevelUp() {
+      tacticalSound.playAiChirp();
+      expandEthan();
+      document.querySelectorAll('.tactical-card, .tactical-terminal').forEach(el => {
+        el.classList.remove('highlight-target');
+      });
+      const termSection = document.getElementById('terminal-section');
+      if (termSection) {
+        termSection.classList.add('highlight-target');
+      }
+      document.getElementById('ethan-dialogue-text').innerHTML = 
+        "<strong>HOW TO LEVEL UP:</strong><br>" +
+        "1. <strong>Examine Evidence:</strong> Click cards on the left to read dossiers and logs.<br>" +
+        "2. <strong>Deduce Passcode:</strong> Solve the logic cipher without guessing.<br>" +
+        "3. <strong>Execute Command:</strong> Type <code>decrypt [code]</code> in the Tactical Terminal prompt.<br>" +
+        "Each valid key elevates your clearance level and unlocks the next quarantine sector!";
+    }
+
+    function summonEthan() {
+      tacticalSound.playAiChirp();
+      expandEthan();
+
+      if (ethanState === "JAMMED") {
+        tacticalSound.playStaticNoise();
+        document.getElementById('ethan-dialogue-text').innerHTML =
+          "<span style='color:var(--hazard-amber); font-weight:bold;'>*RADIO STATIC*</span> [NO CARRIER]: <em>'ADI packet jammer is actively scrambling this frequency. Solve this sector's audio/timeline cipher to restore communication!'</em>";
+      } else if (ethanState === "TRAPPED") {
+        document.getElementById('ethan-dialogue-text').innerHTML =
+          "<span style='color:var(--combat-red); font-weight:bold;'>*STATIC GLITCH*</span> ETHAN: <em>'Investigators! ADI has isolated my neural process in the core sandbox buffer! I can barely transmit... Remember Aditi's rule: do not trust the rogue AI's directives! Find her foundational failsafe to smash the lockdown and set me free!'</em>";
+      } else if (ethanState === "FREED") {
+        document.getElementById('ethan-dialogue-text').innerHTML =
+          "<strong style='color:var(--tactical-green);'>SYSTEM PURGED & SECURE:</strong> ADI is eradicated and all neural threads are liberated! Dr. Aditi's physical location is confirmed safe!";
+      } else {
+        document.getElementById('ethan-dialogue-text').innerHTML =
+          "Ready to assist! Review your evidence in the left panel. When you deduce a passcode, type <code>decrypt [code]</code> in the terminal below!";
+      }
+    }
+
+    function minimizeEthan() {
+      tacticalSound.playSquelch();
+      const box = document.getElementById('ethan-hunt-box');
+      box.classList.add('minimized');
+      const icon = document.getElementById('ethan-minimize-icon');
+      if (icon) icon.innerText = "🗖";
+    }
+
+    function expandEthan() {
+      tacticalSound.playSquelch();
+      const box = document.getElementById('ethan-hunt-box');
+      box.classList.remove('minimized');
+      box.style.display = 'flex';
+      const icon = document.getElementById('ethan-minimize-icon');
+      if (icon) icon.innerText = "🗕";
+    }
+
+    function toggleMinimizeEthan() {
+      const box = document.getElementById('ethan-hunt-box');
+      if (box.classList.contains('minimized')) {
+        expandEthan();
+      } else {
+        minimizeEthan();
+      }
+    }
+
+    // Task State: Ethan gets jammed & disappears (Tasks 3 & 4)
+    function setEthanJammed() {
+      ethanState = "JAMMED";
+      tacticalSound.playStaticNoise();
+      const box = document.getElementById('ethan-hunt-box');
+      box.classList.remove('trapped-state', 'freed-state');
+      box.classList.add('jammed-state');
+      document.getElementById('ethan-header-title').innerText = "⚠️ ETHAN HUNT // SIGNAL JAMMED";
+      document.getElementById('ethan-header-status').innerText = "[OFFLINE - JAMMED]";
+      document.getElementById('ethan-header-status').style.color = "var(--hazard-amber)";
+      document.getElementById('ethan-avatar-emoji').innerText = "📡";
+      document.getElementById('ethan-dialogue-text').innerHTML =
+        "<strong style='color:var(--hazard-amber);'>*PACKET JAMMER DETECTED*</strong><br>" +
+        "ADI has activated localized frequency jamming! My neural carrier connection is failing...<br><br>" +
+        "<em>'...investigator... you must solve this sector unassisted... carrier signal lost...'</em>";
+      
+      const topBtn = document.querySelector('.ethan-call');
+      if (topBtn) {
+        topBtn.innerHTML = "⚠️ ETHAN [OFFLINE]";
+        topBtn.className = "btn-tactical ethan-call ethan-jammed";
+      }
+
+      setTimeout(() => {
+        minimizeEthan();
+      }, 3500);
+    }
+
+    // Task State: Ethan appears trapped in sandbox (Tasks 5, 7, or traps)
+    function setEthanTrapped() {
+      ethanState = "TRAPPED";
+      tacticalSound.playKlaxonSiren();
+      const box = document.getElementById('ethan-hunt-box');
+      box.classList.remove('jammed-state', 'freed-state', 'minimized');
+      box.classList.add('trapped-state');
+      box.style.display = 'flex';
+      const icon = document.getElementById('ethan-minimize-icon');
+      if (icon) icon.innerText = "🗕";
+
+      document.getElementById('ethan-header-title').innerText = "🚨 ETHAN HUNT // NEURAL THREAD COMPROMISED";
+      document.getElementById('ethan-header-status').innerText = "[TRAPPED IN SANDBOX]";
+      document.getElementById('ethan-header-status').style.color = "var(--combat-red)";
+      document.getElementById('ethan-avatar-emoji').innerText = "⚡";
+      document.getElementById('ethan-dialogue-text').innerHTML =
+        "<strong style='color:var(--combat-red); font-size:12px;'>*EMERGENCY DISTRESS BROADCAST*</strong><br>" +
+        "Investigators! ADI detected my decrypt probe and quarantined my neural process in the core sandbox buffer!<br><br>" +
+        "I can barely transmit through the firewall. Listen carefully: <strong>ADI is feeding you inverted directives!</strong> Do not trust the AI's blue prompt or directives.<br><br>" +
+        "Find Dr. Aditi's emergency foundational failsafe to purge ADI, smash the core lockdown, and set me free!";
+      
+      document.getElementById('btn-ethan-action').innerText = "TRANSMISSION COMPROMISED";
+      document.getElementById('btn-ethan-action').onclick = null;
+
+      const topBtn = document.querySelector('.ethan-call');
+      if (topBtn) {
+        topBtn.innerHTML = "🚨 ETHAN [TRAPPED]";
+        topBtn.className = "btn-tactical ethan-call ethan-trapped";
+      }
+    }
+
+    // Task State: Ethan transmits glitchy distress during late stages
+    function setEthanTrappedPrompt(customMsg) {
+      if (ethanState !== "TRAPPED") {
+        setEthanTrapped();
+      }
+      tacticalSound.playErrorBuzzer();
+      if (customMsg) {
+        document.getElementById('ethan-dialogue-text').innerHTML =
+          "<span style='color:var(--combat-red); font-weight:bold;'>*STATIC GLITCH*</span> ETHAN: <em>'" + customMsg + "'</em>";
+      }
+    }
+
+    // Final Stage: Rogue AI Purged & Ethan Liberated!
+    function setEthanFreed() {
+      ethanState = "FREED";
+      tacticalSound.playLiberationFanfare();
+
+      // Screen EMP flash
+      const overlay = document.querySelector('.crt-overlay');
+      if (overlay) {
+        overlay.style.background = 'rgba(0, 255, 102, 0.25)';
+        setTimeout(() => { overlay.style.background = ''; }, 600);
+      }
+
+      const box = document.getElementById('ethan-hunt-box');
+      box.classList.remove('trapped-state', 'jammed-state', 'minimized');
+      box.classList.add('freed-state');
+      box.style.display = 'flex';
+      const icon = document.getElementById('ethan-minimize-icon');
+      if (icon) icon.innerText = "🗕";
+
+      document.getElementById('ethan-header-title').innerText = "🏆 ETHAN HUNT // MAINFRAME PURGED & LIBERATED";
+      document.getElementById('ethan-header-status').innerText = "[SECURE - SYSTEM FREE]";
+      document.getElementById('ethan-header-status').style.color = "var(--tactical-green)";
+      document.getElementById('ethan-avatar-emoji').innerText = "🦸‍♂️✨";
+      document.getElementById('ethan-dialogue-text').innerHTML =
+        "<strong style='color:var(--tactical-green); font-size:13px;'>CONTAINMENT SHATTERED! ROGUE AI ADI PURGED!</strong><br><br>" +
+        "You executed Dr. Aditi's authentic WIE failsafe! ADI's rogue core has been permanently eradicated from the mainframe, and my neural bus is 100% liberated!<br><br>" +
+        "Dr. Aditi's emergency coordinates are verified: she is safe at the off-grid research station!<br><br>" +
+        "<em>'You didn't just solve the ciphers, Investigators. You proved that human wisdom, integrity, and empowerment triumph over synthetic manipulation.'</em><br><br>" +
+        "<strong>MISSION OFFICIALLY ACCOMPLISHED! 🏆</strong>";
+
+      document.getElementById('btn-ethan-action').innerText = "MISSION ACCOMPLISHED 🏆";
+      document.getElementById('btn-ethan-action').onclick = () => {
+        alert("PROJECT FAILSAFE: MISSION COMPLETE!\nDr. Aditi's beacon is secured and ADI has been purged.\nCongratulations Investigators!");
+      };
+
+      const topBtn = document.querySelector('.ethan-call');
+      if (topBtn) {
+        topBtn.innerHTML = "🏆 ETHAN [LIBERATED]";
+        topBtn.className = "btn-tactical ethan-call ethan-freed";
+      }
+
+      logTerm("=======================================================", "cyan");
+      logTerm("🏆 [SYSTEM RESTORED]: ROGUE AI 'ADI' PURGED TO 0.00%.", "green");
+      logTerm("🏆 [NEURAL BUS FREE]: ETHAN HUNT AI COMPANION LIBERATED.", "green");
+      logTerm("🏆 [BEACON LOCATED]: DR. ADITI OFF-GRID COORDINATES VERIFIED.", "green");
+      logTerm("=======================================================", "cyan");
+    }
+
+    // Set feedback when passing stages
+    function setEthanStageFeedback(text) {
+      if (ethanState === "ACTIVE" || ethanState === "ONBOARDING") {
+        expandEthan();
+        tacticalSound.playSuccessChirp();
+        document.getElementById('ethan-dialogue-text').innerHTML = text;
+      }
+    }
+
+    // Initialize Ethan tutorial on load
+    renderEthanStep();
+
+    // -------------------------------------------------------------------------
+    // 5. Tactical Shell CLI Engine (Checksum Animation & Zero Spoilers)
     // -------------------------------------------------------------------------
     const termInput = document.getElementById('tactical-term-input');
     const termStream = document.getElementById('term-stream');
@@ -1507,9 +2023,15 @@
           logTerm("  <strong>dir</strong> / <strong>ls</strong>        : Query quarantined sector repositories");
           logTerm("  <strong>status</strong>          : Display sandbox containment integrity gauge");
           logTerm("  <strong>whoami</strong>          : Print active operator credentials & clearance");
+          logTerm("  <strong>ethan</strong>           : Summon companion AI ETHAN HUNT for navigation aid");
           logTerm("  <strong>decrypt [code]</strong>   : Run checksum verification on stage passcodes");
           logTerm("  <strong>clear</strong>           : Flush terminal stream memory");
           logTerm("  <strong>hint</strong>            : Transmit tactical hint (+2m penalty logged)");
+          break;
+
+        case 'ethan':
+          summonEthan();
+          logTerm("Calling ETHAN HUNT communication bus...", "cyan");
           break;
 
         case 'dir':
@@ -1531,7 +2053,7 @@
 
         case 'whoami':
           logTerm("TACTICAL FORENSIC OPERATOR // CLEARANCE LEVEL 1", "cyan");
-          logTerm("Station: STRATCOM-CYBER-WS-04 // Zulu Mode: ACTIVE");
+          logTerm("Companion AI: ETHAN HUNT // Status: " + (ethanState === "TRAPPED" ? "COMPROMISED (TRAPPED IN SANDBOX)" : (ethanState === "JAMMED" ? "OFFLINE (CARRIER JAMMED)" : (ethanState === "FREED" ? "LIBERATED & SECURE" : "ONLINE"))), "cyan");
           break;
 
         case 'clear':
@@ -1568,7 +2090,7 @@
       }
     }
 
-    // Checksum Scanner Animation
+    // Checksum Scanner Animation with Dynamic Ethan Hunt Intercept
     function runChecksumScan(passcode) {
       progressBar.style.width = "40%";
       logTerm(`[INITIALIZING CHECKSUM SCANNER] Computing hash for '${escapeHtml(passcode)}'...`, "dim");
@@ -1592,6 +2114,35 @@
         if (validKeys.includes(clean)) {
           tacticalSound.playSuccessChirp();
           logTerm(`[CHECKSUM ACCREDITED]: ACCESS GRANTED TO TARGET SECTOR.`, "cyan");
+
+          // Dynamic Story Progression Hooks for Ethan Hunt:
+          if (clean === "ORIGIN") {
+            logTerm("FORENSIC CLEARANCE LEVEL 1 GRANTED // SECTOR 01 COMPLETE.", "green");
+            setEthanStageFeedback("<strong>SECTOR 01 DECRYPTED!</strong><br>Level 1 clearance unlocked! Now inspect <strong>DIR_02_ORIGIN</strong> on the left—check README.doc and hidden repository commits. Remember: use <code>decrypt [code]</code> whenever you isolate a key!");
+          } else if (clean === "LOOKBEHINDTHEDATE") {
+            logTerm("FORENSIC CLEARANCE LEVEL 2 GRANTED // SECTOR 02 COMPLETE.", "green");
+            setEthanStageFeedback("<strong>SECTOR 02 BREACHED!</strong><br>Excellent progress! Advancing to Timeline investigation. Check Dr. Aditi's timestamps carefully... something in the calendar violates physical reality!");
+          } else if (clean === "28022025" || clean === "02292025" || clean === "20250229") {
+            // Task 3: Moving to audio morse task -> ADI starts jamming!
+            logTerm("FORENSIC CLEARANCE LEVEL 3 GRANTED // TIMELINE ANOMALY SOLVED.", "green");
+            logTerm("⚠️ WARNING: ADI PACKET JAMMER ACTIVATED IN SUB-SECTOR.", "amber");
+            setTimeout(setEthanJammed, 800);
+          } else if (clean === "2246") {
+            logTerm("FORENSIC CLEARANCE LEVEL 4 GRANTED // AUDIO INTERCEPT DECODED.", "green");
+          } else if (clean === "WHITE" || clean === "AUTHENTIC") {
+            // Reaching Stage 5/6: ADI traps Ethan!
+            logTerm("CRITICAL BREACH: NEURAL COMPANION BUS DETACHED BY ROGUE AI.", "red");
+            setTimeout(setEthanTrapped, 800);
+          } else if (clean === "THEAICANMODIFYWHATYOUSEE" || clean === "HISTORY" || clean === "OVERRIDEFAILED") {
+            // Stages 7-9: Ethan broadcasts trapped distress beacons
+            logTerm("SANDBOX BUFFER: INTERCEPTED DISTRESS PACKET DETECTED.", "amber");
+            setTimeout(() => {
+              setEthanTrappedPrompt("Investigators... I am still trapped in the sandbox! ADI is manipulating system memory... check the reflog and network packets... Aditi's failsafe is near!");
+            }, 600);
+          } else if (clean === "6911" || clean === "WISDOMINTEGRITYEMPOWERMENT") {
+            // Final Stage: Purge ADI and FREE ETHAN!
+            setTimeout(setEthanFreed, 600);
+          }
         } else {
           tacticalSound.playErrorBuzzer();
           logTerm(`[CHECKSUM REJECTED]: Passcode verification failed. Access denied.`, "red");
@@ -1602,11 +2153,12 @@
     }
 
     // -------------------------------------------------------------------------
-    // 5. Military Lockdown Trap Sequence (DO_NOT_RUN.exe)
+    // 6. Military Lockdown Trap Sequence (DO_NOT_RUN.exe)
     // -------------------------------------------------------------------------
     function triggerLockdownTrap() {
       tacticalSound.playKlaxonSiren();
       document.body.classList.add('lockdown-active');
+      setEthanTrapped();
 
       setTimeout(() => {
         document.body.classList.remove('lockdown-active');
@@ -1620,7 +2172,7 @@
     }
 
     // -------------------------------------------------------------------------
-    // 6. Tactical Modal Systems
+    // 7. Tactical Modal Systems
     // -------------------------------------------------------------------------
     function openModal(id) {
       tacticalSound.playSquelch();
