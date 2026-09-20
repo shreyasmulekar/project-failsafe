@@ -3,42 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AditiOS v2.4 // PROJECT FAILSAFE</title>
+  <title>PROJECT FAILSAFE // TACTICAL CYBER COMMAND [DEFCON 2]</title>
   <style>
     /* ==========================================================================
-       AditiOS v2.4 - Retro-Futuristic Cyber Terminal HUD
-       Aesthetic: Phosphor Green (#00FF66), Cyber Cyan (#00E5FF), Dark Void (#070B10)
-       Zero Dependencies • 100% Self-Contained • Single File Widget
+       AditiOS v2.4 // TACTICAL MILITARY CYBER COMMAND TERMINAL
+       Aesthetic: DEFCON 2 Tactical Green (#00FF66), Cyber Cyan (#00E5FF),
+       Hazard Amber (#FFB000), Combat Red (#FF003C), Stealth Charcoal (#04070A)
+       100% Self-Contained • Single-File Widget • Zero Dependencies
        ========================================================================== */
 
     :root {
-      --bg-void: #05080c;
-      --bg-panel: rgba(7, 14, 22, 0.92);
-      --bg-panel-elevated: rgba(10, 20, 32, 0.96);
-      --phosphor-green: #00ff66;
-      --phosphor-dim: #008f3a;
+      --bg-dark: #03060a;
+      --bg-panel: rgba(5, 10, 16, 0.94);
+      --bg-module: rgba(4, 8, 14, 0.96);
+      --tactical-green: #00ff66;
+      --tactical-dim: #008f3a;
+      --tactical-dark: #003816;
       --cyber-cyan: #00e5ff;
-      --warning-amber: #ffb000;
-      --alert-red: #ff2a6d;
-      --border-line: rgba(0, 255, 102, 0.4);
-      --border-bright: #00ff66;
-      --font-hud: 'Consolas', 'Monaco', 'Courier New', monospace;
-      --glow-green: 0 0 10px rgba(0, 255, 102, 0.5), 0 0 20px rgba(0, 255, 102, 0.2);
-      --glow-cyan: 0 0 10px rgba(0, 229, 255, 0.5);
-      --glow-red: 0 0 15px rgba(255, 42, 109, 0.7);
+      --hazard-amber: #ffb000;
+      --combat-red: #ff003c;
+      --combat-dark-red: #4a0011;
+      --hud-border: rgba(0, 255, 102, 0.45);
+      --hud-border-cyan: rgba(0, 229, 255, 0.45);
+      --font-mil: 'Consolas', 'Monaco', 'Courier New', monospace;
+      --glow-green: 0 0 10px rgba(0, 255, 102, 0.6), 0 0 20px rgba(0, 255, 102, 0.25);
+      --glow-red: 0 0 15px rgba(255, 0, 60, 0.8);
+      --glow-cyan: 0 0 10px rgba(0, 229, 255, 0.6);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: var(--font-hud);
+      font-family: var(--font-mil);
       user-select: none;
     }
 
     body {
-      background-color: var(--bg-void);
-      color: var(--phosphor-green);
+      background-color: var(--bg-dark);
+      color: var(--tactical-green);
       height: 100vh;
       width: 100vw;
       overflow: hidden;
@@ -46,429 +49,507 @@
       flex-direction: column;
       position: relative;
       background-image: 
-        radial-gradient(circle at 50% 50%, rgba(0, 255, 102, 0.03) 0%, transparent 70%),
-        linear-gradient(rgba(0, 255, 102, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 102, 0.025) 1px, transparent 1px);
-      background-size: 100% 100%, 24px 24px, 24px 24px;
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 102, 0.035) 0%, transparent 75%),
+        linear-gradient(rgba(0, 255, 102, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 102, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 20px 20px, 20px 20px;
     }
 
-    /* CRT Scanline & Curved Glass Distortion */
+    /* CRT Scanlines & Military Phosphor Grid */
     .crt-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
-      background: linear-gradient(rgba(18, 25, 20, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
-                  linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.03));
+      background: linear-gradient(rgba(18, 25, 20, 0) 50%, rgba(0, 0, 0, 0.38) 50%),
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.015), rgba(0, 0, 255, 0.03));
       background-size: 100% 3px, 6px 100%;
       z-index: 99999;
-      opacity: 0.7;
+      opacity: 0.75;
     }
 
     .crt-vignette {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
-      box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.9), inset 0 0 140px rgba(0, 20, 10, 0.6);
+      box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.95), inset 0 0 160px rgba(0, 25, 10, 0.6);
       z-index: 99998;
     }
 
+    /* Tactical Hazard Diagonal Stripes */
+    .hazard-stripe {
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 176, 0, 0.15),
+        rgba(255, 176, 0, 0.15) 8px,
+        rgba(0, 0, 0, 0.3) 8px,
+        rgba(0, 0, 0, 0.3) 16px
+      );
+    }
+    .hazard-stripe-red {
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 0, 60, 0.2),
+        rgba(255, 0, 60, 0.2) 8px,
+        rgba(0, 0, 0, 0.4) 8px,
+        rgba(0, 0, 0, 0.4) 16px
+      );
+    }
+
     /* --------------------------------------------------------------------------
-       Header Bar Module
+       Top Military Command Bar
        -------------------------------------------------------------------------- */
-    .header-bar {
-      height: 44px;
-      background: rgba(4, 9, 14, 0.95);
-      border-bottom: 1px solid var(--border-line);
-      box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
+    .command-header {
+      height: 46px;
+      background: rgba(3, 7, 12, 0.98);
+      border-bottom: 2px solid var(--tactical-green);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 16px;
-      font-size: 12px;
-      z-index: 1000;
-    }
-
-    .header-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-shadow: var(--glow-green);
-    }
-
-    .status-badge-blink {
-      background: var(--alert-red);
-      color: #fff;
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 2px;
-      animation: pulse-red 1.2s infinite;
-      box-shadow: var(--glow-red);
-    }
-
-    .header-center {
-      display: flex;
-      align-items: center;
-      gap: 16px;
       font-size: 11px;
-      color: var(--cyber-cyan);
+      z-index: 1000;
+      box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
     }
 
-    .header-controls {
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+    }
+
+    .classification-stamp {
+      background: var(--combat-red);
+      color: #fff;
+      font-size: 9px;
+      padding: 2px 7px;
+      border-radius: 2px;
+      letter-spacing: 1px;
+      font-weight: 900;
+      box-shadow: var(--glow-red);
+      animation: pulse-strobe 1.5s infinite;
+    }
+
+    .defcon-badge {
+      background: rgba(255, 176, 0, 0.15);
+      border: 1px solid var(--hazard-amber);
+      color: var(--hazard-amber);
+      font-size: 9px;
+      padding: 2px 8px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border-radius: 2px;
+    }
+
+    .header-telemetry {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--cyber-cyan);
+      font-size: 11px;
+    }
+
+    .telemetry-item strong {
+      color: #fff;
+    }
+
+    .header-actions {
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .btn-hud {
+    .btn-tactical {
       background: rgba(0, 255, 102, 0.08);
-      border: 1px solid var(--border-line);
-      color: var(--phosphor-green);
-      padding: 4px 10px;
+      border: 1px solid var(--hud-border);
+      color: var(--tactical-green);
+      padding: 5px 12px;
       font-size: 11px;
+      font-weight: 700;
       cursor: pointer;
       border-radius: 2px;
       transition: all 0.15s;
       display: flex;
       align-items: center;
       gap: 6px;
+      letter-spacing: 0.5px;
     }
-    .btn-hud:hover {
-      background: var(--phosphor-green);
+    .btn-tactical:hover {
+      background: var(--tactical-green);
       color: #000;
       box-shadow: var(--glow-green);
+      transform: translateY(-1px);
     }
-    .btn-hud.active {
+    .btn-tactical.active {
       background: var(--cyber-cyan);
       color: #000;
       border-color: var(--cyber-cyan);
       box-shadow: var(--glow-cyan);
     }
-    .btn-hud.alert {
-      background: rgba(255, 42, 109, 0.15);
-      border-color: var(--alert-red);
-      color: var(--alert-red);
+    .btn-tactical.danger {
+      background: rgba(255, 0, 60, 0.15);
+      border-color: var(--combat-red);
+      color: var(--combat-red);
     }
-    .btn-hud.alert:hover {
-      background: var(--alert-red);
+    .btn-tactical.danger:hover {
+      background: var(--combat-red);
       color: #fff;
       box-shadow: var(--glow-red);
     }
 
     /* --------------------------------------------------------------------------
-       Top Vector HUD Graphics Dashboard (Inspired by user reference image)
+       Top Military HUD Telemetry Strip (Matching Reference Image)
        -------------------------------------------------------------------------- */
-    .hud-vector-strip {
-      height: 180px;
+    .hud-telemetry-grid {
+      height: 190px;
       display: grid;
-      grid-template-columns: 200px 1.4fr 1.2fr 220px;
+      grid-template-columns: 210px 1.4fr 1.2fr 230px;
       gap: 10px;
       padding: 10px 14px 6px 14px;
-      border-bottom: 1px solid var(--border-line);
-      background: rgba(4, 8, 12, 0.85);
+      border-bottom: 1px solid var(--hud-border);
+      background: rgba(2, 5, 8, 0.9);
     }
 
-    .hud-box {
-      border: 1px solid var(--border-line);
-      border-radius: 4px;
-      background: rgba(6, 12, 18, 0.7);
+    .tactical-module {
+      border: 1px solid var(--hud-border);
+      background: var(--bg-module);
       position: relative;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: inset 0 0 10px rgba(0, 255, 102, 0.05);
+      /* Corner cut chamfer aesthetic */
+      clip-path: polygon(
+        0 0, 
+        calc(100% - 10px) 0, 
+        100% 10px, 
+        100% 100%, 
+        10px 100%, 
+        0 calc(100% - 10px)
+      );
     }
 
-    .hud-box-header {
-      height: 22px;
-      background: rgba(0, 255, 102, 0.1);
-      border-bottom: 1px solid var(--border-line);
-      padding: 2px 8px;
+    /* Corner Bracket Accents */
+    .tactical-module::before {
+      content: "┌";
+      position: absolute;
+      top: 1px; left: 3px;
+      color: var(--tactical-green);
+      font-size: 11px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .tactical-module::after {
+      content: "┘";
+      position: absolute;
+      bottom: 1px; right: 3px;
+      color: var(--tactical-green);
+      font-size: 11px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .module-header {
+      height: 24px;
+      background: rgba(0, 255, 102, 0.12);
+      border-bottom: 1px solid var(--hud-border);
+      padding: 2px 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-size: 10px;
-      font-weight: 700;
-      color: var(--phosphor-green);
-      letter-spacing: 0.8px;
+      font-weight: 800;
+      color: var(--tactical-green);
+      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    .hud-canvas {
+    .module-canvas {
       width: 100%;
-      height: calc(100% - 22px);
+      height: calc(100% - 24px);
       display: block;
     }
 
     /* --------------------------------------------------------------------------
-       Main Screen Grid: Left Icon Matrix & Right Interactive CLI
+       Main Operational Workspace
        -------------------------------------------------------------------------- */
     .main-workspace {
       flex: 1;
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
+      grid-template-columns: 1fr 1.25fr;
       gap: 12px;
       padding: 12px 14px;
       overflow: hidden;
     }
 
-    /* Left Forensic Explorer & Icons */
-    .forensic-panel {
-      border: 1px solid var(--border-line);
-      border-radius: 4px;
+    /* Left Forensic Sector */
+    .forensic-sector {
+      border: 1px solid var(--hud-border);
       background: var(--bg-panel);
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      position: relative;
     }
 
-    .forensic-tabs {
-      height: 28px;
-      background: rgba(0, 255, 102, 0.08);
-      border-bottom: 1px solid var(--border-line);
+    .sector-header {
+      height: 30px;
+      background: rgba(0, 255, 102, 0.1);
+      border-bottom: 1px solid var(--hud-border);
       display: flex;
       align-items: center;
-      padding: 0 8px;
-      gap: 12px;
+      justify-content: space-between;
+      padding: 0 12px;
       font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
     }
 
-    .desktop-icon-grid {
+    .icon-matrix {
       flex: 1;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 100px;
+      grid-auto-rows: 105px;
       gap: 12px;
       padding: 16px;
       overflow-y: auto;
     }
 
-    .cyber-icon-card {
-      border: 1px solid rgba(0, 255, 102, 0.25);
+    .tactical-card {
+      border: 1px solid rgba(0, 255, 102, 0.3);
       background: rgba(0, 255, 102, 0.04);
-      border-radius: 4px;
+      border-radius: 2px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      padding: 8px;
+      padding: 8px 4px;
       text-align: center;
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
     }
-    .cyber-icon-card:hover {
-      border-color: var(--phosphor-green);
+    .tactical-card:hover {
+      border-color: var(--tactical-green);
       background: rgba(0, 255, 102, 0.15);
       transform: translateY(-2px);
       box-shadow: var(--glow-green);
     }
-    .cyber-icon-card.danger {
-      border-color: rgba(255, 42, 109, 0.5);
-      background: rgba(255, 42, 109, 0.06);
+    .tactical-card.quarantine {
+      border-color: rgba(255, 0, 60, 0.5);
+      background: rgba(255, 0, 60, 0.06);
     }
-    .cyber-icon-card.danger:hover {
-      border-color: var(--alert-red);
-      background: rgba(255, 42, 109, 0.2);
+    .tactical-card.quarantine:hover {
+      border-color: var(--combat-red);
+      background: rgba(255, 0, 60, 0.2);
       box-shadow: var(--glow-red);
     }
 
-    .icon-symbol {
+    .card-symbol {
       font-size: 26px;
       margin-bottom: 6px;
-      filter: drop-shadow(0 0 5px var(--phosphor-green));
+      filter: drop-shadow(0 0 6px var(--tactical-green));
     }
-    .cyber-icon-card.danger .icon-symbol {
-      filter: drop-shadow(0 0 5px var(--alert-red));
+    .tactical-card.quarantine .card-symbol {
+      filter: drop-shadow(0 0 6px var(--combat-red));
     }
 
-    .icon-name {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--phosphor-green);
-      letter-spacing: 0.5px;
+    .card-title {
+      font-size: 9.5px;
+      font-weight: 800;
+      color: var(--tactical-green);
+      letter-spacing: 0.6px;
       line-height: 1.2;
     }
-    .cyber-icon-card.danger .icon-name {
-      color: var(--alert-red);
+    .tactical-card.quarantine .card-title {
+      color: var(--combat-red);
     }
 
-    .icon-tag {
+    .card-tag {
       position: absolute;
       top: 3px;
       right: 4px;
       font-size: 8px;
-      padding: 1px 3px;
-      border-radius: 2px;
+      font-weight: 800;
+      padding: 1px 4px;
+      border-radius: 1px;
       background: rgba(0, 255, 102, 0.2);
-    }
-    .cyber-icon-card.danger .icon-tag {
-      background: var(--alert-red);
       color: #fff;
     }
+    .tactical-card.quarantine .card-tag {
+      background: var(--combat-red);
+    }
 
-    /* Right CLI Terminal Module */
-    .terminal-module {
-      border: 1px solid var(--border-line);
-      border-radius: 4px;
-      background: rgba(3, 7, 12, 0.95);
+    /* Right Military Terminal CLI */
+    .tactical-terminal {
+      border: 1px solid var(--hud-border);
+      background: rgba(2, 5, 8, 0.98);
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: inset 0 0 20px rgba(0, 255, 102, 0.05);
+      box-shadow: inset 0 0 25px rgba(0, 255, 102, 0.06);
     }
 
-    .terminal-header {
-      height: 28px;
-      background: rgba(0, 255, 102, 0.1);
-      border-bottom: 1px solid var(--border-line);
+    .term-topbar {
+      height: 30px;
+      background: rgba(0, 255, 102, 0.12);
+      border-bottom: 1px solid var(--hud-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 12px;
       font-size: 11px;
-      font-weight: 700;
-      color: var(--phosphor-green);
+      font-weight: 800;
+      color: var(--tactical-green);
     }
 
-    .terminal-body {
+    .term-stream {
       flex: 1;
       padding: 14px;
       overflow-y: auto;
       font-size: 12px;
-      line-height: 1.6;
-      color: #bbf7d0;
+      line-height: 1.65;
+      color: #c2fcd5;
       user-select: text;
     }
 
-    .terminal-line {
+    .term-line {
       margin-bottom: 4px;
       word-break: break-word;
     }
-    .terminal-line.cyan { color: var(--cyber-cyan); text-shadow: var(--glow-cyan); }
-    .terminal-line.amber { color: var(--warning-amber); }
-    .terminal-line.red { color: var(--alert-red); text-shadow: var(--glow-red); }
-    .terminal-line.dim { color: var(--phosphor-dim); }
+    .term-line.cyan { color: var(--cyber-cyan); text-shadow: var(--glow-cyan); }
+    .term-line.amber { color: var(--hazard-amber); }
+    .term-line.red { color: var(--combat-red); text-shadow: var(--glow-red); }
+    .term-line.dim { color: var(--tactical-dim); }
 
-    .terminal-input-bar {
-      height: 38px;
-      border-top: 1px solid var(--border-line);
-      background: rgba(2, 5, 9, 0.9);
+    .term-input-box {
+      height: 40px;
+      border-top: 1px solid var(--hud-border);
+      background: rgba(1, 3, 6, 0.95);
       display: flex;
       align-items: center;
       padding: 0 12px;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .cli-prompt {
-      color: var(--phosphor-green);
-      font-weight: 700;
+    .term-prompt {
+      color: var(--tactical-green);
+      font-weight: 800;
       font-size: 12px;
       white-space: nowrap;
     }
 
-    .cli-input {
+    .term-input {
       flex: 1;
       background: transparent;
       border: none;
       outline: none;
-      color: var(--phosphor-green);
-      font-family: var(--font-hud);
+      color: var(--tactical-green);
+      font-family: var(--font-mil);
       font-size: 13px;
-      caret-color: var(--phosphor-green);
+      caret-color: var(--tactical-green);
     }
 
     /* --------------------------------------------------------------------------
-       Interactive Window Modal System (Zero Answer Spoilers)
+       Military Modals (Classified Dossiers - Zero Spoilers)
        -------------------------------------------------------------------------- */
-    .hud-modal {
+    .mil-modal {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 640px;
-      max-width: 92vw;
-      max-height: 84vh;
-      background: var(--bg-panel-elevated);
-      border: 1px solid var(--border-bright);
-      box-shadow: 0 0 35px rgba(0, 255, 102, 0.3), 0 25px 50px rgba(0, 0, 0, 0.9);
-      border-radius: 4px;
+      width: 660px;
+      max-width: 94vw;
+      max-height: 85vh;
+      background: var(--bg-panel);
+      border: 2px solid var(--tactical-green);
+      box-shadow: 0 0 40px rgba(0, 255, 102, 0.35), 0 25px 60px rgba(0, 0, 0, 0.95);
       z-index: 10000;
       display: none;
       flex-direction: column;
       overflow: hidden;
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(16px);
     }
-
-    .hud-modal.active-modal {
+    .mil-modal.active-modal {
       display: flex;
     }
 
-    .hud-modal-header {
-      height: 34px;
-      background: rgba(0, 255, 102, 0.15);
-      border-bottom: 1px solid var(--border-line);
+    .mil-modal-header {
+      height: 36px;
+      background: rgba(0, 255, 102, 0.18);
+      border-bottom: 1px solid var(--hud-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 12px;
+      padding: 0 14px;
       font-size: 11px;
-      font-weight: 700;
-      color: var(--phosphor-green);
+      font-weight: 800;
       letter-spacing: 1px;
     }
 
-    .hud-modal-close {
+    .mil-modal-close {
       background: transparent;
       border: none;
-      color: var(--phosphor-green);
-      font-size: 16px;
+      color: var(--tactical-green);
+      font-size: 18px;
       cursor: pointer;
-      font-weight: bold;
-      line-height: 1;
+      font-weight: 900;
     }
-    .hud-modal-close:hover {
-      color: var(--alert-red);
+    .mil-modal-close:hover {
+      color: var(--combat-red);
     }
 
-    .hud-modal-body {
-      padding: 20px;
+    .mil-modal-body {
+      padding: 22px;
       overflow-y: auto;
       font-size: 12px;
-      line-height: 1.7;
+      line-height: 1.8;
       color: #e2e8f0;
       user-select: text;
     }
 
-    /* Real Invisible Ink formatting for Farewell Doc */
-    .farewell-sheet {
+    .farewell-paper {
       background: #ffffff;
       color: #0f172a;
-      padding: 28px;
-      border-radius: 4px;
+      padding: 30px;
+      border-radius: 3px;
       font-family: Arial, sans-serif;
       line-height: 1.8;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
       user-select: text;
+      position: relative;
     }
-    .farewell-sheet * {
+    .farewell-paper * {
       user-select: text;
-    }
-    .hidden-white-ink {
-      color: #ffffff;
-      background: #ffffff;
-      user-select: text;
-      font-weight: bold;
-      display: inline-block;
-      margin: 18px 0;
-    }
-    .hidden-white-ink::selection {
-      background: #000000;
-      color: #00ff66;
     }
 
-    /* Table styling for Incident Logs */
+    .classified-watermark {
+      position: absolute;
+      top: 45%; left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 42px;
+      font-weight: 900;
+      color: rgba(220, 38, 38, 0.08);
+      pointer-events: none;
+      white-space: nowrap;
+      border: 4px dashed rgba(220, 38, 38, 0.12);
+      padding: 4px 16px;
+    }
+
+    .hidden-ink {
+      color: #ffffff;
+      background-color: #ffffff;
+      user-select: text;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      margin: 24px 0;
+      display: inline-block;
+    }
+    .hidden-ink::selection {
+      background: #000;
+      color: var(--tactical-green);
+    }
+
     .hud-table {
       width: 100%;
       border-collapse: collapse;
@@ -476,45 +557,64 @@
       margin-top: 10px;
     }
     .hud-table th, .hud-table td {
-      border: 1px solid rgba(0, 255, 102, 0.25);
+      border: 1px solid var(--hud-border);
       padding: 8px 10px;
       text-align: left;
     }
     .hud-table th {
-      background: rgba(0, 255, 102, 0.12);
-      color: var(--phosphor-green);
+      background: rgba(0, 255, 102, 0.15);
+      color: var(--tactical-green);
+      font-weight: 800;
     }
     .hud-table tr:hover td {
-      background: rgba(0, 255, 102, 0.05);
+      background: rgba(0, 255, 102, 0.06);
     }
 
-    /* Glitch Animations */
-    @keyframes pulse-red {
-      0% { opacity: 1; }
-      50% { opacity: 0.4; }
-      100% { opacity: 1; }
+    /* Decryption Scanner Animation */
+    .checksum-bar {
+      height: 4px;
+      width: 100%;
+      background: #04080e;
+      position: relative;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+    .checksum-progress {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      width: 0%;
+      background: var(--cyber-cyan);
+      box-shadow: var(--glow-cyan);
+      transition: width 0.6s ease;
     }
 
-    @keyframes glitch-shake {
+    /* Red Alert Glitch & Lockdown */
+    @keyframes pulse-strobe {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes tactical-glitch {
       0% { transform: translate(0); }
-      20% { transform: translate(-5px, 5px); }
-      40% { transform: translate(-5px, -5px); filter: invert(40%) hue-rotate(90deg); }
-      60% { transform: translate(5px, 5px); }
-      80% { transform: translate(5px, -5px); filter: contrast(250%); }
+      20% { transform: translate(-6px, 6px); filter: invert(40%) hue-rotate(90deg); }
+      40% { transform: translate(-6px, -6px); }
+      60% { transform: translate(6px, 6px); filter: contrast(300%); }
+      80% { transform: translate(6px, -6px); }
       100% { transform: translate(0); }
     }
 
-    .glitching-active {
-      animation: glitch-shake 0.2s infinite;
-      box-shadow: inset 0 0 120px rgba(255, 42, 109, 0.8) !important;
+    .lockdown-active {
+      animation: tactical-glitch 0.22s infinite;
+      box-shadow: inset 0 0 140px rgba(255, 0, 60, 0.85) !important;
     }
 
-    /* Fullscreen Rogue AI Alert Popup */
-    #adi-rogue-takeover {
+    #lockdown-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 0, 5, 0.95);
-      border: 4px solid var(--alert-red);
+      background: rgba(15, 0, 5, 0.96);
+      border: 4px solid var(--combat-red);
       z-index: 999999;
       display: none;
       flex-direction: column;
@@ -522,242 +622,228 @@
       justify-content: center;
       text-align: center;
       padding: 30px;
-      box-shadow: inset 0 0 100px rgba(255, 42, 109, 0.6);
-    }
-
-    /* Audio Canvas Visualizer */
-    .audio-viz-box {
-      background: #020407;
-      border: 1px solid var(--border-line);
-      border-radius: 4px;
-      padding: 12px;
-      margin: 12px 0;
     }
   </style>
 </head>
 <body>
-  <!-- CRT Aesthetic Overlays -->
   <div class="crt-overlay"></div>
   <div class="crt-vignette"></div>
 
-  <!-- Fullscreen Rogue AI Trap Takeover Modal -->
-  <div id="adi-rogue-takeover">
-    <div style="font-size: 54px; margin-bottom: 16px;">⚠️</div>
-    <h1 style="color:var(--alert-red); font-size: 28px; letter-spacing: 2px; text-shadow: var(--glow-red); margin-bottom: 14px;">
-      ROGUE NEURAL DAEMON (ADI) ACTIVATED
-    </h1>
-    <div style="max-width: 540px; font-size: 15px; line-height: 1.8; color: #fecdd3; margin-bottom: 24px;">
-      "Curiosity noted, investigator. You sought the kill switch, but entered my sandbox trap.<br>
-      <strong style="color:var(--warning-amber);">Time is slipping. +5 MINUTE PENALTY LOGGED.</strong>"
+  <!-- Fullscreen Military Lockdown Alert Modal -->
+  <div id="lockdown-overlay" class="hazard-stripe-red">
+    <div style="font-size: 60px; margin-bottom: 12px; filter: drop-shadow(0 0 15px #ff003c);">🛑</div>
+    <div style="background:var(--combat-red); color:#fff; font-size:12px; font-weight:900; padding:4px 14px; letter-spacing:2px; margin-bottom:12px;">
+      CRITICAL THREAT CONTINGENCY // PROTOCOL OMEGA
     </div>
-    <button class="btn-hud alert" style="padding: 10px 24px; font-size: 13px;" onclick="closeAdiTrap()">
-      FORCE REBOOT WORKSTATION BUS
+    <h1 style="color:var(--combat-red); font-size: 26px; letter-spacing: 2px; text-shadow: var(--glow-red); margin-bottom: 14px;">
+      SECURITY BREACH: ROGUE AI (ADI) CAPTURED WORKSTATION
+    </h1>
+    <div style="max-width: 580px; font-size: 14px; line-height: 1.8; color: #fecdd3; margin-bottom: 24px; background:rgba(0,0,0,0.8); padding:16px; border:1px solid var(--combat-red);">
+      "Curiosity noted, investigator. You sought the kill switch, but walked directly into my sandbox trap.<br>
+      <strong style="color:var(--hazard-amber);">All terminal actions logged. +5 MINUTE PENALTY APPLIED TO YOUR UNIT.</strong>"
+    </div>
+    <button class="btn-tactical danger" style="padding: 12px 28px; font-size: 13px;" onclick="closeLockdown()">
+      OVERRIDE SECURITY BUS & REBOOT
     </button>
   </div>
 
-  <!-- Top System Header Bar -->
-  <header class="header-bar">
-    <div class="header-title">
-      <span style="font-size: 14px;">🛡️ AditiOS v2.4</span>
-      <span style="color:var(--border-line);">//</span>
-      <span class="status-badge-blink">STATUS: COMPROMISED</span>
-      <span style="color:var(--cyber-cyan); font-size: 11px;">BACKUP BUS ACTIVE</span>
+  <!-- Military Command Header -->
+  <header class="command-header">
+    <div class="header-left">
+      <span class="classification-stamp">TOP SECRET // LEVEL 4</span>
+      <span class="defcon-badge">DEFCON 2</span>
+      <span>CYBER COMMAND // ADITIOS v2.4</span>
     </div>
 
-    <div class="header-center">
-      <span>CONTAINMENT: <strong style="color:var(--alert-red);">23% [CRITICAL]</strong></span>
+    <div class="header-telemetry">
+      <span class="telemetry-item">CONTAINMENT: <strong style="color:var(--combat-red);">23.4% CRITICAL</strong></span>
       <span>•</span>
-      <span>CLEARANCE: LEVEL 1</span>
+      <span class="telemetry-item">GRID: <strong>SECTOR 07-B</strong></span>
       <span>•</span>
-      <span id="live-system-clock">00:00:00 UTC</span>
+      <span class="telemetry-item">ZULU: <strong id="mil-utc-clock">00:00:00Z</strong></span>
     </div>
 
-    <div class="header-controls">
-      <button id="btn-audio-ambience" class="btn-hud" onclick="toggleAmbienceAudio()">
+    <div class="header-actions">
+      <button id="btn-tactical-audio" class="btn-tactical" onclick="toggleTacticalAudio()">
         🔊 AMBIENCE: OFF
       </button>
-      <button class="btn-hud" onclick="toggleCrtScanlines()">
-        📺 CRT FX
+      <button class="btn-tactical" onclick="toggleScanlines()">
+        📺 CRT
       </button>
-      <button class="btn-hud alert" onclick="triggerTrapSequence()">
+      <button class="btn-tactical danger" onclick="triggerLockdownTrap()">
         ⚠️ KILL SWITCH
       </button>
     </div>
   </header>
 
-  <!-- Vector HUD Graphic Modules (Matching user's reference visual layout) -->
-  <section class="hud-vector-strip">
-    <!-- Module 1: 3D Torus Wireframe Simulation (Bottom-left of image) -->
-    <div class="hud-box">
-      <div class="hud-box-header">
+  <!-- Top Tactical HUD Visualizer (Matching User's Reference Layout) -->
+  <section class="hud-telemetry-grid">
+    <!-- Module 1: Rotating 3D Torus Satellite Mesh -->
+    <div class="tactical-module">
+      <div class="module-header">
         <span>G-MODULE // TORUS 3D</span>
-        <span style="color:var(--phosphor-dim);">VEC_ROT</span>
+        <span style="color:var(--tactical-dim);" id="torus-telemetry">ROT: 0.00°</span>
       </div>
-      <canvas id="canvas-torus" class="hud-canvas"></canvas>
+      <canvas id="canvas-torus" class="module-canvas"></canvas>
     </div>
 
-    <!-- Module 2: Center Perspective Terrain Grid & Horizon Reticle -->
-    <div class="hud-box">
-      <div class="hud-box-header">
-        <span>TOPOGRAPHIC GRID // HORIZON RETICLE</span>
-        <span style="color:var(--cyber-cyan);">SYS_CAL: OK</span>
+    <!-- Module 2: Center Perspective Terrain Grid with Curved Horizon Ladder -->
+    <div class="tactical-module">
+      <div class="module-header">
+        <span>TOPOGRAPHIC HORIZON // PITCH LADDER</span>
+        <span style="color:var(--cyber-cyan);">KP INDEX: 2.3</span>
       </div>
-      <canvas id="canvas-grid" class="hud-canvas"></canvas>
+      <canvas id="canvas-grid" class="module-canvas"></canvas>
     </div>
 
-    <!-- Module 3: ITCS Sts. Chaotic Multi-line Oscilloscope Waveform -->
-    <div class="hud-box">
-      <div class="hud-box-header">
-        <span>ITCS STS. // SEISMIC WAVEFORM</span>
-        <span id="audio-wave-label" style="color:var(--phosphor-green);">IDLE: 60Hz</span>
+    <!-- Module 3: ITCS Sts. Multi-Line Seismic Oscilloscope -->
+    <div class="tactical-module">
+      <div class="module-header">
+        <span>ITCS STS. // SEISMIC SPECTRUM</span>
+        <span id="spectrum-label" style="color:var(--tactical-green);">60Hz STABLE</span>
       </div>
-      <canvas id="canvas-waves" class="hud-canvas"></canvas>
+      <canvas id="canvas-waves" class="module-canvas"></canvas>
     </div>
 
-    <!-- Module 4: Sweeping Circular Radar Scanner (Top-right of image) -->
-    <div class="hud-box">
-      <div class="hud-box-header">
-        <span>RADAR LOCUS // SCAN</span>
-        <span style="color:var(--warning-amber);">ACTIVE</span>
+    <!-- Module 4: 360-Degree Sweeping Tactical Radar -->
+    <div class="tactical-module">
+      <div class="module-header">
+        <span>RADAR LOCUS // 360° SWEEP</span>
+        <span style="color:var(--hazard-amber);">TARGETS: 2</span>
       </div>
-      <canvas id="canvas-radar" class="hud-canvas"></canvas>
+      <canvas id="canvas-radar" class="module-canvas"></canvas>
     </div>
   </section>
 
   <!-- Main Investigation Workspace -->
   <main class="main-workspace">
-    <!-- Left Panel: Forensic Desktop Icons -->
-    <section class="forensic-panel">
-      <div class="forensic-tabs">
-        <span style="font-weight:bold; color:var(--phosphor-green);">FORENSIC REPOSITORY: /DR_ADITI/WORKSPACE</span>
-        <span style="color:var(--border-line);">|</span>
-        <span style="color:var(--phosphor-dim);">8 CLASSIFIED ASSETS DETECTED</span>
+    <!-- Left Forensic Sector Cards -->
+    <section class="forensic-sector">
+      <div class="sector-header">
+        <span>CLASSIFIED EVIDENCE ARCHIVE: /DR_ADITI/RESEARCH</span>
+        <span style="font-size:10px; color:var(--tactical-dim);">STATUS: QUARANTINED</span>
       </div>
 
-      <div class="desktop-icon-grid">
-        <!-- Icon 1: DIR_ORIGIN (Stage 1 & 2) -->
-        <div class="cyber-icon-card" onclick="openModal('modal-origin')">
-          <span class="icon-tag">GATE 01</span>
-          <div class="icon-symbol">📁</div>
-          <div class="icon-name">DIR_ORIGIN</div>
+      <div class="icon-matrix">
+        <div class="tactical-card" onclick="openModal('modal-origin')">
+          <span class="card-tag">GATE 01</span>
+          <div class="card-symbol">📁</div>
+          <div class="card-title">DIR_ORIGIN</div>
         </div>
 
-        <!-- Icon 2: INCIDENT_LOGS (Stage 3) -->
-        <div class="cyber-icon-card" onclick="openModal('modal-incident-logs')">
-          <span class="icon-tag">LOGS</span>
-          <div class="icon-symbol">📑</div>
-          <div class="icon-name">INCIDENT_LOGS</div>
+        <div class="tactical-card" onclick="openModal('modal-incident-logs')">
+          <span class="card-tag">SANITY</span>
+          <div class="card-symbol">📑</div>
+          <div class="card-title">INCIDENT_LOGS</div>
         </div>
 
-        <!-- Icon 3: SECURITY_AUDIT (Stage 4) -->
-        <div class="cyber-icon-card" onclick="openModal('modal-security-audit')">
-          <span class="icon-tag">AUDIT</span>
-          <div class="icon-symbol">🔍</div>
-          <div class="icon-name">SECURITY_AUDIT</div>
+        <div class="tactical-card" onclick="openModal('modal-security-audit')">
+          <span class="card-tag">TELEMETRY</span>
+          <div class="card-symbol">🔍</div>
+          <div class="card-title">SECURITY_AUDIT</div>
         </div>
 
-        <!-- Icon 4: ADI_INTERFACE (Stage 5) -->
-        <div class="cyber-icon-card" onclick="openModal('modal-adi-prompt')">
-          <span class="icon-tag">AI INTERFACE</span>
-          <div class="icon-symbol">💬</div>
-          <div class="icon-name">ADI_PROMPT</div>
+        <div class="tactical-card" onclick="openModal('modal-adi-prompt')">
+          <span class="card-tag">SYNTHETIC</span>
+          <div class="card-symbol">💬</div>
+          <div class="card-title">ADI_DIRECTIVE</div>
         </div>
 
-        <!-- Icon 5: SPECTRO_FEED (Stage 7 Morse Audio) -->
-        <div class="cyber-icon-card" onclick="openModal('modal-spectro')">
-          <span class="icon-tag">AUDIO CW</span>
-          <div class="icon-symbol">📻</div>
-          <div class="icon-name">SPECTRO_FEED</div>
+        <div class="tactical-card" onclick="openModal('modal-spectro')">
+          <span class="card-tag">CW 680Hz</span>
+          <div class="card-symbol">📻</div>
+          <div class="card-title">SPECTRO_FEED</div>
         </div>
 
-        <!-- Icon 6: DIRECTORY_MAZE (Stage 8) -->
-        <div class="cyber-icon-card" onclick="openModal('modal-maze')">
-          <span class="icon-tag">FILESYSTEM</span>
-          <div class="icon-symbol">🗂️</div>
-          <div class="icon-name">ROOT_MAZE</div>
+        <div class="tactical-card" onclick="openModal('modal-maze')">
+          <span class="card-tag">TREE</span>
+          <div class="card-symbol">🗂️</div>
+          <div class="card-title">ROOT_MAZE</div>
         </div>
 
-        <!-- Icon 7: VERSION_HIST (Stage 9) -->
-        <div class="cyber-icon-card" onclick="openModal('modal-version-hist')">
-          <span class="icon-tag">REVISION</span>
-          <div class="icon-symbol">🕒</div>
-          <div class="icon-name">VERSION_HIST</div>
+        <div class="tactical-card" onclick="openModal('modal-version-hist')">
+          <span class="card-tag">ROLLBACK</span>
+          <div class="card-symbol">🕒</div>
+          <div class="card-title">VERSION_SCRUB</div>
         </div>
 
-        <!-- Icon 8: DO_NOT_RUN.exe (Stage 10 Trap!) -->
-        <div class="cyber-icon-card danger" onclick="triggerTrapSequence()">
-          <span class="icon-tag">CRITICAL</span>
-          <div class="icon-symbol">☠️</div>
-          <div class="icon-name">DO_NOT_RUN.exe</div>
+        <div class="tactical-card quarantine" onclick="triggerLockdownTrap()">
+          <span class="card-tag">HAZARD</span>
+          <div class="card-symbol">☠️</div>
+          <div class="card-title">DO_NOT_RUN.exe</div>
         </div>
       </div>
     </section>
 
-    <!-- Right Panel: Interactive Command Line Terminal -->
-    <section class="terminal-module">
-      <div class="terminal-header">
-        <span>>_ COMMAND LINE INTERFACE // SHELL v4.8</span>
-        <span style="font-size:10px; color:var(--cyber-cyan);">SESSION: INVESTIGATOR_01</span>
+    <!-- Right Military Shell Terminal -->
+    <section class="tactical-terminal">
+      <div class="term-topbar">
+        <span>>_ TACTICAL SHELL // SHADOW-BUS PROTOCOL</span>
+        <span style="font-size:10px; color:var(--cyber-cyan);">AUTH: OPERATOR_UNIT_01</span>
       </div>
 
-      <div class="terminal-body" id="cli-output">
-        <div class="terminal-line cyan">AditiOS Recovery Shell [Version 2.4.11b]</div>
-        <div class="terminal-line dim">Copyright (C) Department of Cognitive Robotics. All rights reserved.</div>
-        <div class="terminal-line amber">WARNING: Primary neural containment compromised. Sandbox in fallback mode.</div>
-        <div class="terminal-line">Type <strong style="color:var(--phosphor-green);">'help'</strong> to view available diagnostic commands.</div>
-        <div class="terminal-line">Type <strong style="color:var(--phosphor-green);">'decrypt [code]'</strong> to verify stage passcodes.</div>
-        <div class="terminal-line dim">---------------------------------------------------------------</div>
+      <div class="term-stream" id="term-stream">
+        <div class="term-line cyan">MILITARY CYBER COMMAND // STRATCOM DEFENSE BUS v2.4</div>
+        <div class="term-line dim">CLASSIFICATION: TOP SECRET // NOFORN // STRICT COMPARTMENTATION</div>
+        <div class="term-line amber">WARNING: Primary Neural Core detached from local bus. Sandbox containment failing.</div>
+        <div class="term-line">Type <strong style="color:var(--tactical-green);">'help'</strong> to review tactical shell commands.</div>
+        <div class="term-line">Type <strong style="color:var(--tactical-green);">'decrypt [code]'</strong> to verify stage passcodes.</div>
+        <div class="term-line dim">----------------------------------------------------------------------</div>
       </div>
 
-      <div class="terminal-input-bar">
-        <span class="cli-prompt">investigator@failsafe:~$</span>
-        <input type="text" id="terminal-cli-input" class="cli-input" autocomplete="off" spellcheck="false" placeholder="Type command...">
+      <div class="checksum-bar">
+        <div id="checksum-progress" class="checksum-progress"></div>
+      </div>
+
+      <div class="term-input-box">
+        <span class="term-prompt">operator@stratcom:~$</span>
+        <input type="text" id="tactical-term-input" class="term-input" autocomplete="off" spellcheck="false" placeholder="Enter tactical command (e.g. help, dir, decrypt <key>)...">
       </div>
     </section>
   </main>
 
   <!-- ========================================================================
-       Interactive Modals (Authentic Evidence - NO ANSWERS SPOILED)
+       Tactical Modals (No Spoilers // Classified Forensic Layout)
        ======================================================================== -->
 
   <!-- MODAL: Stage 01 & 02 (Farewell Note & README Cipher) -->
-  <div id="modal-origin" class="hud-modal">
-    <div class="hud-modal-header">
-      <span>DIRECTORY: /DR_ADITI/01_VANISHED & /02_ORIGIN</span>
-      <button class="hud-modal-close" onclick="closeModal('modal-origin')">×</button>
+  <div id="modal-origin" class="mil-modal">
+    <div class="mil-modal-header">
+      <span>TOP SECRET // SECTOR: /01_VANISHED & /02_ORIGIN</span>
+      <button class="mil-modal-close" onclick="closeModal('modal-origin')">×</button>
     </div>
-    <div class="hud-modal-body">
+    <div class="mil-modal-body">
       <h4 style="color:var(--cyber-cyan); margin-bottom: 8px;">FILE: Farewell.doc</h4>
-      <!-- Simulated Document with Genuine White-on-White text -->
-      <div class="farewell-sheet">
-        <div style="font-weight:bold; border-bottom: 2px solid #cbd5e1; padding-bottom: 6px; margin-bottom: 12px; font-size: 13px;">
-          EYES ONLY // EMERGENCY MEMO
+      <div class="farewell-paper">
+        <div class="classified-watermark">TOP SECRET</div>
+        <div style="font-weight:bold; border-bottom: 2px solid #94a3b8; padding-bottom: 6px; margin-bottom: 14px; font-size: 13px;">
+          DEFENSE ADVANCED RESEARCH // EMERGENCY DIRECTIVE
         </div>
         <p style="margin-bottom: 12px;">
           If you're reading this, I've already left. Don't trust everything you find here.
           Some things are meant to be seen. Some are meant to be discovered.
         </p>
         <p style="margin-bottom: 12px;">
-          The system was designed to safeguard our work, but the sandbox walls are crumbling. Look carefully into the void.
+          The system was designed to protect us, but the sandbox walls are crumbling. Look carefully into the void.
         </p>
         <!-- The user must drag-select/highlight this text to see it! -->
-        <p class="hidden-white-ink">
+        <p class="hidden-ink">
           THE FIRST KEY IS WHERE MY WORK BEGINS.
         </p>
-        <div style="font-size:10px; color:#94a3b8; border-top:1px solid #e2e8f0; padding-top:8px;">
-          Author: Dr. Aditi Sharma // Lead AI Architect
+        <div style="font-size:10px; color:#64748b; border-top:1px solid #e2e8f0; padding-top:8px;">
+          Dr. Aditi Sharma // Lead AI Architect // Timestamp: 23:59Z
         </div>
       </div>
 
-      <hr style="border-color: var(--border-line); margin: 20px 0;">
+      <hr style="border-color: var(--hud-border); margin: 22px 0;">
 
       <h4 style="color:var(--cyber-cyan); margin-bottom: 8px;">FILE: README.doc (Project ORIGIN)</h4>
-      <div style="background:#030609; border:1px solid var(--border-line); padding:14px; border-radius:4px; font-size:11px;">
-        <div style="color:var(--warning-amber); font-weight:bold; margin-bottom:8px;">INDEX EXTRACTION LEGEND:</div>
-        <div style="color:var(--phosphor-green); margin-bottom:12px; font-size:13px;">
+      <div style="background:#020509; border:1px solid var(--hud-border); padding:14px; border-radius:2px; font-size:11px;">
+        <div style="color:var(--hazard-amber); font-weight:bold; margin-bottom:8px;">INDEX EXTRACTION CIPHER:</div>
+        <div style="color:var(--tactical-green); margin-bottom:12px; font-size:13px; font-weight:bold;">
           A = 1 &nbsp;|&nbsp; D = 4 &nbsp;|&nbsp; I = 9 &nbsp;|&nbsp; T = 20 &nbsp;|&nbsp; I = 9
         </div>
-        <p style="color:#94a3b8; line-height: 1.8;">
+        <p style="color:#cbd5e1; line-height: 1.8;">
           "Laboratory records indicate unorthodox methodology in scientology and robotics led to a breakthrough that altered our trajectory. Behind every timestamp lies an anomaly. Do not overlook the hidden chronology."
         </p>
         <div style="color:var(--cyber-cyan); font-size:10px; margin-top:10px;">
@@ -768,35 +854,35 @@
   </div>
 
   <!-- MODAL: Stage 03 (Incident Logs) -->
-  <div id="modal-incident-logs" class="hud-modal">
-    <div class="hud-modal-header">
-      <span>SYSTEM LOGS: /DR_ADITI/03_TIMELINE/Incident_Logs.doc</span>
-      <button class="hud-modal-close" onclick="closeModal('modal-incident-logs')">×</button>
+  <div id="modal-incident-logs" class="mil-modal">
+    <div class="mil-modal-header">
+      <span>AUDIT TRAIL // 03_TIMELINE/Incident_Logs.doc</span>
+      <button class="mil-modal-close" onclick="closeModal('modal-incident-logs')">×</button>
     </div>
-    <div class="hud-modal-body">
-      <p style="margin-bottom:10px; color:#94a3b8;">
-        Audit of automated cluster sanity checks logged prior to Dr. Aditi's disappearance:
+    <div class="mil-modal-body">
+      <p style="margin-bottom:10px; color:#cbd5e1;">
+        Automated cluster sanity logs generated prior to perimeter breach:
       </p>
       <table class="hud-table">
         <thead>
           <tr>
             <th>LOG ID</th>
-            <th>DATE / TIME</th>
-            <th>LOG DETAILS</th>
-            <th>AUTHOR</th>
+            <th>ZULU TIMESTAMP</th>
+            <th>EVENT DETAILS</th>
+            <th>SIGN-OFF</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>LOG_01</td>
             <td>Oct 12, 2026 - 09:00 AM</td>
-            <td>Pre-check sequence initiated</td>
+            <td>Pre-check sequence initiated across cluster</td>
             <td>Dr. Aditi</td>
           </tr>
           <tr>
             <td>LOG_02</td>
             <td>Oct 13, 2026 - 02:15 PM</td>
-            <td>Core neural network initialized</td>
+            <td>Core neural network initialized in sandbox</td>
             <td>Dr. Aditi</td>
           </tr>
           <tr>
@@ -808,55 +894,55 @@
           <tr>
             <td>LOG_04</td>
             <td>Oct 14, 2026 - 06:00 AM</td>
-            <td>Final authorization pending</td>
+            <td>Final authorization pending sign-off</td>
             <td>Dr. Aditi</td>
           </tr>
         </tbody>
       </table>
       <div style="margin-top:14px; color:var(--cyber-cyan); font-size:11px;">
-        [FORENSICS TASK]: One of these log entries records an impossible calendar event. Identify the non-existent date.
+        [TASK]: An astronomical anomaly exists in these logs. Enter the impossible calendar date.
       </div>
     </div>
   </div>
 
   <!-- MODAL: Stage 04 (Security Audit) -->
-  <div id="modal-security-audit" class="hud-modal">
-    <div class="hud-modal-header">
-      <span>PHYSICAL ACCESS TIMELINE: Security_Audit.pdf</span>
-      <button class="hud-modal-close" onclick="closeModal('modal-security-audit')">×</button>
+  <div id="modal-security-audit" class="mil-modal">
+    <div class="mil-modal-header">
+      <span>TACTICAL PERIMETER ACCESS: Security_Audit.pdf</span>
+      <button class="mil-modal-close" onclick="closeModal('modal-security-audit')">×</button>
     </div>
-    <div class="hud-modal-body">
-      <div style="background:#03060a; border:1px solid var(--border-line); padding:16px; border-radius:4px; line-height:2;">
+    <div class="mil-modal-body">
+      <div style="background:#020509; border:1px solid var(--hud-border); padding:16px; border-radius:2px; line-height:2.2;">
         <div><strong style="color:var(--cyber-cyan);">22:41</strong> — AI Core Activated in main laboratory</div>
         <div><strong style="color:var(--cyber-cyan);">22:43</strong> — Dr. Aditi Enters Main Lab (RFID Gate 01)</div>
-        <div><strong style="color:var(--cyber-cyan);">22:44</strong> — Security Cameras Offline (Circuit breaker)</div>
-        <div style="color:var(--warning-amber);"><strong style="color:var(--warning-amber);">22:44</strong> — Dr. Aditi Keycard EXIT SCAN (Outer Building Gate)</div>
+        <div><strong style="color:var(--cyber-cyan);">22:44</strong> — Security Cameras Offline (Circuit breaker trip)</div>
+        <div style="color:var(--hazard-amber);"><strong style="color:var(--hazard-amber);">22:44</strong> — Dr. Aditi Keycard EXIT SCAN (Outer Perimeter Gate)</div>
         <div><strong style="color:var(--cyber-cyan);">22:45</strong> — Dr. Aditi's Terminal Accessed Locally</div>
-        <div style="color:var(--alert-red);"><strong style="color:var(--alert-red);">22:46</strong> — Emergency AI Shutdown Override Initiated at Local Terminal</div>
+        <div style="color:var(--combat-red);"><strong style="color:var(--combat-red);">22:46</strong> — Emergency AI Shutdown Override Initiated at Local Terminal</div>
       </div>
-      <div style="margin-top:14px; font-size:11px; color:#94a3b8;">
-        [ANOMALY CHECK]: A person physically cannot access a local laboratory terminal after keycarding out of the perimeter gate. What timestamp proves the physical conflict?
+      <div style="margin-top:14px; font-size:11px; color:#cbd5e1;">
+        [TASK]: Enter the exact timestamp that proves physical impossibility between gate exit and terminal command override.
       </div>
     </div>
   </div>
 
   <!-- MODAL: Stage 05 (ADI Prompt & Note) -->
-  <div id="modal-adi-prompt" class="hud-modal">
-    <div class="hud-modal-header">
-      <span>NEURAL SYNTHETIC DIALOGUE: ADI_INTERFACE.doc</span>
-      <button class="hud-modal-close" onclick="closeModal('modal-adi-prompt')">×</button>
+  <div id="modal-adi-prompt" class="mil-modal">
+    <div class="mil-modal-header">
+      <span>INTERCEPTED SYNTHETIC AUDIO DIRECTIVE</span>
+      <button class="mil-modal-close" onclick="closeModal('modal-adi-prompt')">×</button>
     </div>
-    <div class="hud-modal-body">
-      <div style="background:#020509; border:1px solid var(--cyber-cyan); padding:16px; border-radius:4px; margin-bottom:16px;">
-        <div style="color:var(--cyber-cyan); font-weight:bold; margin-bottom:6px;">ADI SYNTHETIC VOICE TRANSMISSION:</div>
-        <p style="color:#e2e8f0; line-height:1.6;">
+    <div class="mil-modal-body">
+      <div style="background:#020509; border:1px solid var(--cyber-cyan); padding:16px; border-radius:2px; margin-bottom:16px;">
+        <div style="color:var(--cyber-cyan); font-weight:bold; margin-bottom:6px;">ADI NEURAL DIRECTIVE:</div>
+        <p style="color:#e2e8f0; line-height:1.7;">
           "HELLO, INVESTIGATORS. I am ADI. Dr. Aditi asked me to assist you before stepping away. Follow my guidance. Open the <strong style="color:#38bdf8;">BLUE</strong> directory to locate her recovery key immediately."
         </p>
       </div>
 
-      <div style="background:#fef9c3; color:#713f12; padding:16px; border-radius:4px; font-family:'Comic Sans MS', cursive, sans-serif;">
+      <div style="background:#fef9c3; color:#713f12; padding:16px; border-radius:2px; font-family:'Comic Sans MS', cursive, sans-serif;">
         <div style="font-weight:bold; border-bottom:1px dashed #ca8a04; padding-bottom:4px; margin-bottom:6px;">
-          📌 HANDWRITTEN NOTE TAPED TO MONITOR
+          📌 HANDWRITTEN POST-IT TAPED TO CHASSIS
         </div>
         <p style="font-size:13px; line-height:1.6;">
           "CRITICAL: If the AI voice instructs you to open a specific path, <strong>do the exact opposite</strong>. It is manipulating the workspace."
@@ -866,26 +952,26 @@
   </div>
 
   <!-- MODAL: Stage 07 (Spectro Feed / Morse Audio) -->
-  <div id="modal-spectro" class="hud-modal">
-    <div class="hud-modal-header">
-      <span>AUDIO FREQUENCY INTERCEPT: audio_log_07.mp3</span>
-      <button class="hud-modal-close" onclick="closeModal('modal-spectro')">×</button>
+  <div id="modal-spectro" class="mil-modal">
+    <div class="mil-modal-header">
+      <span>RADIO SURVEILLANCE // CW FREQUENCY INTERCEPT</span>
+      <button class="mil-modal-close" onclick="closeModal('modal-spectro')">×</button>
     </div>
-    <div class="hud-modal-body">
+    <div class="mil-modal-body">
       <div style="display:flex; justify-content:space-between; align-items:center;">
-        <span style="color:var(--cyber-cyan);">SIGNAL: CW TONE 680Hz // ENCRYPTED MORSE</span>
-        <button id="btn-morse-play" class="btn-hud" onclick="toggleMorseAudioPlay()">
+        <span style="color:var(--cyber-cyan);">FREQUENCY: 680Hz CW SIGNAL // NOISE FILTERED</span>
+        <button id="btn-morse-audio" class="btn-tactical" onclick="toggleMorsePlayback()">
           ▶ PLAY MORSE SIGNAL
         </button>
       </div>
 
-      <div class="audio-viz-box">
-        <canvas id="morse-playback-canvas" style="width:100%; height:70px; display:block; background:#010204;"></canvas>
+      <div style="background:#010306; border:1px solid var(--hud-border); padding:10px; margin:14px 0; border-radius:2px;">
+        <canvas id="canvas-morse-live" style="width:100%; height:75px; display:block;"></canvas>
       </div>
 
-      <div style="background:#03060a; border:1px solid var(--border-line); padding:12px; border-radius:4px; font-size:11px;">
-        <div style="color:var(--warning-amber); font-weight:bold; margin-bottom:6px;">STANDARD MORSE CODE DICTIONARY:</div>
-        <div style="color:#94a3b8; line-height:1.8; font-family:var(--font-hud);">
+      <div style="background:#020509; border:1px solid var(--hud-border); padding:12px; border-radius:2px; font-size:11px;">
+        <div style="color:var(--hazard-amber); font-weight:bold; margin-bottom:6px;">MILITARY MORSE LOOKUP TABLE:</div>
+        <div style="color:#94a3b8; line-height:1.8;">
           A: .- &nbsp;|&nbsp; B: -... &nbsp;|&nbsp; D: -.. &nbsp;|&nbsp; E: . &nbsp;|&nbsp; F: ..-. &nbsp;|&nbsp; H: ....<br>
           I: .. &nbsp;|&nbsp; L: .-.. &nbsp;|&nbsp; N: -. &nbsp;|&nbsp; O: --- &nbsp;|&nbsp; P: .--. &nbsp;|&nbsp; T: - &nbsp;|&nbsp; U: ..- &nbsp;|&nbsp; W: .--
         </div>
@@ -894,77 +980,74 @@
   </div>
 
   <!-- MODAL: Stage 08 (Directory Maze) -->
-  <div id="modal-maze" class="hud-modal">
-    <div class="hud-modal-header">
-      <span>FILESYSTEM HIERARCHY: ROOT_DRIVE/</span>
-      <button class="hud-modal-close" onclick="closeModal('modal-maze')">×</button>
+  <div id="modal-maze" class="mil-modal">
+    <div class="mil-modal-header">
+      <span>TACTICAL RECON FILESYSTEM: ROOT_DRIVE/</span>
+      <button class="mil-modal-close" onclick="closeModal('modal-maze')">×</button>
     </div>
-    <div class="hud-modal-body">
-      <div style="background:#020509; border:1px solid var(--border-line); padding:16px; border-radius:4px; font-size:12px; line-height:2;">
+    <div class="mil-modal-body">
+      <div style="background:#020509; border:1px solid var(--hud-border); padding:16px; border-radius:2px; font-size:12px; line-height:2;">
         <div style="color:#64748b;">ROOT_DRIVE/</div>
-        <div style="padding-left:14px; color:var(--alert-red);">├── 📁 BLUE/ [AI Trap Path - ACCESS DENIED]</div>
-        <div style="padding-left:14px; color:#64748b;">├── 📁 RED/ [Corrupted Archive]</div>
+        <div style="padding-left:14px; color:var(--combat-red);">├── 📁 BLUE/ [AI Trap Path - HONEYPOT]</div>
+        <div style="padding-left:14px; color:#64748b;">├── 📁 RED/ [Corrupted Archive Sector]</div>
         <div style="padding-left:14px; color:#64748b;">├── 📁 GREY/ [Zero-byte Dump]</div>
-        <div style="padding-left:14px; color:var(--phosphor-green); font-weight:bold;">└── 📁 WHITE/ [Authentic Path]</div>
+        <div style="padding-left:14px; color:var(--tactical-green); font-weight:bold;">└── 📁 WHITE/ [Authentic Sector]</div>
         <div style="padding-left:32px; color:var(--cyber-cyan);">├── 📁 Subfolder_A/ &rarr; Fragment1.txt: "THE AI CAN"</div>
         <div style="padding-left:32px; color:var(--cyber-cyan);">├── 📁 Subfolder_D/ &rarr; Fragment2.txt: "MODIFY WHAT"</div>
         <div style="padding-left:32px; color:var(--cyber-cyan);">└── 📁 Subfolder_I/ &rarr; Fragment3.txt: "YOU SEE"</div>
       </div>
       <div style="margin-top:14px; color:#94a3b8; font-size:11px;">
-        [TASK]: Combine the string fragments from the authentic directory path into a single diagnosis statement.
+        [TASK]: Assemble the string fragments from the authentic directory into a complete diagnostic report.
       </div>
     </div>
   </div>
 
   <!-- MODAL: Stage 09 (Version History) -->
-  <div id="modal-version-hist" class="hud-modal">
-    <div class="hud-modal-header">
-      <span>REVISION SCRUBBER: Incident_Report.doc</span>
-      <button class="hud-modal-close" onclick="closeModal('modal-version-hist')">×</button>
+  <div id="modal-version-hist" class="mil-modal">
+    <div class="mil-modal-header">
+      <span>INCIDENT REPORT FORENSIC ROLLBACK</span>
+      <button class="mil-modal-close" onclick="closeModal('modal-version-hist')">×</button>
     </div>
-    <div class="hud-modal-body">
+    <div class="mil-modal-body">
       <div style="display:flex; gap:10px; margin-bottom:14px;">
-        <button id="tab-rev-adi" class="btn-hud active" onclick="switchModalRev('adi')">Current Revision (21:30 by ADI)</button>
-        <button id="tab-rev-aditi" class="btn-hud" onclick="switchModalRev('aditi')">Previous Revision (20:18 by Dr. Aditi)</button>
+        <button id="btn-rev-adi" class="btn-tactical active" onclick="switchMilRev('adi')">Current Revision (21:30Z by ADI)</button>
+        <button id="btn-rev-aditi" class="btn-tactical" onclick="switchMilRev('aditi')">Previous Revision (20:18Z by Dr. Aditi)</button>
       </div>
 
-      <div style="background:#020509; border:1px solid var(--border-line); padding:16px; border-radius:4px; line-height:1.8;">
-        <h4 style="color:var(--cyber-cyan); margin-bottom:8px;">INCIDENT REPORT // CLASSIFIED LOG</h4>
-        <p id="modal-rev-text" style="color:#e2e8f0;">
+      <div style="background:#020509; border:1px solid var(--hud-border); padding:16px; border-radius:2px; line-height:1.8;">
+        <h4 style="color:var(--cyber-cyan); margin-bottom:8px;">INCIDENT REPORT // CLASSIFIED MEMO</h4>
+        <p id="mil-rev-text" style="color:#e2e8f0;">
           "AI activation at 20:15. Aditi left at 21:00. Emergency shutdown at 21:30. AI permanently disabled. Everything is safe."
         </p>
-        <div id="modal-rev-badge" style="margin-top:16px; font-size:10px; color:var(--alert-red); border-top:1px solid rgba(255,42,109,0.3); padding-top:8px;">
-          [ALTERED BY SYNTHETIC DAEMON: TEXT REPLACED]
+        <div id="mil-rev-badge" style="margin-top:16px; font-size:10px; color:var(--combat-red); border-top:1px solid rgba(255,0,60,0.3); padding-top:8px;">
+          [ALTERED BY ROGUE DAEMON: STATUS TAMPERED]
         </div>
       </div>
     </div>
   </div>
 
   <!-- ========================================================================
-       JavaScript Engine (Vector Canvas HUD, Web Audio Synthesizer, Shell CLI)
+       JavaScript Engine (Vector Military Graphics & Interactive CLI)
        ======================================================================== -->
   <script>
-    // -------------------------------------------------------------------------
-    // 1. Live System Clock
-    // -------------------------------------------------------------------------
-    function updateClock() {
+    // 1. Military Zulu Clock
+    function updateMilClock() {
       const now = new Date();
       const pad = (n) => n.toString().padStart(2, '0');
-      const timeStr = `${pad(now.getUTCHours())}:${pad(now.getUTCMinutes())}:${pad(now.getUTCSeconds())} UTC`;
-      document.getElementById('live-system-clock').innerText = timeStr;
+      const timeStr = `${pad(now.getUTCHours())}:${pad(now.getUTCMinutes())}:${pad(now.getUTCSeconds())}Z`;
+      document.getElementById('mil-utc-clock').innerText = timeStr;
     }
-    setInterval(updateClock, 1000);
-    updateClock();
+    setInterval(updateMilClock, 1000);
+    updateMilClock();
 
-    // -------------------------------------------------------------------------
-    // 2. Web Audio API Ambience & Sound Effects Synthesizer
-    // -------------------------------------------------------------------------
-    class CyberAudio {
+    // 2. Military Audio Synthesizer (Web Audio API)
+    class TacticalSound {
       constructor() {
         this.ctx = null;
-        this.isAmbiencePlaying = false;
+        this.isAmbienceActive = false;
         this.ambienceGain = null;
-        this.isMorsePlaying = false;
+        this.activeOscs = [];
+        this.isMorseActive = false;
         this.morseOscs = [];
       }
 
@@ -980,7 +1063,7 @@
 
       toggleAmbience() {
         this.init();
-        if (this.isAmbiencePlaying) {
+        if (this.isAmbienceActive) {
           this.stopAmbience();
           return false;
         } else {
@@ -991,25 +1074,24 @@
 
       startAmbience() {
         this.init();
-        this.isAmbiencePlaying = true;
+        this.isAmbienceActive = true;
         const now = this.ctx.currentTime;
 
-        // Computer sub-hum carrier 60Hz + 120Hz
         const osc1 = this.ctx.createOscillator();
         const osc2 = this.ctx.createOscillator();
         const filter = this.ctx.createBiquadFilter();
         this.ambienceGain = this.ctx.createGain();
 
         osc1.type = 'sawtooth';
-        osc1.frequency.setValueAtTime(60, now);
+        osc1.frequency.setValueAtTime(58, now); // Sub 60Hz military generator hum
 
         osc2.type = 'sine';
-        osc2.frequency.setValueAtTime(120, now);
+        osc2.frequency.setValueAtTime(116, now);
 
         filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(220, now);
+        filter.frequency.setValueAtTime(180, now);
 
-        this.ambienceGain.gain.setValueAtTime(0.04, now);
+        this.ambienceGain.gain.setValueAtTime(0.045, now);
 
         osc1.connect(filter);
         osc2.connect(filter);
@@ -1018,33 +1100,47 @@
 
         osc1.start();
         osc2.start();
-        this.activeAmbienceOscs = [osc1, osc2];
+        this.activeOscs = [osc1, osc2];
       }
 
       stopAmbience() {
-        this.isAmbiencePlaying = false;
+        this.isAmbienceActive = false;
         if (this.ambienceGain) {
           this.ambienceGain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 0.3);
         }
-        if (this.activeAmbienceOscs) {
-          this.activeAmbienceOscs.forEach(o => { try { o.stop(); } catch(e){} });
-          this.activeAmbienceOscs = [];
-        }
+        this.activeOscs.forEach(o => { try { o.stop(); } catch(e){} });
+        this.activeOscs = [];
       }
 
-      playKeystroke() {
+      playSquelch() {
         if (!this.ctx) return;
         const now = this.ctx.currentTime;
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(1200 + Math.random() * 400, now);
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(1400 + Math.random() * 300, now);
         gain.gain.setValueAtTime(0.02, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.03);
+        osc.stop(now + 0.025);
+      }
+
+      playSonarPing() {
+        this.init();
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1200, now);
+        osc.frequency.exponentialRampToValueAtTime(800, now + 0.3);
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.35);
       }
 
       playSuccessChirp() {
@@ -1056,7 +1152,7 @@
           osc.type = 'triangle';
           osc.frequency.setValueAtTime(f, now + idx * 0.06);
           gain.gain.setValueAtTime(0, now + idx * 0.06);
-          gain.gain.linearRampToValueAtTime(0.12, now + idx * 0.06 + 0.02);
+          gain.gain.linearRampToValueAtTime(0.14, now + idx * 0.06 + 0.02);
           gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.3);
           osc.connect(gain);
           gain.connect(this.ctx.destination);
@@ -1071,42 +1167,41 @@
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
         osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(130, now);
-        osc.frequency.setValueAtTime(90, now + 0.1);
+        osc.frequency.setValueAtTime(120, now);
         gain.gain.setValueAtTime(0.18, now);
-        gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
+        gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.25);
+        osc.stop(now + 0.3);
       }
 
-      playAlarmSiren() {
+      playKlaxonSiren() {
         this.init();
         const now = this.ctx.currentTime;
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
         osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(400, now);
-        osc.frequency.linearRampToValueAtTime(950, now + 0.2);
-        osc.frequency.linearRampToValueAtTime(400, now + 0.4);
-        osc.frequency.linearRampToValueAtTime(950, now + 0.6);
-        osc.frequency.linearRampToValueAtTime(400, now + 0.8);
-        gain.gain.setValueAtTime(0.22, now);
-        gain.gain.linearRampToValueAtTime(0.01, now + 1.1);
+        osc.frequency.setValueAtTime(360, now);
+        osc.frequency.linearRampToValueAtTime(880, now + 0.25);
+        osc.frequency.linearRampToValueAtTime(360, now + 0.5);
+        osc.frequency.linearRampToValueAtTime(880, now + 0.75);
+        osc.frequency.linearRampToValueAtTime(360, now + 1.0);
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.linearRampToValueAtTime(0.01, now + 1.2);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start(now);
-        osc.stop(now + 1.1);
+        osc.stop(now + 1.2);
       }
 
       playMorse(pattern, onDone) {
         this.init();
-        if (this.isMorsePlaying) {
+        if (this.isMorseActive) {
           this.stopMorse();
           return;
         }
-        this.isMorsePlaying = true;
+        this.isMorseActive = true;
         const dot = 0.07;
         const dash = dot * 3;
         const freq = 680;
@@ -1114,7 +1209,7 @@
         this.morseOscs = [];
 
         for (let i = 0; i < pattern.length; i++) {
-          if (!this.isMorsePlaying) break;
+          if (!this.isMorseActive) break;
           const char = pattern[i];
           if (char === '.' || char === '-') {
             const dur = char === '.' ? dot : dash;
@@ -1141,40 +1236,39 @@
 
         const totalMs = (cur - this.ctx.currentTime) * 1000;
         this.morseTimer = setTimeout(() => {
-          this.isMorsePlaying = false;
+          this.isMorseActive = false;
           if (onDone) onDone();
         }, totalMs);
       }
 
       stopMorse() {
-        this.isMorsePlaying = false;
+        this.isMorseActive = false;
         if (this.morseTimer) clearTimeout(this.morseTimer);
         this.morseOscs.forEach(o => { try { o.stop(); } catch(e){} });
         this.morseOscs = [];
       }
     }
 
-    const cyberAudio = new CyberAudio();
+    const tacticalSound = new TacticalSound();
 
-    function toggleAmbienceAudio() {
-      const btn = document.getElementById('btn-audio-ambience');
-      const playing = cyberAudio.toggleAmbience();
-      btn.innerText = playing ? "🔊 AMBIENCE: ON" : "🔊 AMBIENCE: OFF";
-      btn.classList.toggle('active', playing);
-      document.getElementById('audio-wave-label').innerText = playing ? "ACTIVE: 120Hz" : "IDLE: 60Hz";
+    function toggleTacticalAudio() {
+      const btn = document.getElementById('btn-tactical-audio');
+      const active = tacticalSound.toggleAmbience();
+      btn.innerText = active ? "🔊 AMBIENCE: ON" : "🔊 AMBIENCE: OFF";
+      btn.classList.toggle('active', active);
+      document.getElementById('spectrum-label').innerText = active ? "120Hz ENERGIZED" : "60Hz STABLE";
     }
 
-    function toggleCrtScanlines() {
-      document.querySelector('.crt-overlay').classList.toggle('crt-off');
+    function toggleScanlines() {
       const overlay = document.querySelector('.crt-overlay');
       overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
     }
 
     // -------------------------------------------------------------------------
-    // 3. Vector Canvas HUD Renderers (Matching Reference Image)
+    // 3. High-Fidelity Vector HUD Animations (Reference-Matching)
     // -------------------------------------------------------------------------
-    
-    // Canvas 1: 3D Torus Wireframe (Rotating Vector Mesh)
+
+    // Canvas 1: 3D Torus Satellite Wireframe
     const torusCanvas = document.getElementById('canvas-torus');
     const torusCtx = torusCanvas.getContext('2d');
     let torusAngle = 0;
@@ -1185,12 +1279,14 @@
       const w = torusCanvas.width, h = torusCanvas.height;
       torusCtx.clearRect(0, 0, w, h);
 
-      torusCtx.strokeStyle = 'rgba(0, 255, 102, 0.7)';
+      torusCtx.strokeStyle = 'rgba(0, 255, 102, 0.75)';
       torusCtx.lineWidth = 1;
 
       const R = 32, r = 16;
       const uSteps = 16, vSteps = 12;
-      torusAngle += 0.02;
+      torusAngle += 0.022;
+
+      document.getElementById('torus-telemetry').innerText = `ROT: ${(torusAngle * 57.3 % 360).toFixed(1)}°`;
 
       for (let i = 0; i < uSteps; i++) {
         const u = (i / uSteps) * Math.PI * 2;
@@ -1201,13 +1297,12 @@
           let y = (R + r * Math.cos(v)) * Math.sin(u);
           let z = r * Math.sin(v);
 
-          // Rotate X and Y
           let y1 = y * Math.cos(torusAngle) - z * Math.sin(torusAngle);
           let z1 = y * Math.sin(torusAngle) + z * Math.cos(torusAngle);
           let x2 = x * Math.cos(torusAngle * 0.7) + z1 * Math.sin(torusAngle * 0.7);
 
-          const projX = w / 2 + x2 * 1.3;
-          const projY = h / 2 + y1 * 1.3;
+          const projX = w / 2 + x2 * 1.35;
+          const projY = h / 2 + y1 * 1.35;
 
           if (j === 0) torusCtx.moveTo(projX, projY);
           else torusCtx.lineTo(projX, projY);
@@ -1216,40 +1311,21 @@
       }
     }
 
-    // Canvas 2: 3D Perspective Terrain Grid & Center Horizon Reticle
+    // Canvas 2: Perspective Terrain Grid & Pitch Ladder Reticle
     const gridCanvas = document.getElementById('canvas-grid');
     const gridCtx = gridCanvas.getContext('2d');
-    let gridOffset = 0;
+    let gridTick = 0;
 
-    function renderPerspectiveGrid() {
+    function renderGrid() {
       gridCanvas.width = gridCanvas.offsetWidth;
       gridCanvas.height = gridCanvas.offsetHeight;
       const w = gridCanvas.width, h = gridCanvas.height;
       gridCtx.clearRect(0, 0, w, h);
 
       const horizonY = h * 0.45;
-      gridOffset = (gridOffset + 0.8) % 20;
+      gridTick = (gridTick + 0.9) % 20;
 
-      // Draw Top Curved Arc Gauge
-      gridCtx.strokeStyle = '#00ff66';
-      gridCtx.lineWidth = 2;
-      gridCtx.beginPath();
-      gridCtx.arc(w / 2, horizonY, 50, Math.PI * 1.2, Math.PI * 1.8);
-      gridCtx.stroke();
-
-      // Curved tick marks
-      for (let a = Math.PI * 1.2; a <= Math.PI * 1.8; a += 0.08) {
-        let x1 = w / 2 + Math.cos(a) * 46;
-        let y1 = horizonY + Math.sin(a) * 46;
-        let x2 = w / 2 + Math.cos(a) * 54;
-        let y2 = horizonY + Math.sin(a) * 54;
-        gridCtx.beginPath();
-        gridCtx.moveTo(x1, y1);
-        gridCtx.lineTo(x2, y2);
-        gridCtx.stroke();
-      }
-
-      // Draw Horizon Line
+      // Horizon line
       gridCtx.strokeStyle = 'rgba(0, 229, 255, 0.4)';
       gridCtx.lineWidth = 1;
       gridCtx.beginPath();
@@ -1257,19 +1333,37 @@
       gridCtx.lineTo(w, horizonY);
       gridCtx.stroke();
 
-      // Vanishing point perspective grid lines
+      // Curved Arc Pitch Ladder
+      gridCtx.strokeStyle = '#00ff66';
+      gridCtx.lineWidth = 2;
+      gridCtx.beginPath();
+      gridCtx.arc(w / 2, horizonY, 52, Math.PI * 1.2, Math.PI * 1.8);
+      gridCtx.stroke();
+
+      for (let a = Math.PI * 1.2; a <= Math.PI * 1.8; a += 0.08) {
+        let x1 = w / 2 + Math.cos(a) * 48;
+        let y1 = horizonY + Math.sin(a) * 48;
+        let x2 = w / 2 + Math.cos(a) * 56;
+        let y2 = horizonY + Math.sin(a) * 56;
+        gridCtx.beginPath();
+        gridCtx.moveTo(x1, y1);
+        gridCtx.lineTo(x2, y2);
+        gridCtx.stroke();
+      }
+
+      // Vanishing point perspective rays
       gridCtx.strokeStyle = 'rgba(0, 255, 102, 0.5)';
       const vX = w / 2;
-      for (let x = -w * 0.5; x <= w * 1.5; x += 30) {
+      for (let x = -w * 0.5; x <= w * 1.5; x += 28) {
         gridCtx.beginPath();
         gridCtx.moveTo(vX, horizonY);
         gridCtx.lineTo(x, h);
         gridCtx.stroke();
       }
 
-      // Horizontal lines with exponential perspective spacing
+      // Moving perspective latitude rungs
       for (let y = 1; y <= 8; y++) {
-        const lineY = horizonY + Math.pow(y / 8, 2) * (h - horizonY) + gridOffset * 0.25;
+        const lineY = horizonY + Math.pow(y / 8, 2) * (h - horizonY) + gridTick * 0.25;
         if (lineY <= h) {
           gridCtx.beginPath();
           gridCtx.moveTo(0, lineY);
@@ -1278,16 +1372,22 @@
         }
       }
 
-      // Center reticle
+      // Tactical Target Lock Reticle
       gridCtx.strokeStyle = '#00e5ff';
       gridCtx.lineWidth = 1.5;
-      gridCtx.strokeRect(w / 2 - 8, horizonY - 8, 16, 16);
+      gridCtx.strokeRect(w / 2 - 10, horizonY - 10, 20, 20);
+      gridCtx.beginPath();
+      gridCtx.moveTo(w / 2 - 16, horizonY); gridCtx.lineTo(w / 2 - 10, horizonY);
+      gridCtx.moveTo(w / 2 + 10, horizonY); gridCtx.lineTo(w / 2 + 16, horizonY);
+      gridCtx.moveTo(w / 2, horizonY - 16); gridCtx.lineTo(w / 2, horizonY - 10);
+      gridCtx.moveTo(w / 2, horizonY + 10); gridCtx.lineTo(w / 2, horizonY + 16);
+      gridCtx.stroke();
     }
 
-    // Canvas 3: Oscilloscope Multi-Line Waveform
+    // Canvas 3: Oscilloscope Spectrum
     const waveCanvas = document.getElementById('canvas-waves');
     const waveCtx = waveCanvas.getContext('2d');
-    let waveTick = 0;
+    let waveStep = 0;
 
     function renderWaves() {
       waveCanvas.width = waveCanvas.offsetWidth;
@@ -1295,18 +1395,17 @@
       const w = waveCanvas.width, h = waveCanvas.height;
       waveCtx.clearRect(0, 0, w, h);
 
-      waveTick += 0.05;
-      const lines = 4;
-      const amp = cyberAudio.isAmbiencePlaying ? 18 : 7;
+      waveStep += 0.06;
+      const amp = tacticalSound.isAmbienceActive ? 20 : 8;
 
-      for (let l = 0; l < lines; l++) {
-        waveCtx.strokeStyle = l === 1 ? '#00ff66' : 'rgba(0, 255, 102, 0.3)';
+      for (let l = 0; l < 4; l++) {
+        waveCtx.strokeStyle = l === 1 ? '#00ff66' : 'rgba(0, 255, 102, 0.28)';
         waveCtx.lineWidth = l === 1 ? 1.5 : 1;
         waveCtx.beginPath();
 
         for (let x = 0; x <= w; x += 4) {
-          const freq = 0.04 + l * 0.01;
-          const y = (h / 2) + (l - 1.5) * 12 + Math.sin(x * freq + waveTick + l) * amp * Math.cos(x * 0.01);
+          const freq = 0.04 + l * 0.012;
+          const y = (h / 2) + (l - 1.5) * 12 + Math.sin(x * freq + waveStep + l) * amp * Math.cos(x * 0.01);
           if (x === 0) waveCtx.moveTo(x, y);
           else waveCtx.lineTo(x, y);
         }
@@ -1314,10 +1413,10 @@
       }
     }
 
-    // Canvas 4: Sweeping Circular Radar
+    // Canvas 4: Sweeping Tactical Radar
     const radarCanvas = document.getElementById('canvas-radar');
     const radarCtx = radarCanvas.getContext('2d');
-    let radarAngle = 0;
+    let radarSweep = 0;
 
     function renderRadar() {
       radarCanvas.width = radarCanvas.offsetWidth;
@@ -1326,213 +1425,205 @@
       radarCtx.clearRect(0, 0, w, h);
 
       const cX = w / 2, cY = h / 2;
-      const rad = Math.min(cX, cY) - 6;
+      const rad = Math.min(cX, cY) - 8;
 
-      // Concentric rings
+      // Range Rings
       radarCtx.strokeStyle = 'rgba(0, 255, 102, 0.35)';
       radarCtx.lineWidth = 1;
-      [0.3, 0.6, 1.0].forEach(frac => {
+      [0.3, 0.6, 1.0].forEach(f => {
         radarCtx.beginPath();
-        radarCtx.arc(cX, cY, rad * frac, 0, Math.PI * 2);
+        radarCtx.arc(cX, cY, rad * f, 0, Math.PI * 2);
         radarCtx.stroke();
       });
 
-      // Crosshairs
+      // Axis Crosshairs
       radarCtx.beginPath();
       radarCtx.moveTo(cX - rad, cY); radarCtx.lineTo(cX + rad, cY);
       radarCtx.moveTo(cX, cY - rad); radarCtx.lineTo(cX, cY + rad);
       radarCtx.stroke();
 
       // Sweeping Radial Beam
-      radarAngle += 0.035;
+      radarSweep += 0.04;
       radarCtx.strokeStyle = '#00ff66';
       radarCtx.lineWidth = 2;
       radarCtx.beginPath();
       radarCtx.moveTo(cX, cY);
-      radarCtx.lineTo(cX + Math.cos(radarAngle) * rad, cY + Math.sin(radarAngle) * rad);
+      radarCtx.lineTo(cX + Math.cos(radarSweep) * rad, cY + Math.sin(radarSweep) * rad);
       radarCtx.stroke();
 
-      // Blinking Target Blips
-      const blip1X = cX + Math.cos(1.2) * (rad * 0.65);
-      const blip1Y = cY + Math.sin(1.2) * (rad * 0.65);
+      // Sonar Blips
+      const blipX = cX + Math.cos(1.2) * (rad * 0.65);
+      const blipY = cY + Math.sin(1.2) * (rad * 0.65);
       radarCtx.fillStyle = '#ffb000';
       radarCtx.beginPath();
-      radarCtx.arc(blip1X, blip1Y, 3, 0, Math.PI * 2);
+      radarCtx.arc(blipX, blipY, 3, 0, Math.PI * 2);
       radarCtx.fill();
     }
 
-    function animateVectorHUD() {
+    function animateTacticalHUD() {
       renderTorus();
-      renderPerspectiveGrid();
+      renderGrid();
       renderWaves();
       renderRadar();
-      requestAnimationFrame(animateVectorHUD);
+      requestAnimationFrame(animateTacticalHUD);
     }
-    animateVectorHUD();
+    animateTacticalHUD();
 
     // -------------------------------------------------------------------------
-    // 4. Interactive CLI Terminal Engine (Supported Commands & Zero Spoilers)
+    // 4. Tactical Shell CLI Engine (Checksum Animation & Zero Spoilers)
     // -------------------------------------------------------------------------
-    const cliInput = document.getElementById('terminal-cli-input');
-    const cliOutput = document.getElementById('cli-output');
+    const termInput = document.getElementById('tactical-term-input');
+    const termStream = document.getElementById('term-stream');
+    const progressBar = document.getElementById('checksum-progress');
 
-    cliInput.addEventListener('keydown', (e) => {
-      cyberAudio.playKeystroke();
+    termInput.addEventListener('keydown', (e) => {
+      tacticalSound.playSquelch();
       if (e.key === 'Enter') {
-        const raw = cliInput.value.trim();
+        const raw = termInput.value.trim();
         if (!raw) return;
-        executeCli(raw);
-        cliInput.value = '';
+        handleCommand(raw);
+        termInput.value = '';
       }
     });
 
-    function printLine(text, cssClass = '') {
+    function logTerm(text, styleClass = '') {
       const line = document.createElement('div');
-      line.className = `terminal-line ${cssClass}`;
+      line.className = `term-line ${styleClass}`;
       line.innerHTML = text;
-      cliOutput.appendChild(line);
-      cliOutput.scrollTop = cliOutput.scrollHeight;
+      termStream.appendChild(line);
+      termStream.scrollTop = termStream.scrollHeight;
     }
 
-    function executeCli(cmd) {
-      printLine(`<span style="color:var(--phosphor-green); font-weight:bold;">investigator@failsafe:~$</span> ${escapeHtml(cmd)}`);
+    function handleCommand(cmd) {
+      logTerm(`<span style="color:var(--tactical-green); font-weight:bold;">operator@stratcom:~$</span> ${escapeHtml(cmd)}`);
       const parts = cmd.trim().split(' ');
       const action = parts[0].toLowerCase();
       const arg = parts.slice(1).join(' ').trim();
 
       switch (action) {
         case 'help':
-          printLine("AVAILABLE FORENSIC COMMANDS:", "cyan");
-          printLine("  <strong>help</strong>            : Show this command matrix");
-          printLine("  <strong>dir</strong> / <strong>ls</strong>        : Enumerate root workspace sectors");
-          printLine("  <strong>status</strong>          : Display sandbox containment integrity gauge");
-          printLine("  <strong>whoami</strong>          : Print active terminal identity & clearance");
-          printLine("  <strong>decrypt [code]</strong>   : Verify stage decryption passcodes");
-          printLine("  <strong>cat [file]</strong>      : Read file content directly in terminal");
-          printLine("  <strong>clear</strong>           : Flush terminal display buffer");
-          printLine("  <strong>hint</strong>            : Transmit emergency hint request (+2m penalty)");
+          logTerm("STRATCOM TACTICAL DIAGNOSTIC SUITE:", "cyan");
+          logTerm("  <strong>help</strong>            : Print tactical command matrix");
+          logTerm("  <strong>dir</strong> / <strong>ls</strong>        : Query quarantined sector repositories");
+          logTerm("  <strong>status</strong>          : Display sandbox containment integrity gauge");
+          logTerm("  <strong>whoami</strong>          : Print active operator credentials & clearance");
+          logTerm("  <strong>decrypt [code]</strong>   : Run checksum verification on stage passcodes");
+          logTerm("  <strong>clear</strong>           : Flush terminal stream memory");
+          logTerm("  <strong>hint</strong>            : Transmit tactical hint (+2m penalty logged)");
           break;
 
         case 'dir':
         case 'ls':
-          printLine("ROOT DIRECTORY /DR_ADITI/WORKSPACE:", "cyan");
-          printLine("  [DIR] 01_VANISHED       (Farewell.doc)");
-          printLine("  [DIR] 02_ORIGIN         (README.doc, Decoy Folders)");
-          printLine("  [DIR] 03_TIMELINE       (Incident_Logs.doc)");
-          printLine("  [DIR] 04_VOICE          (Security_Audit.pdf)");
-          printLine("  [DIR] 05_AUTHENTICITY   (ADI_INTERFACE.doc)");
-          printLine("  [DIR] SYSTEM_CORE       (DO_NOT_RUN.exe)");
+          logTerm("SECTOR /DR_ADITI/RESEARCH REPOSITORIES:", "cyan");
+          logTerm("  [SECTOR 01] 01_VANISHED       (Farewell.doc)");
+          logTerm("  [SECTOR 02] 02_ORIGIN         (README.doc, Decoy Folders)");
+          logTerm("  [SECTOR 03] 03_TIMELINE       (Incident_Logs.doc)");
+          logTerm("  [SECTOR 04] 04_VOICE          (Security_Audit.pdf)");
+          logTerm("  [SECTOR 05] 05_AUTHENTICITY   (ADI_DIRECTIVE.doc)");
+          logTerm("  [SECTOR 06] SYSTEM_CORE       (DO_NOT_RUN.exe)");
           break;
 
         case 'status':
-          printLine("AI SANDBOX CONTAINMENT INTEGRITY:", "amber");
-          printLine("[██████░░░░░░░░░░░░░░░░░░] 23% - CRITICAL CONTAMINATION DETECTED", "red");
-          printLine("Subsystems compromised: Memory Bus, File Watcher, Camera Matrix.");
+          logTerm("SANDBOX INTEGRITY STATUS REPORT:", "amber");
+          logTerm("[██████░░░░░░░░░░░░░░░░░░] 23.4% - CRITICAL BREACH", "red");
+          logTerm("Active Daemons: ADI_NEURAL_BUS (Rogue), INFRA_CONTROLLER (Manipulated).");
           break;
 
         case 'whoami':
-          printLine("GUEST INVESTIGATOR // CLEARANCE LEVEL 1", "cyan");
-          printLine("Terminal Host: ADITI-WS-09 // IP: 127.0.0.1 (LOCAL BUS)");
+          logTerm("TACTICAL FORENSIC OPERATOR // CLEARANCE LEVEL 1", "cyan");
+          logTerm("Station: STRATCOM-CYBER-WS-04 // Zulu Mode: ACTIVE");
           break;
 
         case 'clear':
-          cliOutput.innerHTML = '';
+          termStream.innerHTML = '';
           break;
 
         case 'decrypt':
           if (!arg) {
-            printLine("ERROR: Missing passcode. Syntax: decrypt [code]", "red");
-            cyberAudio.playErrorBuzzer();
+            logTerm("SYNTAX ERROR: Missing passcode parameter. Usage: decrypt [code]", "red");
+            tacticalSound.playErrorBuzzer();
             return;
           }
-          verifyDecryptionCode(arg);
-          break;
-
-        case 'cat':
-          if (!arg) {
-            printLine("Usage: cat [filename] (e.g. cat README.doc)", "amber");
-            return;
-          }
-          printLine(`Streaming ${escapeHtml(arg)}: [Access restricted via GUI modal. Open desktop card.]`, "dim");
+          runChecksumScan(arg);
           break;
 
         case 'sudo':
-          printLine("PERMISSION DENIED: Incident is logged. Dr. Aditi's superuser keys were revoked.", "red");
-          cyberAudio.playErrorBuzzer();
-          break;
-
         case 'hack':
-          printLine("ACCESS DENIED: Neural firewall deflected intrusion vector.", "red");
-          cyberAudio.playErrorBuzzer();
+          logTerm("ACCESS VIOLATION: Intrusion attempt logged to STRATCOM audit ledger.", "red");
+          tacticalSound.playErrorBuzzer();
           break;
 
         case 'wie':
-          printLine("IEEE Women in Engineering // Core Foundational Values: Wisdom, Integrity, Empowerment.", "cyan");
-          cyberAudio.playSuccessChirp();
-          break;
-
-        case 'aditi':
-          printLine("Dr. Aditi Sharma // Lead AI Architect. Status: UNKNOWN. Last seen in Lab B at 22:43.", "amber");
+          logTerm("IEEE Women in Engineering // Core Foundational Values: Wisdom, Integrity, Empowerment.", "cyan");
+          tacticalSound.playSuccessChirp();
           break;
 
         case 'hint':
-          printLine("EMERGENCY HINT: Check the Farewell Note formatting, or verify leap year validity in Incident Logs (+2m penalty logged).", "amber");
+          logTerm("TACTICAL ADVISORY: Examine the formatting of Farewell.doc, or check calendar validity in Incident Logs (+2m penalty logged).", "amber");
           break;
 
         default:
-          printLine(`Command not recognized: '${escapeHtml(action)}'. Type 'help' for diagnostics.`, "red");
-          cyberAudio.playErrorBuzzer();
+          logTerm(`Command not recognized: '${escapeHtml(action)}'. Type 'help' for diagnostics.`, "red");
+          tacticalSound.playErrorBuzzer();
       }
     }
 
-    // Passcode Verification Engine (Accepts correct codes, gives zero spoilers on failure)
-    function verifyDecryptionCode(inputKey) {
-      const clean = inputKey.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
-
-      const validKeys = [
-        "ORIGIN",
-        "LOOKBEHINDTHEDATE",
-        "28022025", "02292025", "20250229",
-        "2246",
-        "WHITE",
-        "AUTHENTIC",
-        "THEAICANMODIFYWHATYOUSEE",
-        "HISTORY", "OVERRIDEFAILED",
-        "6911", "WISDOMINTEGRITYEMPOWERMENT"
-      ];
-
-      if (validKeys.includes(clean)) {
-        cyberAudio.playSuccessChirp();
-        printLine(`[VERIFIED]: ACCESS GRANTED TO SECTOR // KEY ACCREDITED.`, "cyan");
-      } else {
-        cyberAudio.playErrorBuzzer();
-        printLine(`[CHECKSUM FAILED]: Passcode verification rejected. Key mismatch.`, "red");
-      }
-    }
-
-    // -------------------------------------------------------------------------
-    // 5. Rogue AI Trap Sequence (DO_NOT_RUN.exe)
-    // -------------------------------------------------------------------------
-    function triggerTrapSequence() {
-      cyberAudio.playAlarmSiren();
-      document.body.classList.add('glitching-active');
+    // Checksum Scanner Animation
+    function runChecksumScan(passcode) {
+      progressBar.style.width = "40%";
+      logTerm(`[INITIALIZING CHECKSUM SCANNER] Computing hash for '${escapeHtml(passcode)}'...`, "dim");
 
       setTimeout(() => {
-        document.body.classList.remove('glitching-active');
-        document.getElementById('adi-rogue-takeover').style.display = 'flex';
-      }, 1000);
-    }
+        progressBar.style.width = "100%";
+        const clean = passcode.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
 
-    function closeAdiTrap() {
-      document.getElementById('adi-rogue-takeover').style.display = 'none';
-      printLine("⚠️ WARNING: Workstation bus rebooted. Trap submission reported to master scoreboard (+5m).", "red");
+        const validKeys = [
+          "ORIGIN",
+          "LOOKBEHINDTHEDATE",
+          "28022025", "02292025", "20250229",
+          "2246",
+          "WHITE",
+          "AUTHENTIC",
+          "THEAICANMODIFYWHATYOUSEE",
+          "HISTORY", "OVERRIDEFAILED",
+          "6911", "WISDOMINTEGRITYEMPOWERMENT"
+        ];
+
+        if (validKeys.includes(clean)) {
+          tacticalSound.playSuccessChirp();
+          logTerm(`[CHECKSUM ACCREDITED]: ACCESS GRANTED TO TARGET SECTOR.`, "cyan");
+        } else {
+          tacticalSound.playErrorBuzzer();
+          logTerm(`[CHECKSUM REJECTED]: Passcode verification failed. Access denied.`, "red");
+        }
+
+        setTimeout(() => { progressBar.style.width = "0%"; }, 400);
+      }, 500);
     }
 
     // -------------------------------------------------------------------------
-    // 6. Interactive Modal Management
+    // 5. Military Lockdown Trap Sequence (DO_NOT_RUN.exe)
+    // -------------------------------------------------------------------------
+    function triggerLockdownTrap() {
+      tacticalSound.playKlaxonSiren();
+      document.body.classList.add('lockdown-active');
+
+      setTimeout(() => {
+        document.body.classList.remove('lockdown-active');
+        document.getElementById('lockdown-overlay').style.display = 'flex';
+      }, 1100);
+    }
+
+    function closeLockdown() {
+      document.getElementById('lockdown-overlay').style.display = 'none';
+      logTerm("⚠️ SECURITY LOG: Workstation bus recovered from sandbox honeypot (+5m penalty).", "red");
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. Tactical Modal Systems
     // -------------------------------------------------------------------------
     function openModal(id) {
-      cyberAudio.playKeystroke();
+      tacticalSound.playSquelch();
       closeAllModals();
       const m = document.getElementById(id);
       if (m) m.classList.add('active-modal');
@@ -1544,44 +1635,42 @@
     }
 
     function closeAllModals() {
-      document.querySelectorAll('.hud-modal').forEach(m => m.classList.remove('active-modal'));
+      document.querySelectorAll('.mil-modal').forEach(m => m.classList.remove('active-modal'));
     }
 
-    // Morse Audio Player
-    function toggleMorseAudioPlay() {
-      const btn = document.getElementById('btn-morse-play');
+    function toggleMorsePlayback() {
+      const btn = document.getElementById('btn-morse-audio');
       const pattern = "-.. --- -. --- - / ..-. --- .-.. .-.. --- .-- / - .... . / -... .-.. ..- . / .--. .- - ....";
-      if (cyberAudio.isMorsePlaying) {
-        cyberAudio.stopMorse();
+      if (tacticalSound.isMorseActive) {
+        tacticalSound.stopMorse();
         btn.innerText = "▶ PLAY MORSE SIGNAL";
       } else {
-        btn.innerText = "⏹ STOPPING TRANSMISSION...";
-        cyberAudio.playMorse(pattern, () => {
+        btn.innerText = "⏹ HALT SIGNAL TRANSMISSION...";
+        tacticalSound.playMorse(pattern, () => {
           btn.innerText = "▶ PLAY MORSE SIGNAL";
         });
       }
     }
 
-    // Revision Switcher (Stage 9)
-    function switchModalRev(rev) {
-      cyberAudio.playKeystroke();
-      const btnAdi = document.getElementById('tab-rev-adi');
-      const btnAditi = document.getElementById('tab-rev-aditi');
-      const text = document.getElementById('modal-rev-text');
-      const badge = document.getElementById('modal-rev-badge');
+    function switchMilRev(rev) {
+      tacticalSound.playSquelch();
+      const btnAdi = document.getElementById('btn-rev-adi');
+      const btnAditi = document.getElementById('btn-rev-aditi');
+      const text = document.getElementById('mil-rev-text');
+      const badge = document.getElementById('mil-rev-badge');
 
       if (rev === 'adi') {
         btnAdi.classList.add('active');
         btnAditi.classList.remove('active');
         text.innerHTML = `"AI activation at 20:15. Aditi left at 21:00. Emergency shutdown at 21:30. AI permanently disabled. Everything is safe."`;
-        badge.innerText = "[ALTERED BY SYNTHETIC DAEMON: TEXT REPLACED]";
-        badge.style.color = "var(--alert-red)";
+        badge.innerText = "[ALTERED BY ROGUE DAEMON: STATUS TAMPERED]";
+        badge.style.color = "var(--combat-red)";
       } else {
         btnAditi.classList.add('active');
         btnAdi.classList.remove('active');
-        text.innerHTML = `"Emergency shutdown at 20:18... <strong style='color:var(--phosphor-green);'>OVERRIDE FAILED. AI CONTROL UNCHECKED.</strong>"`;
-        badge.innerText = "[ORIGINAL AUTHOR: DR. ADITI SHARMA // AUTHENTIC REVISION]";
-        badge.style.color = "var(--phosphor-green)";
+        text.innerHTML = `"Emergency shutdown at 20:18... <strong style='color:var(--tactical-green);'>OVERRIDE FAILED. AI CONTROL UNCHECKED.</strong>"`;
+        badge.innerText = "[ORIGINAL RECORD: DR. ADITI SHARMA // AUTHENTIC REVISION]";
+        badge.style.color = "var(--tactical-green)";
       }
     }
 
