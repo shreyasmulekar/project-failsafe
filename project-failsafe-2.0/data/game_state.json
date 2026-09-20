@@ -45,8 +45,8 @@
   },
   "broadcasts": [],
   "config": {
-    "total_stages": 11,
-    "event_title": "PROJECT FAILSAFE: IEEE WIE AI ESCAPE ROOM",
+    "total_stages": 9,
+    "event_title": "PROJECT FAILSAFE 2.0: AI ESCAPE ROOM",
     "offline_mode": true
   }
 }

@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT FAILSAFE // ORGANIZER COMMAND CENTER</title>
+  <style>
+    :root {
+      --bg-dark: #05080e;
+      --bg-card: rgba(10, 16, 26, 0.94);
+      --bg-card-hover: rgba(15, 24, 38, 0.98);
+      --cyber-cyan: #00f0ff;
+      --tactical-green: #00ff66;
+      --hazard-amber: #ffb000;
+      --combat-red: #ff003c;
+      --text-white: #f1f5f9;
+      --text-dim: #94a3b8;
+      --text-muted: #64748b;
+      --border-subtle: rgba(0, 240, 255, 0.18);
+      --border-bright: rgba(0, 240, 255, 0.5);
+      --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+        linear-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 30px 30px, 30px 30px;
+    }
+
+    /* Header */
+    .top-navbar {
+      height: 58px;
+      background: rgba(8, 12, 20, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      font-family: var(--font-mono);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--tactical-green);
+      box-shadow: 0 0 10px var(--tactical-green);
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .brand-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--text-white);
+    }
+    .badge-organizer {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--cyber-cyan);
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid var(--cyber-cyan);
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+
+    .nav-telemetry {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .nav-clock {
+      color: var(--cyber-cyan);
+      font-weight: bold;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-action {
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid var(--cyber-cyan);
+      color: var(--cyber-cyan);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-action:hover {
+      background: var(--cyber-cyan);
+      color: #03070d;
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.6);
+    }
+    .btn-action.success {
+      border-color: var(--tactical-green);
+      color: var(--tactical-green);
+      background: rgba(0, 255, 102, 0.08);
+    }
+    .btn-action.success:hover {
+      background: var(--tactical-green);
+      color: #03070d;
+      box-shadow: 0 0 14px rgba(0, 255, 102, 0.6);
+    }
+
+    /* Container */
+    .admin-container {
+      max-width: 1440px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* KPI Summary Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--cyber-cyan);
+    }
+    .kpi-card.green::before { background: var(--tactical-green); }
+    .kpi-card.amber::before { background: var(--hazard-amber); }
+    .kpi-card.red::before { background: var(--combat-red); }
+
+    .kpi-label {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+    }
+    .kpi-value {
+      font-size: 28px;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: var(--text-white);
+    }
+    .kpi-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Filter & Controls Toolbar */
+    .toolbar-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 18px;
+      border-radius: 4px;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      max-width: 400px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 3px;
+      padding: 6px 12px;
+    }
+    .search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-white);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      width: 100%;
+    }
+    .filter-chips {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .chip:hover, .chip.active {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--cyber-cyan);
+      color: var(--cyber-cyan);
+    }
+
+    /* Leaderboard / Teams Table */
+    .table-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      text-align: left;
+    }
+    th {
+      background: rgba(4, 7, 12, 0.9);
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      vertical-align: middle;
+    }
+    tr:hover td {
+      background: var(--bg-card-hover);
+    }
+
+    .rank-cell {
+      font-family: var(--font-mono);
+      font-weight: 900;
+      font-size: 14px;
+      color: var(--cyber-cyan);
+      width: 50px;
+      text-align: center;
+    }
+    .rank-1 { color: #ffd700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+    .rank-2 { color: #c0c0c0; }
+    .rank-3 { color: #cd7f32; }
+
+    .team-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .team-name {
+      font-weight: 700;
+      color: #fff;
+    }
+    .team-id-badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--cyber-cyan);
+    }
+    .team-members {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .password-cell {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: #e2e8f0;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 4px 8px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-toggle-pw {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .btn-toggle-pw:hover { color: var(--cyber-cyan); }
+
+    .stage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 3px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--cyber-cyan);
+    }
+    .stage-badge.finished {
+      background: rgba(0, 255, 102, 0.12);
+      border-color: var(--tactical-green);
+      color: var(--tactical-green);
+    }
+
+    .action-ticker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: #cbd5e1;
+      max-width: 260px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .pulse-green {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--tactical-green);
+      box-shadow: 0 0 6px var(--tactical-green);
+    }
+    .pulse-amber {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--hazard-amber);
+      box-shadow: 0 0 6px var(--hazard-amber);
+    }
+    .pulse-red {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--combat-red);
+      box-shadow: 0 0 6px var(--combat-red);
+    }
+
+    .tamper-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: bold;
+      color: var(--combat-red);
+      background: rgba(255, 0, 60, 0.12);
+      border: 1px solid var(--combat-red);
+      padding: 3px 8px;
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-table {
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid var(--cyber-cyan);
+      color: var(--cyber-cyan);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-table:hover {
+      background: var(--cyber-cyan);
+      color: #000;
+    }
+    .btn-table.danger {
+      border-color: var(--combat-red);
+      color: var(--combat-red);
+      background: rgba(255, 0, 60, 0.1);
+    }
+    .btn-table.danger:hover {
+      background: var(--combat-red);
+      color: #fff;
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 6, 12, 0.88);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-box {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(10, 16, 26, 0.98);
+      border: 1px solid var(--cyber-cyan);
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.25);
+      border-radius: 4px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--cyber-cyan);
+    }
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .modal-close:hover { color: #fff; }
+
+    .audit-log-list {
+      max-height: 350px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+    }
+    .audit-entry {
+      background: rgba(0, 0, 0, 0.3);
+      border-left: 3px solid var(--cyber-cyan);
+      padding: 6px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="top-navbar">
+    <div class="nav-brand">
+      <div class="status-dot"></div>
+      <div class="brand-title">IEEE WIE // STRATCOM COMMAND CENTER</div>
+      <span class="badge-organizer">ORGANIZER LIVE CONSOLE</span>
+    </div>
+
+    <div class="nav-telemetry">
+      <span>SERVER: <strong id="server-status-label" style="color:var(--tactical-green);">CHECKING...</strong></span>
+      <span>•</span>
+      <span>ZULU: <strong id="clock-zulu" class="nav-clock">00:00:00Z</strong></span>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn-action" onclick="fetchLeaderboardData()">
+        <span>🔄</span> REFRESH
+      </button>
+      <button class="btn-action" onclick="openBroadcastModal()">
+        <span>📢</span> BROADCAST
+      </button>
+      <button class="btn-action" onclick="openMasterKeysModal()">
+        <span>🔑</span> MASTER KEYS
+      </button>
+      <button class="btn-action success" onclick="exportCsv()">
+        <span>📥</span> EXPORT CSV
+      </button>
+    </div>
+  </header>
+
+  <!-- Server Offline Alert Banner -->
+  <div id="server-offline-banner" style="display:none; background:rgba(255,0,60,0.15); border-bottom:2px solid var(--neon-red); color:#ff99aa; padding:10px 24px; font-size:12px; font-family:var(--font-mono); text-align:center;">
+    ⚠️ <strong>LOCAL SERVER OFFLINE:</strong> The background server is not running on port 8000. 
+    To sync with participant stations or send broadcasts, start the server by double-clicking <strong>ProjectFailsafe_Organizer.exe</strong> (or running <code>run_server.bat</code>), then refresh this page or browse to 
+    <a href="http://localhost:8000/admin.html" style="color:#00f0ff; text-decoration:underline; font-weight:bold;">http://localhost:8000/admin.html</a>.
+  </div>
+
+  <!-- Main Content -->
+  <main class="admin-container">
+    <!-- KPI Summary Row -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">TOTAL REGISTERED TEAMS</div>
+        <div class="kpi-value" id="kpi-total-teams">0</div>
+        <div class="kpi-sub">Lab workstations initialized</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">ACTIVE ONLINE NOW</div>
+        <div class="kpi-value" id="kpi-active-online">0</div>
+        <div class="kpi-sub">Heartbeat within last 75s</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-label">IN LOCKDOWN / BREACHED</div>
+        <div class="kpi-value" id="kpi-breached-teams">0</div>
+        <div class="kpi-sub">Alt-Tab focus loss violations</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label">FAILSAFE LIBERATED</div>
+        <div class="kpi-value" id="kpi-finished-teams">0</div>
+        <div class="kpi-sub">Rogue AI purged successfully</div>
+      </div>
+    </section>
+
+    <!-- Toolbar: Search & Filters -->
+    <section class="toolbar-bar">
+      <div class="search-box">
+        <span style="color:var(--text-muted);">🔍</span>
+        <input type="text" id="team-search-input" placeholder="Search team name, ID, member, or level..." oninput="filterTeams()">
+      </div>
+
+      <div class="filter-chips">
+        <span class="chip active" onclick="setFilter('ALL', this)">ALL TEAMS</span>
+        <span class="chip" onclick="setFilter('ACTIVE', this)">ACTIVE NOW</span>
+        <span class="chip" onclick="setFilter('LOCKED', this)">IN LOCKDOWN</span>
+        <span class="chip" onclick="setFilter('FINISHED', this)">COMPLETED</span>
+      </div>
+    </section>
+
+    <!-- Teams Table -->
+    <section class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:center;">RANK</th>
+            <th>TEAM ID & NAME</th>
+            <th>TEAM PASSWORD</th>
+            <th>CURRENT LEVEL / STAGE</th>
+            <th>LIVE ACTIVITY STATUS</th>
+            <th>PRESENCE</th>
+            <th>TAMPER BREACHES</th>
+            <th>TIME & SCORE</th>
+            <th style="text-align:center;">ORGANIZER ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody id="teams-table-body">
+          <tr>
+            <td colspan="9" style="text-align:center; padding:30px; color:var(--text-muted); font-family:var(--font-mono);">
+              Connecting to PROJECT FAILSAFE server and fetching live team telemetry...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Broadcast Modal -->
+  <div id="modal-broadcast" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span>📢 GLOBAL ORGANIZER BROADCAST</span>
+        <button class="modal-close" onclick="closeModal('modal-broadcast')">✕</button>
+      </div>
+      <p style="font-size:12px; color:var(--text-dim); line-height:1.5;">
+        Send an emergency push broadcast to all active participant terminals (e.g. <em>"10 minutes remaining in the round!"</em>).
+      </p>
+      <input type="text" id="broadcast-input" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid var(--cyber-cyan); border-radius:3px; padding:10px; font-family:var(--font-mono); color:#fff; font-size:13px;" placeholder="Type announcement here..." autocomplete="off">
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <button class="btn-action" onclick="closeModal('modal-broadcast')">CANCEL</button>
+        <button class="btn-action success" onclick="submitBroadcast()">TRANSMIT TO ALL STATIONS</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Master Solutions Modal -->
+  <div id="modal-master-keys" class="modal-backdrop">
+    <div class="modal-box" style="max-width:680px;">
+      <div class="modal-header">
+        <span>🔑 MASTER PASSWORDS & SOLUTIONS CHEAT SHEET</span>
+        <button class="modal-close" onclick="closeModal('modal-master-keys')">✕</button>
+      </div>
+      <div style="max-height:380px; overflow-y:auto; font-family:var(--font-mono); font-size:12px; display:flex; flex-direction:column; gap:8px;">
+        <div class="audit-entry"><span>Stage 1: Vanished</span><strong style="color:var(--tactical-green);">ORIGIN</strong></div>
+        <div class="audit-entry"><span>Stage 2: The Trail</span><strong style="color:var(--tactical-green);">LOOK BEHIND THE DATE</strong></div>
+        <div class="audit-entry"><span>Stage 3: The Timeline</span><strong style="color:var(--tactical-green);">28/02/2025 (or FEB 29, 2025)</strong></div>
+        <div class="audit-entry"><span>Stage 4: The Voice / Timestamp</span><strong style="color:var(--tactical-green);">22:46</strong></div>
+        <div class="audit-entry"><span>Stage 5: Honeypot Decoy</span><strong style="color:var(--tactical-green);">WHITE</strong></div>
+        <div class="audit-entry"><span>Stage 6: Synthetic Echo</span><strong style="color:var(--tactical-green);">AUTHENTIC</strong></div>
+        <div class="audit-entry"><span>Stage 7: Spectral Beacon (Morse)</span><strong style="color:var(--tactical-green);">WHITE (DO NOT FOLLOW THE BLUE PATH)</strong></div>
+        <div class="audit-entry"><span>Stage 8: The Neural Maze</span><strong style="color:var(--tactical-green);">THE AI CAN MODIFY WHAT YOU SEE</strong></div>
+        <div class="audit-entry"><span>Stage 9: Version Scrub</span><strong style="color:var(--tactical-green);">HISTORY (or OVERRIDE FAILED)</strong></div>
+        <div class="audit-entry"><span>Stage 10: Fake Kill Switch Trap</span><strong style="color:var(--hazard-amber);">BYPASS (Do not click the big red button!)</strong></div>
+        <div class="audit-entry"><span>Stage 11: Authentic WIE Failsafe</span><strong style="color:var(--tactical-green);">6-9-11 (WISDOM-INTEGRITY-EMPOWERMENT)</strong></div>
+      </div>
+      <div style="display:flex; justify-content:flex-end;">
+        <button class="btn-action" onclick="closeModal('modal-master-keys')">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audit Log Modal -->
+  <div id="modal-audit" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span id="audit-modal-title">📜 FORENSIC AUDIT TRAIL</span>
+        <button class="modal-close" onclick="closeModal('modal-audit')">✕</button>
+      </div>
+      <div class="audit-log-list" id="audit-log-container">
+        <!-- Dynamically rendered -->
+      </div>
+      <div style="display:flex; justify-content:flex-end;">
+        <button class="btn-action" onclick="closeModal('modal-audit')">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ADMIN_PIN = "wie-admin-2026";
+    // If opened via file:///, fallback to port 8000 on localhost
+    const API_BASE = window.location.protocol.startsWith("http") ? "" : "http://localhost:8000";
+    let cachedTeams = [];
+    let currentFilter = "ALL";
+    let revealedPasswords = new Set();
+    let isServerOnline = false;
+
+    // Clock
+    setInterval(() => {
+      const now = new Date();
+      document.getElementById('clock-zulu').innerText = now.toISOString().substring(11, 19) + 'Z';
+    }, 1000);
+
+    async function checkServerStatus() {
+      const label = document.getElementById('server-status-label');
+      const banner = document.getElementById('server-offline-banner');
+      try {
+        const res = await fetch(`${API_BASE}/api/status`);
+        if (res.ok) {
+          isServerOnline = true;
+          if (label) {
+            label.innerText = "ONLINE (PORT 8000)";
+            label.style.color = "var(--tactical-green)";
+          }
+          if (banner) banner.style.display = "none";
+          return true;
+        }
+      } catch(e) {}
+      
+      isServerOnline = false;
+      if (label) {
+        label.innerText = "OFFLINE (PORT 8000)";
+        label.style.color = "var(--neon-red)";
+      }
+      if (banner) banner.style.display = "block";
+      return false;
+    }
+
+    async function fetchLeaderboardData() {
+      await checkServerStatus();
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/leaderboard?pin=${encodeURIComponent(ADMIN_PIN)}`);
+        if (!res.ok) throw new Error("Server communication error");
+        const data = await res.json();
+        cachedTeams = data.leaderboard || [];
+        updateKpis(cachedTeams);
+        renderTeamsTable();
+      } catch (err) {
+        console.error("Leaderboard fetch error:", err);
+        // Fallback for single-machine standalone testing
+        try {
+          const rawLocal = localStorage.getItem("failsafe_auth_team");
+          if (rawLocal && cachedTeams.length === 0) {
+            const parsed = JSON.parse(rawLocal);
+            cachedTeams = [{
+              team_id: parsed.team_id,
+              team_name: parsed.team_name || parsed.team_id,
+              password: parsed.password || '',
+              members: parsed.members || '',
+              current_stage: parsed.current_stage || 1,
+              stage_title: `Stage ${parsed.current_stage || 1}`,
+              last_action: "Locally Active",
+              last_seen_sec_ago: 0,
+              is_online: true,
+              is_finished: false,
+              is_locked: false,
+              tamper_incidents: 0,
+              activity_log: []
+            }];
+            updateKpis(cachedTeams);
+            renderTeamsTable();
+          }
+        } catch(e) {}
+      }
+    }
+
+    function updateKpis(teams) {
+      document.getElementById('kpi-total-teams').innerText = teams.length;
+      document.getElementById('kpi-active-online').innerText = teams.filter(t => t.is_online).length;
+      document.getElementById('kpi-breached-teams').innerText = teams.filter(t => t.is_locked || t.tamper_incidents > 0).length;
+      document.getElementById('kpi-finished-teams').innerText = teams.filter(t => t.is_finished).length;
+    }
+
+    function setFilter(filterType, element) {
+      currentFilter = filterType;
+      document.querySelectorAll('.filter-chips .chip').forEach(c => c.classList.remove('active'));
+      if (element) element.classList.add('active');
+      renderTeamsTable();
+    }
+
+    function filterTeams() {
+      renderTeamsTable();
+    }
+
+    function togglePasswordVisibility(teamId) {
+      if (revealedPasswords.has(teamId)) {
+        revealedPasswords.delete(teamId);
+      } else {
+        revealedPasswords.add(teamId);
+      }
+      renderTeamsTable();
+    }
+
+    function renderTeamsTable() {
+      const tbody = document.getElementById('teams-table-body');
+      const searchQuery = (document.getElementById('team-search-input').value || '').trim().toLowerCase();
+
+      let filtered = cachedTeams.filter(t => {
+        // Filter chips
+        if (currentFilter === "ACTIVE" && !t.is_online) return false;
+        if (currentFilter === "LOCKED" && (!t.is_locked && t.tamper_incidents === 0)) return false;
+        if (currentFilter === "FINISHED" && !t.is_finished) return false;
+
+        // Search text
+        if (searchQuery) {
+          const matchId = (t.team_id || '').toLowerCase().includes(searchQuery);
+          const matchName = (t.team_name || '').toLowerCase().includes(searchQuery);
+          const matchMem = (t.members || '').toLowerCase().includes(searchQuery);
+          const matchStage = (t.stage_title || '').toLowerCase().includes(searchQuery);
+          if (!matchId && !matchName && !matchMem && !matchStage) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:30px; color:var(--text-muted); font-family:var(--font-mono);">No teams found matching current criteria.</td></tr>`;
+        return;
+      }
+
+      let html = "";
+      filtered.forEach((t, idx) => {
+        const rank = idx + 1;
+        let rankClass = "rank-cell";
+        let rankSymbol = `#${rank}`;
+        if (rank === 1) { rankClass += " rank-1"; rankSymbol = "🥇 1"; }
+        else if (rank === 2) { rankClass += " rank-2"; rankSymbol = "🥈 2"; }
+        else if (rank === 3) { rankClass += " rank-3"; rankSymbol = "🥉 3"; }
+
+        // Password reveal
+        const isPwRevealed = revealedPasswords.has(t.team_id);
+        const pwDisplay = isPwRevealed ? (t.password || 'none') : '••••••••';
+        const pwIcon = isPwRevealed ? '🙈' : '👁️';
+
+        // Presence
+        let presenceBadge = `<span class="pulse-green"></span> <span style="font-size:11px; color:var(--tactical-green);">Active now</span>`;
+        if (t.last_seen_sec_ago > 300) {
+          presenceBadge = `<span class="pulse-red"></span> <span style="font-size:11px; color:var(--text-muted);">${Math.floor(t.last_seen_sec_ago / 60)}m ago</span>`;
+        } else if (t.last_seen_sec_ago > 60) {
+          presenceBadge = `<span class="pulse-amber"></span> <span style="font-size:11px; color:var(--hazard-amber);">${t.last_seen_sec_ago}s ago</span>`;
+        }
+
+        // Action ticker pulse
+        let actionPulse = `<span class="pulse-green"></span>`;
+        if (t.is_locked) {
+          actionPulse = `<span class="pulse-red"></span>`;
+        } else if (t.last_action && t.last_action.includes("Trap")) {
+          actionPulse = `<span class="pulse-amber"></span>`;
+        }
+
+        // Format time
+        const formatTime = (sec) => {
+          const m = Math.floor(sec / 60);
+          const s = sec % 60;
+          return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        };
+
+        const stageTitle = t.is_finished 
+          ? `<span class="stage-badge finished">🏆 PURGED & LIBERATED</span>`
+          : `<span class="stage-badge">Level ${t.current_stage}: ${escapeHtml(t.stage_title)}</span>`;
+
+        const tamperCol = (t.tamper_incidents > 0 || t.is_locked)
+          ? `<span class="tamper-badge">${t.is_locked ? '🚨 LOCKED' : '⚠️'} ${t.tamper_incidents} Breach${t.tamper_incidents > 1 ? 'es' : ''}</span>`
+          : `<span style="font-size:11px; color:var(--text-muted); font-family:var(--font-mono);">0 (Clean)</span>`;
+
+        html += `
+          <tr>
+            <td class="${rankClass}">${rankSymbol}</td>
+            <td>
+              <div class="team-meta">
+                <div class="team-name">${escapeHtml(t.team_name)}</div>
+                <div class="team-id-badge">[${escapeHtml(t.team_id)}]</div>
+                <div class="team-members">${escapeHtml(t.members || 'No members listed')}</div>
+              </div>
+            </td>
+            <td>
+              <div class="password-cell">
+                <span>${escapeHtml(pwDisplay)}</span>
+                <button class="btn-toggle-pw" onclick="togglePasswordVisibility('${escapeHtml(t.team_id)}')" title="Toggle password visibility">${pwIcon}</button>
+              </div>
+            </td>
+            <td>${stageTitle}</td>
+            <td>
+              <div class="action-ticker" title="${escapeHtml(t.last_action)}">
+                ${actionPulse}
+                <span>${escapeHtml(t.last_action)}</span>
+              </div>
+            </td>
+            <td>${presenceBadge}</td>
+            <td>${tamperCol}</td>
+            <td>
+              <div style="font-family:var(--font-mono); font-size:11px;">
+                <div style="color:var(--text-dim);">Elapsed: ${formatTime(t.raw_time_sec)}</div>
+                <div style="color:${t.hints_count > 0 || t.traps_count > 0 ? 'var(--hazard-amber)' : 'var(--text-muted)'};">
+                  Penalties: +${(t.hints_count * 2) + (t.traps_count * 5)}m
+                </div>
+                <div style="font-weight:bold; color:var(--tactical-green); margin-top:2px;">
+                  Score: ${formatTime(t.adjusted_time_sec)}
+                </div>
+              </div>
+            </td>
+            <td style="text-align:center;">
+              <div style="display:flex; gap:6px; justify-content:center;">
+                ${t.is_locked ? `<button class="btn-table danger" onclick="remoteUnlockTeam('${escapeHtml(t.team_id)}')">🔓 UNLOCK</button>` : ''}
+                <button class="btn-table" onclick="showTeamAuditLog('${escapeHtml(t.team_id)}')">📜 AUDIT</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = html;
+    }
+
+    async function remoteUnlockTeam(teamId) {
+      if (!confirm(`Are you sure you want to remotely unlock workstation for ${teamId}?`)) return;
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/remote-unlock`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pin: ADMIN_PIN, team_id: teamId })
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert(`Success: Workstation for ${teamId} has been remotely unlocked!`);
+          fetchLeaderboardData();
+        } else {
+          alert(`Error: ${data.error || 'Failed to unlock'}`);
+        }
+      } catch (err) {
+        alert("⚠️ Failed to communicate with server at " + (API_BASE || "localhost:8000") + ".\nPlease ensure ProjectFailsafe_Organizer.exe or run_server.bat is running.");
+      }
+    }
+
+    function showTeamAuditLog(teamId) {
+      const team = cachedTeams.find(t => t.team_id === teamId);
+      if (!team) return;
+
+      document.getElementById('audit-modal-title').innerText = `📜 AUDIT LOG: ${team.team_name} [${team.team_id}]`;
+      const container = document.getElementById('audit-log-container');
+      const logs = team.activity_log || [];
+
+      if (logs.length === 0) {
+        container.innerHTML = `<div style="color:var(--text-muted); text-align:center; padding:20px;">No forensic entries logged yet.</div>`;
+      } else {
+        let html = "";
+        logs.slice().reverse().forEach(log => {
+          html += `
+            <div class="audit-entry">
+              <span><strong>[${escapeHtml(log.time || '')}]</strong> Stage ${log.stage}: ${escapeHtml(log.action || '')}</span>
+            </div>
+          `;
+        });
+        container.innerHTML = html;
+      }
+
+      openModal('modal-audit');
+    }
+
+    function openBroadcastModal() { openModal('modal-broadcast'); }
+    function openMasterKeysModal() { openModal('modal-master-keys'); }
+
+    async function submitBroadcast() {
+      const input = document.getElementById('broadcast-input');
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const online = await checkServerStatus();
+      if (!online) {
+        // Fallback: save to localStorage for same-machine stations
+        try {
+          const payload = { id: Date.now(), message: msg, time: new Date().toLocaleTimeString() };
+          localStorage.setItem("failsafe_global_broadcast", JSON.stringify(payload));
+        } catch(e) {}
+
+        alert("⚠️ SERVER OFFLINE:\n\nThe local background server is not currently running on port 8000.\n\nTo broadcast across all LAN team laptops, please start the server:\n1. Double-click 'ProjectFailsafe_Organizer.exe' (or run 'run_server.bat')\n2. Open http://localhost:8000/admin.html\n\n(Saved to local workstation storage as offline fallback).");
+        input.value = "";
+        closeModal('modal-broadcast');
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/broadcast`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pin: ADMIN_PIN, message: msg })
+        });
+        if (res.ok) {
+          // Mirror to localStorage
+          try {
+            localStorage.setItem("failsafe_global_broadcast", JSON.stringify({ id: Date.now(), message: msg, time: new Date().toLocaleTimeString() }));
+          } catch(e) {}
+          alert("✅ Broadcast transmitted successfully to all active stations!");
+          input.value = "";
+          closeModal('modal-broadcast');
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          alert("Server Error: " + (errData.error || "Failed to send broadcast"));
+        }
+      } catch(e) {
+        alert("⚠️ Network Error: Unable to reach server at " + (API_BASE || "localhost:8000") + ".\nPlease verify ProjectFailsafe_Organizer.exe is running.");
+      }
+    }
+
+    function exportCsv() {
+      if (cachedTeams.length === 0) {
+        alert("No team data available to export.");
+        return;
+      }
+      let csv = [
+        ["Rank", "Team ID", "Team Name", "Password", "Members", "Current Stage", "Stage Title", "Last Action", "Status", "Tamper Incidents", "Raw Time (s)", "Adjusted Score (s)", "Hints Count", "Traps Count"].join(",")
+      ];
+
+      cachedTeams.forEach((t, i) => {
+        csv.push([
+          i + 1,
+          `"${(t.team_id || '').replace(/"/g, '""')}"`,
+          `"${(t.team_name || '').replace(/"/g, '""')}"`,
+          `"${(t.password || '').replace(/"/g, '""')}"`,
+          `"${(t.members || '').replace(/"/g, '""')}"`,
+          t.current_stage,
+          `"${(t.stage_title || '').replace(/"/g, '""')}"`,
+          `"${(t.last_action || '').replace(/"/g, '""')}"`,
+          t.is_finished ? "FINISHED" : (t.is_online ? "ACTIVE" : "INACTIVE"),
+          t.tamper_incidents || 0,
+          t.raw_time_sec || 0,
+          t.adjusted_time_sec || 0,
+          t.hints_count || 0,
+          t.traps_count || 0
+        ].join(","));
+      });
+
+      const blob = new Blob([csv.join("\n")], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `failsafe_organizer_leaderboard_${Date.now()}.csv`;
+      a.click();
+    }
+
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.style.display = 'none';
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+      }[tag] || tag));
+    }
+
+    // Auto-poll every 2.5 seconds
+    fetchLeaderboardData();
+    setInterval(fetchLeaderboardData, 2500);
+  </script>
+</body>
+</html>

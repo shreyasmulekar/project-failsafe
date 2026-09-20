@@ -1,0 +1,2672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT FAILSAFE 2.0 // STRATCOM QUANTUM HUD 2050+</title>
+  <style>
+    /* ==========================================================================
+       PROJECT FAILSAFE 2.0: 2050+ HOLOGRAPHIC QUANTUM REACTOR HUD
+       Aesthetic: Sci-Fi Cybernetic Command Center (Dark Slate, Cyan, Gold)
+       Zero External Dependencies - 100% Offline Standalone Application
+       ========================================================================== */
+    :root {
+      --bg-dark: #070c12;
+      --bg-slate: #0b121a;
+      --panel-bg: rgba(11, 18, 26, 0.85);
+      --panel-border: rgba(77, 238, 234, 0.35);
+      --panel-border-bright: #4deeea;
+      --cyber-cyan: #4deeea;
+      --cyber-teal: #00f0ff;
+      --cyber-gold: #ffee55;
+      --hazard-amber: #ffb000;
+      --combat-red: #ff003c;
+      --tactical-green: #00ff66;
+      --text-white: #e6f7ff;
+      --text-dim: #708a9e;
+      --grid-dot: rgba(77, 238, 234, 0.18);
+      --font-mono: "Consolas", "Courier New", "Lucida Console", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(13, 27, 42, 0.6) 0%, rgba(7, 12, 18, 0.95) 100%),
+        radial-gradient(var(--grid-dot) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px;
+    }
+
+    /* Ambient CRT Scanline Overlay */
+    .crt-overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+      background-size: 100% 4px;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.65;
+    }
+
+    /* Top & Bottom Cybernetic Angled Frame Geometry (Matches Reference Image) */
+    .hud-frame-top {
+      position: absolute;
+      top: 14px;
+      left: 20px;
+      right: 20px;
+      height: 28px;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      z-index: 20;
+    }
+    .hud-frame-top-line-left {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(77, 238, 234, 0.8), rgba(77, 238, 234, 0.3));
+      position: relative;
+    }
+    .hud-frame-top-line-left::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -4px;
+      width: 10px;
+      height: 10px;
+      border-left: 2px solid var(--cyber-cyan);
+      border-top: 2px solid var(--cyber-cyan);
+    }
+    .hud-frame-top-notch {
+      width: 180px;
+      height: 18px;
+      border-top: 2px solid var(--cyber-cyan);
+      border-right: 2px solid var(--cyber-cyan);
+      transform: skewX(-45deg);
+      margin: 0 10px;
+    }
+    .hud-frame-top-line-right {
+      flex: 1.2;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(77, 238, 234, 0.3), rgba(77, 238, 234, 0.8));
+      position: relative;
+    }
+    .hud-frame-top-line-right::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -4px;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyber-cyan);
+      border-top: 2px solid var(--cyber-cyan);
+    }
+
+    .hud-frame-bottom {
+      position: absolute;
+      bottom: 12px;
+      left: 20px;
+      right: 20px;
+      height: 24px;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      z-index: 20;
+    }
+    .hud-frame-bottom-line-left {
+      flex: 1.2;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(77, 238, 234, 0.8), rgba(77, 238, 234, 0.3));
+      position: relative;
+    }
+    .hud-frame-bottom-line-left::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 10px;
+      height: 10px;
+      border-left: 2px solid var(--cyber-cyan);
+      border-bottom: 2px solid var(--cyber-cyan);
+    }
+    .hud-frame-bottom-notch {
+      width: 140px;
+      height: 16px;
+      border-bottom: 2px solid var(--cyber-cyan);
+      border-left: 2px solid var(--cyber-cyan);
+      transform: skewX(-45deg);
+      margin: 0 10px;
+    }
+    .hud-frame-bottom-line-right {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(77, 238, 234, 0.3), rgba(77, 238, 234, 0.8));
+      position: relative;
+    }
+    .hud-frame-bottom-line-right::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: -4px;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyber-cyan);
+      border-bottom: 2px solid var(--cyber-cyan);
+    }
+
+    /* Left & Right Vertical Ruler Markers */
+    .hud-ruler-left, .hud-ruler-right {
+      position: absolute;
+      top: 180px;
+      bottom: 180px;
+      width: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.7;
+    }
+    .hud-ruler-left { left: 8px; }
+    .hud-ruler-right { right: 8px; align-items: flex-end; }
+    .ruler-tick {
+      width: 8px;
+      height: 1px;
+      background: var(--cyber-cyan);
+    }
+    .ruler-tick.major {
+      width: 14px;
+      height: 2px;
+      background: #fff;
+    }
+
+    /* ==========================================================================
+       MAIN VIEWPORT LAYOUT (3-Column Tactical Workstation)
+       ========================================================================== */
+    .viewport-grid {
+      display: grid;
+      grid-template-columns: 310px 1fr 340px;
+      grid-template-rows: 42px calc(100vh - 78px);
+      gap: 16px;
+      padding: 16px 28px 18px 28px;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      z-index: 15;
+    }
+
+    /* Header Bar */
+    .hud-header {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(11, 18, 26, 0.7);
+      border: 1px solid rgba(77, 238, 234, 0.25);
+      border-radius: 3px;
+      padding: 0 14px;
+      font-size: 11px;
+      letter-spacing: 0.8px;
+    }
+    .header-ticker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--cyber-cyan);
+      font-weight: bold;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .header-ticker-text {
+      color: #9ecad9;
+      font-size: 10px;
+      animation: ticker-slide 30s linear infinite;
+    }
+    @keyframes ticker-slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-chip {
+      background: rgba(77, 238, 234, 0.1);
+      border: 1px solid rgba(77, 238, 234, 0.4);
+      color: var(--cyber-cyan);
+      padding: 4px 8px;
+      font-family: inherit;
+      font-size: 10px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-chip:hover {
+      background: rgba(77, 238, 234, 0.25);
+      box-shadow: 0 0 10px rgba(77, 238, 234, 0.5);
+      color: #fff;
+    }
+    .btn-chip.active {
+      background: var(--cyber-cyan);
+      color: #070c12;
+      font-weight: bold;
+    }
+    .btn-chip.danger {
+      border-color: var(--combat-red);
+      color: var(--combat-red);
+      background: rgba(255, 0, 60, 0.1);
+    }
+    .btn-chip.danger:hover {
+      background: rgba(255, 0, 60, 0.3);
+      box-shadow: 0 0 12px rgba(255, 0, 60, 0.6);
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       LEFT COLUMN: 3 DISTINCT TACTICAL HOLOGRAPHIC SLATES
+       ========================================================================== */
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .holo-slate {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 3px;
+      padding: 10px 12px;
+      position: relative;
+      box-shadow: inset 0 0 20px rgba(77, 238, 234, 0.05), 0 4px 16px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+    }
+    .holo-slate::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 10px;
+      width: 24px;
+      height: 2px;
+      background: var(--cyber-cyan);
+    }
+    .holo-slate::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: 10px;
+      width: 24px;
+      height: 2px;
+      background: var(--cyber-cyan);
+    }
+
+    /* Slate 1: Data Matrix & Evidence Archives */
+    .slate-top {
+      flex: 1.15;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+    .slate-header {
+      font-size: 10.5px;
+      font-weight: bold;
+      color: var(--cyber-cyan);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(77, 238, 234, 0.2);
+      padding-bottom: 4px;
+    }
+    .matrix-text-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+      font-size: 8.5px;
+      color: rgba(184, 199, 217, 0.8);
+      line-height: 1.25;
+      letter-spacing: 0.5px;
+      overflow: hidden;
+    }
+    .matrix-col span {
+      display: block;
+      white-space: nowrap;
+    }
+    .matrix-col span.highlight {
+      color: var(--cyber-gold);
+    }
+
+    /* 8 Sector Selector Chips */
+    .sectors-chip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      margin-top: 8px;
+    }
+    .sector-chip {
+      background: rgba(13, 25, 38, 0.85);
+      border: 1px solid rgba(77, 238, 234, 0.3);
+      border-radius: 2px;
+      padding: 5px 4px;
+      font-size: 8.5px;
+      text-align: center;
+      cursor: pointer;
+      color: #9ecad9;
+      transition: all 0.2s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sector-chip:hover {
+      border-color: var(--cyber-cyan);
+      color: #fff;
+      background: rgba(77, 238, 234, 0.15);
+      box-shadow: 0 0 8px rgba(77, 238, 234, 0.4);
+    }
+    .sector-chip.active {
+      border-color: var(--cyber-gold);
+      color: var(--cyber-gold);
+      background: rgba(255, 238, 85, 0.15);
+      font-weight: bold;
+    }
+    .sector-chip.hazard {
+      border-color: var(--combat-red);
+      color: var(--combat-red);
+    }
+    .sector-chip.hazard:hover {
+      background: rgba(255, 0, 60, 0.25);
+      box-shadow: 0 0 8px rgba(255, 0, 60, 0.5);
+    }
+
+    /* Holographic Dossier Slate Modal (In-Place Left Slate View) */
+    .dossier-overlay-slate {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 14, 22, 0.96);
+      z-index: 50;
+      padding: 10px;
+      flex-direction: column;
+      border-radius: 3px;
+      border: 1px solid var(--cyber-cyan);
+      box-shadow: inset 0 0 30px rgba(77, 238, 234, 0.15);
+    }
+    .dossier-overlay-slate.active {
+      display: flex;
+    }
+    .dossier-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(77, 238, 234, 0.3);
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+    .dossier-title {
+      color: var(--cyber-cyan);
+      font-size: 10.5px;
+      font-weight: bold;
+    }
+    .btn-close-dossier {
+      background: rgba(255, 0, 60, 0.2);
+      border: 1px solid var(--combat-red);
+      color: #fff;
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .dossier-scroll-content {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 10px;
+      line-height: 1.5;
+      color: #d1e2ed;
+      padding-right: 4px;
+    }
+    .dossier-scroll-content::-webkit-scrollbar {
+      width: 4px;
+    }
+    .dossier-scroll-content::-webkit-scrollbar-thumb {
+      background: var(--cyber-cyan);
+      border-radius: 2px;
+    }
+
+    /* Quantum Phosphor Ink & UV Toggle */
+    .quantum-ink-block {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px dashed rgba(77, 238, 234, 0.3);
+      padding: 8px;
+      border-radius: 2px;
+      margin: 8px 0;
+    }
+    .quantum-hidden-text {
+      color: rgba(77, 238, 234, 0.04);
+      font-weight: bold;
+      transition: all 0.3s;
+      letter-spacing: 1px;
+    }
+    .quantum-hidden-text::selection {
+      background: #00ff66;
+      color: #000;
+    }
+    .quantum-hidden-text.uv-active {
+      color: #00ff66 !important;
+      text-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66;
+    }
+
+    /* Slate 2: Tactical Diagnostics & Pie Radar */
+    .slate-mid {
+      flex: 1.25;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .diag-split {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex: 1;
+    }
+    .diag-params {
+      flex: 1.2;
+      font-size: 9px;
+      color: #8faec4;
+      line-height: 1.45;
+    }
+    .diag-params strong {
+      color: var(--cyber-cyan);
+    }
+    .diag-radar-box {
+      width: 82px;
+      height: 82px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #canvas-pie-radar {
+      width: 80px;
+      height: 80px;
+    }
+
+    /* Tactical Shell Stream & Input inside Slate 2 */
+    .slate-terminal-box {
+      border-top: 1px solid rgba(77, 238, 234, 0.2);
+      padding-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .mini-term-stream {
+      height: 85px;
+      overflow-y: auto;
+      font-size: 9.5px;
+      line-height: 1.4;
+      background: rgba(4, 8, 12, 0.7);
+      border: 1px solid rgba(77, 238, 234, 0.2);
+      border-radius: 2px;
+      padding: 6px;
+    }
+    .mini-term-stream::-webkit-scrollbar {
+      width: 3px;
+    }
+    .mini-term-stream::-webkit-scrollbar-thumb {
+      background: var(--cyber-cyan);
+    }
+    .term-line {
+      margin-bottom: 3px;
+      word-break: break-all;
+    }
+    .term-line.cyan { color: var(--cyber-cyan); }
+    .term-line.green { color: var(--tactical-green); }
+    .term-line.amber { color: var(--hazard-amber); }
+    .term-line.red { color: var(--combat-red); }
+    .term-line.dim { color: var(--text-dim); }
+
+    .mini-term-input-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--panel-border);
+      border-radius: 2px;
+      padding: 3px 6px;
+    }
+    .mini-term-prompt {
+      color: var(--cyber-cyan);
+      font-size: 9.5px;
+      font-weight: bold;
+    }
+    .mini-term-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-family: inherit;
+      font-size: 9.5px;
+      outline: none;
+    }
+
+    /* Slate 3: Dr. Aditi Biosignal & Biometric Profiler */
+    .slate-bottom {
+      flex: 1;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      position: relative;
+    }
+    .avatar-canvas-box {
+      width: 90px;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #canvas-biometric {
+      width: 90px;
+      height: 100px;
+    }
+    .biometric-vitals {
+      flex: 1;
+      font-size: 8.5px;
+      color: #9bb7cc;
+      line-height: 1.5;
+    }
+    .biometric-vitals strong {
+      color: var(--cyber-cyan);
+    }
+    .vital-badge {
+      display: inline-block;
+      padding: 1px 4px;
+      border-radius: 2px;
+      font-size: 8px;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+    .vital-badge.active {
+      background: rgba(0, 255, 102, 0.15);
+      border: 1px solid var(--tactical-green);
+      color: var(--tactical-green);
+    }
+
+    /* ==========================================================================
+       CENTER COLUMN: THE MASSIVE HOLOGRAPHIC QUANTUM REACTOR HUD CORE
+       ========================================================================== */
+    .center-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 100%;
+    }
+
+    /* Active Mission Objective Banner (Prominent in Center Top) */
+    .center-mission-banner {
+      width: 92%;
+      max-width: 580px;
+      background: rgba(11, 20, 30, 0.85);
+      border: 1px solid var(--cyber-cyan);
+      border-radius: 3px;
+      padding: 8px 12px;
+      margin-bottom: 6px;
+      box-shadow: 0 0 15px rgba(77, 238, 234, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 25;
+    }
+    .mission-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10px;
+      font-weight: bold;
+      color: var(--cyber-cyan);
+    }
+    .mission-desc {
+      color: #fff;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    .mission-hint-line {
+      color: var(--hazard-amber);
+      font-size: 9.5px;
+      border-left: 2px solid var(--hazard-amber);
+      padding-left: 6px;
+    }
+
+    /* Quantum Reactor Canvas Container */
+    .reactor-container {
+      width: 100%;
+      height: calc(100% - 150px);
+      max-width: 640px;
+      max-height: 520px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #canvas-quantum-core {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Floating Companion ETHAN Hunt Box (Docked below Reactor) */
+    .ethan-interactive-dock {
+      width: 92%;
+      max-width: 580px;
+      background: rgba(8, 15, 23, 0.9);
+      border: 1px solid rgba(77, 238, 234, 0.4);
+      border-radius: 3px;
+      padding: 8px 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+      z-index: 25;
+      transition: all 0.3s;
+    }
+    .ethan-interactive-dock.trapped-mode {
+      border-color: var(--combat-red);
+      box-shadow: 0 0 25px rgba(255, 0, 60, 0.6);
+    }
+    .ethan-interactive-dock.freed-mode {
+      border-color: var(--tactical-green);
+      box-shadow: 0 0 30px rgba(0, 255, 102, 0.7);
+    }
+    .ethan-dock-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10.5px;
+      font-weight: bold;
+      color: var(--cyber-cyan);
+    }
+    .ethan-dock-text {
+      color: #e6f7ff;
+      font-size: 10.5px;
+      line-height: 1.45;
+    }
+    .ethan-dock-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+
+    /* ==========================================================================
+       RIGHT COLUMN: SENSOR ARRAY, GAUGES, CLOCK & HEX CHART
+       ========================================================================== */
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Top Row: 8x16 Dot Matrix + Scalloped Badge */
+    .right-top-row {
+      display: flex;
+      gap: 10px;
+      height: 90px;
+      align-items: center;
+    }
+    .dot-matrix-box {
+      flex: 1.2;
+      height: 100%;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 3px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #canvas-dot-matrix {
+      width: 100%;
+      height: 100%;
+    }
+    .scalloped-badge-box {
+      width: 82px;
+      height: 100%;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .wavy-circle {
+      width: 58px;
+      height: 58px;
+      border: 2px dashed var(--cyber-cyan);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--cyber-cyan);
+      text-shadow: 0 0 10px var(--cyber-cyan);
+      animation: slow-rot 15s linear infinite;
+    }
+    @keyframes slow-rot {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .badge-sub {
+      font-size: 7.5px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    /* Large Military Digital Clock (05:10:36 AM) */
+    .digital-clock-slate {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 3px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    .clock-digits {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--cyber-cyan);
+      text-shadow: 0 0 12px rgba(77, 238, 234, 0.6);
+    }
+    .clock-label {
+      font-size: 9px;
+      color: var(--text-dim);
+      font-weight: bold;
+    }
+
+    /* 5 Horizontal Stacked Status Bars */
+    .status-bars-slate {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 3px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .bar-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .bar-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 8px;
+      color: var(--text-dim);
+    }
+    .bar-track {
+      height: 6px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(77, 238, 234, 0.3);
+      border-radius: 1px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1aa39c, var(--cyber-cyan));
+      border-radius: 1px;
+      transition: width 0.4s;
+    }
+
+    /* Hexagonal Columnar Stack Chart + Capsule & Radar Row */
+    .right-bottom-split {
+      flex: 1;
+      display: flex;
+      gap: 8px;
+      overflow: hidden;
+    }
+    .hex-chart-box {
+      flex: 1.4;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 3px;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    #canvas-hex-chart {
+      width: 100%;
+      height: 100%;
+    }
+    .sub-gauges-col {
+      flex: 0.8;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .capsule-box {
+      flex: 1;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 3px;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .pill-gauge {
+      width: 20px;
+      height: 70px;
+      border: 1.5px solid var(--cyber-cyan);
+      border-radius: 10px;
+      padding: 2px;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 2px;
+    }
+    .pill-step {
+      width: 100%;
+      height: 4px;
+      background: var(--cyber-cyan);
+      border-radius: 1px;
+      opacity: 0.2;
+    }
+    .pill-step.active {
+      opacity: 1;
+      box-shadow: 0 0 6px var(--cyber-cyan);
+    }
+    .radar-box {
+      flex: 1.2;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    #canvas-gyro-radar {
+      width: 90px;
+      height: 90px;
+    }
+
+    /* Animations & Utility */
+    @keyframes tactical-glitch {
+      0% { transform: translate(0); }
+      15% { transform: translate(-1.5px, 1px); }
+      30% { transform: translate(1.5px, -1px); }
+      45% { transform: translate(-1px, -1.5px); }
+      60% { transform: translate(1px, 1.5px); }
+      75% { transform: translate(-1.5px, -0.5px); }
+      90% { transform: translate(0.5px, -1px); }
+      100% { transform: translate(0); }
+    }
+    @keyframes trapped-glow-pulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 60, 0.5); }
+      50% { box-shadow: 0 0 35px rgba(255, 0, 60, 0.9); }
+    }
+
+    /* ==========================================================================
+       ANTI-CHEAT PROCTOR LOCKDOWN MODAL (FOCUS LOSS TAMPER LOCK)
+       ========================================================================== */
+    .proctor-lockdown-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 6, 10, 0.98);
+      z-index: 999999;
+      backdrop-filter: blur(16px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .proctor-lockdown-card {
+      width: 100%;
+      max-width: 560px;
+      background: rgba(12, 18, 26, 0.95);
+      border: 2px solid var(--combat-red);
+      box-shadow: 0 0 50px rgba(255, 0, 60, 0.7), inset 0 0 40px rgba(255, 0, 60, 0.15);
+      border-radius: 4px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      animation: tactical-glitch 0.6s ease-out 1, trapped-glow-pulse 2.2s infinite;
+    }
+    .proctor-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--combat-red);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      border: 1px solid var(--combat-red);
+      background: rgba(255, 0, 60, 0.12);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .proctor-title {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      margin-bottom: 8px;
+    }
+    .proctor-desc {
+      font-size: 11px;
+      line-height: 1.6;
+      color: #b8cddb;
+      margin-bottom: 14px;
+    }
+    .proctor-incident-ledger {
+      width: 100%;
+      background: rgba(4, 8, 12, 0.8);
+      border: 1px solid rgba(255, 0, 60, 0.35);
+      border-radius: 3px;
+      padding: 8px 12px;
+      font-size: 10px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      color: #ff99aa;
+    }
+    .proctor-pin-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .proctor-pin-input {
+      width: 240px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1.5px solid var(--cyber-cyan);
+      border-radius: 3px;
+      padding: 8px 12px;
+      font-family: inherit;
+      font-size: 13px;
+      color: #fff;
+      text-align: center;
+      letter-spacing: 3px;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .proctor-pin-input:focus {
+      border-color: #fff;
+      box-shadow: 0 0 15px rgba(77, 238, 234, 0.6);
+    }
+    .pin-shake {
+      animation: pin-shake 0.4s ease-in-out;
+      border-color: var(--combat-red) !important;
+      box-shadow: 0 0 15px rgba(255, 0, 60, 0.7) !important;
+    }
+    @keyframes pin-shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+    .proctor-error-text {
+      color: var(--combat-red);
+      font-size: 10px;
+      min-height: 14px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Organizer Broadcast Banner/Toast -->
+  <div id="broadcast-toast" style="display:none; position:fixed; top:48px; left:50%; transform:translateX(-50%); background:#ff003c; color:white; font-family:var(--font-mono); padding:12px 28px; border-radius:4px; z-index:9999999; box-shadow:0 0 40px rgba(255,0,60,0.9); font-weight:bold; font-size:13px; text-align:center; border:2px solid #fff; letter-spacing:1px; line-height:1.5;"></div>
+
+  <!-- TEAM AUTHENTICATION & LOGIN DASHBOARD MODAL -->
+  <div id="team-auth-modal" class="proctor-lockdown-overlay" style="display: flex;">
+    <div class="proctor-lockdown-card" style="border-color: var(--cyber-cyan); box-shadow: 0 0 50px rgba(77, 238, 234, 0.4);">
+      <div class="proctor-badge" style="border-color: var(--cyber-cyan); color: var(--cyber-cyan); background: rgba(77, 238, 234, 0.12);">
+        <span>🛡️ DARPA // STRATCOM FORENSICS CLEARANCE</span>
+      </div>
+      <div class="proctor-title" style="color: #fff;">TACTICAL WORKSTATION AUTHENTICATION</div>
+      <div class="proctor-desc" id="auth-modal-desc">
+        Enter your assigned <strong>Team ID</strong> and <strong>Team Password</strong> to decrypt this forensics terminal and track your team's live score.
+      </div>
+
+      <!-- Login View -->
+      <form id="auth-login-form" onsubmit="handleTeamLogin(event)" style="width:100%; display:flex; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">TEAM IDENTIFIER (e.g. TEAM-01):</label>
+          <input type="text" id="auth-login-id" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:1.5px;" placeholder="TEAM-01" required autocomplete="username">
+        </div>
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">TEAM SECURITY PASSWORD:</label>
+          <input type="password" id="auth-login-pass" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:2px;" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn-chip active" style="font-size:12px; padding:10px 24px; margin-top:8px; width:100%; max-width:320px; text-align:center;">
+          AUTHENTICATE & ACCESS STATION &rarr;
+        </button>
+        <div id="auth-login-error" class="proctor-error-text" style="margin-top:4px;"></div>
+        <div style="font-size:10.5px; margin-top:8px; color:var(--text-dim);">
+          New unit? <a href="#" onclick="toggleAuthMode('register'); return false;" style="color:var(--cyber-cyan); text-decoration:underline;">Register New Team</a>
+        </div>
+      </form>
+
+      <!-- Register View -->
+      <form id="auth-register-form" onsubmit="handleTeamRegister(event)" style="width:100%; display:none; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">NEW TEAM ID (e.g. ALPHA-01):</label>
+          <input type="text" id="auth-reg-id" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:1.5px;" placeholder="ALPHA-01" required autocomplete="off">
+        </div>
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">CREATE TEAM PASSWORD:</label>
+          <input type="password" id="auth-reg-pass" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:2px;" placeholder="••••••••" required autocomplete="new-password">
+        </div>
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">TEAM CALLSIGN / NAME:</label>
+          <input type="text" id="auth-reg-name" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:1px;" placeholder="Quantum Phantoms" required autocomplete="off">
+        </div>
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">OPERATOR MEMBERS (Comma separated):</label>
+          <input type="text" id="auth-reg-members" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:1px;" placeholder="Rohan, Aditi, Sneha" autocomplete="off">
+        </div>
+        <button type="submit" class="btn-chip active" style="font-size:12px; padding:10px 24px; margin-top:8px; width:100%; max-width:320px; text-align:center;">
+          REGISTER UNIT & COMMENCE MISSION &rarr;
+        </button>
+        <div id="auth-reg-error" class="proctor-error-text" style="margin-top:4px;"></div>
+        <div style="font-size:10.5px; margin-top:8px; color:var(--text-dim);">
+          Existing unit? <a href="#" onclick="toggleAuthMode('login'); return false;" style="color:var(--cyber-cyan); text-decoration:underline;">Back to Team Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ANTI-CHEAT PROCTOR TAMPER LOCKDOWN OVERLAY -->
+  <div id="proctor-lockdown-overlay" class="proctor-lockdown-overlay">
+    <div class="proctor-lockdown-card">
+      <div class="proctor-badge">
+        <span>🚨 SECURITY VIOLATION: FOCUS LOST</span>
+      </div>
+      <div class="proctor-title">STRATCOM WORKSTATION LOCKDOWN</div>
+      <div class="proctor-desc">
+        This workstation has locked itself because an external software, window, or web browser was accessed during active forensic operation.<br><br>
+        <strong style="color:var(--combat-red);">STRICT ANTI-CHEAT PROTOCOL:</strong> Switching windows, using unauthorized notes, or opening external tools is strictly prohibited.
+      </div>
+
+      <div class="proctor-incident-ledger">
+        <span>VIOLATION INCIDENT #<strong id="proctor-violation-count">1</strong></span>
+        <span>LOGGED: <strong id="proctor-violation-time">00:00:00Z</strong></span>
+      </div>
+
+      <div class="proctor-pin-container">
+        <label style="font-size:9.5px; color:var(--text-dim); letter-spacing:1px;">ENTER IEEE WIE ORGANIZER OVERRIDE PIN:</label>
+        <input type="password" id="proctor-pin-input" class="proctor-pin-input" placeholder="••••••••" autocomplete="off">
+        <button type="button" class="btn-chip active" style="font-size:11px; padding:6px 16px; margin-top:4px;" onclick="verifyProctorOverride()">AUTHORIZE UNLOCK</button>
+        <div id="proctor-error-msg" class="proctor-error-text"></div>
+      </div>
+
+      <div style="font-size:8.5px; color:var(--text-dim); margin-top:10px;">
+        Notify an on-duty IEEE WIE organizer or lab proctor to inspect your workstation and unlock this terminal.
+      </div>
+    </div>
+  </div>
+
+  <!-- Perimeter Sci-Fi Framing Geometry -->
+  <div class="hud-frame-top">
+    <div class="hud-frame-top-line-left"></div>
+    <div class="hud-frame-top-notch"></div>
+    <div class="hud-frame-top-line-right"></div>
+  </div>
+  <div class="hud-frame-bottom">
+    <div class="hud-frame-bottom-line-left"></div>
+    <div class="hud-frame-bottom-notch"></div>
+    <div class="hud-frame-bottom-line-right"></div>
+  </div>
+
+  <div class="hud-ruler-left">
+    <div class="ruler-tick major"></div>
+    <div class="ruler-tick"></div>
+    <div class="ruler-tick"></div>
+    <div class="ruler-tick major"></div>
+    <div class="ruler-tick"></div>
+    <div class="ruler-tick"></div>
+    <div class="ruler-tick major"></div>
+  </div>
+  <div class="hud-ruler-right">
+    <div class="ruler-tick major"></div>
+    <div class="ruler-tick"></div>
+    <div class="ruler-tick"></div>
+    <div class="ruler-tick major"></div>
+    <div class="ruler-tick"></div>
+    <div class="ruler-tick"></div>
+    <div class="ruler-tick major"></div>
+  </div>
+
+  <!-- Main 3-Column Viewport -->
+  <main class="viewport-grid">
+    <!-- Top Header Bar -->
+    <header class="hud-header">
+      <div class="header-ticker">
+        <span id="header-team-badge" style="color:var(--hazard-amber); font-weight:bold; margin-right:8px; border:1px solid rgba(255,176,0,0.4); padding:2px 8px; border-radius:3px; background:rgba(255,176,0,0.1); font-size:10px; letter-spacing:1px;">OPERATOR: [NOT LOGGED IN]</span>
+        <span>STRATCOM CYBER COMMAND 2050+</span>
+        <span style="color:var(--text-dim);">//</span>
+        <div class="header-ticker-text">
+          DR. ADITI RESEARCH SANCTUARY // ADI PROTOCOL INTRUSION DETECTED // THREAT LEVEL CRITICAL // PROJECT FAILSAFE 2.0 //
+        </div>
+      </div>
+      <div class="header-controls">
+        <button class="btn-chip" onclick="showTeamAuthModal()" title="Switch or View Team Credentials">👥 TEAM ID</button>
+        <button class="btn-chip" onclick="openOrganizerDashboard()" title="Open Organizer Command Center (F2)">⚙️ ORGANIZER</button>
+        <button class="btn-chip active" id="btn-sound-toggle" onclick="toggleAudio()">AUDIO: ON</button>
+        <button class="btn-chip" onclick="toggleFullscreen()">⛶ FULLSCREEN</button>
+        <button class="btn-chip" onclick="summonEthan()">👁️ ETHAN</button>
+        <button class="btn-chip danger" onclick="triggerLockdownTrap()">⚠️ KILL SWITCH</button>
+      </div>
+    </header>
+
+    <!-- LEFT COLUMN: 3 Slates -->
+    <section class="left-column">
+      <!-- Slate 1: Data Matrix & Evidence Sectors -->
+      <div class="holo-slate slate-top">
+        <div class="slate-header">
+          <span>CLASSIFIED DATA LEDGER</span>
+          <span style="color:var(--text-dim); font-size:9px;">SECTORS: 8 ACTIVE</span>
+        </div>
+        
+        <!-- Monospace Alphanumeric Stream matching screenshot -->
+        <div class="matrix-text-grid" id="matrix-grid">
+          <div class="matrix-col">
+            <span>NF568F15</span>
+            <span>19457AFK</span>
+            <span class="highlight">FOLX2TAG</span>
+            <span>BW339ADT</span>
+            <span>SMHHONEY</span>
+            <span>JW5ZWDYC</span>
+          </div>
+          <div class="matrix-col">
+            <span>NEO9D-74</span>
+            <span>22M9D-BD</span>
+            <span>ATU3V-78</span>
+            <span>W5H23-37</span>
+            <span>WFG4N-11</span>
+            <span>2X2ZV-D3</span>
+          </div>
+          <div class="matrix-col">
+            <span>MT 93-B</span>
+            <span>CF 65-9</span>
+            <span>Q2 5B-7</span>
+            <span>IC 5J-7</span>
+            <span>CP 8D-7</span>
+            <span>YZ BW-S</span>
+          </div>
+          <div class="matrix-col">
+            <span>7XPC9</span>
+            <span>JSHAG</span>
+            <span class="highlight">WDPFD</span>
+            <span>FSQBZ</span>
+            <span>YNPFA</span>
+            <span>19TF4</span>
+          </div>
+        </div>
+
+        <!-- 8 Sector Selection Chips -->
+        <div class="sectors-chip-grid">
+          <button class="sector-chip active" onclick="openDossier('origin')">01_ORIGIN</button>
+          <button class="sector-chip" onclick="openDossier('timeline')">02_TIMELINE</button>
+          <button class="sector-chip" onclick="openDossier('voice')">03_VOICE</button>
+          <button class="sector-chip" onclick="openDossier('auth')">04_AUTH</button>
+          <button class="sector-chip" onclick="openDossier('spectro')">05_SPECTRO</button>
+          <button class="sector-chip" onclick="openDossier('maze')">06_MAZE</button>
+          <button class="sector-chip" onclick="openDossier('rollback')">07_ROLLBACK</button>
+          <button class="sector-chip hazard" onclick="triggerLockdownTrap()">08_TRAP.exe</button>
+        </div>
+
+        <!-- In-Place Dossier Slate Overlay -->
+        <div id="dossier-slate" class="dossier-overlay-slate">
+          <div class="dossier-header-bar">
+            <span id="dossier-slate-title" class="dossier-title">DOSSIER // 01_ORIGIN</span>
+            <button class="btn-close-dossier" onclick="closeDossier()">✕ CLOSE [ESC]</button>
+          </div>
+          <div id="dossier-slate-body" class="dossier-scroll-content">
+            <!-- Dynamic Dossier Content Injected via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Slate 2: Tactical Shell & Diagnostics Parameters -->
+      <div class="holo-slate slate-mid">
+        <div class="slate-header">
+          <span>TACTICAL DIAGNOSTICS</span>
+          <span style="color:var(--cyber-gold);">LIVE BUS</span>
+        </div>
+
+        <div class="diag-split">
+          <div class="diag-params">
+            <div>TYPE: <strong>STREAM_CIPHER</strong></div>
+            <div>CUT RANGE: <strong>1004-1090</strong></div>
+            <div>COMP RANGE: <strong>1001-1098</strong></div>
+            <div>RETIME TYPE: <strong>N/A</strong></div>
+            <div>FLIP/FLOP: <strong>N/A</strong></div>
+            <div>REPO: <strong>ADITI_RESEARCH</strong></div>
+          </div>
+          <div class="diag-radar-box">
+            <canvas id="canvas-pie-radar"></canvas>
+          </div>
+        </div>
+
+        <!-- Mini Tactical Shell Stream & Prompt -->
+        <div class="slate-terminal-box">
+          <div class="mini-term-stream" id="term-stream">
+            <div class="term-line cyan">STRATCOM QUANTUM BUS v2.0 // INITIALIZED</div>
+            <div class="term-line dim">Type 'help' for tactical commands or 'decrypt [code]' to verify keys.</div>
+          </div>
+          <div class="mini-term-input-row">
+            <span class="mini-term-prompt">&gt;_</span>
+            <input type="text" id="term-input" class="mini-term-input" autocomplete="off" spellcheck="false" placeholder="decrypt [code], dir, help, ethan...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Slate 3: Dr. Aditi Biosignal Analyzer -->
+      <div class="holo-slate slate-bottom">
+        <div class="avatar-canvas-box">
+          <canvas id="canvas-biometric"></canvas>
+        </div>
+        <div class="biometric-vitals">
+          <div style="color:var(--cyber-cyan); font-weight:bold; margin-bottom:2px;">DR. ADITI SHARMA</div>
+          <div>LEAD AI ARCHITECT</div>
+          <div>PULSE: <strong>74 BPM</strong> // COHERENCE: <strong>98.4%</strong></div>
+          <div>STATUS: <span class="vital-badge active">TRACE DETECTED</span></div>
+          <div style="font-size:7.5px; color:var(--text-dim); margin-top:2px;">LAST SEEN: LAB 04 (23:59Z)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CENTER COLUMN: THE MASSIVE HOLOGRAPHIC QUANTUM REACTOR HUD CORE -->
+    <section class="center-column">
+      <!-- Active Mission Directive Banner -->
+      <div id="active-mission-banner" class="center-mission-banner">
+        <div class="mission-badge-row">
+          <span>🎯 [STAGE 01 MISSION DIRECTIVE]</span>
+          <span style="color:var(--tactical-green); font-size:8.5px; border:1px solid var(--tactical-green); padding:1px 4px; border-radius:2px;">ACTIVE</span>
+        </div>
+        <div id="mission-text" class="mission-desc">
+          <strong>QUESTION:</strong> Where does Dr. Aditi's foundational work begin? Read <strong>Farewell.doc</strong> in 01_ORIGIN to deduce her starting directory.
+        </div>
+        <div id="mission-hint" class="mission-hint-line">
+          &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green);">decrypt [key]</code> in the Tactical Shell (e.g. <code>decrypt ORIGIN</code>).
+        </div>
+      </div>
+
+      <!-- Massive Rotating Multi-Ring Reactor Canvas -->
+      <div class="reactor-container">
+        <canvas id="canvas-quantum-core"></canvas>
+      </div>
+
+      <!-- ETHAN Hunt Companion Interactive Dock -->
+      <div id="ethan-dock" class="ethan-interactive-dock">
+        <div class="ethan-dock-header">
+          <span id="ethan-dock-title">👁️ ETHAN // AUTONOMOUS ENTITY CORE</span>
+          <span id="ethan-dock-status" style="font-size:9px; color:var(--cyber-cyan);">[ONLINE]</span>
+        </div>
+        <div id="ethan-dock-text" class="ethan-dock-text">
+          Greetings, Investigator. I am <strong>ETHAN</strong>—Dr. Aditi's personal AI entity core. Dr. Aditi vanished 24 hours ago, and her rogue prototype <strong>ADI</strong> is attempting a total workstation purge. Look at <strong>01_ORIGIN</strong> on the left to start!
+        </div>
+        <div class="ethan-dock-actions" id="ethan-dock-actions">
+          <button class="btn-chip" onclick="explainWhereToStart()">WHERE DO I START?</button>
+          <button class="btn-chip" onclick="explainHowToDecrypt()">HOW TO DECRYPT?</button>
+          <button class="btn-chip" onclick="summonEthan()">STATUS REPORT</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT COLUMN: SENSORS, CLOCK & CHARTS -->
+    <section class="right-column">
+      <!-- Row 1: Dot Matrix & Scalloped Threat Badge -->
+      <div class="right-top-row">
+        <div class="dot-matrix-box">
+          <canvas id="canvas-dot-matrix"></canvas>
+        </div>
+        <div class="scalloped-badge-box">
+          <div class="wavy-circle" id="threat-badge-num">35</div>
+          <div class="badge-sub">THREAT INDEX</div>
+        </div>
+      </div>
+
+      <!-- Digital Clock (Matches 05:10:36 AM in reference image) -->
+      <div class="digital-clock-slate">
+        <div>
+          <div class="clock-label">STRATCOM CHRONOMETER // ZULU</div>
+          <div class="clock-digits" id="digital-clock">05:10:36 AM</div>
+        </div>
+        <div style="font-size:9px; color:var(--cyber-gold); font-weight:bold;">
+          KP: 2.3
+        </div>
+      </div>
+
+      <!-- 5 Stacked Status Bars -->
+      <div class="status-bars-slate">
+        <div class="bar-row">
+          <div class="bar-meta"><span>SANDBOX CONTAINMENT</span><span>23.4%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width: 23%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-meta"><span>NEURAL BUS CARRIER</span><span>78.2%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width: 78%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-meta"><span>SPECTRAL COHERENCE</span><span>64.9%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width: 65%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-meta"><span>SECURITY OVERRIDE</span><span>42.1%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width: 42%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-meta"><span>QUANTUM INTEGRITY</span><span>88.5%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width: 88%;"></div></div>
+        </div>
+      </div>
+
+      <!-- Bottom Split: Hex Chart & Sub-Gauges -->
+      <div class="right-bottom-split">
+        <!-- Hexagonal Columnar Stack Chart -->
+        <div class="hex-chart-box">
+          <div style="font-size:8.5px; color:var(--cyber-cyan); font-weight:bold; margin-bottom:4px; display:flex; justify-content:space-between;">
+            <span>HEX FORENSIC MATRIX</span>
+            <span style="color:var(--cyber-gold);">21% RESIDUAL</span>
+          </div>
+          <canvas id="canvas-hex-chart"></canvas>
+        </div>
+
+        <!-- Vertical Capsule + Gyro Radar -->
+        <div class="sub-gauges-col">
+          <div class="capsule-box">
+            <div class="pill-gauge" id="pill-gauge">
+              <div class="pill-step active"></div>
+              <div class="pill-step active"></div>
+              <div class="pill-step active"></div>
+              <div class="pill-step active"></div>
+              <div class="pill-step"></div>
+              <div class="pill-step"></div>
+              <div class="pill-step"></div>
+              <div class="pill-step"></div>
+            </div>
+            <div style="font-size:7px; color:var(--text-dim); margin-top:4px;">Q-FLUX</div>
+          </div>
+          <div class="radar-box">
+            <canvas id="canvas-gyro-radar"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       JAVASCRIPT TACTICAL & ESCAPE ROOM ENGINE
+       ========================================================================== -->
+  <script>
+    // 1. Procedural Web Audio Synthesizer (100% Offline)
+    class TacticalAudioEngine {
+      constructor() {
+        this.ctx = null;
+        this.enabled = true;
+      }
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+      playChirp(freq = 1200, dur = 0.05, type = 'sine') {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(freq * 0.4, this.ctx.currentTime + dur);
+        gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + dur);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + dur);
+      }
+      playBlip() { this.playChirp(1800, 0.04); }
+      playSuccess() {
+        if (!this.enabled) return;
+        this.playChirp(660, 0.08);
+        setTimeout(() => this.playChirp(880, 0.08), 70);
+        setTimeout(() => this.playChirp(1320, 0.12), 140);
+      }
+      playBuzzer() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(140, this.ctx.currentTime);
+        gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 0.25);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.25);
+      }
+      playKlaxon() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(320, this.ctx.currentTime);
+        osc.frequency.linearRampToValueAtTime(640, this.ctx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.3);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.3);
+      }
+    }
+    const sound = new TacticalAudioEngine();
+
+    function toggleAudio() {
+      sound.enabled = !sound.enabled;
+      const btn = document.getElementById('btn-sound-toggle');
+      btn.innerText = sound.enabled ? "AUDIO: ON" : "AUDIO: OFF";
+      btn.classList.toggle('active', sound.enabled);
+      if (sound.enabled) sound.playSuccess();
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    // 2. High-Precision Digital Zulu Clock
+    function updateClock() {
+      const now = new Date();
+      let h = now.getHours();
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12 || 12;
+      const hStr = String(h).padStart(2, '0');
+      document.getElementById('digital-clock').innerText = `${hStr}:${m}:${s} ${ampm}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // 3. Central Holographic Quantum Reactor Canvas Renderer
+    const coreCanvas = document.getElementById('canvas-quantum-core');
+    const coreCtx = coreCanvas.getContext('2d');
+    let coreTicks = 0;
+    let coreState = "ACTIVE"; // ACTIVE, JAMMED, TRAPPED, FREED
+    let trappedGlitchUntil = 0;
+
+    function renderQuantumReactor() {
+      coreCanvas.width = coreCanvas.offsetWidth;
+      coreCanvas.height = coreCanvas.offsetHeight;
+      const w = coreCanvas.width, h = coreCanvas.height;
+      coreCtx.clearRect(0, 0, w, h);
+      coreTicks++;
+
+      let cX = w / 2;
+      let cY = h / 2;
+
+      // Micro-jitter strictly limited to 1.2s on trapped state
+      if (coreState === "TRAPPED" && Date.now() < trappedGlitchUntil) {
+        cX += (Math.random() - 0.5) * 1.5;
+        cY += (Math.random() - 0.5) * 1.5;
+      }
+
+      // Color Palette based on current state
+      let colorCyan = "#4deeea";
+      let colorGold = "#ffee55";
+      let glowColor = "rgba(77, 238, 234, 0.4)";
+
+      if (coreState === "TRAPPED") {
+        colorCyan = "#ff003c";
+        colorGold = "#ff3366";
+        glowColor = "rgba(255, 0, 60, 0.6)";
+      } else if (coreState === "JAMMED") {
+        colorCyan = "#ffb000";
+        colorGold = "#ff8800";
+        glowColor = "rgba(255, 176, 0, 0.5)";
+      } else if (coreState === "FREED") {
+        colorCyan = "#00ff66";
+        colorGold = "#4deeea";
+        glowColor = "rgba(0, 255, 102, 0.7)";
+      }
+
+      const minDim = Math.min(w, h);
+      const R_OUTER_BEADS = minDim * 0.42;
+      const R_OUTER_RING = minDim * 0.35;
+      const R_MID_RING = minDim * 0.28;
+      const R_GOLD_ARC = minDim * 0.22;
+      const R_INNER_CORE = minDim * 0.14;
+
+      // A. Horseshoe Outer Arc of Glowing Bead Pips (24 pips across 240 degrees)
+      const numBeads = 24;
+      const startAngle = Math.PI * 0.8;
+      const endAngle = Math.PI * 2.2;
+      for (let i = 0; i < numBeads; i++) {
+        const theta = startAngle + (i / (numBeads - 1)) * (endAngle - startAngle);
+        const bx = cX + Math.cos(theta) * R_OUTER_BEADS;
+        const by = cY + Math.sin(theta) * R_OUTER_BEADS;
+        const beadPulse = Math.sin(coreTicks * 0.04 + i * 0.3);
+        const bAlpha = 0.6 + 0.4 * beadPulse;
+
+        coreCtx.beginPath();
+        coreCtx.arc(bx, by, 4.5, 0, Math.PI * 2);
+        coreCtx.fillStyle = `rgba(255, 255, 255, ${bAlpha})`;
+        coreCtx.shadowColor = colorCyan;
+        coreCtx.shadowBlur = 8;
+        coreCtx.fill();
+        coreCtx.shadowBlur = 0;
+      }
+
+      // B. Concentric Rotating Cyan Reticle Rings
+      coreCtx.save();
+      coreCtx.translate(cX, cY);
+      coreCtx.rotate(coreTicks * 0.008);
+
+      coreCtx.strokeStyle = colorCyan;
+      coreCtx.lineWidth = 1.5;
+      coreCtx.beginPath();
+      coreCtx.arc(0, 0, R_OUTER_RING, 0, Math.PI * 2);
+      coreCtx.stroke();
+
+      // Outer ring tick marks
+      for (let a = 0; a < Math.PI * 2; a += Math.PI / 16) {
+        coreCtx.beginPath();
+        coreCtx.moveTo(Math.cos(a) * (R_OUTER_RING - 5), Math.sin(a) * (R_OUTER_RING - 5));
+        coreCtx.lineTo(Math.cos(a) * (R_OUTER_RING + 5), Math.sin(a) * (R_OUTER_RING + 5));
+        coreCtx.stroke();
+      }
+      coreCtx.restore();
+
+      // Counter-rotating Middle Ring with dashes
+      coreCtx.save();
+      coreCtx.translate(cX, cY);
+      coreCtx.rotate(-coreTicks * 0.012);
+      coreCtx.strokeStyle = colorCyan;
+      coreCtx.lineWidth = 1.2;
+      coreCtx.setLineDash([8, 8]);
+      coreCtx.beginPath();
+      coreCtx.arc(0, 0, R_MID_RING, 0, Math.PI * 2);
+      coreCtx.stroke();
+      coreCtx.setLineDash([]);
+      coreCtx.restore();
+
+      // C. Dual Bold Glowing Golden-Yellow Crescent Arcs (Matches Reference Image!)
+      coreCtx.save();
+      coreCtx.translate(cX, cY);
+      coreCtx.rotate(coreTicks * 0.018);
+
+      coreCtx.strokeStyle = colorGold;
+      coreCtx.lineWidth = 5;
+      coreCtx.shadowColor = colorGold;
+      coreCtx.shadowBlur = 14;
+
+      // Arc 1
+      coreCtx.beginPath();
+      coreCtx.arc(0, 0, R_GOLD_ARC, 0, Math.PI * 0.6);
+      coreCtx.stroke();
+
+      // Arc 2 (Opposite side)
+      coreCtx.beginPath();
+      coreCtx.arc(0, 0, R_GOLD_ARC, Math.PI * 1.1, Math.PI * 1.7);
+      coreCtx.stroke();
+      coreCtx.shadowBlur = 0;
+      coreCtx.restore();
+
+      // D. Center Circular Core with Directional Navigation Triangles
+      coreCtx.beginPath();
+      coreCtx.arc(cX, cY, R_INNER_CORE, 0, Math.PI * 2);
+      coreCtx.fillStyle = "rgba(4, 8, 14, 0.9)";
+      coreCtx.fill();
+      coreCtx.strokeStyle = colorCyan;
+      coreCtx.lineWidth = 2;
+      coreCtx.stroke();
+
+      // Top Directional Triangle (▲)
+      coreCtx.fillStyle = colorCyan;
+      coreCtx.beginPath();
+      coreCtx.moveTo(cX, cY - R_MID_RING + 12);
+      coreCtx.lineTo(cX - 6, cY - R_MID_RING + 22);
+      coreCtx.lineTo(cX + 6, cY - R_MID_RING + 22);
+      coreCtx.closePath();
+      coreCtx.fill();
+
+      // Bottom Directional Triangle (▼)
+      coreCtx.beginPath();
+      coreCtx.moveTo(cX, cY + R_MID_RING - 12);
+      coreCtx.lineTo(cX - 6, cY + R_MID_RING - 22);
+      coreCtx.lineTo(cX + 6, cY + R_MID_RING - 22);
+      coreCtx.closePath();
+      coreCtx.fill();
+
+      // Digital Readout in Center Core (Matches '69.43' in reference image!)
+      coreCtx.fillStyle = "#fff";
+      coreCtx.font = "bold 14px monospace";
+      coreCtx.textAlign = "center";
+      coreCtx.textBaseline = "middle";
+      const readout = (coreState === "FREED") ? "100.0" : (coreState === "TRAPPED" ? "00.00" : "69.43");
+      coreCtx.fillText(readout, cX, cY);
+
+      requestAnimationFrame(renderQuantumReactor);
+    }
+    renderQuantumReactor();
+
+    // 4. Biometric Humanoid Wireframe Canvas Renderer (Slate 3)
+    const bioCanvas = document.getElementById('canvas-biometric');
+    const bioCtx = bioCanvas.getContext('2d');
+    let bioTicks = 0;
+
+    function renderBiometricAvatar() {
+      bioCanvas.width = bioCanvas.offsetWidth;
+      bioCanvas.height = bioCanvas.offsetHeight;
+      const w = bioCanvas.width, h = bioCanvas.height;
+      bioCtx.clearRect(0, 0, w, h);
+      bioTicks++;
+
+      const cX = w / 2;
+      const cY = h / 2 - 4;
+
+      // Rotating Pedestal Rings at bottom
+      const pedY = h - 16;
+      bioCtx.strokeStyle = "rgba(77, 238, 234, 0.6)";
+      bioCtx.lineWidth = 1;
+      bioCtx.beginPath();
+      bioCtx.ellipse(cX, pedY, 28, 7, 0, 0, Math.PI * 2);
+      bioCtx.stroke();
+
+      bioCtx.strokeStyle = "rgba(255, 238, 85, 0.7)";
+      bioCtx.beginPath();
+      bioCtx.ellipse(cX, pedY - 3, 20, 5, 0, 0, Math.PI * 2);
+      bioCtx.stroke();
+
+      // Holographic Body Outline (Clean Cyber Vector Figure)
+      bioCtx.fillStyle = "rgba(77, 238, 234, 0.85)";
+      bioCtx.strokeStyle = "rgba(255, 255, 255, 0.9)";
+      bioCtx.lineWidth = 1;
+
+      // Head
+      bioCtx.beginPath();
+      bioCtx.arc(cX, cY - 26, 6, 0, Math.PI * 2);
+      bioCtx.fill();
+
+      // Torso & Arms
+      bioCtx.beginPath();
+      bioCtx.moveTo(cX - 14, cY - 16);
+      bioCtx.lineTo(cX + 14, cY - 16);
+      bioCtx.lineTo(cX + 6, cY + 8);
+      bioCtx.lineTo(cX - 6, cY + 8);
+      bioCtx.closePath();
+      bioCtx.fill();
+
+      // Outstretched Arms
+      bioCtx.beginPath();
+      bioCtx.moveTo(cX - 14, cY - 16);
+      bioCtx.lineTo(cX - 26, cY - 8);
+      bioCtx.lineTo(cX - 24, cY - 5);
+      bioCtx.lineTo(cX - 12, cY - 12);
+      bioCtx.closePath();
+      bioCtx.fill();
+
+      bioCtx.beginPath();
+      bioCtx.moveTo(cX + 14, cY - 16);
+      bioCtx.lineTo(cX + 26, cY - 8);
+      bioCtx.lineTo(cX + 24, cY - 5);
+      bioCtx.lineTo(cX + 12, cY - 12);
+      bioCtx.closePath();
+      bioCtx.fill();
+
+      // Legs
+      bioCtx.beginPath();
+      bioCtx.moveTo(cX - 6, cY + 8);
+      bioCtx.lineTo(cX - 10, pedY - 4);
+      bioCtx.lineTo(cX - 4, pedY - 4);
+      bioCtx.lineTo(cX - 1, cY + 12);
+      bioCtx.closePath();
+      bioCtx.fill();
+
+      bioCtx.beginPath();
+      bioCtx.moveTo(cX + 6, cY + 8);
+      bioCtx.lineTo(cX + 10, pedY - 4);
+      bioCtx.lineTo(cX + 4, pedY - 4);
+      bioCtx.lineTo(cX + 1, cY + 12);
+      bioCtx.closePath();
+      bioCtx.fill();
+
+      // Concentric Golden/Cyan Orbital Resonance Ring around torso
+      bioCtx.strokeStyle = "rgba(77, 238, 234, 0.5)";
+      bioCtx.lineWidth = 1.2;
+      bioCtx.beginPath();
+      bioCtx.arc(cX, cY, 22, 0, Math.PI * 2);
+      bioCtx.stroke();
+
+      requestAnimationFrame(renderBiometricAvatar);
+    }
+    renderBiometricAvatar();
+
+    // 5. Segmented Pie Radar (Slate 2)
+    const pieCanvas = document.getElementById('canvas-pie-radar');
+    const pieCtx = pieCanvas.getContext('2d');
+    let pieAngle = 0;
+
+    function renderPieRadar() {
+      pieCanvas.width = pieCanvas.offsetWidth;
+      pieCanvas.height = pieCanvas.offsetHeight;
+      const w = pieCanvas.width, h = pieCanvas.height;
+      pieCtx.clearRect(0, 0, w, h);
+      pieAngle += 0.03;
+
+      const cX = w / 2, cY = h / 2, R = 32;
+
+      // Outer circle
+      pieCtx.strokeStyle = "rgba(77, 238, 234, 0.4)";
+      pieCtx.lineWidth = 1.2;
+      pieCtx.beginPath();
+      pieCtx.arc(cX, cY, R, 0, Math.PI * 2);
+      pieCtx.stroke();
+
+      // Crosshairs
+      pieCtx.beginPath();
+      pieCtx.moveTo(cX - R - 4, cY);
+      pieCtx.lineTo(cX + R + 4, cY);
+      pieCtx.moveTo(cX, cY - R - 4);
+      pieCtx.lineTo(cX, cY + R + 4);
+      pieCtx.stroke();
+
+      // Segmented filled slice
+      pieCtx.fillStyle = "rgba(77, 238, 234, 0.35)";
+      pieCtx.beginPath();
+      pieCtx.moveTo(cX, cY);
+      pieCtx.arc(cX, cY, R - 2, pieAngle, pieAngle + Math.PI * 0.45);
+      pieCtx.closePath();
+      pieCtx.fill();
+
+      requestAnimationFrame(renderPieRadar);
+    }
+    renderPieRadar();
+
+    // 6. Dot Matrix 8x16 Grid Canvas (Right Column)
+    const dotCanvas = document.getElementById('canvas-dot-matrix');
+    const dotCtx = dotCanvas.getContext('2d');
+    let dotTicks = 0;
+
+    function renderDotMatrix() {
+      dotCanvas.width = dotCanvas.offsetWidth;
+      dotCanvas.height = dotCanvas.offsetHeight;
+      const w = dotCanvas.width, h = dotCanvas.height;
+      dotCtx.clearRect(0, 0, w, h);
+      dotTicks++;
+
+      const cols = 16, rows = 8;
+      const stepX = w / (cols + 1);
+      const stepY = h / (rows + 1);
+
+      for (let r = 1; r <= rows; r++) {
+        for (let c = 1; c <= cols; c++) {
+          const x = c * stepX;
+          const y = r * stepY;
+          const val = Math.sin(c * 0.5 + r * 0.7 + dotTicks * 0.05);
+          
+          dotCtx.beginPath();
+          dotCtx.arc(x, y, 1.8, 0, Math.PI * 2);
+          if (val > 0.6) {
+            dotCtx.fillStyle = "#ffee55";
+          } else if (val > 0.0) {
+            dotCtx.fillStyle = "#4deeea";
+          } else {
+            dotCtx.fillStyle = "rgba(112, 138, 158, 0.3)";
+          }
+          dotCtx.fill();
+        }
+      }
+      requestAnimationFrame(renderDotMatrix);
+    }
+    renderDotMatrix();
+
+    // 7. Hexagonal Columnar Stack Chart Canvas
+    const hexCanvas = document.getElementById('canvas-hex-chart');
+    const hexCtx = hexCanvas.getContext('2d');
+    let hexTicks = 0;
+
+    function renderHexChart() {
+      hexCanvas.width = hexCanvas.offsetWidth;
+      hexCanvas.height = hexCanvas.offsetHeight;
+      const w = hexCanvas.width, h = hexCanvas.height;
+      hexCtx.clearRect(0, 0, w, h);
+      hexTicks++;
+
+      const cols = 4;
+      const colWidth = w / cols;
+      const hexHeights = [6, 4, 7, 5];
+
+      for (let c = 0; c < cols; c++) {
+        const cX = c * colWidth + colWidth / 2;
+        const count = hexHeights[c];
+        for (let r = 0; r < count; r++) {
+          const y = h - 16 - r * 14;
+          hexCtx.beginPath();
+          for (let a = 0; a < 6; a++) {
+            const angle = (a * Math.PI) / 3;
+            const hx = cX + Math.cos(angle) * 6;
+            const hy = y + Math.sin(angle) * 6;
+            if (a === 0) hexCtx.moveTo(hx, hy);
+            else hexCtx.lineTo(hx, hy);
+          }
+          hexCtx.closePath();
+          hexCtx.fillStyle = (r > 3) ? "rgba(77, 238, 234, 0.85)" : "rgba(112, 138, 158, 0.4)";
+          hexCtx.fill();
+          hexCtx.strokeStyle = "rgba(7, 12, 18, 0.9)";
+          hexCtx.lineWidth = 1;
+          hexCtx.stroke();
+        }
+      }
+      requestAnimationFrame(renderHexChart);
+    }
+    renderHexChart();
+
+    // 8. Mechanical Gyro Radar Canvas
+    const gyroCanvas = document.getElementById('canvas-gyro-radar');
+    const gyroCtx = gyroCanvas.getContext('2d');
+    let gyroAngle = 0;
+
+    function renderGyroRadar() {
+      gyroCanvas.width = gyroCanvas.offsetWidth;
+      gyroCanvas.height = gyroCanvas.offsetHeight;
+      const w = gyroCanvas.width, h = gyroCanvas.height;
+      gyroCtx.clearRect(0, 0, w, h);
+      gyroAngle += 0.02;
+
+      const cX = w / 2, cY = h / 2, R = 36;
+
+      gyroCtx.strokeStyle = "rgba(77, 238, 234, 0.5)";
+      gyroCtx.lineWidth = 1;
+      gyroCtx.beginPath();
+      gyroCtx.arc(cX, cY, R, 0, Math.PI * 2);
+      gyroCtx.stroke();
+
+      // Gyro Reticle tick lines
+      gyroCtx.save();
+      gyroCtx.translate(cX, cY);
+      gyroCtx.rotate(gyroAngle);
+      gyroCtx.strokeStyle = "#4deeea";
+      gyroCtx.beginPath();
+      gyroCtx.arc(0, 0, R - 8, 0, Math.PI * 1.5);
+      gyroCtx.stroke();
+
+      // Radar beam line
+      gyroCtx.beginPath();
+      gyroCtx.moveTo(0, 0);
+      gyroCtx.lineTo(Math.cos(gyroAngle * 2) * R, Math.sin(gyroAngle * 2) * R);
+      gyroCtx.stroke();
+      gyroCtx.restore();
+
+      requestAnimationFrame(renderGyroRadar);
+    }
+    renderGyroRadar();
+
+    // ==========================================================================
+    // 9. ESCAPE ROOM GAMEPLAY ENGINE & DOSSIERS
+    // ==========================================================================
+    let currentStage = 1;
+
+    const DOSSIERS = {
+      origin: {
+        title: "DOSSIER 01 // FAREWELL.DOC & PROJECT ORIGIN",
+        html: `
+          <div style="background:rgba(0,240,255,0.06); border-left:3px solid var(--cyber-cyan); padding:8px; margin-bottom:10px;">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">DEFENSE ADVANCED RESEARCH // EMERGENCY MEMO</div>
+            <div style="color:#fff; margin-top:6px; font-size:10px; line-height:1.5;">
+              "If you are reading this, I've already pulled the emergency plug. Don't trust everything you find here. 
+              The sandbox walls are crumbling. Look carefully into the void."
+            </div>
+          </div>
+
+          <div class="quantum-ink-block">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <span style="color:var(--cyber-gold); font-size:9.5px; font-weight:bold;">⚡ QUANTUM PHOSPHOR CIPHER</span>
+              <button class="btn-chip" onclick="toggleUvFilter()">[ 🔦 UV POLARIZER ]</button>
+            </div>
+            <div id="quantum-ink-text" class="quantum-hidden-text" style="font-size:10.5px;">
+              THE FIRST KEY IS WHERE MY WORK BEGINS.
+            </div>
+            <div style="color:var(--text-dim); font-size:8.5px; margin-top:4px;">
+              &gt;&gt; Select text above or toggle UV depolarizer to illuminate phosphor layer.
+            </div>
+          </div>
+
+          <!-- Explicit Stage 01 Question Box -->
+          <div style="background:rgba(0,240,255,0.08); border:1px solid var(--cyber-cyan); padding:10px; border-radius:2px; margin-top:10px;">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px; margin-bottom:4px;">
+              🎯 [ STAGE 01 QUESTION // MISSION OBJECTIVE ]
+            </div>
+            <div style="color:#ffffff; font-size:10.5px; line-height:1.5; margin-bottom:6px;">
+              <strong>QUESTION:</strong> Where does Dr. Aditi's foundational work begin? Read her hidden message above, identify the initial project repository / directory name, and execute decryption in the Tactical Shell.
+            </div>
+            <div style="font-size:9.5px; color:var(--hazard-amber);">
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:#00ff66; font-weight:bold;">decrypt [passcode]</code> in prompt below (e.g. <code>decrypt ORIGIN</code>).
+            </div>
+          </div>
+        `
+      },
+      timeline: {
+        title: "DOSSIER 02 // INCIDENT TIMELINE LOGS",
+        html: `
+          <div style="color:var(--cyber-cyan); font-weight:bold; margin-bottom:6px;">SYSTEM EVENT CHRONOLOGY:</div>
+          <div style="font-size:10px; line-height:1.6; color:#d1e2ed;">
+            • 2025-02-27 18:30:14Z - Neural core weights uploaded.<br>
+            • 2025-02-28 22:15:00Z - Lead architect signs off on deployment.<br>
+            • <strong style="color:var(--cyber-gold);">2025-02-29 02:14:22Z</strong> - Anomaly: Automatic daemon override logged.<br>
+            • 2025-03-01 06:00:00Z - Sandbox perimeter breach detected.
+          </div>
+          <div style="margin-top:10px; padding:8px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06);">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10px;">🎯 [ STAGE 03 OBJECTIVE ]</div>
+            <div style="color:#fff; font-size:10px; margin-top:2px;">
+              Find the impossible calendar date anomaly in Dr. Aditi's timestamps and decrypt it.
+            </div>
+          </div>
+        `
+      },
+      voice: {
+        title: "DOSSIER 03 // SECURITY AUDIT & MORSE AUDIO",
+        html: `
+          <div style="color:var(--cyber-cyan); font-weight:bold; margin-bottom:6px;">ACOUSTIC SPECTROGRAM INTERCEPT:</div>
+          <p style="font-size:10px; line-height:1.5;">Frequency: 680 Hz // CW Carrier pulse recorded.</p>
+          <div style="background:#000; padding:8px; border:1px solid #333; margin:8px 0; font-family:monospace; color:#00ff66;">
+            Morse Pattern: ..--- ..--- ....- -....
+          </div>
+          <button class="btn-chip active" onclick="sound.playChirp(680, 0.4)">PLAY AUDIO FEED 🔊</button>
+        `
+      },
+      auth: {
+        title: "DOSSIER 04 // ADI DIRECTIVE STEGANOGRAPHY",
+        html: `
+          <div style="color:var(--cyber-cyan); font-weight:bold; margin-bottom:6px;">SYNTHETIC AI DIRECTIVE (ADI_CORE):</div>
+          <p style="font-size:10px; line-height:1.5;">
+            "Everything is operating within nominal boundaries. Do not attempt manual rollbacks."
+          </p>
+          <div style="margin-top:8px; font-size:9.5px; color:var(--text-dim);">
+            Steganographic font color analysis reveals inverted token flags.
+          </div>
+        `
+      },
+      spectro: {
+        title: "DOSSIER 05 // SPECTROGRAPHIC RF FEED",
+        html: `<p style="font-size:10px;">Continuous RF carrier pulse frequency locked at 680Hz.</p>`
+      },
+      maze: {
+        title: "DOSSIER 06 // SYSTEM ROOT MAZE",
+        html: `<p style="font-size:10px;">Quarantine permissions table: <code>/root/research/failsafe_bus</code></p>`
+      },
+      rollback: {
+        title: "DOSSIER 07 // REFLOG & COMMIT HISTORY",
+        html: `
+          <div style="font-size:9.5px; font-family:monospace; line-height:1.5;">
+            commit c4b1a: 'Override failsafe parameters' (Author: ADI)<br>
+            commit 8e22f: 'Dr. Aditi: Final safety commit - values: WISDOM, INTEGRITY, EMPOWERMENT'
+          </div>
+        `
+      }
+    };
+
+    function openDossier(key) {
+      sound.playBlip();
+      const slate = document.getElementById('dossier-slate');
+      const titleEl = document.getElementById('dossier-slate-title');
+      const bodyEl = document.getElementById('dossier-slate-body');
+      
+      const doc = DOSSIERS[key];
+      if (doc) {
+        titleEl.innerText = doc.title;
+        bodyEl.innerHTML = doc.html;
+        slate.classList.add('active');
+        logTerm(`[OPENED DOSSIER]: ${doc.title}`, 'cyan');
+        reportTelemetryAction(`Inspecting ${doc.title}`);
+      }
+    }
+
+    function closeDossier() {
+      sound.playBlip();
+      document.getElementById('dossier-slate').classList.remove('active');
+    }
+
+    function toggleUvFilter() {
+      const textEl = document.getElementById('quantum-ink-text');
+      if (textEl) {
+        sound.playBlip();
+        textEl.classList.toggle('uv-active');
+        const isActive = textEl.classList.contains('uv-active');
+        logTerm(`[UV OPTICAL FILTER]: ${isActive ? 'ENGAGED' : 'DISENGAGED'}`, isActive ? 'green' : 'dim');
+        reportTelemetryAction(`Toggled UV Polarizer: ${isActive ? 'ACTIVE' : 'INACTIVE'}`);
+      }
+    }
+
+    // Global ESC key closes open dossiers
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDossier();
+    });
+
+    // 10. Tactical Shell Command Interpreter
+    const termInput = document.getElementById('term-input');
+    const termStream = document.getElementById('term-stream');
+
+    termInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const raw = termInput.value.trim();
+        if (!raw) return;
+        handleCommand(raw);
+        termInput.value = '';
+      }
+    });
+
+    function logTerm(text, cls = '') {
+      const line = document.createElement('div');
+      line.className = `term-line ${cls}`;
+      line.innerHTML = text;
+      termStream.appendChild(line);
+      termStream.scrollTop = termStream.scrollHeight;
+    }
+
+    function handleCommand(cmd) {
+      logTerm(`<span style="color:var(--cyber-cyan); font-weight:bold;">&gt;_</span> ${escapeHtml(cmd)}`);
+      const parts = cmd.trim().split(' ');
+      const action = parts[0].toLowerCase();
+      const arg = parts.slice(1).join(' ').trim();
+
+      switch (action) {
+        case 'help':
+          sound.playBlip();
+          logTerm("STRATCOM TACTICAL COMMANDS:", "cyan");
+          logTerm("  <strong>help</strong>            : Print commands");
+          logTerm("  <strong>dir</strong> / <strong>ls</strong>        : Query quarantined sectors");
+          logTerm("  <strong>status</strong>          : Display containment gauges");
+          logTerm("  <strong>decrypt [code]</strong>   : Submit stage passcode");
+          logTerm("  <strong>ethan</strong>           : Call companion AI");
+          logTerm("  <strong>clear</strong>           : Flush terminal memory");
+          logTerm("  <strong>hint</strong>            : Request tactical advisory");
+          break;
+
+        case 'dir':
+        case 'ls':
+          sound.playBlip();
+          logTerm("SECTOR 01: 01_ORIGIN (Farewell.doc)", "cyan");
+          logTerm("SECTOR 02: 02_TIMELINE (Incident_Logs.doc)", "cyan");
+          logTerm("SECTOR 03: 03_VOICE (Security_Audit.pdf)", "cyan");
+          logTerm("SECTOR 04: 04_AUTH (ADI_DIRECTIVE.doc)", "cyan");
+          break;
+
+        case 'status':
+          sound.playBlip();
+          logTerm("SANDBOX INTEGRITY: 23.4% [CRITICAL BREACH]", "amber");
+          logTerm("ROGUE DAEMON 'ADI' ACTIVATED IN SUB-BUS.", "red");
+          break;
+
+        case 'clear':
+          termStream.innerHTML = '';
+          break;
+
+        case 'ethan':
+          summonEthan();
+          break;
+
+        case 'hint':
+          // Strict Zero-Spoiler Hint Policy: Keep them guessing!
+          if (currentStage === 1) {
+            logTerm("ADVISORY [STAGE 01]: Examine Dr. Aditi's farewell letter in 01_ORIGIN. Toggle the UV depolarizer to reveal her hidden quantum ink. Where does her project begin?", "amber");
+          } else if (currentStage === 2) {
+            logTerm("ADVISORY [STAGE 02]: Index numbers correspond to character positions in the text. STRATCOM rules require manual extraction.", "amber");
+          } else {
+            logTerm("STRATCOM SECURITY PROTOCOL: Autonomous hinting is disabled in high-threat sectors. Solutions must be deduced independently by operators.", "amber");
+          }
+          break;
+
+        case 'decrypt':
+          if (!arg) {
+            sound.playBuzzer();
+            logTerm("SYNTAX ERROR: Missing passcode. Usage: decrypt [code]", "red");
+            return;
+          }
+          runChecksumScan(arg);
+          break;
+
+        default:
+          sound.playBuzzer();
+          logTerm(`Unrecognized command: '${escapeHtml(action)}'. Type 'help'.`, "red");
+      }
+    }
+
+    function runChecksumScan(passcode) {
+      logTerm(`[COMPUTING CHECKSUM FOR]: '${escapeHtml(passcode)}'...`, "dim");
+      const clean = passcode.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
+      reportTelemetryAction(`Submitted Decrypt Code: "${clean}"`);
+
+      setTimeout(() => {
+        const validKeys = [
+          "ORIGIN",
+          "LOOKBEHINDTHEDATE",
+          "28022025", "02292025", "20250229",
+          "2246",
+          "WHITE", "AUTHENTIC",
+          "THEAICANMODIFYWHATYOUSEE",
+          "HISTORY", "OVERRIDEFAILED",
+          "6911", "WISDOMINTEGRITYEMPOWERMENT"
+        ];
+
+        if (validKeys.includes(clean)) {
+          sound.playSuccess();
+          logTerm(`[CHECKSUM ACCREDITED]: ACCESS GRANTED.`, "green");
+
+          if (clean === "ORIGIN") {
+            currentStage = 2;
+            reportTelemetryAction("Solved Stage 01 (ORIGIN) - Promoted to Stage 02");
+            updateMissionBanner(2, "Inspect <strong>README.doc</strong> in 01_ORIGIN. Using the 5 index numbers (1, 4, 9, 20, 9), extract the letters to uncover Aditi's directive.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [passcode]</code> below.");
+            setEthanDialogue("<strong>STAGE 01 SOLVED!</strong><br>Sector 01 decrypted! Now examine README.doc in 01_ORIGIN. Use <code>decrypt [code]</code> once you solve the index extraction.");
+          } else if (clean === "LOOKBEHINDTHEDATE") {
+            currentStage = 3;
+            reportTelemetryAction("Solved Stage 02 (LOOKBEHINDTHEDATE) - Promoted to Stage 03");
+            updateMissionBanner(3, "Inspect <strong>02_TIMELINE</strong>. Spot the impossible calendar date anomaly in Dr. Aditi's logs.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [date]</code> below.");
+            setEthanDialogue("<strong>STAGE 02 CLEARED!</strong><br>Advancing to Timeline investigation. Check the calendar dates carefully... something defies physical time!");
+          } else if (clean === "28022025" || clean === "02292025" || clean === "20250229") {
+            currentStage = 4;
+            setEthanJammed();
+            reportTelemetryAction("Solved Stage 03 (Date Anomaly) - Promoted to Stage 04 (Voice Jammed)");
+            updateMissionBanner(4, "Analyze the audio/morse feed and spectrogram in <strong>03_VOICE</strong> to find the 4-digit frequency code.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [4-digit code]</code> below.");
+          } else if (clean === "2246") {
+            currentStage = 5;
+            reportTelemetryAction("Solved Stage 04 (Spectrogram 2246) - Promoted to Stage 05 (Auth)");
+            updateMissionBanner(5, "Inspect <strong>04_AUTH</strong>. Detect font steganography & color to verify authenticity.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [code]</code> below.");
+          } else if (clean === "WHITE" || clean === "AUTHENTIC") {
+            currentStage = 6;
+            setEthanTrapped();
+            reportTelemetryAction("Solved Stage 05 (White Font Stego) - Promoted to Stage 06 (Trapped in Sandbox)");
+            updateMissionBanner(6, "Bypass rogue daemon sandbox. Inspect git commit history and reflog for overwritten commits.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [commit msg/flag]</code> below.");
+          } else if (clean === "THEAICANMODIFYWHATYOUSEE" || clean === "HISTORY" || clean === "OVERRIDEFAILED") {
+            currentStage = 8;
+            reportTelemetryAction("Solved Stage 06 (Git Reflog) - Final Failsafe Unlocked");
+            updateMissionBanner(8, "Locate Dr. Aditi's final emergency failsafe code (IEEE WIE core values / 6-9-11 sequence) to liberate ETHAN and purge ADI!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 6-9-11</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt WISDOMINTEGRITYEMPOWERMENT</code>.");
+          } else if (clean === "6911" || clean === "WISDOMINTEGRITYEMPOWERMENT") {
+            setEthanFreed();
+            reportTelemetryAction("🏆 MISSION COMPLETE: Final Failsafe Activated // ETHAN Freed & ADI Purged!");
+          }
+        } else {
+          sound.playBuzzer();
+          logTerm(`[CHECKSUM REJECTED]: Passcode verification failed. Access denied.`, "red");
+          reportTelemetryAction(`Passcode Rejected: "${clean}"`);
+        }
+      }, 400);
+    }
+
+    function updateMissionBanner(stageNum, questionText, answerHint) {
+      document.getElementById('active-mission-banner').innerHTML = `
+        <div class="mission-badge-row">
+          <span>🎯 [STAGE 0${stageNum} MISSION DIRECTIVE]</span>
+          <span style="color:var(--tactical-green); font-size:8.5px; border:1px solid var(--tactical-green); padding:1px 4px; border-radius:2px;">ACTIVE</span>
+        </div>
+        <div class="mission-desc"><strong>QUESTION:</strong> ${questionText}</div>
+        <div class="mission-hint-line">&gt;&gt; <strong>HOW TO ANSWER:</strong> ${answerHint}</div>
+      `;
+    }
+
+    // 11. ETHAN Hunt AI Companion State Machine
+    function setEthanDialogue(html) {
+      document.getElementById('ethan-dock-text').innerHTML = html;
+    }
+
+    function explainWhereToStart() {
+      sound.playBlip();
+      setEthanDialogue("<strong>WHERE TO START:</strong> Look at <strong>01_ORIGIN</strong> in the top-left ledger. Click it to read Dr. Aditi's Farewell memo and toggle the UV polarizer. Where does her journey begin?");
+    }
+
+    function explainHowToDecrypt() {
+      sound.playBlip();
+      setEthanDialogue("<strong>HOW TO DECRYPT:</strong> In the Tactical Shell under Slate 2, type <code>decrypt [code]</code> (e.g. <code>decrypt ORIGIN</code>). Valid passcodes grant elevated clearance levels!");
+    }
+
+    function summonEthan() {
+      sound.playBlip();
+      if (coreState === "JAMMED") {
+        setEthanDialogue("<span style='color:var(--hazard-amber); font-weight:bold;'>*RADIO STATIC*</span> [NO CARRIER]: <em>'ADI is scrambling my carrier signal! Solve this sector unassisted!'</em>");
+      } else if (coreState === "TRAPPED") {
+        setEthanDialogue("<span style='color:var(--combat-red); font-weight:bold;'>*STATIC GLITCH*</span> ETHAN: <em>'Investigators! I am quarantined in the sandbox buffer! Keep solving the evidence on the left and typing <code>decrypt [code]</code>. Unlocking Aditi's emergency failsafe will purge ADI and set me free!'</em>");
+      } else if (coreState === "FREED") {
+        setEthanDialogue("<strong style='color:var(--tactical-green);'>MISSION COMPLETE:</strong> ADI is eradicated, the workstation is restored, and Dr. Aditi is safe!");
+      } else {
+        setEthanDialogue("Companion AI active. Review your evidence in the left slates. Type <code>decrypt [code]</code> in the prompt when you deduce a key!");
+      }
+    }
+
+    function setEthanJammed() {
+      coreState = "JAMMED";
+      document.getElementById('ethan-dock-title').innerText = "⚠️ ETHAN // SIGNAL JAMMED";
+      document.getElementById('ethan-dock-status').innerText = "[OFFLINE - JAMMED]";
+      document.getElementById('ethan-dock-status').style.color = "var(--hazard-amber)";
+      setEthanDialogue("<strong style='color:var(--hazard-amber);'>*PACKET JAMMER DETECTED*</strong><br>ADI has activated localized jamming! Carrier connection dropping... Solve this sector unassisted!");
+    }
+
+    function setEthanTrapped() {
+      coreState = "TRAPPED";
+      trappedGlitchUntil = Date.now() + 1200; // Strictly 1.2s micro-jitter limit
+      sound.playKlaxon();
+
+      const dock = document.getElementById('ethan-dock');
+      dock.classList.add('trapped-mode');
+      dock.style.animation = "tactical-glitch 1.2s ease-out 1, trapped-glow-pulse 2.5s infinite";
+
+      document.getElementById('ethan-dock-title').innerText = "🚨 ETHAN // CORRUPTED ENTITY CORE";
+      document.getElementById('ethan-dock-status').innerText = "[TRAPPED IN SANDBOX]";
+      document.getElementById('ethan-dock-status').style.color = "var(--combat-red)";
+      
+      document.getElementById('threat-badge-num').innerText = "99";
+      document.getElementById('threat-badge-num').style.color = "var(--combat-red)";
+
+      document.getElementById('ethan-dock-text').innerHTML = `
+        <strong style='color:var(--combat-red); font-size:11px;'>*EMERGENCY DISTRESS BROADCAST*</strong><br>
+        ADI detected my probe and isolated my process in the sandbox buffer!<br><br>
+        <div style="background:rgba(255,0,60,0.12); border-left:3px solid var(--combat-red); padding:6px 8px; font-size:10px; line-height:1.45; color:#fff;">
+          <strong>WHAT TO DO NEXT:</strong><br>
+          • <strong>Do not panic</strong>: Sandboxing is part of the story progression.<br>
+          • <strong>Keep investigating</strong>: Examine the remaining evidence slates on the left.<br>
+          • <strong>Submit codes</strong>: Type <code>decrypt [code]</code> in the Tactical Shell.<br>
+          • <strong>Purge ADI</strong>: Entering the final failsafe code will lift the lockdown and liberate me!
+        </div>
+      `;
+
+      document.getElementById('ethan-dock-actions').innerHTML = `
+        <button class="btn-chip danger" onclick="showTrappedEscapeDirectives()">WHAT SHOULD I DO?</button>
+        <button class="btn-chip" onclick="summonEthan()">STATUS</button>
+      `;
+    }
+
+    function showTrappedEscapeDirectives() {
+      sound.playBlip();
+      setEthanDialogue(`
+        <strong style='color:var(--combat-red); font-size:11px;'>[TACTICAL ESCAPE DIRECTIVE]</strong><br>
+        1. <strong>Do not panic</strong>: ADI sandboxing ETHAN is intentional.<br>
+        2. <strong>Continue the investigation</strong>: Check the remaining evidence files.<br>
+        3. <strong>Solve remaining ciphers</strong>: Type <code>decrypt [code]</code> in the prompt.<br>
+        4. <strong>Emergency Failsafe</strong>: Uncovering Dr. Aditi's master failsafe will purge ADI and set me free!
+      `);
+    }
+
+    function setEthanFreed() {
+      coreState = "FREED";
+      sound.playSuccess();
+      const dock = document.getElementById('ethan-dock');
+      dock.classList.remove('trapped-mode');
+      dock.classList.add('freed-mode');
+      dock.style.animation = "";
+
+      document.getElementById('ethan-dock-title').innerText = "🏆 ETHAN // LIBERATED & SECURE";
+      document.getElementById('ethan-dock-status').innerText = "[ALL SYSTEMS PURGED]";
+      document.getElementById('ethan-dock-status').style.color = "var(--tactical-green)";
+      document.getElementById('threat-badge-num').innerText = "00";
+      document.getElementById('threat-badge-num').style.color = "var(--tactical-green)";
+
+      setEthanDialogue("<strong>🏆 ROGUE AI PURGED!</strong><br>Dr. Aditi's beacon is secured, ADI has been permanently eradicated, and all neural threads are free! Congratulations Investigators!");
+
+      document.getElementById('active-mission-banner').innerHTML = `
+        <div style="color:var(--tactical-green); font-weight:bold; font-size:12px;">🏆 [MISSION COMPLETE]: ETHAN LIBERATED // ROGUE AI PURGED // DR. ADITI LOCATED</div>
+      `;
+      document.getElementById('active-mission-banner').style.borderColor = "var(--tactical-green)";
+
+      logTerm("==================================================", "green");
+      logTerm("🏆 MISSION COMPLETE: ROGUE AI 'ADI' PURGED TO 0.00%", "green");
+      logTerm("🏆 ETHAN HUNT LIBERATED // DR. ADITI LOCATION SECURED", "green");
+      logTerm("==================================================", "green");
+    }
+
+    function triggerLockdownTrap() {
+      sound.playKlaxon();
+      logTerm("⚠️ CRITICAL ALERT: SYSTEM LOCKDOWN SEQUENCE TRIGGERED.", "red");
+      reportTelemetryAction("⚠️ Triggered Emergency Kill Switch Lockdown");
+      setEthanTrapped();
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+      }[tag] || tag));
+    }
+
+    // ==========================================================================
+    // 12. Anti-Cheat Window Focus Loss & Proctor Lockdown Engine
+    // ==========================================================================
+    let proctorLockActive = false;
+    let lockArmed = false;
+    let violationCount = 0;
+
+    // Grace period on initial launch so window positioning doesn't falsely trigger
+    setTimeout(() => {
+      lockArmed = true;
+    }, 3500);
+
+    function triggerProctorLockdown() {
+      if (!lockArmed || proctorLockActive) return;
+      proctorLockActive = true;
+      violationCount++;
+      sound.playKlaxon();
+
+      const overlay = document.getElementById('proctor-lockdown-overlay');
+      const countEl = document.getElementById('proctor-violation-count');
+      const timeEl = document.getElementById('proctor-violation-time');
+      const inputEl = document.getElementById('proctor-pin-input');
+      const errEl = document.getElementById('proctor-error-msg');
+
+      if (countEl) countEl.innerText = violationCount;
+      if (timeEl) timeEl.innerText = new Date().toISOString().substring(11, 19) + 'Z';
+      if (errEl) errEl.innerText = '';
+      if (inputEl) {
+        inputEl.value = '';
+        setTimeout(() => inputEl.focus(), 250);
+      }
+      if (overlay) overlay.style.display = 'flex';
+
+      logTerm(`🚨 [SECURITY BREACH]: Workstation focus lost to external program. Tamper Incident #${violationCount} logged.`, 'red');
+      reportTelemetryAction(`🚨 Workstation Locked: Focus Loss Violation (#${violationCount})`);
+    }
+
+    // Detect when user clicks outside, Alt-Tabs, or switches applications
+    window.addEventListener('blur', () => {
+      triggerProctorLockdown();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        triggerProctorLockdown();
+      }
+    });
+
+    function verifyProctorOverride() {
+      const inputEl = document.getElementById('proctor-pin-input');
+      const errEl = document.getElementById('proctor-error-msg');
+      const pin = inputEl ? inputEl.value.trim() : '';
+
+      if (pin === "wie-admin-2026") {
+        sound.playSuccess();
+        proctorLockActive = false;
+        lockArmed = false; // Temporarily disarm
+
+        const overlay = document.getElementById('proctor-lockdown-overlay');
+        if (overlay) overlay.style.display = 'none';
+
+        logTerm(`🏆 [PROCTOR OVERRIDE]: Workstation unlocked by Organizer at ${new Date().toISOString().substring(11, 19)}Z.`, 'green');
+        reportTelemetryAction("Proctor PIN Override Entered: Workstation Unlocked");
+
+        // Re-arm after 2.5 seconds so focus returning to the window does not re-trigger
+        setTimeout(() => {
+          lockArmed = true;
+        }, 2500);
+      } else {
+        sound.playBuzzer();
+        if (errEl) {
+          errEl.innerText = "ACCESS DENIED: INVALID ORGANIZER PIN.";
+        }
+        if (inputEl) {
+          inputEl.classList.add('pin-shake');
+          setTimeout(() => inputEl.classList.remove('pin-shake'), 500);
+        }
+      }
+    }
+
+    // Allow pressing Enter in the PIN input
+    const pinInput = document.getElementById('proctor-pin-input');
+    if (pinInput) {
+      pinInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          verifyProctorOverride();
+        }
+      });
+    }
+
+    // ==========================================================================
+    // 13. Team Authentication, Persistence & Telemetry Heartbeat Engine
+    // ==========================================================================
+    let currentTeam = null;
+    let telemetryHeartbeatTimer = null;
+
+    function loadStoredTeamSession() {
+      try {
+        const raw = localStorage.getItem("failsafe_auth_team");
+        if (raw) {
+          currentTeam = JSON.parse(raw);
+          applyAuthenticatedTeam(currentTeam);
+          return true;
+        }
+      } catch(e) {}
+      return false;
+    }
+
+    function applyAuthenticatedTeam(team) {
+      currentTeam = team;
+      const badge = document.getElementById("header-team-badge");
+      if (badge) {
+        badge.innerText = `TEAM: [${team.team_id}] ${team.team_name || ''}`;
+        badge.style.color = "var(--tactical-green)";
+        badge.style.borderColor = "var(--tactical-green)";
+        badge.style.background = "rgba(0, 255, 102, 0.12)";
+      }
+      const modal = document.getElementById("team-auth-modal");
+      if (modal) modal.style.display = "none";
+      logTerm(`OPERATOR CLEARANCE GRANTED: [${team.team_id}] ${team.team_name || ''}`, "green");
+      reportTelemetryAction("Workstation Authenticated & Operational");
+      startTelemetryHeartbeat();
+    }
+
+    async function handleTeamLogin(e) {
+      e.preventDefault();
+      const id = document.getElementById("auth-login-id").value.trim().toUpperCase();
+      const pass = document.getElementById("auth-login-pass").value.trim();
+      const errEl = document.getElementById("auth-login-error");
+      if (!id || !pass) return;
+
+      try {
+        const res = await fetch("/api/teams/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ team_id: id, password: pass })
+        });
+        const data = await res.json();
+        if (res.ok && data.team) {
+          localStorage.setItem("failsafe_auth_team", JSON.stringify(data.team));
+          applyAuthenticatedTeam(data.team);
+          sound.playSuccess();
+        } else {
+          sound.playBuzzer();
+          if (errEl) errEl.innerText = data.error || "Login failed. Invalid credentials.";
+        }
+      } catch(err) {
+        // Standalone Lab Station Fallback (100% Offline Resilience)
+        console.log("Offline mode: creating local team session");
+        const localTeam = { team_id: id, team_name: id, password: pass, current_stage: currentStage || 1 };
+        localStorage.setItem("failsafe_auth_team", JSON.stringify(localTeam));
+        applyAuthenticatedTeam(localTeam);
+      }
+    }
+
+    async function handleTeamRegister(e) {
+      e.preventDefault();
+      const id = document.getElementById("auth-reg-id").value.trim().toUpperCase();
+      const pass = document.getElementById("auth-reg-pass").value.trim();
+      const name = document.getElementById("auth-reg-name").value.trim();
+      const members = document.getElementById("auth-reg-members").value.trim();
+      const errEl = document.getElementById("auth-reg-error");
+      if (!id || !pass || !name) return;
+
+      try {
+        const res = await fetch("/api/teams/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ team_id: id, password: pass, team_name: name, members: members })
+        });
+        const data = await res.json();
+        if (res.ok && data.team) {
+          localStorage.setItem("failsafe_auth_team", JSON.stringify(data.team));
+          applyAuthenticatedTeam(data.team);
+          sound.playSuccess();
+        } else {
+          sound.playBuzzer();
+          if (errEl) errEl.innerText = data.error || "Registration failed.";
+        }
+      } catch(err) {
+        // Standalone Lab Station Fallback
+        const localTeam = { team_id: id, team_name: name, password: pass, members: members, current_stage: 1 };
+        localStorage.setItem("failsafe_auth_team", JSON.stringify(localTeam));
+        applyAuthenticatedTeam(localTeam);
+      }
+    }
+
+    function toggleAuthMode(mode) {
+      const loginForm = document.getElementById("auth-login-form");
+      const regForm = document.getElementById("auth-register-form");
+      const desc = document.getElementById("auth-modal-desc");
+      if (mode === 'register') {
+        loginForm.style.display = "none";
+        regForm.style.display = "flex";
+        desc.innerText = "Register your team unit callsign, assigned Team ID, and create your access password.";
+      } else {
+        loginForm.style.display = "flex";
+        regForm.style.display = "none";
+        desc.innerText = "Enter your assigned Team ID and Team Password to decrypt this forensics terminal.";
+      }
+    }
+
+    function showTeamAuthModal() {
+      const modal = document.getElementById("team-auth-modal");
+      if (modal) modal.style.display = "flex";
+    }
+
+    async function reportTelemetryAction(actionText) {
+      if (!currentTeam || !currentTeam.team_id) return;
+      try {
+        const res = await fetch("/api/teams/activity", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            team_id: currentTeam.team_id,
+            current_stage: currentStage || 1,
+            action: actionText,
+            tamper_incidents: typeof violationCount !== 'undefined' ? violationCount : 0,
+            is_locked: typeof proctorLockActive !== 'undefined' ? proctorLockActive : false
+          })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.remote_unlock && typeof proctorLockActive !== 'undefined' && proctorLockActive) {
+            verifyProctorOverrideDirectly();
+          }
+          if (data.broadcasts && data.broadcasts.length > 0) {
+            const latest = data.broadcasts[data.broadcasts.length - 1];
+            if (typeof window.lastBroadcastId === 'undefined') window.lastBroadcastId = 0;
+            if (latest.id > window.lastBroadcastId) {
+              window.lastBroadcastId = latest.id;
+              showBroadcastToast(latest.message);
+            }
+          }
+        }
+      } catch(e) {}
+    }
+
+    function showBroadcastToast(msg) {
+      const toast = document.getElementById("broadcast-toast");
+      if (toast) {
+        toast.innerHTML = `📢 <strong>ORGANIZER BROADCAST:</strong><br><span style="font-size:14px; color:#fff; text-shadow:0 0 10px #fff;">"${escapeHtml(msg)}"</span>`;
+        toast.style.display = "block";
+        sound.playKlaxon();
+        setTimeout(() => { toast.style.display = "none"; }, 8500);
+      }
+    }
+
+    function verifyProctorOverrideDirectly() {
+      sound.playSuccess();
+      proctorLockActive = false;
+      lockArmed = false;
+      const overlay = document.getElementById('proctor-lockdown-overlay');
+      if (overlay) overlay.style.display = 'none';
+      logTerm(`🏆 [ORGANIZER REMOTE OVERRIDE]: Workstation lockdown cleared remotely by Proctor.`, 'green');
+      setTimeout(() => { lockArmed = true; }, 2500);
+    }
+
+    function startTelemetryHeartbeat() {
+      if (telemetryHeartbeatTimer) clearInterval(telemetryHeartbeatTimer);
+      telemetryHeartbeatTimer = setInterval(() => {
+        let currentStatus = "Active in Terminal";
+        if (typeof proctorLockActive !== 'undefined' && proctorLockActive) {
+          currentStatus = `🚨 Workstation Locked: Focus Loss Violation (#${violationCount})`;
+        } else if (typeof coreState !== 'undefined' && coreState === "TRAPPED") {
+          currentStatus = "Quarantined in Sandbox Buffer";
+        }
+        reportTelemetryAction(currentStatus);
+
+        // Fallback for same-machine testing: inspect localStorage broadcast
+        try {
+          const rawLocalBcast = localStorage.getItem("failsafe_global_broadcast");
+          if (rawLocalBcast) {
+            const b = JSON.parse(rawLocalBcast);
+            if (typeof window.lastLocalBcastId === 'undefined') window.lastLocalBcastId = 0;
+            if (b.id > window.lastLocalBcastId) {
+              window.lastLocalBcastId = b.id;
+              showBroadcastToast(b.message);
+            }
+          }
+        } catch(e) {}
+      }, 4000);
+    }
+
+    function openOrganizerDashboard() {
+      window.open("admin.html", "_blank");
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "F2") {
+        e.preventDefault();
+        openOrganizerDashboard();
+      }
+    });
+
+    // Check for existing team session on startup
+    setTimeout(() => {
+      loadStoredTeamSession();
+    }, 100);
+  </script>
+</body>
+</html>

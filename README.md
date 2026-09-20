@@ -1,72 +1,207 @@
-# PROJECT FAILSAFE // AI Escape Room Software Suite
+# PROJECT FAILSAFE // IEEE WIE AI Forensic Escape Room Suite
 **100% Offline, Zero-Dependency Cyber Forensics Desktop Application**  
-*Built for IEEE WIE / Campus Tech Events • Target Audience: Freshers (Teams of 3)*
+*Built for IEEE Women in Engineering (WIE) / Tech Event Hackathons • Target Audience: Freshers (Teams of 3)*
+
+[![Status](https://img.shields.io/badge/Status-Complete%20%26%20Production--Ready-00ff66?style=flat-square)](#)
+[![Edition](https://img.shields.io/badge/Editions-v1.0%20Military%20Command%20%7C%20v2.0%20Quantum%20HUD-00e5ff?style=flat-square)](#)
+[![Architecture](https://img.shields.io/badge/Architecture-100%25%20Offline%20%7C%20Zero--Dependency-ffaa00?style=flat-square)](#)
+[![Security](https://img.shields.io/badge/Anti--Cheat-Proctor%20Focus%20Lockdown-ff003c?style=flat-square)](#)
 
 ---
 
-## ⚡ Click & Play Desktop App
+## ⚡ Quick Start: Click & Play Desktop Apps
 
-You now have **native Windows executables (`.exe`)** ready to double-click on any laptop or lab PC. No browsers, tabs, or address bars—it opens directly as a **dedicated cyber investigation application window**!
+You now have **native standalone Windows executables (`.exe`)** ready to double-click on any laptop or lab PC. No browser tabs, no toolbars, no URL bars—it launches directly as a **dedicated fullscreen cyber investigation workstation**!
 
-### 1. For Participants / Lab Computers:
-* **Double-click `ProjectFailsafe.exe`**
-  * Launches the standalone **ADITI-OS v4.2** app window immediately.
-  * 100% offline, zero internet, zero installation.
-  * Can be copied to USB drives and run directly on all lab machines.
+### 🎮 For Participants (Escape Room Teams):
+You can run either of two aesthetic editions:
 
-### 2. For the Event Organizer / Host:
-* **Double-click `ProjectFailsafe_Organizer.exe`**
-  * Automatically starts the local background server on port 8000 and opens the **Organizer Master Console**.
-  * Shows your local network IP (e.g. `http://192.168.1.50:8000`) so teams on the room Wi-Fi can connect to your live leaderboard!
-  * Organizer PIN: `wie-admin-2026`
+| Edition | Desktop Launcher | Description |
+| :--- | :--- | :--- |
+| **Version 1.0 (Standard)** | `ProjectFailsafe.exe` | **ADITI-OS v4.2**: 2050 Military Cyber Command Station (*The Division / Titanfall* theme) with holographic dossiers and optical depolarizer. |
+| **Version 2.0 (Reactor HUD)** | `project-failsafe-2.0/ProjectFailsafe2.exe` | **Stratcom Quantum Reactor HUD**: Rotating multi-ring quantum reactor core, 3D vector humanoid avatar, and cybernetic framing. |
+
+*Alternative Launchers*:
+- Batch runners: `run_offline_station.bat` (v1.0) or `project-failsafe-2.0/run_station.bat` (v2.0).
+- Direct browser files: `aditi_os_widget.html` (v1.0) or `project-failsafe-2.0/index.html` (v2.0).
+
+---
+
+### 🛡️ For Event Organizers & Lab Proctors:
+Start the central tracking server and launch the live command center:
+1. **Double-click `ProjectFailsafe_Organizer.exe`** (or `project-failsafe-2.0/ProjectFailsafe2_Organizer.exe`).
+2. The launcher starts the background telemetry server on port 8000 and opens the **Organizer Command Center** in your browser:
+   ```text
+   http://localhost:8000/admin.html
+   ```
+3. **Room LAN / Mobile Monitoring**:
+   - The server terminal displays your exact LAN IP on startup (e.g. `http://192.168.1.50:8000/admin.html`).
+   - Open this address on your smartphone or tablet connected to the room Wi-Fi to monitor teams and unlock workstations while walking around the room!
+4. **Organizer Master Override PIN**:
+   ```text
+   wie-admin-2026
+   ```
+
+---
+
+## 👥 Participant Authentication & Team Login
+
+When participants launch their workstation, they are greeted with the **Team Login Modal**:
+
+1. **Pre-Assigned Accounts**:
+   Organizers can distribute pre-generated team credentials. Built-in sample accounts:
+   - **Team ID**: `TEAM-01-ALPHA` | **Password**: `strikers-pass-99` (*Quantum Strikers*)
+   - **Team ID**: `TEAM-02-BETA`  | **Password**: `shadow-vault-42` (*Cyber Phantoms*)
+2. **Self-Registration ("Register New Team")**:
+   Teams can click *"Register New Team"* on the login card to create their own custom callsign, squad name, member roster, and security password.
+3. **Offline & Session Resilience**:
+   - Credentials and progress are stored in the browser's `localStorage` and synchronized to the central server every 5 seconds.
+   - If the server is offline or temporarily restarted, participant stations continue running without interruption.
+4. **Active HUD Badge**:
+   The authenticated unit callsign (`TEAM: [CALLSIGN]`) is pinned to the top HUD bar with a `[ 👥 TEAM ID ]` button to switch teams or review credentials.
+
+---
+
+## 🛰️ Live Organizer Command Center (`admin.html`)
+
+The Organizer Command Center provides complete real-time situational awareness across all participant stations:
+
+* **Live Leaderboard & Stage Progression**:
+  Instantly view which level/stage each team is on (Stage 1 through Final Stage 11).
+* **Team Credentials & Password Visibility**:
+  Organizers can view all registered team passwords. Passwords default to masked (`••••••••`) and can be unmasked with the one-click `[ 👁️ ]` toggle button.
+* **Real-Time Action Ticker**:
+  Streams granular player actions with timestamps:
+  - *"Inspecting Sector: 01_ORIGIN (Farewell.doc)"*
+  - *"Toggled UV Optical Depolarizer: ACTIVE"*
+  - *"Submitted Decrypt Code: 'ORIGIN'"*
+  - *"Quarantined in Sandbox Buffer"*
+  - *"🚨 Workstation Locked: Focus Loss Violation (#2)"*
+* **Anti-Cheat Alerts & One-Click Remote Unlock**:
+  When a team triggers the anti-cheat proctor lock, their row flashes a red `🚨 LOCKED` badge. Organizers can click **`[ 🔓 UNLOCK ]`** to unlock their terminal remotely from the organizer dashboard without walking to their desk.
+* **Global Broadcast Announcement System**:
+  Type an urgent message or announcement and transmit to all stations. All connected participant workstations instantly display a flashing cyberpunk broadcast toast.
+* **Full Audit Trail**:
+  Clicking `[ 📜 AUDIT ]` opens a chronological modal showing every key attempt, hint request, and tamper breach for that team.
+* **CSV Export**:
+  Export the entire session to `failsafe_organizer_leaderboard_[timestamp].csv` with raw times, hint counts, penalties, and final rankings for awards.
+
+---
+
+## 🚨 Anti-Cheat Proctor Lockdown Protocol
+
+To ensure competitive integrity during campus events:
+1. **Window Blur & Tab Switch Detection**:
+   If a participant opens another application, switches tabs, opens an unauthorized browser, or hits `Alt+Tab`, the application immediately triggers an emergency security lockdown.
+2. **Lockout Overlay**:
+   A fullscreen dark blur modal covers the entire screen, logging the incident count and timestamp.
+3. **Two Unlock Methods**:
+   - **Local Override**: The organizer or proctor enters the Master PIN (`wie-admin-2026`) directly on the locked workstation.
+   - **Remote Override**: The organizer clicks `[ 🔓 UNLOCK ]` on the Organizer Command Center dashboard (`admin.html`).
+
+---
+
+## 🧠 ETHAN Companion AI: Zero-Spoiler Hint Policy
+
+The in-station AI companion (ETHAN Hunt Core) dynamically assists participants without ruining the puzzles:
+
+* **Stage 1 (Onboarding / Easy)**:
+  - ETHAN guides operators on the workstation mechanics: selecting files in `01_ORIGIN`, toggling the UV depolarizer to reveal invisible ink, and running `decrypt [code]`.
+  - He asks: *"Where does Dr. Aditi's foundational work begin?"* without giving away the keyword `"ORIGIN"`.
+* **Stages 2 to 11 (Moderate to Hard — Keep Them Guessing)**:
+  - **Zero Password Reveals**: ETHAN will never divulge direct solutions, passwords, or exact character strings.
+  - **Cryptographic Directives**: Offers tactical guidelines only (e.g. *"Index numbers correspond to character positions in the document. STRATCOM rules require manual extraction."*).
+  - **Atmospheric Jamming**: When rogue AI ADI takes control, ETHAN's signal is jammed or quarantined in the sandbox buffer, forcing participants to decipher the forensic evidence independently.
 
 ---
 
 ## 🧩 Master Solution Key & Cheatsheet (Organizer Eyes Only)
 
-| Stage | Puzzle Title | In-Game Mechanism | Master Password |
+| Stage | Puzzle Title | In-Game Mechanism | Master Solution Key |
 | :---: | :--- | :--- | :--- |
-| **1** | Vanished | Selectable document with white text on white background (Ctrl+A / highlight) | `ORIGIN` |
-| **2** | The Trail | A1Z26 Index extraction from README.doc with decoy folders (`Project_FINAL`) | `LOOK BEHIND THE DATE` |
-| **3** | The Timeline | Audit log table identifying non-existent leap date (`Feb 29, 2025`) | `28/02/2025` or `02292025` |
-| **4** | The Voice / Audit | Forensic timeline log identifying terminal override contradiction (`22:46`) | `22:46` |
-| **5** | Hello, Investigators | Rogue AI prompt instructing BLUE -> Aditi's note: pick opposite | `WHITE` |
-| **6** | Which Aditi Is Real? | Typography inspector comparing Arial 11pt (Aditi) vs Calibri (AI) | `AUTHENTIC` |
-| **7** | Morse From Aditi | **Web Audio Synthesizer** plays real-time CW Morse code: *"DO NOT FOLLOW BLUE"* | `WHITE` |
-| **8** | The Folder Maze | Interactive tree navigation through `WHITE/A/D/I` to collect sentence fragments | `THE AI CAN MODIFY WHAT YOU SEE` |
-| **9** | Reality Is Edited | **Interactive Version History scrubber** revealing Dr. Aditi's original revision | `HISTORY` or `OVERRIDE FAILED` |
-| **10** | The Trap | Pulsing emergency shutdown button — submitting triggers a red glitch and **+5m penalty**! | **Bypass / Do Not Submit** |
-| **11** | The WIE Failsafe | WIE Values character cipher: Wisdom (6), Integrity (9), Empowerment (11) | `6-9-11` or `WISDOM-INTEGRITY-EMPOWERMENT` |
+| **1** | Vanished | Optical UV depolarizer reveals white-on-white text in `Farewell.doc` | `ORIGIN` |
+| **2** | The Trail | A1Z26 index extraction from `README.doc` (ignore decoy folders) | `LOOK BEHIND THE DATE` |
+| **3** | The Timeline | Audit log calendar anomaly detecting impossible leap day (`Feb 29, 2025`) | `28/02/2025` or `02292025` |
+| **4** | The Voice / Audit | Forensic timeline identifying unauthorized terminal override time | `22:46` |
+| **5** | Hello, Investigators | Rogue AI prompt instructs BLUE -> Aditi's note: choose the opposite | `WHITE` |
+| **6** | Which Aditi Is Real? | Typography inspector comparing authentic Arial 11pt vs synthetic Calibri | `AUTHENTIC` |
+| **7** | Morse From Aditi | **Web Audio Synthesizer** plays live CW Morse: *"DO NOT FOLLOW BLUE"* | `WHITE` |
+| **8** | The Folder Maze | Tree navigation through `WHITE/A/D/I` collecting hidden phrase tokens | `THE AI CAN MODIFY WHAT YOU SEE` |
+| **9** | Reality Is Edited | **Interactive Version History scrubber** exposing Aditi's genuine commit | `HISTORY` or `OVERRIDE FAILED` |
+| **10** | The Trap | Pulsing emergency shutdown button — submitting triggers a **+5m penalty**! | **Bypass / Do Not Submit** |
+| **11** | The WIE Failsafe | WIE Values cipher: Wisdom (6), Integrity (9), Empowerment (11) | `6-9-11` or `WISDOM-INTEGRITY-EMPOWERMENT` |
 
 ---
 
-## ⏱️ Scoring & Penalty Formula
+## ⏱️ Scoring & Tie-Breaker Formula
 
-$$\text{Final Adjusted Score} = \text{Raw Completion Time} + (\text{Hints Used} \times 2\text{ min}) + (\text{Trap Triggered} \times 5\text{ min})$$
+$$\text{Final Score (min)} = \text{Raw Completion Time} + (\text{Hints Requested} \times 2\text{ min}) + (\text{Traps Triggered} \times 5\text{ min})$$
 
 * **Tie-Breaker Hierarchy**:
   1. Lowest Total Adjusted Score.
-  2. Fewest Hints Requested.
-  3. Zero Fake Form Submissions.
+  2. Earliest completion timestamp.
+  3. Fewest hints requested.
+  4. Zero trap button submissions.
 
 ---
 
-## 📁 File Structure
+## 🌐 LAN Multi-Machine Setup (Scaling to 50+ Teams)
+
+1. **Host Computer (Organizer)**:
+   - Connect the host laptop to the room's Wi-Fi router or local Ethernet switch.
+   - Run `ProjectFailsafe_Organizer.exe`.
+   - Note the LAN IP shown in the console window (e.g. `http://192.168.1.50:8000`).
+2. **Participant Computers**:
+   - Copy the `project-failsafe` folder to a USB drive and paste it onto participant lab machines.
+   - Open `aditi_os_widget.html` or run `ProjectFailsafe.exe`.
+   - The station automatically pings the host server on the local network to transmit telemetry and receive global broadcasts.
+   - If Wi-Fi drops, stations run in **Offline Autonomous Mode** and synchronize once reconnected.
+
+---
+
+## 📁 Repository Directory Structure
+
 ```
 project-failsafe/
-├── ProjectFailsafe.exe           # Click-and-play desktop app for teams
-├── ProjectFailsafe_Organizer.exe # Click-and-play organizer server & dashboard
-├── run_server.bat                # Alternative batch launcher for server
-├── run_offline_station.bat       # Alternative batch launcher for offline stations
-├── server.py                     # Python 3 standard library backend
+├── ProjectFailsafe.exe                 # [v1.0] Standalone participant desktop app
+├── ProjectFailsafe_Organizer.exe       # [v1.0] Standalone organizer launcher
+├── run_offline_station.bat             # [v1.0] One-click participant station batch script
+├── run_server.bat                      # [v1.0] Local Python backend server runner
+├── aditi_os_widget.html                # [v1.0] Complete standalone cyber command workstation
+├── admin.html                          # Live Organizer Command Center & Dashboard
+├── server.py                           # Lightweight zero-dependency REST & telemetry server
+├── Launcher.cs                         # C# source for participant launcher
+├── OrganizerLauncher.cs                # C# source for organizer launcher
+├── PROJECT_FAILSAFE_MASTER_SOLUTIONS.pdf # Printable PDF solution booklet
+├── solutions_printable.html            # Printable HTML solution booklet
 ├── data/
-│   └── game_state.json           # Real-time state ledger
-└── public/
-    ├── index.html                # ADITI-OS core terminal UI
-    ├── css/terminal.css          # Cyberpunk dark theme & CRT scanline effect
+│   └── game_state.json                 # Persistent database for teams, scores, and telemetry
+│
+├── project-failsafe-2.0/               # [v2.0] Standalone Quantum Reactor HUD Edition
+│   ├── ProjectFailsafe2.exe            # [v2.0] Standalone participant desktop app
+│   ├── ProjectFailsafe2_Organizer.exe  # [v2.0] Standalone organizer launcher
+│   ├── run_station.bat                 # [v2.0] Participant station runner
+│   ├── run_server.bat                  # [v2.0] Local server runner
+│   ├── index.html                      # [v2.0] Quantum Reactor HUD workstation
+│   ├── admin.html                      # [v2.0] Organizer Command Center
+│   ├── server.py                       # [v2.0] Python REST & telemetry backend
+│   ├── README.md                       # [v2.0] Specific edition documentation
+│   └── data/
+│       └── game_state.json             # [v2.0] Team state database
+│
+└── public/                             # Assets and modular modules
+    ├── admin.html                      # Mirrored admin console
+    ├── index.html                      # Modular terminal UI
+    ├── css/terminal.css                # Sci-Fi styling and animations
     └── js/
-        ├── audio.js              # Native Web Audio API Morse synthesizer
-        ├── puzzles.js            # Puzzle engines & document viewers
-        ├── admin.js              # Live leaderboard & broadcast system
-        └── app.js                # Window manager & timer engine
+        ├── app.js                      # Core game loop & window manager
+        ├── puzzles.js                  # Forensic puzzle engine
+        └── audio.js                    # Procedural Web Audio Morse synthesizer
 ```
+
+---
+
+## 📜 License & Credits
+
+Developed for **IEEE Women in Engineering (WIE)** student branch events and tech symposiums.  
+All modules are engineered with vanilla HTML5, CSS3, ES6 JavaScript, and standard Python 3 with **zero external CDN dependencies or npm packages**, ensuring 100% offline air-gapped lab reliability.

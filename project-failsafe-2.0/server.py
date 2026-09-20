@@ -192,11 +192,9 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     self.wfile.write(f.read())
                 return
 
-        if path in ["/", "/aditi_os_widget.html", "/index.html"]:
-            target_name = "aditi_os_widget.html" if path == "/" else os.path.basename(path)
+        if path in ["/", "/index.html", "/aditi_os_widget.html"]:
+            target_name = "index.html" if path == "/" else os.path.basename(path)
             root_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), target_name)
-            if not os.path.exists(root_file) and path == "/":
-                root_file = os.path.join(PUBLIC_DIR, "index.html")
             if os.path.exists(root_file):
                 self.send_response(200)
                 self.send_header("Content-Type", "text/html; charset=utf-8")

@@ -1436,10 +1436,72 @@
     </div>
   </div>
 
+  <!-- Global Organizer Broadcast Banner/Toast -->
+  <div id="broadcast-toast" style="display:none; position:fixed; top:48px; left:50%; transform:translateX(-50%); background:#ff003c; color:white; font-family:var(--font-mono); padding:12px 28px; border-radius:4px; z-index:9999999; box-shadow:0 0 40px rgba(255,0,60,0.9); font-weight:bold; font-size:13px; text-align:center; border:2px solid #fff; letter-spacing:1px; line-height:1.5;"></div>
+
+  <!-- PARTICIPANT TEAM LOGIN & REGISTRATION MODAL -->
+  <div id="team-auth-modal" class="proctor-lockdown-overlay" style="display: flex;">
+    <div class="proctor-lockdown-card" style="border-color: var(--cyber-cyan); box-shadow: 0 0 50px rgba(0, 240, 255, 0.4);">
+      <div class="proctor-badge" style="border-color: var(--cyber-cyan); color: var(--cyber-cyan); background: rgba(0, 240, 255, 0.12);">
+        <span>🛡️ DARPA // STRATCOM FORENSICS CLEARANCE</span>
+      </div>
+      <div class="proctor-title" style="color: #fff;">TACTICAL WORKSTATION AUTHENTICATION</div>
+      <div class="proctor-desc" id="auth-modal-desc">
+        Enter your assigned <strong>Team ID</strong> and <strong>Team Password</strong> to decrypt this forensics terminal and track your team's live score.
+      </div>
+
+      <!-- Login View -->
+      <form id="auth-login-form" onsubmit="handleTeamLogin(event)" style="width:100%; display:flex; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">TEAM IDENTIFIER (e.g. TEAM-01):</label>
+          <input type="text" id="auth-login-id" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:1.5px;" placeholder="TEAM-01" required autocomplete="username">
+        </div>
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">TEAM SECURITY PASSWORD:</label>
+          <input type="password" id="auth-login-pass" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:2px;" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn-tactical active" style="font-size:12px; padding:10px 24px; margin-top:8px; width:100%; max-width:320px;">
+          AUTHENTICATE & ACCESS STATION &rarr;
+        </button>
+        <div id="auth-login-error" class="proctor-error-text" style="margin-top:4px;"></div>
+        <div style="font-size:10.5px; margin-top:8px; color:var(--text-dim);">
+          New unit? <a href="#" onclick="toggleAuthMode('register'); return false;" style="color:var(--cyber-cyan); text-decoration:underline;">Register New Team</a>
+        </div>
+      </form>
+
+      <!-- Register View -->
+      <form id="auth-register-form" onsubmit="handleTeamRegister(event)" style="width:100%; display:none; flex-direction:column; align-items:center; gap:10px;">
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">NEW TEAM ID (e.g. ALPHA-01):</label>
+          <input type="text" id="auth-reg-id" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:1.5px;" placeholder="ALPHA-01" required autocomplete="off">
+        </div>
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">CREATE TEAM PASSWORD:</label>
+          <input type="password" id="auth-reg-pass" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:2px;" placeholder="••••••••" required autocomplete="new-password">
+        </div>
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">TEAM CALLSIGN / NAME:</label>
+          <input type="text" id="auth-reg-name" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:1px;" placeholder="Quantum Phantoms" required autocomplete="off">
+        </div>
+        <div style="width:100%; max-width:320px; text-align:left;">
+          <label style="font-size:10px; color:var(--text-dim); letter-spacing:1px; font-weight:bold;">OPERATOR MEMBERS (Comma separated):</label>
+          <input type="text" id="auth-reg-members" class="proctor-pin-input" style="width:100%; text-align:left; letter-spacing:1px;" placeholder="Rohan, Aditi, Sneha" autocomplete="off">
+        </div>
+        <button type="submit" class="btn-tactical active" style="font-size:12px; padding:10px 24px; margin-top:8px; width:100%; max-width:320px;">
+          REGISTER UNIT & COMMENCE MISSION &rarr;
+        </button>
+        <div id="auth-reg-error" class="proctor-error-text" style="margin-top:4px;"></div>
+        <div style="font-size:10.5px; margin-top:8px; color:var(--text-dim);">
+          Existing unit? <a href="#" onclick="toggleAuthMode('login'); return false;" style="color:var(--cyber-cyan); text-decoration:underline;">Back to Team Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- 2050 Military Cyber Command Header -->
   <header class="command-header">
     <div class="header-left">
-      <span class="classification-stamp">DEFCON 1 // LEVEL 5 QUANTUM</span>
+      <span class="classification-stamp" id="header-team-badge">OPERATOR: [NOT LOGGED IN]</span>
       <span class="defcon-badge" id="hud-threat-badge">THREAT: 89.4% [CRITICAL]</span>
       <span style="font-weight:900; letter-spacing:1px; color:#fff;">STRATCOM // CYBER COMMAND 2050+</span>
     </div>
@@ -1453,6 +1515,12 @@
     </div>
 
     <div class="header-actions">
+      <button class="btn-tactical" onclick="showTeamAuthModal()" title="Switch or View Team Credentials">
+        👥 TEAM ID
+      </button>
+      <button class="btn-tactical" onclick="openOrganizerDashboard()" title="Open Organizer Command Center (F2)">
+        ⚙️ ORGANIZER
+      </button>
       <button class="btn-tactical ethan-call" onclick="summonEthan()" onmouseenter="tacticalSound.playHoverBlip()">
         👁️ ETHAN ASSIST
       </button>
@@ -3197,6 +3265,9 @@
 
     function handleCommand(cmd) {
       logTerm(`<span style="color:var(--tactical-green); font-weight:bold;">operator@stratcom:~$</span> ${escapeHtml(cmd)}`);
+      if (typeof reportTelemetryAction === 'function') {
+        reportTelemetryAction(`Terminal: ${cmd}`);
+      }
       const parts = cmd.trim().split(' ');
       const action = parts[0].toLowerCase();
       const arg = parts.slice(1).join(' ').trim();
@@ -3396,6 +3467,9 @@
       if (m) {
         m.classList.add('active-modal');
         m.scrollTop = 0;
+        if (typeof reportTelemetryAction === 'function') {
+          reportTelemetryAction(`Inspecting Dossier: ${id.replace('modal-', '').toUpperCase()}`);
+        }
       }
     }
 
@@ -3578,6 +3652,218 @@
         }
       });
     }
+
+    // ==========================================================================
+    // 13. Participant Team Authentication & Real-Time Telemetry Engine
+    // ==========================================================================
+    let currentTeam = null;
+    let telemetryHeartbeatTimer = null;
+
+    function loadStoredTeamSession() {
+      try {
+        const raw = localStorage.getItem("failsafe_auth_team");
+        if (raw) {
+          currentTeam = JSON.parse(raw);
+          applyAuthenticatedTeam(currentTeam);
+          return true;
+        }
+      } catch(e) {}
+      return false;
+    }
+
+    function applyAuthenticatedTeam(team) {
+      currentTeam = team;
+      const badge = document.getElementById("header-team-badge");
+      if (badge) {
+        badge.innerText = `TEAM: [${team.team_id}] ${team.team_name || ''}`;
+        badge.style.color = "var(--tactical-green)";
+      }
+      const modal = document.getElementById("team-auth-modal");
+      if (modal) modal.style.display = "none";
+      logTerm(`OPERATOR CLEARANCE GRANTED: [${team.team_id}] ${team.team_name || ''}`, "green");
+      reportTelemetryAction("Workstation Authenticated & Operational");
+      startTelemetryHeartbeat();
+    }
+
+    async function handleTeamLogin(e) {
+      e.preventDefault();
+      const id = document.getElementById("auth-login-id").value.trim().toUpperCase();
+      const pass = document.getElementById("auth-login-pass").value.trim();
+      const errEl = document.getElementById("auth-login-error");
+      if (!id || !pass) return;
+
+      try {
+        const res = await fetch("/api/teams/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ team_id: id, password: pass })
+        });
+        const data = await res.json();
+        if (res.ok && data.team) {
+          localStorage.setItem("failsafe_auth_team", JSON.stringify(data.team));
+          applyAuthenticatedTeam(data.team);
+          if (typeof tacticalSound !== 'undefined') tacticalSound.playSuccessChirp();
+        } else {
+          if (typeof tacticalSound !== 'undefined') tacticalSound.playErrorBuzzer();
+          if (errEl) errEl.innerText = data.error || "Login failed. Invalid credentials.";
+        }
+      } catch(err) {
+        // Standalone Lab Station Fallback (100% Offline Resilience)
+        console.log("Offline mode: creating local team session");
+        const localTeam = { team_id: id, team_name: id, password: pass, current_stage: currentStage || 1 };
+        localStorage.setItem("failsafe_auth_team", JSON.stringify(localTeam));
+        applyAuthenticatedTeam(localTeam);
+      }
+    }
+
+    async function handleTeamRegister(e) {
+      e.preventDefault();
+      const id = document.getElementById("auth-reg-id").value.trim().toUpperCase();
+      const pass = document.getElementById("auth-reg-pass").value.trim();
+      const name = document.getElementById("auth-reg-name").value.trim();
+      const members = document.getElementById("auth-reg-members").value.trim();
+      const errEl = document.getElementById("auth-reg-error");
+      if (!id || !pass || !name) return;
+
+      try {
+        const res = await fetch("/api/teams/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ team_id: id, password: pass, team_name: name, members: members })
+        });
+        const data = await res.json();
+        if (res.ok && data.team) {
+          localStorage.setItem("failsafe_auth_team", JSON.stringify(data.team));
+          applyAuthenticatedTeam(data.team);
+          if (typeof tacticalSound !== 'undefined') tacticalSound.playSuccessChirp();
+        } else {
+          if (typeof tacticalSound !== 'undefined') tacticalSound.playErrorBuzzer();
+          if (errEl) errEl.innerText = data.error || "Registration failed.";
+        }
+      } catch(err) {
+        // Standalone Lab Station Fallback
+        const localTeam = { team_id: id, team_name: name, password: pass, members: members, current_stage: 1 };
+        localStorage.setItem("failsafe_auth_team", JSON.stringify(localTeam));
+        applyAuthenticatedTeam(localTeam);
+      }
+    }
+
+    function toggleAuthMode(mode) {
+      const loginForm = document.getElementById("auth-login-form");
+      const regForm = document.getElementById("auth-register-form");
+      const desc = document.getElementById("auth-modal-desc");
+      if (mode === 'register') {
+        loginForm.style.display = "none";
+        regForm.style.display = "flex";
+        desc.innerText = "Register your team unit callsign, assigned Team ID, and create your access password.";
+      } else {
+        loginForm.style.display = "flex";
+        regForm.style.display = "none";
+        desc.innerText = "Enter your assigned Team ID and Team Password to decrypt this forensics terminal.";
+      }
+    }
+
+    function showTeamAuthModal() {
+      const modal = document.getElementById("team-auth-modal");
+      if (modal) modal.style.display = "flex";
+    }
+
+    async function reportTelemetryAction(actionText) {
+      if (!currentTeam || !currentTeam.team_id) return;
+      try {
+        const res = await fetch("/api/teams/activity", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            team_id: currentTeam.team_id,
+            current_stage: currentStage || 1,
+            action: actionText,
+            tamper_incidents: typeof violationCount !== 'undefined' ? violationCount : 0,
+            is_locked: typeof proctorLockActive !== 'undefined' ? proctorLockActive : false
+          })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.remote_unlock && typeof proctorLockActive !== 'undefined' && proctorLockActive) {
+            verifyProctorOverrideDirectly();
+          }
+          if (data.broadcasts && data.broadcasts.length > 0) {
+            const latest = data.broadcasts[data.broadcasts.length - 1];
+            if (typeof window.lastBroadcastId === 'undefined') window.lastBroadcastId = 0;
+            if (latest.id > window.lastBroadcastId) {
+              window.lastBroadcastId = latest.id;
+              showBroadcastToast(latest.message);
+            }
+          }
+        }
+      } catch(e) {}
+    }
+
+    function showBroadcastToast(msg) {
+      const toast = document.getElementById("broadcast-toast");
+      if (toast) {
+        toast.innerHTML = `📢 <strong>ORGANIZER BROADCAST:</strong><br><span style="font-size:14px; color:#fff; text-shadow:0 0 10px #fff;">"${escapeHtml(msg)}"</span>`;
+        toast.style.display = "block";
+        if (typeof tacticalSound !== 'undefined' && tacticalSound.playAlarmKlaxon) {
+          tacticalSound.playAlarmKlaxon();
+        }
+        setTimeout(() => { toast.style.display = "none"; }, 8500);
+      }
+    }
+
+    function verifyProctorOverrideDirectly() {
+      if (typeof tacticalSound !== 'undefined' && tacticalSound.playSuccessChirp) {
+        tacticalSound.playSuccessChirp();
+      }
+      proctorLockActive = false;
+      lockArmed = false;
+      const overlay = document.getElementById('proctor-lockdown-overlay');
+      if (overlay) overlay.style.display = 'none';
+      logTerm(`🏆 [ORGANIZER REMOTE OVERRIDE]: Workstation lockdown cleared remotely by Proctor.`, 'green');
+      setTimeout(() => { lockArmed = true; }, 2500);
+    }
+
+    function startTelemetryHeartbeat() {
+      if (telemetryHeartbeatTimer) clearInterval(telemetryHeartbeatTimer);
+      telemetryHeartbeatTimer = setInterval(() => {
+        let currentStatus = "Active in Terminal";
+        if (typeof proctorLockActive !== 'undefined' && proctorLockActive) {
+          currentStatus = `🚨 Workstation Locked: Focus Loss Violation (#${violationCount})`;
+        } else if (typeof ethanState !== 'undefined' && ethanState === "TRAPPED") {
+          currentStatus = "Quarantined in Sandbox Buffer";
+        }
+        reportTelemetryAction(currentStatus);
+
+        // Fallback for same-machine testing: inspect localStorage broadcast
+        try {
+          const rawLocalBcast = localStorage.getItem("failsafe_global_broadcast");
+          if (rawLocalBcast) {
+            const b = JSON.parse(rawLocalBcast);
+            if (typeof window.lastLocalBcastId === 'undefined') window.lastLocalBcastId = 0;
+            if (b.id > window.lastLocalBcastId) {
+              window.lastLocalBcastId = b.id;
+              showBroadcastToast(b.message);
+            }
+          }
+        } catch(e) {}
+      }, 4000);
+    }
+
+    function openOrganizerDashboard() {
+      window.open("admin.html", "_blank");
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "F2") {
+        e.preventDefault();
+        openOrganizerDashboard();
+      }
+    });
+
+    // Check for existing team session on startup
+    setTimeout(() => {
+      loadStoredTeamSession();
+    }, 100);
 
     // Launch tactical HUD render loops
     animateTacticalHUD();

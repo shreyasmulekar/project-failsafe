@@ -1,0 +1,780 @@
+/* ==========================================================================
+   PROJECT FAILSAFE // ADITI-OS v4.2 - Enhanced Modern Cyber Forensics UI
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-deep: #05070a;
+  --bg-surface: #0a0f16;
+  --bg-panel: rgba(13, 19, 28, 0.85);
+  --bg-panel-elevated: rgba(18, 26, 38, 0.95);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 229, 255, 0.4);
+  --border-green: rgba(0, 255, 157, 0.4);
+  
+  --text-main: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  
+  --neon-cyan: #00e5ff;
+  --neon-green: #00ff9d;
+  --neon-red: #ff3366;
+  --neon-gold: #ffb703;
+  --neon-purple: #8b5cf6;
+
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', 'Consolas', 'Courier New', monospace;
+  
+  --shadow-window: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 1px rgba(255, 255, 255, 0.2);
+  --shadow-glow: 0 0 20px rgba(0, 229, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-ui);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(0, 229, 255, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.04) 0%, transparent 40%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+}
+
+/* CRT Scanline Overlay */
+.crt-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.22) 50%),
+              linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  background-size: 100% 3px, 6px 100%;
+  z-index: 99999;
+  opacity: 0.45;
+  transition: opacity 0.3s;
+}
+.crt-off .crt-overlay { opacity: 0; }
+
+/* --------------------------------------------------------------------------
+   Top Navigation & Mission Status Bar
+   -------------------------------------------------------------------------- */
+.top-bar {
+  height: 48px;
+  background: rgba(10, 15, 22, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  z-index: 1000;
+  position: relative;
+}
+
+.system-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: var(--neon-cyan);
+  letter-spacing: 0.8px;
+}
+
+.system-status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--neon-green);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--neon-green);
+  animation: pulse-dot 2s infinite;
+}
+
+/* Mission Timeline Progress Tracker */
+.stage-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(5, 8, 12, 0.6);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border-subtle);
+}
+
+.step-node {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  background: #131b26;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.step-node.unlocked {
+  background: rgba(0, 229, 255, 0.15);
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+}
+
+.step-node.current {
+  background: var(--neon-cyan);
+  color: #000;
+  box-shadow: 0 0 10px var(--neon-cyan);
+  transform: scale(1.1);
+}
+
+.step-node.finished {
+  background: var(--neon-green);
+  color: #000;
+  border-color: var(--neon-green);
+}
+
+/* Mission Stopwatch Display */
+.mission-clock-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #06090e;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+.clock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clock-label {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.clock-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--neon-green);
+  font-family: var(--font-mono);
+}
+.clock-val.penalty { color: var(--neon-red); }
+.clock-val.score { color: var(--neon-cyan); }
+
+.bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-bar {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.btn-bar:hover {
+  background: rgba(0, 229, 255, 0.12);
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  transform: translateY(-1px);
+}
+
+.btn-bar.highlight {
+  background: rgba(255, 183, 3, 0.1);
+  border-color: var(--neon-gold);
+  color: var(--neon-gold);
+}
+.btn-bar.highlight:hover {
+  background: var(--neon-gold);
+  color: #000;
+}
+
+.btn-bar.terminal-btn {
+  background: rgba(0, 255, 157, 0.1);
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+}
+
+/* --------------------------------------------------------------------------
+   Desktop Grid & Filesystem
+   -------------------------------------------------------------------------- */
+.desktop-container {
+  height: calc(100vh - 48px - 36px);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+  grid-auto-rows: 120px;
+  gap: 20px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  position: relative;
+  border: 1px solid transparent;
+  background: rgba(13, 19, 28, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.desktop-icon:hover {
+  background: rgba(0, 229, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.3);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.desktop-icon.locked {
+  opacity: 0.5;
+  filter: grayscale(80%);
+}
+
+.desktop-icon.active {
+  border-color: rgba(0, 229, 255, 0.4);
+  background: rgba(0, 229, 255, 0.05);
+}
+
+.desktop-icon.current-stage-icon {
+  border-color: var(--neon-green);
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+  animation: border-pulse 2s infinite;
+}
+
+.icon-graphic {
+  font-size: 34px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.icon-badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+}
+.icon-badge.lock { background: #e11d48; color: #fff; }
+.icon-badge.open { background: var(--neon-green); color: #000; }
+.icon-badge.trap { background: var(--neon-gold); color: #000; }
+
+.icon-label {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-main);
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   Floating Windows System (Glassmorphism & Clean macOS/Cyber Chrome)
+   -------------------------------------------------------------------------- */
+.win-window {
+  position: absolute;
+  background: var(--bg-panel-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  box-shadow: var(--shadow-window);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  min-width: 360px;
+  min-height: 240px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+
+.win-window.active-window {
+  border-color: rgba(0, 229, 255, 0.5);
+  box-shadow: var(--shadow-window), var(--shadow-glow);
+  z-index: 101;
+}
+
+.win-header {
+  height: 38px;
+  background: rgba(15, 23, 34, 0.9);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  cursor: move;
+}
+
+.win-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--neon-cyan);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.win-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.win-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.win-btn:hover { transform: scale(1.15); }
+.win-btn.close { background: #ff5f56; }
+.win-btn.minimize { background: #ffbd2e; }
+.win-btn.maximize { background: #27c93f; }
+
+.win-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+  color: var(--text-main);
+  font-size: 13px;
+  user-select: text;
+}
+
+/* --------------------------------------------------------------------------
+   Password Decryption Gate Box
+   -------------------------------------------------------------------------- */
+.gate-box {
+  background: rgba(5, 9, 14, 0.85);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 18px;
+}
+
+.gate-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--neon-gold);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gate-form {
+  display: flex;
+  gap: 10px;
+}
+
+.gate-input {
+  flex: 1;
+  background: rgba(15, 23, 34, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--neon-green);
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.gate-input:focus {
+  outline: none;
+  border-color: var(--neon-green);
+  box-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+}
+
+.gate-btn {
+  background: var(--neon-green);
+  color: #000;
+  font-weight: 700;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  transition: all 0.15s ease;
+}
+.gate-btn:hover {
+  background: var(--neon-cyan);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
+}
+
+.gate-msg {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.gate-msg.error { color: var(--neon-red); }
+.gate-msg.success { color: var(--neon-green); }
+
+/* --------------------------------------------------------------------------
+   Document Viewer (Mock Google Docs Interface)
+   -------------------------------------------------------------------------- */
+.doc-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px 6px 0 0;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #334155;
+  user-select: none;
+}
+
+.doc-toolbar-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+.doc-toolbar-btn:hover {
+  background: #e2e8f0;
+}
+
+.doc-sheet {
+  background: #ffffff;
+  color: #1e293b;
+  padding: 36px 40px;
+  border-radius: 0 0 6px 6px;
+  min-height: 280px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: Arial, sans-serif;
+  line-height: 1.7;
+}
+
+.doc-sheet .white-secret {
+  color: #ffffff;
+  background-color: transparent;
+  user-select: text;
+  transition: background-color 0.2s;
+}
+.doc-sheet .white-secret::selection {
+  background: #090d16;
+  color: #00ff9d;
+}
+
+/* --------------------------------------------------------------------------
+   Document Authenticity Comparison Tool (Stage 6)
+   -------------------------------------------------------------------------- */
+.doc-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.compare-col {
+  background: #ffffff;
+  color: #0f172a;
+  padding: 24px;
+  border-radius: 6px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.compare-col:hover {
+  border-color: rgba(0, 229, 255, 0.4);
+}
+
+.compare-meta {
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 14px;
+  margin: -24px -24px 16px -24px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: #64748b;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* --------------------------------------------------------------------------
+   Audio Synthesizer & Oscilloscope Visualizer (Stage 7)
+   -------------------------------------------------------------------------- */
+.audio-card {
+  background: #080d14;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+
+.visualizer-canvas {
+  width: 100%;
+  height: 80px;
+  background: #04060a;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  margin-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Version History Simulator (Stage 9)
+   -------------------------------------------------------------------------- */
+.version-history-box {
+  display: flex;
+  gap: 16px;
+  background: #06090e;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 14px;
+}
+
+.version-sidebar {
+  width: 200px;
+  border-right: 1px solid var(--border-subtle);
+  padding-right: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.version-item {
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.15s;
+}
+.version-item:hover {
+  background: rgba(0, 229, 255, 0.08);
+}
+.version-item.active {
+  background: rgba(0, 229, 255, 0.12);
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+}
+
+.version-content {
+  flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Bottom Interactive CLI Terminal Drawer
+   -------------------------------------------------------------------------- */
+.cli-drawer {
+  position: fixed;
+  bottom: 36px;
+  left: 0;
+  width: 100%;
+  height: 240px;
+  background: rgba(8, 12, 18, 0.96);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--neon-green);
+  z-index: 5000;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+  font-family: var(--font-mono);
+}
+
+.cli-header {
+  height: 32px;
+  background: #0d141e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  font-size: 11px;
+  color: var(--neon-green);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cli-body {
+  flex: 1;
+  padding: 12px 16px;
+  overflow-y: auto;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.cli-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #05080c;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.cli-prompt {
+  color: var(--neon-green);
+  font-weight: bold;
+}
+
+.cli-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* Bottom Taskbar */
+.bottom-bar {
+  height: 36px;
+  background: #080c12;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.bottom-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.taskbar-badge {
+  background: rgba(0, 255, 157, 0.1);
+  color: var(--neon-green);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 157, 0.3);
+}
+
+/* Animation Keyframes */
+@keyframes pulse-dot {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes border-pulse {
+  0% { box-shadow: 0 0 5px rgba(0, 255, 157, 0.2); }
+  50% { box-shadow: 0 0 18px rgba(0, 255, 157, 0.5); }
+  100% { box-shadow: 0 0 5px rgba(0, 255, 157, 0.2); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-4px, 4px); filter: hue-rotate(90deg); }
+  40% { transform: translate(-4px, -4px); filter: invert(30%); }
+  60% { transform: translate(4px, 4px); filter: hue-rotate(180deg); }
+  80% { transform: translate(4px, -4px); filter: contrast(200%); }
+  100% { transform: translate(0); }
+}
+
+.glitching {
+  animation: glitch 0.25s infinite;
+}
+
+/* Trap Banner */
+.trap-warning-banner {
+  background: rgba(255, 51, 102, 0.12);
+  border: 2px solid var(--neon-red);
+  color: var(--neon-red);
+  padding: 16px;
+  border-radius: 6px;
+  text-align: center;
+  font-family: var(--font-mono);
+  margin-bottom: 20px;
+}
+
+.btn-danger-large {
+  background: linear-gradient(180deg, #ff3366 0%, #be123c 100%);
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: var(--font-mono);
+  padding: 14px 28px;
+  border: 1px solid #fda4af;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
+  transition: all 0.2s;
+  display: block;
+  margin: 15px auto;
+}
+.btn-danger-large:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(255, 51, 102, 0.7);
+}
+
+.containment-screen {
+  background: #022c22;
+  border: 2px solid var(--neon-green);
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  font-family: var(--font-mono);
+  box-shadow: 0 0 40px rgba(0, 255, 157, 0.25);
+}
