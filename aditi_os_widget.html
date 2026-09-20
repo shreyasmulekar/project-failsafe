@@ -1226,6 +1226,116 @@
       text-align: center;
       padding: 30px;
     }
+
+    /* ==========================================================================
+       ANTI-CHEAT PROCTOR TAMPER LOCKDOWN SYSTEM
+       ========================================================================== */
+    .proctor-lockdown-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 6, 10, 0.98);
+      z-index: 9999999;
+      backdrop-filter: blur(16px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .proctor-lockdown-card {
+      width: 100%;
+      max-width: 560px;
+      background: rgba(12, 18, 26, 0.95);
+      border: 2px solid var(--combat-red);
+      box-shadow: 0 0 50px rgba(255, 0, 60, 0.7), inset 0 0 40px rgba(255, 0, 60, 0.15);
+      border-radius: 4px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      animation: tactical-glitch 0.6s ease-out 1, trapped-glow-pulse 2.2s infinite;
+    }
+    .proctor-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--combat-red);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      border: 1px solid var(--combat-red);
+      background: rgba(255, 0, 60, 0.12);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .proctor-title {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      margin-bottom: 8px;
+    }
+    .proctor-desc {
+      font-size: 11px;
+      line-height: 1.6;
+      color: #b8cddb;
+      margin-bottom: 14px;
+    }
+    .proctor-incident-ledger {
+      width: 100%;
+      background: rgba(4, 8, 12, 0.8);
+      border: 1px solid rgba(255, 0, 60, 0.35);
+      border-radius: 3px;
+      padding: 8px 12px;
+      font-size: 10px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      color: #ff99aa;
+    }
+    .proctor-pin-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .proctor-pin-input {
+      width: 240px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1.5px solid var(--cyber-cyan);
+      border-radius: 3px;
+      padding: 8px 12px;
+      font-family: inherit;
+      font-size: 13px;
+      color: #fff;
+      text-align: center;
+      letter-spacing: 3px;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .proctor-pin-input:focus {
+      border-color: #fff;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+    }
+    .pin-shake {
+      animation: pin-shake 0.4s ease-in-out;
+      border-color: var(--combat-red) !important;
+      box-shadow: 0 0 15px rgba(255, 0, 60, 0.7) !important;
+    }
+    @keyframes pin-shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+    .proctor-error-text {
+      color: var(--combat-red);
+      font-size: 10px;
+      min-height: 14px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -1294,6 +1404,36 @@
     <button class="btn-tactical danger" style="padding: 12px 28px; font-size: 13px;" onclick="closeLockdown()">
       OVERRIDE SECURITY BUS & REBOOT
     </button>
+  </div>
+
+  <!-- ANTI-CHEAT PROCTOR TAMPER LOCKDOWN OVERLAY -->
+  <div id="proctor-lockdown-overlay" class="proctor-lockdown-overlay">
+    <div class="proctor-lockdown-card">
+      <div class="proctor-badge">
+        <span>🚨 SECURITY VIOLATION: FOCUS LOST</span>
+      </div>
+      <div class="proctor-title">STRATCOM WORKSTATION LOCKDOWN</div>
+      <div class="proctor-desc">
+        This workstation has locked itself because an external software, window, or web browser was accessed during active forensic operation.<br><br>
+        <strong style="color:var(--combat-red);">STRICT ANTI-CHEAT PROTOCOL:</strong> Switching windows, using unauthorized notes, or opening external tools is strictly prohibited.
+      </div>
+
+      <div class="proctor-incident-ledger">
+        <span>VIOLATION INCIDENT #<strong id="proctor-violation-count">1</strong></span>
+        <span>LOGGED: <strong id="proctor-violation-time">00:00:00Z</strong></span>
+      </div>
+
+      <div class="proctor-pin-container">
+        <label style="font-size:9.5px; color:#8ba0b2; letter-spacing:1px;">ENTER IEEE WIE ORGANIZER OVERRIDE PIN:</label>
+        <input type="password" id="proctor-pin-input" class="proctor-pin-input" placeholder="••••••••" autocomplete="off">
+        <button type="button" class="btn-tactical active" style="font-size:11px; padding:6px 16px; margin-top:4px;" onclick="verifyProctorOverride()">AUTHORIZE UNLOCK</button>
+        <div id="proctor-error-msg" class="proctor-error-text"></div>
+      </div>
+
+      <div style="font-size:8.5px; color:#8ba0b2; margin-top:10px;">
+        Notify an on-duty IEEE WIE organizer or lab proctor to inspect your workstation and unlock this terminal.
+      </div>
+    </div>
   </div>
 
   <!-- 2050 Military Cyber Command Header -->
@@ -3343,6 +3483,100 @@
       const div = document.createElement('div');
       div.innerText = text || '';
       return div.innerHTML;
+    }
+
+    // ==========================================================================
+    // 12. Anti-Cheat Window Focus Loss & Proctor Lockdown Engine
+    // ==========================================================================
+    let proctorLockActive = false;
+    let lockArmed = false;
+    let violationCount = 0;
+
+    // Grace period on initial launch so window positioning doesn't falsely trigger
+    setTimeout(() => {
+      lockArmed = true;
+    }, 3500);
+
+    function triggerProctorLockdown() {
+      if (!lockArmed || proctorLockActive) return;
+      proctorLockActive = true;
+      violationCount++;
+      if (typeof tacticalSound !== 'undefined' && tacticalSound.playKlaxonSiren) {
+        tacticalSound.playKlaxonSiren();
+      }
+
+      const overlay = document.getElementById('proctor-lockdown-overlay');
+      const countEl = document.getElementById('proctor-violation-count');
+      const timeEl = document.getElementById('proctor-violation-time');
+      const inputEl = document.getElementById('proctor-pin-input');
+      const errEl = document.getElementById('proctor-error-msg');
+
+      if (countEl) countEl.innerText = violationCount;
+      if (timeEl) timeEl.innerText = new Date().toISOString().substring(11, 19) + 'Z';
+      if (errEl) errEl.innerText = '';
+      if (inputEl) {
+        inputEl.value = '';
+        setTimeout(() => inputEl.focus(), 250);
+      }
+      if (overlay) overlay.style.display = 'flex';
+
+      logTerm(`🚨 [SECURITY BREACH]: Workstation focus lost to external program. Tamper Incident #${violationCount} logged.`, 'red');
+    }
+
+    // Detect when user clicks outside, Alt-Tabs, or switches applications
+    window.addEventListener('blur', () => {
+      triggerProctorLockdown();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        triggerProctorLockdown();
+      }
+    });
+
+    function verifyProctorOverride() {
+      const inputEl = document.getElementById('proctor-pin-input');
+      const errEl = document.getElementById('proctor-error-msg');
+      const pin = inputEl ? inputEl.value.trim() : '';
+
+      if (pin === "wie-admin-2026") {
+        if (typeof tacticalSound !== 'undefined' && tacticalSound.playSuccessChirp) {
+          tacticalSound.playSuccessChirp();
+        }
+        proctorLockActive = false;
+        lockArmed = false; // Temporarily disarm
+
+        const overlay = document.getElementById('proctor-lockdown-overlay');
+        if (overlay) overlay.style.display = 'none';
+
+        logTerm(`🏆 [PROCTOR OVERRIDE]: Workstation unlocked by Organizer at ${new Date().toISOString().substring(11, 19)}Z.`, 'green');
+
+        // Re-arm after 2.5 seconds so focus returning to the window does not re-trigger
+        setTimeout(() => {
+          lockArmed = true;
+        }, 2500);
+      } else {
+        if (typeof tacticalSound !== 'undefined' && tacticalSound.playErrorBuzzer) {
+          tacticalSound.playErrorBuzzer();
+        }
+        if (errEl) {
+          errEl.innerText = "ACCESS DENIED: INVALID ORGANIZER PIN.";
+        }
+        if (inputEl) {
+          inputEl.classList.add('pin-shake');
+          setTimeout(() => inputEl.classList.remove('pin-shake'), 500);
+        }
+      }
+    }
+
+    // Allow pressing Enter in the PIN input
+    const pinInput = document.getElementById('proctor-pin-input');
+    if (pinInput) {
+      pinInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          verifyProctorOverride();
+        }
+      });
     }
 
     // Launch tactical HUD render loops

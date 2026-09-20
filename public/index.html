@@ -254,6 +254,36 @@
     </div>
   </div>
 
+  <!-- ANTI-CHEAT PROCTOR TAMPER LOCKDOWN OVERLAY -->
+  <div id="proctor-lockdown-overlay" class="proctor-lockdown-overlay">
+    <div class="proctor-lockdown-card">
+      <div class="proctor-badge">
+        <span>🚨 SECURITY VIOLATION: FOCUS LOST</span>
+      </div>
+      <div class="proctor-title">STRATCOM WORKSTATION LOCKDOWN</div>
+      <div class="proctor-desc">
+        This workstation has locked itself because an external software, window, or web browser was accessed during active forensic operation.<br><br>
+        <strong style="color:var(--neon-red);">STRICT ANTI-CHEAT PROTOCOL:</strong> Switching windows, using unauthorized notes, or opening external tools is strictly prohibited.
+      </div>
+
+      <div class="proctor-incident-ledger">
+        <span>VIOLATION INCIDENT #<strong id="proctor-violation-count">1</strong></span>
+        <span>LOGGED: <strong id="proctor-violation-time">00:00:00Z</strong></span>
+      </div>
+
+      <div class="proctor-pin-container">
+        <label style="font-size:9.5px; color:#8ba0b2; letter-spacing:1px;">ENTER IEEE WIE ORGANIZER OVERRIDE PIN:</label>
+        <input type="password" id="proctor-pin-input" class="proctor-pin-input" placeholder="••••••••" autocomplete="off">
+        <button type="button" class="btn-bar highlight" style="font-size:11px; padding:6px 16px; margin-top:4px;" onclick="verifyProctorOverride()">AUTHORIZE UNLOCK</button>
+        <div id="proctor-error-msg" class="proctor-error-text"></div>
+      </div>
+
+      <div style="font-size:8.5px; color:#8ba0b2; margin-top:10px;">
+        Notify an on-duty IEEE WIE organizer or lab proctor to inspect your workstation and unlock this terminal.
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="js/audio.js"></script>
   <script src="js/puzzles.js"></script>
