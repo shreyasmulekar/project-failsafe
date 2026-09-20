@@ -13,12 +13,17 @@ namespace ProjectFailsafe
             try
             {
                 string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-                string htmlPath = Path.Combine(baseDir, "public", "index.html");
+                string htmlPath = Path.Combine(baseDir, "aditi_os_widget.html");
+
+                if (!File.Exists(htmlPath))
+                {
+                    htmlPath = Path.Combine(baseDir, "public", "index.html");
+                }
 
                 if (!File.Exists(htmlPath))
                 {
                     MessageBox.Show(
-                        "Could not locate 'public\\index.html'.\nPlease ensure ProjectFailsafe.exe is kept inside the project-failsafe folder.",
+                        "Could not locate 'aditi_os_widget.html' or 'public\\index.html'.\nPlease ensure ProjectFailsafe.exe is kept inside the project-failsafe folder.",
                         "PROJECT FAILSAFE - File Not Found",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
@@ -28,7 +33,7 @@ namespace ProjectFailsafe
 
                 string fileUri = new Uri(htmlPath).AbsoluteUri;
 
-                // Priority paths for Edge or Chrome
+                // Priority paths for Edge or Chrome in app mode
                 string[] browserPaths = new string[]
                 {
                     @"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
@@ -53,7 +58,7 @@ namespace ProjectFailsafe
                 {
                     ProcessStartInfo psi = new ProcessStartInfo();
                     psi.FileName = chosenBrowser;
-                    // --app creates a dedicated native desktop window without browser toolbars, tabs, or address bar
+                    // --app creates a dedicated native desktop window without browser bars, tabs, or address bar
                     psi.Arguments = string.Format("--app=\"{0}\" --window-size=1280,820", fileUri);
                     Process.Start(psi);
                 }

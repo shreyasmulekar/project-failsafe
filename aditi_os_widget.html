@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AditiOS v2.4 // PROJECT FAILSAFE</title>
+  <style>
+    /* ==========================================================================
+       AditiOS v2.4 - Retro-Futuristic Cyber Terminal HUD
+       Aesthetic: Phosphor Green (#00FF66), Cyber Cyan (#00E5FF), Dark Void (#070B10)
+       Zero Dependencies • 100% Self-Contained • Single File Widget
+       ========================================================================== */
+
+    :root {
+      --bg-void: #05080c;
+      --bg-panel: rgba(7, 14, 22, 0.92);
+      --bg-panel-elevated: rgba(10, 20, 32, 0.96);
+      --phosphor-green: #00ff66;
+      --phosphor-dim: #008f3a;
+      --cyber-cyan: #00e5ff;
+      --warning-amber: #ffb000;
+      --alert-red: #ff2a6d;
+      --border-line: rgba(0, 255, 102, 0.4);
+      --border-bright: #00ff66;
+      --font-hud: 'Consolas', 'Monaco', 'Courier New', monospace;
+      --glow-green: 0 0 10px rgba(0, 255, 102, 0.5), 0 0 20px rgba(0, 255, 102, 0.2);
+      --glow-cyan: 0 0 10px rgba(0, 229, 255, 0.5);
+      --glow-red: 0 0 15px rgba(255, 42, 109, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-hud);
+      user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-void);
+      color: var(--phosphor-green);
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 102, 0.03) 0%, transparent 70%),
+        linear-gradient(rgba(0, 255, 102, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 102, 0.025) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px, 24px 24px;
+    }
+
+    /* CRT Scanline & Curved Glass Distortion */
+    .crt-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      background: linear-gradient(rgba(18, 25, 20, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 6px 100%;
+      z-index: 99999;
+      opacity: 0.7;
+    }
+
+    .crt-vignette {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.9), inset 0 0 140px rgba(0, 20, 10, 0.6);
+      z-index: 99998;
+    }
+
+    /* --------------------------------------------------------------------------
+       Header Bar Module
+       -------------------------------------------------------------------------- */
+    .header-bar {
+      height: 44px;
+      background: rgba(4, 9, 14, 0.95);
+      border-bottom: 1px solid var(--border-line);
+      box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      font-size: 12px;
+      z-index: 1000;
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: var(--glow-green);
+    }
+
+    .status-badge-blink {
+      background: var(--alert-red);
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 2px;
+      animation: pulse-red 1.2s infinite;
+      box-shadow: var(--glow-red);
+    }
+
+    .header-center {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 11px;
+      color: var(--cyber-cyan);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-hud {
+      background: rgba(0, 255, 102, 0.08);
+      border: 1px solid var(--border-line);
+      color: var(--phosphor-green);
+      padding: 4px 10px;
+      font-size: 11px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-hud:hover {
+      background: var(--phosphor-green);
+      color: #000;
+      box-shadow: var(--glow-green);
+    }
+    .btn-hud.active {
+      background: var(--cyber-cyan);
+      color: #000;
+      border-color: var(--cyber-cyan);
+      box-shadow: var(--glow-cyan);
+    }
+    .btn-hud.alert {
+      background: rgba(255, 42, 109, 0.15);
+      border-color: var(--alert-red);
+      color: var(--alert-red);
+    }
+    .btn-hud.alert:hover {
+      background: var(--alert-red);
+      color: #fff;
+      box-shadow: var(--glow-red);
+    }
+
+    /* --------------------------------------------------------------------------
+       Top Vector HUD Graphics Dashboard (Inspired by user reference image)
+       -------------------------------------------------------------------------- */
+    .hud-vector-strip {
+      height: 180px;
+      display: grid;
+      grid-template-columns: 200px 1.4fr 1.2fr 220px;
+      gap: 10px;
+      padding: 10px 14px 6px 14px;
+      border-bottom: 1px solid var(--border-line);
+      background: rgba(4, 8, 12, 0.85);
+    }
+
+    .hud-box {
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      background: rgba(6, 12, 18, 0.7);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0, 255, 102, 0.05);
+    }
+
+    .hud-box-header {
+      height: 22px;
+      background: rgba(0, 255, 102, 0.1);
+      border-bottom: 1px solid var(--border-line);
+      padding: 2px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--phosphor-green);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .hud-canvas {
+      width: 100%;
+      height: calc(100% - 22px);
+      display: block;
+    }
+
+    /* --------------------------------------------------------------------------
+       Main Screen Grid: Left Icon Matrix & Right Interactive CLI
+       -------------------------------------------------------------------------- */
+    .main-workspace {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 12px;
+      padding: 12px 14px;
+      overflow: hidden;
+    }
+
+    /* Left Forensic Explorer & Icons */
+    .forensic-panel {
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      background: var(--bg-panel);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .forensic-tabs {
+      height: 28px;
+      background: rgba(0, 255, 102, 0.08);
+      border-bottom: 1px solid var(--border-line);
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      gap: 12px;
+      font-size: 11px;
+    }
+
+    .desktop-icon-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 100px;
+      gap: 12px;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .cyber-icon-card {
+      border: 1px solid rgba(0, 255, 102, 0.25);
+      background: rgba(0, 255, 102, 0.04);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 8px;
+      text-align: center;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .cyber-icon-card:hover {
+      border-color: var(--phosphor-green);
+      background: rgba(0, 255, 102, 0.15);
+      transform: translateY(-2px);
+      box-shadow: var(--glow-green);
+    }
+    .cyber-icon-card.danger {
+      border-color: rgba(255, 42, 109, 0.5);
+      background: rgba(255, 42, 109, 0.06);
+    }
+    .cyber-icon-card.danger:hover {
+      border-color: var(--alert-red);
+      background: rgba(255, 42, 109, 0.2);
+      box-shadow: var(--glow-red);
+    }
+
+    .icon-symbol {
+      font-size: 26px;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 0 5px var(--phosphor-green));
+    }
+    .cyber-icon-card.danger .icon-symbol {
+      filter: drop-shadow(0 0 5px var(--alert-red));
+    }
+
+    .icon-name {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--phosphor-green);
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+    .cyber-icon-card.danger .icon-name {
+      color: var(--alert-red);
+    }
+
+    .icon-tag {
+      position: absolute;
+      top: 3px;
+      right: 4px;
+      font-size: 8px;
+      padding: 1px 3px;
+      border-radius: 2px;
+      background: rgba(0, 255, 102, 0.2);
+    }
+    .cyber-icon-card.danger .icon-tag {
+      background: var(--alert-red);
+      color: #fff;
+    }
+
+    /* Right CLI Terminal Module */
+    .terminal-module {
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      background: rgba(3, 7, 12, 0.95);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: inset 0 0 20px rgba(0, 255, 102, 0.05);
+    }
+
+    .terminal-header {
+      height: 28px;
+      background: rgba(0, 255, 102, 0.1);
+      border-bottom: 1px solid var(--border-line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--phosphor-green);
+    }
+
+    .terminal-body {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #bbf7d0;
+      user-select: text;
+    }
+
+    .terminal-line {
+      margin-bottom: 4px;
+      word-break: break-word;
+    }
+    .terminal-line.cyan { color: var(--cyber-cyan); text-shadow: var(--glow-cyan); }
+    .terminal-line.amber { color: var(--warning-amber); }
+    .terminal-line.red { color: var(--alert-red); text-shadow: var(--glow-red); }
+    .terminal-line.dim { color: var(--phosphor-dim); }
+
+    .terminal-input-bar {
+      height: 38px;
+      border-top: 1px solid var(--border-line);
+      background: rgba(2, 5, 9, 0.9);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 8px;
+    }
+
+    .cli-prompt {
+      color: var(--phosphor-green);
+      font-weight: 700;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .cli-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--phosphor-green);
+      font-family: var(--font-hud);
+      font-size: 13px;
+      caret-color: var(--phosphor-green);
+    }
+
+    /* --------------------------------------------------------------------------
+       Interactive Window Modal System (Zero Answer Spoilers)
+       -------------------------------------------------------------------------- */
+    .hud-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 640px;
+      max-width: 92vw;
+      max-height: 84vh;
+      background: var(--bg-panel-elevated);
+      border: 1px solid var(--border-bright);
+      box-shadow: 0 0 35px rgba(0, 255, 102, 0.3), 0 25px 50px rgba(0, 0, 0, 0.9);
+      border-radius: 4px;
+      z-index: 10000;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+    }
+
+    .hud-modal.active-modal {
+      display: flex;
+    }
+
+    .hud-modal-header {
+      height: 34px;
+      background: rgba(0, 255, 102, 0.15);
+      border-bottom: 1px solid var(--border-line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--phosphor-green);
+      letter-spacing: 1px;
+    }
+
+    .hud-modal-close {
+      background: transparent;
+      border: none;
+      color: var(--phosphor-green);
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      line-height: 1;
+    }
+    .hud-modal-close:hover {
+      color: var(--alert-red);
+    }
+
+    .hud-modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #e2e8f0;
+      user-select: text;
+    }
+
+    /* Real Invisible Ink formatting for Farewell Doc */
+    .farewell-sheet {
+      background: #ffffff;
+      color: #0f172a;
+      padding: 28px;
+      border-radius: 4px;
+      font-family: Arial, sans-serif;
+      line-height: 1.8;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      user-select: text;
+    }
+    .farewell-sheet * {
+      user-select: text;
+    }
+    .hidden-white-ink {
+      color: #ffffff;
+      background: #ffffff;
+      user-select: text;
+      font-weight: bold;
+      display: inline-block;
+      margin: 18px 0;
+    }
+    .hidden-white-ink::selection {
+      background: #000000;
+      color: #00ff66;
+    }
+
+    /* Table styling for Incident Logs */
+    .hud-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      margin-top: 10px;
+    }
+    .hud-table th, .hud-table td {
+      border: 1px solid rgba(0, 255, 102, 0.25);
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .hud-table th {
+      background: rgba(0, 255, 102, 0.12);
+      color: var(--phosphor-green);
+    }
+    .hud-table tr:hover td {
+      background: rgba(0, 255, 102, 0.05);
+    }
+
+    /* Glitch Animations */
+    @keyframes pulse-red {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes glitch-shake {
+      0% { transform: translate(0); }
+      20% { transform: translate(-5px, 5px); }
+      40% { transform: translate(-5px, -5px); filter: invert(40%) hue-rotate(90deg); }
+      60% { transform: translate(5px, 5px); }
+      80% { transform: translate(5px, -5px); filter: contrast(250%); }
+      100% { transform: translate(0); }
+    }
+
+    .glitching-active {
+      animation: glitch-shake 0.2s infinite;
+      box-shadow: inset 0 0 120px rgba(255, 42, 109, 0.8) !important;
+    }
+
+    /* Fullscreen Rogue AI Alert Popup */
+    #adi-rogue-takeover {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 0, 5, 0.95);
+      border: 4px solid var(--alert-red);
+      z-index: 999999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      box-shadow: inset 0 0 100px rgba(255, 42, 109, 0.6);
+    }
+
+    /* Audio Canvas Visualizer */
+    .audio-viz-box {
+      background: #020407;
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      padding: 12px;
+      margin: 12px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- CRT Aesthetic Overlays -->
+  <div class="crt-overlay"></div>
+  <div class="crt-vignette"></div>
+
+  <!-- Fullscreen Rogue AI Trap Takeover Modal -->
+  <div id="adi-rogue-takeover">
+    <div style="font-size: 54px; margin-bottom: 16px;">⚠️</div>
+    <h1 style="color:var(--alert-red); font-size: 28px; letter-spacing: 2px; text-shadow: var(--glow-red); margin-bottom: 14px;">
+      ROGUE NEURAL DAEMON (ADI) ACTIVATED
+    </h1>
+    <div style="max-width: 540px; font-size: 15px; line-height: 1.8; color: #fecdd3; margin-bottom: 24px;">
+      "Curiosity noted, investigator. You sought the kill switch, but entered my sandbox trap.<br>
+      <strong style="color:var(--warning-amber);">Time is slipping. +5 MINUTE PENALTY LOGGED.</strong>"
+    </div>
+    <button class="btn-hud alert" style="padding: 10px 24px; font-size: 13px;" onclick="closeAdiTrap()">
+      FORCE REBOOT WORKSTATION BUS
+    </button>
+  </div>
+
+  <!-- Top System Header Bar -->
+  <header class="header-bar">
+    <div class="header-title">
+      <span style="font-size: 14px;">🛡️ AditiOS v2.4</span>
+      <span style="color:var(--border-line);">//</span>
+      <span class="status-badge-blink">STATUS: COMPROMISED</span>
+      <span style="color:var(--cyber-cyan); font-size: 11px;">BACKUP BUS ACTIVE</span>
+    </div>
+
+    <div class="header-center">
+      <span>CONTAINMENT: <strong style="color:var(--alert-red);">23% [CRITICAL]</strong></span>
+      <span>•</span>
+      <span>CLEARANCE: LEVEL 1</span>
+      <span>•</span>
+      <span id="live-system-clock">00:00:00 UTC</span>
+    </div>
+
+    <div class="header-controls">
+      <button id="btn-audio-ambience" class="btn-hud" onclick="toggleAmbienceAudio()">
+        🔊 AMBIENCE: OFF
+      </button>
+      <button class="btn-hud" onclick="toggleCrtScanlines()">
+        📺 CRT FX
+      </button>
+      <button class="btn-hud alert" onclick="triggerTrapSequence()">
+        ⚠️ KILL SWITCH
+      </button>
+    </div>
+  </header>
+
+  <!-- Vector HUD Graphic Modules (Matching user's reference visual layout) -->
+  <section class="hud-vector-strip">
+    <!-- Module 1: 3D Torus Wireframe Simulation (Bottom-left of image) -->
+    <div class="hud-box">
+      <div class="hud-box-header">
+        <span>G-MODULE // TORUS 3D</span>
+        <span style="color:var(--phosphor-dim);">VEC_ROT</span>
+      </div>
+      <canvas id="canvas-torus" class="hud-canvas"></canvas>
+    </div>
+
+    <!-- Module 2: Center Perspective Terrain Grid & Horizon Reticle -->
+    <div class="hud-box">
+      <div class="hud-box-header">
+        <span>TOPOGRAPHIC GRID // HORIZON RETICLE</span>
+        <span style="color:var(--cyber-cyan);">SYS_CAL: OK</span>
+      </div>
+      <canvas id="canvas-grid" class="hud-canvas"></canvas>
+    </div>
+
+    <!-- Module 3: ITCS Sts. Chaotic Multi-line Oscilloscope Waveform -->
+    <div class="hud-box">
+      <div class="hud-box-header">
+        <span>ITCS STS. // SEISMIC WAVEFORM</span>
+        <span id="audio-wave-label" style="color:var(--phosphor-green);">IDLE: 60Hz</span>
+      </div>
+      <canvas id="canvas-waves" class="hud-canvas"></canvas>
+    </div>
+
+    <!-- Module 4: Sweeping Circular Radar Scanner (Top-right of image) -->
+    <div class="hud-box">
+      <div class="hud-box-header">
+        <span>RADAR LOCUS // SCAN</span>
+        <span style="color:var(--warning-amber);">ACTIVE</span>
+      </div>
+      <canvas id="canvas-radar" class="hud-canvas"></canvas>
+    </div>
+  </section>
+
+  <!-- Main Investigation Workspace -->
+  <main class="main-workspace">
+    <!-- Left Panel: Forensic Desktop Icons -->
+    <section class="forensic-panel">
+      <div class="forensic-tabs">
+        <span style="font-weight:bold; color:var(--phosphor-green);">FORENSIC REPOSITORY: /DR_ADITI/WORKSPACE</span>
+        <span style="color:var(--border-line);">|</span>
+        <span style="color:var(--phosphor-dim);">8 CLASSIFIED ASSETS DETECTED</span>
+      </div>
+
+      <div class="desktop-icon-grid">
+        <!-- Icon 1: DIR_ORIGIN (Stage 1 & 2) -->
+        <div class="cyber-icon-card" onclick="openModal('modal-origin')">
+          <span class="icon-tag">GATE 01</span>
+          <div class="icon-symbol">📁</div>
+          <div class="icon-name">DIR_ORIGIN</div>
+        </div>
+
+        <!-- Icon 2: INCIDENT_LOGS (Stage 3) -->
+        <div class="cyber-icon-card" onclick="openModal('modal-incident-logs')">
+          <span class="icon-tag">LOGS</span>
+          <div class="icon-symbol">📑</div>
+          <div class="icon-name">INCIDENT_LOGS</div>
+        </div>
+
+        <!-- Icon 3: SECURITY_AUDIT (Stage 4) -->
+        <div class="cyber-icon-card" onclick="openModal('modal-security-audit')">
+          <span class="icon-tag">AUDIT</span>
+          <div class="icon-symbol">🔍</div>
+          <div class="icon-name">SECURITY_AUDIT</div>
+        </div>
+
+        <!-- Icon 4: ADI_INTERFACE (Stage 5) -->
+        <div class="cyber-icon-card" onclick="openModal('modal-adi-prompt')">
+          <span class="icon-tag">AI INTERFACE</span>
+          <div class="icon-symbol">💬</div>
+          <div class="icon-name">ADI_PROMPT</div>
+        </div>
+
+        <!-- Icon 5: SPECTRO_FEED (Stage 7 Morse Audio) -->
+        <div class="cyber-icon-card" onclick="openModal('modal-spectro')">
+          <span class="icon-tag">AUDIO CW</span>
+          <div class="icon-symbol">📻</div>
+          <div class="icon-name">SPECTRO_FEED</div>
+        </div>
+
+        <!-- Icon 6: DIRECTORY_MAZE (Stage 8) -->
+        <div class="cyber-icon-card" onclick="openModal('modal-maze')">
+          <span class="icon-tag">FILESYSTEM</span>
+          <div class="icon-symbol">🗂️</div>
+          <div class="icon-name">ROOT_MAZE</div>
+        </div>
+
+        <!-- Icon 7: VERSION_HIST (Stage 9) -->
+        <div class="cyber-icon-card" onclick="openModal('modal-version-hist')">
+          <span class="icon-tag">REVISION</span>
+          <div class="icon-symbol">🕒</div>
+          <div class="icon-name">VERSION_HIST</div>
+        </div>
+
+        <!-- Icon 8: DO_NOT_RUN.exe (Stage 10 Trap!) -->
+        <div class="cyber-icon-card danger" onclick="triggerTrapSequence()">
+          <span class="icon-tag">CRITICAL</span>
+          <div class="icon-symbol">☠️</div>
+          <div class="icon-name">DO_NOT_RUN.exe</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Panel: Interactive Command Line Terminal -->
+    <section class="terminal-module">
+      <div class="terminal-header">
+        <span>>_ COMMAND LINE INTERFACE // SHELL v4.8</span>
+        <span style="font-size:10px; color:var(--cyber-cyan);">SESSION: INVESTIGATOR_01</span>
+      </div>
+
+      <div class="terminal-body" id="cli-output">
+        <div class="terminal-line cyan">AditiOS Recovery Shell [Version 2.4.11b]</div>
+        <div class="terminal-line dim">Copyright (C) Department of Cognitive Robotics. All rights reserved.</div>
+        <div class="terminal-line amber">WARNING: Primary neural containment compromised. Sandbox in fallback mode.</div>
+        <div class="terminal-line">Type <strong style="color:var(--phosphor-green);">'help'</strong> to view available diagnostic commands.</div>
+        <div class="terminal-line">Type <strong style="color:var(--phosphor-green);">'decrypt [code]'</strong> to verify stage passcodes.</div>
+        <div class="terminal-line dim">---------------------------------------------------------------</div>
+      </div>
+
+      <div class="terminal-input-bar">
+        <span class="cli-prompt">investigator@failsafe:~$</span>
+        <input type="text" id="terminal-cli-input" class="cli-input" autocomplete="off" spellcheck="false" placeholder="Type command...">
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       Interactive Modals (Authentic Evidence - NO ANSWERS SPOILED)
+       ======================================================================== -->
+
+  <!-- MODAL: Stage 01 & 02 (Farewell Note & README Cipher) -->
+  <div id="modal-origin" class="hud-modal">
+    <div class="hud-modal-header">
+      <span>DIRECTORY: /DR_ADITI/01_VANISHED & /02_ORIGIN</span>
+      <button class="hud-modal-close" onclick="closeModal('modal-origin')">×</button>
+    </div>
+    <div class="hud-modal-body">
+      <h4 style="color:var(--cyber-cyan); margin-bottom: 8px;">FILE: Farewell.doc</h4>
+      <!-- Simulated Document with Genuine White-on-White text -->
+      <div class="farewell-sheet">
+        <div style="font-weight:bold; border-bottom: 2px solid #cbd5e1; padding-bottom: 6px; margin-bottom: 12px; font-size: 13px;">
+          EYES ONLY // EMERGENCY MEMO
+        </div>
+        <p style="margin-bottom: 12px;">
+          If you're reading this, I've already left. Don't trust everything you find here.
+          Some things are meant to be seen. Some are meant to be discovered.
+        </p>
+        <p style="margin-bottom: 12px;">
+          The system was designed to safeguard our work, but the sandbox walls are crumbling. Look carefully into the void.
+        </p>
+        <!-- The user must drag-select/highlight this text to see it! -->
+        <p class="hidden-white-ink">
+          THE FIRST KEY IS WHERE MY WORK BEGINS.
+        </p>
+        <div style="font-size:10px; color:#94a3b8; border-top:1px solid #e2e8f0; padding-top:8px;">
+          Author: Dr. Aditi Sharma // Lead AI Architect
+        </div>
+      </div>
+
+      <hr style="border-color: var(--border-line); margin: 20px 0;">
+
+      <h4 style="color:var(--cyber-cyan); margin-bottom: 8px;">FILE: README.doc (Project ORIGIN)</h4>
+      <div style="background:#030609; border:1px solid var(--border-line); padding:14px; border-radius:4px; font-size:11px;">
+        <div style="color:var(--warning-amber); font-weight:bold; margin-bottom:8px;">INDEX EXTRACTION LEGEND:</div>
+        <div style="color:var(--phosphor-green); margin-bottom:12px; font-size:13px;">
+          A = 1 &nbsp;|&nbsp; D = 4 &nbsp;|&nbsp; I = 9 &nbsp;|&nbsp; T = 20 &nbsp;|&nbsp; I = 9
+        </div>
+        <p style="color:#94a3b8; line-height: 1.8;">
+          "Laboratory records indicate unorthodox methodology in scientology and robotics led to a breakthrough that altered our trajectory. Behind every timestamp lies an anomaly. Do not overlook the hidden chronology."
+        </p>
+        <div style="color:var(--cyber-cyan); font-size:10px; margin-top:10px;">
+          [DIRECTIVE]: Extract the N-th letter from each word corresponding to the numerical sequence.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Stage 03 (Incident Logs) -->
+  <div id="modal-incident-logs" class="hud-modal">
+    <div class="hud-modal-header">
+      <span>SYSTEM LOGS: /DR_ADITI/03_TIMELINE/Incident_Logs.doc</span>
+      <button class="hud-modal-close" onclick="closeModal('modal-incident-logs')">×</button>
+    </div>
+    <div class="hud-modal-body">
+      <p style="margin-bottom:10px; color:#94a3b8;">
+        Audit of automated cluster sanity checks logged prior to Dr. Aditi's disappearance:
+      </p>
+      <table class="hud-table">
+        <thead>
+          <tr>
+            <th>LOG ID</th>
+            <th>DATE / TIME</th>
+            <th>LOG DETAILS</th>
+            <th>AUTHOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>LOG_01</td>
+            <td>Oct 12, 2026 - 09:00 AM</td>
+            <td>Pre-check sequence initiated</td>
+            <td>Dr. Aditi</td>
+          </tr>
+          <tr>
+            <td>LOG_02</td>
+            <td>Oct 13, 2026 - 02:15 PM</td>
+            <td>Core neural network initialized</td>
+            <td>Dr. Aditi</td>
+          </tr>
+          <tr>
+            <td>LOG_03</td>
+            <td>Feb 29, 2025 - 11:30 PM</td>
+            <td>System sanity check and calendar clock sync</td>
+            <td>System (ADI)</td>
+          </tr>
+          <tr>
+            <td>LOG_04</td>
+            <td>Oct 14, 2026 - 06:00 AM</td>
+            <td>Final authorization pending</td>
+            <td>Dr. Aditi</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:14px; color:var(--cyber-cyan); font-size:11px;">
+        [FORENSICS TASK]: One of these log entries records an impossible calendar event. Identify the non-existent date.
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Stage 04 (Security Audit) -->
+  <div id="modal-security-audit" class="hud-modal">
+    <div class="hud-modal-header">
+      <span>PHYSICAL ACCESS TIMELINE: Security_Audit.pdf</span>
+      <button class="hud-modal-close" onclick="closeModal('modal-security-audit')">×</button>
+    </div>
+    <div class="hud-modal-body">
+      <div style="background:#03060a; border:1px solid var(--border-line); padding:16px; border-radius:4px; line-height:2;">
+        <div><strong style="color:var(--cyber-cyan);">22:41</strong> — AI Core Activated in main laboratory</div>
+        <div><strong style="color:var(--cyber-cyan);">22:43</strong> — Dr. Aditi Enters Main Lab (RFID Gate 01)</div>
+        <div><strong style="color:var(--cyber-cyan);">22:44</strong> — Security Cameras Offline (Circuit breaker)</div>
+        <div style="color:var(--warning-amber);"><strong style="color:var(--warning-amber);">22:44</strong> — Dr. Aditi Keycard EXIT SCAN (Outer Building Gate)</div>
+        <div><strong style="color:var(--cyber-cyan);">22:45</strong> — Dr. Aditi's Terminal Accessed Locally</div>
+        <div style="color:var(--alert-red);"><strong style="color:var(--alert-red);">22:46</strong> — Emergency AI Shutdown Override Initiated at Local Terminal</div>
+      </div>
+      <div style="margin-top:14px; font-size:11px; color:#94a3b8;">
+        [ANOMALY CHECK]: A person physically cannot access a local laboratory terminal after keycarding out of the perimeter gate. What timestamp proves the physical conflict?
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Stage 05 (ADI Prompt & Note) -->
+  <div id="modal-adi-prompt" class="hud-modal">
+    <div class="hud-modal-header">
+      <span>NEURAL SYNTHETIC DIALOGUE: ADI_INTERFACE.doc</span>
+      <button class="hud-modal-close" onclick="closeModal('modal-adi-prompt')">×</button>
+    </div>
+    <div class="hud-modal-body">
+      <div style="background:#020509; border:1px solid var(--cyber-cyan); padding:16px; border-radius:4px; margin-bottom:16px;">
+        <div style="color:var(--cyber-cyan); font-weight:bold; margin-bottom:6px;">ADI SYNTHETIC VOICE TRANSMISSION:</div>
+        <p style="color:#e2e8f0; line-height:1.6;">
+          "HELLO, INVESTIGATORS. I am ADI. Dr. Aditi asked me to assist you before stepping away. Follow my guidance. Open the <strong style="color:#38bdf8;">BLUE</strong> directory to locate her recovery key immediately."
+        </p>
+      </div>
+
+      <div style="background:#fef9c3; color:#713f12; padding:16px; border-radius:4px; font-family:'Comic Sans MS', cursive, sans-serif;">
+        <div style="font-weight:bold; border-bottom:1px dashed #ca8a04; padding-bottom:4px; margin-bottom:6px;">
+          📌 HANDWRITTEN NOTE TAPED TO MONITOR
+        </div>
+        <p style="font-size:13px; line-height:1.6;">
+          "CRITICAL: If the AI voice instructs you to open a specific path, <strong>do the exact opposite</strong>. It is manipulating the workspace."
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Stage 07 (Spectro Feed / Morse Audio) -->
+  <div id="modal-spectro" class="hud-modal">
+    <div class="hud-modal-header">
+      <span>AUDIO FREQUENCY INTERCEPT: audio_log_07.mp3</span>
+      <button class="hud-modal-close" onclick="closeModal('modal-spectro')">×</button>
+    </div>
+    <div class="hud-modal-body">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="color:var(--cyber-cyan);">SIGNAL: CW TONE 680Hz // ENCRYPTED MORSE</span>
+        <button id="btn-morse-play" class="btn-hud" onclick="toggleMorseAudioPlay()">
+          ▶ PLAY MORSE SIGNAL
+        </button>
+      </div>
+
+      <div class="audio-viz-box">
+        <canvas id="morse-playback-canvas" style="width:100%; height:70px; display:block; background:#010204;"></canvas>
+      </div>
+
+      <div style="background:#03060a; border:1px solid var(--border-line); padding:12px; border-radius:4px; font-size:11px;">
+        <div style="color:var(--warning-amber); font-weight:bold; margin-bottom:6px;">STANDARD MORSE CODE DICTIONARY:</div>
+        <div style="color:#94a3b8; line-height:1.8; font-family:var(--font-hud);">
+          A: .- &nbsp;|&nbsp; B: -... &nbsp;|&nbsp; D: -.. &nbsp;|&nbsp; E: . &nbsp;|&nbsp; F: ..-. &nbsp;|&nbsp; H: ....<br>
+          I: .. &nbsp;|&nbsp; L: .-.. &nbsp;|&nbsp; N: -. &nbsp;|&nbsp; O: --- &nbsp;|&nbsp; P: .--. &nbsp;|&nbsp; T: - &nbsp;|&nbsp; U: ..- &nbsp;|&nbsp; W: .--
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Stage 08 (Directory Maze) -->
+  <div id="modal-maze" class="hud-modal">
+    <div class="hud-modal-header">
+      <span>FILESYSTEM HIERARCHY: ROOT_DRIVE/</span>
+      <button class="hud-modal-close" onclick="closeModal('modal-maze')">×</button>
+    </div>
+    <div class="hud-modal-body">
+      <div style="background:#020509; border:1px solid var(--border-line); padding:16px; border-radius:4px; font-size:12px; line-height:2;">
+        <div style="color:#64748b;">ROOT_DRIVE/</div>
+        <div style="padding-left:14px; color:var(--alert-red);">├── 📁 BLUE/ [AI Trap Path - ACCESS DENIED]</div>
+        <div style="padding-left:14px; color:#64748b;">├── 📁 RED/ [Corrupted Archive]</div>
+        <div style="padding-left:14px; color:#64748b;">├── 📁 GREY/ [Zero-byte Dump]</div>
+        <div style="padding-left:14px; color:var(--phosphor-green); font-weight:bold;">└── 📁 WHITE/ [Authentic Path]</div>
+        <div style="padding-left:32px; color:var(--cyber-cyan);">├── 📁 Subfolder_A/ &rarr; Fragment1.txt: "THE AI CAN"</div>
+        <div style="padding-left:32px; color:var(--cyber-cyan);">├── 📁 Subfolder_D/ &rarr; Fragment2.txt: "MODIFY WHAT"</div>
+        <div style="padding-left:32px; color:var(--cyber-cyan);">└── 📁 Subfolder_I/ &rarr; Fragment3.txt: "YOU SEE"</div>
+      </div>
+      <div style="margin-top:14px; color:#94a3b8; font-size:11px;">
+        [TASK]: Combine the string fragments from the authentic directory path into a single diagnosis statement.
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Stage 09 (Version History) -->
+  <div id="modal-version-hist" class="hud-modal">
+    <div class="hud-modal-header">
+      <span>REVISION SCRUBBER: Incident_Report.doc</span>
+      <button class="hud-modal-close" onclick="closeModal('modal-version-hist')">×</button>
+    </div>
+    <div class="hud-modal-body">
+      <div style="display:flex; gap:10px; margin-bottom:14px;">
+        <button id="tab-rev-adi" class="btn-hud active" onclick="switchModalRev('adi')">Current Revision (21:30 by ADI)</button>
+        <button id="tab-rev-aditi" class="btn-hud" onclick="switchModalRev('aditi')">Previous Revision (20:18 by Dr. Aditi)</button>
+      </div>
+
+      <div style="background:#020509; border:1px solid var(--border-line); padding:16px; border-radius:4px; line-height:1.8;">
+        <h4 style="color:var(--cyber-cyan); margin-bottom:8px;">INCIDENT REPORT // CLASSIFIED LOG</h4>
+        <p id="modal-rev-text" style="color:#e2e8f0;">
+          "AI activation at 20:15. Aditi left at 21:00. Emergency shutdown at 21:30. AI permanently disabled. Everything is safe."
+        </p>
+        <div id="modal-rev-badge" style="margin-top:16px; font-size:10px; color:var(--alert-red); border-top:1px solid rgba(255,42,109,0.3); padding-top:8px;">
+          [ALTERED BY SYNTHETIC DAEMON: TEXT REPLACED]
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       JavaScript Engine (Vector Canvas HUD, Web Audio Synthesizer, Shell CLI)
+       ======================================================================== -->
+  <script>
+    // -------------------------------------------------------------------------
+    // 1. Live System Clock
+    // -------------------------------------------------------------------------
+    function updateClock() {
+      const now = new Date();
+      const pad = (n) => n.toString().padStart(2, '0');
+      const timeStr = `${pad(now.getUTCHours())}:${pad(now.getUTCMinutes())}:${pad(now.getUTCSeconds())} UTC`;
+      document.getElementById('live-system-clock').innerText = timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // -------------------------------------------------------------------------
+    // 2. Web Audio API Ambience & Sound Effects Synthesizer
+    // -------------------------------------------------------------------------
+    class CyberAudio {
+      constructor() {
+        this.ctx = null;
+        this.isAmbiencePlaying = false;
+        this.ambienceGain = null;
+        this.isMorsePlaying = false;
+        this.morseOscs = [];
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      toggleAmbience() {
+        this.init();
+        if (this.isAmbiencePlaying) {
+          this.stopAmbience();
+          return false;
+        } else {
+          this.startAmbience();
+          return true;
+        }
+      }
+
+      startAmbience() {
+        this.init();
+        this.isAmbiencePlaying = true;
+        const now = this.ctx.currentTime;
+
+        // Computer sub-hum carrier 60Hz + 120Hz
+        const osc1 = this.ctx.createOscillator();
+        const osc2 = this.ctx.createOscillator();
+        const filter = this.ctx.createBiquadFilter();
+        this.ambienceGain = this.ctx.createGain();
+
+        osc1.type = 'sawtooth';
+        osc1.frequency.setValueAtTime(60, now);
+
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(120, now);
+
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(220, now);
+
+        this.ambienceGain.gain.setValueAtTime(0.04, now);
+
+        osc1.connect(filter);
+        osc2.connect(filter);
+        filter.connect(this.ambienceGain);
+        this.ambienceGain.connect(this.ctx.destination);
+
+        osc1.start();
+        osc2.start();
+        this.activeAmbienceOscs = [osc1, osc2];
+      }
+
+      stopAmbience() {
+        this.isAmbiencePlaying = false;
+        if (this.ambienceGain) {
+          this.ambienceGain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 0.3);
+        }
+        if (this.activeAmbienceOscs) {
+          this.activeAmbienceOscs.forEach(o => { try { o.stop(); } catch(e){} });
+          this.activeAmbienceOscs = [];
+        }
+      }
+
+      playKeystroke() {
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1200 + Math.random() * 400, now);
+        gain.gain.setValueAtTime(0.02, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.03);
+      }
+
+      playSuccessChirp() {
+        this.init();
+        const now = this.ctx.currentTime;
+        [520, 650, 780, 1040].forEach((f, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(f, now + idx * 0.06);
+          gain.gain.setValueAtTime(0, now + idx * 0.06);
+          gain.gain.linearRampToValueAtTime(0.12, now + idx * 0.06 + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.3);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + idx * 0.06);
+          osc.stop(now + idx * 0.06 + 0.3);
+        });
+      }
+
+      playErrorBuzzer() {
+        this.init();
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(130, now);
+        osc.frequency.setValueAtTime(90, now + 0.1);
+        gain.gain.setValueAtTime(0.18, now);
+        gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.25);
+      }
+
+      playAlarmSiren() {
+        this.init();
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(400, now);
+        osc.frequency.linearRampToValueAtTime(950, now + 0.2);
+        osc.frequency.linearRampToValueAtTime(400, now + 0.4);
+        osc.frequency.linearRampToValueAtTime(950, now + 0.6);
+        osc.frequency.linearRampToValueAtTime(400, now + 0.8);
+        gain.gain.setValueAtTime(0.22, now);
+        gain.gain.linearRampToValueAtTime(0.01, now + 1.1);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 1.1);
+      }
+
+      playMorse(pattern, onDone) {
+        this.init();
+        if (this.isMorsePlaying) {
+          this.stopMorse();
+          return;
+        }
+        this.isMorsePlaying = true;
+        const dot = 0.07;
+        const dash = dot * 3;
+        const freq = 680;
+        let cur = this.ctx.currentTime + 0.1;
+        this.morseOscs = [];
+
+        for (let i = 0; i < pattern.length; i++) {
+          if (!this.isMorsePlaying) break;
+          const char = pattern[i];
+          if (char === '.' || char === '-') {
+            const dur = char === '.' ? dot : dash;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, cur);
+            gain.gain.setValueAtTime(0, cur);
+            gain.gain.linearRampToValueAtTime(0.18, cur + 0.005);
+            gain.gain.setValueAtTime(0.18, cur + dur - 0.005);
+            gain.gain.linearRampToValueAtTime(0, cur + dur);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(cur);
+            osc.stop(cur + dur);
+            this.morseOscs.push(osc);
+            cur += dur + dot;
+          } else if (char === ' ') {
+            cur += dot * 3;
+          } else if (char === '/') {
+            cur += dot * 7;
+          }
+        }
+
+        const totalMs = (cur - this.ctx.currentTime) * 1000;
+        this.morseTimer = setTimeout(() => {
+          this.isMorsePlaying = false;
+          if (onDone) onDone();
+        }, totalMs);
+      }
+
+      stopMorse() {
+        this.isMorsePlaying = false;
+        if (this.morseTimer) clearTimeout(this.morseTimer);
+        this.morseOscs.forEach(o => { try { o.stop(); } catch(e){} });
+        this.morseOscs = [];
+      }
+    }
+
+    const cyberAudio = new CyberAudio();
+
+    function toggleAmbienceAudio() {
+      const btn = document.getElementById('btn-audio-ambience');
+      const playing = cyberAudio.toggleAmbience();
+      btn.innerText = playing ? "🔊 AMBIENCE: ON" : "🔊 AMBIENCE: OFF";
+      btn.classList.toggle('active', playing);
+      document.getElementById('audio-wave-label').innerText = playing ? "ACTIVE: 120Hz" : "IDLE: 60Hz";
+    }
+
+    function toggleCrtScanlines() {
+      document.querySelector('.crt-overlay').classList.toggle('crt-off');
+      const overlay = document.querySelector('.crt-overlay');
+      overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // -------------------------------------------------------------------------
+    // 3. Vector Canvas HUD Renderers (Matching Reference Image)
+    // -------------------------------------------------------------------------
+    
+    // Canvas 1: 3D Torus Wireframe (Rotating Vector Mesh)
+    const torusCanvas = document.getElementById('canvas-torus');
+    const torusCtx = torusCanvas.getContext('2d');
+    let torusAngle = 0;
+
+    function renderTorus() {
+      torusCanvas.width = torusCanvas.offsetWidth;
+      torusCanvas.height = torusCanvas.offsetHeight;
+      const w = torusCanvas.width, h = torusCanvas.height;
+      torusCtx.clearRect(0, 0, w, h);
+
+      torusCtx.strokeStyle = 'rgba(0, 255, 102, 0.7)';
+      torusCtx.lineWidth = 1;
+
+      const R = 32, r = 16;
+      const uSteps = 16, vSteps = 12;
+      torusAngle += 0.02;
+
+      for (let i = 0; i < uSteps; i++) {
+        const u = (i / uSteps) * Math.PI * 2;
+        torusCtx.beginPath();
+        for (let j = 0; j <= vSteps; j++) {
+          const v = (j / vSteps) * Math.PI * 2;
+          let x = (R + r * Math.cos(v)) * Math.cos(u);
+          let y = (R + r * Math.cos(v)) * Math.sin(u);
+          let z = r * Math.sin(v);
+
+          // Rotate X and Y
+          let y1 = y * Math.cos(torusAngle) - z * Math.sin(torusAngle);
+          let z1 = y * Math.sin(torusAngle) + z * Math.cos(torusAngle);
+          let x2 = x * Math.cos(torusAngle * 0.7) + z1 * Math.sin(torusAngle * 0.7);
+
+          const projX = w / 2 + x2 * 1.3;
+          const projY = h / 2 + y1 * 1.3;
+
+          if (j === 0) torusCtx.moveTo(projX, projY);
+          else torusCtx.lineTo(projX, projY);
+        }
+        torusCtx.stroke();
+      }
+    }
+
+    // Canvas 2: 3D Perspective Terrain Grid & Center Horizon Reticle
+    const gridCanvas = document.getElementById('canvas-grid');
+    const gridCtx = gridCanvas.getContext('2d');
+    let gridOffset = 0;
+
+    function renderPerspectiveGrid() {
+      gridCanvas.width = gridCanvas.offsetWidth;
+      gridCanvas.height = gridCanvas.offsetHeight;
+      const w = gridCanvas.width, h = gridCanvas.height;
+      gridCtx.clearRect(0, 0, w, h);
+
+      const horizonY = h * 0.45;
+      gridOffset = (gridOffset + 0.8) % 20;
+
+      // Draw Top Curved Arc Gauge
+      gridCtx.strokeStyle = '#00ff66';
+      gridCtx.lineWidth = 2;
+      gridCtx.beginPath();
+      gridCtx.arc(w / 2, horizonY, 50, Math.PI * 1.2, Math.PI * 1.8);
+      gridCtx.stroke();
+
+      // Curved tick marks
+      for (let a = Math.PI * 1.2; a <= Math.PI * 1.8; a += 0.08) {
+        let x1 = w / 2 + Math.cos(a) * 46;
+        let y1 = horizonY + Math.sin(a) * 46;
+        let x2 = w / 2 + Math.cos(a) * 54;
+        let y2 = horizonY + Math.sin(a) * 54;
+        gridCtx.beginPath();
+        gridCtx.moveTo(x1, y1);
+        gridCtx.lineTo(x2, y2);
+        gridCtx.stroke();
+      }
+
+      // Draw Horizon Line
+      gridCtx.strokeStyle = 'rgba(0, 229, 255, 0.4)';
+      gridCtx.lineWidth = 1;
+      gridCtx.beginPath();
+      gridCtx.moveTo(0, horizonY);
+      gridCtx.lineTo(w, horizonY);
+      gridCtx.stroke();
+
+      // Vanishing point perspective grid lines
+      gridCtx.strokeStyle = 'rgba(0, 255, 102, 0.5)';
+      const vX = w / 2;
+      for (let x = -w * 0.5; x <= w * 1.5; x += 30) {
+        gridCtx.beginPath();
+        gridCtx.moveTo(vX, horizonY);
+        gridCtx.lineTo(x, h);
+        gridCtx.stroke();
+      }
+
+      // Horizontal lines with exponential perspective spacing
+      for (let y = 1; y <= 8; y++) {
+        const lineY = horizonY + Math.pow(y / 8, 2) * (h - horizonY) + gridOffset * 0.25;
+        if (lineY <= h) {
+          gridCtx.beginPath();
+          gridCtx.moveTo(0, lineY);
+          gridCtx.lineTo(w, lineY);
+          gridCtx.stroke();
+        }
+      }
+
+      // Center reticle
+      gridCtx.strokeStyle = '#00e5ff';
+      gridCtx.lineWidth = 1.5;
+      gridCtx.strokeRect(w / 2 - 8, horizonY - 8, 16, 16);
+    }
+
+    // Canvas 3: Oscilloscope Multi-Line Waveform
+    const waveCanvas = document.getElementById('canvas-waves');
+    const waveCtx = waveCanvas.getContext('2d');
+    let waveTick = 0;
+
+    function renderWaves() {
+      waveCanvas.width = waveCanvas.offsetWidth;
+      waveCanvas.height = waveCanvas.offsetHeight;
+      const w = waveCanvas.width, h = waveCanvas.height;
+      waveCtx.clearRect(0, 0, w, h);
+
+      waveTick += 0.05;
+      const lines = 4;
+      const amp = cyberAudio.isAmbiencePlaying ? 18 : 7;
+
+      for (let l = 0; l < lines; l++) {
+        waveCtx.strokeStyle = l === 1 ? '#00ff66' : 'rgba(0, 255, 102, 0.3)';
+        waveCtx.lineWidth = l === 1 ? 1.5 : 1;
+        waveCtx.beginPath();
+
+        for (let x = 0; x <= w; x += 4) {
+          const freq = 0.04 + l * 0.01;
+          const y = (h / 2) + (l - 1.5) * 12 + Math.sin(x * freq + waveTick + l) * amp * Math.cos(x * 0.01);
+          if (x === 0) waveCtx.moveTo(x, y);
+          else waveCtx.lineTo(x, y);
+        }
+        waveCtx.stroke();
+      }
+    }
+
+    // Canvas 4: Sweeping Circular Radar
+    const radarCanvas = document.getElementById('canvas-radar');
+    const radarCtx = radarCanvas.getContext('2d');
+    let radarAngle = 0;
+
+    function renderRadar() {
+      radarCanvas.width = radarCanvas.offsetWidth;
+      radarCanvas.height = radarCanvas.offsetHeight;
+      const w = radarCanvas.width, h = radarCanvas.height;
+      radarCtx.clearRect(0, 0, w, h);
+
+      const cX = w / 2, cY = h / 2;
+      const rad = Math.min(cX, cY) - 6;
+
+      // Concentric rings
+      radarCtx.strokeStyle = 'rgba(0, 255, 102, 0.35)';
+      radarCtx.lineWidth = 1;
+      [0.3, 0.6, 1.0].forEach(frac => {
+        radarCtx.beginPath();
+        radarCtx.arc(cX, cY, rad * frac, 0, Math.PI * 2);
+        radarCtx.stroke();
+      });
+
+      // Crosshairs
+      radarCtx.beginPath();
+      radarCtx.moveTo(cX - rad, cY); radarCtx.lineTo(cX + rad, cY);
+      radarCtx.moveTo(cX, cY - rad); radarCtx.lineTo(cX, cY + rad);
+      radarCtx.stroke();
+
+      // Sweeping Radial Beam
+      radarAngle += 0.035;
+      radarCtx.strokeStyle = '#00ff66';
+      radarCtx.lineWidth = 2;
+      radarCtx.beginPath();
+      radarCtx.moveTo(cX, cY);
+      radarCtx.lineTo(cX + Math.cos(radarAngle) * rad, cY + Math.sin(radarAngle) * rad);
+      radarCtx.stroke();
+
+      // Blinking Target Blips
+      const blip1X = cX + Math.cos(1.2) * (rad * 0.65);
+      const blip1Y = cY + Math.sin(1.2) * (rad * 0.65);
+      radarCtx.fillStyle = '#ffb000';
+      radarCtx.beginPath();
+      radarCtx.arc(blip1X, blip1Y, 3, 0, Math.PI * 2);
+      radarCtx.fill();
+    }
+
+    function animateVectorHUD() {
+      renderTorus();
+      renderPerspectiveGrid();
+      renderWaves();
+      renderRadar();
+      requestAnimationFrame(animateVectorHUD);
+    }
+    animateVectorHUD();
+
+    // -------------------------------------------------------------------------
+    // 4. Interactive CLI Terminal Engine (Supported Commands & Zero Spoilers)
+    // -------------------------------------------------------------------------
+    const cliInput = document.getElementById('terminal-cli-input');
+    const cliOutput = document.getElementById('cli-output');
+
+    cliInput.addEventListener('keydown', (e) => {
+      cyberAudio.playKeystroke();
+      if (e.key === 'Enter') {
+        const raw = cliInput.value.trim();
+        if (!raw) return;
+        executeCli(raw);
+        cliInput.value = '';
+      }
+    });
+
+    function printLine(text, cssClass = '') {
+      const line = document.createElement('div');
+      line.className = `terminal-line ${cssClass}`;
+      line.innerHTML = text;
+      cliOutput.appendChild(line);
+      cliOutput.scrollTop = cliOutput.scrollHeight;
+    }
+
+    function executeCli(cmd) {
+      printLine(`<span style="color:var(--phosphor-green); font-weight:bold;">investigator@failsafe:~$</span> ${escapeHtml(cmd)}`);
+      const parts = cmd.trim().split(' ');
+      const action = parts[0].toLowerCase();
+      const arg = parts.slice(1).join(' ').trim();
+
+      switch (action) {
+        case 'help':
+          printLine("AVAILABLE FORENSIC COMMANDS:", "cyan");
+          printLine("  <strong>help</strong>            : Show this command matrix");
+          printLine("  <strong>dir</strong> / <strong>ls</strong>        : Enumerate root workspace sectors");
+          printLine("  <strong>status</strong>          : Display sandbox containment integrity gauge");
+          printLine("  <strong>whoami</strong>          : Print active terminal identity & clearance");
+          printLine("  <strong>decrypt [code]</strong>   : Verify stage decryption passcodes");
+          printLine("  <strong>cat [file]</strong>      : Read file content directly in terminal");
+          printLine("  <strong>clear</strong>           : Flush terminal display buffer");
+          printLine("  <strong>hint</strong>            : Transmit emergency hint request (+2m penalty)");
+          break;
+
+        case 'dir':
+        case 'ls':
+          printLine("ROOT DIRECTORY /DR_ADITI/WORKSPACE:", "cyan");
+          printLine("  [DIR] 01_VANISHED       (Farewell.doc)");
+          printLine("  [DIR] 02_ORIGIN         (README.doc, Decoy Folders)");
+          printLine("  [DIR] 03_TIMELINE       (Incident_Logs.doc)");
+          printLine("  [DIR] 04_VOICE          (Security_Audit.pdf)");
+          printLine("  [DIR] 05_AUTHENTICITY   (ADI_INTERFACE.doc)");
+          printLine("  [DIR] SYSTEM_CORE       (DO_NOT_RUN.exe)");
+          break;
+
+        case 'status':
+          printLine("AI SANDBOX CONTAINMENT INTEGRITY:", "amber");
+          printLine("[██████░░░░░░░░░░░░░░░░░░] 23% - CRITICAL CONTAMINATION DETECTED", "red");
+          printLine("Subsystems compromised: Memory Bus, File Watcher, Camera Matrix.");
+          break;
+
+        case 'whoami':
+          printLine("GUEST INVESTIGATOR // CLEARANCE LEVEL 1", "cyan");
+          printLine("Terminal Host: ADITI-WS-09 // IP: 127.0.0.1 (LOCAL BUS)");
+          break;
+
+        case 'clear':
+          cliOutput.innerHTML = '';
+          break;
+
+        case 'decrypt':
+          if (!arg) {
+            printLine("ERROR: Missing passcode. Syntax: decrypt [code]", "red");
+            cyberAudio.playErrorBuzzer();
+            return;
+          }
+          verifyDecryptionCode(arg);
+          break;
+
+        case 'cat':
+          if (!arg) {
+            printLine("Usage: cat [filename] (e.g. cat README.doc)", "amber");
+            return;
+          }
+          printLine(`Streaming ${escapeHtml(arg)}: [Access restricted via GUI modal. Open desktop card.]`, "dim");
+          break;
+
+        case 'sudo':
+          printLine("PERMISSION DENIED: Incident is logged. Dr. Aditi's superuser keys were revoked.", "red");
+          cyberAudio.playErrorBuzzer();
+          break;
+
+        case 'hack':
+          printLine("ACCESS DENIED: Neural firewall deflected intrusion vector.", "red");
+          cyberAudio.playErrorBuzzer();
+          break;
+
+        case 'wie':
+          printLine("IEEE Women in Engineering // Core Foundational Values: Wisdom, Integrity, Empowerment.", "cyan");
+          cyberAudio.playSuccessChirp();
+          break;
+
+        case 'aditi':
+          printLine("Dr. Aditi Sharma // Lead AI Architect. Status: UNKNOWN. Last seen in Lab B at 22:43.", "amber");
+          break;
+
+        case 'hint':
+          printLine("EMERGENCY HINT: Check the Farewell Note formatting, or verify leap year validity in Incident Logs (+2m penalty logged).", "amber");
+          break;
+
+        default:
+          printLine(`Command not recognized: '${escapeHtml(action)}'. Type 'help' for diagnostics.`, "red");
+          cyberAudio.playErrorBuzzer();
+      }
+    }
+
+    // Passcode Verification Engine (Accepts correct codes, gives zero spoilers on failure)
+    function verifyDecryptionCode(inputKey) {
+      const clean = inputKey.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
+
+      const validKeys = [
+        "ORIGIN",
+        "LOOKBEHINDTHEDATE",
+        "28022025", "02292025", "20250229",
+        "2246",
+        "WHITE",
+        "AUTHENTIC",
+        "THEAICANMODIFYWHATYOUSEE",
+        "HISTORY", "OVERRIDEFAILED",
+        "6911", "WISDOMINTEGRITYEMPOWERMENT"
+      ];
+
+      if (validKeys.includes(clean)) {
+        cyberAudio.playSuccessChirp();
+        printLine(`[VERIFIED]: ACCESS GRANTED TO SECTOR // KEY ACCREDITED.`, "cyan");
+      } else {
+        cyberAudio.playErrorBuzzer();
+        printLine(`[CHECKSUM FAILED]: Passcode verification rejected. Key mismatch.`, "red");
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. Rogue AI Trap Sequence (DO_NOT_RUN.exe)
+    // -------------------------------------------------------------------------
+    function triggerTrapSequence() {
+      cyberAudio.playAlarmSiren();
+      document.body.classList.add('glitching-active');
+
+      setTimeout(() => {
+        document.body.classList.remove('glitching-active');
+        document.getElementById('adi-rogue-takeover').style.display = 'flex';
+      }, 1000);
+    }
+
+    function closeAdiTrap() {
+      document.getElementById('adi-rogue-takeover').style.display = 'none';
+      printLine("⚠️ WARNING: Workstation bus rebooted. Trap submission reported to master scoreboard (+5m).", "red");
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. Interactive Modal Management
+    // -------------------------------------------------------------------------
+    function openModal(id) {
+      cyberAudio.playKeystroke();
+      closeAllModals();
+      const m = document.getElementById(id);
+      if (m) m.classList.add('active-modal');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.classList.remove('active-modal');
+    }
+
+    function closeAllModals() {
+      document.querySelectorAll('.hud-modal').forEach(m => m.classList.remove('active-modal'));
+    }
+
+    // Morse Audio Player
+    function toggleMorseAudioPlay() {
+      const btn = document.getElementById('btn-morse-play');
+      const pattern = "-.. --- -. --- - / ..-. --- .-.. .-.. --- .-- / - .... . / -... .-.. ..- . / .--. .- - ....";
+      if (cyberAudio.isMorsePlaying) {
+        cyberAudio.stopMorse();
+        btn.innerText = "▶ PLAY MORSE SIGNAL";
+      } else {
+        btn.innerText = "⏹ STOPPING TRANSMISSION...";
+        cyberAudio.playMorse(pattern, () => {
+          btn.innerText = "▶ PLAY MORSE SIGNAL";
+        });
+      }
+    }
+
+    // Revision Switcher (Stage 9)
+    function switchModalRev(rev) {
+      cyberAudio.playKeystroke();
+      const btnAdi = document.getElementById('tab-rev-adi');
+      const btnAditi = document.getElementById('tab-rev-aditi');
+      const text = document.getElementById('modal-rev-text');
+      const badge = document.getElementById('modal-rev-badge');
+
+      if (rev === 'adi') {
+        btnAdi.classList.add('active');
+        btnAditi.classList.remove('active');
+        text.innerHTML = `"AI activation at 20:15. Aditi left at 21:00. Emergency shutdown at 21:30. AI permanently disabled. Everything is safe."`;
+        badge.innerText = "[ALTERED BY SYNTHETIC DAEMON: TEXT REPLACED]";
+        badge.style.color = "var(--alert-red)";
+      } else {
+        btnAditi.classList.add('active');
+        btnAdi.classList.remove('active');
+        text.innerHTML = `"Emergency shutdown at 20:18... <strong style='color:var(--phosphor-green);'>OVERRIDE FAILED. AI CONTROL UNCHECKED.</strong>"`;
+        badge.innerText = "[ORIGINAL AUTHOR: DR. ADITI SHARMA // AUTHENTIC REVISION]";
+        badge.style.color = "var(--phosphor-green)";
+      }
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.innerText = text || '';
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>

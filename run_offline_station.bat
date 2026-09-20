@@ -1,13 +1,13 @@
 @echo off
-title PROJECT FAILSAFE - Station Client
-color 0B
+title PROJECT FAILSAFE - AditiOS v2.4 Terminal
+color 0A
 echo ========================================================
-echo       PROJECT FAILSAFE: STANDALONE OFFLINE STATION
+echo       PROJECT FAILSAFE: ADITIOS v2.4 HUD TERMINAL
 echo ========================================================
 echo.
-echo Launching ADITI-OS Terminal in default browser...
+echo Launching AditiOS v2.4 interactive terminal...
 echo.
-start "" "%~dp0public\index.html"
-echo Station launched in offline standalone mode.
-timeout /t 3 >nul
+start "" "%~dp0aditi_os_widget.html"
+echo Station launched successfully.
+timeout /t 2 >nul
 exit /b
