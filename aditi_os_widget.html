@@ -48,10 +48,18 @@
       flex-direction: column;
       position: relative;
       background-image: 
-        radial-gradient(circle at 50% 50%, rgba(0, 255, 102, 0.035) 0%, transparent 75%),
-        linear-gradient(rgba(0, 255, 102, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 102, 0.02) 1px, transparent 1px);
-      background-size: 100% 100%, 20px 20px, 20px 20px;
+        radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.04) 0%, transparent 80%),
+        linear-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 25px 25px, 25px 25px;
+    }
+
+    #canvas-quantum-grid {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.65;
     }
 
     .crt-overlay {
@@ -468,47 +476,73 @@
       flex: 1;
       display: grid;
       grid-template-columns: 1fr 1.25fr;
-      gap: 12px;
-      padding: 12px 14px;
+      gap: 14px;
+      padding: 12px 16px;
       overflow: hidden;
+      position: relative;
+      z-index: 10;
     }
 
-    .forensic-sector {
-      border: 1px solid var(--hud-border);
-      background: var(--bg-panel);
+    .forensic-sector, .tactical-terminal {
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      background: rgba(3, 8, 14, 0.9);
       display: flex;
       flex-direction: column;
       overflow: hidden;
       position: relative;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 240, 255, 0.03);
+      backdrop-filter: blur(14px);
+    }
+
+    /* 2050 Military Corner Reticle Brackets */
+    .forensic-sector::before, .tactical-terminal::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 12px; height: 12px;
+      border-top: 2px solid var(--cyber-cyan);
+      border-left: 2px solid var(--cyber-cyan);
+      pointer-events: none;
+      z-index: 20;
+    }
+    .forensic-sector::after, .tactical-terminal::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0; width: 12px; height: 12px;
+      border-bottom: 2px solid var(--cyber-cyan);
+      border-right: 2px solid var(--cyber-cyan);
+      pointer-events: none;
+      z-index: 20;
     }
 
     .sector-header {
-      height: 30px;
-      background: rgba(0, 255, 102, 0.1);
-      border-bottom: 1px solid var(--hud-border);
+      height: 32px;
+      background: linear-gradient(90deg, rgba(0, 240, 255, 0.18) 0%, rgba(0, 255, 102, 0.05) 100%);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.35);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 12px;
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 0.8px;
+      letter-spacing: 1px;
+      color: var(--cyber-cyan);
+      text-transform: uppercase;
     }
 
     .icon-matrix {
       flex: 1;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 105px;
+      grid-auto-rows: 108px;
       gap: 12px;
       padding: 16px;
       overflow-y: auto;
     }
 
     .tactical-card {
-      border: 1px solid rgba(0, 255, 102, 0.3);
-      background: rgba(0, 255, 102, 0.04);
-      border-radius: 2px;
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.05) 0%, rgba(2, 6, 12, 0.92) 100%);
+      clip-path: polygon(0 8px, 8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -516,14 +550,36 @@
       cursor: pointer;
       padding: 8px 4px;
       text-align: center;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
+      overflow: hidden;
     }
     .tactical-card:hover {
-      border-color: var(--tactical-green);
-      background: rgba(0, 255, 102, 0.15);
-      transform: translateY(-2px);
-      box-shadow: var(--glow-green);
+      border-color: var(--cyber-cyan);
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(3, 12, 22, 0.96) 100%);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.5), inset 0 0 14px rgba(0, 240, 255, 0.25);
+    }
+
+    /* Laser scanline sweep on card hover */
+    .tactical-card::after {
+      content: '';
+      position: absolute;
+      top: -100%; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+      box-shadow: 0 0 8px #00f0ff;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .tactical-card:hover::after {
+      opacity: 1;
+      animation: card-laser-sweep 1.2s infinite linear;
+    }
+    @keyframes card-laser-sweep {
+      0% { top: 0%; opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
     }
     /* --------------------------------------------------------------------------
        Dynamic 3-Second Guidance Highlight & Target Beacon
@@ -713,9 +769,9 @@
     }
 
     .term-input-box {
-      height: 40px;
-      border-top: 1px solid var(--hud-border);
-      background: rgba(1, 3, 6, 0.95);
+      height: 42px;
+      border-top: 1px solid rgba(0, 240, 255, 0.25);
+      background: rgba(1, 4, 8, 0.98);
       display: flex;
       align-items: center;
       padding: 0 12px;
@@ -723,10 +779,11 @@
     }
 
     .term-prompt {
-      color: var(--tactical-green);
+      color: var(--cyber-cyan);
       font-weight: 800;
       font-size: 12px;
       white-space: nowrap;
+      text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
     }
 
     .term-input {
@@ -734,10 +791,40 @@
       background: transparent;
       border: none;
       outline: none;
-      color: var(--tactical-green);
+      color: #fff;
       font-family: var(--font-mil);
       font-size: 13px;
-      caret-color: var(--tactical-green);
+      caret-color: var(--cyber-cyan);
+      letter-spacing: 0.5px;
+    }
+
+    .term-quick-chips {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: rgba(2, 6, 12, 0.95);
+      border-top: 1px solid rgba(0, 240, 255, 0.15);
+      overflow-x: auto;
+    }
+    .tactical-chip {
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      color: var(--cyber-cyan);
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 2px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      letter-spacing: 0.5px;
+    }
+    .tactical-chip:hover {
+      background: var(--cyber-cyan);
+      color: #02070e;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.7);
+      transform: translateY(-1px);
     }
 
     /* --------------------------------------------------------------------------
@@ -897,6 +984,9 @@
   </style>
 </head>
 <body>
+  <!-- Animated 3D Quantum Perspective Grid & Orbital Particle Canvas -->
+  <canvas id="canvas-quantum-grid"></canvas>
+
   <div class="crt-overlay"></div>
   <div class="crt-vignette"></div>
 
@@ -928,16 +1018,16 @@
       </div>
     </div>
     <div class="ethan-actions">
-      <button id="btn-ethan-level" class="btn-tactical" onclick="explainLevelUp()" style="font-size:10px;">
+      <button id="btn-ethan-level" class="btn-tactical" onclick="explainLevelUp()" onmouseenter="tacticalSound.playHoverBlip()" style="font-size:10px;">
         HOW TO LEVEL UP?
       </button>
-      <button id="btn-ethan-click" class="btn-tactical" onclick="explainWhereToClick()" style="font-size:10px;">
+      <button id="btn-ethan-click" class="btn-tactical" onclick="explainWhereToClick()" onmouseenter="tacticalSound.playHoverBlip()" style="font-size:10px;">
         WHERE TO CLICK?
       </button>
-      <button id="btn-ethan-action" class="btn-tactical active" onclick="advanceEthanTutorial()" style="font-size:10px;">
+      <button id="btn-ethan-action" class="btn-tactical active" onclick="advanceEthanTutorial()" onmouseenter="tacticalSound.playHoverBlip()" style="font-size:10px;">
         NEXT GUIDANCE &rarr;
       </button>
-      <button class="btn-tactical" onclick="minimizeEthan()" style="font-size:10px;">
+      <button class="btn-tactical" onclick="minimizeEthan()" onmouseenter="tacticalSound.playHoverBlip()" style="font-size:10px;">
         MINIMIZE
       </button>
     </div>
@@ -961,31 +1051,34 @@
     </button>
   </div>
 
-  <!-- Military Command Header -->
+  <!-- 2050 Military Cyber Command Header -->
   <header class="command-header">
     <div class="header-left">
-      <span class="classification-stamp">TOP SECRET // LEVEL 4</span>
-      <span class="defcon-badge">DEFCON 2</span>
-      <span>CYBER COMMAND // ADITIOS v2.4</span>
+      <span class="classification-stamp">DEFCON 1 // LEVEL 5 QUANTUM</span>
+      <span class="defcon-badge" id="hud-threat-badge">THREAT: 89.4% [CRITICAL]</span>
+      <span style="font-weight:900; letter-spacing:1px; color:#fff;">STRATCOM // CYBER COMMAND 2050+</span>
     </div>
 
     <div class="header-telemetry">
-      <span class="telemetry-item">CONTAINMENT: <strong style="color:var(--combat-red);">23.4% CRITICAL</strong></span>
+      <span class="telemetry-item">QUANTUM ENTROPY: <strong id="hud-entropy-val" style="color:var(--cyber-cyan);">0.042 Q-FLUX</strong></span>
       <span>•</span>
-      <span class="telemetry-item">GRID: <strong>SECTOR 07-B</strong></span>
+      <span class="telemetry-item">NEURAL BUS: <strong style="color:var(--tactical-green);">4.8 TB/S</strong></span>
       <span>•</span>
-      <span class="telemetry-item">ZULU: <strong id="mil-utc-clock">00:00:00Z</strong></span>
+      <span class="telemetry-item">ZULU: <strong id="mil-utc-clock" style="color:#00f0ff;">00:00:00.000Z</strong></span>
     </div>
 
     <div class="header-actions">
-      <button class="btn-tactical ethan-call" onclick="summonEthan()">
+      <button class="btn-tactical ethan-call" onclick="summonEthan()" onmouseenter="tacticalSound.playHoverBlip()">
         👁️ ETHAN ASSIST
       </button>
-      <button id="btn-tactical-audio" class="btn-tactical" onclick="toggleTacticalAudio()">
-        🔊 AMBIENCE: OFF
+      <button id="btn-tactical-audio" class="btn-tactical" onclick="toggleTacticalAudio()" onmouseenter="tacticalSound.playHoverBlip()">
+        🔊 AUDIO: ON
       </button>
-      <button class="btn-tactical" onclick="toggleScanlines()">
-        📺 CRT
+      <button class="btn-tactical" onclick="toggleFullscreen()" onmouseenter="tacticalSound.playHoverBlip()" title="Toggle Fullscreen Kiosk Mode">
+        ⛶ FULLSCREEN
+      </button>
+      <button class="btn-tactical" onclick="triggerHudReSync()" onmouseenter="tacticalSound.playHoverBlip()">
+        🔄 RE-SYNC HUD
       </button>
       <button class="btn-tactical danger" onclick="triggerLockdownTrap()">
         ⚠️ KILL SWITCH
@@ -1038,49 +1131,49 @@
       </div>
 
       <div class="icon-matrix">
-        <div class="tactical-card" id="card-origin" onclick="openModal('modal-origin')">
+        <div class="tactical-card" id="card-origin" onclick="openModal('modal-origin')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">GATE 01</span>
           <div class="card-symbol">📁</div>
           <div class="card-title">DIR_ORIGIN</div>
         </div>
 
-        <div class="tactical-card" id="card-logs" onclick="openModal('modal-incident-logs')">
+        <div class="tactical-card" id="card-logs" onclick="openModal('modal-incident-logs')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">SANITY</span>
           <div class="card-symbol">📑</div>
           <div class="card-title">INCIDENT_LOGS</div>
         </div>
 
-        <div class="tactical-card" id="card-audit" onclick="openModal('modal-security-audit')">
+        <div class="tactical-card" id="card-audit" onclick="openModal('modal-security-audit')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">TELEMETRY</span>
           <div class="card-symbol">🔍</div>
           <div class="card-title">SECURITY_AUDIT</div>
         </div>
 
-        <div class="tactical-card" id="card-adi" onclick="openModal('modal-adi-prompt')">
+        <div class="tactical-card" id="card-adi" onclick="openModal('modal-adi-prompt')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">SYNTHETIC</span>
           <div class="card-symbol">💬</div>
           <div class="card-title">ADI_DIRECTIVE</div>
         </div>
 
-        <div class="tactical-card" id="card-spectro" onclick="openModal('modal-spectro')">
+        <div class="tactical-card" id="card-spectro" onclick="openModal('modal-spectro')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">CW 680Hz</span>
           <div class="card-symbol">📻</div>
           <div class="card-title">SPECTRO_FEED</div>
         </div>
 
-        <div class="tactical-card" id="card-maze" onclick="openModal('modal-maze')">
+        <div class="tactical-card" id="card-maze" onclick="openModal('modal-maze')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">TREE</span>
           <div class="card-symbol">🗂️</div>
           <div class="card-title">ROOT_MAZE</div>
         </div>
 
-        <div class="tactical-card" id="card-version" onclick="openModal('modal-version-hist')">
+        <div class="tactical-card" id="card-version" onclick="openModal('modal-version-hist')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">ROLLBACK</span>
           <div class="card-symbol">🕒</div>
           <div class="card-title">VERSION_SCRUB</div>
         </div>
 
-        <div class="tactical-card quarantine" id="card-trap" onclick="triggerLockdownTrap()">
+        <div class="tactical-card quarantine" id="card-trap" onclick="triggerLockdownTrap()" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">HAZARD</span>
           <div class="card-symbol">☠️</div>
           <div class="card-title">DO_NOT_RUN.exe</div>
@@ -1104,13 +1197,24 @@
         <div class="term-line dim">----------------------------------------------------------------------</div>
       </div>
 
+      <!-- Quick Action Tactical Command Chips -->
+      <div class="term-quick-chips">
+        <button class="tactical-chip" onclick="quickExec('help')">[ HELP ]</button>
+        <button class="tactical-chip" onclick="quickExec('dir')">[ DIR / LS ]</button>
+        <button class="tactical-chip" onclick="quickExec('status')">[ STATUS ]</button>
+        <button class="tactical-chip" onclick="quickExec('whoami')">[ WHOAMI ]</button>
+        <button class="tactical-chip" onclick="quickExec('ethan')">[ ETHAN ]</button>
+        <button class="tactical-chip" onclick="quickExec('hint')">[ HINT ]</button>
+        <button class="tactical-chip" onclick="quickExec('clear')">[ CLEAR ]</button>
+      </div>
+
       <div class="checksum-bar">
         <div id="checksum-progress" class="checksum-progress"></div>
       </div>
 
       <div class="term-input-box">
         <span class="term-prompt">operator@stratcom:~$</span>
-        <input type="text" id="tactical-term-input" class="term-input" autocomplete="off" spellcheck="false" placeholder="Enter tactical command (e.g. help, dir, decrypt <key>)...">
+        <input type="text" id="tactical-term-input" class="term-input" autocomplete="off" spellcheck="false" placeholder="Enter tactical command (e.g. help, dir, decrypt <key>)..." onkeydown="tacticalSound.playKeyClick()">
       </div>
     </section>
   </main>
@@ -1339,20 +1443,58 @@
        JavaScript Engine
        ======================================================================== -->
   <script>
-    // 1. Military Zulu Clock
+    // 1. High-Precision Military Zulu Clock (2050 Nanosecond Jitter)
     function updateMilClock() {
       const now = new Date();
-      const pad = (n) => n.toString().padStart(2, '0');
-      const timeStr = `${pad(now.getUTCHours())}:${pad(now.getUTCMinutes())}:${pad(now.getUTCSeconds())}Z`;
-      document.getElementById('mil-utc-clock').innerText = timeStr;
+      const iso = now.toISOString().substring(11, 23) + 'Z';
+      const el = document.getElementById('mil-utc-clock');
+      if (el) el.innerText = iso;
     }
-    setInterval(updateMilClock, 1000);
+    setInterval(updateMilClock, 60);
     updateMilClock();
 
-    // 2. Military Audio Synthesizer (Web Audio API)
+    // 2050 Quantum Entropy Telemetry Fluctuation
+    setInterval(() => {
+      const entropyEl = document.getElementById('hud-entropy-val');
+      if (entropyEl) {
+        const val = (0.040 + (Math.random() - 0.5) * 0.008).toFixed(4);
+        entropyEl.innerText = `${val} Q-FLUX`;
+      }
+    }, 1200);
+
+    // Fullscreen HUD Kiosk Toggle
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    // Re-Sync HUD Interactive Command
+    function triggerHudReSync() {
+      tacticalSound.playLockBeep();
+      triggerEntityExcitement(1.8);
+      highlightSector('card-origin', 3000, "👉 START HERE: CLICK DIR_ORIGIN");
+      logTerm("[RE-SYNC]: QUANTUM HUD SENSORS REALIGNED // DEFCON 1 ACTIVE.", "cyan");
+    }
+
+    // Quick Command Executor for Tactical Chips
+    function quickExec(cmd) {
+      tacticalSound.playKeyClick();
+      const input = document.getElementById('tactical-term-input');
+      if (input) {
+        input.value = cmd;
+        handleCommand(cmd);
+        input.value = '';
+      }
+    }
+
+    // 2. AAA Game Audio Synthesizer (Web Audio API - Zero Dependencies)
     class TacticalSound {
       constructor() {
         this.ctx = null;
+        this.soundEnabled = true;
         this.isAmbienceActive = false;
         this.ambienceGain = null;
         this.activeOscs = [];
@@ -1368,6 +1510,84 @@
         if (this.ctx.state === 'suspended') {
           this.ctx.resume();
         }
+      }
+
+      playHoverBlip() {
+        if (!this.soundEnabled) return;
+        try {
+          this.init();
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(1800, now);
+          osc.frequency.exponentialRampToValueAtTime(2600, now + 0.035);
+          gain.gain.setValueAtTime(0.025, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.035);
+        } catch(e) {}
+      }
+
+      playLockBeep() {
+        if (!this.soundEnabled) return;
+        try {
+          this.init();
+          const now = this.ctx.currentTime;
+          [1320, 1760].forEach((freq, idx) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, now + idx * 0.045);
+            gain.gain.setValueAtTime(0.05, now + idx * 0.045);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.045 + 0.07);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now + idx * 0.045);
+            osc.stop(now + idx * 0.045 + 0.07);
+          });
+        } catch(e) {}
+      }
+
+      playKeyClick() {
+        if (!this.soundEnabled) return;
+        try {
+          this.init();
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(800 + Math.random() * 400, now);
+          gain.gain.setValueAtTime(0.015, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.02);
+        } catch(e) {}
+      }
+
+      playRankUp() {
+        if (!this.soundEnabled) return;
+        try {
+          this.init();
+          const now = this.ctx.currentTime;
+          [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now + idx * 0.09);
+            gain.gain.setValueAtTime(0, now + idx * 0.09);
+            gain.gain.linearRampToValueAtTime(0.12, now + idx * 0.09 + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.09 + 0.35);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now + idx * 0.09);
+            osc.stop(now + idx * 0.09 + 0.35);
+          });
+        } catch(e) {}
       }
 
       toggleAmbience() {
@@ -1618,8 +1838,94 @@
     }
 
     // -------------------------------------------------------------------------
-    // 3. High-Fidelity Vector HUD Animations
+    // 3. High-Fidelity Vector HUD & 3D Quantum Perspective Grid (2050+)
     // -------------------------------------------------------------------------
+    const quantumCanvas = document.getElementById('canvas-quantum-grid');
+    const qCtx = quantumCanvas ? quantumCanvas.getContext('2d') : null;
+    let gridOffset = 0;
+    const GRID_PARTICLES = [];
+
+    function initQuantumParticles() {
+      if (!quantumCanvas) return;
+      quantumCanvas.width = window.innerWidth;
+      quantumCanvas.height = window.innerHeight;
+      GRID_PARTICLES.length = 0;
+      for (let i = 0; i < 65; i++) {
+        GRID_PARTICLES.push({
+          x: Math.random() * quantumCanvas.width,
+          y: Math.random() * quantumCanvas.height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: -Math.random() * 0.4 - 0.2,
+          size: Math.random() * 2 + 1,
+          alpha: Math.random() * 0.5 + 0.2,
+          pulse: Math.random() * Math.PI
+        });
+      }
+    }
+    window.addEventListener('resize', initQuantumParticles);
+    initQuantumParticles();
+
+    function renderQuantumGrid() {
+      if (!qCtx || !quantumCanvas) return;
+      const w = quantumCanvas.width, h = quantumCanvas.height;
+      qCtx.clearRect(0, 0, w, h);
+
+      gridOffset = (gridOffset + 0.5) % 40;
+
+      const horizonY = h * 0.38;
+      const fov = 320;
+      const cX = w / 2;
+
+      qCtx.save();
+      qCtx.lineWidth = 1;
+
+      // Perspective horizon lines
+      for (let z = 20; z < 900; z += 35) {
+        const adjustedZ = z - gridOffset;
+        if (adjustedZ <= 5) continue;
+        const screenY = horizonY + (fov * (h * 0.42)) / adjustedZ;
+        if (screenY > h) break;
+        const alpha = Math.min(1, adjustedZ / 400) * 0.14;
+        qCtx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
+        qCtx.beginPath();
+        qCtx.moveTo(0, screenY);
+        qCtx.lineTo(w, screenY);
+        qCtx.stroke();
+      }
+
+      // Vanishing point perspective rays
+      for (let x = -w * 0.8; x <= w * 1.8; x += 100) {
+        qCtx.strokeStyle = 'rgba(0, 240, 255, 0.07)';
+        qCtx.beginPath();
+        qCtx.moveTo(cX + (x - cX) * 0.08, horizonY);
+        qCtx.lineTo(x, h);
+        qCtx.stroke();
+      }
+
+      // Horizon atmospheric glow line
+      const grad = qCtx.createLinearGradient(0, horizonY - 2, 0, horizonY + 8);
+      grad.addColorStop(0, 'rgba(0, 240, 255, 0.35)');
+      grad.addColorStop(1, 'transparent');
+      qCtx.fillStyle = grad;
+      qCtx.fillRect(0, horizonY - 2, w, 10);
+
+      // Drifting quantum cyber dust particles
+      GRID_PARTICLES.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.pulse += 0.03;
+        if (p.y < 0) p.y = h;
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+
+        const currentAlpha = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
+        qCtx.fillStyle = `rgba(0, 240, 255, ${currentAlpha})`;
+        qCtx.fillRect(p.x, p.y, p.size, p.size);
+      });
+
+      qCtx.restore();
+    }
+
     const torusCanvas = document.getElementById('canvas-torus');
     const torusCtx = torusCanvas.getContext('2d');
     let torusAngle = 0;
@@ -1800,6 +2106,7 @@
     }
 
     function animateTacticalHUD() {
+      renderQuantumGrid();
       renderTorus();
       renderGrid();
       renderWaves();
@@ -1807,11 +2114,17 @@
       renderEthanEntity();
       requestAnimationFrame(animateTacticalHUD);
     }
-    animateTacticalHUD();
 
     // -------------------------------------------------------------------------
     // 4. ETHAN HUNT - THE ENTITY / SIRI OCULAR NEURAL CORE RENDERER
     // -------------------------------------------------------------------------
+    let ethanState = "ONBOARDING"; // ONBOARDING, ACTIVE, JAMMED, TRAPPED, FREED
+    let ethanTutorialStep = 0;
+    let highlightTimeout = null;
+    let beaconInterval = null;
+    let currentHighlightedElement = null;
+    let currentBeaconMsg = "";
+
     const entityCanvas = document.getElementById('canvas-ethan-entity');
     const entityCtx = entityCanvas ? entityCanvas.getContext('2d') : null;
     let entityTicks = 0;
@@ -1994,13 +2307,6 @@
     // -------------------------------------------------------------------------
     // 5. ETHAN HUNT AI COMPANION CONTROLLER & 3-SECOND BLINK MANAGER
     // -------------------------------------------------------------------------
-    let ethanTutorialStep = 0;
-    let ethanState = "ONBOARDING"; // ONBOARDING, ACTIVE, JAMMED, TRAPPED, FREED
-    let highlightTimeout = null;
-    let beaconInterval = null;
-    let currentHighlightedElement = null;
-    let currentBeaconMsg = "";
-
     function positionBeacon(targetEl, msg) {
       const beaconEl = document.getElementById('ethan-target-beacon');
       if (!beaconEl || !targetEl) return;
@@ -2489,7 +2795,7 @@
         ];
 
         if (validKeys.includes(clean)) {
-          tacticalSound.playSuccessChirp();
+          tacticalSound.playRankUp();
           logTerm(`[CHECKSUM ACCREDITED]: ACCESS GRANTED TO TARGET SECTOR.`, "cyan");
 
           // Dynamic Story Progression Hooks for Ethan Hunt:
@@ -2608,6 +2914,9 @@
       div.innerText = text || '';
       return div.innerHTML;
     }
+
+    // Launch tactical HUD render loops
+    animateTacticalHUD();
   </script>
 </body>
 </html>
