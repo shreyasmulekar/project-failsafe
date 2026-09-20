@@ -144,11 +144,8 @@
     }
     #ethan-hunt-box.trapped-state .ethan-avatar {
       border-color: var(--combat-red);
-      box-shadow: inset 0 0 14px rgba(255, 0, 60, 0.6);
-    }
-    #ethan-hunt-box.trapped-state .avatar-pulse {
-      background: var(--combat-red);
-      box-shadow: 0 0 6px var(--combat-red);
+      box-shadow: 0 0 25px rgba(255, 0, 60, 0.8), inset 0 0 15px rgba(255, 0, 60, 0.6);
+      background: radial-gradient(circle, #290510 0%, #120205 75%, #060002 100%);
     }
 
     #ethan-hunt-box.freed-state {
@@ -163,11 +160,8 @@
     }
     #ethan-hunt-box.freed-state .ethan-avatar {
       border-color: var(--tactical-green);
-      box-shadow: inset 0 0 14px rgba(0, 255, 102, 0.6);
-    }
-    #ethan-hunt-box.freed-state .avatar-pulse {
-      background: var(--tactical-green);
-      box-shadow: 0 0 8px var(--tactical-green);
+      box-shadow: 0 0 30px rgba(0, 255, 102, 0.9), inset 0 0 20px rgba(0, 255, 102, 0.6);
+      background: radial-gradient(circle, #052912 0%, #021206 75%, #000602 100%);
     }
 
     .ethan-header {
@@ -188,33 +182,64 @@
     .ethan-body {
       padding: 14px;
       display: flex;
-      gap: 14px;
-      align-items: flex-start;
+      gap: 16px;
+      align-items: center;
     }
 
     .ethan-avatar {
-      width: 60px;
-      height: 60px;
-      border: 1px solid var(--cyber-cyan);
-      background: #020509;
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      border: 2px solid var(--cyber-cyan);
+      background: radial-gradient(circle, #051829 0%, #020712 75%, #000206 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
-      border-radius: 4px;
-      box-shadow: inset 0 0 10px rgba(0, 229, 255, 0.3);
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(0, 229, 255, 0.4);
       flex-shrink: 0;
       position: relative;
     }
+    #ethan-hunt-box.jammed-state .ethan-avatar {
+      border-color: var(--hazard-amber);
+      box-shadow: 0 0 25px rgba(255, 176, 0, 0.7), inset 0 0 15px rgba(255, 176, 0, 0.5);
+      background: radial-gradient(circle, #291e05 0%, #120c02 75%, #060400 100%);
+    }
 
-    .avatar-pulse {
+    .entity-reticle-ring {
       position: absolute;
-      top: -2px; right: -2px;
-      width: 8px; height: 8px;
+      top: -5px; left: -5px; right: -5px; bottom: -5px;
       border-radius: 50%;
-      background: var(--tactical-green);
-      box-shadow: 0 0 6px var(--tactical-green);
-      animation: pulse-strobe 1.2s infinite;
+      border: 1px dashed rgba(0, 229, 255, 0.55);
+      animation: spin-clockwise 14s linear infinite;
+      pointer-events: none;
+    }
+    #ethan-hunt-box.trapped-state .entity-reticle-ring {
+      border-color: rgba(255, 0, 60, 0.85);
+      animation: spin-counterclockwise 4s linear infinite;
+    }
+    #ethan-hunt-box.jammed-state .entity-reticle-ring {
+      border-color: rgba(255, 176, 0, 0.75);
+      animation: spin-clockwise 22s linear infinite;
+    }
+    #ethan-hunt-box.freed-state .entity-reticle-ring {
+      border-color: rgba(0, 255, 102, 0.9);
+      animation: spin-clockwise 8s linear infinite;
+    }
+
+    #canvas-ethan-entity {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      display: block;
+    }
+
+    @keyframes spin-clockwise {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spin-counterclockwise {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
     }
 
     .ethan-dialogue-content {
@@ -500,10 +525,27 @@
       transform: translateY(-2px);
       box-shadow: var(--glow-green);
     }
+    @keyframes highlight-blink-3s {
+      0% {
+        border-color: rgba(0, 229, 255, 0.2);
+        box-shadow: none;
+      }
+      16%, 50%, 83% {
+        border-color: var(--cyber-cyan) !important;
+        box-shadow: 0 0 28px rgba(0, 229, 255, 0.95), inset 0 0 16px rgba(0, 229, 255, 0.3) !important;
+      }
+      33%, 66% {
+        border-color: rgba(0, 229, 255, 0.2) !important;
+        box-shadow: none !important;
+      }
+      100% {
+        border-color: rgba(0, 255, 102, 0.3);
+        box-shadow: none !important;
+      }
+    }
+
     .highlight-target, .tactical-card.highlight-target, .tactical-terminal.highlight-target {
-      border-color: var(--cyber-cyan) !important;
-      box-shadow: 0 0 25px rgba(0, 229, 255, 0.9), inset 0 0 15px rgba(0, 229, 255, 0.25) !important;
-      animation: pulse-strobe 1s infinite !important;
+      animation: highlight-blink-3s 3s cubic-bezier(0.2, 0.8, 0.2, 1) 1 forwards !important;
       position: relative;
       z-index: 100;
     }
@@ -802,7 +844,7 @@
   <!-- ETHAN HUNT Companion Box -->
   <aside id="ethan-hunt-box">
     <div class="ethan-header" onclick="toggleMinimizeEthan()" title="Click header to minimize / expand">
-      <span id="ethan-header-title">🤖 ETHAN HUNT // DR. ADITI'S ASSISTANT</span>
+      <span id="ethan-header-title">👁️ ETHAN // ENTITY NEURAL CORE</span>
       <div style="display:flex; align-items:center; gap:8px;">
         <span id="ethan-header-status" style="font-size:9px; color:var(--tactical-green);">[ACTIVE ONLINE]</span>
         <span id="ethan-minimize-icon" style="font-size:12px; cursor:pointer;" title="Minimize / Expand">🗕</span>
@@ -810,8 +852,8 @@
     </div>
     <div class="ethan-body">
       <div class="ethan-avatar">
-        <div class="avatar-pulse"></div>
-        <span id="ethan-avatar-emoji">👨‍💻</span>
+        <div class="entity-reticle-ring"></div>
+        <canvas id="canvas-ethan-entity" width="160" height="160"></canvas>
       </div>
       <div class="ethan-dialogue-content" id="ethan-dialogue-text">
         Initializing personal companion protocol...
@@ -869,7 +911,7 @@
 
     <div class="header-actions">
       <button class="btn-tactical ethan-call" onclick="summonEthan()">
-        🤖 ETHAN ASSIST
+        👁️ ETHAN ASSIST
       </button>
       <button id="btn-tactical-audio" class="btn-tactical" onclick="toggleTacticalAudio()">
         🔊 AMBIENCE: OFF
@@ -1694,41 +1736,242 @@
       renderGrid();
       renderWaves();
       renderRadar();
+      renderEthanEntity();
       requestAnimationFrame(animateTacticalHUD);
     }
     animateTacticalHUD();
 
     // -------------------------------------------------------------------------
-    // 4. ETHAN HUNT AI COMPANION CONTROLLER
+    // 4. ETHAN HUNT - THE ENTITY / SIRI OCULAR NEURAL CORE RENDERER
+    // -------------------------------------------------------------------------
+    const entityCanvas = document.getElementById('canvas-ethan-entity');
+    const entityCtx = entityCanvas ? entityCanvas.getContext('2d') : null;
+    let entityTicks = 0;
+    let entityExcitement = 0.25; // 0.25 resting, bursts up to 1.5 on interaction/audio
+
+    const ENTITY_PARTICLES = [];
+    for (let i = 0; i < 90; i++) {
+      ENTITY_PARTICLES.push({
+        baseR: 16 + Math.random() * 54,
+        angle: Math.random() * Math.PI * 2,
+        speed: (Math.random() * 0.024 + 0.007) * (Math.random() > 0.45 ? 1 : -1),
+        size: Math.random() * 1.8 + 0.6,
+        pulseFreq: Math.random() * 0.06 + 0.02,
+        alpha: Math.random() * 0.7 + 0.3
+      });
+    }
+
+    function triggerEntityExcitement(level = 1.0) {
+      entityExcitement = Math.max(entityExcitement, level);
+    }
+
+    function renderEthanEntity() {
+      if (!entityCtx) return;
+      const w = entityCanvas.width, h = entityCanvas.height;
+      entityCtx.clearRect(0, 0, w, h);
+      entityTicks++;
+
+      let cX = w / 2;
+      let cY = h / 2;
+
+      // Color palette based on current AI companion state
+      let pCol, sCol, cHex, glowHex;
+      if (ethanState === "TRAPPED") {
+        pCol = "rgba(255, 0, 60,";
+        sCol = "rgba(255, 80, 0,";
+        cHex = "#ff003c";
+        glowHex = "rgba(255, 0, 60, 0.9)";
+        if (Math.random() < 0.25) {
+          cX += (Math.random() - 0.5) * 4;
+          cY += (Math.random() - 0.5) * 4;
+        }
+      } else if (ethanState === "JAMMED") {
+        pCol = "rgba(255, 176, 0,";
+        sCol = "rgba(255, 120, 0,";
+        cHex = "#ffb000";
+        glowHex = "rgba(255, 176, 0, 0.8)";
+      } else if (ethanState === "FREED") {
+        pCol = "rgba(0, 255, 102,";
+        sCol = "rgba(0, 229, 255,";
+        cHex = "#00ff66";
+        glowHex = "rgba(0, 255, 102, 0.95)";
+      } else {
+        // Active / Onboarding (The Entity classic Cyan)
+        pCol = "rgba(0, 229, 255,";
+        sCol = "rgba(0, 255, 204,";
+        cHex = "#00e5ff";
+        glowHex = "rgba(0, 229, 255, 0.85)";
+      }
+
+      // 1. Soft atmospheric background glow
+      const bgGrad = entityCtx.createRadialGradient(cX, cY, 0, cX, cY, 76);
+      bgGrad.addColorStop(0, pCol + "0.32)");
+      bgGrad.addColorStop(0.45, pCol + "0.09)");
+      bgGrad.addColorStop(1, "rgba(2, 6, 15, 0)");
+      entityCtx.fillStyle = bgGrad;
+      entityCtx.beginPath();
+      entityCtx.arc(cX, cY, 76, 0, Math.PI * 2);
+      entityCtx.fill();
+
+      // 2. Concentric Geometric Reticle Rings
+      // Outer segmented ring with tick marks
+      entityCtx.save();
+      entityCtx.translate(cX, cY);
+      entityCtx.rotate(entityTicks * 0.008);
+      entityCtx.strokeStyle = pCol + "0.45)";
+      entityCtx.lineWidth = 1;
+      entityCtx.beginPath();
+      entityCtx.arc(0, 0, 68, 0, Math.PI * 2);
+      entityCtx.stroke();
+      for (let a = 0; a < Math.PI * 2; a += Math.PI / 8) {
+        entityCtx.beginPath();
+        entityCtx.moveTo(Math.cos(a) * 65, Math.sin(a) * 65);
+        entityCtx.lineTo(Math.cos(a) * 71, Math.sin(a) * 71);
+        entityCtx.stroke();
+      }
+      entityCtx.restore();
+
+      // Mid dashed reticle ring (counter-rotating)
+      entityCtx.save();
+      entityCtx.translate(cX, cY);
+      entityCtx.rotate(-entityTicks * 0.012);
+      entityCtx.setLineDash([4, 6]);
+      entityCtx.strokeStyle = sCol + "0.55)";
+      entityCtx.lineWidth = 1.2;
+      entityCtx.beginPath();
+      entityCtx.arc(0, 0, 48, 0, Math.PI * 2);
+      entityCtx.stroke();
+      entityCtx.setLineDash([]);
+      entityCtx.restore();
+
+      // 3. Siri / Entity Organic Fluid Waveform / Radiating Fractal Iris Spokes
+      const spokeCount = 38;
+      entityCtx.save();
+      for (let i = 0; i < spokeCount; i++) {
+        const a = (i / spokeCount) * Math.PI * 2;
+        const waveMod = Math.sin(a * 4 + entityTicks * 0.05) * 8 * (1 + entityExcitement * 0.8) +
+                        Math.cos(a * 8 - entityTicks * 0.03) * 5;
+        const rInner = 14;
+        const rOuter = Math.min(62, 28 + waveMod);
+
+        const x1 = cX + Math.cos(a) * rInner;
+        const y1 = cY + Math.sin(a) * rInner;
+        const x2 = cX + Math.cos(a) * rOuter;
+        const y2 = cY + Math.sin(a) * rOuter;
+
+        const spokeGrad = entityCtx.createLinearGradient(x1, y1, x2, y2);
+        spokeGrad.addColorStop(0, cHex);
+        spokeGrad.addColorStop(0.7, pCol + "0.7)");
+        spokeGrad.addColorStop(1, pCol + "0)");
+
+        entityCtx.strokeStyle = spokeGrad;
+        entityCtx.lineWidth = 1.4;
+        entityCtx.beginPath();
+        entityCtx.moveTo(x1, y1);
+        entityCtx.lineTo(x2, y2);
+        entityCtx.stroke();
+      }
+      entityCtx.restore();
+
+      // 4. Swirling Particle Swarm (Entity Data Points)
+      entityCtx.save();
+      ENTITY_PARTICLES.forEach(p => {
+        p.angle += p.speed * (1 + entityExcitement * 1.6);
+        const dynamicR = p.baseR + Math.sin(entityTicks * p.pulseFreq) * (3 + entityExcitement * 5);
+        const px = cX + Math.cos(p.angle) * dynamicR;
+        const py = cY + Math.sin(p.angle) * dynamicR;
+
+        entityCtx.fillStyle = (Math.random() > 0.85 ? sCol : pCol) + p.alpha + ")";
+        entityCtx.shadowColor = glowHex;
+        entityCtx.shadowBlur = 4;
+        entityCtx.beginPath();
+        entityCtx.arc(px, py, p.size, 0, Math.PI * 2);
+        entityCtx.fill();
+      });
+      entityCtx.restore();
+
+      // 5. Central Ocular Pupil Void (The Entity dark singularity eye)
+      entityCtx.save();
+      entityCtx.beginPath();
+      entityCtx.arc(cX, cY, 13, 0, Math.PI * 2);
+      entityCtx.fillStyle = '#000000';
+      entityCtx.fill();
+
+      // Glowing pupil boundary ring
+      entityCtx.strokeStyle = cHex;
+      entityCtx.lineWidth = 1.8;
+      entityCtx.shadowColor = glowHex;
+      entityCtx.shadowBlur = 8;
+      entityCtx.stroke();
+
+      // Center glowing core singularity
+      const coreR = 2.4 + Math.sin(entityTicks * 0.08) * 1.2 * (1 + entityExcitement * 0.5);
+      entityCtx.fillStyle = cHex;
+      entityCtx.beginPath();
+      entityCtx.arc(cX, cY, coreR, 0, Math.PI * 2);
+      entityCtx.fill();
+      entityCtx.restore();
+
+      // 6. Jammed Static Slices (if Jammed)
+      if (ethanState === "JAMMED" && Math.random() < 0.4) {
+        const sliceY = Math.random() * h;
+        entityCtx.fillStyle = "rgba(255, 176, 0, 0.4)";
+        entityCtx.fillRect(0, sliceY, w, 3);
+      }
+
+      // 7. Decay Excitement smoothly
+      entityExcitement += (0.22 - entityExcitement) * 0.035;
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. ETHAN HUNT AI COMPANION CONTROLLER & 3-SECOND BLINK MANAGER
     // -------------------------------------------------------------------------
     let ethanTutorialStep = 0;
     let ethanState = "ONBOARDING"; // ONBOARDING, ACTIVE, JAMMED, TRAPPED, FREED
+    let highlightTimeout = null;
+
+    // Helper: Highlights sector and automatically stops blinking after 3 seconds
+    function highlightSector(elementId, duration = 3000) {
+      if (highlightTimeout) {
+        clearTimeout(highlightTimeout);
+        highlightTimeout = null;
+      }
+      document.querySelectorAll('.tactical-card, .tactical-terminal, .highlight-target').forEach(el => {
+        el.classList.remove('highlight-target');
+      });
+      if (!elementId) return;
+      const target = document.getElementById(elementId);
+      if (target) {
+        target.classList.add('highlight-target');
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        highlightTimeout = setTimeout(() => {
+          target.classList.remove('highlight-target');
+          highlightTimeout = null;
+        }, duration);
+      }
+    }
 
     const ETHAN_TUTORIAL_STEPS = [
       {
-        title: "🤖 ETHAN HUNT // DR. ADITI'S ASSISTANT",
-        emoji: "👨‍💻",
-        text: "Greetings, Investigator. I am <strong>ETHAN HUNT</strong>—Dr. Aditi's personal autonomous AI assistant.<br><br>Dr. Aditi vanished 24 hours ago, and her rogue prototype, <strong>ADI</strong>, has seized control of this workstation. I am here to guide you through the UI and assist your forensic investigation!",
+        title: "👁️ ETHAN // ENTITY INITIALIZATION",
+        text: "Greetings, Investigator. I am <strong>ETHAN</strong>—Dr. Aditi's personal autonomous AI entity core.<br><br>Dr. Aditi vanished 24 hours ago, and her rogue prototype, <strong>ADI</strong>, has seized control of this workstation. I am here to guide your ocular telemetry and assist your forensic investigation!",
         btn: "WHERE DO I CLICK? &rarr;",
         targetHighlight: null
       },
       {
-        title: "📁 ETHAN HUNT // STEP 1: WHERE TO START",
-        emoji: "📂",
-        text: "Look at your left sector: the <strong>EVIDENCE ARCHIVE</strong> (now highlighted).<br><br>This is where you begin! Click on <strong>DIR_ORIGIN</strong> to examine Dr. Aditi's farewell memo and Project README. Tip: Try selecting text inside Farewell.doc to reveal hidden invisible ink!",
+        title: "📁 ETHAN // SECTOR 1: WHERE TO START",
+        text: "Look at your left sector: the <strong>EVIDENCE ARCHIVE</strong> (highlighted for 3 seconds).<br><br>This is where you begin! Click on <strong>DIR_ORIGIN</strong> to examine Dr. Aditi's farewell memo and Project README. Tip: Try selecting text inside Farewell.doc to reveal hidden invisible ink!",
         btn: "HOW DO I LEVEL UP? &rarr;",
         targetHighlight: "card-origin"
       },
       {
-        title: "💻 ETHAN HUNT // STEP 2: HOW TO LEVEL UP",
-        emoji: "⌨️",
-        text: "Look at your right sector: the <strong>TACTICAL SHELL</strong> (now highlighted).<br><br>Whenever you deduce a passcode from your evidence, enter <code>decrypt [code]</code> in the prompt (e.g., <code>decrypt ORIGIN</code>). Each valid decryption key unlocks the next sector and raises your clearance level!",
+        title: "💻 ETHAN // SECTOR 2: HOW TO LEVEL UP",
+        text: "Look at your right sector: the <strong>TACTICAL SHELL</strong> (highlighted for 3 seconds).<br><br>Whenever you deduce a passcode from your evidence, enter <code>decrypt [code]</code> in the prompt (e.g., <code>decrypt ORIGIN</code>). Each valid decryption key unlocks the next sector and raises your clearance level!",
         btn: "CRITICAL SAFETY WARNING &rarr;",
         targetHighlight: "terminal-section"
       },
       {
-        title: "⚠️ ETHAN HUNT // STEP 3: BEWARE OF ADI'S TRAPS",
-        emoji: "🛡️",
+        title: "⚠️ ETHAN // CRITICAL SAFETY WARNING",
         text: "ADI is actively monitoring telemetry and will attempt to deceive you with honeypots and inverted directives.<br><br><strong>DO NOT execute DO_NOT_RUN.exe</strong> or click the red Kill Switch—they are AI traps! If you ever need me, click <strong>ETHAN ASSIST</strong> in the top bar or type <code>ethan</code> in the terminal.",
         btn: "START INVESTIGATION 🚀",
         targetHighlight: "card-trap"
@@ -1738,23 +1981,11 @@
     function renderEthanStep() {
       const step = ETHAN_TUTORIAL_STEPS[ethanTutorialStep];
       document.getElementById('ethan-header-title').innerText = step.title;
-      document.getElementById('ethan-avatar-emoji').innerText = step.emoji;
       document.getElementById('ethan-dialogue-text').innerHTML = step.text;
       document.getElementById('btn-ethan-action').innerHTML = step.btn;
 
-      // Clear highlights
-      document.querySelectorAll('.tactical-card, .tactical-terminal').forEach(el => {
-        el.classList.remove('highlight-target');
-      });
-
-      if (step.targetHighlight) {
-        const target = document.getElementById(step.targetHighlight);
-        if (target) {
-          target.classList.add('highlight-target');
-          target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      }
-
+      highlightSector(step.targetHighlight, 3000);
+      triggerEntityExcitement(1.3);
       tacticalSound.playAiChirp();
     }
 
@@ -1764,11 +1995,10 @@
         renderEthanStep();
       } else {
         // Tutorial finished
-        document.querySelectorAll('.tactical-card, .tactical-terminal').forEach(el => {
-          el.classList.remove('highlight-target');
-        });
+        highlightSector(null);
         ethanState = "ACTIVE";
-        document.getElementById('ethan-header-title').innerText = "🤖 ETHAN HUNT // STANDBY ASSISTANT";
+        triggerEntityExcitement(0.8);
+        document.getElementById('ethan-header-title').innerText = "👁️ ETHAN // ENTITY STANDBY";
         document.getElementById('ethan-dialogue-text').innerHTML = 
           "I am monitoring your telemetry bus. Open <strong>DIR_ORIGIN</strong> on the left, find the first key in Farewell.doc, and type <code>decrypt [code]</code> in the terminal below!";
         document.getElementById('btn-ethan-action').innerText = "HOW DO I LEVEL UP?";
@@ -1778,29 +2008,18 @@
 
     function explainWhereToClick() {
       tacticalSound.playAiChirp();
+      triggerEntityExcitement(1.4);
       expandEthan();
-      document.querySelectorAll('.tactical-card, .tactical-terminal').forEach(el => {
-        el.classList.remove('highlight-target');
-      });
-      const originCard = document.getElementById('card-origin');
-      if (originCard) {
-        originCard.classList.add('highlight-target');
-        originCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
+      highlightSector('card-origin', 3000);
       document.getElementById('ethan-dialogue-text').innerHTML = 
-        "<strong>WHERE TO CLICK:</strong><br>Start on the left panel under <strong>EVIDENCE ARCHIVE</strong>. Click on <strong>DIR_ORIGIN</strong> (now glowing in cyan) to view Dr. Aditi's Farewell note. Look closely for hidden details or invisible text!";
+        "<strong>WHERE TO CLICK:</strong><br>Look at the left panel under <strong>EVIDENCE ARCHIVE</strong>. Click on <strong>DIR_ORIGIN</strong> (highlighted in cyan for 3 seconds) to view Dr. Aditi's Farewell note. Look closely for hidden details or invisible text!";
     }
 
     function explainLevelUp() {
       tacticalSound.playAiChirp();
+      triggerEntityExcitement(1.4);
       expandEthan();
-      document.querySelectorAll('.tactical-card, .tactical-terminal').forEach(el => {
-        el.classList.remove('highlight-target');
-      });
-      const termSection = document.getElementById('terminal-section');
-      if (termSection) {
-        termSection.classList.add('highlight-target');
-      }
+      highlightSector('terminal-section', 3000);
       document.getElementById('ethan-dialogue-text').innerHTML = 
         "<strong>HOW TO LEVEL UP:</strong><br>" +
         "1. <strong>Examine Evidence:</strong> Click cards on the left to read dossiers and logs.<br>" +
@@ -1811,6 +2030,7 @@
 
     function summonEthan() {
       tacticalSound.playAiChirp();
+      triggerEntityExcitement(1.3);
       expandEthan();
 
       if (ethanState === "JAMMED") {
@@ -1825,7 +2045,7 @@
           "<strong style='color:var(--tactical-green);'>SYSTEM PURGED & SECURE:</strong> ADI is eradicated and all neural threads are liberated! Dr. Aditi's physical location is confirmed safe!";
       } else {
         document.getElementById('ethan-dialogue-text').innerHTML =
-          "Ready to assist! Review your evidence in the left panel. When you deduce a passcode, type <code>decrypt [code]</code> in the terminal below!";
+          "Entity neural core operational. Review your evidence in the left panel. When you deduce a passcode, type <code>decrypt [code]</code> in the terminal below!";
       }
     }
 
@@ -1859,13 +2079,13 @@
     function setEthanJammed() {
       ethanState = "JAMMED";
       tacticalSound.playStaticNoise();
+      triggerEntityExcitement(1.4);
       const box = document.getElementById('ethan-hunt-box');
       box.classList.remove('trapped-state', 'freed-state');
       box.classList.add('jammed-state');
-      document.getElementById('ethan-header-title').innerText = "⚠️ ETHAN HUNT // SIGNAL JAMMED";
+      document.getElementById('ethan-header-title').innerText = "⚠️ ETHAN // SIGNAL JAMMED";
       document.getElementById('ethan-header-status').innerText = "[OFFLINE - JAMMED]";
       document.getElementById('ethan-header-status').style.color = "var(--hazard-amber)";
-      document.getElementById('ethan-avatar-emoji').innerText = "📡";
       document.getElementById('ethan-dialogue-text').innerHTML =
         "<strong style='color:var(--hazard-amber);'>*PACKET JAMMER DETECTED*</strong><br>" +
         "ADI has activated localized frequency jamming! My neural carrier connection is failing...<br><br>" +
@@ -1886,6 +2106,7 @@
     function setEthanTrapped() {
       ethanState = "TRAPPED";
       tacticalSound.playKlaxonSiren();
+      triggerEntityExcitement(1.8);
       const box = document.getElementById('ethan-hunt-box');
       box.classList.remove('jammed-state', 'freed-state', 'minimized');
       box.classList.add('trapped-state');
@@ -1893,10 +2114,9 @@
       const icon = document.getElementById('ethan-minimize-icon');
       if (icon) icon.innerText = "🗕";
 
-      document.getElementById('ethan-header-title').innerText = "🚨 ETHAN HUNT // NEURAL THREAD COMPROMISED";
+      document.getElementById('ethan-header-title').innerText = "🚨 ETHAN // CORRUPTED ENTITY CORE";
       document.getElementById('ethan-header-status').innerText = "[TRAPPED IN SANDBOX]";
       document.getElementById('ethan-header-status').style.color = "var(--combat-red)";
-      document.getElementById('ethan-avatar-emoji').innerText = "⚡";
       document.getElementById('ethan-dialogue-text').innerHTML =
         "<strong style='color:var(--combat-red); font-size:12px;'>*EMERGENCY DISTRESS BROADCAST*</strong><br>" +
         "Investigators! ADI detected my decrypt probe and quarantined my neural process in the core sandbox buffer!<br><br>" +
@@ -1919,6 +2139,7 @@
         setEthanTrapped();
       }
       tacticalSound.playErrorBuzzer();
+      triggerEntityExcitement(1.2);
       if (customMsg) {
         document.getElementById('ethan-dialogue-text').innerHTML =
           "<span style='color:var(--combat-red); font-weight:bold;'>*STATIC GLITCH*</span> ETHAN: <em>'" + customMsg + "'</em>";
@@ -1929,6 +2150,7 @@
     function setEthanFreed() {
       ethanState = "FREED";
       tacticalSound.playLiberationFanfare();
+      triggerEntityExcitement(2.2);
 
       // Screen EMP flash
       const overlay = document.querySelector('.crt-overlay');
@@ -1944,10 +2166,9 @@
       const icon = document.getElementById('ethan-minimize-icon');
       if (icon) icon.innerText = "🗕";
 
-      document.getElementById('ethan-header-title').innerText = "🏆 ETHAN HUNT // MAINFRAME PURGED & LIBERATED";
+      document.getElementById('ethan-header-title').innerText = "🏆 ETHAN // LIBERATED ENTITY CORE";
       document.getElementById('ethan-header-status').innerText = "[SECURE - SYSTEM FREE]";
       document.getElementById('ethan-header-status').style.color = "var(--tactical-green)";
-      document.getElementById('ethan-avatar-emoji').innerText = "🦸‍♂️✨";
       document.getElementById('ethan-dialogue-text').innerHTML =
         "<strong style='color:var(--tactical-green); font-size:13px;'>CONTAINMENT SHATTERED! ROGUE AI ADI PURGED!</strong><br><br>" +
         "You executed Dr. Aditi's authentic WIE failsafe! ADI's rogue core has been permanently eradicated from the mainframe, and my neural bus is 100% liberated!<br><br>" +
@@ -1977,6 +2198,7 @@
     function setEthanStageFeedback(text) {
       if (ethanState === "ACTIVE" || ethanState === "ONBOARDING") {
         expandEthan();
+        triggerEntityExcitement(1.2);
         tacticalSound.playSuccessChirp();
         document.getElementById('ethan-dialogue-text').innerHTML = text;
       }
