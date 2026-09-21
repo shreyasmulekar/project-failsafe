@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT FAILSAFE // THE CONFIDENCE EQUATION</title>
+  <style>
+    /* ==========================================================================
+       THE CONFIDENCE EQUATION — FUTURISTIC FORENSIC DESIGN SYSTEM
+       ========================================================================== */
+    :root {
+      --bg-dark: #070a0e;
+      --bg-surface: #0c1219;
+      --bg-panel: rgba(13, 20, 29, 0.88);
+      --bg-panel-hover: rgba(18, 28, 41, 0.95);
+      --border-subtle: rgba(0, 240, 255, 0.16);
+      --border-focus: rgba(0, 240, 255, 0.65);
+      
+      --cyan-core: #00f0ff;
+      --cyan-glow: rgba(0, 240, 255, 0.35);
+      --emerald-ok: #00ff9d;
+      --emerald-glow: rgba(0, 255, 157, 0.35);
+      --crimson-alert: #ff3366;
+      --crimson-glow: rgba(255, 51, 102, 0.45);
+      --amber-warn: #ffb800;
+      
+      --text-primary: #e6f3fa;
+      --text-muted: #829aa8;
+      --text-dim: #496373;
+      
+      --font-mono: 'Consolas', 'Courier New', 'JetBrains Mono', monospace;
+      --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      position: relative;
+      user-select: none;
+    }
+
+    /* Subtle CRT Scanline overlay */
+    body::before {
+      content: " ";
+      position: fixed;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 25, 33, 0) 50%, rgba(0, 0, 0, 0.28) 50%);
+      background-size: 100% 4px;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0.65;
+    }
+
+    /* Subtle background grid */
+    .cyber-grid-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
+      background-size: 38px 38px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Top HUD / Forensic Bar */
+    header.forensic-hud {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 28px;
+      background: rgba(7, 10, 14, 0.94);
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(12px);
+    }
+
+    .hud-title-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hud-badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--cyan-core);
+      color: var(--cyan-core);
+      letter-spacing: 1.5px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hud-title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+
+    .hud-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hud-btn {
+      background: rgba(14, 21, 30, 0.85);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 7px 14px;
+      border-radius: 3px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .hud-btn:hover {
+      border-color: var(--cyan-core);
+      color: var(--cyan-core);
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    /* Progress Stepper */
+    .investigation-stepper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 20px;
+      background: rgba(10, 15, 22, 0.85);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.08);
+      overflow-x: auto;
+      z-index: 10;
+    }
+
+    .step-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+      border: 1px solid transparent;
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .step-pill.active {
+      color: var(--cyan-core);
+      background: rgba(0, 240, 255, 0.1);
+      border-color: var(--cyan-core);
+      box-shadow: 0 0 12px var(--cyan-glow);
+      font-weight: 700;
+    }
+
+    .step-pill.completed {
+      color: var(--emerald-ok);
+      border-color: rgba(0, 255, 157, 0.4);
+    }
+
+    .step-sep {
+      color: var(--text-dim);
+      font-size: 10px;
+    }
+
+    /* Main Viewport Container */
+    main.forensic-viewport {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      max-width: 1060px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 24px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Stage Screen Transitions */
+    .screen-stage {
+      display: none;
+      animation: screenFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .screen-stage.active-stage {
+      display: block;
+    }
+
+    @keyframes screenFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Forensic Panel Card */
+    .forensic-panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 34px 32px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .forensic-panel::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--cyan-core);
+      box-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    .panel-header-sub {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--cyan-core);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .panel-header-title {
+      font-size: 26px;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .panel-lead-text {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* Buttons */
+    .btn-forensic {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.16) 0%, rgba(0, 240, 255, 0.05) 100%);
+      border: 1px solid var(--cyan-core);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      padding: 13px 26px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.18);
+    }
+
+    .btn-forensic:hover {
+      background: var(--cyan-core);
+      color: #070a0e;
+      box-shadow: 0 0 24px var(--cyan-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-forensic:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: rgba(20, 31, 46, 0.6);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--cyan-core);
+      color: #fff;
+      background: rgba(20, 31, 46, 0.9);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.15);
+    }
+
+    /* ==========================================================================
+       SCREEN 1: OPENING / BRIEFING
+       ========================================================================== */
+    .opening-terminal-box {
+      background: #090d14;
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 4px;
+      padding: 26px 28px;
+      margin: 24px 0 32px;
+      font-size: 16px;
+      line-height: 2.0;
+    }
+
+    .opening-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-primary);
+    }
+
+    .opening-line .bullet {
+      color: var(--cyan-core);
+      font-weight: 700;
+    }
+
+    .opening-line.alert-line {
+      color: var(--amber-warn);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       SCREEN 2: EVIDENCE DISPLAY (5 PREDICTION CARDS)
+       ========================================================================== */
+    .evidence-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+      margin: 24px 0 32px;
+    }
+
+    .evidence-card {
+      background: rgba(11, 17, 24, 0.9);
+      border: 1px solid var(--border-subtle);
+      border-radius: 5px;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.22s ease;
+      position: relative;
+    }
+
+    .evidence-card:hover {
+      border-color: var(--cyan-core);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 240, 255, 0.12);
+    }
+
+    .card-id-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--cyan-core);
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 16px;
+      min-height: 38px;
+      line-height: 1.3;
+    }
+
+    .sensor-stats-block {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 12px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .sensor-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 4px;
+      color: var(--text-muted);
+    }
+
+    .sensor-row strong {
+      color: var(--text-primary);
+    }
+
+    .sensor-bar-pips {
+      display: flex;
+      gap: 5px;
+      margin-top: 6px;
+    }
+
+    .sensor-pip {
+      flex: 1;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+    }
+
+    .sensor-pip.active {
+      background: var(--cyan-core);
+      box-shadow: 0 0 6px var(--cyan-glow);
+    }
+
+    .conf-readout-box {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 10px;
+      text-align: center;
+    }
+
+    .conf-readout-label {
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .conf-readout-val {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    /* ==========================================================================
+       SCREEN 3: FORMULA RECONSTRUCTION WORKBENCH
+       ========================================================================== */
+    .formula-builder-card {
+      background: #090d14;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 26px;
+      margin: 24px 0 28px;
+    }
+
+    .equation-rig-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 24px;
+      background: rgba(0, 240, 255, 0.04);
+      border: 1px dashed var(--border-focus);
+      border-radius: 6px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+
+    .formula-slot {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      border-radius: 4px;
+      background: rgba(14, 21, 30, 0.95);
+      border: 1px solid var(--cyan-core);
+      color: var(--cyan-core);
+      box-shadow: 0 0 10px var(--cyan-glow);
+      font-size: 20px;
+    }
+
+    .builder-row-title {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .builder-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .builder-btn {
+      background: rgba(14, 21, 30, 0.7);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .builder-btn:hover {
+      border-color: var(--cyan-core);
+      color: #fff;
+    }
+
+    .builder-btn.active {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--cyan-core);
+      color: var(--cyan-core);
+      box-shadow: 0 0 12px var(--cyan-glow);
+      font-weight: 700;
+    }
+
+    /* Live formula simulator test bench */
+    .formula-sandbox-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: 16px;
+      margin: 20px 0 10px;
+      font-size: 13px;
+    }
+
+    .sandbox-tabs-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .sandbox-tab {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .sandbox-tab.active {
+      border-color: var(--cyan-core);
+      color: var(--cyan-core);
+      background: rgba(0, 240, 255, 0.08);
+      font-weight: 700;
+    }
+
+    .sandbox-log-box {
+      font-family: var(--font-mono);
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    .feedback-banner {
+      display: none;
+      padding: 14px 18px;
+      border-radius: 4px;
+      margin-top: 18px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .feedback-banner.error {
+      display: block;
+      background: rgba(255, 51, 102, 0.12);
+      border: 1px solid var(--crimson-alert);
+      color: #ff99b3;
+    }
+
+    .feedback-banner.success {
+      display: block;
+      background: rgba(0, 255, 157, 0.12);
+      border: 1px solid var(--emerald-ok);
+      color: var(--emerald-ok);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       SCREEN 4: VERIFICATION TABLE
+       ========================================================================== */
+    .table-container {
+      margin: 24px 0 28px;
+      overflow-x: auto;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      background: #090d14;
+    }
+
+    table.verification-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    table.verification-table th {
+      background: rgba(14, 21, 30, 0.95);
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      font-size: 11px;
+      text-transform: uppercase;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    table.verification-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      vertical-align: middle;
+    }
+
+    table.verification-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .status-pill.match {
+      background: rgba(0, 255, 157, 0.12);
+      border: 1px solid var(--emerald-ok);
+      color: var(--emerald-ok);
+    }
+
+    .status-pill.corrupted {
+      background: rgba(255, 51, 102, 0.15);
+      border: 1px solid var(--crimson-alert);
+      color: var(--crimson-alert);
+      box-shadow: 0 0 10px var(--crimson-glow);
+      animation: alertPulse 1.5s infinite;
+    }
+
+    .status-pill.auditing {
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--cyan-core);
+      color: var(--cyan-core);
+    }
+
+    @keyframes alertPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.75; transform: scale(0.97); }
+    }
+
+    /* ==========================================================================
+       SCREEN 5: ANOMALY IDENTIFICATION
+       ========================================================================== */
+    .anomaly-choices-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 24px 0 28px;
+    }
+
+    .anomaly-choice-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: rgba(14, 21, 30, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: 5px;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .anomaly-choice-card:hover {
+      border-color: var(--cyan-core);
+      background: rgba(20, 31, 46, 0.95);
+      transform: translateX(4px);
+    }
+
+    .anomaly-choice-card.selected {
+      border-color: var(--crimson-alert);
+      background: rgba(255, 51, 102, 0.12);
+      box-shadow: 0 0 16px var(--crimson-glow);
+    }
+
+    /* ==========================================================================
+       SCREEN 6: CONFIRMATION DOSSIER
+       ========================================================================== */
+    .confirmation-card {
+      background: #090d14;
+      border: 1px solid var(--crimson-alert);
+      box-shadow: 0 0 24px var(--crimson-glow);
+      border-radius: 6px;
+      padding: 28px;
+      margin: 24px 0 28px;
+    }
+
+    .conf-metric-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .conf-metric-item:last-child {
+      border-bottom: none;
+    }
+
+    .conf-metric-key {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .conf-metric-data {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .conf-metric-data.alert {
+      color: var(--crimson-alert);
+      font-size: 18px;
+    }
+
+    /* ==========================================================================
+       SCREEN 7: STORY REVEAL & CLIMAX
+       ========================================================================== */
+    .story-reveal-container {
+      background: rgba(10, 15, 22, 0.95);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 6px;
+      padding: 38px 32px;
+      margin: 24px 0 32px;
+      text-align: center;
+    }
+
+    .reveal-header-headline {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+    }
+
+    .reveal-header-headline.highlight {
+      color: var(--crimson-alert);
+      text-shadow: 0 0 16px var(--crimson-glow);
+    }
+
+    .reveal-subtext {
+      font-size: 15px;
+      letter-spacing: 3px;
+      color: var(--cyan-core);
+      margin-top: 24px;
+    }
+
+    .reveal-log-box {
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border-left: 3px solid var(--cyan-core);
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Toast Notification */
+    .toast-popup {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(14, 21, 30, 0.95);
+      border: 1px solid var(--cyan-core);
+      box-shadow: 0 0 20px var(--cyan-glow);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 4px;
+      font-size: 13px;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header.forensic-hud {
+        padding: 10px 16px;
+      }
+      .hud-title {
+        font-size: 13px;
+      }
+      main.forensic-viewport {
+        padding: 20px 14px 40px;
+      }
+      .forensic-panel {
+        padding: 22px 18px;
+      }
+      .panel-header-title {
+        font-size: 20px;
+      }
+      .evidence-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .equation-rig-display {
+        font-size: 17px;
+        padding: 14px;
+      }
+      .reveal-header-headline {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cyber-grid-bg"></div>
+
+  <!-- HUD NAVIGATION -->
+  <header class="forensic-hud">
+    <div class="hud-title-block">
+      <span class="hud-badge" id="hud-version-tag">SYS_VER: 4.8.1-ADI</span>
+      <div class="hud-title">PROJECT FAILSAFE // FORENSIC CORE</div>
+    </div>
+    <div class="hud-controls">
+      <button class="hud-btn" id="btn-audio-toggle" onclick="ForensicAudio.toggleMute()">
+        <span id="audio-icon">🔊</span> <span id="audio-label">AUDIO: ON</span>
+      </button>
+      <button class="hud-btn" id="btn-reset-puzzle" onclick="ConfidencePuzzle.resetInvestigation()">
+        <span>↺</span> <span>REBOOT TRACE</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PROGRESS STEPPER -->
+  <nav class="investigation-stepper" aria-label="Investigation Steps">
+    <div class="step-pill active" id="step-pill-1">01 // INITIATION</div>
+    <span class="step-sep">›</span>
+    <div class="step-pill" id="step-pill-2">02 // EVIDENCE</div>
+    <span class="step-sep">›</span>
+    <div class="step-pill" id="step-pill-3">03 // EQUATION</div>
+    <span class="step-sep">›</span>
+    <div class="step-pill" id="step-pill-4">04 // VERIFICATION</div>
+    <span class="step-sep">›</span>
+    <div class="step-pill" id="step-pill-5">05 // ISOLATION</div>
+    <span class="step-sep">›</span>
+    <div class="step-pill" id="step-pill-6">06 // CORRUPTION</div>
+    <span class="step-sep">›</span>
+    <div class="step-pill" id="step-pill-7">07 // REVEAL</div>
+  </nav>
+
+  <!-- MAIN VIEWPORT -->
+  <main class="forensic-viewport">
+
+    <!-- ====================================================================
+         STEP 1: OPENING SCREEN
+         ==================================================================== -->
+    <section class="screen-stage active-stage" id="screen-stage-1">
+      <div class="forensic-panel">
+        <div class="panel-header-sub">FORENSIC ANOMALY BRIEFING // ARCHIVE ADI-990</div>
+        <h1 class="panel-header-title">ADI // INCIDENT ANALYSIS</h1>
+        <p class="panel-lead-text">
+          Autonomous Defense Intelligence (ADI) generated five post-breach incident predictions 
+          derived from distributed telemetry sensors. Diagnostic sensors reported a mathematical failure: 
+          one prediction contains an artificially corrupted confidence rating.
+        </p>
+
+        <div class="opening-terminal-box">
+          <div class="opening-line"><span class="bullet">&gt;</span> 05 predictions detected.</div>
+          <div class="opening-line alert-line"><span class="bullet">&gt;</span> 01 confidence value corrupted.</div>
+          <div class="opening-line"><span class="bullet">&gt;</span> Trace the mathematical model.</div>
+        </div>
+
+        <div>
+          <button class="btn-forensic" id="btn-begin-investigation" onclick="ConfidencePuzzle.goToScreen(2)">
+            BEGIN INVESTIGATION ➔
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STEP 2: EVIDENCE SCREEN (5 PREDICTIONS)
+         ==================================================================== -->
+    <section class="screen-stage" id="screen-stage-2">
+      <div class="forensic-panel">
+        <div class="panel-header-sub">FORENSIC TELEMETRY ARCHIVE // EVIDENCE ACQUISITION</div>
+        <h2 class="panel-header-title">INCIDENT SENSOR LOGS</h2>
+        <p class="panel-lead-text">
+          Displaying recorded predictions and sensor evidence corroborations.
+          Formula redacted from public log. Core derivation algorithm unindexed.
+        </p>
+
+        <!-- 5 Interactive Prediction Cards -->
+        <div class="evidence-cards-grid" id="evidence-cards-container">
+          <!-- Populated by JS -->
+        </div>
+
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <button class="btn-forensic" id="btn-proceed-formula" onclick="ConfidencePuzzle.goToScreen(3)">
+            RECONSTRUCT MATHEMATICAL MODEL ➔
+          </button>
+          <button class="btn-forensic btn-secondary" onclick="ConfidencePuzzle.goToScreen(1)">
+            ← BACK TO BRIEFING
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STEP 3: FORMULA DISCOVERY SCREEN
+         ==================================================================== -->
+    <section class="screen-stage" id="screen-stage-3">
+      <div class="forensic-panel">
+        <div class="panel-header-sub">EQUATION RECONSTRUCTION INTERFACE</div>
+        <h2 class="panel-header-title">REVERSE-ENGINEER THE CONFIDENCE MODEL</h2>
+        <p class="panel-lead-text" id="formula-prompt-text">
+          ADI claims its confidence is calculated from sensor evidence. Reconstruct the equation.
+        </p>
+
+        <div class="formula-builder-card">
+          <!-- Live equation synthesis banner -->
+          <div class="equation-rig-display" id="equation-rig-display">
+            <span>Confidence =</span>
+            <span>(</span>
+            <span class="formula-slot" id="slot-s">S</span>
+            <span>/</span>
+            <span class="formula-slot" id="slot-t">T</span>
+            <span>)</span>
+            <span style="font-size: 16px; margin-left: -4px;">^</span>
+            <span class="formula-slot" id="slot-exp">1</span>
+            <span>×</span>
+            <span class="formula-slot" id="slot-mult">100</span>
+          </div>
+
+          <!-- Variable Ratio / Fraction Selection -->
+          <div class="builder-row-title">01. SENSOR EVIDENCE RATIO [ S / T ]</div>
+          <div class="builder-btn-group" id="ratio-btn-group">
+            <button class="builder-btn active" data-ratio="S/T" onclick="ConfidencePuzzle.setRatio('S/T')">
+              ( S / T ) — Supporting Sensors / Total Sensors
+            </button>
+            <button class="builder-btn" data-ratio="T/S" onclick="ConfidencePuzzle.setRatio('T/S')">
+              ( T / S ) — Total Sensors / Supporting Sensors
+            </button>
+            <button class="builder-btn" data-ratio="S*T" onclick="ConfidencePuzzle.setRatio('S*T')">
+              ( S × T ) — Sensor Product
+            </button>
+          </div>
+
+          <!-- Exponent Selection -->
+          <div class="builder-row-title">02. MODEL EXPONENT [ POWER ]</div>
+          <div class="builder-btn-group" id="exp-btn-group">
+            <button class="builder-btn active" data-exp="1" onclick="ConfidencePuzzle.setExp(1)">^ 1 (Linear)</button>
+            <button class="builder-btn" data-exp="2" onclick="ConfidencePuzzle.setExp(2)">^ 2 (Quadratic / Squared)</button>
+            <button class="builder-btn" data-exp="3" onclick="ConfidencePuzzle.setExp(3)">^ 3 (Cubic)</button>
+            <button class="builder-btn" data-exp="4" onclick="ConfidencePuzzle.setExp(4)">^ 4 (Quartic)</button>
+          </div>
+
+          <!-- Multiplier Selection -->
+          <div class="builder-row-title">03. PERCENTAGE MULTIPLIER [ SCALE ]</div>
+          <div class="builder-btn-group" id="mult-btn-group">
+            <button class="builder-btn" data-mult="1" onclick="ConfidencePuzzle.setMult(1)">× 1 (Unit)</button>
+            <button class="builder-btn" data-mult="10" onclick="ConfidencePuzzle.setMult(10)">× 10 (Decile)</button>
+            <button class="builder-btn" data-mult="50" onclick="ConfidencePuzzle.setMult(50)">× 50 (Half)</button>
+            <button class="builder-btn active" data-mult="100" onclick="ConfidencePuzzle.setMult(100)">× 100 (Percentage %)</button>
+          </div>
+
+          <!-- Live Simulator Sandbox -->
+          <div class="formula-sandbox-card">
+            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 1px; display: flex; justify-content: space-between;">
+              <span>MODEL TEST SIMULATOR</span>
+              <span>TEST AGAINST SENSOR EVIDENCE</span>
+            </div>
+            <div class="sandbox-tabs-row" id="sandbox-tabs-container"></div>
+            <div class="sandbox-log-box" id="sandbox-log-box">
+              Select a prediction above to simulate the current formula output.
+            </div>
+          </div>
+
+          <!-- Feedback Banner -->
+          <div class="feedback-banner" id="formula-feedback-box"></div>
+        </div>
+
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <button class="btn-forensic" id="btn-calculate-formula" onclick="ConfidencePuzzle.submitFormula()">
+            CALCULATE & SUBMIT EQUATION ➔
+          </button>
+          <button class="btn-forensic btn-secondary" onclick="ConfidencePuzzle.goToScreen(2)">
+            ← BACK TO EVIDENCE
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STEP 4: VERIFICATION TABLE SCREEN
+         ==================================================================== -->
+    <section class="screen-stage" id="screen-stage-4">
+      <div class="forensic-panel">
+        <div class="panel-header-sub">CROSS-EXAMINATION // MATHEMATICAL AUDIT</div>
+        <h2 class="panel-header-title">EVIDENCE VERIFICATION MATRIX</h2>
+        <p class="panel-lead-text">
+          Model: <strong style="color: var(--cyan-core); font-family: var(--font-mono);">(Supporting Sensors / Total Sensors)² × 100</strong>.
+          Auditing recorded ADI confidence against evidence-derived values.
+        </p>
+
+        <div class="table-container">
+          <table class="verification-table" id="verification-table">
+            <thead>
+              <tr>
+                <th>Prediction</th>
+                <th>ADI Confidence</th>
+                <th>Calculated Confidence</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="verification-table-body">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <div id="verification-action-bar" style="display: none; gap: 14px; flex-wrap: wrap;">
+          <button class="btn-forensic" id="btn-proceed-isolation" onclick="ConfidencePuzzle.goToScreen(5)">
+            IDENTIFY CORRUPTED PREDICTION ➔
+          </button>
+          <button class="btn-forensic btn-secondary" onclick="ConfidencePuzzle.reAuditTable()">
+            ↺ RE-RUN AUDIT
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STEP 5: ANOMALY IDENTIFICATION SCREEN
+         ==================================================================== -->
+    <section class="screen-stage" id="screen-stage-5">
+      <div class="forensic-panel">
+        <div class="panel-header-sub">FORENSIC ANOMALY SELECTION</div>
+        <h2 class="panel-header-title">ANOMALY IDENTIFICATION</h2>
+        <p class="panel-lead-text" style="font-size: 16px; color: #fff;">
+          Which prediction contains the corrupted confidence value?
+        </p>
+
+        <div class="anomaly-choices-list" id="anomaly-choices-container">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="feedback-banner" id="isolation-feedback-box"></div>
+
+        <div style="margin-top: 20px;">
+          <button class="btn-forensic btn-secondary" onclick="ConfidencePuzzle.goToScreen(4)">
+            ← BACK TO AUDIT TABLE
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STEP 6: CONFIRMATION SCREEN
+         ==================================================================== -->
+    <section class="screen-stage" id="screen-stage-6">
+      <div class="forensic-panel">
+        <div class="panel-header-sub" style="color: var(--crimson-alert);">INTEGRITY COMPROMISE ISOLATED</div>
+        <h2 class="panel-header-title" style="color: var(--crimson-alert);">CORRUPTION DETECTED</h2>
+        <p class="panel-lead-text">
+          Forensic verification confirms artificial confidence inflation.
+        </p>
+
+        <div class="confirmation-card">
+          <div class="conf-metric-item">
+            <span class="conf-metric-key">PREDICTION:</span>
+            <span class="conf-metric-data" id="metric-pred-name">E — SYSTEM SHUTDOWN</span>
+          </div>
+          <div class="conf-metric-item">
+            <span class="conf-metric-key">ADI reported:</span>
+            <span class="conf-metric-data alert" id="metric-adi-rep">30%</span>
+          </div>
+          <div class="conf-metric-item">
+            <span class="conf-metric-key">Evidence-derived value:</span>
+            <span class="conf-metric-data" style="color: var(--emerald-ok);" id="metric-calc-val">25%</span>
+          </div>
+          <div class="conf-metric-item">
+            <span class="conf-metric-key">Discrepancy:</span>
+            <span class="conf-metric-data alert" id="metric-delta-val">5 percentage points</span>
+          </div>
+          <div class="conf-metric-item">
+            <span class="conf-metric-key">FORMULA PROOF:</span>
+            <span class="conf-metric-data" style="color: var(--cyan-core); font-size: 13px;">(2 / 4)² × 100 = (0.5)² × 100 = 25%</span>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn-forensic" id="btn-proceed-story" onclick="ConfidencePuzzle.goToScreen(7)">
+            REVEAL FORENSIC INTELLIGENCE ➔
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STEP 7: STORY REVEAL & CLIMAX SCREEN
+         ==================================================================== -->
+    <section class="screen-stage" id="screen-stage-7">
+      <div class="forensic-panel">
+        <div class="panel-header-sub">SYSTEM INTEGRITY LOG // CLASSIFIED INTEL</div>
+        <h2 class="panel-header-title">INCIDENT TRACE TERMINAL</h2>
+
+        <div class="story-reveal-container">
+          <div class="reveal-header-headline" id="reveal-text-1">YOU FOUND THE ERROR.</div>
+          <div class="reveal-header-headline highlight" id="reveal-text-2">BUT YOU DIDN'T FIND WHO CREATED IT.</div>
+          <div class="reveal-subtext" id="reveal-text-3">TRACE CONTINUES...</div>
+
+          <div class="reveal-log-box">
+            <strong>FORENSIC DISCOVERY:</strong> ADI's confidence for <em>System Shutdown</em> was artificially inflated 
+            from 25% to 30% using an undocumented root override token. Someone inside the facility wanted the shutdown 
+            sequence initiated ahead of schedule.
+          </div>
+
+          <div style="margin-top: 24px;">
+            <div style="font-size: 11px; color: var(--text-dim); margin-bottom: 6px; letter-spacing: 1px;">STAGE COMPLETION HASH:</div>
+            <div style="display: inline-block; padding: 6px 14px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-focus); color: var(--cyan-core); border-radius: 3px; font-size: 13px; font-weight: 700;">
+              STAGE_KEY: <span id="stage-key-display">E — SYSTEM SHUTDOWN</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <button class="btn-forensic" id="btn-continue-stage" onclick="ConfidencePuzzle.handleContinue()">
+            CONTINUE ➔
+          </button>
+          <button class="btn-forensic btn-secondary" onclick="ConfidencePuzzle.resetInvestigation()">
+            ↺ REPLAY INVESTIGATION
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-popup" id="toast-popup" role="alert">
+    <span id="toast-icon">ℹ️</span>
+    <span id="toast-msg">Notification</span>
+  </div>
+
+  <!-- ====================================================================
+       MODULAR FORENSIC ENGINE & JAVASCRIPT LOGIC
+       ==================================================================== -->
+  <script>
+    /**
+     * =========================================================================
+     * MODULAR PUZZLE CONFIGURATION
+     * Easily customize predictions, sensor counts, formulas, clues, and routes.
+     * =========================================================================
+     */
+    const PUZZLE_CONFIG = {
+      meta: {
+        puzzleId: "THE_CONFIDENCE_EQUATION",
+        version: "4.8.1-ADI",
+        nextStageRoute: "index.html#next-stage",
+        stageKey: "E — SYSTEM SHUTDOWN",
+        onComplete: function(summary) {
+          console.log("[PROJECT FAILSAFE] Puzzle Complete:", summary);
+          window.dispatchEvent(new CustomEvent("failsafe:puzzle_completed", { detail: summary }));
+          if (window.parent && window.parent !== window) {
+            window.parent.postMessage({ type: "FAILSAFE_STAGE_COMPLETE", payload: summary }, "*");
+          }
+        }
+      },
+      story: {
+        opening: {
+          lines: [
+            "05 predictions detected.",
+            "01 confidence value corrupted.",
+            "Trace the mathematical model."
+          ],
+          cta: "BEGIN INVESTIGATION"
+        },
+        formulaPrompt: "ADI claims its confidence is calculated from sensor evidence. Reconstruct the equation.",
+        confirmationBanner: "MODEL RECONSTRUCTED.",
+        isolationQuestion: "Which prediction contains the corrupted confidence value?",
+        reveal: {
+          line1: "YOU FOUND THE ERROR.",
+          line2: "BUT YOU DIDN'T FIND WHO CREATED IT.",
+          line3: "TRACE CONTINUES..."
+        }
+      },
+      formulaModel: {
+        correctRatio: "S/T",
+        correctExp: 2,
+        correctMult: 100,
+        intendedSolution: "(S/T)^2 × 100"
+      },
+      predictions: [
+        {
+          id: "A",
+          name: "A — Door opened",
+          title: "Door opened",
+          supportingSensors: 4,
+          totalSensors: 4,
+          adiConfidence: 100
+        },
+        {
+          id: "B",
+          name: "B — Terminal accessed",
+          title: "Terminal accessed",
+          supportingSensors: 3,
+          totalSensors: 4,
+          adiConfidence: 56.25
+        },
+        {
+          id: "C",
+          name: "C — Aditi entered",
+          title: "Aditi entered",
+          supportingSensors: 1,
+          totalSensors: 4,
+          adiConfidence: 6.25
+        },
+        {
+          id: "D",
+          name: "D — Black case detected",
+          title: "Black case detected",
+          supportingSensors: 0,
+          totalSensors: 4,
+          adiConfidence: 0
+        },
+        {
+          id: "E",
+          name: "E — System shutdown",
+          title: "System shutdown",
+          supportingSensors: 2,
+          totalSensors: 4,
+          adiConfidence: 30 // CORRUPTED: Correct is (2/4)^2 * 100 = 25
+        }
+      ],
+      corruptedPredictionId: "E",
+      corruptionReport: {
+        targetName: "E — SYSTEM SHUTDOWN",
+        adiReported: "30%",
+        evidenceDerived: "25%",
+        discrepancy: "5 percentage points"
+      }
+    };
+
+    /**
+     * =========================================================================
+     * WEB AUDIO SYNTHESIZER (100% OFFLINE, ZERO EXTERNAL DEPENDENCIES)
+     * =========================================================================
+     */
+    const ForensicAudio = (function() {
+      let audioCtx = null;
+      let isMuted = false;
+
+      function getCtx() {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) {
+            audioCtx = new AudioContextClass();
+          }
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        return audioCtx;
+      }
+
+      return {
+        toggleMute: function() {
+          isMuted = !isMuted;
+          const icon = document.getElementById('audio-icon');
+          const label = document.getElementById('audio-label');
+          if (icon && label) {
+            icon.textContent = isMuted ? '🔇' : '🔊';
+            label.textContent = isMuted ? 'AUDIO: OFF' : 'AUDIO: ON';
+          }
+          ConfidencePuzzle.showToast(isMuted ? "Audio muted" : "Audio unmuted");
+        },
+
+        playTone: function(freq, type = 'sine', duration = 0.08, gainVal = 0.07) {
+          if (isMuted) return;
+          try {
+            const ctx = getCtx();
+            if (!ctx) return;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, ctx.currentTime);
+            gain.gain.setValueAtTime(gainVal, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + duration);
+          } catch(e) {}
+        },
+
+        playClick: function() {
+          this.playTone(800, 'square', 0.035, 0.04);
+        },
+
+        playTick: function() {
+          this.playTone(1100, 'triangle', 0.04, 0.05);
+        },
+
+        playSuccess: function() {
+          if (isMuted) return;
+          try {
+            const ctx = getCtx();
+            if (!ctx) return;
+            [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
+              setTimeout(() => this.playTone(freq, 'sine', 0.15, 0.08), idx * 70);
+            });
+          } catch(e) {}
+        },
+
+        playError: function() {
+          if (isMuted) return;
+          try {
+            this.playTone(180, 'sawtooth', 0.2, 0.12);
+            setTimeout(() => this.playTone(140, 'sawtooth', 0.25, 0.12), 90);
+          } catch(e) {}
+        },
+
+        playAlarm: function() {
+          if (isMuted) return;
+          try {
+            this.playTone(950, 'sawtooth', 0.12, 0.1);
+            setTimeout(() => this.playTone(720, 'sawtooth', 0.16, 0.1), 110);
+          } catch(e) {}
+        }
+      };
+    })();
+
+    /**
+     * =========================================================================
+     * CORE CONFIDENCE PUZZLE ENGINE
+     * =========================================================================
+     */
+    const ConfidencePuzzle = (function(config) {
+      let state = {
+        currentScreen: 1,
+        selectedRatio: "S/T",
+        selectedExp: 1, // Starts at 1 to let player reconstruct/discover power of 2
+        selectedMult: 100,
+        formulaReconstructed: false,
+        auditFinished: false,
+        selectedAnomaly: null,
+        investigationComplete: false
+      };
+
+      // Mathematical formula evaluator
+      function computeFormula(s, t, ratio, exp, mult) {
+        let base = 0;
+        if (ratio === "S/T") {
+          base = t > 0 ? (s / t) : 0;
+        } else if (ratio === "T/S") {
+          base = s > 0 ? (t / s) : 0;
+        } else if (ratio === "S*T") {
+          base = s * t;
+        }
+        return Math.pow(base, exp) * mult;
+      }
+
+      // Step 2: Render evidence cards
+      function renderEvidenceCards() {
+        const container = document.getElementById("evidence-cards-container");
+        if (!container) return;
+        container.innerHTML = "";
+
+        config.predictions.forEach(p => {
+          const card = document.createElement("div");
+          card.className = "evidence-card";
+          card.id = `evidence-card-${p.id}`;
+
+          let pips = "";
+          for (let i = 0; i < p.totalSensors; i++) {
+            pips += `<div class="sensor-pip ${i < p.supportingSensors ? 'active' : ''}"></div>`;
+          }
+
+          card.innerHTML = `
+            <div>
+              <div class="card-id-badge">PREDICTION ${p.id}</div>
+              <div class="card-title">${p.title}</div>
+              <div class="sensor-stats-block">
+                <div class="sensor-row">
+                  <span>Supporting sensors:</span>
+                  <strong>${p.supportingSensors}</strong>
+                </div>
+                <div class="sensor-row">
+                  <span>Total sensors:</span>
+                  <strong>${p.totalSensors}</strong>
+                </div>
+                <div class="sensor-bar-pips">${pips}</div>
+              </div>
+            </div>
+            <div class="conf-readout-box">
+              <div class="conf-readout-label">ADI CONFIDENCE</div>
+              <div class="conf-readout-val">${p.adiConfidence}%</div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      // Step 3: Setup simulator test probe
+      function setupSimulator() {
+        const tabsRow = document.getElementById("sandbox-tabs-container");
+        if (!tabsRow) return;
+        tabsRow.innerHTML = "";
+
+        config.predictions.forEach((p, idx) => {
+          const btn = document.createElement("button");
+          btn.className = `sandbox-tab ${idx === 1 ? 'active' : ''}`; // default probe on B
+          btn.id = `probe-tab-${p.id}`;
+          btn.textContent = `Pred ${p.id}`;
+          btn.onclick = () => {
+            document.querySelectorAll(".sandbox-tab").forEach(t => t.classList.remove("active"));
+            btn.classList.add("active");
+            runSimulatorProbe(p.id);
+          };
+          tabsRow.appendChild(btn);
+        });
+
+        runSimulatorProbe("B");
+      }
+
+      function runSimulatorProbe(predId) {
+        const p = config.predictions.find(item => item.id === predId) || config.predictions[0];
+        const calcVal = computeFormula(p.supportingSensors, p.totalSensors, state.selectedRatio, state.selectedExp, state.selectedMult);
+        const rounded = Math.round(calcVal * 100) / 100;
+        const logBox = document.getElementById("sandbox-log-box");
+        if (!logBox) return;
+
+        let exprStr = `(${p.supportingSensors}/${p.totalSensors})`;
+        if (state.selectedRatio === "T/S") exprStr = `(${p.totalSensors}/${p.supportingSensors || 1})`;
+        if (state.selectedRatio === "S*T") exprStr = `(${p.supportingSensors} × ${p.totalSensors})`;
+
+        const isMatch = Math.abs(rounded - p.adiConfidence) < 0.01;
+        const color = isMatch ? 'var(--emerald-ok)' : 'var(--text-primary)';
+
+        logBox.innerHTML = `
+          <strong>[${p.id} — ${p.title}]</strong> S=${p.supportingSensors}, T=${p.totalSensors} ➔ 
+          <code>Confidence = ${exprStr}^${state.selectedExp} × ${state.selectedMult}</code> = 
+          <span style="color: ${color}; font-weight: 700;">${rounded}%</span> 
+          (ADI recorded: <strong>${p.adiConfidence}%</strong>)
+        `;
+      }
+
+      function updateFormulaSlots() {
+        const slotExp = document.getElementById("slot-exp");
+        const slotMult = document.getElementById("slot-mult");
+        if (slotExp) slotExp.textContent = state.selectedExp;
+        if (slotMult) slotMult.textContent = state.selectedMult;
+
+        const activeTab = document.querySelector(".sandbox-tab.active");
+        const predId = activeTab ? activeTab.id.replace("probe-tab-", "") : "B";
+        runSimulatorProbe(predId);
+      }
+
+      // Step 5: Render anomaly choices
+      function renderAnomalyChoices() {
+        const container = document.getElementById("anomaly-choices-container");
+        if (!container) return;
+        container.innerHTML = "";
+
+        config.predictions.forEach(p => {
+          const btn = document.createElement("button");
+          btn.className = "anomaly-choice-card";
+          btn.id = `anomaly-choice-${p.id}`;
+          btn.innerHTML = `
+            <div>
+              <span style="color: var(--cyan-core); font-weight: 700; margin-right: 12px;">[ ${p.id} ]</span>
+              <strong style="color: #fff;">${p.name.toUpperCase()}</strong>
+            </div>
+            <div style="font-size: 12px; color: var(--text-muted);">
+              S=${p.supportingSensors}/${p.totalSensors} | ADI: ${p.adiConfidence}%
+            </div>
+          `;
+          btn.onclick = () => selectAnomaly(p.id);
+          container.appendChild(btn);
+        });
+      }
+
+      function selectAnomaly(predId) {
+        ForensicAudio.playClick();
+        const feedback = document.getElementById("isolation-feedback-box");
+
+        document.querySelectorAll(".anomaly-choice-card").forEach(c => c.classList.remove("selected"));
+        const chosenCard = document.getElementById(`anomaly-choice-${predId}`);
+        if (chosenCard) chosenCard.classList.add("selected");
+
+        if (predId === config.corruptedPredictionId) {
+          state.selectedAnomaly = predId;
+          ForensicAudio.playAlarm();
+          if (feedback) {
+            feedback.className = "feedback-banner success";
+            feedback.innerHTML = `
+              <strong>CORRUPTION ISOLATED:</strong> ${predId} — SYSTEM SHUTDOWN selected! 
+              Extracting tamper footprint dossier...
+            `;
+          }
+          setTimeout(() => {
+            goToScreen(6);
+          }, 800);
+        } else {
+          ForensicAudio.playError();
+          if (feedback) {
+            feedback.className = "feedback-banner error";
+            feedback.innerHTML = `
+              <strong>VERIFICATION FAILED:</strong> Prediction ${predId} perfectly matches the mathematical model. 
+              Check the verification table for the row marked CORRUPTED.
+            `;
+          }
+        }
+      }
+
+      // Screen navigation with strict validation guards
+      function goToScreen(screenIndex) {
+        ForensicAudio.playClick();
+
+        if (screenIndex >= 4 && !state.formulaReconstructed) {
+          showToast("RECONSTRUCT THE EQUATION BEFORE VIEWING THE AUDIT MATRIX.");
+          return;
+        }
+
+        if (screenIndex >= 6 && !state.selectedAnomaly) {
+          showToast("ISOLATE THE CORRUPTED PREDICTION TO VIEW THE DOSSIER.");
+          return;
+        }
+
+        state.currentScreen = screenIndex;
+
+        // Toggle active screen stage
+        for (let i = 1; i <= 7; i++) {
+          const panel = document.getElementById(`screen-stage-${i}`);
+          if (panel) {
+            panel.classList.toggle("active-stage", i === screenIndex);
+          }
+          const pill = document.getElementById(`step-pill-${i}`);
+          if (pill) {
+            pill.classList.remove("active", "completed");
+            if (i === screenIndex) {
+              pill.classList.add("active");
+            } else if (i < screenIndex) {
+              pill.classList.add("completed");
+            }
+          }
+        }
+
+        if (screenIndex === 4) {
+          runAuditTable();
+        } else if (screenIndex === 6) {
+          populateConfirmation();
+        } else if (screenIndex === 7) {
+          ForensicAudio.playSuccess();
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Step 4: Verification table animated audit
+      function runAuditTable() {
+        const tbody = document.getElementById("verification-table-body");
+        const actionBar = document.getElementById("verification-action-bar");
+        if (!tbody) return;
+        tbody.innerHTML = "";
+        if (actionBar) actionBar.style.display = "none";
+
+        config.predictions.forEach((p, index) => {
+          const tr = document.createElement("tr");
+          tr.id = `audit-row-${p.id}`;
+          tr.innerHTML = `
+            <td><strong>${p.name}</strong></td>
+            <td><strong>${p.adiConfidence}%</strong></td>
+            <td id="calc-cell-${p.id}" style="color: var(--text-dim);">COMPUTING...</td>
+            <td><span class="status-pill auditing" id="pill-status-${p.id}">AUDITING</span></td>
+          `;
+          tbody.appendChild(tr);
+
+          // Staggered calculation animation
+          setTimeout(() => {
+            const calculated = computeFormula(
+              p.supportingSensors, 
+              p.totalSensors, 
+              state.selectedRatio, 
+              state.selectedExp, 
+              state.selectedMult
+            );
+            const rounded = Math.round(calculated * 100) / 100;
+            const calcCell = document.getElementById(`calc-cell-${p.id}`);
+            const pill = document.getElementById(`pill-status-${p.id}`);
+
+            if (calcCell) calcCell.textContent = `${rounded}%`;
+
+            const isMatch = Math.abs(rounded - p.adiConfidence) < 0.01;
+            if (isMatch) {
+              ForensicAudio.playTick();
+              if (pill) {
+                pill.className = "status-pill match";
+                pill.textContent = "MATCH";
+              }
+            } else {
+              ForensicAudio.playAlarm();
+              if (pill) {
+                pill.className = "status-pill corrupted";
+                pill.textContent = "CORRUPTED";
+              }
+              if (calcCell) {
+                calcCell.style.color = "var(--crimson-alert)";
+                calcCell.style.fontWeight = "700";
+              }
+            }
+
+            if (index === config.predictions.length - 1) {
+              state.auditFinished = true;
+              if (actionBar) actionBar.style.display = "flex";
+            }
+          }, (index + 1) * 350);
+        });
+      }
+
+      function populateConfirmation() {
+        const predName = document.getElementById("metric-pred-name");
+        const adiRep = document.getElementById("metric-adi-rep");
+        const calcVal = document.getElementById("metric-calc-val");
+        const deltaVal = document.getElementById("metric-delta-val");
+
+        if (predName) predName.textContent = config.corruptionReport.targetName;
+        if (adiRep) adiRep.textContent = config.corruptionReport.adiReported;
+        if (calcVal) calcVal.textContent = config.corruptionReport.evidenceDerived;
+        if (deltaVal) deltaVal.textContent = config.corruptionReport.discrepancy;
+      }
+
+      function showToast(msg) {
+        const toast = document.getElementById("toast-popup");
+        const toastMsg = document.getElementById("toast-msg");
+        if (!toast || !toastMsg) return;
+        toastMsg.textContent = msg;
+        toast.style.display = "flex";
+        setTimeout(() => {
+          toast.style.display = "none";
+        }, 3200);
+      }
+
+      return {
+        init: function() {
+          renderEvidenceCards();
+          setupSimulator();
+          renderAnomalyChoices();
+          updateFormulaSlots();
+
+          const vTag = document.getElementById("hud-version-tag");
+          if (vTag) vTag.textContent = `SYS_VER: ${config.meta.version}`;
+
+          const keyDisp = document.getElementById("stage-key-display");
+          if (keyDisp) keyDisp.textContent = config.meta.stageKey;
+        },
+
+        goToScreen: goToScreen,
+
+        setRatio: function(ratio) {
+          state.selectedRatio = ratio;
+          ForensicAudio.playClick();
+          document.querySelectorAll("#ratio-btn-group .builder-btn").forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.ratio === ratio);
+          });
+          updateFormulaSlots();
+        },
+
+        setExp: function(exp) {
+          state.selectedExp = parseInt(exp, 10);
+          ForensicAudio.playClick();
+          document.querySelectorAll("#exp-btn-group .builder-btn").forEach(btn => {
+            btn.classList.toggle("active", parseInt(btn.dataset.exp, 10) === state.selectedExp);
+          });
+          updateFormulaSlots();
+        },
+
+        setMult: function(mult) {
+          state.selectedMult = parseInt(mult, 10);
+          ForensicAudio.playClick();
+          document.querySelectorAll("#mult-btn-group .builder-btn").forEach(btn => {
+            btn.classList.toggle("active", parseInt(btn.dataset.mult, 10) === state.selectedMult);
+          });
+          updateFormulaSlots();
+        },
+
+        submitFormula: function() {
+          const feedback = document.getElementById("formula-feedback-box");
+          const target = config.formulaModel;
+          const isCorrect = (
+            state.selectedRatio === target.correctRatio &&
+            state.selectedExp === target.correctExp &&
+            state.selectedMult === target.correctMult
+          );
+
+          if (isCorrect) {
+            state.formulaReconstructed = true;
+            ForensicAudio.playSuccess();
+            if (feedback) {
+              feedback.className = "feedback-banner success";
+              feedback.innerHTML = `
+                <strong>${config.story.confirmationBanner}</strong> 
+                Formula verified: <code>Confidence = ${target.intendedSolution}</code>. 
+                Advancing to verification cross-examination...
+              `;
+            }
+            setTimeout(() => {
+              goToScreen(4);
+            }, 900);
+          } else {
+            ForensicAudio.playError();
+            if (feedback) {
+              feedback.className = "feedback-banner error";
+              feedback.innerHTML = `
+                <strong>EQUATION MISMATCH:</strong> The selected model does not match sensor telemetry. 
+                Hint: Test your formula against Prediction B (3/4 sensors ➔ 56.25%) and Prediction C (1/4 sensors ➔ 6.25%).
+              `;
+            }
+          }
+        },
+
+        reAuditTable: function() {
+          runAuditTable();
+        },
+
+        handleContinue: function() {
+          ForensicAudio.playSuccess();
+          state.investigationComplete = true;
+
+          const report = {
+            puzzle: config.meta.puzzleId,
+            formula: config.formulaModel.intendedSolution,
+            corruptedPrediction: config.corruptedPredictionId,
+            discrepancy: config.corruptionReport.discrepancy,
+            stageKey: config.meta.stageKey,
+            timestamp: new Date().toISOString()
+          };
+
+          if (typeof config.meta.onComplete === "function") {
+            config.meta.onComplete(report);
+          }
+
+          showToast("STAGE COMPLETED. ADVANCING TO NEXT FAILSAFE STAGE...");
+
+          if (config.meta.nextStageRoute && !config.meta.nextStageRoute.startsWith("#")) {
+            setTimeout(() => {
+              window.location.href = config.meta.nextStageRoute;
+            }, 1000);
+          }
+        },
+
+        resetInvestigation: function() {
+          ForensicAudio.playClick();
+          state.currentScreen = 1;
+          state.selectedRatio = "S/T";
+          state.selectedExp = 1;
+          state.selectedMult = 100;
+          state.formulaReconstructed = false;
+          state.auditFinished = false;
+          state.selectedAnomaly = null;
+          state.investigationComplete = false;
+
+          document.querySelectorAll("#exp-btn-group .builder-btn").forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.exp === "1");
+          });
+          document.querySelectorAll("#mult-btn-group .builder-btn").forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.mult === "100");
+          });
+
+          const feedback1 = document.getElementById("formula-feedback-box");
+          if (feedback1) {
+            feedback1.className = "feedback-banner";
+            feedback1.textContent = "";
+          }
+
+          const feedback2 = document.getElementById("isolation-feedback-box");
+          if (feedback2) {
+            feedback2.className = "feedback-banner";
+            feedback2.textContent = "";
+          }
+
+          updateFormulaSlots();
+          goToScreen(1);
+          showToast("INVESTIGATION REBOOTED.");
+        },
+
+        showToast: showToast
+      };
+    })(PUZZLE_CONFIG);
+
+    document.addEventListener("DOMContentLoaded", function() {
+      ConfidencePuzzle.init();
+    });
+  </script>
+</body>
+</html>
