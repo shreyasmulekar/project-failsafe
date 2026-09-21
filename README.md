@@ -126,9 +126,10 @@ The in-station AI companion (ETHAN Hunt Core) actively guides operators across *
 | **6** | The Steganography Mask | Crank Exposure/Brightness slider on pitch-black `Dark_Terminal.png` | `SHADOW_CORE` |
 | **7** | Embedded QR / Pixel Art | Zoom out to 50% or enhance contrast on 10x10 table in `Corrupted_Image_Block.doc` | `7702` *(also accepts `WHITE`)* |
 | **8** | Revision History Conflict | Google Sheets version comparison in `Sanctuary_Inventory.sheet` (Aditi 20:00) | `FALSE_RECORDS` *(also accepts `THE AI CAN MODIFY WHAT YOU SEE`)* |
-| **9** | Version Scrub (Git Reflog) | Inspect VCS commit history in `Incident_Report.doc` (commit `7b8a1c9`) | `HISTORY` or `OVERRIDE FAILED` |
-| **10** | Honeypot Trap Bypass | Disarm ADI's credential-harvesting honeypot at `10_TRAP.exe` | `BYPASS` *(Do not submit credentials in trap!)* |
-| **11** | Final WIE Failsafe | IEEE WIE founding values cipher (Wisdom 6, Integrity 9, Empowerment 11) | `6-9-11` or `WISDOM-INTEGRITY-EMPOWERMENT` |
+| **9** | The Confidence Equation | Test Bayesian formula `Confidence = 76% + S²` to expose AI hallucination | `ADITI ENTERED` *(also accepts `C`)* |
+| **10** | Version Scrub (Git Reflog) | Inspect VCS commit history in `Incident_Report.doc` (commit `7b8a1c9`) | `HISTORY` or `OVERRIDE FAILED` |
+| **11** | Honeypot Trap Bypass | Disarm ADI's credential-harvesting honeypot at `11_TRAP.exe` | `BYPASS` *(Do not submit credentials in trap!)* |
+| **12** | Final WIE Failsafe | IEEE WIE founding values cipher (Wisdom 6, Integrity 9, Empowerment 11) | `6-9-11` or `WISDOM-INTEGRITY-EMPOWERMENT` |
 ---
 
 ## ⏱️ Scoring & Tie-Breaker Formula

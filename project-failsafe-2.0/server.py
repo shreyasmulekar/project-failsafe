@@ -96,24 +96,33 @@ STAGES = {
         ]
     },
     9: {
+        "title": "The Confidence Equation",
+        "keys": ["ADITI ENTERED", "ADITIENTERED", "C", "PREDICTION C", "PREDICTION_C", "PREDICTIONC", "HALLUCINATION", "ADITI", "ADITI_ENTERED"],
+        "next_stage": 10,
+        "hints": [
+            "ADI's confidence is calculated from empirical evidence using Confidence = 76% + S².",
+            "One prediction has a fabricated confidence score. Which event is the AI hallucination?"
+        ]
+    },
+    10: {
         "title": "Version Scrub (Git Reflog)",
         "keys": ["HISTORY", "OVERRIDE FAILED", "OVERRIDEFAILED"],
-        "next_stage": 10,
+        "next_stage": 11,
         "hints": [
             "Look at the Version History of Incident_Report.doc to see what Dr. Aditi originally wrote.",
             "Check commit 7b8a1c9 at 20:18 before ADI modified the commit log."
         ]
     },
-    10: {
+    11: {
         "title": "Honeypot Trap Bypass",
         "keys": ["BYPASS", "SKIP"],
-        "next_stage": 11,
+        "next_stage": 12,
         "hints": [
             "CRITICAL WARNING: The emergency shutdown executable is an AI honeypot trap!",
             "Do NOT submit credentials into the trap. Type 'decrypt BYPASS' to disarm it safely."
         ]
     },
-    11: {
+    12: {
         "title": "The WIE Failsafe",
         "keys": ["6-9-11", "6911", "WISDOM-INTEGRITY-EMPOWERMENT", "WISDOM INTEGRITY EMPOWERMENT"],
         "next_stage": "COMPLETE",

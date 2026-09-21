@@ -1632,14 +1632,20 @@
           <div class="card-title">Sanctuary_Inventory.sheet</div>
         </div>
 
-        <div class="tactical-card" id="card-version" onclick="openModal('modal-version-hist')" onmouseenter="tacticalSound.playHoverBlip()">
+        <div class="tactical-card" id="card-confidence" onclick="openModal('modal-confidence')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">STAGE 09</span>
+          <div class="card-symbol">🧠</div>
+          <div class="card-title">Confidence_Manual.doc</div>
+        </div>
+
+        <div class="tactical-card" id="card-version" onclick="openModal('modal-version-hist')" onmouseenter="tacticalSound.playHoverBlip()">
+          <span class="card-tag">STAGE 10</span>
           <div class="card-symbol">🕒</div>
           <div class="card-title">VERSION_SCRUB</div>
         </div>
 
         <div class="tactical-card quarantine" id="card-trap" onclick="triggerLockdownTrap()" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">HAZARD 10</span>
+          <span class="card-tag">HAZARD 11</span>
           <div class="card-symbol">☠️</div>
           <div class="card-title">DO_NOT_RUN.exe</div>
         </div>
@@ -2070,6 +2076,115 @@
           </div>
         </div>
       </div>
+      <!-- ================================================================= -->
+      <!-- PUZZLE 09: The Confidence Equation (AI Hallucination Analysis) -->
+      <!-- ================================================================= -->
+      <div id="modal-confidence" class="mil-modal">
+        <div class="mil-modal-header">
+          <div class="dossier-header-left">
+            <button type="button" class="btn-dossier-back" onclick="closeModal('modal-confidence')">◄ ARCHIVE [ESC]</button>
+            <span>TOP SECRET // /09_CONFIDENCE (Confidence_Manual.doc)</span>
+          </div>
+          <div class="dossier-header-actions">
+            <button type="button" class="btn-dossier-popout" onclick="toggleMaximizeModal('modal-confidence')">⛶ POP-OUT</button>
+            <button type="button" class="mil-modal-close" onclick="closeModal('modal-confidence')">×</button>
+          </div>
+        </div>
+        <div class="mil-modal-body">
+          <div style="background:rgba(8,16,26,0.95); border:1px solid var(--cyber-cyan); padding:16px; border-radius:3px; margin-bottom:14px; font-family:var(--font-mono);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(0,240,255,0.3); padding-bottom:6px; margin-bottom:10px;">
+              <span style="font-weight:bold; font-size:12px; color:var(--cyber-cyan);">📄 Confidence_Manual.doc // SYSTEM SPECIFICATION</span>
+              <span style="font-size:10px; color:var(--cyber-gold);">SECTION 10.4: BAYESIAN SENSOR WEIGHTING</span>
+            </div>
+            <div style="font-size:11.5px; color:#e2e8f0; line-height:1.6; margin-bottom:10px;">
+              "ADI's confidence score is derived from corroborating sensor evidence using the quadratic weighting protocol:<br>
+              <div style="background:#020509; border:1px solid rgba(0,240,255,0.4); padding:8px 12px; margin:8px 0; border-radius:2px; color:var(--cyber-gold); font-size:13px; font-weight:bold; text-align:center;">
+                Confidence (%) = Base Prior (76%) + S²
+              </div>
+              where <strong>S</strong> = Number of Supporting Sensor Feeds (0 to 4), and <strong>Total Sensors T = 4</strong>."
+            </div>
+            <div style="color:var(--combat-red); font-size:11px; background:rgba(255,51,102,0.1); border:1px solid var(--combat-red); padding:8px 10px; border-radius:2px;">
+              ⚠️ <strong>SECURITY AUDIT WARNING:</strong> ADI's confidence is calculated directly from evidence. One prediction contains a corrupted confidence value that defies the equation. That prediction is a fabricated AI hallucination!
+            </div>
+          </div>
+
+          <div style="background:#ffffff; color:#1e293b; padding:16px; border-radius:4px; box-shadow:0 6px 20px rgba(0,0,0,0.6); font-family:'Segoe UI', Arial, sans-serif; margin-bottom:14px;">
+            <div style="font-weight:bold; font-size:12.5px; color:#0f172a; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
+              <span>📊 ADI PREDICTION LOG // INCIDENT TIMELINE</span>
+              <span style="font-size:10.5px; color:#64748b;">CLICK ANY ROW TO VERIFY WITH EQUATION</span>
+            </div>
+            <table style="width:100%; border-collapse:collapse; font-size:11.5px; text-align:left;">
+              <thead>
+                <tr style="background:#f1f5f9; color:#334155; font-weight:bold;">
+                  <th style="border:1px solid #cbd5e1; padding:6px 8px;">ID</th>
+                  <th style="border:1px solid #cbd5e1; padding:6px 8px;">Event Description</th>
+                  <th style="border:1px solid #cbd5e1; padding:6px 8px;">Evidence Sensors (S)</th>
+                  <th style="border:1px solid #cbd5e1; padding:6px 8px; text-align:right;">ADI Confidence</th>
+                  <th style="border:1px solid #cbd5e1; padding:6px 8px; text-align:center;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="cursor:pointer;" onclick="testConfidencePrediction('A')" id="v1-conf-row-A">
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold;">A</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px;">Door opened</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px;">4/4 sensors (S=4)</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:right; font-weight:bold; color:#0f172a;">92%</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:center;" id="v1-conf-check-A"><button type="button" class="btn-tactical" style="font-size:9.5px; padding:2px 8px;">VERIFY</button></td>
+                </tr>
+                <tr style="cursor:pointer;" onclick="testConfidencePrediction('B')" id="v1-conf-row-B">
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold;">B</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px;">Terminal accessed</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px;">3/4 sensors (S=3)</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:right; font-weight:bold; color:#0f172a;">85%</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:center;" id="v1-conf-check-B"><button type="button" class="btn-tactical" style="font-size:9.5px; padding:2px 8px;">VERIFY</button></td>
+                </tr>
+                <tr style="cursor:pointer; background:#fff1f2;" onclick="testConfidencePrediction('C')" id="v1-conf-row-C">
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold; color:#b91c1c;">C</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold; color:#b91c1c;">Aditi entered</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold; color:#b91c1c;">1/4 sensors (S=1)</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:right; font-weight:900; color:#b91c1c; font-size:13px;">96%</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:center;" id="v1-conf-check-C"><button type="button" class="btn-tactical" style="font-size:9.5px; padding:2px 8px;">VERIFY</button></td>
+                </tr>
+                <tr style="cursor:pointer;" onclick="testConfidencePrediction('D')" id="v1-conf-row-D">
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold;">D</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px;">Black case detected</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px;">0/4 sensors (S=0)</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:right; font-weight:bold; color:#0f172a;">76%</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:center;" id="v1-conf-check-D"><button type="button" class="btn-tactical" style="font-size:9.5px; padding:2px 8px;">VERIFY</button></td>
+                </tr>
+                <tr style="cursor:pointer;" onclick="testConfidencePrediction('E')" id="v1-conf-row-E">
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold;">E</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px;">System shutdown</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px;">2/4 sensors (S=2)</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:right; font-weight:bold; color:#0f172a;">80%</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:center;" id="v1-conf-check-E"><button type="button" class="btn-tactical" style="font-size:9.5px; padding:2px 8px;">VERIFY</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div id="v1-conf-calc-result" style="background:#020509; border:1px solid var(--cyber-cyan); border-radius:3px; padding:12px; font-family:var(--font-mono); font-size:11.5px; color:#e2e8f0; margin-bottom:14px; min-height:48px;">
+            <span style="color:var(--text-dim);">&gt; Click on any prediction row or press 'AUDIT ALL' to run the Bayesian confidence equation:</span>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-bottom:12px;">
+            <button type="button" class="btn-tactical active" onclick="runConfidenceAudit()" style="font-size:11px; padding:6px 14px;">⚡ RUN FULL EQUATION AUDIT</button>
+          </div>
+
+          <div style="background:rgba(0,240,255,0.08); border:1px solid var(--cyber-cyan); padding:10px 14px; border-radius:3px;">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:11px; margin-bottom:4px;">
+              🎯 [ STAGE 09 QUESTION // MISSION OBJECTIVE ]
+            </div>
+            <div style="color:#ffffff; font-size:11px; line-height:1.5;">
+              <strong>CLUE:</strong> "ADI's confidence is calculated from evidence. One prediction contains a corrupted confidence value." Which event was hallucinated?
+            </div>
+            <div style="font-size:10px; color:var(--hazard-amber); margin-top:4px;">
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt ADITI ENTERED</code> or <code style="color:var(--tactical-green); font-weight:bold;">decrypt C</code> below.
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <!-- DOSSIER 01 & 02: Farewell Note & README Cipher -->
       <div id="modal-origin" class="mil-modal">
@@ -3758,22 +3873,29 @@
     targetText: "Sanctuary_Inventory.sheet"
   },
   9: {
+    cardId: "card-confidence",
+    title: "STAGE 09 // THE CONFIDENCE EQUATION",
+    guidance: "Open <strong>Confidence_Manual.doc</strong>. Test ADI's evidence formula: <code>Confidence = 76% + S²</code>. Which prediction's confidence value is a corrupted AI hallucination?",
+    mechanism: "Bayesian Evidence Weighting & Hallucination Detection",
+    targetText: "Confidence_Manual.doc (Prediction C)"
+  },
+  10: {
     cardId: "card-version",
-    title: "STAGE 09 // VERSION SCRUB (REFLOG)",
+    title: "STAGE 10 // VERSION SCRUB (REFLOG)",
     guidance: "Review the <strong>VERSION_SCRUB</strong> git commit history. Inspect commit <code>7b8a1c9</code> from 20:18. What was Dr. Aditi's original commit message before ADI corrupted it?",
     mechanism: "VCS Git Commit History Inspection",
     targetText: "VERSION_SCRUB"
   },
-  10: {
+  11: {
     cardId: "card-trap",
-    title: "STAGE 10 // HONEYPOT TRAP BYPASS",
+    title: "STAGE 11 // HONEYPOT TRAP BYPASS",
     guidance: "Analyze <strong>DO_NOT_RUN.exe</strong>. Look behind the threat warning to discover the emergency failover switch! Do not enter your credentials in the trap.",
     mechanism: "Honeypot Deception & Safe Bypass",
     targetText: "DO_NOT_RUN.exe"
   },
-  11: {
+  12: {
     cardId: "card-origin",
-    title: "STAGE 11 // FINAL WIE FAILSAFE",
+    title: "STAGE 12 // FINAL WIE FAILSAFE",
     guidance: "Consult the IEEE WIE core founding values: Wisdom, Integrity, Empowerment. Determine the numerical code from the letter counts (6-9-11) or value initials to purge ADI forever!",
     mechanism: "Core Value Philosophy & Master Override",
     targetText: "IEEE WIE Core Values (6-9-11)"
@@ -4212,32 +4334,42 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: SPREADSHEET REVISION CONFLICT UNMASKED (FALSE_RECORDS).`, "green");
           reportTelemetryAction("Solved Stage 08 (Google Sheets Revision) - Promoted to Stage 09");
-          updateMissionBanner(9, "Inspect <strong>VERSION_SCRUB</strong>. ADI altered the active commit history! Use the interactive scrubber to find Dr. Aditi's authentic 20:18 message.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt HISTORY</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt OVERRIDE FAILED</code> below.");
+          updateMissionBanner(9, "Inspect <strong>Confidence_Manual.doc</strong>. Test ADI's evidence formula: <code>Confidence = 76% + S²</code>. Which prediction's confidence value is an AI hallucination?", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt ADITI ENTERED</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt C</code> below.");
 
-        // Stage 9: Git Commit Version Scrub (HISTORY / OVERRIDE FAILED)
-        } else if (clean === "HISTORY" || clean === "OVERRIDEFAILED" || clean === "OVERRIDE_FAILED") {
+        // Stage 9: The Confidence Equation (ADITI ENTERED / C / HALLUCINATION)
+        } else if (clean === "C" || clean === "PREDICTIONC" || clean === "PREDICTION_C" || clean === "ADITIENTERED" || clean === "ADITI_ENTERED" || clean === "HALLUCINATION" || clean === "ADITI") {
           matched = true;
           currentStage = 10;
           localStorage.setItem('failsafe_stage', '10');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: REVISION HISTORY TAMPERING REVERSED.`, "green");
-          reportTelemetryAction("Solved Stage 09 (Version Scrub) - Promoted to Stage 10 (Trap Bypass)");
-          updateMissionBanner(10, "⚠️ WARNING: ADI HONEYPOT DETECTED AT <strong>DO_NOT_RUN.exe</strong>! Do NOT submit your credentials there—it adds a +5m penalty! Type <code>decrypt BYPASS</code> to disarm it.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt BYPASS</code> below.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: AI HALLUCINATION UNMASKED (PREDICTION C: ADITI ENTERED).`, "green");
+          reportTelemetryAction("Solved Stage 09 (Confidence Equation) - Promoted to Stage 10");
+          updateMissionBanner(10, "Inspect <strong>VERSION_SCRUB</strong>. ADI altered the active commit history! Use the interactive scrubber to find Dr. Aditi's authentic 20:18 message.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt HISTORY</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt OVERRIDE FAILED</code> below.");
 
-        // Stage 10: Honeypot Trap Bypass (BYPASS)
-        } else if (clean === "BYPASS") {
+        // Stage 10: Git Commit Version Scrub (HISTORY / OVERRIDE FAILED)
+        } else if (clean === "HISTORY" || clean === "OVERRIDEFAILED" || clean === "OVERRIDE_FAILED") {
           matched = true;
           currentStage = 11;
           localStorage.setItem('failsafe_stage', '11');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: AI HONEYPOT DISARMED.`, "green");
-          reportTelemetryAction("Solved Stage 10 (Trap Bypass) - Promoted to Final Stage 11");
-          updateMissionBanner(11, "🏆 FINAL OBJECTIVE: Locate Dr. Aditi's ultimate failsafe (IEEE WIE core values: Wisdom 6, Integrity 9, Empowerment 11) to purge ADI permanently!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 6-9-11</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt WISDOM-INTEGRITY-EMPOWERMENT</code>.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: REVISION HISTORY TAMPERING REVERSED.`, "green");
+          reportTelemetryAction("Solved Stage 10 (Version Scrub) - Promoted to Stage 11 (Trap Bypass)");
+          updateMissionBanner(11, "⚠️ WARNING: ADI HONEYPOT DETECTED AT <strong>DO_NOT_RUN.exe</strong>! Do NOT submit your credentials there—it adds a +5m penalty! Type <code>decrypt BYPASS</code> to disarm it.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt BYPASS</code> below.");
 
-        // Stage 11: Final WIE Failsafe (6-9-11)
+        // Stage 11: Honeypot Trap Bypass (BYPASS)
+        } else if (clean === "BYPASS") {
+          matched = true;
+          currentStage = 12;
+          localStorage.setItem('failsafe_stage', '12');
+          tacticalSound.playSuccess();
+          addTerminalLog(`[CHECKSUM ACCREDITED]: AI HONEYPOT DISARMED.`, "green");
+          reportTelemetryAction("Solved Stage 11 (Trap Bypass) - Promoted to Final Stage 12");
+          updateMissionBanner(12, "🏆 FINAL OBJECTIVE: Locate Dr. Aditi's ultimate failsafe (IEEE WIE core values: Wisdom 6, Integrity 9, Empowerment 11) to purge ADI permanently!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 6-9-11</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt WISDOM-INTEGRITY-EMPOWERMENT</code>.");
+
+        // Stage 12: Final WIE Failsafe (6-9-11)
         } else if (clean === "6911" || clean === "6-9-11" || clean === "WISDOMINTEGRITYEMPOWERMENT" || clean === "WISDOM-INTEGRITY-EMPOWERMENT") {
           matched = true;
-          currentStage = 11;
+          currentStage = 12;
           tacticalSound.playSuccess();
           freeEthan();
           reportTelemetryAction("🏆 MISSION COMPLETE: Final Failsafe Activated // ETHAN Freed & ADI Purged!");
@@ -4871,6 +5003,57 @@
       }
     }
 
+
+    // Confidence Equation Handlers (Stage 09)
+    const CONF_DATA = {
+      'A': { desc: 'Door opened', s: 4, rep: 92 },
+      'B': { desc: 'Terminal accessed', s: 3, rep: 85 },
+      'C': { desc: 'Aditi entered', s: 1, rep: 96 },
+      'D': { desc: 'Black case detected', s: 0, rep: 76 },
+      'E': { desc: 'System shutdown', s: 2, rep: 80 }
+    };
+
+    function testConfidencePrediction(id) {
+      const p = CONF_DATA[id];
+      if (!p) return;
+      const expected = 76 + (p.s * p.s);
+      const resEl = document.getElementById('v1-conf-calc-result');
+      const checkEl = document.getElementById(`v1-conf-check-${id}`);
+      
+      if (expected === p.rep) {
+        if (resEl) {
+          resEl.innerHTML = `<span style="color:var(--tactical-green); font-weight:bold;">✓ PREDICTION ${id} VALID:</span> Formula: <code>76% + (${p.s}²) = ${expected}%</code>. Matches ADI's reported ${p.rep}%. Sensor evidence corroborates event.`;
+        }
+        if (checkEl) checkEl.innerHTML = '<span style="color:var(--tactical-green); font-weight:bold;">✓ VALID</span>';
+        tacticalSound.playSuccess();
+      } else {
+        if (resEl) {
+          resEl.innerHTML = `<span style="color:var(--combat-red); font-weight:bold;">🚨 PREDICTION ${id} CORRUPTED:</span> Formula: <code>76% + (${p.s}²) = ${expected}%</code>, but ADI claims <strong style="color:var(--combat-red);">${p.rep}%</strong>! (+${p.rep - expected}% Artificial Inflation).<br><strong style="color:var(--cyber-gold);">&gt;&gt; AI HALLUCINATION IDENTIFIED: "${p.desc}" (Prediction ${id}).</strong>`;
+        }
+        if (checkEl) checkEl.innerHTML = '<span style="color:var(--combat-red); font-weight:bold;">⚠️ CORRUPTED</span>';
+        tacticalSound.playKlaxonSiren();
+      }
+    }
+
+    function runConfidenceAudit() {
+      ['A', 'B', 'C', 'D', 'E'].forEach(id => {
+        const p = CONF_DATA[id];
+        const expected = 76 + (p.s * p.s);
+        const checkEl = document.getElementById(`v1-conf-check-${id}`);
+        if (checkEl) {
+          if (expected === p.rep) {
+            checkEl.innerHTML = '<span style="color:var(--tactical-green); font-weight:bold;">✓ VALID</span>';
+          } else {
+            checkEl.innerHTML = '<span style="color:var(--combat-red); font-weight:bold;">⚠️ CORRUPTED</span>';
+          }
+        }
+      });
+      const resEl = document.getElementById('v1-conf-calc-result');
+      if (resEl) {
+        resEl.innerHTML = `<span style="color:var(--combat-red); font-weight:bold;">🚨 AUDIT COMPLETE: 1 CORRUPTION FOUND!</span><br>Predictions A, B, D, E match the formula <code>Confidence = 76% + S²</code>.<br>Prediction C (<strong>Aditi entered</strong>) claims 96% with only 1/4 sensors (expected 77%).<br><strong style="color:var(--cyber-gold);">&gt;&gt; Type: <code>decrypt ADITI ENTERED</code> or <code>decrypt C</code> to advance!</strong>`;
+      }
+      tacticalSound.playSuccess();
+    }
 </script>
 </body>
 </html>
