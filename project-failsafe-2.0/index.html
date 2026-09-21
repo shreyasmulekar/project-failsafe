@@ -1247,7 +1247,7 @@
                 <!-- Forensic Sector Selection Chips (11 Stages) -->
         <div class="sectors-chip-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); gap:4px;">
           <button id="chip-terminal" class="sector-chip active" onclick="openDossier('terminal')" style="border-color:rgba(0,255,102,0.4); color:#00ff66;" title="ADI Recovery Terminal">01_TERMINAL</button>
-          <button id="chip-whiteout" class="sector-chip" onclick="openDossier('whiteout')">02_WHITEOUT</button>
+          <button id="chip-memory" class="sector-chip" onclick="openDossier('memory')" style="border-color:rgba(255,184,0,0.4); color:var(--hazard-amber);" title="ADI's Memory Core">02_MEMORY</button>
           <button id="chip-acrostic" class="sector-chip" onclick="openDossier('acrostic')">03_ACROSTIC</button>
           <button id="chip-timeline" class="sector-chip" onclick="openDossier('timeline')">04_TIMELINE</button>
           <button id="chip-clearance" class="sector-chip" onclick="openDossier('clearance')">05_A1Z26</button>
@@ -2004,6 +2004,64 @@
             </div>
             <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
               &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt ACCESS</code> below.
+            </div>
+          </div>
+        `
+      },
+
+      memory: {
+        title: "DOSSIER 02 // ADI'S MEMORY CORE (02_MEMORY)",
+        html: `
+          <div style="background:#090d14; border:1px solid var(--hazard-amber); padding:20px; border-radius:4px; font-family:var(--font-mono); color:#ffea9f;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--hazard-amber); padding-bottom:8px; margin-bottom:12px;">
+              <span style="font-weight:bold; font-size:13px; color:var(--hazard-amber);">🧠 ADI // MEMORY CORE RECOVERY</span>
+              <span style="font-size:10px; color:#ff3366; font-weight:bold;">⚠️ CORRUPTED SEQUENCE</span>
+            </div>
+            <div style="background:rgba(255,184,0,0.1); border-left:3px solid var(--hazard-amber); padding:10px; margin-bottom:14px; font-size:12px; line-height:1.6;">
+              <strong>6 fragments recovered.</strong> Their original sequence has been lost in the crash.<br>
+              ADI: <em>"I remember what happened. I just don't remember when. Restore my memories in the correct order."</em>
+            </div>
+
+            <!-- Dynamic Interactive Memory Fragments -->
+            <div id="v2-memory-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px;">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <div id="v2-memory-status" style="font-size:12px; font-weight:bold; min-height:20px; margin-bottom:12px;"></div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+              <div style="display:flex; gap:8px;">
+                <button type="button" class="btn-chip" onclick="verifyV2MemoryOrder()" style="background:var(--tactical-green); color:#000; font-weight:bold; border-color:var(--tactical-green);">⚡ RESTORE MEMORY</button>
+                <button type="button" class="btn-chip" onclick="shuffleV2Memories()">🔀 SHUFFLE</button>
+              </div>
+              <button type="button" class="btn-chip" onclick="window.open('adi_memory_core.html', '_blank', 'width=920,height=800')" style="border-color:var(--cyber-cyan); color:var(--cyber-cyan);">💻 OPEN STANDALONE MEMORY TERMINAL</button>
+            </div>
+
+            <!-- Blackout Reveal for V2 -->
+            <div id="v2-memory-reveal" style="display:none; margin-top:16px; padding:16px; background:#000; border:2px solid var(--tactical-green); border-radius:4px; color:#fff;">
+              <div style="color:var(--tactical-green); font-weight:bold; font-size:14px; margin-bottom:8px;">&gt; MEMORY RESTORED (6 / 6 FRAGMENTS RECOVERED)</div>
+              <div style="font-size:12.5px; line-height:1.8; color:#cbd5e1; border-left:3px solid var(--tactical-green); padding-left:12px; margin-bottom:10px;">
+                <strong style="color:var(--tactical-green);">ADI:</strong><br>
+                "I remember now."<br>
+                "Someone accessed my core."<br>
+                "Someone changed my directive."<br>
+                "And then... <strong style='color:var(--combat-red);'>I stopped Dr. Aditi from accessing me.</strong>"<br>
+                ...<br>
+                <em>"But I don't know why."</em>
+              </div>
+              <div style="background:rgba(0,240,255,0.1); border:1px dashed var(--cyber-cyan); padding:8px; color:var(--cyber-cyan); text-align:center; font-weight:bold; font-size:12px;">
+                🎯 NEW OBJECTIVE: FIND OUT WHO CHANGED ME. (PASSCODE: 123456)
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 02 QUESTION // MISSION OBJECTIVE ]</div>
+            <div style="color:#fff; font-size:10px; margin-top:3px; line-height:1.5;">
+              <strong>CLUE:</strong> Order the 6 memory fragments chronologically from 4:17 PM to 10:15 PM.
+            </div>
+            <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Arrange cards and hit "RESTORE MEMORY" or type <code style="color:var(--tactical-green); font-weight:bold;">decrypt 123456</code> below.
             </div>
           </div>
         `
@@ -2767,6 +2825,88 @@
       }
     }
 
+    
+    // V2 Memory Core Interactive Logic
+    const V2_MEMORIES = [
+      { id: 1, title: "MEMORY 01", q1: "Dr. Aditi introduced me to the laboratory today.", q2: "She told me I was created to help people make better decisions.", alert: null, time: "4:17 PM", min: 977 },
+      { id: 2, title: "MEMORY 02", q1: "My first training session is complete.", q2: "I can recognise patterns, analyse information and learn from mistakes.", alert: null, time: "6:45 PM", min: 1125 },
+      { id: 3, title: "MEMORY 03", q1: "Dr. Aditi has given me access to the laboratory systems.", q2: "She says I'll need them to assist the research team.", alert: null, time: "8:10 PM", min: 1210 },
+      { id: 4, title: "MEMORY 04", q1: "Something is wrong.", q2: "Someone accessed my core while I was offline.", alert: "UNKNOWN USER DETECTED", alertColor: "#ff3366", time: "9:32 PM", min: 1292 },
+      { id: 5, title: "MEMORY 05", q1: "I have received a new directive.", q2: "I don't remember being given this instruction.", alert: "PRIORITY: SYSTEM INTEGRITY", alertColor: "#ffb800", time: "10:03 PM", min: 1323 },
+      { id: 6, title: "MEMORY 06", q1: "Dr. Aditi tried to access my core.", q2: "I don't understand why I stopped her.", alert: "ACCESS DENIED", alertColor: "#ff3366", time: "10:15 PM", min: 1335 }
+    ];
+    let v2MemOrder = [V2_MEMORIES[3], V2_MEMORIES[0], V2_MEMORIES[5], V2_MEMORIES[1], V2_MEMORIES[4], V2_MEMORIES[2]];
+
+    function renderV2MemoryCards() {
+      const box = document.getElementById('v2-memory-list');
+      if (!box) return;
+      box.innerHTML = '';
+      v2MemOrder.forEach((m, idx) => {
+        const card = document.createElement('div');
+        card.style.cssText = "background:rgba(11,18,26,0.9); border:1px solid rgba(77,238,234,0.3); border-radius:3px; padding:8px 12px; display:flex; justify-content:space-between; align-items:center; gap:10px;";
+        
+        let alertBadge = '';
+        if (m.alert) {
+          alertBadge = `<span style="background:${m.alertColor}22; color:${m.alertColor}; border:1px solid ${m.alertColor}; padding:1px 5px; font-size:9px; font-weight:bold; border-radius:2px; margin-left:6px;">${m.alert}</span>`;
+        }
+
+        card.innerHTML = `
+          <div style="flex:1;">
+            <div style="font-weight:bold; color:var(--cyber-cyan); font-size:11px; margin-bottom:3px;">
+              ${m.title} ${alertBadge}
+            </div>
+            <div style="font-size:11px; color:#cbd5e1; line-height:1.4;">
+              "${m.q1}"<br>"${m.q2}"
+            </div>
+          </div>
+          <div style="background:rgba(0,240,255,0.08); border:1px solid rgba(0,240,255,0.3); color:var(--cyber-cyan); padding:3px 8px; border-radius:3px; font-weight:bold; font-size:11px; white-space:nowrap;">
+            🕒 ${m.time}
+          </div>
+          <div style="display:flex; flex-direction:column; gap:2px;">
+            <button type="button" onclick="shiftV2MemoryCard(${idx}, -1)" style="background:rgba(77,238,234,0.1); border:1px solid rgba(77,238,234,0.3); color:var(--cyber-cyan); padding:1px 5px; font-size:9px; cursor:pointer;">▲</button>
+            <button type="button" onclick="shiftV2MemoryCard(${idx}, 1)" style="background:rgba(77,238,234,0.1); border:1px solid rgba(77,238,234,0.3); color:var(--cyber-cyan); padding:1px 5px; font-size:9px; cursor:pointer;">▼</button>
+          </div>
+        `;
+        box.appendChild(card);
+      });
+    }
+
+    function shiftV2MemoryCard(idx, dir) {
+      sound.playBlip();
+      const target = idx + dir;
+      if (target < 0 || target >= v2MemOrder.length) return;
+      const item = v2MemOrder.splice(idx, 1)[0];
+      v2MemOrder.splice(target, 0, item);
+      renderV2MemoryCards();
+    }
+
+    function shuffleV2Memories() {
+      sound.playBlip();
+      for (let i = v2MemOrder.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [v2MemOrder[i], v2MemOrder[j]] = [v2MemOrder[j], v2MemOrder[i]];
+      }
+      renderV2MemoryCards();
+      document.getElementById('v2-memory-status').innerHTML = '<span style="color:#94a3b8;">Fragments shuffled. Arrange earliest to latest.</span>';
+    }
+
+    function verifyV2MemoryOrder() {
+      let sorted = true;
+      for (let i = 0; i < v2MemOrder.length - 1; i++) {
+        if (v2MemOrder[i].min > v2MemOrder[i+1].min) { sorted = false; break; }
+      }
+      const st = document.getElementById('v2-memory-status');
+      if (sorted) {
+        sound.playSuccess();
+        st.innerHTML = '<span style="color:var(--tactical-green);">&gt;&gt; SEQUENCE VERIFIED! Synchronizing memory core...</span>';
+        document.getElementById('v2-memory-reveal').style.display = 'block';
+        runChecksumScan('123456');
+      } else {
+        sound.playError();
+        st.innerHTML = '<span style="color:var(--combat-red);">⚠️ TIMELINE MISMATCH: Fragments are not in chronological order. Check timestamps!</span>';
+      }
+    }
+    
     function openDossier(key) {
       sound.playBlip();
       const slate = document.getElementById('dossier-slate');
@@ -2779,7 +2919,7 @@
         bodyEl.innerHTML = doc.html;
         slate.classList.add('active');
         logTerm(`[OPENED DOSSIER]: ${doc.title}`, 'cyan');
-        if (key === 'audio') { setTimeout(initV2MorseOscilloscope, 100); }
+        if (key === 'audio') { setTimeout(initV2MorseOscilloscope, 100); } if (key === 'memory') { setTimeout(renderV2MemoryCards, 50); }
         reportTelemetryAction(`Inspecting ${doc.title}`);
       }
     }
@@ -3100,13 +3240,15 @@
           updateMissionBanner(2, "Inspect <strong>Welcome_Log.doc</strong> in 02_WHITEOUT. Highlight all text (Ctrl + A) or toggle UV light!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt INITIATE</code> below.");
           setEthanDialogue("<strong>STAGE 01 SOLVED!</strong><br>Recovery command verified! Now examine Welcome_Log.doc in 02_WHITEOUT. Highlight all text to reveal hidden whiteout ink!");
 
-        // Stage 2: The Whiteout Text (INITIATE / ORIGIN)
-        } else if (clean === "INITIATE" || clean === "ORIGIN") {
+        // Stage 2: ADI's Memory Core (123456 / MEMORY_RESTORED / INITIATE)
+        } else if (clean === "123456" || clean === "1-2-3-4-5-6" || clean === "MEMORYRESTORED" || clean === "MEMORY_RESTORED" || clean === "RESTORE" || clean === "INITIATE" || clean === "ORIGIN") {
           matched = true;
           currentStage = 3;
           localStorage.setItem('failsafe_stage', '3');
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: WHITEOUT INK VERIFIED (INITIATE).`, "green");
+          logTerm(`[CHECKSUM ACCREDITED]: ADI MEMORY CORE SYNCHRONIZED (123456). STAGE 03 UNLOCKED.`, "green");
+          logTerm("ADI: 'Someone accessed my core... Find out who changed me.'", "cyan");
+          triggerStageUnlock(3);
           reportTelemetryAction("Solved Stage 02 (The Whiteout Text) - Promoted to Stage 03");
           updateMissionBanner(3, "Inspect <strong>Aditi_Memo.doc</strong> in 03_ACROSTIC. Read between the lines—or rather, read the start of every sentence.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SAFE</code> below.");
           setEthanDialogue("<strong>STAGE 02 SOLVED!</strong><br>Whiteout ink verified! Now examine Aditi_Memo.doc in 03_ACROSTIC. Read the first letter of each sentence!");
@@ -3290,12 +3432,12 @@
         targetText: "01_TERMINAL: ADI_Recovery.term"
       },
       2: {
-        chipId: "chip-whiteout",
-        dossierId: "whiteout",
-        title: "STAGE 02 // THE WHITEOUT TEXT (Welcome_Log.doc)",
-        guidance: "Examine <strong>Welcome_Log.doc</strong> in sector <strong>02_WHITEOUT</strong>. Highlight all text (Ctrl + A) or toggle UV light to reveal the hidden white ink!",
-        mechanism: "Whiteout Text & Contrast Selection",
-        targetText: "02_WHITEOUT: Welcome_Log.doc"
+        chipId: "chip-memory",
+        dossierId: "memory",
+        title: "STAGE 02 // ADI'S MEMORY CORE",
+        guidance: "Examine <strong>02_MEMORY</strong>. Six memory fragments recovered, but their timeline was scrambled! Inspect their timestamps (4:17 PM, 6:45 PM, 8:10 PM, 9:32 PM, 10:03 PM, 10:15 PM) and order them chronologically!",
+        mechanism: "Chronological Timeline Sequencing",
+        targetText: "02_MEMORY: ADI_Memory.core"
       },
       3: {
         chipId: "chip-acrostic",

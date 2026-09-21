@@ -119,7 +119,7 @@ The in-station AI companion (ETHAN Hunt Core) actively guides operators across *
 | Stage | Puzzle Title | In-Game Mechanism | Master Solution Key |
 | :---: | :--- | :--- | :--- |
 | **01** | ADI Recovery Terminal | Command sequence deduction (`LOGIN → VERIFY → ? → EXECUTE → LOCK`) | `ACCESS` *(also accepts `RECOVER ACCESS`)* |
-| **02** | The Whiteout Text (Invisible Ink) | Highlight white-on-white text in `Welcome_Log.doc` (`Ctrl + A` or UV light) | `INITIATE` *(also accepts `ORIGIN`)* |
+| **02** | ADI's Memory Core | Arrange 6 recovered memory fragments in chronological order (4:17 PM → 10:15 PM) | `123456` *(also accepts `1-2-3-4-5-6`, `MEMORY_RESTORED`, `RESTORE`, `INITIATE`)* |
 | **03** | The Simple Acrostic Note | First letters of each sentence in `Aditi_Memo.doc` (08:00 memo) | `SAFE` *(also accepts `LOOK BEHIND THE DATE`)* |
 | **04** | The Calendar Anomaly | Non-leap year calendar contradiction in `Incident_Logs.doc` (Feb 29, 2025 is impossible) | `28/02/2025` *(also accepts `02292025`, `29022025`, `20250229`)* |
 | **05** | A1Z26 Alphabet Code | Alphanumeric position mapping [16-15-12-01-18-09-19] in `Clearance_Code.txt` | `POLARIS` |

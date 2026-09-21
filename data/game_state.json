@@ -52,6 +52,11 @@
       "id": 1,
       "message": "eyy",
       "timestamp": 1790009023.4517827
+    },
+    {
+      "id": 2,
+      "message": "hey guys",
+      "timestamp": 1790015772.695853
     }
   ],
   "config": {

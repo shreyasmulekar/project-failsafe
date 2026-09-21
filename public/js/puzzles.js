@@ -42,6 +42,32 @@ LAST SUCCESSFUL COMMANDS:
 
   2: {
     id: 2,
+    folderName: "02_MEMORY",
+    title: "ADI's Memory Core",
+    type: "terminal",
+    fileName: "ADI_Memory.core",
+    passwordPrompt: "Enter Stage 2 Chronological Code (123456):",
+    render: () => `
+      <div style="background: #02070e; border: 1px solid var(--neon-amber, #ffb800); border-radius: 4px; padding: 18px; font-family: monospace; color: #ffea9f;">
+        <div style="border-bottom: 1px solid rgba(255,184,0,0.3); padding-bottom: 8px; margin-bottom: 12px; display: flex; justify-content: space-between; font-weight: bold;">
+          <span>ADI // MEMORY CORE [SECTOR 02]</span>
+          <span style="color: #ff3366;">⚠️ MEMORY CORRUPTION DETECTED</span>
+        </div>
+        <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 12px;">
+          6 fragments recovered. Their original sequence has been lost.<br>
+          ADI: <em>"I remember what happened. I just don't remember when. Restore my memories in the correct order."</em>
+        </p>
+        <div style="display: flex; gap: 10px; margin-top: 14px;">
+          <button type="button" class="gate-btn" onclick="window.open('adi_memory_core.html', '_blank', 'width=920,height=800')" style="background: #ffb800; color: #000; font-weight: bold; padding: 8px 16px; border: none; border-radius: 3px; cursor: pointer;">
+            🧠 LAUNCH INTERACTIVE MEMORY CORE TERMINAL
+          </button>
+        </div>
+      </div>
+    `
+  },
+
+  _OLD_2: {
+    id: 2,
     folderName: "02_WHITEOUT",
     title: "Farewell Note - Whiteout Text",
     type: "doc",

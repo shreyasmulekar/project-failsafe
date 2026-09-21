@@ -33,12 +33,12 @@ STAGES = {
         ]
     },
     2: {
-        "title": "The Whiteout Text (Invisible Ink)",
-        "keys": ["INITIATE", "ORIGIN"],
+        "title": "ADI's Memory Core",
+        "keys": ["123456", "1-2-3-4-5-6", "MEMORY_RESTORED", "MEMORY RESTORED", "RESTORE", "CHRONOLOGICAL", "INITIATE", "ORIGIN"],
         "next_stage": 3,
         "hints": [
-            "Highlight everything to see what is hidden in plain sight.",
-            "Press Ctrl+A or toggle UV light to reveal the hidden white ink in Welcome_Log.doc."
+            "Put the 6 recovered memory fragments in chronological order based on their timestamps.",
+            "Order from earliest to latest: 4:17 PM -> 6:45 PM -> 8:10 PM -> 9:32 PM -> 10:03 PM -> 10:15 PM (Sequence: 123456)."
         ]
     },
     3: {

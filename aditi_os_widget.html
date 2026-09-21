@@ -1590,8 +1590,14 @@
           <div class="card-title" style="color: #00ff66;">ADI_Recovery.term</div>
         </div>
 
+        <div class="tactical-card" id="card-memory" onclick="openModal('modal-memory')" onmouseenter="tacticalSound.playHoverBlip()" style="border-color: rgba(255, 184, 0, 0.4);">
+          <span class="card-tag" style="background: var(--hazard-amber); color: #000;">STAGE 02</span>
+          <div class="card-symbol">🧠</div>
+          <div class="card-title">ADI_Memory.core</div>
+        </div>
+
         <div class="tactical-card" id="card-whiteout" onclick="openModal('modal-whiteout')" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">STAGE 02</span>
+          <span class="card-tag">VAULT</span>
           <div class="card-symbol">📄</div>
           <div class="card-title">Welcome_Log.doc</div>
         </div>
@@ -1704,6 +1710,63 @@
       <!-- ================================================================= -->
       <!-- PUZZLE 01: The Whiteout Text (Invisible Ink) -->
       <!-- ================================================================= -->
+            <!-- ==================== DOSSIER 02: ADI MEMORY CORE ==================== -->
+      <div id="modal-memory" class="mil-modal">
+        <div class="mil-modal-header" style="background:rgba(255,184,0,0.1); border-bottom:1px solid var(--hazard-amber);">
+          <div class="dossier-id" style="color:var(--hazard-amber);">DOSSIER // 02_MEMORY</div>
+          <div class="mil-modal-title" style="color:#ffea9f;">ADI // MEMORY CORE [SECTOR 02]</div>
+          <button class="mil-modal-close" onclick="closeModal('modal-memory')">&times;</button>
+        </div>
+        <div class="mil-modal-body" style="background:#060a0f;">
+          <div style="background:rgba(255,184,0,0.1); border-left:4px solid var(--hazard-amber); padding:12px 16px; margin-bottom:14px; color:#ffea9f; font-size:13px;">
+            <strong>⚠️ MEMORY CORRUPTION DETECTED</strong><br>
+            6 memory fragments recovered. Their original sequence has been lost in the crash.
+          </div>
+
+          <div style="background:rgba(0,255,102,0.05); border:1px dashed rgba(0,255,102,0.3); padding:12px 16px; border-radius:4px; margin-bottom:16px; font-size:13px;">
+            <strong style="color:var(--neon-cyan);">ADI:</strong><br>
+            <em>"I remember what happened. I just don't remember when."</em><br>
+            <span style="color:var(--neon-green);">&gt;&gt; Restore my memories in the correct order.</span>
+          </div>
+
+          <!-- Interactive Memory Cards Box -->
+          <div id="v1-memory-cards-box" style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;"></div>
+
+          <div id="v1-memory-feedback" style="min-height:22px; font-size:12.5px; font-weight:bold; margin-bottom:14px;"></div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div style="display:flex; gap:10px;">
+              <button type="button" class="dossier-btn" onclick="verifyV1MemorySequence()" style="background:var(--neon-green); color:#000; font-weight:bold; border:none; padding:8px 18px; border-radius:3px; cursor:pointer;">
+                ⚡ RESTORE MEMORY SEQUENCE
+              </button>
+              <button type="button" class="dossier-btn" onclick="shuffleV1MemoryCards()" style="background:transparent; border:1px solid #475569; color:#94a3b8; padding:8px 14px; border-radius:3px; cursor:pointer;">
+                🔀 SHUFFLE
+              </button>
+            </div>
+            <button type="button" class="dossier-btn" onclick="window.open('adi_memory_core.html', '_blank', 'width=920,height=800')" style="background:rgba(0,240,255,0.15); border:1px solid var(--neon-cyan); color:var(--neon-cyan); padding:8px 14px; border-radius:3px; cursor:pointer;">
+              💻 LAUNCH RETRO CRT MEMORY TERMINAL
+            </button>
+          </div>
+
+          <!-- Reveal Blackout Screen for Modal -->
+          <div id="v1-memory-reveal" style="display:none; margin-top:20px; padding:20px; background:#000; border:2px solid var(--neon-green); border-radius:4px;">
+            <div style="color:var(--neon-green); font-size:15px; font-weight:bold; margin-bottom:10px;">&gt; MEMORY RESTORED (6 / 6 FRAGMENTS RECOVERED)</div>
+            <div style="color:#e2e8f0; line-height:1.8; font-size:13px; border-left:3px solid var(--neon-green); padding-left:14px; margin-bottom:14px;">
+              <strong>ADI:</strong><br>
+              "I remember now."<br>
+              "Someone accessed my core."<br>
+              "Someone changed my directive."<br>
+              "And then... <span style='color:var(--neon-red); font-weight:bold;'>I stopped Dr. Aditi from accessing me.</span>"<br>
+              ...<br>
+              <em>"But I don't know why."</em>
+            </div>
+            <div style="background:rgba(0,240,255,0.1); border:1px dashed var(--neon-cyan); color:var(--neon-cyan); padding:10px; text-align:center; font-weight:bold; font-size:12.5px;">
+              🎯 NEW OBJECTIVE: FIND OUT WHO CHANGED ME. (PASSCODE: 123456)
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div id="modal-whiteout" class="mil-modal">
         <div class="mil-modal-header">
           <div class="dossier-header-left">
@@ -4453,7 +4516,89 @@
     }
 
     // Checksum Scanner Animation with Dynamic Ethan Hunt Intercept (12 Distinct Stages)
-        function runChecksumScan(passcode) {
+        
+    // V1 ADI Memory Core Interactive Component
+    const V1_MEMORIES = [
+      { id: 1, title: "MEMORY 01", q1: "Dr. Aditi introduced me to the laboratory today.", q2: "She told me I was created to help people make better decisions.", alert: null, time: "4:17 PM", min: 977 },
+      { id: 2, title: "MEMORY 02", q1: "My first training session is complete.", q2: "I can recognise patterns, analyse information and learn from mistakes.", alert: null, time: "6:45 PM", min: 1125 },
+      { id: 3, title: "MEMORY 03", q1: "Dr. Aditi has given me access to the laboratory systems.", q2: "She says I'll need them to assist the research team.", alert: null, time: "8:10 PM", min: 1210 },
+      { id: 4, title: "MEMORY 04", q1: "Something is wrong.", q2: "Someone accessed my core while I was offline.", alert: "UNKNOWN USER DETECTED", alertColor: "#ef4444", time: "9:32 PM", min: 1292 },
+      { id: 5, title: "MEMORY 05", q1: "I have received a new directive.", q2: "I don't remember being given this instruction.", alert: "PRIORITY: SYSTEM INTEGRITY", alertColor: "#f59e0b", time: "10:03 PM", min: 1323 },
+      { id: 6, title: "MEMORY 06", q1: "Dr. Aditi tried to access my core.", q2: "I don't understand why I stopped her.", alert: "ACCESS DENIED", alertColor: "#ef4444", time: "10:15 PM", min: 1335 }
+    ];
+    let v1MemOrder = [V1_MEMORIES[3], V1_MEMORIES[0], V1_MEMORIES[5], V1_MEMORIES[1], V1_MEMORIES[4], V1_MEMORIES[2]];
+
+    function renderV1MemoryCards() {
+      const box = document.getElementById('v1-memory-cards-box');
+      if (!box) return;
+      box.innerHTML = '';
+      v1MemOrder.forEach((m, idx) => {
+        const card = document.createElement('div');
+        card.style.cssText = "background:rgba(15,23,42,0.85); border:1px solid rgba(0,255,102,0.3); border-radius:4px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; gap:12px;";
+        
+        let alertBadge = '';
+        if (m.alert) {
+          alertBadge = `<span style="background:${m.alertColor}22; color:${m.alertColor}; border:1px solid ${m.alertColor}; padding:1px 6px; font-size:10px; font-weight:bold; border-radius:2px; margin-left:8px;">${m.alert}</span>`;
+        }
+
+        card.innerHTML = `
+          <div style="flex:1;">
+            <div style="font-weight:bold; color:var(--neon-green); font-size:12px; margin-bottom:4px;">
+              ${m.title} ${alertBadge}
+            </div>
+            <div style="font-size:12px; color:#cbd5e1; line-height:1.4;">
+              "${m.q1}"<br>"${m.q2}"
+            </div>
+          </div>
+          <div style="background:rgba(0,240,255,0.1); border:1px solid rgba(0,240,255,0.4); color:var(--neon-cyan); padding:4px 10px; border-radius:4px; font-weight:bold; font-size:12px; white-space:nowrap;">
+            🕒 ${m.time}
+          </div>
+          <div style="display:flex; flex-direction:column; gap:2px;">
+            <button type="button" onclick="shiftV1MemoryCard(${idx}, -1)" style="background:rgba(0,255,102,0.1); border:1px solid rgba(0,255,102,0.3); color:var(--neon-green); padding:2px 6px; font-size:10px; cursor:pointer;">▲</button>
+            <button type="button" onclick="shiftV1MemoryCard(${idx}, 1)" style="background:rgba(0,255,102,0.1); border:1px solid rgba(0,255,102,0.3); color:var(--neon-green); padding:2px 6px; font-size:10px; cursor:pointer;">▼</button>
+          </div>
+        `;
+        box.appendChild(card);
+      });
+    }
+
+    function shiftV1MemoryCard(idx, dir) {
+      tacticalSound.playClick();
+      const target = idx + dir;
+      if (target < 0 || target >= v1MemOrder.length) return;
+      const item = v1MemOrder.splice(idx, 1)[0];
+      v1MemOrder.splice(target, 0, item);
+      renderV1MemoryCards();
+    }
+
+    function shuffleV1MemoryCards() {
+      tacticalSound.playClick();
+      for (let i = v1MemOrder.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [v1MemOrder[i], v1MemOrder[j]] = [v1MemOrder[j], v1MemOrder[i]];
+      }
+      renderV1MemoryCards();
+      document.getElementById('v1-memory-feedback').innerHTML = '<span style="color:#94a3b8;">Fragments shuffled. Arrange earliest to latest.</span>';
+    }
+
+    function verifyV1MemorySequence() {
+      let sorted = true;
+      for (let i = 0; i < v1MemOrder.length - 1; i++) {
+        if (v1MemOrder[i].min > v1MemOrder[i+1].min) { sorted = false; break; }
+      }
+      const fb = document.getElementById('v1-memory-feedback');
+      if (sorted) {
+        tacticalSound.playSuccess();
+        fb.innerHTML = '<span style="color:var(--neon-green);">&gt;&gt; SEQUENCE VERIFIED! Restoring neural core...</span>';
+        document.getElementById('v1-memory-reveal').style.display = 'block';
+        runChecksumScan('123456');
+      } else {
+        tacticalSound.playError();
+        fb.innerHTML = '<span style="color:var(--neon-red);">⚠️ TIMELINE MISMATCH: Fragments are not in chronological order. Check timestamps!</span>';
+      }
+    }
+    
+    function runChecksumScan(passcode) {
       if (!passcode) return;
       const clean = passcode.trim().toUpperCase().replace(/\s+/g, '').replace(/[^A-Z0-9_-]/g, '');
 
@@ -4473,8 +4618,8 @@
           reportTelemetryAction("Solved Stage 01 (Recovery Terminal) - Promoted to Stage 02");
           updateMissionBanner(2, "Inspect <strong>Welcome_Log.doc</strong>. Dr. Aditi concealed white-on-white text in the document. Highlight everything (<code>Ctrl + A</code>) or toggle UV light!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt INITIATE</code> below.");
 
-        // Stage 2: The Whiteout Text (INITIATE / ORIGIN)
-        } else if (clean === "INITIATE" || clean === "ORIGIN") {
+        // Stage 2: ADI's Memory Core (123456 / MEMORY_RESTORED / INITIATE)
+        } else if (clean === "123456" || clean === "1-2-3-4-5-6" || clean === "MEMORYRESTORED" || clean === "MEMORY_RESTORED" || clean === "RESTORE" || clean === "INITIATE" || clean === "ORIGIN") {
           matched = true;
           currentStage = 3;
           localStorage.setItem('failsafe_stage', '3');
@@ -4646,6 +4791,7 @@
     // -------------------------------------------------------------------------
     function openModal(id) {
       if (id === 'modal-morse') id = 'modal-spectro';
+      if (id === 'modal-memory') { setTimeout(renderV1MemoryCards, 50); }
       highlightSector(null);
       tacticalSound.playSquelch();
       closeAllModals();
