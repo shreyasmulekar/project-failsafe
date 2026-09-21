@@ -1583,89 +1583,119 @@
         <span style="font-size:10px; color:var(--tactical-dim);">STATUS: QUARANTINED</span>
       </div>
 
-      <div class="icon-matrix">
+            <div class="icon-matrix">
         <div class="tactical-card" id="card-recovery-term" onclick="window.open('adi_recovery_terminal.html', '_blank', 'width=920,height=780')" onmouseenter="tacticalSound.playHoverBlip()" style="border-color: rgba(0,255,102,0.4);">
-          <span class="card-tag" style="color: #00ff66; border-color: #00ff66;">RECOVERY</span>
+          <span class="card-tag" style="color: #00ff66; border-color: #00ff66;">STAGE 01</span>
           <div class="card-symbol" style="color: #00ff66;">💻</div>
           <div class="card-title" style="color: #00ff66;">ADI_Recovery.term</div>
         </div>
 
         <div class="tactical-card" id="card-whiteout" onclick="openModal('modal-whiteout')" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">GATE 01</span>
+          <span class="card-tag">STAGE 02</span>
           <div class="card-symbol">📄</div>
           <div class="card-title">Welcome_Log.doc</div>
         </div>
 
+        <div class="tactical-card" id="card-origin" onclick="openModal('modal-origin')" onmouseenter="tacticalSound.playHoverBlip()">
+          <span class="card-tag">ARCHIVE</span>
+          <div class="card-symbol">📁</div>
+          <div class="card-title">DIR_ORIGIN</div>
+        </div>
+
         <div class="tactical-card" id="card-acrostic" onclick="openModal('modal-acrostic')" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">STAGE 02</span>
+          <span class="card-tag">STAGE 03</span>
           <div class="card-symbol">📝</div>
           <div class="card-title">Aditi_Memo.doc</div>
         </div>
 
-                <div class="tactical-card" id="card-timeline" onclick="openModal('modal-origin')" onmouseenter="tacticalSound.playHoverBlip()">
+        <div class="tactical-card" id="card-timeline" onclick="openModal('modal-incident-logs')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">STAGE 04</span>
           <div class="card-symbol">📅</div>
           <div class="card-title">Incident_Logs.doc</div>
         </div>
 
+        <div class="tactical-card" id="card-audit" onclick="openModal('modal-security-audit')" onmouseenter="tacticalSound.playHoverBlip()">
+          <span class="card-tag">TELEMETRY</span>
+          <div class="card-symbol">🔍</div>
+          <div class="card-title">Security_Audit.pdf</div>
+        </div>
+
         <div class="tactical-card" id="card-clearance" onclick="openModal('modal-clearance')" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">STAGE 03</span>
+          <span class="card-tag">STAGE 05</span>
           <div class="card-symbol">🔢</div>
           <div class="card-title">Clearance_Code.txt</div>
         </div>
 
         <div class="tactical-card" id="card-comments" onclick="openModal('modal-comments')" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">STAGE 04</span>
+          <span class="card-tag">STAGE 06</span>
           <div class="card-symbol">💬</div>
           <div class="card-title">System_Diagnostics.doc</div>
         </div>
 
         <div class="tactical-card" id="card-font" onclick="openModal('modal-font')" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">STAGE 05</span>
+          <span class="card-tag">STAGE 07</span>
           <div class="card-symbol">🔤</div>
           <div class="card-title">AUTHENTIC_LOG.doc</div>
         </div>
 
+        <div class="tactical-card" id="card-adi" onclick="openModal('modal-adi-prompt')" onmouseenter="tacticalSound.playHoverBlip()">
+          <span class="card-tag">SYNTHETIC</span>
+          <div class="card-symbol">🤖</div>
+          <div class="card-title">ADI_DIRECTIVE</div>
+        </div>
+
         <div class="tactical-card" id="card-stego" onclick="openModal('modal-stego')" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">STAGE 06</span>
+          <span class="card-tag">STAGE 08</span>
           <div class="card-symbol">🖼️</div>
           <div class="card-title">Dark_Terminal.png</div>
         </div>
 
         <div class="tactical-card" id="card-pixel" onclick="openModal('modal-pixel')" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">STAGE 07</span>
+          <span class="card-tag">STAGE 09</span>
           <div class="card-symbol">🏁</div>
           <div class="card-title">Corrupted_Image_Block.doc</div>
         </div>
 
         <div class="tactical-card" id="card-sheet" onclick="openModal('modal-sheet')" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">STAGE 08</span>
+          <span class="card-tag">STAGE 10</span>
           <div class="card-symbol">📊</div>
           <div class="card-title">Sanctuary_Inventory.sheet</div>
         </div>
 
         <div class="tactical-card" id="card-confidence" onclick="openModal('modal-confidence')" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">STAGE 09</span>
+          <span class="card-tag">STAGE 11</span>
           <div class="card-symbol">🧠</div>
           <div class="card-title">Confidence_Manual.doc</div>
         </div>
 
-                <div class="tactical-card" id="card-morse" onclick="openModal('modal-morse')" onmouseenter="tacticalSound.playHoverBlip()">
+        <div class="tactical-card" id="card-morse" onclick="openModal('modal-spectro')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">STAGE 12</span>
           <div class="card-symbol">📻</div>
           <div class="card-title">audio_log_07.mp3</div>
         </div>
 
+        <div class="tactical-card" id="card-maze" onclick="openModal('modal-maze')" onmouseenter="tacticalSound.playHoverBlip()">
+          <span class="card-tag">FILESYSTEM</span>
+          <div class="card-symbol">🗂️</div>
+          <div class="card-title">ROOT_MAZE</div>
+        </div>
+
         <div class="tactical-card" id="card-version" onclick="openModal('modal-version-hist')" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">STAGE 10</span>
+          <span class="card-tag">STAGE 13</span>
           <div class="card-symbol">🕒</div>
           <div class="card-title">VERSION_SCRUB</div>
         </div>
 
         <div class="tactical-card quarantine" id="card-trap" onclick="triggerLockdownTrap()" onmouseenter="tacticalSound.playHoverBlip()">
-          <span class="card-tag">HAZARD 11</span>
+          <span class="card-tag">STAGE 14</span>
           <div class="card-symbol">☠️</div>
           <div class="card-title">DO_NOT_RUN.exe</div>
+        </div>
+
+        <div class="tactical-card" id="card-failsafe" onclick="openModal('modal-failsafe')" onmouseenter="tacticalSound.playHoverBlip()" style="border-color:rgba(0,240,255,0.4);">
+          <span class="card-tag" style="color:var(--cyber-cyan);">STAGE 15</span>
+          <div class="card-symbol" style="color:var(--cyber-cyan);">🛡️</div>
+          <div class="card-title" style="color:var(--cyber-cyan);">WIE_Core_Values.doc</div>
         </div>
       </div>
 
@@ -2562,12 +2592,60 @@
         </div>
       </div>
 
+      
+      <!-- DOSSIER 15: Master WIE Failsafe Protocol -->
+      <div id="modal-failsafe" class="mil-modal">
+        <div class="mil-modal-header">
+          <div class="dossier-header-left">
+            <button type="button" class="btn-dossier-back" onclick="closeModal('modal-failsafe')">◄ ARCHIVE [ESC]</button>
+            <span>FAILSAFE ARCHIVE // WIE_Core_Values.doc</span>
+          </div>
+          <div class="dossier-header-actions">
+            <button type="button" class="btn-dossier-popout" onclick="toggleMaximizeModal('modal-failsafe')" title="Pop-Out / Fullscreen Slate">⛶ POP-OUT</button>
+            <button type="button" class="mil-modal-close" onclick="closeModal('modal-failsafe')">×</button>
+          </div>
+        </div>
+        <div class="mil-modal-body">
+          <div style="background:#02070e; border:1px solid var(--cyber-cyan); padding:22px; border-radius:4px; font-family:var(--font-mil);">
+            <h3 style="color:var(--cyber-cyan); border-bottom:1px solid rgba(0,240,255,0.3); padding-bottom:8px; margin-bottom:14px; font-size:14px;">
+              DR. ADITI'S TRUE OFFLINE FAILSAFE PROTOCOL
+            </h3>
+            <p style="color:#cbd5e1; font-size:12.5px; line-height:1.8; margin-bottom:16px;">
+              "The system that asks you to prove yourself is the system controlling you.
+              The real failsafe is not a button—it is encoded in our core foundational values."
+            </p>
+            <div style="background:rgba(0,255,102,0.08); border:1px solid #00ff66; padding:16px; border-radius:4px; color:#00ff66; line-height:2.2; font-family:monospace; font-size:12.5px;">
+              <strong>IEEE WOMEN IN ENGINEERING FOUNDATIONAL CORE VALUES:</strong><br>
+              • <strong>W</strong>isdom &rarr; Length: <strong>6</strong> letters<br>
+              • <strong>I</strong>ntegrity &rarr; Length: <strong>9</strong> letters<br>
+              • <strong>E</strong>mpowerment &rarr; Length: <strong>11</strong> letters<br><br>
+              <span style="color:#38bdf8;">
+                &gt;&gt; Hardware Override Cryptographic Key: <code>6-9-11</code> (or <code>WISDOM-INTEGRITY-EMPOWERMENT</code>)
+              </span>
+            </div>
+            <!-- STAGE 15 QUESTION -->
+            <div style="background: rgba(0, 240, 255, 0.08); border: 1px solid var(--cyber-cyan); padding: 12px; border-radius: 2px; margin-top: 14px;">
+              <div style="color: var(--cyber-cyan); font-weight: 900; font-size: 11px; letter-spacing: 1px; margin-bottom: 4px;">
+                🎯 [ STAGE 15 QUESTION // FINAL MAIN OVERRIDE ]
+              </div>
+              <div style="color: #ffffff; font-size: 11px; line-height: 1.6; margin-bottom: 6px;">
+                <strong>QUESTION:</strong> Enter Dr. Aditi's 3-number hardware override sequence derived from the IEEE WIE founding values to purge ADI and liberate ETHAN forever.
+              </div>
+              <div style="font-size: 10px; color: var(--hazard-amber);">
+                &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt 6-9-11</code> in the Tactical Shell.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- DOSSIER 06: Spectro Feed / Morse Audio -->
+            <!-- DOSSIER 06: Spectro Feed / Morse Audio -->
       <div id="modal-spectro" class="mil-modal">
         <div class="mil-modal-header">
           <div class="dossier-header-left">
             <button type="button" class="btn-dossier-back" onclick="closeModal('modal-spectro')">◄ ARCHIVE [ESC]</button>
-            <span>RADIO RECON // 680Hz CW INTERCEPT</span>
+            <span>RADIO RECON // 680Hz CW AUDIO INTERCEPT & OSCILLOSCOPE</span>
           </div>
           <div class="dossier-header-actions">
             <button type="button" class="btn-dossier-popout" onclick="toggleMaximizeModal('modal-spectro')" title="Pop-Out / Fullscreen Slate">⛶ POP-OUT</button>
@@ -2575,33 +2653,81 @@
           </div>
         </div>
         <div class="mil-modal-body">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-            <span style="color:var(--cyber-cyan);">FREQUENCY: 680Hz CW SIGNAL // NOISE FILTERED</span>
-            <button id="btn-morse-audio" class="btn-tactical" onclick="toggleMorsePlayback()">
-              ▶ PLAY MORSE SIGNAL
-            </button>
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+            <span style="color:var(--cyber-cyan); font-weight:bold; font-size:12px;">CW RADIO INTERCEPT // FREQUENCY: 680Hz // AUDIO SYNTHESIZER READY</span>
+            <div style="display:flex; gap:8px;">
+              <button id="btn-morse-audio" class="btn-tactical" onclick="toggleMorsePlayback('white')" style="color:#00ff66; border-color:#00ff66;">
+                ▶ PLAY BEACON A (WHITE)
+              </button>
+              <button id="btn-morse-warning" class="btn-tactical" onclick="toggleMorsePlayback('warning')" style="color:var(--hazard-amber); border-color:var(--hazard-amber);">
+                ▶ PLAY BEACON B (WARNING PATH)
+              </button>
+            </div>
           </div>
 
-          <div style="background:#010306; border:1px solid var(--hud-border); padding:10px; margin:14px 0; border-radius:2px;">
-            <canvas id="canvas-morse-live" style="width:100%; height:75px; display:block;"></canvas>
+          <div style="background:#010306; border:1px solid var(--hud-border); padding:12px; margin-bottom:14px; border-radius:3px;">
+            <div style="display:flex; justify-content:space-between; font-size:10px; color:#64748b; margin-bottom:4px; font-family:monospace;">
+              <span>OSCILLOSCOPE TELEMETRY // REAL-TIME HARMONICS</span>
+              <span id="morse-waveform-status" style="color:var(--tactical-green);">● RECEIVER READY</span>
+            </div>
+            <canvas id="canvas-morse-live" style="width:100%; height:90px; display:block; background:#02060c; border:1px solid rgba(0,240,255,0.2); border-radius:2px;"></canvas>
+            <div id="morse-live-caption" style="font-family:monospace; font-size:11px; color:#38bdf8; margin-top:8px; text-align:center;">
+              [RECEIVER STANDBY]: Click either transmission button above to stream CW audio tones & live oscilloscope wave.
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+            <div style="background:#020509; border:1px solid rgba(0,255,102,0.3); padding:12px; border-radius:2px;">
+              <strong style="color:var(--tactical-green); font-size:11px;">BEACON A: DR. ADITI'S EMERGENCY BEACON</strong>
+              <div style="font-family:monospace; font-size:16px; letter-spacing:4px; color:#38bdf8; margin-top:6px; font-weight:bold;">
+                .--   ....   ..   -   .
+              </div>
+              <div style="font-size:10.5px; color:#94a3b8; margin-top:6px;">
+                Decoded word: <strong style="color:#00ff66;">WHITE</strong>
+              </div>
+            </div>
+
+            <div style="background:#020509; border:1px solid rgba(255,176,0,0.3); padding:12px; border-radius:2px;">
+              <strong style="color:var(--hazard-amber); font-size:11px;">BEACON B: EVACUATION ADVISORY TRANSMISSION</strong>
+              <div style="font-family:monospace; font-size:10.5px; letter-spacing:1px; color:#fde047; margin-top:6px;">
+                -.. --- -. --- - / ..-. --- .-.. .-.. --- .-- / - .... . / -... .-.. ..- . / .--. .- - ....
+              </div>
+              <div style="font-size:10.5px; color:#94a3b8; margin-top:6px;">
+                Decoded message: <strong style="color:#fde047;">DO NOT FOLLOW THE BLUE PATH</strong>
+              </div>
+            </div>
           </div>
 
           <div style="background:#020509; border:1px solid var(--hud-border); padding:12px; border-radius:2px; font-size:11px;">
             <div style="color:var(--hazard-amber); font-weight:bold; margin-bottom:6px;">MILITARY MORSE LOOKUP TABLE:</div>
-            <div style="color:#94a3b8; line-height:1.8;">
-              A: .- &nbsp;|&nbsp; B: -... &nbsp;|&nbsp; D: -.. &nbsp;|&nbsp; E: . &nbsp;|&nbsp; F: ..-. &nbsp;|&nbsp; H: ....<br>
-              I: .. &nbsp;|&nbsp; L: .-.. &nbsp;|&nbsp; N: -. &nbsp;|&nbsp; O: --- &nbsp;|&nbsp; P: .--. &nbsp;|&nbsp; T: - &nbsp;|&nbsp; U: ..- &nbsp;|&nbsp; W: .--
+            <div style="color:#94a3b8; line-height:1.8; font-family:monospace;">
+              A: .- &nbsp;|&nbsp; B: -... &nbsp;|&nbsp; C: -.-. &nbsp;|&nbsp; D: -.. &nbsp;|&nbsp; E: . &nbsp;|&nbsp; F: ..-. &nbsp;|&nbsp; H: ....<br>
+              I: .. &nbsp;|&nbsp; L: .-.. &nbsp;|&nbsp; N: -. &nbsp;|&nbsp; O: --- &nbsp;|&nbsp; P: .--. &nbsp;|&nbsp; R: .-. &nbsp;|&nbsp; S: ... &nbsp;|&nbsp; T: - &nbsp;|&nbsp; U: ..- &nbsp;|&nbsp; W: .--
+            </div>
+          </div>
+
+          <!-- Explicit Stage 12 Question -->
+          <div style="background: rgba(0, 240, 255, 0.08); border: 1px solid var(--cyber-cyan); padding: 12px; border-radius: 2px; margin-top: 14px;">
+            <div style="color: var(--cyber-cyan); font-weight: 900; font-size: 11px; letter-spacing: 1px; margin-bottom: 4px;">
+              🎯 [ STAGE 12 QUESTION // MISSION OBJECTIVE ]
+            </div>
+            <div style="color: #ffffff; font-size: 11px; line-height: 1.6; margin-bottom: 6px;">
+              <strong>QUESTION:</strong> Listen to Dr. Aditi's emergency beacon transmission (<code>.-- .... .. - .</code>) or the evacuation advisory. Enter the decoded clearance key.
+            </div>
+            <div style="font-size: 10px; color: var(--hazard-amber);">
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt WHITE</code> or <code style="color:var(--tactical-green); font-weight:bold;">decrypt DO NOT FOLLOW THE BLUE PATH</code> below.
             </div>
           </div>
         </div>
       </div>
 
       <!-- DOSSIER 07: Directory Maze -->
+            <!-- DOSSIER 07: Directory Maze -->
       <div id="modal-maze" class="mil-modal">
         <div class="mil-modal-header">
           <div class="dossier-header-left">
             <button type="button" class="btn-dossier-back" onclick="closeModal('modal-maze')">◄ ARCHIVE [ESC]</button>
-            <span>RECON FILESYSTEM // ROOT_DRIVE/</span>
+            <span>RECON FILESYSTEM // ROOT_DRIVE/ INTERACTIVE MAZE</span>
           </div>
           <div class="dossier-header-actions">
             <button type="button" class="btn-dossier-popout" onclick="toggleMaximizeModal('modal-maze')" title="Pop-Out / Fullscreen Slate">⛶ POP-OUT</button>
@@ -2609,18 +2735,57 @@
           </div>
         </div>
         <div class="mil-modal-body">
-          <div style="background:#020509; border:1px solid var(--hud-border); padding:16px; border-radius:2px; font-size:12px; line-height:2;">
-            <div style="color:#64748b;">ROOT_DRIVE/</div>
-            <div style="padding-left:14px; color:var(--combat-red);">├── 📁 BLUE/ [AI Trap Path - HONEYPOT]</div>
-            <div style="padding-left:14px; color:#64748b;">├── 📁 RED/ [Corrupted Archive Sector]</div>
-            <div style="padding-left:14px; color:#64748b;">├── 📁 GREY/ [Zero-byte Dump]</div>
-            <div style="padding-left:14px; color:var(--tactical-green); font-weight:bold;">└── 📁 WHITE/ [Authentic Sector]</div>
-            <div style="padding-left:32px; color:var(--cyber-cyan);">├── 📁 Subfolder_A/ &rarr; Fragment1.txt: "THE AI CAN"</div>
-            <div style="padding-left:32px; color:var(--cyber-cyan);">├── 📁 Subfolder_D/ &rarr; Fragment2.txt: "MODIFY WHAT"</div>
-            <div style="padding-left:32px; color:var(--cyber-cyan);">└── 📁 Subfolder_I/ &rarr; Fragment3.txt: "YOU SEE"</div>
+          <div style="color:var(--cyber-cyan); font-size:12px; margin-bottom:10px; font-weight:bold;">
+            EXPLORER: ROOT_DRIVE/ &rarr; Select directories to uncover quarantined fragments:
           </div>
-          <div style="margin-top:14px; color:#94a3b8; font-size:11px;">
-            [TASK]: Assemble the string fragments from the authentic directory into a complete diagnostic report.
+
+          <div style="display:grid; grid-template-columns:260px 1fr; gap:14px;">
+            <div style="background:#020509; border:1px solid var(--hud-border); padding:14px; border-radius:2px; font-size:12px; line-height:2.2; font-family:monospace;">
+              <div style="color:#64748b;">ROOT_DRIVE/</div>
+              <div onclick="triggerMazeTrap()" style="cursor:pointer; padding-left:14px; color:var(--combat-red); font-weight:bold;" title="Click to test directory">
+                ├── 📁 BLUE/ [TRAP DETECTED]
+              </div>
+              <div onclick="alert('RED: Corrupted archive sector. CRC check failed.')" style="cursor:pointer; padding-left:14px; color:#64748b;">
+                ├── 📁 RED/ [Corrupt Sector]
+              </div>
+              <div onclick="alert('GREY: Zero-byte memory dump.')" style="cursor:pointer; padding-left:14px; color:#64748b;">
+                ├── 📁 GREY/ [Zero-byte]
+              </div>
+              <div onclick="toggleWhiteSectorTree()" style="cursor:pointer; padding-left:14px; color:var(--tactical-green); font-weight:bold;">
+                └── 📁 WHITE/ [Authentic Sector - Click to Expand]
+              </div>
+              <div id="v1-white-subfolders" style="padding-left:32px; display:block;">
+                <div onclick="revealMazeFrag(1)" style="cursor:pointer; color:var(--cyber-cyan);">├── 📁 Subfolder_A/ &rarr; Fragment1.txt</div>
+                <div onclick="revealMazeFrag(2)" style="cursor:pointer; color:var(--cyber-cyan);">├── 📁 Subfolder_D/ &rarr; Fragment2.txt</div>
+                <div onclick="revealMazeFrag(3)" style="cursor:pointer; color:var(--cyber-cyan);">└── 📁 Subfolder_I/ &rarr; Fragment3.txt</div>
+              </div>
+            </div>
+
+            <div style="background:#070d18; border:1px solid var(--hud-border); padding:14px; border-radius:2px; font-size:12px;">
+              <div style="color:var(--hazard-amber); font-weight:bold; margin-bottom:10px; font-size:11px;">
+                RECOVERED REPORT FRAGMENTS:
+              </div>
+              <div id="v1-frag-1" style="margin-bottom:8px; padding:10px 14px; background:#020509; border-left:3px solid var(--tactical-green); border-radius:2px;">
+                [Fragment 1 / Subfolder_A]: <strong style="color:#00ff66;">"THE AI CAN"</strong>
+              </div>
+              <div id="v1-frag-2" style="margin-bottom:8px; padding:10px 14px; background:#020509; border-left:3px solid var(--tactical-green); border-radius:2px;">
+                [Fragment 2 / Subfolder_D]: <strong style="color:#00ff66;">"MODIFY WHAT"</strong>
+              </div>
+              <div id="v1-frag-3" style="margin-bottom:8px; padding:10px 14px; background:#020509; border-left:3px solid var(--tactical-green); border-radius:2px;">
+                [Fragment 3 / Subfolder_I]: <strong style="color:#00ff66;">"YOU SEE"</strong>
+              </div>
+
+              <div style="margin-top:14px; padding:10px; background:rgba(0,255,102,0.08); border:1px dashed var(--tactical-green); border-radius:2px;">
+                <strong style="color:var(--tactical-green); font-size:11px;">ASSEMBLED DIAGNOSTIC REPORT:</strong><br>
+                <span style="font-family:monospace; font-size:13px; color:#ffffff; font-weight:bold; letter-spacing:1px;">
+                  "THE AI CAN MODIFY WHAT YOU SEE"
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px; color:#94a3b8; font-size:11px; line-height:1.6;">
+            💡 <em>Forensic Hint: Dr. Aditi concealed this diagnostic phrase across the authentic WHITE subfolders to warn investigators against trusting ADI's visual prompts. Master key: <code>THE AI CAN MODIFY WHAT YOU SEE</code></em>
           </div>
         </div>
       </div>
@@ -4480,6 +4645,7 @@
     // 7. Tactical Modal & Dossier Systems (In-Sector Docking)
     // -------------------------------------------------------------------------
     function openModal(id) {
+      if (id === 'modal-morse') id = 'modal-spectro';
       highlightSector(null);
       tacticalSound.playSquelch();
       closeAllModals();
@@ -4537,17 +4703,116 @@
       }
     });
 
-    function toggleMorsePlayback() {
-      const btn = document.getElementById('btn-morse-audio');
-      const pattern = "-.. --- -. --- - / ..-. --- .-.. .-.. --- .-- / - .... . / -... .-.. ..- . / .--. .- - ....";
+    // Oscilloscope & Morse Synthesis Visualizer
+    let morseOscAnimId = null;
+
+    function startMorseOscilloscope(pattern, onDone) {
+      const canvas = document.getElementById('canvas-morse-live');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.clientWidth || 500;
+      canvas.height = 90;
+
+      const caption = document.getElementById('morse-live-caption');
+      const status = document.getElementById('morse-waveform-status');
+      if (status) status.innerHTML = "<span style='color:#00ff66;'>● TRANSMITTING LIVE 680Hz CW SIGNAL...</span>";
+      if (caption) caption.innerText = `[STREAMING CARRIER]: ${pattern}`;
+
+      let phase = 0;
+      function draw() {
+        if (!tacticalSound.isMorseActive) {
+          ctx.fillStyle = "#02060c";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          // Draw baseline
+          ctx.strokeStyle = "rgba(0, 255, 102, 0.4)";
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(0, canvas.height / 2);
+          ctx.lineTo(canvas.width, canvas.height / 2);
+          ctx.stroke();
+          if (status) status.innerHTML = "<span style='color:#38bdf8;'>● TRANSMISSION COMPLETE</span>";
+          if (caption) caption.innerText = "[RECEIVER STANDBY]: Signal transmission completed.";
+          return;
+        }
+
+        ctx.fillStyle = "rgba(2, 6, 12, 0.25)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw grid lines
+        ctx.strokeStyle = "rgba(0, 240, 255, 0.08)";
+        ctx.lineWidth = 1;
+        for (let x = 0; x < canvas.width; x += 40) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+        }
+        for (let y = 0; y < canvas.height; y += 20) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+        }
+
+        // Draw active audio waveform
+        ctx.strokeStyle = "#00ff66";
+        ctx.shadowColor = "#00ff66";
+        ctx.shadowBlur = 8;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+
+        const mid = canvas.height / 2;
+        phase += 0.2;
+        for (let x = 0; x < canvas.width; x++) {
+          const amp = 24 * Math.sin((x * 0.04) + phase) * Math.cos(phase * 0.5);
+          const y = mid + amp;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        morseOscAnimId = requestAnimationFrame(draw);
+      }
+
+      cancelAnimationFrame(morseOscAnimId);
+      morseOscAnimId = requestAnimationFrame(draw);
+    }
+
+    function toggleMorsePlayback(mode = 'white') {
+      const btnA = document.getElementById('btn-morse-audio');
+      const btnB = document.getElementById('btn-morse-warning');
+      const pattern = mode === 'warning'
+        ? "-.. --- -. --- - / ..-. --- .-.. .-.. --- .-- / - .... . / -... .-.. ..- . / .--. .- - ...."
+        : ".--   ....   ..   -   .";
+
       if (tacticalSound.isMorseActive) {
         tacticalSound.stopMorse();
-        btn.innerText = "▶ PLAY MORSE SIGNAL";
+        if (btnA) btnA.innerText = "▶ PLAY BEACON A (WHITE)";
+        if (btnB) btnB.innerText = "▶ PLAY BEACON B (WARNING PATH)";
       } else {
-        btn.innerText = "⏹ HALT SIGNAL TRANSMISSION...";
+        if (btnA) btnA.innerText = mode === 'white' ? "⏹ HALTING TRANSMISSION..." : "▶ PLAY BEACON A (WHITE)";
+        if (btnB) btnB.innerText = mode === 'warning' ? "⏹ HALTING TRANSMISSION..." : "▶ PLAY BEACON B (WARNING PATH)";
+
         tacticalSound.playMorse(pattern, () => {
-          btn.innerText = "▶ PLAY MORSE SIGNAL";
+          if (btnA) btnA.innerText = "▶ PLAY BEACON A (WHITE)";
+          if (btnB) btnB.innerText = "▶ PLAY BEACON B (WARNING PATH)";
         });
+        startMorseOscilloscope(pattern);
+      }
+    }
+
+    function triggerMazeTrap() {
+      tacticalSound.playKlaxonSiren();
+      alert("⚠️ HONEYPOT HAZARD: Directory /ROOT_DRIVE/BLUE/ was fabricated by ADI! Do NOT proceed down the blue path.");
+    }
+
+    function toggleWhiteSectorTree() {
+      const el = document.getElementById('v1-white-subfolders');
+      if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
+      tacticalSound.playHoverBlip();
+    }
+
+    function revealMazeFrag(num) {
+      const el = document.getElementById(`v1-frag-${num}`);
+      if (el) {
+        el.style.boxShadow = "0 0 15px rgba(0,255,102,0.6)";
+        tacticalSound.playSuccessChirp();
+        setTimeout(() => { el.style.boxShadow = "none"; }, 1200);
       }
     }
 

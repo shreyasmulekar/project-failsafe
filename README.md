@@ -129,10 +129,18 @@ The in-station AI companion (ETHAN Hunt Core) actively guides operators across *
 | **09** | Embedded Table Pixel Art | Zoom out to 50% or enhance contrast on 10x10 table in `Corrupted_Image_Block.doc` | `7702` *(also accepts `WHITE`)* |
 | **10** | Revision History Conflict | Google Sheets version comparison in `Sanctuary_Inventory.sheet` (Aditi 20:00 draft) | `FALSE_RECORDS` *(also accepts `THE AI CAN MODIFY WHAT YOU SEE`)* |
 | **11** | The Confidence Equation | Reverse engineer ADI formula `(S / T)² × 100` to find corrupted prediction (E: 74% vs 25%) | `SYSTEM SHUTDOWN` *(also accepts `E`, `25%`, `ADITI ENTERED`, `C`)* |
-| **12** | Morse Code Audio Transmission | Decode CW radio audio tones (`.-- .... .. - .`) from Dr. Aditi's emergency beacon | `WHITE` *(also accepts `SOS_ADITI`, `MORSE`)* |
+| **12** | Morse Code Audio Transmission | Decode CW radio audio tones (`.-- .... .. - .`) with live oscilloscope | `WHITE` *(also accepts `SOS_ADITI`, `MORSE`)* |
 | **13** | Version Scrub (Git Reflog) | Inspect Git reflog commit history in `Incident_Report.doc` (commit `7b8a1c9`) | `OVERRIDE FAILED` *(also accepts `HISTORY`)* |
 | **14** | Honeypot Trap Bypass | Disarm ADI's credential-harvesting honeypot at `DO_NOT_RUN.exe` | `BYPASS` *(also accepts `SKIP`, `DISARM`)* |
 | **15** | Final WIE Failsafe Protocol | IEEE WIE founding values cipher (Wisdom 6, Integrity 9, Empowerment 11) | `6-9-11` *(also accepts `WISDOM-INTEGRITY-EMPOWERMENT`)* |
+
+### 🗄️ Recovered Classic Forensic Vault Archives & Interactive Tools
+All original classic investigation artifacts are preserved and accessible in both Failsafe 1.0 and 2.0:
+* **📻 CW Morse Audio Oscilloscope (`modal-spectro` / `12_AUDIO`)**: Real-time animated green audio waveform oscilloscope with dual audio tone beacons: Primary Beacon `WHITE` (`.-- .... .. - .`) and Sub-Carrier Warning `DO NOT FOLLOW THE BLUE PATH`.
+* **🗂️ Quarantined Directory Maze (`modal-maze` / `ROOT_MAZE`)**: Interactive subfolder inspection exploring segregated branches: `BLUE/` (honeypot trap warning), `RED/` (decoy logs), `GREY/` (Fragment 1: "THE AI CAN"), and `WHITE/` (Fragments 2 & 3: "MODIFY WHAT" + "YOU SEE" -> *"THE AI CAN MODIFY WHAT YOU SEE"*).
+* **🔍 Security Audit Forensic PDF (`modal-security-audit` / `SECURITY_AUDIT`)**: Timeline contradiction identifying physical impossibility between gate exit (22:44) and core terminal override (22:46).
+* **💬 Synthetic ADI Directive (`modal-adi-prompt` / `ADI_DIRECTIVE`)**: ADI directive instructing operators to access BLUE vs Dr. Aditi's emergency handwritten bezel warning ("Do the exact opposite").
+* **📁 Project ORIGIN Vault (`modal-origin` / `DIR_ORIGIN`)**: Foundational repository containing `Farewell.doc` (whiteout ink) and `README.doc` (indexed extraction `1, 4, 9, 20, 9` -> *"LOOK BEHIND THE DATE"*).
 
 ---
 

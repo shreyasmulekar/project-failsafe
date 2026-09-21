@@ -1261,6 +1261,10 @@
           <button id="chip-rollback" class="sector-chip" onclick="openDossier('rollback')">13_REFLOG</button>
           <button id="chip-trap" class="sector-chip" onclick="openDossier('trap')" style="color:var(--hazard-amber);">14_TRAP</button>
           <button id="chip-failsafe" class="sector-chip" onclick="openDossier('failsafe')" style="color:var(--tactical-green);">15_FAILSAFE</button>
+          <button id="chip-origin" class="sector-chip" onclick="openDossier('origin')" style="border-color:rgba(0,240,255,0.4); color:var(--cyber-cyan);" title="Project ORIGIN Repository">📁 DIR_ORIGIN</button>
+          <button id="chip-voice" class="sector-chip" onclick="openDossier('voice')" style="border-color:rgba(255,184,0,0.4); color:var(--hazard-amber);" title="Security Audit Forensic PDF">🔍 SECURITY_AUDIT</button>
+          <button id="chip-auth" class="sector-chip" onclick="openDossier('auth')" style="border-color:rgba(255,51,102,0.4); color:var(--combat-red);" title="Synthetic ADI Directive">💬 ADI_DIRECTIVE</button>
+          <button id="chip-maze" class="sector-chip" onclick="openDossier('maze')" style="border-color:rgba(77,238,234,0.4); color:#4deeea;" title="Quarantined Directory Maze">🗂️ ROOT_MAZE</button>
         </div>
 
         <!-- In-Place Dossier Slate Overlay -->
@@ -2427,22 +2431,46 @@
         title: "DOSSIER 12 // MORSE CODE AUDIO TRANSMISSION (audio_log_07.mp3)",
         html: `
           <div style="background:#090d14; border:1px solid var(--cyber-cyan); padding:20px; border-radius:4px; font-family:var(--font-mono); color:#e2f1f8;">
-            <div style="font-size:13px; font-weight:bold; color:var(--cyber-cyan); margin-bottom:10px;">📻 AUDIO_LOG_07.MP3 // CW RADIO BEACON</div>
+            <div style="font-size:13px; font-weight:bold; color:var(--cyber-cyan); margin-bottom:10px;">📻 AUDIO_LOG_07.MP3 // CW RADIO BEACON & SPECTROGRAM</div>
             <p style="font-size:12px; color:var(--text-muted); line-height:1.6; margin-bottom:14px;">
-              Dr. Aditi transmitted an encrypted continuous-wave (CW) audio beacon before communications were severed.
+              Dr. Aditi transmitted continuous-wave (CW) audio beacons before communications were severed.
             </p>
-            <div style="background:rgba(0,0,0,0.5); border:1px solid var(--border-subtle); padding:16px; border-radius:4px; text-align:center;">
-              <div style="font-size:18px; letter-spacing:4px; color:var(--tactical-green); font-weight:bold; margin-bottom:10px;">
+
+            <!-- Live Oscilloscope Canvas -->
+            <div style="background:#020617; border:1px solid var(--tactical-green); border-radius:4px; padding:10px; margin-bottom:14px; text-align:center;">
+              <canvas id="canvas-v2-morse-live" width="580" height="90" style="width:100%; height:90px; display:block; background:#020617;"></canvas>
+              <div style="font-size:10px; color:var(--tactical-green); margin-top:4px;">● LIVE AUDIO CARRIER OSCILLOSCOPE [720 Hz]</div>
+            </div>
+
+            <div style="background:rgba(0,0,0,0.5); border:1px solid var(--border-subtle); padding:14px; border-radius:4px; text-align:center; margin-bottom:14px;">
+              <div style="font-size:16px; letter-spacing:4px; color:var(--tactical-green); font-weight:bold; margin-bottom:6px;">
                 .--  ....  ..  -  .
               </div>
               <div style="font-size:11px; color:var(--text-muted);">
                 [ .-- = W ] &nbsp;|&nbsp; [ .... = H ] &nbsp;|&nbsp; [ .. = I ] &nbsp;|&nbsp; [ - = T ] &nbsp;|&nbsp; [ . = E ]
               </div>
             </div>
-            <div style="margin-top:14px;">
-              <button type="button" class="btn-chip" onclick="sound.playSuccess()">▶ PLAY BEACON AUDIO SYNTHESIS</button>
+
+            <!-- Dual Beacon Trigger Controls -->
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+              <button type="button" class="btn-chip" onclick="playV2MorseBeacon('WHITE')" style="background:rgba(0,255,102,0.15); color:var(--tactical-green); border-color:var(--tactical-green);">
+                🔊 PLAY PRIMARY BEACON: "WHITE"
+              </button>
+              <button type="button" class="btn-chip" onclick="playV2MorseBeacon('DO NOT FOLLOW THE BLUE PATH')" style="background:rgba(0,240,255,0.1); color:var(--cyber-cyan); border-color:var(--cyber-cyan);">
+                📻 PLAY SUB-CARRIER WARNING
+              </button>
+            </div>
+
+            <!-- Military Morse Code Chart -->
+            <div style="background:rgba(0,0,0,0.4); border:1px solid #1e293b; padding:10px; border-radius:4px; font-size:10.5px; color:#94a3b8; display:grid; grid-template-columns:repeat(6, 1fr); gap:4px; text-align:center;">
+              <div>A: .-</div><div>B: -...</div><div>C: -.-.</div><div>D: -..</div><div>E: .</div><div>F: ..-.</div>
+              <div>G: --.</div><div>H: ....</div><div>I: ..</div><div>J: .---</div><div>K: -.-</div><div>L: .-..</div>
+              <div>M: --</div><div>N: -.</div><div>O: ---</div><div>P: .--.</div><div>Q: --.-</div><div>R: .-.</div>
+              <div>S: ...</div><div>T: -</div><div>U: ..-</div><div>V: ...-</div><div>W: .--</div><div>X: -..-</div>
+              <div>Y: -.--</div><div>Z: --..</div>
             </div>
           </div>
+
           <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
             <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 12 QUESTION // MISSION OBJECTIVE ]</div>
             <div style="color:#fff; font-size:10px; margin-top:3px; line-height:1.5;">
@@ -2454,6 +2482,7 @@
           </div>
         `
       },
+      
       rollback: {
         title: "DOSSIER 09 // VERSION ROLLBACK (Git Commit History)",
         html: `
@@ -2750,8 +2779,141 @@
         bodyEl.innerHTML = doc.html;
         slate.classList.add('active');
         logTerm(`[OPENED DOSSIER]: ${doc.title}`, 'cyan');
+        if (key === 'audio') { setTimeout(initV2MorseOscilloscope, 100); }
         reportTelemetryAction(`Inspecting ${doc.title}`);
       }
+    }
+
+    
+    // Interactive Maze Folder Inspector for V2
+    function inspectV2MazeFolder(folder) {
+      sound.playBlip();
+      const box = document.getElementById('v2-maze-inspection-box');
+      if (!box) return;
+      if (folder === 'BLUE') {
+        box.innerHTML = `
+          <div style="color:var(--combat-red); font-weight:bold; font-size:12px;">⚠️ [HONEYPOT TRAP DETECTED]</div>
+          <p style="color:#fca5a5; margin-top:4px; line-height:1.5;">
+            Entering the BLUE directory triggers an automated network lockdown (+5 min penalty)! Dr. Aditi left a warning: <em>"DO NOT FOLLOW THE BLUE PATH"</em>.
+          </p>
+        `;
+      } else if (folder === 'RED') {
+        box.innerHTML = `
+          <div style="color:#f87171; font-weight:bold;">📁 /ROOT_MAZE/RED/</div>
+          <p style="color:#94a3b8; margin-top:4px;">Directory contains scrambled decoy logs: <code>corrupted_index_00.dat</code>. No valid fragments here.</p>
+        `;
+      } else if (folder === 'GREY') {
+        box.innerHTML = `
+          <div style="color:#94a3b8; font-weight:bold;">📁 /ROOT_MAZE/GREY/</div>
+          <p style="color:#cbd5e1; margin-top:4px;">Recovered Fragment 1: <strong style="color:var(--cyber-cyan);">"THE AI CAN"</strong></p>
+        `;
+      } else if (folder === 'WHITE') {
+        box.innerHTML = `
+          <div style="color:#ffffff; font-weight:bold;">📁 /ROOT_MAZE/WHITE/ (AUTHENTIC SANCTUARY)</div>
+          <p style="color:#cbd5e1; margin-top:4px; line-height:1.6;">
+            Recovered Fragment 2: <strong style="color:var(--cyber-cyan);">"MODIFY WHAT"</strong><br>
+            Recovered Fragment 3: <strong style="color:var(--cyber-cyan);">"YOU SEE"</strong><br>
+            <span style="color:var(--tactical-green); font-size:11px;">★ Assembled Master Truth: <strong>"THE AI CAN MODIFY WHAT YOU SEE"</strong></span>
+          </p>
+        `;
+      }
+    }
+
+    // Live V2 Morse Code Oscilloscope & Synthesizer
+    let v2MorseOscLoop = null;
+    let v2MorsePlaying = false;
+
+    function initV2MorseOscilloscope() {
+      const canvas = document.getElementById('canvas-v2-morse-live');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let phase = 0;
+
+      function draw() {
+        ctx.fillStyle = '#020617';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.strokeStyle = '#00ff66';
+        ctx.lineWidth = 2;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = '#00ff66';
+
+        ctx.beginPath();
+        const amp = v2MorsePlaying ? 28 : 3;
+        const freq = v2MorsePlaying ? 0.08 : 0.02;
+
+        for (let x = 0; x < canvas.width; x++) {
+          const y = (canvas.height / 2) + Math.sin(x * freq + phase) * amp;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        phase += 0.15;
+        v2MorseOscLoop = requestAnimationFrame(draw);
+      }
+
+      if (v2MorseOscLoop) cancelAnimationFrame(v2MorseOscLoop);
+      draw();
+    }
+
+    function playV2MorseBeacon(word) {
+      const morseMap = {
+        'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+        'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+        'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+        'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+        'Y': '-.--', 'Z': '--..'
+      };
+
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const actx = new AudioCtx();
+      let time = actx.currentTime + 0.1;
+      const dot = 0.08;
+      const dash = dot * 3;
+      const freq = word === 'WHITE' ? 740 : 620;
+
+      v2MorsePlaying = true;
+      initV2MorseOscilloscope();
+
+      const upper = word.toUpperCase();
+      for (let i = 0; i < upper.length; i++) {
+        const ch = upper[i];
+        if (ch === ' ') {
+          time += dot * 7;
+          continue;
+        }
+        const code = morseMap[ch];
+        if (!code) continue;
+
+        for (let j = 0; j < code.length; j++) {
+          const sym = code[j];
+          const dur = sym === '.' ? dot : dash;
+
+          const osc = actx.createOscillator();
+          const gain = actx.createGain();
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+
+          gain.gain.setValueAtTime(0.001, time);
+          gain.gain.linearRampToValueAtTime(0.2, time + 0.005);
+          gain.gain.setValueAtTime(0.2, time + dur - 0.005);
+          gain.gain.linearRampToValueAtTime(0.001, time + dur);
+
+          osc.connect(gain);
+          gain.connect(actx.destination);
+          osc.start(time);
+          osc.stop(time + dur);
+
+          time += dur + dot;
+        }
+        time += dot * 3;
+      }
+
+      const totalTime = (time - actx.currentTime) * 1000;
+      setTimeout(() => {
+        v2MorsePlaying = false;
+      }, totalTime);
     }
 
     function closeDossier() {
@@ -3290,7 +3452,7 @@
           <strong>CLUE:</strong> ${stageInfo.guidance}<br>
           <span style="color:var(--cyber-cyan); font-size:9.5px;">&gt;&gt; Purge ADI: <code>decrypt [CODE]</code> in Tactical Shell</span>
         `);
-      } else if (coreState === "FREED" || currentStage > 12) {
+      } else if (coreState === "FREED" || currentStage > 15) {
         setEthanDialogue("<strong style='color:var(--tactical-green);'>🏆 MISSION COMPLETE:</strong> ADI is eradicated, the workstation is restored, and Dr. Aditi is safe! Outstanding forensic work, Operators!");
       } else {
         setEthanDialogue(`
