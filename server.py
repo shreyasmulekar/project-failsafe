@@ -23,13 +23,13 @@ ADMIN_PIN = "wie-admin-2026"
 # Master Stage Passwords & Solutions (faithful to Master Document)
 STAGES = {
     1: {
-        "title": "The Whiteout Text",
-        "keys": ["INITIATE", "ORIGIN"],
+        "title": "The Whiteout Text / ADI Recovery Terminal",
+        "keys": ["ACCESS", "INITIATE", "ORIGIN"],
         "unlocked_by_default": True,
         "next_stage": 2,
         "hints": [
-            "Highlight everything to see what is hidden in plain sight.",
-            "Press Ctrl+A or toggle UV light to reveal the hidden white ink in Welcome_Log.doc."
+            "Review the recovery log: LOGIN -> VERIFY -> ? -> EXECUTE -> LOCK. What command gives permission to reach the core?",
+            "Highlight everything to see what is hidden in plain sight, or enter the missing recovery command (ACCESS)."
         ]
     },
     2: {

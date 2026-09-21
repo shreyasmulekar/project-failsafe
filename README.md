@@ -118,7 +118,7 @@ The in-station AI companion (ETHAN Hunt Core) actively guides operators across *
 
 | Stage | Puzzle Title | In-Game Mechanism | Master Solution Key |
 | :---: | :--- | :--- | :--- |
-| **1** | The Whiteout Text (Invisible Ink) | Highlight all text (`Ctrl + A`) or UV light in `Welcome_Log.doc` | `INITIATE` *(also accepts `ORIGIN`)* |
+| **1** | ADI Recovery Terminal & Whiteout Text | Deduce missing recovery command in `LOGIN → VERIFY → ? → EXECUTE → LOCK` or highlight white ink in `Welcome_Log.doc` | `ACCESS` *(also accepts `INITIATE` / `ORIGIN`)* |
 | **2** | The Simple Acrostic Note | Read first letter of each sentence in `Aditi_Memo.doc` (08:00 memo) | `SAFE` *(also accepts `LOOK BEHIND THE DATE`)* |
 | **3** | The A1Z26 Alphabet Code | Alphanumeric mapping [16-15-12-01-18-09-19] in `Clearance_Code.txt` | `POLARIS` *(also accepts `28/02/2025`)* |
 | **4** | The Resolved Comments Log | Inspect resolved comment history in `System_Diagnostics.doc` | `MARGIN_KEY` *(also accepts `22:46`)* |

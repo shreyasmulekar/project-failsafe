@@ -1246,6 +1246,7 @@
 
                 <!-- Forensic Sector Selection Chips (11 Stages) -->
         <div class="sectors-chip-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); gap:4px;">
+          <button id="chip-recovery" class="sector-chip" onclick="window.open('adi_recovery_terminal.html', '_blank', 'width=920,height=780')" style="border-color: rgba(0,255,102,0.4); color: #00ff66;" title="Open ADI Recovery Terminal">💻 RECOVERY</button>
           <button id="chip-whiteout" class="sector-chip active" onclick="openDossier('whiteout')">01_WHITEOUT</button>
           <button id="chip-acrostic" class="sector-chip" onclick="openDossier('acrostic')">02_ACROSTIC</button>
           <button id="chip-clearance" class="sector-chip" onclick="openDossier('clearance')">03_A1Z26</button>
@@ -2801,16 +2802,16 @@
       setTimeout(() => {
         let matched = false;
 
-        // Stage 1: The Whiteout Text (INITIATE / ORIGIN)
-        if (clean === "INITIATE" || clean === "ORIGIN") {
+        // Stage 1: The Whiteout Text & ADI Recovery Terminal (ACCESS / INITIATE / ORIGIN)
+        if (clean === "ACCESS" || clean === "INITIATE" || clean === "ORIGIN") {
           matched = true;
           currentStage = 2;
           localStorage.setItem('failsafe_stage', '2');
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: WHITEOUT INK VERIFIED (INITIATE).`, "green");
-          reportTelemetryAction("Solved Stage 01 (The Whiteout Text) - Promoted to Stage 02");
+          logTerm(`[CHECKSUM ACCREDITED]: RECOVERY COMMAND ACCEPTED (${clean}). ACCESS GRANTED.`, "green");
+          reportTelemetryAction("Solved Stage 01 (Recovery Terminal / Whiteout Text) - Promoted to Stage 02");
           updateMissionBanner(2, "Inspect <strong>Aditi_Memo.doc</strong> in 02_ACROSTIC. Read between the lines—or rather, read the start of every sentence.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SAFE</code> below.");
-          setEthanDialogue("<strong>STAGE 01 SOLVED!</strong><br>Whiteout ink verified! Now examine Aditi_Memo.doc in 02_ACROSTIC. Read the first letter of each sentence!");
+          setEthanDialogue("<strong>STAGE 01 SOLVED!</strong><br>Recovery command / whiteout verified! Now examine Aditi_Memo.doc in 02_ACROSTIC. Read the first letter of each sentence!");
 
         // Stage 2: The Simple Acrostic Note (SAFE / LOOK BEHIND THE DATE)
         } else if (clean === "SAFE" || clean === "LOOKBEHINDTHEDATE") {
@@ -2963,10 +2964,10 @@
       1: {
         chipId: "chip-whiteout",
         dossierId: "whiteout",
-        title: "STAGE 01 // THE WHITEOUT TEXT",
-        guidance: "Examine <strong>Welcome_Log.doc</strong> in sector <strong>01_WHITEOUT</strong>. Highlight all text (Ctrl + A) or toggle UV light to reveal the hidden white ink!",
-        mechanism: "Whiteout Text & Contrast Selection",
-        targetText: "01_WHITEOUT: Welcome_Log.doc"
+        title: "STAGE 01 // ADI RECOVERY TERMINAL & WHITEOUT TEXT",
+        guidance: "Launch <strong>💻 RECOVERY</strong> terminal or examine <strong>Welcome_Log.doc</strong> in <strong>01_WHITEOUT</strong>. Trace the missing command in ADI's recovery sequence (<code>LOGIN → VERIFY → ? → EXECUTE → LOCK</code>) or highlight the whiteout text in the log!",
+        mechanism: "Command Sequence Deduction / Whiteout Contrast",
+        targetText: "RECOVERY_TERM / 01_WHITEOUT: Welcome_Log.doc"
       },
       2: {
         chipId: "chip-acrostic",

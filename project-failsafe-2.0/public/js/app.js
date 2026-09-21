@@ -376,7 +376,7 @@ async function verifyPasswordWithServerOrLocal(stageId, password) {
   // Standalone offline verification:
   const cleanInput = password.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
   const validKeys = {
-    1: ["INITIATE", "ORIGIN"],
+    1: ["ACCESS", "INITIATE", "ORIGIN"],
     2: ["SAFE", "LOOKBEHINDTHEDATE", "LOOK BEHIND THE DATE"],
     3: ["POLARIS", "28022025", "02292025", "20250229", "29022025", "FEB292025"],
     4: ["MARGIN_KEY", "MARGINKEY", "2246", "22:46"],
@@ -827,3 +827,100 @@ function triggerIncomingBroadcastAlert(msg) {
     setTimeout(() => { el.style.display = "none"; }, 8000);
   }
 }
+
+// ==========================================================================
+// Anti-Cheat Window Focus Loss & Proctor Lockdown Engine
+// ==========================================================================
+let proctorLockActive = false;
+let lockArmed = false;
+let violationCount = 0;
+
+// Grace period on initial launch so window positioning doesn't falsely trigger
+setTimeout(() => {
+  lockArmed = true;
+}, 3500);
+
+function triggerProctorLockdown() {
+  if (!lockArmed || proctorLockActive) return;
+  proctorLockActive = true;
+  violationCount++;
+  if (window.sounds && window.sounds.playAlarmSiren) {
+    window.sounds.playAlarmSiren();
+  }
+
+  const overlay = document.getElementById('proctor-lockdown-overlay');
+  const countEl = document.getElementById('proctor-violation-count');
+  const timeEl = document.getElementById('proctor-violation-time');
+  const inputEl = document.getElementById('proctor-pin-input');
+  const errEl = document.getElementById('proctor-error-msg');
+
+  if (countEl) countEl.innerText = violationCount;
+  if (timeEl) timeEl.innerText = new Date().toISOString().substring(11, 19) + 'Z';
+  if (errEl) errEl.innerText = '';
+  if (inputEl) {
+    inputEl.value = '';
+    setTimeout(() => inputEl.focus(), 250);
+  }
+  if (overlay) overlay.style.display = 'flex';
+
+  printCliOutput(`🚨 [SECURITY BREACH]: Workstation focus lost to external program. Tamper Incident #${violationCount} logged.`, true);
+}
+
+// Detect when user clicks outside, Alt-Tabs, or switches applications
+window.addEventListener('blur', () => {
+  triggerProctorLockdown();
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    triggerProctorLockdown();
+  }
+});
+
+function verifyProctorOverride() {
+  const inputEl = document.getElementById('proctor-pin-input');
+  const errEl = document.getElementById('proctor-error-msg');
+  const pin = inputEl ? inputEl.value.trim() : '';
+
+  if (pin === "wie-admin-2026") {
+    if (window.sounds && window.sounds.playSuccess) {
+      window.sounds.playSuccess();
+    }
+    proctorLockActive = false;
+    lockArmed = false; // Temporarily disarm
+
+    const overlay = document.getElementById('proctor-lockdown-overlay');
+    if (overlay) overlay.style.display = 'none';
+
+    printCliOutput(`🏆 [PROCTOR OVERRIDE]: Workstation unlocked by Organizer at ${new Date().toISOString().substring(11, 19)}Z.`);
+
+    // Re-arm after 2.5 seconds so focus returning to the window does not re-trigger
+    setTimeout(() => {
+      lockArmed = true;
+    }, 2500);
+  } else {
+    if (window.sounds && window.sounds.playError) {
+      window.sounds.playError();
+    }
+    if (errEl) {
+      errEl.innerText = "ACCESS DENIED: INVALID ORGANIZER PIN.";
+    }
+    if (inputEl) {
+      inputEl.classList.add('pin-shake');
+      setTimeout(() => inputEl.classList.remove('pin-shake'), 500);
+    }
+  }
+}
+
+// Allow pressing Enter in the PIN input
+document.addEventListener('DOMContentLoaded', () => {
+  const pinInput = document.getElementById('proctor-pin-input');
+  if (pinInput) {
+    pinInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        verifyProctorOverride();
+      }
+    });
+  }
+});
+

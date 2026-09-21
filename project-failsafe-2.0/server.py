@@ -23,13 +23,13 @@ ADMIN_PIN = "wie-admin-2026"
 # Master Stage Passwords & Solutions (faithful to Master Document)
 STAGES = {
     1: {
-        "title": "The Whiteout Text",
-        "keys": ["INITIATE", "ORIGIN"],
+        "title": "The Whiteout Text / ADI Recovery Terminal",
+        "keys": ["ACCESS", "INITIATE", "ORIGIN"],
         "unlocked_by_default": True,
         "next_stage": 2,
         "hints": [
-            "Highlight everything to see what is hidden in plain sight.",
-            "Press Ctrl+A or toggle UV light to reveal the hidden white ink in Welcome_Log.doc."
+            "Review the recovery log: LOGIN -> VERIFY -> ? -> EXECUTE -> LOCK. What command gives permission to reach the core?",
+            "Highlight everything to see what is hidden in plain sight, or enter the missing recovery command (ACCESS)."
         ]
     },
     2: {
@@ -201,9 +201,11 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     self.wfile.write(f.read())
                 return
 
-        if path in ["/", "/index.html", "/aditi_os_widget.html"]:
-            target_name = "index.html" if path == "/" else os.path.basename(path)
+        if path in ["/", "/aditi_os_widget.html", "/index.html"]:
+            target_name = "aditi_os_widget.html" if path == "/" else os.path.basename(path)
             root_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), target_name)
+            if not os.path.exists(root_file) and path == "/":
+                root_file = os.path.join(PUBLIC_DIR, "index.html")
             if os.path.exists(root_file):
                 self.send_response(200)
                 self.send_header("Content-Type", "text/html; charset=utf-8")

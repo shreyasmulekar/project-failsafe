@@ -1584,6 +1584,12 @@
       </div>
 
       <div class="icon-matrix">
+        <div class="tactical-card" id="card-recovery-term" onclick="window.open('adi_recovery_terminal.html', '_blank', 'width=920,height=780')" onmouseenter="tacticalSound.playHoverBlip()" style="border-color: rgba(0,255,102,0.4);">
+          <span class="card-tag" style="color: #00ff66; border-color: #00ff66;">RECOVERY</span>
+          <div class="card-symbol" style="color: #00ff66;">💻</div>
+          <div class="card-title" style="color: #00ff66;">ADI_Recovery.term</div>
+        </div>
+
         <div class="tactical-card" id="card-whiteout" onclick="openModal('modal-whiteout')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">GATE 01</span>
           <div class="card-symbol">📄</div>
@@ -3818,10 +3824,10 @@
     const STAGE_NAVIGATION_DATA = {
   1: {
     cardId: "card-whiteout",
-    title: "STAGE 01 // THE WHITEOUT TEXT",
-    guidance: "Examine <strong>Welcome_Log.doc</strong>. Dr. Aditi concealed white-on-white text in the document. Highlight everything (<code>Ctrl + A</code>) or toggle UV light to reveal the secret ink!",
-    mechanism: "Whiteout Text & Contrast Selection",
-    targetText: "Welcome_Log.doc"
+    title: "STAGE 01 // ADI RECOVERY TERMINAL & WHITEOUT TEXT",
+    guidance: "Examine <strong>Welcome_Log.doc</strong> or launch <strong>ADI_Recovery.term</strong>. Trace the missing command in ADI's recovery sequence (<code>LOGIN → VERIFY → ? → EXECUTE → LOCK</code>) or highlight the whiteout text in the log!",
+    mechanism: "Command Sequence Deduction / Whiteout Contrast",
+    targetText: "ADI_Recovery.term / Welcome_Log.doc"
   },
   2: {
     cardId: "card-acrostic",
@@ -4256,14 +4262,14 @@
       setTimeout(() => {
         let matched = false;
 
-        // Stage 1: The Whiteout Text (INITIATE / ORIGIN)
-        if (clean === "INITIATE" || clean === "ORIGIN") {
+        // Stage 1: The Whiteout Text & ADI Recovery Terminal (ACCESS / INITIATE / ORIGIN)
+        if (clean === "ACCESS" || clean === "INITIATE" || clean === "ORIGIN") {
           matched = true;
           currentStage = 2;
           localStorage.setItem('failsafe_stage', '2');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: WHITEOUT INK VERIFIED (INITIATE).`, "green");
-          reportTelemetryAction("Solved Stage 01 (The Whiteout Text) - Promoted to Stage 02");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: RECOVERY COMMAND ACCREDITED (${clean}). ACCESS GRANTED.`, "green");
+          reportTelemetryAction("Solved Stage 01 (Recovery Terminal / Whiteout Text) - Promoted to Stage 02");
           updateMissionBanner(2, "Inspect <strong>Aditi_Memo.doc</strong>. Read between the lines—or rather, read the start of every sentence.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SAFE</code> below.");
         
         // Stage 2: The Simple Acrostic Note (SAFE / LOOK BEHIND THE DATE)

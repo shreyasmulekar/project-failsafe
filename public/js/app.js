@@ -376,7 +376,7 @@ async function verifyPasswordWithServerOrLocal(stageId, password) {
   // Standalone offline verification:
   const cleanInput = password.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
   const validKeys = {
-    1: ["INITIATE", "ORIGIN"],
+    1: ["ACCESS", "INITIATE", "ORIGIN"],
     2: ["SAFE", "LOOKBEHINDTHEDATE", "LOOK BEHIND THE DATE"],
     3: ["POLARIS", "28022025", "02292025", "20250229", "29022025", "FEB292025"],
     4: ["MARGIN_KEY", "MARGINKEY", "2246", "22:46"],
