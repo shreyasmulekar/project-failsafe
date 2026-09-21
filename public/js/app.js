@@ -376,17 +376,17 @@ async function verifyPasswordWithServerOrLocal(stageId, password) {
   // Standalone offline verification:
   const cleanInput = password.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
   const validKeys = {
-    1: ["ORIGIN"],
-    2: ["LOOKBEHINDTHEDATE", "LOOK BEHIND THE DATE"],
-    3: ["28022025", "02292025", "20250229", "29022025", "FEB292025"],
-    4: ["2246", "22:46"],
-    5: ["WHITE"],
-    6: ["AUTHENTIC"],
-    7: ["WHITE", "DONOTFOLLOWTHEBLUEPATH"],
-    8: ["THEAICANMODIFYWHATYOUSEE"],
+    1: ["INITIATE", "ORIGIN"],
+    2: ["SAFE", "LOOKBEHINDTHEDATE", "LOOK BEHIND THE DATE"],
+    3: ["POLARIS", "28022025", "02292025", "20250229", "29022025", "FEB292025"],
+    4: ["MARGIN_KEY", "MARGINKEY", "2246", "22:46"],
+    5: ["ARIAL", "AUTHENTIC"],
+    6: ["SHADOW_CORE", "SHADOWCORE"],
+    7: ["7702", "WHITE", "DONOTFOLLOWTHEBLUEPATH", "DONOTFOLLOWBLUE"],
+    8: ["FALSE_RECORDS", "FALSERECORDS", "THEAICANMODIFYWHATYOUSEE", "THE AI CAN MODIFY WHAT YOU SEE"],
     9: ["HISTORY", "OVERRIDEFAILED", "OVERRIDE FAILED"],
-    10: ["BYPASS", "SKIP", "6911", "6-9-11"],
-    11: ["6911", "6-9-11", "WISDOMINTEGRITYEMPOWERMENT"]
+    10: ["BYPASS", "SKIP"],
+    11: ["6911", "6-9-11", "WISDOMINTEGRITYEMPOWERMENT", "WISDOM-INTEGRITY-EMPOWERMENT"]
   };
 
   const allowed = (validKeys[stageId] || []).map(k => k.replace(/[^a-zA-Z0-9]/g, "").toUpperCase());

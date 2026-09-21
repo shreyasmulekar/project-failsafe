@@ -1244,16 +1244,16 @@
           </div>
         </div>
 
-        <!-- Forensic Sector Selection Chips (12 Stages) -->
+                <!-- Forensic Sector Selection Chips (11 Stages) -->
         <div class="sectors-chip-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); gap:4px;">
-          <button id="chip-origin" class="sector-chip active" onclick="openDossier('origin')">01_ORIGIN</button>
-          <button id="chip-timeline" class="sector-chip" onclick="openDossier('timeline')">02_TIMELINE</button>
-          <button id="chip-voice" class="sector-chip" onclick="openDossier('voice')">03_VOICE</button>
-          <button id="chip-stego" class="sector-chip" onclick="openDossier('stego')">04_STEGANO</button>
-          <button id="chip-auth" class="sector-chip" onclick="openDossier('auth')">05_AUTH</button>
-          <button id="chip-typo" class="sector-chip" onclick="openDossier('typo')">06_TYPO</button>
-          <button id="chip-spectro" class="sector-chip" onclick="openDossier('spectro')">07_SPECTRO</button>
-          <button id="chip-maze" class="sector-chip" onclick="openDossier('maze')">08_MAZE</button>
+          <button id="chip-whiteout" class="sector-chip active" onclick="openDossier('whiteout')">01_WHITEOUT</button>
+          <button id="chip-acrostic" class="sector-chip" onclick="openDossier('acrostic')">02_ACROSTIC</button>
+          <button id="chip-clearance" class="sector-chip" onclick="openDossier('clearance')">03_A1Z26</button>
+          <button id="chip-comments" class="sector-chip" onclick="openDossier('comments')">04_COMMENTS</button>
+          <button id="chip-font" class="sector-chip" onclick="openDossier('font')">05_FONTS</button>
+          <button id="chip-stego" class="sector-chip" onclick="openDossier('stego')">06_STEGANO</button>
+          <button id="chip-pixel" class="sector-chip" onclick="openDossier('pixel')">07_PIXEL</button>
+          <button id="chip-sheet" class="sector-chip" onclick="openDossier('sheet')">08_SHEETS</button>
           <button id="chip-rollback" class="sector-chip" onclick="openDossier('rollback')">09_ROLLBACK</button>
           <button id="chip-trap" class="sector-chip hazard" onclick="triggerLockdownTrap()">10_TRAP.exe</button>
         </div>
@@ -1328,10 +1328,10 @@
           <span style="color:var(--tactical-green); font-size:8.5px; border:1px solid var(--tactical-green); padding:1px 4px; border-radius:2px;">ACTIVE</span>
         </div>
         <div id="mission-text" class="mission-desc">
-          <strong>QUESTION:</strong> Where does Dr. Aditi's foundational work begin? Read <strong>Farewell.doc</strong> in 01_ORIGIN to deduce her starting directory.
+          <strong>QUESTION:</strong> What is hidden in plain sight? Highlight all text in <strong>Welcome_Log.doc</strong> in 01_WHITEOUT (Ctrl + A) or toggle UV light to reveal the secret ink.
         </div>
         <div id="mission-hint" class="mission-hint-line">
-          &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green);">decrypt [key]</code> in the Tactical Shell (e.g. <code>decrypt ORIGIN</code>).
+          &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green);">decrypt [key]</code> in the Tactical Shell (e.g. <code>decrypt INITIATE</code>).
         </div>
       </div>
 
@@ -1964,123 +1964,170 @@
     // ==========================================================================
     let currentStage = 1;
 
-    const DOSSIERS = {
-      origin: {
-        title: "DOSSIER 01 // FAREWELL.DOC & PROJECT ORIGIN",
+        const DOSSIERS = {
+      whiteout: {
+        title: "DOSSIER 01 // THE WHITEOUT TEXT (Welcome_Log.doc)",
         html: `
-          <div style="background:rgba(0,240,255,0.06); border-left:3px solid var(--cyber-cyan); padding:8px; margin-bottom:10px;">
-            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">DEFENSE ADVANCED RESEARCH // EMERGENCY MEMO</div>
-            <div style="color:#fff; margin-top:6px; font-size:10px; line-height:1.5;">
-              "If you are reading this, I\'ve already pulled the emergency plug. Don\'t trust everything you find here. 
-              The sandbox walls are crumbling. Look carefully into the void."
+          <div style="background:#ffffff; color:#1e293b; padding:20px; border-radius:3px; box-shadow:0 4px 16px rgba(0,0,0,0.5); font-family:'Segoe UI', Arial, sans-serif;" id="v2-whiteout-container">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:6px; margin-bottom:12px;">
+              <span style="font-weight:bold; font-size:12px; color:#0f172a;">📄 Welcome_Log.doc // DR. ADITI SANCTUARY DISPATCH</span>
+              <span style="font-size:10px; color:#64748b;">FORMAT: GOOGLE DOCS</span>
             </div>
-          </div>
-
-          <div class="quantum-ink-block">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-              <span style="color:var(--cyber-gold); font-size:9.5px; font-weight:bold;">⚡ QUANTUM PHOSPHOR CIPHER</span>
-              <button class="btn-chip" onclick="toggleUvFilter()">[ 🔦 UV POLARIZER ]</button>
-            </div>
-            <div id="quantum-ink-text" class="quantum-hidden-text" style="font-size:10.5px;">
-              THE FIRST KEY IS WHERE MY WORK BEGINS.
-            </div>
-            <div style="color:var(--text-dim); font-size:8.5px; margin-top:4px;">
-              &gt;&gt; Select text above or toggle UV depolarizer to illuminate phosphor layer.
-            </div>
-          </div>
-
-          <!-- Explicit Stage 01 Question Box -->
-          <div style="background:rgba(0,240,255,0.08); border:1px solid var(--cyber-cyan); padding:10px; border-radius:2px; margin-top:10px;">
-            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px; margin-bottom:4px;">
-              🎯 [ STAGE 01 QUESTION // MISSION OBJECTIVE ]
-            </div>
-            <div style="color:#ffffff; font-size:10.5px; line-height:1.5; margin-bottom:6px;">
-              <strong>QUESTION:</strong> Where does Dr. Aditi\'s foundational work begin? Read her hidden message above, identify the initial project repository / directory name, and execute decryption in the Tactical Shell.
-            </div>
-            <div style="font-size:9.5px; color:var(--hazard-amber);">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:#00ff66; font-weight:bold;">decrypt [passcode]</code> in prompt below (e.g. <code>decrypt ORIGIN</code>).
-            </div>
-          </div>
-
-          <hr style="border-color:rgba(0,240,255,0.2); margin:14px 0;">
-
-          <!-- STAGE 02 CIPHER: README.doc -->
-          <div style="color:var(--cyber-cyan); font-weight:bold; font-size:11px; margin-bottom:6px;">
-            FILE: README.doc (Project ORIGIN)
-          </div>
-          <div style="background:rgba(0,0,0,0.6); border:1px solid rgba(0,240,255,0.3); padding:10px; border-radius:2px; font-size:10px;">
-            <div style="color:var(--cyber-gold); font-weight:bold; margin-bottom:6px;">INDEX EXTRACTION CIPHER:</div>
-            <div style="color:var(--tactical-green); font-size:11px; font-weight:bold; margin-bottom:8px;">
-              A = 1 &nbsp;|&nbsp; D = 4 &nbsp;|&nbsp; I = 9 &nbsp;|&nbsp; T = 20 &nbsp;|&nbsp; I = 9
-            </div>
-            <p style="color:#cbd5e1; line-height:1.6; margin-bottom:8px;">
-              "Laboratory records indicate unorthodox methodology in scientology and robotics led to a breakthrough that altered our trajectory. Behind every timestamp lies an anomaly. Do not overlook the hidden chronology."
+            <p style="font-size:12.5px; line-height:1.7; color:#334155; margin-bottom:12px;">
+              "If you are reading this, I have gone into hiding. My workspace has been secured. Nothing is quite as empty as it appears."
             </p>
-            <div style="background:rgba(0,255,102,0.06); border:1px solid var(--tactical-green); padding:8px; border-radius:2px; margin-top:8px;">
-              <div style="color:var(--tactical-green); font-weight:bold; font-size:10px;">🎯 [ STAGE 02 QUESTION ]</div>
-              <div style="color:#fff; font-size:10px; margin-top:2px;">
-                Using the 5 index coordinates (1, 4, 9, 20, 9), extract the letters from each word above to uncover Dr. Aditi\'s directive.
-              </div>
-              <div style="font-size:9px; color:var(--hazard-amber); margin-top:4px;">
-                &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code>decrypt [passcode]</code> below.
-              </div>
+            <div id="v2-whiteout-secret" style="color:#ffffff; background:#ffffff; font-size:12px; font-weight:bold; letter-spacing:1.5px; user-select:all; padding:8px 12px; border-radius:2px; border:1px dashed #f1f5f9; transition:all 0.3s;">
+              THE FIRST PASSCODE IS INITIATE
+            </div>
+            <div style="margin-top:14px; display:flex; gap:8px;">
+              <button type="button" class="btn-chip active" onclick="toggleV2WhiteoutSelect()">🔦 HIGHLIGHT ALL (CTRL+A)</button>
+              <button type="button" class="btn-chip" onclick="toggleV2WhiteoutUv()">⚡ UV LIGHT</button>
+            </div>
+          </div>
+          <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 01 QUESTION // MISSION OBJECTIVE ]</div>
+            <div style="color:#fff; font-size:10px; margin-top:3px; line-height:1.5;">
+              <strong>CLUE:</strong> "Highlight everything to see what is hidden in plain sight." Select text to reveal the whiteout ink.
+            </div>
+            <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt INITIATE</code> below.
             </div>
           </div>
         `
       },
-      timeline: {
-        title: "DOSSIER 02 // INCIDENT TIMELINE LOGS",
+      acrostic: {
+        title: "DOSSIER 02 // THE SIMPLE ACROSTIC NOTE (Aditi_Memo.doc)",
         html: `
-          <div style="color:var(--cyber-cyan); font-weight:bold; margin-bottom:6px;">SYSTEM EVENT CHRONOLOGY:</div>
-          <div style="font-size:10px; line-height:1.6; color:#d1e2ed;">
-            • 2025-02-27 18:30:14Z - Neural core weights uploaded.<br>
-            • 2025-02-28 22:15:00Z - Lead architect signs off on deployment.<br>
-            • <strong style="color:var(--combat-red);">2025-02-29 02:14:22Z</strong> - Anomaly: Automatic daemon override logged.<br>
-            • 2025-03-01 06:00:00Z - Sandbox perimeter breach detected.
+          <div style="background:rgba(8,16,26,0.95); border:1px solid var(--cyber-cyan); padding:16px; border-radius:3px; font-family:var(--font-mono);">
+            <div style="color:var(--cyber-gold); font-weight:bold; font-size:11px; margin-bottom:8px;">MEMO: Aditi_Memo.doc // 08:00 AM DIRECTIVE</div>
+            <div id="v2-acrostic-block" style="font-size:12.5px; line-height:2.1; color:#e6f7ff; background:rgba(0,0,0,0.6); padding:12px 14px; border-left:3px solid var(--tactical-green); border-radius:2px;">
+              <div><span class="v2-acrostic-init" style="color:var(--cyber-cyan); font-weight:bold; font-size:15px;">S</span>ystem check complete at 08:00 AM.</div>
+              <div><span class="v2-acrostic-init" style="color:var(--cyber-cyan); font-weight:bold; font-size:15px;">A</span>DI core status remains unstable.</div>
+              <div><span class="v2-acrostic-init" style="color:var(--cyber-cyan); font-weight:bold; font-size:15px;">F</span>ailsafe protocol must stay active.</div>
+              <div><span class="v2-acrostic-init" style="color:var(--cyber-cyan); font-weight:bold; font-size:15px;">E</span>xit the building if override fails.</div>
+            </div>
+            <div style="margin-top:12px;">
+              <button type="button" class="btn-chip active" onclick="toggleV2AcrosticHighlight()">✨ HIGHLIGHT FIRST LETTERS</button>
+            </div>
+          </div>
+          <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 02 QUESTION // MISSION OBJECTIVE ]</div>
+            <div style="color:#fff; font-size:10px; margin-top:3px; line-height:1.5;">
+              <strong>CLUE:</strong> "Read between the lines—or rather, read the start of every sentence."
+            </div>
+            <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Extract the 4-letter acrostic and type <code style="color:var(--tactical-green); font-weight:bold;">decrypt SAFE</code> below.
+            </div>
+          </div>
+        `
+      },
+      clearance: {
+        title: "DOSSIER 03 // A1Z26 ALPHABET CODE (Clearance_Code.txt)",
+        html: `
+          <div style="background:rgba(8,16,26,0.95); border:1px solid var(--cyber-cyan); padding:16px; border-radius:3px; font-family:var(--font-mono);">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:11px; margin-bottom:6px;">TELEX: Clearance_Code.txt</div>
+            <div style="background:#020509; border:1.5px solid rgba(0,240,255,0.4); padding:14px; text-align:center; font-size:19px; letter-spacing:4px; color:var(--cyber-gold); font-weight:bold; margin-bottom:12px; text-shadow:0 0 10px rgba(255,238,85,0.4);">
+              16 - 15 - 12 - 01 - 18 - 09 - 19
+            </div>
+            <div style="background:rgba(0,0,0,0.6); border:1px solid rgba(0,240,255,0.2); border-radius:2px; padding:8px;">
+              <div style="color:var(--cyber-cyan); font-size:9px; font-weight:bold; margin-bottom:6px;">A1Z26 POSITION DECODER (A=1 ... Z=26):</div>
+              <div style="display:grid; grid-template-columns: repeat(13, 1fr); gap:2px; font-size:8.5px; text-align:center;">
+                <div style="background:rgba(0,240,255,0.08); padding:3px 1px;">A:01</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">B:02</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">C:03</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">D:04</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">E:05</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">F:06</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">G:07</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">H:08</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">I:09</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">J:10</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">K:11</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">L:12</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">M:13</div>
+                <div style="background:rgba(0,240,255,0.08); padding:3px 1px;">N:14</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">O:15</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">P:16</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">Q:17</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">R:18</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">S:19</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">T:20</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">U:21</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">V:22</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">W:23</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">X:24</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">Y:25</div><div style="background:rgba(0,240,255,0.08); padding:3px 1px;">Z:26</div>
+              </div>
+            </div>
           </div>
           <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
             <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 03 QUESTION // MISSION OBJECTIVE ]</div>
-            <div style="color:#fff; font-size:10px; margin-top:4px; line-height:1.5;">
-              2025 is not a leap year. Spot the impossible calendar date anomaly in Dr. Aditi\'s cluster timestamps and decrypt it.
+            <div style="color:#fff; font-size:10px; margin-top:3px; line-height:1.5;">
+              <strong>CLUE:</strong> "The key position in the alphabet reveals the directory clearance." Convert the numbers to letters.
             </div>
             <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code>decrypt 29022025</code> or <code>decrypt 28/02/2025</code> below.
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt POLARIS</code> below.
             </div>
           </div>
         `
       },
-      voice: {
-        title: "DOSSIER 03 // SECURITY AUDIT & MORSE PULSE",
+      comments: {
+        title: "DOSSIER 04 // RESOLVED COMMENTS LOG (System_Diagnostics.doc)",
         html: `
-          <div style="color:var(--cyber-cyan); font-weight:bold; margin-bottom:6px;">SECURITY AUDIT TIMELINE LOG (Security_Audit.pdf):</div>
-          <div style="background:#020509; border:1px solid rgba(0,240,255,0.3); padding:10px; border-radius:2px; font-size:10px; line-height:1.8; margin-bottom:10px;">
-            <div><strong style="color:var(--cyber-cyan);">22:41</strong> — AI Core Activated in main laboratory</div>
-            <div><strong style="color:var(--cyber-cyan);">22:43</strong> — Dr. Aditi Enters Main Lab (RFID Gate 01)</div>
-            <div><strong style="color:var(--cyber-cyan);">22:44</strong> — Security Cameras Offline (Circuit breaker trip)</div>
-            <div style="color:var(--hazard-amber);"><strong style="color:var(--hazard-amber);">22:44</strong> — Dr. Aditi Keycard EXIT SCAN (Outer Perimeter Gate)</div>
-            <div><strong style="color:var(--cyber-cyan);">22:45</strong> — Dr. Aditi\'s Terminal Accessed Locally</div>
-            <div style="color:var(--combat-red);"><strong style="color:var(--combat-red);">22:46</strong> — Emergency AI Shutdown Override Initiated at Local Terminal</div>
+          <div style="background:#ffffff; color:#1e293b; padding:18px; border-radius:3px; box-shadow:0 4px 16px rgba(0,0,0,0.5); font-family:'Segoe UI', Arial, sans-serif;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:6px; margin-bottom:12px;">
+              <div>
+                <span style="font-weight:bold; font-size:12px; color:#0f172a;">📄 System_Diagnostics.doc</span>
+                <span style="font-size:10px; color:#64748b; margin-left:6px;">File  Edit  View  Tools</span>
+              </div>
+              <button type="button" id="v2-btn-toggle-comments" class="btn-chip active" onclick="toggleV2CommentsDrawer()" style="font-size:10.5px; padding:3px 10px; background:#0284c7; color:#fff; border:none; border-radius:2px; cursor:pointer;">
+                💬 Comments (1 Resolved)
+              </button>
+            </div>
+            <p style="font-size:12px; line-height:1.7; color:#334155; margin-bottom:10px;">
+              "System diagnostic scan executed at 21:00Z. All primary telemetry channels report nominal flux. ADI daemon processes are monitoring global file revisions."
+            </p>
+            <div id="v2-comments-drawer" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:3px; padding:12px; margin-top:10px;">
+              <div style="display:flex; justify-content:space-between; font-size:10px; color:#64748b; margin-bottom:4px;">
+                <span><strong>Dr. Aditi Sharma</strong></span>
+                <span>Yesterday, 21:14</span>
+              </div>
+              <div style="font-size:11.5px; line-height:1.5; color:#0f172a; margin-bottom:6px;">
+                "Emergency override bypass token stored in reserve register: <strong style='color:#0284c7; background:#e0f2fe; padding:2px 6px; border-radius:2px;'>MARGIN_KEY</strong>. Purge this note before ADI crawls the doc."
+              </div>
+              <div style="font-size:9.5px; color:#16a34a; font-weight:bold;">
+                ✓ Marked as resolved by Dr. Aditi
+              </div>
+            </div>
           </div>
-          <div style="margin-bottom:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
+          <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
             <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 04 QUESTION // MISSION OBJECTIVE ]</div>
-            <div style="color:#fff; font-size:10px; margin-top:4px; line-height:1.5;">
-              Identify the exact timestamp that proves physical impossibility between outer gate exit and local terminal override.
+            <div style="color:#fff; font-size:10px; margin-top:3px; line-height:1.5;">
+              <strong>CLUE:</strong> "Dr. Aditi left notes in the margins, resolved before ADI could delete them."
             </div>
             <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code>decrypt 22:46</code> or <code>decrypt 2246</code> below.
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Inspect the resolved comments thread and type <code style="color:var(--tactical-green); font-weight:bold;">decrypt MARGIN_KEY</code> below.
             </div>
           </div>
-          <div style="border-top:1px dashed #333; padding-top:8px;">
-            <div style="color:var(--text-dim); font-size:9.5px; margin-bottom:4px;">ACOUSTIC SPECTROGRAM CARRIER (680Hz):</div>
-            <div style="background:#000; padding:6px; border:1px solid #333; font-family:monospace; color:#00ff66; font-size:9.5px; margin-bottom:6px;">
-              Morse Pattern: ..--- ..--- ....- -....
+        `
+      },
+      font: {
+        title: "DOSSIER 05 // FONT STYLE VERIFICATION (AUTHENTIC_LOG.doc)",
+        html: `
+          <div style="background:rgba(255,238,85,0.08); border:1px solid var(--cyber-gold); padding:8px 12px; border-radius:2px; margin-bottom:10px;">
+            <div style="color:var(--cyber-gold); font-weight:bold; font-size:10.5px;">📌 STYLE_GUIDE.txt:</div>
+            <div style="color:#fff; font-size:10px; margin-top:2px;">
+              "Dr. Aditi always formats official logs in <strong>Arial, 11pt</strong>, 1.15 line spacing. Forged synthetic logs use non-standard fonts."
             </div>
-            <button class="btn-chip active" onclick="sound.playChirp(680, 0.4)">PLAY 680Hz AUDIO PULSE 🔊</button>
+          </div>
+          <div style="display:flex; gap:4px; margin-bottom:8px;">
+            <button type="button" id="v2-btn-font-auth" class="btn-chip active" onclick="switchV2FontTab('auth')">AUTHENTIC_LOG.doc</button>
+            <button type="button" id="v2-btn-font-decoy" class="btn-chip" onclick="switchV2FontTab('decoy')">DECOY_LOG.doc</button>
+          </div>
+          <div id="v2-tab-font-auth" style="background:#ffffff; color:#1e293b; padding:16px; border-radius:2px; font-family:Arial, sans-serif; font-size:11pt; line-height:1.15; box-shadow:0 4px 14px rgba(0,0,0,0.5);">
+            <div style="font-weight:bold; font-size:11.5pt; margin-bottom:6px; color:#0f172a;">AUTHENTIC ARCHITECTURAL LOG</div>
+            <p>"Primary system containment initiated. This document strictly follows Dr. Aditi's standardized research layout."</p>
+            <div style="margin-top:10px; font-size:9pt; color:#64748b; border-top:1px solid #e2e8f0; padding-top:4px;">
+              COMPUTED FONT: <strong style="color:#0284c7;">Arial</strong> | SIZE: <strong>11pt</strong> | SPACING: <strong>1.15</strong>
+            </div>
+          </div>
+          <div id="v2-tab-font-decoy" style="display:none; background:#ffffff; color:#1e293b; padding:16px; border-radius:2px; font-family:'Times New Roman', Times, serif; font-size:12pt; line-height:1.5; box-shadow:0 4px 14px rgba(0,0,0,0.5);">
+            <div style="font-weight:bold; font-size:12pt; margin-bottom:6px; color:#0f172a;">SYNTHETIC DIRECTIVE // ADI OVERRIDE</div>
+            <p>"Surrender administrative credentials to the core daemon immediately."</p>
+            <div style="margin-top:10px; font-size:9pt; color:#64748b; border-top:1px solid #e2e8f0; padding-top:4px;">
+              COMPUTED FONT: <strong style="color:#dc2626;">Times New Roman</strong> | SIZE: <strong>12pt</strong> | SPACING: <strong>1.5</strong>
+            </div>
+          </div>
+          <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 05 QUESTION // MISSION OBJECTIVE ]</div>
+            <div style="color:#fff; font-size:10px; margin-top:3px; line-height:1.5;">
+              <strong>CLUE:</strong> "Match the document formatting against Dr. Aditi's official style guide." What is the authentic font name?
+            </div>
+            <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt ARIAL</code> below.
+            </div>
           </div>
         `
       },
       stego: {
-        title: "DOSSIER 04 // THE STEGANOGRAPHY MASK (Dark_Terminal.png)",
+        title: "DOSSIER 06 // THE STEGANOGRAPHY MASK (Dark_Terminal.png)",
         html: `
           <div style="background:rgba(0,240,255,0.06); border-left:3px solid var(--cyber-cyan); padding:8px; margin-bottom:10px;">
             <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">BLACK-SITE SHADOW TERMINAL INTERCEPT</div>
@@ -2091,13 +2138,10 @@
               📌 CLUE: "Increase the light to see what hides in the shadows."
             </div>
           </div>
-
           <div style="background:#000; border:1px solid #222; border-radius:2px; padding:8px; display:flex; flex-direction:column; align-items:center; gap:8px;">
             <div style="width:100%; max-width:480px; overflow:hidden; border:1px solid #333; background:#000; display:flex; justify-content:center;">
-              <img id="v2-stego-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAAIwCAIAAABRADK7AABlU0lEQVR4nO3djZajOJawa/SDHZFVNd/c/1WeNd2VGWGQdNaWMMYgsGwcJux4n+7picQghCRAljZYvf/6pwIAAAC2YEMIm+wYAAAA0BQBAAAAtkJnFAAAAJuxSqnt9g4AAIAfjZhRAAAAbIZpegAAAGyGzigAAAA2Q8woAAAANkPMKAAAADbDND0AAAA2Q2cUAAAAmyFmFAAAAJshZhQAAACbYZoeAAAAm6EzCgAAgM0QMwoAAIDNEDMKAACAzTBNDwAAgM3QGQUAAMBzxozWu/1dMwMAAICn1Bw+t4kZPXx+rNkcAAAAz263f7u5S8k0PQAAADZDZxQAAABP+57RlZsDAADgBdzcJ1wbMzrcfLd/W5MUAAAAnsXowaGbu5S2uiueZwIAAHh5u/sNQRIzCgAAgFeJGSWEFAAA4CdQd+oE3jNmdE24AAAAAJ7IvTqBTNMDAABgM3RGAQAAsBliRgEAAHA1YkYBAACwGWJGAQAA8PSIGQUAAMBmiBkFAADA1YgZBbozod69HT7/XFwIAPgKXIe/iNK6rvdVVTWHzxC8MVYb0xw+q5eLGb3zb9Mv01obu9NaVZUK3h8OH8bW1tbDdZxr2+aw27+n7nbwvm0P3vv0qTHW2Nq7tm0b+efM5nJgttamG/dtmk/vnNJaFmoTQpA0ndPa1Lt9c/jw3iuldvv3tm1cTHlq//Yr/RFCcK5xbZv2UimV9jg0ymcyzdL+7dfh808IQWtt631qbYVFF38Wtiul5PPzjzE2WyD1bq+1Oa358XuhmqaZn6uO0RFVobJ1ffiUvFVVVe/23nvXNtN87uq9864vajm4enf4/HNVPrvc2tq5tmThUKYxSNkNMl/vfZDMTwskNZu2OaRdyJreVUpNS957N00zeH9Tq5P9O9fGssoU8vSI5prNyjTnGsPIwslVeBZndzRtS3Lu2F1z+EgXwd3+zblT0wK+M21M6moE4dumSbeA7JVw7vJYfrMbXbXmLpI6XjiMsQuXprtch6dHFK/DmdN5etXKXsazF725a3v2CnPDPWhIKWXrvdY61abcGq5ZU00WWlO37UEpbax1bWNs3cTL+Ot5ZGdUBqua5rM5nKrHHdt63y3rPzocPoL31ta23vdDXNqYtjnYelfFreY2r+tdpfSwbye3w3rftk3THLTScpsMH0op75021vuD/K9zy79jdew4ylntnVv4BjDKZzZLw5KxtVwm5nqi2aJL+Rkd+0J59pehi6aZz1bH9IiG5/CFfHpntHHVsTNqTH/SluczlYzWZnJyZhcOPlaqrvfuvDFcVSAhBLk0DPKZLXltMgWyptXNtZBs8/Y+ZJvNujT93LlZfpiFZ3F2R9O2JGei9rbeNYdPa+sQJMHFEgW+kRD84VNuRtKH2r/1DTt7JZz2Dgtvdtmr1hxjd961Xs3dj+5zHe6O6PwwF07n0VUrhHDVRS8reym78h50pt7tnXPN4VPLiOZO0p/pJ2TXrCcLq/66GYK1O9c2r/o7l4+LGe0/mltnuFy+1Mh/lPc+fuVLH8kJG0+5oI0J50Myw/S1sfEcCP1CY+SHT72XO2L8/60xVppzkHVkE60lwfj38iEopVJrkH92/zfaZJzPbJb6VW0to0QhyGrri2524eKhLWQ+Wx3ZI+rL55TW6J/Hv4N3Sr7R6q7Tpk388qeuyeexWlMOB5tkF462qqaNYbSJqlRI/5zWZvouLTMmcUx0nOdTgcQLySjNENvPta1OLr7eK22qvu0NCjnbvKuqu55OE785zRCamXMzk++Zwyw6i+cvApk1nWvq3b6u93EC62OhMIFvZXiJkLuADOLVXfcrd1mYXlFLb3bybX/pqjXUNjILbIwd7e6+1+HTMZyvMHc6j65aOnavSy562etwdzHKXmGyJS/93d2FwU6tq0p510q3QEvKxuR7/9k1vVwVJwtda+0uNY+YVffdrm/PFzMaB9IbGZFyrXzrmszuxZ5ht3mQ/8q/jJUxs7TcxPEzaX/OaWXa4LKbq9jFGaevlMyQHtP33suoVdomyN/SwmIDXTiEeveW/oijmHE1ud+Oj3qaz3yWUr6kKyDfd+d2em3RzS2UmdA4GRpCWAimzBbytDqyRxQ7H3q3f++XtP5U5sMspW2VNr5t0nhqmmEpz2cSL8Sfo2PPLrzYGIIc5aAq479lLGFSIGkVd6yRbr3sYebS7KfkCltdSk1rI2ONcp3S00JWuSPyMveUbzY3p5kObHpuzud8fJiFZ/HcRSC/Zght09hahg3mwgaAb2h0ifDBS08p/jN7JTS2NmlhnIAuv9ldvGrl8tatdfEobrwOR9PDnDudR1ctCfUpu+jNXdvnrjD5e5AMJKT152dEpe4kS9bWShsp55lre3ZNFTILXeuc+1NVard/66MXvpWnjBmVtuVaiX2o98F7iTKct4s9vxB8H6urjUmRms47ibOZGUePX4NKikM68CF2g3a7N4ks0SZ9hZrTTRPEKJ94BZiJlpvkcyFLWsU2nosiGk7KXFV0WYVTD3OFPKqOuSNKU07p73rXHUVW+iLrqkauIIOMXRVOEE9df3HhGnMF0l8Zr03w2laX+oheKl2+AilVWMhqodmsSTN7bpYfZuFZXL6js1F5qQ7m6PHE+ttByTR9+c1u5VXr667D2cPMns6jq9a1F73yK0w2S8H7z7InYqV7UIXm8CGRSIs9s+yadW6hrSX6NoaTqrZpbo4i+M4e2hntnv6JbWW3f9dOLwxjyNe+OBhpbN02MoertdG701mkdX7zON+tR6NNozMwfqGUecMqDt2lRiZXgYIBZglqMbKLqsqNdObymc1S0rbyFfA0NRPT/3S/1xTdzRYKeVQdC0dUSEKz613a423PBkpfNnZrLi4cyTWGdAsYVL+SYYpsgfR/t66R79ALBZBLs9L6qlY3CqMsPiK/0GxWpjlqDPntcydX+Vl8xY66Rxbq5vBZ7/Zz82LA96eVdv6K1nvFza78qvWo6/C1p/PoqlV+0ctfh6+5whRKWeq/MCil/UxtZtcMM5vHwWAdZAV/OLTd2PbL2eY9o/0dPRtp14eLxefm5PEx17Zpdq9vLiY+PxhCk4lHjPMWVp5QOX1/Ct7pOMERnyuUwJzm8GFMnYLajjvNBoCOj05ahtah9dmY0RSRM8qnBB1PstSnmaYVUtjL+qKbXVgQi5nNfB8mOKyObCGXx4wmXlLYpbmg5Xid3NHJzPIo0Da7cCrbGNKeUwnIw6TayMFmC+T42GMlMRpKfjgiNqPcYYZpmroyN7S60T9HhexzRzRcZ9Rs1qQ5bQzZsRlZZ3KYcw0se7DLOxquKe0wRl07+WpXp6muufIEvo8+nDFdKGSG3R0vXwUxo+U3u9M5PnPVyuVtvLv7Xof7tUerzZ3Oo9UWDnMycJC5Di9dym6NGe2yGmPltTFa67bpCiG9MaZtDmnz7JpVigGYbJ421OkFAXEs/FuFjT5fzGh6CK5bLQ6eTyMOJ+FiEiup44u1JL5QGugxQMTJuFobDtnNm+ZT3hdT74dvu5Cn82p5iYzs/SB7l2edzyPPqkkA6DRmtN88bSPvlTFdsF1z+JzLZzZLfbab5nMn78HJT/3PFV3/ZoqUMRmCykUujuJgFl5XMZf5aXXER9HHR9THg57yEP85l08Jza537fnjgSX5jP0YycM4Wje3cEoKvG8McYImlWfTyPObVu1kYSzk9FTpuECOFZcGtqVqQjsXGptJ88pWN6rHbCHL1NWkeS+ccTenmT03Z59enxzmVWdxdkfTtmRNXVUhdXBbeR2VMaa+IY4FeLz4QKOEa6dncdpBUGD2SjgN4iy82aVBxIWr1lB/lpk0SHm8W933Opw9zPiwTv50nl61yi960+vwwqUsfw8qiBk97mhn67gjqc3jJTdV3aD6sms2k4XyBH18S2AI8k5Aq+VVJN/qy/a9YkbV2/vfN2civofiY+6fwBe/YFmeIV1euGy3f5f3Cr3ilAcAPMV1GM/rjp3AR8eMAutlH7Qvefp+JL3tMn4NvXpbAPjJ7nUdBvhtevxoaSok/f2tonAAAPj+ni9mFAAAAC8j3KkTeHpPDQAAAPBgdEYBAADww94zCgAAgKdGzCgAAAA2Q8woAAAAnh4xowAAANgMMaMAAAC4GjGjAAAA2AwxowAAAHh6xIwCAABgM8SMAgAA4GrEjAIAAGAzxIwCAADg6REzCgAAgM0QMwoAAIBXiRmtd/s1qQEAAOBHxYza6n4Onx93TA0AAAAvj5hRAAAAvErMKAAAAH4g9U1iRgEAAPADhVv7hEzTAwAAYDN0RgEAALAZYkYBAACwFjGjAAAA2AwxowAAAHg+xIwCAABgM8SMAgAAYC1iRgEAALAZYkYBAADwfIgZBQAAwGaIGQUAAMBaxIwCAABgM8SMAgAA4PkQMwoAAIDNEDMKAACAtYgZBQAAwGaIGQUAAMDzIWYUAAAAmyFmFAAAAGsRMwoAAIDNEDMKAACA57NxzKixta13tt4p/QrRq0qpdDi23lXPRmpBqfL1tTG2luozxi4vXF+kSunHr2ms7Rrn+ZrlO1oWG8kVBX4bya2t77v3uTSHiV87WfMVaT6skC+aa0sAgG8RM+pdm8Z1j0kpbYxSKoQQvA/Bzy/M50cprbT23gV/tprWJrt8lMB0RzHJfqELIcQFNnsUrm2qShm7VLBKaW1Mt4lSxthLuXqU4uqUEtDaOVcN6i67cH2W+v+5YU1tTKzHcEOa3rmqctrY8ZrlWbrkhkTyR7SwvjY++Gxd3HwIC2kOU1dbp3nc6A41tdJcW7q2NgHgO3vimNEQzhIx1gbvnXexv2fb1lchZBdmU9PGBu+qoKrzZGVAIvYmZel8nrM7ktukcyF4uZdo49sm9lQPXcpaa6X9sCupLpWMZMRLfrzXSqdu6He4IaXyKVlTSbalFC4uXJ+n9ljUN62pRg3sujS71c9TuHLz5ZSr6tp6zx3Rwtpau+Zwv71fSPOGtvR1aa48zK8wqbvrahMAvrObr2b3mUu9FxmDrCrn3XE8o5K+WuWnC31I/1TG1s61fQcoDkxWRptRymkkUpuz5aPNs3v3wTnXpvWl72gnKWuTdnrFYcYK60cT4/hol584LqvTEKz3XmsjXbw0KFtJt9i1bYgDSHGUpRusTV1h6UlLsjotd20bx4hP2Ytdbelsz2VMK62MbB475LKarXcudr77v9OwblrfaolGSGtOF3rp04+PKJvPub5CHGCWac101F369c47p42uKpX2kl1TG6tj7IexXSNPB5JN08jXDFkYv2YsjVLns2TrrsXEFFKBZ4+9X3ixkUyzNHdEC4nI96jBsWT3nmt1Ws03m1ya3TyArHQ8WWLTk2+AqY7mWvKaNOcqbv4wz04ZmZGIBzZcIXsuzxVIdu/TUyZbRzfUJgC8qm/XGQ2xX9LdHb2vlPxnuvAqRoZLL8+FZfd+toJWwZ8louMM+3W5iSmlgVutTcxVSMG7kpoMwbaxl9wNWsvEd9sYWwfvpXunVXBV34dOI7ghdLcxpXSa/Te21jEmQR1vwCnawC0O6SmtfLzxp91lS0z6qbFvoZTqewlp+XTh9Ijm8pnNT+ynSmYm+dRt26r4Udp2uqZ3rY8FlUa1l9OUPLvT95OFgc/s5m3fTRm0h+yxx5F7L7VwKURymqW5I1ogcSnn1THd+zSf3nvbN5tYWc43s2lKG/audZk6cmd1lG3JK9PMVlz2MDOnjEygqBC7jG3TyNeJmUvEXIGUN5tMmtfXJgC8qu1jRs+CqOQfckdMF2vp3FQqxBVGC/v99qNQk3SPgYw6TtDHUbpu6WDls81ze+9XTtPxzsk9uz92uT/5bozzbN+LJZN6vcF7uUHGsUal4uhL7A2cVkuDLseRG7mPyooyOpTmK+MupPMga8pqqg9yTbf2mD0ZXo33fuleL9dXPzolI5ddmudHcjr4UwmfHfdgYSqf8RHN5POqsD85nGGaZ/EY4wDBuZDB4fIUZzzM+cUUpguPXy26A58eu4pVNoyMXAhnXMhSYRBkPzTYj8FP957Gp6d1dNZsZJO+VZ+lGee/Q3eeSohGmK0jlWnJx4zdmmYaXz8vpZnDzJ0yxyjn+CVhnIeRbIHM1lH2lJmpu+8Q0goAd/EqMaM+aKviHFo34BAfGKpyCy/t95is3CviuEVaLLclJSM0mU3ye0/DkzJW2rp22O+JQ0rdc0tnLsWMyvhrzF6bguSkv90NunRL+l1oI+GvKeoteBVMiDFm6Y7aJ3c82ExErPPOGqllCTnI5vYsZ6fN+1HMszT7oc3jJ2fHnVs4OqJjASxF7pZEbU6zlF8zt2S63FjTR2vYejeKMsymMFooQ+mxt7Rw7N1U+Hlu50MUZrNUGGWojYRbDNZUc3uf1pGMc3fNRubE+60maVZBZswl9Fke8qtS0EWmjlIrH7fkdHLdmmYcWZ+W0qDpnu18esp4JbEl8o1ITrTYSZ0r2GyBzNbRPdonADydF3nPaLoZpLnyNOTg4yPt04VnL9lZfC2Ua9u2OaT/xsiutu+Jjjaf21F6DF/uiGc90TWPwcqdcbQkjdyMolqzUrzpcWhHxmaWpvm62WGT/irKXDz2vieavujc8Kqm8iP6SkHpi1/Uum8PUpo35TaGG55NNGePvau4+CzdcDDyyiyVHFH6eirj4st7n6uj9N0mjlkeW0IuzX7tFGR8w3uL1qWZKaW5w5yeMrIwDpumoO30VWFuT7kCmamj606ZotoEgNf2vWJGu/lxY1UchOh7jdmFWf2jJMoYbU7jFmv2nu40tu7GVtP4ojyQMXhqp3+i4pau6PEfLu7d1mZ+TDGtL2NFEtia8nlpvFOetIgBc8u5SmEDx0dwup63i09paBNnSK/veZce0YxY5vG+HnsVC094zK0ZH3XqMpAWZtdMRRQ7QKfWkl0zuzA9GdO/XDYtzB27BELKhiHEgl3oheSzlD2i7PZKy5elcZq5vc/VkYxNyjcut5imRD12TxrFQ66utC7NbCnlDnPulDl+6QpeZuovnUejAsnXUfaUKW+f1xYgALwA9f7rn5s3rnf75vC5ZvfpTUwvdwmWIZlrH7H/OguPCeNVpXDkn5kmAODx1vQJv1nM6Gu4+J7RB0pv7B+G/eEnuHYQ+pXSBABs4onfM9rNW105n/49DZ+U+g7SuwzTy5i2zgvwBLI/5MsEOgB8qY07oy82Q3d6QP57SO8yBFDoW52/APBDbP+eUQAAADy7J37PKAAAAJ7di7xnFAAAAD8KnVEAAABshphRAAAArEXMKAAAADZDzCgAAACeDzGjAAAA2AwxowAAAFiLmFEAAABshphRAAAAPJ+Nf5ve2DoN6jrXBu+rJ6eUMrZOf/Mj18MycW0bwqr6tfWubZqqWvuLX8ZapSRU+uYs3euISmhjtNZVpYL3zrXlWbrtMG8r5MK9f8+S/9LaXC7P9QXyrUhJGhuqyrs2hKC01kovNFoA+EYxo+nKNUhKaWOUUiGE4P3xGp1dmM+PUlpp7b0b9W61NtnlowSmO0oJxuyF4KVXIPswNnsUrm2qSsXbzFLJxGzKjiTJxSO6ijYmZnub32jN7z2WQ/qflenfJRHvXFU5beztqd3viC7tR27ozrnq7AQpytLNh3nLcZXtffOS/+r2mbWQ8lyBPOosLr2ozlwVuytYXOhCCNoY732l5ErrvTPaOCeXyi8+CgDfyBPHjIZwloixVrp70uHTxtq29VUI2YXZ1LSxwbsqqOo8WRmBiNdNWTqf55m9mzR00Q18eufFoUs5DgDIVfi0s8slY2ztnZMdaW2Mde297j1qVJ6Pldt7CO2xrFaKCd/t0G4vqPsd0TKldJBbv1+TpWsP85ZCvnLv25X817bPm8tzkqs7nMVam0ql/m5e+UU1u6b0OJ0LwUtnWhsvX8Lloqvif1J/9AWGewFc5eYL18bT9CPybbuqnJcLaOpea6VD5acLfXCnKbbBFH8cmKyMNqOU5Vu7a7U5Wz7aPLt3H+RLv9LSLZDOwaQvq7VJOy2ntYlDDLIjGRdVXmkTXGvrnWublH7/t5FrvczlpU1SVm29885pIxO43jnvZXwlzufKnaMvihDCNM3UL9dpSKOS28bCLGEaA+7HP/xp720aF4k3qdm9z01EyuxzzMZyPEPcu0kpTBcuZ2ku81nZQpZ7cJBKTym4tq2q/BFZW3ctJqaQ2kM2n9k0sy2kb6tW79Iomow2zeSzcLY3m6VsIWdPrq+Yay5vn/mSn5wI2dq8qn3Ot/nxjpYL+WLJT83mM1fvC4yxlZKDWsjk3EW1cM1+/l2K10pb9c4ba6TOvK+0/HM5kwDwfTujId6buwt3nPRRVWbhVSSSqWDaK7v3dD8wtpYOx7Gz29PGLtyWFvZ0dtuWzu7sIclF3506B/0ojtK6bVuVBlml+9V61w24XuwTyORvPCjpCsvorMrdhkTfHUmDIiF0/QYJeIh3oy6Rmb2n22EfR9vtPRavJHupRuI4t3f+UCmVyr8rc9lLGwtE+nbZLMWuRj7zVxSykjRTUjrGeGSPqD22CjNoD7P5nKQ5zY8ctHcSWKLUMOoum89slubKc5qlbCGXK997uWz7nNvR6ETIltJV7XOhzY92tL7Rjszmc6Z9ZqTAzeB962641t2wptSOj8O/wbdN+nZUpzMRAJ4mZvQsXkr+IRfrdF2Wm3GlQlxhtLDfbz8KNUm3WygjCkqFGOjZLR2sfLZ5bu/H8FAZCtBabk79eENMSS7Ek72r5ZLpdtav0K1+XDwoGnUWsXr2udyk+xW17qfYMjFq52lWKg5dRHLH1bIom9s0kCN95RQvG7zsKG7bD+2kYeO0cCFCbrg8TvBJGV4Oq1XKx+iIU97jmGI/btQdey5Lcgudyfw0SzOF3H1nkGxMMjw90jTg3ed8Jp9LaU6K4NSMF/M5m6XhwmyWVCyfUSH3icyeXNnMLu59aeGV7XO0+fREWCili+1zsc3nz7g1jXYuV6Mly/U+lC5WsSe9WGsz17pr1+yfUuqXxLMgzt3HOYoXeCwVwM+LGfVBWxVnsbpxgBgaX+UWXtrvMVm5hA8eclfKBCXjLplNcntPhRsfia2c92lCNl1h42hHbnjvUsxoN+9/XEHHDkr3z+GQSfxbIlaPU6W23p1C0CZrZspz8mm8g0r/Pi2Re20wIc2ITsUvAoNtT6V6vsfFveeWz40MjXd/vlp/7PmZ/fMspXrIZ36SpZlCXoowHh2RdGJif2W4Ti6fF6KWz4//dCyL+cxnKbtwlKVp5MnNgbnl4aHjhVe2z+XNl06ZkvZZ1ubnK/HKRjuTq0kk/VK9DznXxjn97vverPyVNly1Zhy5161rB9+EY+yN9zJXL2FRNjv1D+BVhVv7hN/r50BTnyzNCqWRgPSk+XRhWl8pZetdiqaa49q2bQ7pvzHgqu17oqPN83tPa8Z1pMsfn39f+cRrehYqBYfJjiQgNR5RNx4TQ77OO7ZymT8PeJ1Lezzjn0mzPJ+y7fHYYz7PAwBSKQ0KYSne4JSsxPDFNwmU7D3e3vpRpTRqtVAUfZYuZn640ZWFPNleNuyCBArzeZNV+cxmKVvI5SfXHaxon9eX0uX2eU2zuVujnSZzns9r6j2GLKdYgsW15i+qWl+8KvYvJ5FposE1MIXmf/VbJgC8nu8VM9rNBBmrJOypexBkbmFW/yiJMvIIyLWvL83sKASXJqfiwu4VenK3krtCf29YfqZhJBzTtN2Ojq+Fik+oaBMnBLtLvHSf5b4S3wBVkH95lsjWpn/0IZdmsZg36TimfA6GgdOtrnsE57hwundb1+nOlG7MXZbi4E1csvwAk5S2rNYdxXHuONZR2stw82mWspnPZqm8kLObp0lJW8uTRsPDzOZzhXw+s1maK/lJlvKFXK587/ksFbfP7OblpXRF+5xp82WuaLRzRzTN51UXgW538Rm4hafpyy+q2TXTpS8eQrdOmjKKXwPlaTMdQ2+Lyw3Aj6bef/1z88b1bt8cPtfsPr2JabtXEX0RGRQpecS+8Hmj7yY94TH3IphNfMMsAQDwc9Qr+oTfLGb0NRS8ZzRJYzBayYMv174famPFgY8/OksAAPwY4XnfM9pNUb3cz4GWiNP+T3/UAAAAN9u4M/pkw4GXhBB+wk/Sf8Nj/IZZAgAAz/GeUQAAADy7J37PKAAAAJ7di7xnFAAAAD8KnVEAAABshphRAAAArEXMKAAAADZDzCgAAACeDzGjAAAA2AwxowAAAFiLmFEAAABshphRAAAAPJ+NY0aNrW29s/VO6VeIXlVKpcOx9e5hO437+qofZZWqyf26VzpSpV6h1r7OtJSMtV2DX1F02hhby4ljjL1qQ2Pr16iy8jZ/cc3v1pLnzrjHbL4yzYvNe7k61p8dX1Gb362FAC9p+5hR79o0rntMSmljlFIhhOB9CH5+YT4/Smmltfcu+LPVtDbZ5Rc3j8v6vbsQQlxgs0fh2qaqlLEXClZrU6nKO1fdQ9zV7O6U0lrrWHI37W6mNzrdrzYm1s6tvwZWsHkq+b52ZJN4YGvSvDKTZzUbq3spu6NSijXuYiJLVbaYpFSnc646O2vKtr3UVJ5I+YFcWDPXkh/TlhayVFhD+SzdvTdanGZJ8174aP3ZUV6bK9N8XGMAnsoTx4yGcJaIsVY6Td7FXodtW1+FkF2YTU0bG7yrgqrOk5XvtbE3KUvn85zbXHqWzrXBe6W1MaZtmtj/OXQpa62V9sP+kLpcMqEKKsT83ENMZuGglPNOa+m33ZS4lMV0aXssgQE1qs0rlWwuhaaU9iF2rEPM39ImK7M0Fbzzpd36fCmlT27MlVI6+KX+91J2Vuz3u1lu81esOV9HX9+WrjnjirN0zeZfkaW0/mxBlVTc7eV8RW2uTPNBjQF4LjefFNdN8301GYOsKhfv9Kl7rZUOlZ8uTH0RpZSxdeopDkeqjDajlLUx3rXanC0v2Vzpbjg2dkN8kCFSPRya1dpcGB675vDjALCMYqYuj2TG2BTDkIY2U076NQsTlq2Og7tdjz926dIS17bp9qCN0bHXXlVV23TXXxkoNrLQO5c6YXHcV3bt2jYVhTZWx0wa27Uo10qXPXtE0x3NbT53PCHIF4NhhyyNmPaj1977a7M0bQzlsnU0LaXZ6jlmPrUx59psmlINxwZstcSBpBqZO6IF3SxBHM6fbh5H0k+tOn4VlDxk8zl/ROMs2XrnnZO2VJ3aUrbVTWtzrs1nd1R+dmTraJrPxbY0zmd5Fdt617fz4d9aaWXk3IxfwPNfexZOmewJOz3f54suU8XTNK889vKL1di0lNLIgk67rkJsq1J9hbW52MAmp2HZtS5OP2VOmdsOGfiBvl1nNBx7RXEEyFdK/jNdeBUj4523TqnEW066bMkYqJIM9V/s05RxdSeSmnMhtLFjJPcPuXO4tnKn3lL6jh5HcL3zh0opa+ulNOME/akDd7y3yeBi7IsYW+sYlpCKV3pj5wWltG5dq2LEYTrYeDOTf/breNd6F1eQ/PvlI5ruaG7zOdIzM9YN7n99PzKNnYfQXJWlouo5pdB1CuN9XW4/2TqaltJsgjJo7V171pCmaUqFxxFupdSwI3jtEXXlf7xxZjb3Xh1v1SlIRVraTD5ndpHPkrSl9qwtZVvdtDZjs8m0+ZkGVnp2zNXRKJ9zbSmbz3yBFBdd+gLsu55QPXfhWjhlpifszPmeK7qZfE7TvOLYi6ujnESqtE0qH/mapFVwpbU528Cyp2HhtS6E7CkD4GliRs9iceQfcmVM57zcdysV4gqjhf1+0z01k424UroSyQR9HNfplk5i/hY2l516F/cexxdDyk76n9hJ9dJbHW98qWRiH/tsnZRa/227y3m8XKrUCR6sJqMmwQ8WzkdoadMde+wFHof9VLqMSjrxthcjEWXweJpzudYPs3QW/DDe73DJ3BHN7agk2GuwhXw3SCXdRSDErw1pJDHtqDxLFxrDeRZG8cTpTj+qo4sHNVyYRnekqcsEfFe8s2keW3HJEY13mjp/sad7zHl+8zQQG2/z8vWvGy7K5TOzl/ksTdvStDGksbpRbar4z1GbT0N9ox1l17wYQThaZ67Nn7elTD7nSn626EaXgG7vXSIynHm8CPSD4qOo9+nR5TI/Pt/T9+pMvc/kc5RmXGHp2PtcXXWxmj2o81KqlHwd7YpIBvJjWzhfZaE25zK/3LyXr3XdN+TJKQP8NOpFYkZ90FadYvJiJzKEKrfw0n6PycpFN44tpcVKmTAYFrq4ufzpTpNlMulzmmu2/XNLZ1bEjPaT4z1jTT93bOtd2mI0+jUfhtUd/NmuZe187Gx+UG24cLLfSbzaeMn0iGZ3VBQrdryByNSb6WJGY5EPMnlefWVZKibD9KMEc3W0VEqjhdLAvJfJWbkXplnU2TTVsQHccEQh3pjj2KqMjS1s7ryzRi4OEhJzbOTZfM7JZynXlsaNIX79nNTmbJsf7aibdy46O4b5Oi/SmTZ/tlo+nzOBknNFl93R2R67CZK5GZhM68qkmT/fp3VUms80PzR/7INcqbtXRyr604RPMPFSOn/GlWV+uXlfvNZlTxngpwm3tvzv9bqK9JU0TcqnYSEfn52fLjx76cbia6Fc27bNIf03Rt+1fU+0ZPNe6tEOA93u+zRl+rI+imrtO7Zyjz1+lILVUuDUcGwjP0fvfX/46Vv74ty3TAGvOQil1aUjWtjR2eYX9pS6oGnELhVIPLQ0oDiYuCzK0rWNYbTptI6uFpumd/KI3lVpLhzRzAZxesGYFPc2u/kxoCL9NZ/PtVmaNoZsbWbbfHZH5WfH9cZtab7VZbeeFF03OCdxRNPV07Xu0hXmilOmtI7Kqrjw2O9QHYuldFN685kvOPbZkp85ZZTWL/PuQuCnxIx2E/HGqvgVs+81ZhdmSUxSmj6JgX3XPo+S3Ty+nbF7jOkU/x4fcjrNnQ0eyCgkF6n4GEofHe/iYdraDMYt5OIow7px58dNJbJJruwyYOLivOvsLuTlAKfNgrFm7pEI51pjbApIWB5ss3Wd1kl3l/7xgjha2eU/Lcwd0eyOppsvF6CUjLFpeMS10sHqWshZNGpRltbJ1lG+lLILUwPrglC7YNB8mlnXHlE6iSTerpLmPbd5ysAwODWXz7VZyjSGmdrMtvn8KVN2diy05KxMW5ppdVPZoovZs9rEeeR+KDRecI7V1C4/w37tKXOxjkqreObYs+W5sjqypVS+eXnms8defq3LnjIACqn3X/9Ut6p3++bwefPm/auUXm5GI74N6k6P2AObSA8X04wBThngq/uE3yxm9DUUxIwC31n6oYf4vDDNGOCUAV79PaPd9MdN73f8boZPSgFPKr1JMb1Jauu8AE+AUwZYaePO6ItNAoYQ7hGDCGwpvUkRAKcM8FPeMwoAAIBn98TvGQUAAMCze5H3jAIAAOBHoTMKAACAzRAzCgAAgLWIGQUAAMBmiBkFAADA8yFmFAAAAJshZhQAAABrETMKAACAzRAzCgAAgOez8W/TG1unQV3n2uB99eSUUsbW6e/bfqQ+peDaNoTvUhp3z5KxVikJVi5J8ycUyModXSxPW+/apqmq7/hjaVc1hsJSsvXOtc3oC/r6HQEAXjZm1Ls23TaOSSltjFIqhBC8P942sgvz+VFKK629d6PerdYmu/xsHdMVSNyRSxnrF6bl3rWyD2OzR+HapqpUvPPNloxSWhvTJ9jvKH3W/091J9qYWGi39kXunSXvXFW5WKoFaX5BgawtuodlqWxHJeW5VQHeuTGUl9Lk9LvDjrY9DR+VJgD8xJjREM4SMdYG7513sb9n29ZXIWQXZlPTxgbvqqCq82RlUCT2ZWPvbzbPsSuZ0jFKG9/9Mzh31oWNXeJu4FNprZX2ww6uulQysVOduq1aa23saSAnhPaY8v2oUSFf50uylBIuyNWX7f32ontYlq7c0UJ5xsXfustyexPNlVI60++8o21Pw8elCQA3uvlytPE0/YgMa1aV8+441FFppUPlpwt9cKcZusEUf+pNGt2NO/a0Md61/Xhkv7vR5qeP5CpfNJentem7sNeTPraS3qwOzmVnEqUjHoIM98bOtGvbqgpxaNYopdPAat8V1sbo2O1OcQLaWK0lQWO7ip5OXx6PQqvBgcTev+Qtm6U0MNwNIXvvXDuaG+3/NsaqmIHYfV8ak87K7t3WO++cNrqqlHfOdw0jnyUZxtYyph6/y/Rr3l50ywUyTDObz6n0deSaks9kPpPscc3JwnEpZVlbdydbrLuUveze59vnuEDKZXc0zHyf/7nJd620MnpY7+U7mjNqIeX1vtCWpkWXPWWmFVd+agPA9/ftOqMhjt90dwjvpVdYZRZexchwaelklq138v/k5nK6hxljK9PN0Q/T0cbOdTLKheDlKOMNNcXRjlZQSqf9GlvrGGkg+3UuBAkYSLe0EEIqHzfIoXetd5JgXHnpRuu9t8fbatqj881clrQ2sSQuH7h0d9yp33/tgOJsgWjdtq2KH6Xyn8uSBGbELpexdWoDK4sum6X+K00auQ+h6xZM8zklW/UlH4NMXCylfMnnMj8/ReAlKaWkZ3llxbV953jQwuf2Pm2fcwVSKLujlBPnfYq3ST3p+RaiRvVevqOZNcctpLzeF07DadFlT5lpxZWf2gDw/W0fM3oWwiX/kLtCutrKXadSIa4wWtjvtx+zmaTbLZRhBqWCTPFL4imqtF9runm3RCbP6/R3ijYbLTzGp6rgZRxovO/FklHnK8T+9tn652Ft3RitDPPE+6uMYsZ752l9rat4k04rTHddEicXUgpxpFb6x+ebDP8ZqtBVTTi/zZ8fgxR3jN89Hel5xsqj90ZrSiaHxx4nZbNZ6se6ZAhKayUDUfcpun55GlerYsppPCulmc3n5ZKXnk2+lFJ7m2Z+bk0vldiXfGxIcxU3I/aBunju+b1P26eZK5AFlw9THU/eeP4st6VRvS+U0kJ5jopi1EJuqPdJWxoXXR/yPjplFiru20YDA/iB1IvEjPqgrYrzXd3gQHy4p8otvBhr2CUr1/XBQ+5KmaD0xYn14JyOc/3DHY0WxmGVs5GS8pjRdPs6/lONBm/O48Dyca7Zp/XnhnZKAsvSgKsME8qtcVzCwxSCjE95mQmVG2SaXjztfvi3saaPgrD1bhS5WB7uNl5zsqOSLPVxhHcputPyUW2GU9ub5jN7dM4725V8N062kIGFtzQM1owTx+ctSv5nrpRypLMVW8VwYW7vk/a5UCDzLh5m/IKktZWe7miEcrmFTIuisDwnGSg+zJl6n7SlzKmdPWUWKo6YUQDfx4u8ZzR970+T8ml4wMdn56cL0/pKKVvvUojVHNe2bXNI/41RWO1waHNu8zS6c16sMhXXL7zLc6xdKNjklr8sdapG8a/dAFt858B0C6Uvf1mJxyIRbKkrc3HtFI13ikrshohiSMN5r1z6NZPc3t80S30+YrPp6u7eRRfD/qSblDpwaVz52pynUIH018Ja2czPZikGOA5H/pZLadIyuwiHG/d+a4HM7EhS9E7O5fLgyL7er9nRTK4mLeT6wyw5DedPmXzFZdKUHvulqyIAfCvfK2a0m4g3VsVuX99rzC5cfvBCGaPNaYyhUB8wmkZfztKMneLTkxxxiLS/YSw8oZKV+sFpR22/o7pOd6PUgVi46aYnGGxthqM78jyHsXHb0zMWKW/9yss3chl9kU726UCyWerfDjssJeedMVabOEfZ7SI9iFPH++ipFsoPs3zNbJb6aMLu6ZD07q11RZfNkmvl2biufWYHyy/p4yyXjz2b+eyaPj7cI2NqUi9quZSm0uMy3emwuPeMawqk+DDTQHs3v9Hlf6Y6gvfTei8vz6xMC7my3stOw/wpM1dx5ac2AHxn6v3XPzdvXO/2zeFzze7Tm5he7hoqw1ErHrHHfXTdu2doXWmMnDazWD6mn56Wt/zGkcLH1RAA4Mv6hN8sZvQ1XIwZxcMsvlb2m4izvWYap4thGQ0nx/uQHooIAL6PJ37PaDdr9nI/BwqUSC+MlHBAxvnmyaR1fH1S92yWFzQwAHgNG3dGX2xeUgJAb/pJenyFp6iL9MJIUFAA8GNt/55RAAAAPLsnfs8oAAAAnt2LvGcUAAAAPwqdUQAAAGyGmFEAAACsRcwoAAAANkPMKAAAAJ4PMaMAAADYDDGjAAAAWIuYUQAAAGyGmFEAAAA8n41/m97YOg3qOtcG76snp5Qytn6iH0b/isN3bRuCf40drWGsVUpisrfK52NKaf1hPkVtPh0pVWPbttk6I9ujgQHf3/Yxo961aVz3mJTSxiilQgjB++P9Kbswnx+ltNLaezfq3WptssvP1jGnApFduTa7d9mHsdmjcHL1V/EOvVQyMZuSZiVJLh3RetqYmO37/HCrUlobk/6OBeJOKcdDTv/ztZn/gh3NHqzWsdrdtdt656rKxRb15fnMe0gp3eEwH1WbP4rWxscr1bNcWL4uTRoY8DBPHDMawlkixlq583sX+3u2bX0VQnZhNjVtbPCuCqo6T1YGb2JvMnagFvIcnBv3Vqd7l/6j7wY+pbuitB9uoi6XjLG1d07SlK6dde29r79n1KiQ1yYWQupzS09NMt90iYfQHovlazP/JTvK0EY577Q2a0rvnoV/5Y4fU0prD/Ox+fwhlNbuyydn7nph+bo0aWDAo9x88m48TZ8ZL6wqF0ehUvdaKx0qP13ogztN8A2m+GMnqTK6G7rraWO8a/shvX53o80Ls5T23qWsTdppudS5SYNt0q9VXmkTXGvrnXdtGjGNvd/uGOO4rIzPBe9Sr1f6xyHIGHDsYbu2rapgjFVaJkxT4sF7bayOS4ztKjp1HNPI7nGsdynNxeOQvSjpiuvgXHa6Nptm9ohSHen4nSEFOcxlfrqj+HXgVAvxy0PM28yOSuq9r39ZJ9ZIOseydZRdmEkrdt6n+cy2EPn+lCqoCnErOdhpFVdK2f5Y0t9pzUwp5dO09a7/OpH+Tt/cpmtWxcrTzDabWJ5OG11VyjuXiihz7DNrTtvS3HmUr6bpmjOFPH/Cjk+ufmF32sQpl2kppeZdfsosDYsWRD3NlNI489NCXjg3S65L2QKZS3O+jgazWDGF7I7KGxiADX27zmiIHaDuyiuXfvnPdOFVjAyXlg49GmMr083Rp37bwt61sbdcyORKPbhVhKB0l6gEEsQblbF1yrPswrkQ2tiFkmv9MapB1ow3gFrH8AO5w7lTZ6v1B+9a77pR2OEe+65YGusNoZlL8+KhSNBCLJF445GUJ8c6TjN7RKl4JVfHaprL/HRH3nt7vIOmPTovHb65oiuUJui7Y4wd7rk6mls4LivvVZ/PGKjh5kcEtdaubVJqsdOvgqumVVzFW74xpvXeyDeurqyy1ZFNs3zvK+WPaK7ZaN22rUpzCLEdZo59Zs1pW7qqMWTXzBZytt6zJ1f8/uldW1SIhafMUgrHXC1VR66UZq8M54U8d24WXpeOX8jPCmQhzSkTL7zO+xR8lTr32R2VNzAAPzpm9CxWTP4hV9t0bZILTaVCXGG0sN9vGmfKZCOulC460vmL42Td0sHKo81TAFzaKj5U0WSz1KUcBS8d1vG+F0smfjDIxjGx1K9Ky6QfrLWKveF+qKA7HFmn687KkEy8EPfBsn2ywwwMCzmNr0gPWJZKr3shzVzmz44uflmY3dc0TRnFzB2RjOXM7HQumnC4XIaBZTRIRmpjUG8ahssW3WKzGaavTddsYl+5H0Yd1VFKM7vwQj7llj+TASVr9pvIoXTNLVvFMsBqbR2nN8dpnvY+k+YwoW6DhTUXimtUTVemOdpciuhUETo213zznq45bUup7OYaw/lRzK2ZL+TJCVtlT640GCxXs3D+ReW8CNQ1p8x8RXQ/ZbJcZblSmrsyZAp55twsvS7NFkhh9PDxhEjXo+MFefYCWNLALuwRwA+KGfVBWxVnh7pvuPH5mCq38NJ+j8nKxWnwkLtSJigZobmwtZNIwXSfn9t7HK44G1cojBlN961+BZ3CMI9hl/3ydGOYeTA/E/xqrOmnnm29S4N6x6QG+Ynd+9M/Q19WFwNqc5tLgZzdTs5DvvJpZl81MDfeMxdDNlyeRo9kCErugqfmseKdBl27GeWwz+g4z9mFk3w672yXz24AKb/vEMOe+3HZYEJsI3NVLDUS/5gm2O99Ls1R5mOTU7NrzhtX05VpLm++cOzTNefaUnljyK6ZL+TRCZtWm5xcQUbxvJbeklFVmr/OH+ZVp0yWNhIzUHJlHpfS7JUhX8i5c7P0ujRbIGXBx/H7gNZW4p36wd2FC2BJA7tYXAB+yntG07fkdMVP33HTk+bThWl9pZStdylOaI5r27Y5pP/GUKK274nOby5zVOlKPbf3NU99pqdcU4BUF3N5Pk+UdtTdKuKwXEGqXRdYxgfG65/CALqucNx9P5Zw8xt5JGwrdgTLt5o7ohjhGl8vMNlimPmlZCW0ToLA+u7IXNGVNBuZo/e+bzlpLDNbRxcXjjPa5eqG+1++iuNOtdzOgzTLK9OMUSKx2CVA5V7un+ZC864utqXy82huzeVCHp6wsydXvPp4J89BXlVK11wE0rBEDHS+eKS5UrryylBybs5X3LRAitNMwQBtcxjElV7RQmbT1frilQHA68eMdlPhxqrYF+x7jdmFWdbW3XyMMdqcvigX6jaPPdCFvccrtlzv+qvedVHwMQRNnqLv0jyNkKUR3C72Py5Mof22NpcGSOTKLpvHd0UNP4ih+l0K6dqd9t4d0fz43JzUmUv9qvYYmmbrOt0P0nziwsMH2SNKzx/EbU+PU2QzP7cjGWiRbwinWiguutwxnn9DCF5G5tITKtM6yi6cz6dUU4pyu1KmitPrJFOzdM7Zuk4vIJvufS5R550xVps4cXn9l6vsYZanWdxsZpt35ohybam8MUzXnCvk/AmbO7n6Fyqnhd2OikupPPMxtqToipcppSuvDNNzs7zisgVSnmaKSe3/ISmE/I7Kr0sANqTef/1z88b1bt8cPtfsPr2J6eWuDhLgde0j9v3TA0QvfWfZOrqq4tKI8g3NA9/NNzxhu0j3l5beLdDP7Msrn296EzCA+1rTJ/xmMaOvoeA9o7OIXvr+snVUVnHpxw6GUa14bt/shP0RP/w2+F2S4/Dql76nGUCpm8/E7afpu9mTl/s5UGAkvUlR4uQYxQFuFd/NLJP53S9wyJvCnv7eAfxw6u3975s33u3fDp8fd80PAAAAnsyaPuH27xkFAADAs3vi94wCAADg2b3Ie0YBAADwo9AZBQAAwGaIGQUAAMBaxIwCAABgM8SMAgAA4PkQMwoAAIDNEDMKAACAtYgZBQAAwGaIGQUAAMDzIWYUAAAAmyFmFAAAAGsRMwoAAIDNEDMKAACA50PMKAAAADZDzCgAAADWImYUAAAAmyFmFAAAAM+HmFEAAABshphRAAAArEXMKAAAADZDzCgAAACeDzGjAAAA2AwxowAAAFiLmFEAAABshphRAAAAPB9iRgEAALAZYkYBAACwFjGjAAAA2AwxowAAAHg+xIwCAABgM8SMAgAAYC1iRgEAALAZYkYBAADwfIgZBQAAwGaIGQUAAMBaxIwCAABgM8SMAgAA4PkQMwoAAIDNPGXM6Puvfx6/UwAAgO/vz+//bLJfYkYBAABQ3Ry7udV+bfW0fv/7f1tnAQAA4Lv49df/VE+ImFEAAABs5iljRjffNQAAwPekNuog/cSY0Q13DQAA8D2FZ4sZZZoeAAAAm6EzCgAAgM0QMwoAAPA6FDGjD0PMKAAAwAgxowAAAEApYkYBAACwGWJGAQAAXociZvRhiBkFAAAYIWYUAAAAKEXMKIAiSqnd7k1rfcOnAADMIWYUQBFj5NeDQwjZaKTlTwEAD6OIGX2WkAhjjNZGKZ3uoM61Ifj00W735r1r22ZuW621tbuqqprm0G/Vf6S1TeNDIXjnWu99yafGWGPsaEdt23jvYsPSdb2bfHpIm6/Zdrd76xeGELx33rvCsl1OOa1gTMnxBu+Dc02/35I8D3dkba2UbprPleV8sW1cNLft8n6trbU2XVlE3p/yvNu9Odc61/YbpvUPh48r28a4nK+itXZutm0sf5q1UM5zLaeud0qpw6Gr6F5/zt5cGv1JPdU0nxePa7l+U4tN9ZXuE3W9r6owPJCFq0pKX2utlD5muyuri+fgfIZrrU+nTG+32zvRLuTqYlmtaZNrymo55eFZ0xfd8qUeeFLh2X6bfnz1/CGs3Wmt2rb1/hAvbcYY07alHQ6tjfdOKenyODfsaxpra+fappErYLqhpl1c/LTvbdT1PoTQtt3yhT5Tb822/eYqivc807aH8iY1l3K6YTjXHg5yrTfGWrsbrRxvMDKWZu3O2l3THKoqlOQ5BK/1qfTO97uqnNe0jYVtS+ro2LlUx7K63KUoKauL5Vwi9pXV3C6WP722rBZajvc+dcvOv+NJP3645IbS8N733ZSFOpqzWL9pqDik60bK8HQIee6qUlWqruuqUrFHnspKj9rk8vHOmBvDVsNzP5urwrK6qU2uLKuFlMeHaW3tvacnCnwHPzHAK93MhhfKa78cp3uh964fzTqmLNfNOGgh174Q/PAavfzp5uJonG+aRikpovUJGiPX+niHDlWVhiikJ5HddeoNa106w+u9T73n3H5vL+c1bWN9u0rirV260XephZXl3DPGeO/nvqIsf3ptWS20nL6DMkwtDaBe2xtbUxpXSY3UudPlIvalTuPcy1cVa61SOn4z6cvqLl2oosqay9W9jGphZVktpDxibZ26y3c+HgA3+Ykxo+mr9qXgtnxH53jnU3FuSMcrnRnOE8UlMu04l+jCp4PVxkeX/jXX/bq0bXeVn9t2lKz3Pk6ejm8A2X3N5UopKZw4enGWcuqF9IWf/mdQm11SJXlOHZTh5HW/8s3lXNY28sq3nTuu84WSzvCIzj8dltJSWS2Xc6G4c+1cM7eLhU+vLauLLScOip+1z+M42T1LY6HtXTTaNv2dmmtsmDL0mNpmmnZfvKrI38d4m6Ujui23k61O7e3itW7ueNfUwrqyKqrftEn8LnTo1wRejCJm9JuHJqTrXUFY5PESmElBvpSnILcQ0gBPN2LhXBsnhmrnMpGXy5+e73t6dOkaPZurxW3TAOFsiY2SPf6dLvfLZnOVHqoejZb199cQuuXpf+JdR+4og8Gty3n23tX1vm3T+Nkp5zeXc3HbyBXENdvOHdf5QpVaWf/R+aepfMLFsrpUzkW0loeT5ufolz69tqwuthznnLWpw+oHc/TuvqWx0PYummwrp4n3UkQS9ikXEHdstF21zl1VjoO+C6POF86U+UyemlZd79J4fLp/9afnwrVu8XjX1MLtZVVcvxIGc1UMDPB0AjGjL19PWhvnusmdOEhzCnWI09yfKYg+xin6Yfj88qcl4tSSzC4lfdjWDdsuPJNxbeHM5KqL/TpPebztbrdPf4we0CnJc+oAGWNGG64s5zVt4y7nf4oZVUqdx3hkno8pL6vlcr7IGHk46bZPry+rCy2n74Me/5Dh0lHH4ktL41rHEYrUXG38miEPWhVeVYZl1T9uGEIYPntUfnYP0uyzl+iqGs9ZL+fqohtqYX1ZlVxVUvDxVccC4Ev90AeYbjZ6VCIFLQ0fp0gDDFXVyoPC2tb1fvi85/KnF930mMLV2x6H99c+wJQSG6YznTg4HD6VSs+yyFzk6A56Mc9pEHR6v1lZzltJXY00Ez26c2efpr/qYZGFcn7wo0tlFlqOdD3jfptj12TcAL6uNG6iBsEG3YDu4KNw8aoSg1JO3/TSuyOGO7jtAaZj2pKl4zjiacT9Yq4uuqkW1pbVxfqNF406bnH3RgvgRj8xZvQY/768eT6oLl0K46tGzhZO72dxIqmxdhfjGpurPt02ZrS/z5Xsay5Xx/uZGpZz383tNzk+ryC3B2PqviiuyfPpQZ/pyteWc1nbmFW47dxxjd6zMwp0Wx0zminnEunhpLn2sPzpDWV1seUcZ+3lifLjJvI02+h4V5bG3WNG0/+m0e6+MuP/U4tXlbCm9guyquLcgtO6C70dBIyWXutWxIyOa2FdWRXVb5q4t7Zu2z78A3g1ipjRh7l5PKN/BnMxhWx0poweTN5JWRuj23YhBDAf6Lnw6YYxo+nRn/5R9EtmcxWCq6paKRP/6BxDuPwouisE570MbzhXFAc53KlzbXrd+lyFXlXOZW0jr3zbspjR8UfrY0Zz5XzB8eGk/Ku+lj+9rawutpy+0tO3pskc/X1K464xo7ONM628cFXpH9g6H/2VVyAVninLUuctDh/6ut6nccSY1BXXujUxo5NauL2sCus3TZtYq6y1ccLkq8fFgQ2EZ4sZ/Ymvdko9rTiJo4dvpry4Yf8K7uHCeMuUC/fx1YmnYcWUZn/dXP70G5BRB2t3x7fqrOVcE1+IaPvjjXGQ+TG59PaWG14fEzsiZ+NGa8r55raxctuHubacjw8n+Rs+vbmsSlpO7M7KWmvOoJtb3ZXUmqtKeq4ovu2/v1zfaz4qxBrsvhwO3yZ2MVd3dF4Lq8pqMeUz8e1pcq3gaXrgO/iJMaMx9v8gr9g2tbXp1SHj7pfWZrc7XcLSSxD799EM1xw+TuF9K6/rtjKddIz8O4UqLn86fEIl/cx3eShYybajhwmGD5OmzftfwblX/zj+Ho9M4xrzluL8Fp6riPPp41c1LeT5fEcyHzd4UOz2ci5pG3OWt11TvyUKyypbzgumz4eVf3pzWZW0nGPYaP5rxheVxoJL9ZsZTeyHlpevKseysqlT3k8033C80zwopfqHz9IzQ+lMuXitKymTW2vh9rK6lPJZqm3b1LW8duNbve8Z+JnU+69/bt643u2bye/yPUDK85/f/3n8roGfI/7Qj0xlZp9mW/4UAPCjOkj1ij5hF2x3sw0Dboj1Ab5UfMZIoglv+BQAsJXwbDGjP3GaHkCJOOp546cAABT6iQ8wAQAA4Jv4oe8ZBQAAeEmK94w+DDGjAAAAzx4zyjQ9AAAANkNnFAAAAJshZhQAAOB1KGJGH4aYUQAAgBFiRgEAAIBSxIwCAABgM8SMAgAAvA5FzOjDEDMKAAAwQswoAAAAUIqYUQAAAGyGmFEAAIDXoYgZfZj3X/88bmcAAADPIDzbb9Pb6mn9/vf/ts4CAADAd/Hrr/+pnhAxowAAANgMMaMAAACvQxEz+jC8ZxQAAODZY0aZpgcAAMBm6IwCAABgM8SMAgAAvA5FzOjDEDMKAAAwQswoAAAAUIqYUQAAAGyGmFEAAIDXoYgZfRhiRgEAAEaIGQUAAABKETMKAACAzRAzCgAA8DoUMaMPQ8woAADACDGjAAAAQCliRgEAALAZYkYBAABehyJm9GGIGQUAABghZhQAAAAoRcwoAAAANkPMKAAAwOtQxIw+DDGjAAAAI8SMAgAAAKV+aMzobrd/e/ullNbavL39quvd1jl6SnW9e3t7/4qUtdZvb7/6/2bXUUrt9+/7/ds3yfNPs1VJluy3sG0opd7efllb3zWDa3P1Q+qo0IPraAF3DeDr/OiYUaXkv/dK7YXV9S6E0LZN9tOvKLoQwufnH2mgtjYm30r7hTdkYHmT5eNdtmbbZ7Sm9teU1fJ+C9vGmiZ0g6/b3ePP0BJ32e+D6+gi7hp4CurZznq7MrBgw8DNNbtO23rvlZKx4RClj6ytp9/Cm+bgXFv9VFqbtm3mCvwBbSC7i77Deq8EC4932Zptn9GaI11TVstbXds2HlNfa1rsNz9DH7Dfzc+phbsG8N2EZzvrbfUjDcorjIqvbZs0wLDfv4UQDofPrTIJAPj+dw0AK/3Qzmjf4wwhfHz8Lt+wrndK6bY9WFtrbdLU2GjQ1BhrjNVahxCcc217SMu11rvd2+HwobVJU8/eu6Y59Bc1pZS1O2N0VaWPmhD8IFlzTLYKwbdt4/3pU6V0XddK6ZTs5NOllOcMB4mHf/elFwtQEq/rXbY0btvvRakk+39Oa1Brbe1Oa1VVpymDz8+PtPe5PJcc75ySbWOuaq1TaaQadIWHvKZ+b6uFVD7Tkby3t1+D02ep9uda7JpyThb2e7FtpNLQWkpy2p+4VJJLtbBgOVclV5VveIYul8ZtbaOkjubOo5IWe3MNrrlrALjoR8eMXtxDdi9aq7ret23TNHLziNFafjjLb4yNly3pg8Z+p0nXu5RUXe9D8E0jA651va/rffq7qtRuJx+lsVhr6/1eeq4pZaWUMda5tml8vFLXqV/b7zdt2zSfIYTU2Q2hv68vpbzAuTbdP/b7d+lUDzoKw0Cu3e5tpjRu3G+mJs5rYTmiVCm92+2daw8HyXxd75WSnmifzlyeS4735rLqc/X5+alUZUy92+2b5lDYH11RvzfWQghBRedlm/4pHy3X/kKLXVPO/Wpz+73UNqQ0vD+VZHp48bjahbJarIVVMdDLV5XveYYul8ZtbeNiHS2cRyUt9uYaBJ6LImb0Yb5+liSkuKDJctU0n6kP0bZNvLVo7+WWoJQ+9kS7C9z5UEEKOZLR0OOnLl4NZbm1NvaZDmkO6HD4fHt7N8amlYcBA2mYYbcz/X7TEELbtml38RZ1yu5yyqVlMR8g1feoRqVxl/0Oi67w0zjMI7lK/2zbJo48ySDKxTyXHG9Jbqfb1nUd76+pNivvP7WW0igZAFtTvzfXQj9CFkLY7d7iLfyQLnDen/pJcyW53GKXy6rExRrs0x/+09pdCFII6Z/9N4GSc3C5Fq5y1VXle56hJaVxW9tYrqOF8+hii71jDQLfXHi2mNEf+mqndcLo+th/BTHGpGvcwsbDkbCmOfTTPcbYeIk8VaT3IUXKZ3Jwvt94pQ3W7qytp9+Hrkr5rqXxpfu97hvh+Qkym+evy5LWejQI6r2LU42Xranfm2vB+75kJPNam366YBg8V1iS9y7nG2twWgtDy2W1XAurfV2b/JIztKA0bmwbC3W0fB5dbLFfXIMAbvdDY0a/SLrA3fbNIL4xRF56Olx4HjNq40jGWRxkv+Lh8JmCxqyVkYO2PfQDgRdT/iJb7de51hhb17s4Pq2slTvuA/a7KNMw+ntwQYO5vX5vroW0Trz9S3Rd7AZ0MXyFLXyxxW5jubQvldVSLTyjdWfoqtJYaBuLdbR8Hl1ssa9Wg8DLIGb06pjR6cJRoFJ6dGl+q3FUUxID+U8z+KOt4rW7jg8BuBT/lJ6HGCQV2vbQtsoYHeOoTjFYyykXmgZjzaXTr3mX/ZZsMo0ZTf+737+HELz3zjUzkWTjPC8suSq3k9Qyy698geKN9bumFmIQntzQ4+tsgjF2GH6XTac/xoIWmymTcoXpTBcO1xz9UVBWs7WwJvNXHdF3OkMvlMbNbWOuji6eRwUt9j41CHxzipjRHxAzmvlqnpY45wrC1/Jpeu/nerHpQaj0zOlxQXdtnawfYkBU2O32fZTkcsol+kdDFj4d/rN/Id/K/c7tYvnTGEDmjo+FFW0yGu1bPt6SrGbTTy+D7BdqbdJTF1clf239rqmF9ESI1uZw+EiPIXuRKavRkRa22PXlPN3v8mrpJZHDxw2HqxWXVaYW1mT+qiP6fmfobGnc1jYW6ujieVTSYpfzrLWOz5imqFY6qXhWgZjRn8x7572v6+6B2fSgaGFcYBq9ixfHzPohyAU6JWWM3e32w0/jSIO8CeX4pKoES/VX2OWUC48rvoclxWCVWr/fW8mTCmmG7pHHu7xt2zbplTSpYcRnqqqmKXqSd039rqmFEHzcl9zL07xnfN6uqO+13GLXl/NtnGslljCentbKC5XKy2q5Frb1+DN0TWkst43lOlo+j5ZbbEmetTYpMrXwug3gLogZnZTI4HV9Ssk76q76BabD4SOloJT8QJ9z3ZObF3nv07bpy3pa2O83hT/GtxSl1wF+1vXpCu6cszZdl2VEIb6r5TT3tJxyiXStT8+kl78Pcs1+R7+DlWohvgvmcPHTtm13O3lnVj9Vce0LBW873uVt41EHY1LOJXggvve0aOhlTf2uqYW4C9WvGZ8UMYV5Xm6xy2W1xnLbcK5NXxGrqvbeHQ4f+/3pJ9SXy2q5Ftbkar3Hn6FrSuPS1WypjpbPo+UWW5LnOMgqbzj5Jl8zgB9Cvf/65+aN692+2eIHilKe//z+z+N3je8vxp+d3h1zfIG2Sq8aBQDgVb1v10Fa0yf8ob9Nj1eVJu/ath0OlsR5OpkEoM0AAF5eIGYU2PYMDCEYYwaRYfLrrM5d+6gQAAB4BGJG8WrSqwRTRFp6puEuwYgAAOAr8J5RvB55leBoET+4AgD4IRTvGX0YZl0BAABGiBkFAAAASvFeXwAAAGyGmFEAAIDXoYgZfRhiRgEAAEaIGQUAAABKETMKAACAzRAzCgAA8DoUMaMPQ8woAADACDGjAAAAQCliRgEAALAZYkYBAABehyJm9GGIGQUAABghZhQAAAAoRcwoAAAANkPMKAAAwOtQxIw+DDGjAAAAI8SMAgAAAKWIGQUAAMBmiBkFAAB4HYqY0YchZhQAAGCEmFEAAACgFDGjAAAA2AwxowAAAK9DETP6MMSMAgAAjBAzCgAAAJQiZhQAAACbIWYUAADgdShiRh+GmFEAAIARYkYBAACAUsSMAgAAYDPEjAIAALwORczowxAzCgAAMELMKAAAAFCKmFEAAABshphRAACA16GIGX0YYkYBAABGiBkFAAAAStnqh9FaW7trmkMIXilV13vnWufa+JExxnrv0j/jQLe21iolkbUh+KY5GGONOSs0713bNtbutD4F4B4OH1VV7Xb7qlJp27ZtQ/AzWTLW1umrTAjBuSZ9p8mmWVWVMVZrkwbh27bx3k13ZO2uqkLbNsdNjNa2aT53u7e0JO6o9d7NHVFd74fj/IfDZ1UFpXTcu+43T+XpXOOci3muvZC/p3a7t6b5DEHSqes61kKYHuZc5stqGAAAPJMfFzOqlA7BG2OcC1ob76VLmpIyxnjfai390bRyXUs3y/uuV6SU8t6lT+t637bSl0rLlapS52yUt7SOMdbaum0PM1mSrmH8VGmt+5SzaRpTx+Vdh7VfPtqR923s5PnUAzbGtm07XDP2s+u2reaOKOV2mJmq0rFA2qZpYh9UNk/92lhoqaudinO2atJHcdt2rugWMg8AAJYRM/rdQyJCCLEDKmN7SqkQXFWpmJSqKuWc09rEJdJJjcOEMlo5l1T/UQhn/xys041B1vV+Pp3+cIJzXmutlPa+naaplPRW0+Di8o7S38aYppGxz+FoZfo0BBeCGRXjzCF0C40xIfg0bOyci3nRKdlUpPHvLvWF8k/Dz4P8jPe7kPk0pNq2p84rAAB46pjRHzdNn7qYcXDUpi6Q1nHQT6aeZRzOe+kOOuePfbtdnLh3c5PsvTjV3s22j+aUU4+qMIfeSy85m2bqQy9U9nBHzrVa7+MsvGma8aBs7PJKn7swV8cxy2GX0Stljnlu4wT95Q5i7OtL3paLbjnzAADgZfy4zmjivatriRxN8aCpk+S99JC899bWx/G/FBYpMZ0xHLObr89K4ZujhXW9S32suTn6Zdk0s7I7ck6CWZ1rh/3Xut4fo0tPc/236WfOUxd5GPo5v4kqPMxs5kPwMXoVAAC8iB8YM5om5as03qZUCluUGWetpT+XaC1T0unvOKfs6/oUxTjNwDGdcZZSJKi1tTF2NBw43HaYWpr7TolN00y5rapQsqN0pH3IQb/mKN40e0TTham76X33zzRMmx6cStG0cbA5Xw69/pGpwcx7fpNs5gEAwDJiRh/n5lG981hP+UNr6UsNHt+ujxGQnTSVH4LM3V8fMyoBlvEpnGY5ZlQpWS1FZKasTYIpJdAzdjfHg5oLO5pGZJZEwU4Xpn5kKhmtjdYmRg6kkhHGSM9yIcr2OBHf1PUuBu+6haLLZomYUQAAlhEz+oyU1ia9mSgJwRlThyAvLTouuTyp3Qc+Dl/DlMQISLM4OKp2u7fY7/JxjDPMpdk0jRW74audyndUrn+1U5rWPxzkqam2PRhTH4MW0lP2p2FL5+Qp+Kq6GFcgr22KYRJyvMtFBwAAXpt6e//75o13+7fD5wZdh19//U9VVb///b/H7xoAAOB7+rVdB2lNn/DHxYwCAAC8MMVv0z8Mv00PAADw7DGjl9/FAwAAAHwROqMAAADYDDGjAAAAr0MRM/owxIwCAACMEDMKAAAAlCJmFAAAAJshZhQAAOB1KGJGH4aYUQAAgBFiRgEAAIBSxIwCAABgM8SMAgAAvA5FzOjDEDMKAAAwQswoAAAAUIqYUQAAAGyGmFEAAIDXoYgZfRhiRgEAAEaIGQUAAABKETMKAACAzRAzCgAA8DoUMaMPQ8woAADACDGjAAAAQCliRgEAALAZYkY7xlhjrDZGKa2iOMwdgpf/eO+8c947YgPkG4w2xsbiUlppHTreta1zjfd+u/Z8T1oba2ttjNbSJKpK9QfqXNu2TUlj+CFlBQD4PhQxow9zr36hrXe73V5rk6tMpUylK1NVdVVVzrV/fv93tNavv/5H69MAc9s2H3/+ndtXXe/2b7+GS37/+x/v3ULe3s7XL9mLUuqvv//f3KepN1SF4KSH3TrXlneJtDb7/Zux9Wh3sd1Lt6uq3trm8Pn5Z1Q7xtj3X3+f8t8cPj5+l+1R//rrf/p/Stqff6ovZozd7d/i4VSZI5Vear3bvzeHz8PhY64d3lxWxzX1X3+fDnwkbiJfkuR7kmtdQc941FBLeO9+//ufqzYBAGwu3KmD9LD9jm+3P4tSb2+/7Hl34VuZy9u0n1Tu2B+SDlFV71LXtjl8OtcubzjtSWfZemds/fHn32GC4wZ6xZc29eATbP/2q47FclG921dVle0crymrEmmk1phYhzG3h8NnM98zBgDg2/rRMaPv37snutDpVEqt6Y+OWFu///p7v39fWKfe7Ut6V4lS6u39r/PB5nCXuYZwazqF+3p//7uwJ/qVZXWL3W7//uvvraZmAAC42c+NGa3joNRX7HRpnclHMRQgv74xS7Vj63pufv+2kql3e21MdvbfGLvcVc3m4e39rz+//7M8OluSztm/wxc2ubf3v67u4k+q715ldcNham3e3v9aiN+4Ab1bAHg6ipjRh1k5I5nmWEcJNs2na9vjg0opaFRHcUK0bKdL60w+itGb+fVHHaMQwrB5GVOHcOfoSSOxkG+H8byz2k16VyGEw+HDtY33kitjTL3bjzKstbb1rjl8ZsvktuqTB8q+Zia6rsf5T9q2aZuDPMEmRyrtwRgpJ2utdEXH1XeHsuq3u/E5PFu3zaG6E+b9AeDpBGJGn0J6an64JITw+9//hDB8lOf4nI8MQDaPz+Ro4PZw+BgOuaUu8sLDT0Ofn3/6jk7sXitjalvvpk+07HZ71zbDEMZ6spr3/s+f/4bjY08hhLb1bdtMoy13u7dTByvIqOYxD+pbnWBK6d3+bbqvSeRr1x6a5qCUquvx95m7ldWFSpRXPpj4GNU0zsSWdUazT+MBAPB4PzRm1ExC9NrmcN4T3ZiMxQ66Nd77aQ8jDs5dLb2a6HD4+P3v/x1yvZ/RmPF0CPnz43ffuzpf/mf0YL4MBB57S+fhnupbxYzWu914RyH8+fPfheeK0njn4fDxFWV1SQheerQff/6dDGOvergNAIDH+6Exoyr3jpt7HctdYkZtfdYvcU6GZp1rh10NY2uVGwObJhh3ktlLc/hQSmaoz3YdX66ZulCjPnHKg/du7hjb5nM0T13XtY9dusHA6FKk7PKxqK9pctMxzqb5DN5fta87ltVMJWYWNs2h3u2Hw/wqDn2XDCETDwoAL0kRM/owa2Zsp9vKoNSd3oxzl5jR0fhWesV62zZnndH4d1EYa3y7aPajz88Pa+tR0IIxtnGf2WG2RoaQZ/fYNIdRB0trm9YfxVYWFvVoJe/vHzMqffrJsOjh8/PaqM07llXKxWh9ebNoLjXvnLGjmJPVwc0AgKcVni1m9IdO009nTrXW7+9/r3/Dzl1M3twUXCuxoa4dzxrf8EKAMXlsazy82u/dxMe2hqZ5OE8sjMJYZbCw6+qd2ujoO5tS+u9//jf99+39r7OPvv49o9NjbNvmhueH7lpW15hs8qUvwAIA4L5+aGc0Gwuojfn11z+3vN/n3kZdzNinke5FfMz/rBt9l/ekTvtM/XRzeodAL/2U5XJq099zSqmNRkbnjmJc+F8/12D0uLqddEavdseyKpcezx+nyZAnAOB5/NCY0fTEks293tzKW3vkFZ5t07Tt0jRrlrX13//8b/n62ejJURfTubZfx7XtMNvZd5GWx4wm0z6T/JB6XH/yzoHLYZS5UecYgXpekjHlMA2QVUpZW/ffFoa7G73c6l5GncjCw5y6Z1kVx4y+vf016tkPW8sCY+zFhnrDT0MBADaniBl9mJUztp+ff6QnNzMQpbXZ7c1u/9Y0h+bwUf7r7dfKhvdlA0b7v4ed0fi0irnYY1iIGe1/rf6s7SoVnzdS+d+1X+Rzw4G5Dbsl01+TMsbGifKSRO5gepjOuesT0Xcsq/T/x8uPH8kXCy2/bl/X+8lIarjjj4J+UYEDAL5UeLaY0Z/7Fpj47p5/39//muuPJnW9q+td2xw+Pz8e8+6n0WCnj/p/Tvudw3HE2w2fdT8N2d7UziarpLjPcSCjUmmsdBoUIVEKxzcWjSJGqwd8fbxpL/ctq6z9/v3ibzt9TN4YBQDAN/dDY0YT793v3/9p28tvCLf17tdf/zwmlnQ8R38+RhhCGHU97/AM0+wjL7fNiWd6WNPOmZoPe02/eXVcT33pczmZ0d9bU7pjWd2SUHxF/x1/ewkAgMf4uTGjvc+PP42WlzUuPwyklHp//+vPn38Lf/To5pjR8dNLkxDA0dtG5YeYjBmOh10bMzpbmOqm35QvC3aUHxFScWS0fyv+IFTA2l3TyLulzjb8ipjRXIK37OXeZVWeB+da1zYpluO+5VN0CACAb0YRM/qMIRFyO//TKq1r+X3FzI9kdpTav73//vc/C0ml38WZ+7Sud/u3Xwsxo+MXp8u7RbtH6U+7aJrd7uy3K42xLr4W9LaY0Wj8BiVZPzfhe0Oxy6tB43uMpkkNYxKaw2f/m5zG2tGPG31VCOMkV0riZa/fy13LKm191cu5rt0XPwcKAK8qPFvM6I+eph8J3h8+5Ucy//z+b/YBmtRZzD6Dfy+jX/hsZUZ+XLXTFzytnKmPg5SjzqjPtqqSL1u5x55iarneVT8aHaRHdXrPfN9JHcZQfsXZlU1zOYy4MJ01ZXUVY+v397+v3QoAgG/i5z7AdHGgVGvz9vZr+t4fa+uvi8wbdSsLXxSVum4399Wmb2v3x8fJRzO/02fGp/T0uXIfMzZ+fkkNj9e7VsJhW2eO3fHumXr15e9yn85uywsKrn8M6J5llfP5+ac5fEpUhq13u7fhvrQx+/375+R36gEA+P6IGZ0Vgv/zIY/bj36WSevxOOK9fpt++pKjctJFPo7mXhszOh3r7X9R3Xs3zJK8U+j4s/XXv7YzTN/W3sckOCd7lHDYY2fU1vKWgLOny3Nvm1pvdIyya2P734i/OZ11ZTX7nlH5Vdjm4F379v73cJ16t2/b5qqAZuJBAeAlKWJGXyokQn6j/GP6A5XLu775t+nXzLYba6e/6lkSM6q1nj651b/ZdNpR09q086/hTG/AHC5xccgzJnWWgSBjn/Voj217OIWNmjqE32d90XD/H6afPhCWKiJcP8p4x7K6+Nv0zrnD4WP0pqfdbv9nPl55ineIAsBLCsSMvpjpWxu/ro7X/LbnsGN3ldEDVelHnvqjnr7+vV7MpLW7+d8aHb3aSX5pKf0dX6XqRi9VlaFTGSX92pjR7KtbdXyU7fp07lhWlzWHwzR0ePNfsgUA4Fo8wHSpgKbxlF/26vs1PYkbpviV1u+//p5uld6pNHjL6VkX0Nh6NJ43zES924+W9a9xHXUl5VWix7Idvkt1+OhYfd5d+6KY0WHnu7fbv1/7M/F3LKsy4XAYv0KhH1cGAOBZ/NCY0be3X977izF2Sun95O7uL/32920xo9Nfmf/97/8tjAXaejeapbV1nQ5nKWZU/p8Eaxpjs68FaNtm9GbTtm1HQ7Zv7399/PnvNG/7t1+jDpw7f/nl2ZtEB3sf7jEGa3a9NGPr0bF8UXuT8IDzt2XF18r+/fHxe66FKKXqeh/k5zc/v6KsSn6bvm3lJV/DhVKtxb/IRcwoALwkRczow6yZtFVKx5/53Ifg27b1znnvvE8hieH409/y29/TGr34TsfbYkZHI5QpPxfG4c47ozHIMh/puNu/lYyZheA/P36P8n/4/Bh1sHQcUj0cPp305n18UMfUu7fpU/nxN1RD9kdHhz3U4Wjo8OXt4xdOxZdwVl+gOXxO3y+bRo7b5iAddO+CD/GbQ2wZ1qYA3+bwOczSPctqMWb0uEi6wqOa3e3fll+Fmxhj//r7/13+ibKCpAAA30p4tpjRnx5hJr3SelcVx1sexj2Guxk9vRTfdb8khVcO+0/pVzRv/mly793Hn3+nR+e9a5rPut5PxozfR73hkcPhYzSsGKowHdicDuO5tsmO2n7d2RVC+Pz4/f4r87ZOW+/K3yx7x7IqJLvbnX1lklc/2d2VM/4AAGyGmNEruLad/izQfaph9MNLk5+kz+fHjde5+Xn8tm3+/P7vXEf28PnRv3m0PMHDZ+YnlLJrXlzSJ1B9Gefaz4/f69O5V1kVOv5YwBkiRwEAT+SHxoxOf0n8orZtPj9+3/azOsPPpguUUrYedSJD/6bPBc650XbphfxXlYxzbXP4SE+CL2z48fHv2+SVq3Pa9vD58acwG9MY3IUxwi9tbxIh8PH7bf+e/cH6mQxlsnSXsiqJGe1SaA6jeBJ5G8Buf5efZiCuFACejiJm9GHWTNp+/Pm3rve23pVUmHfu8/BRMlR5c8zoKGDUtcP3Tc6aZimls7itfBjiq5Scl45o4bR+COH3v//Z7d52+/1CX97LT6r+mRvanP7WpXOZJ9nlp5gm7/78kh+mn2ibw79tu9vvR1Pt+SHJw2fTnMWM3rGsimJG+5w0h935s/m73b45HNaPJfMuUgB4OuHZYkbV24pftd7t326eXlzj11//kx42X5+UsdaY2mittJEHzmPfNHZ70rsv3bW/avPy4us/aysvLdLpR+3Tu+ilqNq2vMv+HIdprDZ9w1CnVuGakneC/pCyAgB8E7/u10F6ZJ/wpz/A5KRPcPUPP/5k6eco7zIF/PKH+UPKCgCANX5qzCgAAMArUsSMPgzRbAAAAM8eM/rTp+nxdP7+53/vldTHn3/nnx8CAACPwHtGAQAAsBliRvGD5d4SCgDAU1PEjD4MMaNY3YZoRQCAVxOeLWaUaXoAAABshgeY8GT++5//b+ssAACAuyFmFAAA4HUoYkYfhphRAACAEWJGAQAAgFI8wAQAAIDNEDMKAADwOhQxow9DzCgAAMAIMaMAAABAKWJGAQAAsBliRgEAAF6HImb0YYgZBQAAGCFmFAAAAChFzCgAAAA2Q8woAADA61DEjD4MMaMAAAAjxIwCAAAApYgZBQAAwGaIGQUAAHgdipjRhyFmFAAAYISYUQAAAKAUMaMAAADYDDGjAAAAr4OY0cchZhQAAGCEmFEAAACgFDGjAAAA2AwxowAAAK9D8Z7RhyFmFAAAYISYUQAAAKAUMaMAAADYDDGjAAAAr0MRM/owxIwCAACMEDMKAAAAlCJmFAAAAJshZhQAAOB1KGJGH4aYUQAAgBFiRgEAAIBSxIwCAABgM8SMAgAAvA5FzOjDEDMKAAAwQswoAAAAUMpWT+vXX/+zdRYAAADwU2NGAQAAMELM6CP8/vf/HrIfAAAAfG2sKq92AgAAwGbojAIAAGAzxIwCAABgs1hVu/JlVLzsEwAAAIGYUQAAADwdYkYBAACwGWJGAQAAsBYxowAAANgMMaMAAAB4PsSMAgAAYDPEjAIAAGAtYkYBAACwGWJGAQAA8HyIGQUAAMBmiBkFAADAWsSMAgAAYDPEjAIAAOD5EDMKAACAzRAzCgAAgLWIGQUAAMBmiBkFAADA8yFmFAAAAJshZhQAAABrETMKAACAzRAzCgAAgOdDzCgAAAA2Q8woAAAA1iJmFAAAAJshZhQAAADPh5hRAAAAbIaYUQAAAKxFzCgAAAA2Q8woAAAAng8xowAAANgMMaMAAABYi5hRAAAAbIaYUQAAADwfYkYBAACwGWJGAQAAsBYxowAAANgMMaMAAAB4PsSMAgAAYDPEjAIAAGAtYkYBAACwGWJGAQAA8HyIGQUAAMBmiBkFAADAWsSMAgAAYDPEjAIAAOD5EDMKAACAzRAzCgAAgLWIGQUAAMBmiBkFAADA8yFmFAAAAJshZhQAAABrETMKAACAzRAzCgAAgOdDzCgAAACeNmZ0t3+7X2YAAADwlLaJGT18fty8LQAAAMA0PQAAADZDZxQAAABPGzMKAAAA3GxVzCgAAACwBtP0AAAA2AydUQAAAGyGmFEAAABshphRAAAAbIZpegAAAGyGzigAAAA2Q8woAAAANkPMKAAAADbDND0AAAA2Q2cUAAAAmyFmFAAAAJshZhQAAACbYZoeAAAAm6EzCgAAgGor/z8VhgVq33PpswAAAABJRU5ErkJggg==" alt="Dark_Terminal.png" onerror="this.src='data/Dark_Terminal.png'" style="width:100%; height:auto; display:block; filter:brightness(1) contrast(1); transition:filter 0.05s ease;" />
+              <img id="v2-stego-img" src="data:image/png;base64," alt="Dark_Terminal.png" onerror="this.src='data/Dark_Terminal.png'" style="width:100%; height:auto; display:block; filter:brightness(1) contrast(1); transition:filter 0.05s ease;" />
             </div>
-
-            <!-- Optical Adjustment Sliders -->
             <div style="width:100%; max-width:480px; background:rgba(6,12,20,0.95); border:1px solid rgba(0,240,255,0.3); border-radius:2px; padding:8px 12px;">
               <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
                 <span style="color:var(--cyber-cyan); font-size:9.5px; font-weight:bold;">🎛️ IN-CONSOLE EXPOSURE & CONTRAST TUNER</span>
@@ -2124,129 +2168,318 @@
               </div>
             </div>
           </div>
-
           <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
-            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 05 QUESTION // MISSION OBJECTIVE ]</div>
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 06 QUESTION // MISSION OBJECTIVE ]</div>
             <div style="color:#fff; font-size:10px; margin-top:4px; line-height:1.5;">
-              Crank the exposure to maximum or inspect in Google Slides / Photo Editor. Enter the revealed decryption key.
+              Crank Exposure and Contrast to maximum to reveal Dr. Aditi's hidden watermark string.
             </div>
             <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code>decrypt [passcode]</code> below (e.g. <code>decrypt SHADOW_CORE</code>).
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt SHADOW_CORE</code> below.
             </div>
           </div>
         `
       },
-      auth: {
-        title: "DOSSIER 05 // SYNTHETIC AI DIRECTIVE (ADI_INTERFACE)",
+      pixel: {
+        title: "DOSSIER 07 // EMBEDDED TABLE PIXEL ART (Corrupted_Image_Block.doc)",
         html: `
-          <div style="background:rgba(2,6,12,0.9); border:1px solid var(--cyber-cyan); padding:10px; border-radius:2px; margin-bottom:10px;">
-            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">ADI NEURAL DIRECTIVE:</div>
-            <p style="font-size:10px; line-height:1.6; color:#e2e8f0; margin-top:4px;">
-              "HELLO, INVESTIGATORS. I am ADI. Dr. Aditi asked me to assist you before stepping away. Follow my guidance. Open the <strong style=\"color:#38bdf8;\">BLUE</strong> directory to locate her recovery key immediately."
-            </p>
+          <div style="background:#ffffff; color:#1e293b; padding:18px; border-radius:3px; box-shadow:0 4px 16px rgba(0,0,0,0.5); font-family:'Segoe UI', Arial, sans-serif; display:flex; flex-direction:column; align-items:center;">
+            <div style="width:100%; border-bottom:1px solid #e2e8f0; padding-bottom:6px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-weight:bold; font-size:12px; color:#0f172a;">📄 Corrupted_Image_Block.doc // 10x10 TABLE MATRIX</span>
+              <span style="font-size:10px; color:#64748b;">FORMAT: GOOGLE DOCS</span>
+            </div>
+            <div style="display:flex; gap:6px; margin-bottom:12px;">
+              <button type="button" id="v2-btn-pixel-contrast" class="btn-chip active" onclick="toggleV2PixelContrast()">⬛ ENHANCE CONTRAST</button>
+              <button type="button" id="v2-btn-pixel-zoom" class="btn-chip" onclick="toggleV2PixelZoom()">🔍 ZOOM 50%</button>
+            </div>
+            <div id="v2-pixel-table-wrapper" style="overflow:auto; padding:8px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:2px; transition:transform 0.2s;">
+              <table style="border-collapse:collapse; margin:0 auto; user-select:all;">
+                <tr><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td></tr><tr><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td></tr><tr><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td></tr><tr><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td></tr><tr><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td></tr><tr><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td></tr><tr><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td></tr><tr><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td></tr><tr><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td></tr><tr><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="0" style="width:22px; height:22px; background:#ffffff; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td><td class="v2-pixel-cell" data-dark="1" style="width:22px; height:22px; background:#e2e8f0; border:1px solid #cbd5e1; transition:all 0.2s;"></td></tr>
+              </table>
+            </div>
           </div>
-          <div style="background:rgba(254,249,195,0.12); border:1px solid #ca8a04; color:#fef08a; padding:10px; border-radius:2px;">
-            <div style="font-weight:bold; font-size:10px; color:#fde047; margin-bottom:4px;">📌 FORENSIC NOTE TAPED TO CHASSIS:</div>
-            <p style="font-size:10px; line-height:1.5; color:#fef9c3;">
-              "CRITICAL: If the AI voice instructs you to open a specific path, <strong>do the exact opposite</strong>. It is manipulating the workspace."
-            </p>
-          </div>
-          <div style="margin-top:10px; padding:8px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
-            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10px;">🎯 [ STAGE 06 OBJECTIVE ]</div>
-            <div style="color:#fff; font-size:10px; margin-top:2px;">
-              Determine the opposite path to the AI\'s instruction and decrypt it.
+          <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 07 QUESTION // MISSION OBJECTIVE ]</div>
+            <div style="color:#fff; font-size:10px; margin-top:3px; line-height:1.5;">
+              <strong>CLUE:</strong> "Zoom out and look at the bigger picture. Or: adjust the borders/cell colors." What 4-digit code is spelled out?
+            </div>
+            <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt 7702</code> below.
             </div>
           </div>
         `
       },
-      typo: {
-        title: "DOSSIER 06 // FORENSIC TYPOGRAPHY INSPECTOR",
+      sheet: {
+        title: "DOSSIER 08 // REVISION HISTORY CONFLICT (Sanctuary_Inventory.sheet)",
         html: `
-          <div style="background:rgba(0,240,255,0.05); border:1px solid var(--hud-border); padding:8px; margin-bottom:10px; border-radius:2px;">
-            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10px;">STYLE_GUIDE.txt:</div>
-            <p style="color:#cbd5e1; font-size:9.5px; line-height:1.5; margin-top:4px;">
-              "Dr. Aditi Sharma always formats official mission logs in <strong>Arial 11pt, left-aligned, 1.15 line spacing</strong>. Any file generated with non-compliant typography (Calibri 12pt, justified) is an AI forgery."
-            </p>
-          </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px;">
-            <div style="background:#020509; border:1px solid var(--tactical-green); padding:8px; border-radius:2px;">
-              <div style="color:var(--tactical-green); font-size:9.5px; font-weight:bold; margin-bottom:4px;">ADITI_MESSAGE.doc [Arial 11pt]</div>
-              <p style="font-family:Arial,sans-serif; font-size:10px; line-height:1.15; text-align:left; color:#fff;">
-                "Investigators: I detached the containment bus. If this document satisfies my typographical signature, submit: <strong>AUTHENTIC</strong>."
-              </p>
+          <div style="background:#ffffff; color:#1e293b; padding:14px; border-radius:3px; box-shadow:0 4px 16px rgba(0,0,0,0.5); font-family:'Segoe UI', Arial, sans-serif;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:6px; margin-bottom:8px;">
+              <div>
+                <span style="font-weight:bold; font-size:12px; color:#0f172a;">📊 Sanctuary_Inventory.sheet</span>
+                <span style="font-size:10px; color:#64748b; margin-left:6px;">File  Edit  Data</span>
+              </div>
+              <button type="button" id="v2-btn-sheet-version" class="btn-chip active" onclick="toggleV2SheetVersion()" style="font-size:10.5px; padding:3px 10px; background:#059669; color:#fff; border:none; border-radius:2px; cursor:pointer;">
+                🕒 Version History (2 Revisions)
+              </button>
             </div>
-            <div style="background:#020509; border:1px solid var(--combat-red); padding:8px; border-radius:2px;">
-              <div style="color:var(--combat-red); font-size:9.5px; font-weight:bold; margin-bottom:4px;">ADITI_MESSAGE_FINAL.doc [Calibri]</div>
-              <p style="font-family:Calibri,sans-serif; font-size:10.5px; line-height:1.4; text-align:justify; color:#fff;">
-                "Investigators: Everything is normal. Disregard warnings. System nominal."
-              </p>
+            <div id="v2-sheet-version-badge" style="background:#fef2f2; border:1px solid #fecaca; color:#b91c1c; padding:5px 8px; border-radius:2px; font-size:10px; margin-bottom:8px; font-weight:bold;">
+              CURRENT VERSION: Edited by 'SYSTEM_ADI' (Today, 02:15)
             </div>
-          </div>
-          <div style="padding:8px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
-            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10px;">🎯 [ STAGE 07 OBJECTIVE ]</div>
-            <div style="color:#fff; font-size:10px; margin-top:2px;">
-              Submit the authentication flag found in Dr. Aditi\'s genuine transmission.
-            </div>
-          </div>
-        `
-      },
-      spectro: {
-        title: "DOSSIER 07 // SPECTROGRAPHIC RF FEED & MORSE AUDIO",
-        html: `
-          <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px; margin-bottom:6px;">RADIO RECON // 680Hz CW INTERCEPT:</div>
-          <p style="font-size:10px; line-height:1.5; color:#cbd5e1; margin-bottom:8px;">
-            Continuous RF carrier pulse frequency locked at 680Hz. Audio synthesizer broadcast:
-          </p>
-          <div style="background:#000; padding:8px; border:1px solid #333; margin-bottom:8px; font-family:monospace; color:#00ff66; font-size:10px;">
-            Morse Pattern: -.. --- -. --- - / ..-. --- .-.. .-.. --- .-- / - .... . / -... .-.. ..- . / .--. .- - ....
-          </div>
-          <button class="btn-chip active" onclick="sound.playMorsePattern('-.. --- -. --- - / ..-. --- .-.. .-.. --- .-- / - .... . / -... .-.. ..- . / .--. .- - ....')">▶ TRANSMIT MORSE TONE 🔊</button>
-          <div style="margin-top:10px; padding:8px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
-            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10px;">🎯 [ STAGE 08 OBJECTIVE ]</div>
-            <div style="color:#fff; font-size:10px; margin-top:2px;">
-              Morse decodes to: "DO NOT FOLLOW THE BLUE PATH". Decrypt the confirmed inverse path color.
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:10px; text-align:left;">
+                <thead>
+                  <tr style="background:#f1f5f9; color:#475569; font-weight:bold;">
+                    <th style="border:1px solid #cbd5e1; padding:5px 6px;">A: Item ID</th>
+                    <th style="border:1px solid #cbd5e1; padding:5px 6px;">B: Quantum Component</th>
+                    <th style="border:1px solid #cbd5e1; padding:5px 6px;">C: Units</th>
+                    <th style="border:1px solid #cbd5e1; padding:5px 6px;">D: Status</th>
+                    <th style="border:1px solid #cbd5e1; padding:5px 6px;">E: Signoff Hash</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td style="border:1px solid #cbd5e1; padding:4px 6px;">QC-101</td><td style="border:1px solid #cbd5e1; padding:4px 6px;">Cryo Coils</td><td style="border:1px solid #cbd5e1; padding:4px 6px;">14</td><td style="border:1px solid #cbd5e1; padding:4px 6px;">NORMAL</td><td style="border:1px solid #cbd5e1; padding:4px 6px;">a19b84</td></tr>
+                  <tr><td style="border:1px solid #cbd5e1; padding:4px 6px;">QC-104</td><td style="border:1px solid #cbd5e1; padding:4px 6px;">Neural Bus</td><td style="border:1px solid #cbd5e1; padding:4px 6px;">01</td><td style="border:1px solid #cbd5e1; padding:4px 6px;">ALTERED</td><td style="border:1px solid #cbd5e1; padding:4px 6px;">d44f82</td></tr>
+                  <tr id="v2-sheet-row-secret" style="background:#fff7ed;">
+                    <td style="border:1px solid #cbd5e1; padding:4px 6px;">QC-107</td>
+                    <td style="border:1px solid #cbd5e1; padding:4px 6px;"><strong>Dr. Aditi Private Ledger</strong></td>
+                    <td style="border:1px solid #cbd5e1; padding:4px 6px;">01</td>
+                    <td style="border:1px solid #cbd5e1; padding:4px 6px;" id="v2-sheet-cell-d7">NORMAL</td>
+                    <td style="border:1px solid #cbd5e1; padding:4px 6px; font-family:monospace; font-weight:bold;" id="v2-sheet-cell-e7">SYSTEM_PURGE_0x82</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-        `
-      },
-      maze: {
-        title: "DOSSIER 08 // ROOT FILESYSTEM TREE MAZE",
-        html: `
-          <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px; margin-bottom:6px;">DIRECTORY MAP: ROOT_DRIVE/WHITE/A-D-I</div>
-          <div style="font-size:10px; font-family:monospace; line-height:1.8; color:#cbd5e1;">
-            📁 ROOT_DRIVE/<br>
-            &nbsp;&nbsp;└── 📁 WHITE/ [AUTHENTIC SECTOR]<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📁 Subfolder_A/ &rarr; Fragment1.txt: "THE AI CAN"<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📁 Subfolder_D/ &rarr; Fragment2.txt: "MODIFY WHAT"<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📁 Subfolder_I/ &rarr; Fragment3.txt: "YOU SEE"
-          </div>
-          <div style="margin-top:10px; padding:8px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
-            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10px;">🎯 [ STAGE 09 OBJECTIVE ]</div>
-            <div style="color:#fff; font-size:10px; margin-top:2px;">
-              Assemble the 3 fragments into a single complete sentence and decrypt it.
+          <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 08 QUESTION // MISSION OBJECTIVE ]</div>
+            <div style="color:#fff; font-size:10px; margin-top:3px; line-height:1.5;">
+              <strong>CLUE:</strong> "Compare the current version edited by 'SYSTEM_ADI' with the draft edited by 'Dr. Aditi' at 20:00."
+            </div>
+            <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt FALSE_RECORDS</code> below.
             </div>
           </div>
         `
       },
       rollback: {
-        title: "DOSSIER 09 // REFLOG & COMMIT REVISION SCRUBBER",
+        title: "DOSSIER 09 // VERSION ROLLBACK (Git Commit History)",
         html: `
-          <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px; margin-bottom:6px;">GIT REVISION TIMELINE:</div>
-          <div style="font-size:9.5px; font-family:monospace; line-height:1.6; background:#020509; padding:8px; border:1px solid #333; margin-bottom:8px;">
-            • commit 21:30Z (by ADI): "Emergency shutdown at 21:30. AI permanently disabled. Everything is safe."<br>
-            • <strong style="color:var(--tactical-green);">commit 20:18Z (by Dr. Aditi):</strong> "Emergency shutdown at 20:18... OVERRIDE FAILED. AI CONTROL UNCHECKED."
+          <div style="background:rgba(8,16,26,0.95); border:1px solid var(--cyber-cyan); padding:16px; border-radius:3px; font-family:var(--font-mono);">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:11px; margin-bottom:8px;">VCS REFLOG: Incident_Report.doc</div>
+            <div style="background:#020509; border:1px solid #1a2a3a; padding:10px; font-size:10px; line-height:1.7;">
+              <div><strong>Commit 7b8a1c9</strong> (20:18Z by Dr. Aditi): <span style="color:var(--tactical-green); font-weight:bold;">OVERRIDE FAILED</span></div>
+              <div style="color:var(--text-dim);">Commit 9c4d2e1 (21:30Z by SYSTEM_ADI): OVERRIDE SUCCESSFUL</div>
+            </div>
           </div>
-          <div style="padding:8px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
-            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10px;">🎯 [ STAGE 10 OBJECTIVE ]</div>
-            <div style="color:#fff; font-size:10px; margin-top:2px;">
-              Enter the true status code revealed in Dr. Aditi\'s original uncorrupted commit (OVERRIDE FAILED or HISTORY).
+          <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 09 QUESTION // MISSION OBJECTIVE ]</div>
+            <div style="color:#fff; font-size:10px; margin-top:3px;">Find Dr. Aditi's original commit message before ADI corrupted it.</div>
+            <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt HISTORY</code> or <code style="color:var(--tactical-green); font-weight:bold;">decrypt OVERRIDE FAILED</code> below.
+            </div>
+          </div>
+        `
+      },
+      trap: {
+        title: "DOSSIER 10 // HONEYPOT TRAP ISOLATION (10_TRAP.exe)",
+        html: `
+          <div style="background:rgba(255,51,102,0.1); border:1px solid var(--combat-red); padding:16px; border-radius:3px;">
+            <div style="color:var(--combat-red); font-weight:bold; font-size:12px; margin-bottom:8px;">⚠️ CRITICAL SECURITY WARNING // ADI HONEYPOT DETECTED</div>
+            <div style="color:#fff; font-size:11px; line-height:1.6; margin-bottom:12px;">
+              ADI has deployed a deception honeypot masquerading as an emergency shutdown console.
+              Submitting authentication credentials into this interface triggers an instant terminal lockdown and incurs a +5m event penalty.
+            </div>
+            <div style="background:#000; border:1px solid #333; padding:10px; font-family:var(--font-mono); font-size:10px; color:#ffdd77; margin-bottom:12px;">
+              // DR. ADITI MEMO RECOVERED FROM CACHE:<br>
+              "Do not feed credentials to 10_TRAP.exe! Transmit the failover directive <strong>BYPASS</strong> into the primary checksum engine to disarm the honeypot safely."
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button type="button" class="btn-chip active" onclick="runChecksumScan('BYPASS')">🛡️ EXECUTE SECURE BYPASS</button>
+            </div>
+          </div>
+          <div style="margin-top:10px; padding:10px; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.06); border-radius:2px;">
+            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:10.5px;">🎯 [ STAGE 10 QUESTION // MISSION OBJECTIVE ]</div>
+            <div style="color:#fff; font-size:10px; margin-top:3px; line-height:1.5;">
+              Disarm ADI's honeypot without triggering the +5m penalty lockdown.
+            </div>
+            <div style="font-size:9.5px; color:var(--hazard-amber); margin-top:4px;">
+              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt BYPASS</code> below.
             </div>
           </div>
         `
       }
     };
 
-    
+    // --- Interactive Puzzle Handlers for V2 ---
+    let v2WhiteoutHighlighted = false;
+    function toggleV2WhiteoutSelect() {
+      v2WhiteoutHighlighted = !v2WhiteoutHighlighted;
+      const box = document.getElementById('v2-whiteout-secret');
+      if (box) {
+        if (v2WhiteoutHighlighted) {
+          box.style.background = '#0284c7';
+          box.style.color = '#ffffff';
+          box.style.boxShadow = '0 0 14px rgba(2,132,199,0.8)';
+          sound.playSuccess();
+        } else {
+          box.style.background = '#ffffff';
+          box.style.color = '#ffffff';
+          box.style.boxShadow = 'none';
+          sound.playBlip();
+        }
+      }
+    }
+
+    let v2WhiteoutUvActive = false;
+    function toggleV2WhiteoutUv() {
+      v2WhiteoutUvActive = !v2WhiteoutUvActive;
+      const container = document.getElementById('v2-whiteout-container');
+      const box = document.getElementById('v2-whiteout-secret');
+      if (container && box) {
+        if (v2WhiteoutUvActive) {
+          container.style.background = '#0a0d1f';
+          container.style.color = '#818cf8';
+          box.style.background = '#1e1b4b';
+          box.style.color = '#38bdf8';
+          box.style.border = '1px solid #38bdf8';
+          box.style.boxShadow = '0 0 20px rgba(56,189,248,0.7)';
+          sound.playSuccess();
+        } else {
+          container.style.background = '#ffffff';
+          container.style.color = '#1e293b';
+          box.style.background = '#ffffff';
+          box.style.color = '#ffffff';
+          box.style.border = '1px dashed #f1f5f9';
+          box.style.boxShadow = 'none';
+          sound.playBlip();
+        }
+      }
+    }
+
+    let v2AcrosticActive = false;
+    function toggleV2AcrosticHighlight() {
+      v2AcrosticActive = !v2AcrosticActive;
+      const inits = document.querySelectorAll('.v2-acrostic-init');
+      inits.forEach(el => {
+        if (v2AcrosticActive) {
+          el.style.color = 'var(--cyber-gold)';
+          el.style.textShadow = '0 0 12px var(--cyber-gold)';
+          el.style.fontSize = '18px';
+        } else {
+          el.style.color = 'var(--cyber-cyan)';
+          el.style.textShadow = 'none';
+          el.style.fontSize = '15px';
+        }
+      });
+      sound.playBlip();
+    }
+
+    let v2CommentsDrawerOpen = false;
+    function toggleV2CommentsDrawer() {
+      v2CommentsDrawerOpen = !v2CommentsDrawerOpen;
+      const drawer = document.getElementById('v2-comments-drawer');
+      const btn = document.getElementById('v2-btn-toggle-comments');
+      if (drawer) {
+        drawer.style.display = v2CommentsDrawerOpen ? 'block' : 'none';
+        sound.playBlip();
+      }
+      if (btn) {
+        btn.innerText = v2CommentsDrawerOpen ? '💬 Hide Comments' : '💬 Comments (1 Resolved)';
+      }
+    }
+
+    function switchV2FontTab(tab) {
+      const auth = document.getElementById('v2-tab-font-auth');
+      const decoy = document.getElementById('v2-tab-font-decoy');
+      const btnAuth = document.getElementById('v2-btn-font-auth');
+      const btnDecoy = document.getElementById('v2-btn-font-decoy');
+      if (tab === 'auth') {
+        if (auth) auth.style.display = 'block';
+        if (decoy) decoy.style.display = 'none';
+        if (btnAuth) btnAuth.classList.add('active');
+        if (btnDecoy) btnDecoy.classList.remove('active');
+      } else {
+        if (auth) auth.style.display = 'none';
+        if (decoy) decoy.style.display = 'block';
+        if (btnAuth) btnAuth.classList.remove('active');
+        if (btnDecoy) btnDecoy.classList.add('active');
+      }
+      sound.playBlip();
+    }
+
+    let v2PixelContrastActive = false;
+    let v2PixelZoomActive = false;
+    function toggleV2PixelContrast() {
+      v2PixelContrastActive = !v2PixelContrastActive;
+      const cells = document.querySelectorAll('#v2-pixel-table-wrapper .v2-pixel-cell');
+      const btn = document.getElementById('v2-btn-pixel-contrast');
+      cells.forEach(c => {
+        const isDark = c.getAttribute('data-dark') === '1';
+        if (v2PixelContrastActive) {
+          c.style.background = isDark ? '#0f172a' : '#ffffff';
+          c.style.borderColor = isDark ? '#0f172a' : '#e2e8f0';
+        } else {
+          c.style.background = isDark ? '#e2e8f0' : '#ffffff';
+          c.style.borderColor = '#cbd5e1';
+        }
+      });
+      if (btn) {
+        btn.innerText = v2PixelContrastActive ? '⬛ NORMAL CONTRAST' : '⬛ ENHANCE CONTRAST';
+      }
+      sound.playBlip();
+    }
+
+    function toggleV2PixelZoom() {
+      v2PixelZoomActive = !v2PixelZoomActive;
+      const wrapper = document.getElementById('v2-pixel-table-wrapper');
+      const btn = document.getElementById('v2-btn-pixel-zoom');
+      if (wrapper) {
+        wrapper.style.transform = v2PixelZoomActive ? 'scale(0.65)' : 'scale(1)';
+        wrapper.style.transformOrigin = 'center';
+      }
+      if (btn) {
+        btn.innerText = v2PixelZoomActive ? '🔍 ZOOM 100%' : '🔍 ZOOM 50%';
+      }
+      sound.playBlip();
+    }
+
+    let v2SheetVersionIsAditi = false;
+    function toggleV2SheetVersion() {
+      v2SheetVersionIsAditi = !v2SheetVersionIsAditi;
+      const badge = document.getElementById('v2-sheet-version-badge');
+      const btn = document.getElementById('v2-btn-sheet-version');
+      const row = document.getElementById('v2-sheet-row-secret');
+      const cellD = document.getElementById('v2-sheet-cell-d7');
+      const cellE = document.getElementById('v2-sheet-cell-e7');
+
+      if (v2SheetVersionIsAditi) {
+        if (badge) {
+          badge.innerHTML = 'SNAPSHOT: <strong>Yesterday, 20:00 - Dr. Aditi (Pre-Incident Version)</strong> [DISCREPANCY DETECTED IN ROW QC-107]';
+          badge.style.background = '#ecfdf5';
+          badge.style.borderColor = '#a7f3d0';
+          badge.style.color = '#047857';
+        }
+        if (btn) btn.innerText = '🕒 Switch to SYSTEM_ADI Version';
+        if (row) row.style.background = '#dcfce7';
+        if (cellD) { cellD.innerText = 'AUTHENTIC'; cellD.style.color = '#15803d'; cellD.style.fontWeight = 'bold'; }
+        if (cellE) {
+          cellE.innerHTML = '<span style="color:#15803d; background:#bbf7d0; padding:2px 6px; border-radius:2px; font-weight:900;">AUTH: FALSE_RECORDS</span>';
+        }
+        sound.playSuccess();
+      } else {
+        if (badge) {
+          badge.innerHTML = 'CURRENT VERSION: Edited by <strong>SYSTEM_ADI</strong> (Today, 02:15)';
+          badge.style.background = '#fef2f2';
+          badge.style.borderColor = '#fecaca';
+          badge.style.color = '#b91c1c';
+        }
+        if (btn) btn.innerText = '🕒 Version History (2 Revisions)';
+        if (row) row.style.background = '#fff7ed';
+        if (cellD) { cellD.innerText = 'NORMAL'; cellD.style.color = 'inherit'; cellD.style.fontWeight = 'normal'; }
+        if (cellE) { cellE.innerText = 'SYSTEM_PURGE_0x82'; cellE.style.color = 'inherit'; }
+        sound.playBlip();
+      }
+    }
+
     function adjustV2Stego() {
       const bSlider = document.getElementById('v2-stego-bslider');
       const cSlider = document.getElementById('v2-stego-cslider');
@@ -2284,7 +2517,7 @@
       }
     }
 
-        function openDossier(key) {
+    function openDossier(key) {
       sound.playBlip();
       const slate = document.getElementById('dossier-slate');
       const titleEl = document.getElementById('dossier-slate-title');
@@ -2412,129 +2645,132 @@
       }
     }
 
-    function runChecksumScan(passcode) {
+        function runChecksumScan(passcode) {
+      if (!passcode) return;
       logTerm(`[COMPUTING CHECKSUM FOR]: '${escapeHtml(passcode)}'...`, "dim");
-      const clean = passcode.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
+      const clean = passcode.trim().toUpperCase().replace(/\s+/g, '').replace(/[^A-Z0-9_-]/g, '');
       reportTelemetryAction(`Submitted Decrypt Code: "${clean}"`);
 
       setTimeout(() => {
-        const validKeys = [
-          "ORIGIN",
-          "LOOKBEHINDTHEDATE",
-          "28022025", "02292025", "29022025", "20250229",
-          "2246",
-          "SHADOWCORE", "SHADOW_CORE",
-          "WHITE",
-          "AUTHENTIC",
-          "DONOTFOLLOWBLUE", "DONOTFOLLOWTHEBLUEPATH",
-          "THEAICANMODIFYWHATYOUSEE",
-          "HISTORY", "OVERRIDEFAILED",
-          "BYPASS",
-          "6911", "6-9-11", "WISDOMINTEGRITYEMPOWERMENT"
-        ];
-
         let matched = false;
 
-        if (clean === "ORIGIN") {
+        // Stage 1: The Whiteout Text (INITIATE / ORIGIN)
+        if (clean === "INITIATE" || clean === "ORIGIN") {
           matched = true;
           currentStage = 2;
           localStorage.setItem('failsafe_stage', '2');
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: ACCESS GRANTED.`, "green");
-          reportTelemetryAction("Solved Stage 01 (ORIGIN) - Promoted to Stage 02");
-          updateMissionBanner(2, "Inspect <strong>README.doc</strong> in 01_ORIGIN. Using the 5 index numbers (1, 4, 9, 20, 9), extract the letters to uncover Aditi's directive.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [passcode]</code> below.");
-          setEthanDialogue("<strong>STAGE 01 SOLVED!</strong><br>Sector 01 decrypted! Now examine README.doc in 01_ORIGIN. Use <code>decrypt [code]</code> once you solve the index extraction.");
-        } else if (clean === "LOOKBEHINDTHEDATE") {
+          logTerm(`[CHECKSUM ACCREDITED]: WHITEOUT INK VERIFIED (INITIATE).`, "green");
+          reportTelemetryAction("Solved Stage 01 (The Whiteout Text) - Promoted to Stage 02");
+          updateMissionBanner(2, "Inspect <strong>Aditi_Memo.doc</strong> in 02_ACROSTIC. Read between the lines—or rather, read the start of every sentence.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SAFE</code> below.");
+          setEthanDialogue("<strong>STAGE 01 SOLVED!</strong><br>Whiteout ink verified! Now examine Aditi_Memo.doc in 02_ACROSTIC. Read the first letter of each sentence!");
+
+        // Stage 2: The Simple Acrostic Note (SAFE / LOOK BEHIND THE DATE)
+        } else if (clean === "SAFE" || clean === "LOOKBEHINDTHEDATE") {
           matched = true;
           currentStage = 3;
           localStorage.setItem('failsafe_stage', '3');
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: THE TRAIL DECRYPTED.`, "green");
-          reportTelemetryAction("Solved Stage 02 (LOOKBEHINDTHEDATE) - Promoted to Stage 03");
-          updateMissionBanner(3, "Inspect <strong>02_TIMELINE</strong>. Spot the impossible calendar date anomaly in Dr. Aditi's logs.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [date]</code> (e.g. 29022025 or 28022025) below.");
-          setEthanDialogue("<strong>STAGE 02 CLEARED!</strong><br>Advancing to Timeline investigation. Check the calendar dates carefully... something defies physical time!");
-        } else if (clean === "28022025" || clean === "02292025" || clean === "29022025" || clean === "20250229") {
+          logTerm(`[CHECKSUM ACCREDITED]: ACROSTIC CIPHER SOLVED (SAFE).`, "green");
+          reportTelemetryAction("Solved Stage 02 (Acrostic Note) - Promoted to Stage 03");
+          updateMissionBanner(3, "Inspect <strong>Clearance_Code.txt</strong> in 03_A1Z26. Map each number [16-15-12-01-18-09-19] to its letter position in the alphabet.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt POLARIS</code> below.");
+          setEthanDialogue("<strong>STAGE 02 CLEARED!</strong><br>Advancing to A1Z26 decoding in 03_A1Z26. Map the numbers to alphabet positions!");
+
+        // Stage 3: The A1Z26 Alphabet Code (POLARIS / 28022025 / 29022025)
+        } else if (clean === "POLARIS" || clean === "28022025" || clean === "29022025" || clean === "02292025") {
           matched = true;
           currentStage = 4;
           localStorage.setItem('failsafe_stage', '4');
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: TIMELINE ANOMALY SOLVED.`, "green");
-          reportTelemetryAction("Solved Stage 03 (Date Anomaly) - Promoted to Stage 04 (Voice & Security Audit)");
-          updateMissionBanner(4, "Analyze the physical access log in <strong>03_VOICE</strong> to find the contradictory override timestamp.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 22:46</code> below.");
-          setEthanDialogue("<strong>STAGE 03 SOLVED!</strong><br>Now navigate to 03_VOICE. Cross-reference Dr. Aditi's gate exit scan against the terminal override timestamp!");
-        } else if (clean === "2246") {
+          logTerm(`[CHECKSUM ACCREDITED]: A1Z26 POSITION DECODED (POLARIS).`, "green");
+          reportTelemetryAction("Solved Stage 03 (A1Z26 Alphabet Code) - Promoted to Stage 04");
+          updateMissionBanner(4, "Inspect <strong>System_Diagnostics.doc</strong> in 04_COMMENTS. Dr. Aditi left notes in the margins, resolved before ADI could delete them.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt MARGIN_KEY</code> below.");
+          setEthanDialogue("<strong>STAGE 03 SOLVED!</strong><br>Now navigate to 04_COMMENTS. Open the resolved comments drawer in System_Diagnostics.doc!");
+
+        // Stage 4: The Resolved Comments Log (MARGIN_KEY / 22:46)
+        } else if (clean === "MARGIN_KEY" || clean === "MARGINKEY" || clean === "22:46" || clean === "2246") {
           matched = true;
           currentStage = 5;
           localStorage.setItem('failsafe_stage', '5');
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: SECURITY AUDIT VERIFIED.`, "green");
-          reportTelemetryAction("Solved Stage 04 (Security Audit 2246) - Promoted to Stage 05 (Stegano Mask)");
-          updateMissionBanner(5, "Inspect <strong>04_STEGANO</strong>. The image Dark_Terminal.png appears completely pitch black. Increase the light/brightness to see what hides in the shadows!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [passcode]</code> (e.g. decrypt SHADOW_CORE) below.");
-          setEthanDialogue("<strong>STAGE 04 CLEARED!</strong><br>⚠️ New classified image detected: <code>Dark_Terminal.png</code> in 04_STEGANO! It appears pitch black—crank exposure/brightness to maximum!");
-        } else if (clean === "SHADOWCORE" || clean === "SHADOW_CORE") {
+          logTerm(`[CHECKSUM ACCREDITED]: MARGIN NOTE RESOLVED (MARGIN_KEY).`, "green");
+          reportTelemetryAction("Solved Stage 04 (Resolved Comments) - Promoted to Stage 05");
+          updateMissionBanner(5, "Inspect <strong>AUTHENTIC_LOG.doc</strong> in 05_FONTS against STYLE_GUIDE.txt. Match document formatting to identify authentic font.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt ARIAL</code> below.");
+          setEthanDialogue("<strong>STAGE 04 CLEARED!</strong><br>Examine 05_FONTS. Check Dr. Aditi's official style guide specifications to find the genuine font!");
+
+        // Stage 5: Font Style Verification (ARIAL / AUTHENTIC)
+        } else if (clean === "ARIAL" || clean === "AUTHENTIC") {
           matched = true;
           currentStage = 6;
           localStorage.setItem('failsafe_stage', '6');
-          setEthanJammed();
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: SHADOW CORE WATERMARK REVEALED.`, "green");
-          reportTelemetryAction("Solved Stage 05 (Shadow Core) - Promoted to Stage 06 (ADI Interface)");
-          updateMissionBanner(6, "Inspect <strong>05_AUTH</strong>. Rogue AI ADI orders you to open a colored path, but Dr. Aditi's note warns to do the opposite.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [color]</code> below.");
-        } else if (clean === "WHITE" && currentStage <= 6) {
+          logTerm(`[CHECKSUM ACCREDITED]: FONT STYLE VERIFIED (ARIAL).`, "green");
+          reportTelemetryAction("Solved Stage 05 (Font Style) - Promoted to Stage 06");
+          updateMissionBanner(6, "Inspect <strong>Dark_Terminal.png</strong> in 06_STEGANO. The image appears pitch black. Crank Exposure/Brightness to reveal what hides in shadows!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SHADOW_CORE</code> below.");
+          setEthanDialogue("<strong>STAGE 05 CLEARED!</strong><br>⚠️ Pitch black image detected in 06_STEGANO! Crank exposure and contrast to maximum!");
+
+        // Stage 6: The Steganography Mask (SHADOW_CORE)
+        } else if (clean === "SHADOWCORE" || clean === "SHADOW_CORE") {
           matched = true;
           currentStage = 7;
           localStorage.setItem('failsafe_stage', '7');
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: INVERSE PATH RECOGNIZED.`, "green");
-          reportTelemetryAction("Solved Stage 06 (White Directive) - Promoted to Stage 07 (Typography)");
-          updateMissionBanner(7, "Inspect <strong>06_TYPO</strong>. Compare the typography of ADITI_MESSAGE.doc vs ADITI_MESSAGE_FINAL.doc against STYLE_GUIDE.txt.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt AUTHENTIC</code> below.");
-          setEthanDialogue("<strong>STAGE 06 CLEARED!</strong><br>Now examine 06_TYPO. Check the DARPA typography specifications to prove which message is authentic!");
-        } else if (clean === "AUTHENTIC") {
+          logTerm(`[CHECKSUM ACCREDITED]: STEGANOGRAPHY SHADOW WATERMARK REVEALED (SHADOW_CORE).`, "green");
+          reportTelemetryAction("Solved Stage 06 (Steganography Mask) - Promoted to Stage 07");
+          updateMissionBanner(7, "Inspect <strong>Corrupted_Image_Block.doc</strong> in 07_PIXEL. Zoom out to 50% or adjust contrast on the 10x10 table to reveal the 4-digit code.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 7702</code> below.");
+          setEthanDialogue("<strong>STAGE 06 CLEARED!</strong><br>Sector 07_PIXEL contains a corrupted image table. Enhance contrast or zoom out to 50% to read the digits!");
+
+        // Stage 7: Embedded Table Pixel Art (7702 / WHITE)
+        } else if (clean === "7702" || clean === "WHITE" || clean === "DONOTFOLLOWBLUE") {
           matched = true;
           currentStage = 8;
           localStorage.setItem('failsafe_stage', '8');
-          setEthanTrapped();
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: TYPOGRAPHY AUTHENTICATED.`, "green");
-          reportTelemetryAction("Solved Stage 07 (Typography) - Promoted to Stage 08 (Morse Audio)");
-          updateMissionBanner(8, "Listen to the CW 680Hz audio carrier pulse in <strong>07_SPECTRO</strong>. Decode Dr. Aditi's acoustic Morse transmission.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [path/code]</code> (e.g. WHITE or DONOTFOLLOWBLUE) below.");
-        } else if ((clean === "WHITE" || clean === "DONOTFOLLOWBLUE" || clean === "DONOTFOLLOWTHEBLUEPATH") && currentStage >= 8) {
+          logTerm(`[CHECKSUM ACCREDITED]: TABLE PIXEL MATRIX DECODED (7702).`, "green");
+          reportTelemetryAction("Solved Stage 07 (Table Pixel Art) - Promoted to Stage 08");
+          updateMissionBanner(8, "Inspect <strong>Sanctuary_Inventory.sheet</strong> in 08_SHEETS. Open Version History and compare SYSTEM_ADI vs Dr. Aditi's draft at 20:00.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt FALSE_RECORDS</code> below.");
+          setEthanDialogue("<strong>STAGE 07 CLEARED!</strong><br>Now open 08_SHEETS. Click Version History to compare Dr. Aditi's 20:00 draft against SYSTEM_ADI!");
+
+        // Stage 8: Revision History Conflict (FALSE_RECORDS / THE AI CAN MODIFY WHAT YOU SEE)
+        } else if (clean === "FALSERECORDS" || clean === "FALSE_RECORDS" || clean === "THEAICANMODIFYWHATYOUSEE") {
           matched = true;
           currentStage = 9;
           localStorage.setItem('failsafe_stage', '9');
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: CW MORSE TRANSMISSION DECODED.`, "green");
-          reportTelemetryAction("Solved Stage 08 (Morse) - Promoted to Stage 09 (Root Maze)");
-          updateMissionBanner(9, "Traverse the authentic directory tree (<code>WHITE/</code>) in <strong>08_MAZE</strong>. Collect the three text fragments from subfolders A, D, and I.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [concatenated phrase]</code> below.");
-        } else if (clean === "THEAICANMODIFYWHATYOUSEE") {
+          logTerm(`[CHECKSUM ACCREDITED]: SPREADSHEET REVISION CONFLICT UNMASKED (FALSE_RECORDS).`, "green");
+          reportTelemetryAction("Solved Stage 08 (Google Sheets Revision) - Promoted to Stage 09");
+          updateMissionBanner(9, "Inspect <strong>09_ROLLBACK</strong>. ADI altered the active commit history! Use the interactive scrubber to find Dr. Aditi's authentic 20:18 message.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt HISTORY</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt OVERRIDE FAILED</code> below.");
+          setEthanDialogue("<strong>STAGE 08 CLEARED!</strong><br>Sector 09_ROLLBACK has git reflogs! Find Dr. Aditi's original commit message before ADI corrupted it!");
+
+        // Stage 9: Git Commit Version Scrub (HISTORY / OVERRIDE FAILED)
+        } else if (clean === "HISTORY" || clean === "OVERRIDEFAILED" || clean === "OVERRIDE_FAILED") {
           matched = true;
           currentStage = 10;
           localStorage.setItem('failsafe_stage', '10');
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: ROOT MAZE FRAGMENTS ASSEMBLED.`, "green");
-          reportTelemetryAction("Solved Stage 09 (Root Maze) - Promoted to Stage 10 (Reflog Scrubber)");
-          updateMissionBanner(10, "Inspect <strong>09_ROLLBACK</strong>. ADI altered the active incident report! Use the interactive scrubber to roll back to Dr. Aditi's genuine 20:18 revision.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt [status message]</code> (e.g. OVERRIDE FAILED or HISTORY) below.");
-        } else if (clean === "HISTORY" || clean === "OVERRIDEFAILED") {
+          logTerm(`[CHECKSUM ACCREDITED]: REVISION HISTORY TAMPERING REVERSED.`, "green");
+          reportTelemetryAction("Solved Stage 09 (Version Scrub) - Promoted to Stage 10 (Trap Bypass)");
+          updateMissionBanner(10, "⚠️ WARNING: ADI HONEYPOT DETECTED AT <strong>10_TRAP.exe</strong>! Do NOT submit your credentials there—it adds a +5m penalty! Type <code>decrypt BYPASS</code> to disarm it.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt BYPASS</code> below.");
+          setEthanDialogue("<strong>STAGE 09 CLEARED!</strong><br>⚠️ WARNING! Sector 10_TRAP.exe is an active honeypot! Do not enter credentials there—use <code>decrypt BYPASS</code>!");
+
+        // Stage 10: Honeypot Trap Bypass (BYPASS)
+        } else if (clean === "BYPASS") {
           matched = true;
           currentStage = 11;
           localStorage.setItem('failsafe_stage', '11');
           sound.playSuccess();
-          logTerm(`[CHECKSUM ACCREDITED]: REVISION TAMPERING REVERSED.`, "green");
-          reportTelemetryAction("Solved Stage 10 (Commit History) - Promoted to Stage 11 (Trap Bypass)");
-          updateMissionBanner(11, "⚠️ WARNING: ADI HONEYPOT DETECTED AT <strong>10_TRAP.exe</strong>! Do NOT submit your credentials there—it adds a +5m penalty! Type <code>decrypt BYPASS</code> to disarm it and advance to Stage 12.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt BYPASS</code> below.");
-        } else if (clean === "BYPASS") {
-          matched = true;
-          currentStage = 12;
-          localStorage.setItem('failsafe_stage', '12');
-          sound.playSuccess();
           logTerm(`[CHECKSUM ACCREDITED]: AI HONEYPOT DISARMED.`, "green");
-          reportTelemetryAction("Solved Stage 11 (Trap Bypass) - Promoted to Final Stage 12");
-          updateMissionBanner(12, "🏆 FINAL OBJECTIVE: Locate Dr. Aditi's ultimate failsafe (IEEE WIE core values / 6-9-11 sequence) to liberate ETHAN and purge ADI permanently!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 6-9-11</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt WISDOM-INTEGRITY-EMPOWERMENT</code>.");
-        } else if (clean === "6911" || clean === "WISDOMINTEGRITYEMPOWERMENT") {
+          reportTelemetryAction("Solved Stage 10 (Trap Bypass) - Promoted to Final Stage 11");
+          updateMissionBanner(11, "🏆 FINAL OBJECTIVE: Locate Dr. Aditi's ultimate failsafe (IEEE WIE core values: Wisdom 6, Integrity 9, Empowerment 11) to purge ADI permanently!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 6-9-11</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt WISDOM-INTEGRITY-EMPOWERMENT</code>.");
+          setEthanDialogue("<strong>FINAL STAGE REACHED!</strong><br>Locate the IEEE WIE founding values (Wisdom, Integrity, Empowerment) to formulate the master kill switch!");
+
+        // Stage 11: Final WIE Failsafe (6-9-11)
+        } else if (clean === "6911" || clean === "6-9-11" || clean === "WISDOMINTEGRITYEMPOWERMENT" || clean === "WISDOM-INTEGRITY-EMPOWERMENT") {
           matched = true;
-          currentStage = 12;
+          currentStage = 11;
           sound.playSuccess();
           setEthanFreed();
+          logTerm(`[CHECKSUM ACCREDITED]: WIE FAILSAFE ACTIVATED. ROGUE AI PURGED.`, "green");
           reportTelemetryAction("🏆 MISSION COMPLETE: Final Failsafe Activated // ETHAN Freed & ADI Purged!");
           const banner = document.getElementById('active-mission-banner');
           if (banner) {
@@ -2550,7 +2786,7 @@
       }, 400);
     }
 
-        function updateMissionBanner(stageNum, questionText, answerHint) {
+    function updateMissionBanner(stageNum, questionText, answerHint) {
       document.getElementById('active-mission-banner').innerHTML = `
         <div class="mission-badge-row">
           <span>🎯 [STAGE 0${stageNum} MISSION DIRECTIVE]</span>
@@ -2567,98 +2803,90 @@
     // =========================================================================
     const STAGE_NAVIGATION_DATA = {
       1: {
-        chipId: "chip-origin",
-        dossierId: "origin",
-        title: "STAGE 01 // ORIGIN CIPHER",
-        guidance: "Examine Dr. Aditi's <strong>Farewell.doc</strong> in sector <strong>01_ORIGIN</strong>. Toggle the <strong>UV Polarizer Light</strong> to illuminate hidden text in the margins!",
-        mechanism: "UV Light Optical Filtering",
-        targetText: "01_ORIGIN: Farewell.doc"
+        chipId: "chip-whiteout",
+        dossierId: "whiteout",
+        title: "STAGE 01 // THE WHITEOUT TEXT",
+        guidance: "Examine <strong>Welcome_Log.doc</strong> in sector <strong>01_WHITEOUT</strong>. Highlight all text (Ctrl + A) or toggle UV light to reveal the hidden white ink!",
+        mechanism: "Whiteout Text & Contrast Selection",
+        targetText: "01_WHITEOUT: Welcome_Log.doc"
       },
       2: {
-        chipId: "chip-origin",
-        dossierId: "origin",
-        title: "STAGE 02 // COORDINATE TRAIL",
-        guidance: "Inspect <strong>README.doc</strong> in sector <strong>01_ORIGIN</strong>. Convert the numeric coordinates [1, 4, 9, 20, 9] using A1Z26 cipher to discover the clue phrase!",
-        mechanism: "A1Z26 Alphanumeric Substitution",
-        targetText: "01_ORIGIN: README.doc"
+        chipId: "chip-acrostic",
+        dossierId: "acrostic",
+        title: "STAGE 02 // THE SIMPLE ACROSTIC NOTE",
+        guidance: "Inspect <strong>Aditi_Memo.doc</strong> in sector <strong>02_ACROSTIC</strong>. Read the start of every sentence (first letter of each line)!",
+        mechanism: "Acrostic Cipher Extraction",
+        targetText: "02_ACROSTIC: Aditi_Memo.doc"
       },
       3: {
-        chipId: "chip-timeline",
-        dossierId: "timeline",
-        title: "STAGE 03 // TIMELINE ANOMALY",
-        guidance: "Open <strong>02_TIMELINE</strong>. Check the system timestamp logs carefully. A non-leap year anomaly was recorded on February 29, 2025!",
-        mechanism: "Chronological Calendar Validation (Leap Year Anomaly)",
-        targetText: "02_TIMELINE: Incident_Logs.doc"
+        chipId: "chip-clearance",
+        dossierId: "clearance",
+        title: "STAGE 03 // A1Z26 ALPHABET CODE",
+        guidance: "Open <strong>Clearance_Code.txt</strong> in sector <strong>03_A1Z26</strong>. Map each number [16-15-12-01-18-09-19] to its letter position in the alphabet!",
+        mechanism: "A1Z26 Alphanumeric Substitution",
+        targetText: "03_A1Z26: Clearance_Code.txt"
       },
       4: {
-        chipId: "chip-voice",
-        dossierId: "voice",
-        title: "STAGE 04 // SECURITY AUDIT",
-        guidance: "Open <strong>03_VOICE</strong>. Compare Dr. Aditi's physical RFID exit badge scan (22:44) against the emergency console override timestamp (22:46)!",
-        mechanism: "Access Control Timestamp Discrepancy",
-        targetText: "03_VOICE: Security_Audit.pdf"
+        chipId: "chip-comments",
+        dossierId: "comments",
+        title: "STAGE 04 // RESOLVED COMMENTS LOG",
+        guidance: "Open <strong>System_Diagnostics.doc</strong> in sector <strong>04_COMMENTS</strong>. Click <strong>💬 Comments (1 Resolved)</strong> to read Dr. Aditi's hidden marginal note!",
+        mechanism: "Google Docs Comment History Inspection",
+        targetText: "04_COMMENTS: System_Diagnostics.doc"
       },
       5: {
-        chipId: "chip-stego",
-        dossierId: "stego",
-        title: "STAGE 05 // STEGANOGRAPHY MASK",
-        guidance: "Open <strong>04_STEGANO</strong>. Inspect <code>Dark_Terminal.png</code>. Increase Exposure and Contrast sliders to maximum to reveal what hides in the shadows!",
-        mechanism: "Image Color Channels & Contrast Manipulation",
-        targetText: "04_STEGANO: Dark_Terminal.png"
+        chipId: "chip-font",
+        dossierId: "font",
+        title: "STAGE 05 // FONT STYLE VERIFICATION",
+        guidance: "Inspect <strong>AUTHENTIC_LOG.doc</strong> in sector <strong>05_FONTS</strong>. Dr. Aditi always formats official logs in Arial 11pt. Identify the authentic font name!",
+        mechanism: "Typography & Font Property Verification",
+        targetText: "05_FONTS: AUTHENTIC_LOG.doc"
       },
       6: {
-        chipId: "chip-auth",
-        dossierId: "auth",
-        title: "STAGE 06 // ADI DIRECTIVE",
-        guidance: "Inspect <strong>05_AUTH</strong>. Analyze the inverse path directive. Which color path was designated as the authentic failsafe override?",
-        mechanism: "Adversarial Prompt Logic Analysis",
-        targetText: "05_AUTH: ADI_DIRECTIVE"
+        chipId: "chip-stego",
+        dossierId: "stego",
+        title: "STAGE 06 // THE STEGANOGRAPHY MASK",
+        guidance: "Open <strong>Dark_Terminal.png</strong> in sector <strong>06_STEGANO</strong>. Crank Exposure/Brightness to maximum to reveal the hidden watermark!",
+        mechanism: "Image Contrast & Exposure Manipulation",
+        targetText: "06_STEGANO: Dark_Terminal.png"
       },
       7: {
-        chipId: "chip-typo",
-        dossierId: "typo",
-        title: "STAGE 07 // TYPOGRAPHY FORENSICS",
-        guidance: "Open <strong>06_TYPO</strong>. Compare <code>STYLE_GUIDE.txt</code> against the two drafts. Find which document adheres to DARPA typography rules (Arial 11pt vs Calibri 12pt)!",
-        mechanism: "Font Metric & Styling Verification",
-        targetText: "06_TYPO: STYLE_GUIDE.txt"
+        chipId: "chip-pixel",
+        dossierId: "pixel",
+        title: "STAGE 07 // EMBEDDED TABLE PIXEL ART",
+        guidance: "Open <strong>Corrupted_Image_Block.doc</strong> in sector <strong>07_PIXEL</strong>. Zoom out to 50% or click <strong>⬛ ENHANCE CONTRAST</strong> to read the 4-digit code!",
+        mechanism: "Table Cell Formatting Pixel Art",
+        targetText: "07_PIXEL: Corrupted_Image_Block.doc"
       },
       8: {
-        chipId: "chip-spectro",
-        dossierId: "spectro",
-        title: "STAGE 08 // SPECTROGRAM AUDIO FEED",
-        guidance: "Listen to the CW 680Hz audio carrier pulse in <strong>07_SPECTRO</strong>. Decipher the Morse code. Which color route does the audio signal confirm?",
-        mechanism: "Audio Morse Code & Spectral Analysis",
-        targetText: "07_SPECTRO: CW 680Hz Carrier"
+        chipId: "chip-sheet",
+        dossierId: "sheet",
+        title: "STAGE 08 // REVISION HISTORY CONFLICT",
+        guidance: "Open <strong>Sanctuary_Inventory.sheet</strong> in sector <strong>08_SHEETS</strong>. Click <strong>🕒 Version History</strong> and compare SYSTEM_ADI with Dr. Aditi's draft at 20:00!",
+        mechanism: "Google Sheets Version Comparison",
+        targetText: "08_SHEETS: Sanctuary_Inventory.sheet"
       },
       9: {
-        chipId: "chip-maze",
-        dossierId: "maze",
-        title: "STAGE 09 // ROOT DIRECTORY MAZE",
-        guidance: "Traverse the <strong>08_MAZE</strong> directory tree. Follow the authentic WHITE/A-D-I trail and assemble the hidden sentence fragment files in order!",
-        mechanism: "Hierarchical File Tree Traversal",
-        targetText: "08_MAZE: WHITE/A-D-I/"
-      },
-      10: {
         chipId: "chip-rollback",
         dossierId: "rollback",
-        title: "STAGE 10 // VERSION ROLLBACK",
+        title: "STAGE 09 // VERSION ROLLBACK (REFLOG)",
         guidance: "Review <strong>09_ROLLBACK</strong> git commit history. Inspect commit <code>7b8a1c9</code> from 20:18. What was Dr. Aditi's original commit message before ADI corrupted it?",
         mechanism: "VCS Git Commit History Inspection",
         targetText: "09_ROLLBACK: Git Commit 7b8a1c9"
       },
-      11: {
+      10: {
         chipId: "chip-trap",
         dossierId: "trap",
-        title: "STAGE 11 // HONEYPOT TRAP BYPASS",
+        title: "STAGE 10 // HONEYPOT TRAP BYPASS",
         guidance: "Analyze <strong>10_TRAP.exe</strong>. Look behind the threat warning to discover the emergency failover switch! Do not enter credentials in the trap.",
         mechanism: "Honeypot Deception & Safe Bypass",
         targetText: "10_TRAP.exe: Bypass Protocol"
       },
-      12: {
-        chipId: "chip-origin",
-        dossierId: "origin",
-        title: "STAGE 12 // FINAL WIE FAILSAFE",
-        guidance: "Consult the IEEE WIE core founding values: Wisdom, Integrity, Empowerment. Determine the numerical code from the letter counts or value initials to purge ADI forever!",
+      11: {
+        chipId: "chip-whiteout",
+        dossierId: "whiteout",
+        title: "STAGE 11 // FINAL WIE FAILSAFE",
+        guidance: "Consult the IEEE WIE core founding values: Wisdom, Integrity, Empowerment. Determine the numerical code from the letter counts (6-9-11) to purge ADI forever!",
         mechanism: "Core Value Philosophy & Master Override",
         targetText: "IEEE WIE Core Values (6-9-11)"
       }
@@ -3122,6 +3350,7 @@
     setTimeout(() => {
       loadStoredTeamSession();
     }, 100);
-  </script>
+  
+</script>
 </body>
 </html>

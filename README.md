@@ -118,19 +118,17 @@ The in-station AI companion (ETHAN Hunt Core) actively guides operators across *
 
 | Stage | Puzzle Title | In-Game Mechanism | Master Solution Key |
 | :---: | :--- | :--- | :--- |
-| **1** | Vanished (Origin Cipher) | Optical UV depolarizer reveals white-on-white text in `Farewell.doc` | `ORIGIN` |
-| **2** | The Trail (Coordinate Cipher) | A1Z26 index extraction [1, 4, 9, 20, 9] from `README.doc` | `LOOK BEHIND THE DATE` |
-| **3** | The Timeline (Leap Year Anomaly) | Audit log calendar anomaly detecting impossible leap day (`Feb 29, 2025`) | `28/02/2025`, `29022025`, or `02292025` |
-| **4** | Security Audit (Timestamp Gap) | Forensic timeline identifying unauthorized terminal override time | `22:46` |
-| **5** | The Steganography Mask | Dark image `Dark_Terminal.png`; increase brightness/exposure to reveal faint text | `SHADOW_CORE` |
-| **6** | Hello, Investigators (ADI Directive) | Rogue AI prompt instructs BLUE -> Aditi's note: choose the opposite | `WHITE` |
-| **7** | Which Aditi Is Real? (Typography) | Typography inspector comparing authentic Arial 11pt vs synthetic Calibri | `AUTHENTIC` |
-| **8** | Morse From Aditi (Spectrogram) | **Web Audio Synthesizer** plays live CW Morse: *"DO NOT FOLLOW BLUE"* | `WHITE` or `DONOTFOLLOWBLUE` |
-| **9** | The Folder Maze (Root Tree) | Tree navigation through `WHITE/A/D/I` collecting hidden phrase tokens | `THE AI CAN MODIFY WHAT YOU SEE` |
-| **10** | Reality Is Edited (Version Scrub) | **Interactive Version History scrubber** exposing Aditi's genuine commit | `HISTORY` or `OVERRIDE FAILED` |
-| **11** | The Trap (Honeypot Bypass) | Pulsing emergency shutdown button — submitting triggers a **+5m penalty**! | `BYPASS` *(Do Not Submit in Trap)* |
-| **12** | The WIE Failsafe (Core Values) | WIE Values cipher: Wisdom (6), Integrity (9), Empowerment (11) | `6-9-11` or `WISDOM-INTEGRITY-EMPOWERMENT` |
-
+| **1** | The Whiteout Text (Invisible Ink) | Highlight all text (`Ctrl + A`) or UV light in `Welcome_Log.doc` | `INITIATE` *(also accepts `ORIGIN`)* |
+| **2** | The Simple Acrostic Note | Read first letter of each sentence in `Aditi_Memo.doc` (08:00 memo) | `SAFE` *(also accepts `LOOK BEHIND THE DATE`)* |
+| **3** | The A1Z26 Alphabet Code | Alphanumeric mapping [16-15-12-01-18-09-19] in `Clearance_Code.txt` | `POLARIS` *(also accepts `28/02/2025`)* |
+| **4** | The Resolved Comments Log | Inspect resolved comment history in `System_Diagnostics.doc` | `MARGIN_KEY` *(also accepts `22:46`)* |
+| **5** | The Font Style Verification | Compare `AUTHENTIC_LOG.doc` against `STYLE_GUIDE.txt` (Arial 11pt) | `ARIAL` *(also accepts `AUTHENTIC`)* |
+| **6** | The Steganography Mask | Crank Exposure/Brightness slider on pitch-black `Dark_Terminal.png` | `SHADOW_CORE` |
+| **7** | Embedded QR / Pixel Art | Zoom out to 50% or enhance contrast on 10x10 table in `Corrupted_Image_Block.doc` | `7702` *(also accepts `WHITE`)* |
+| **8** | Revision History Conflict | Google Sheets version comparison in `Sanctuary_Inventory.sheet` (Aditi 20:00) | `FALSE_RECORDS` *(also accepts `THE AI CAN MODIFY WHAT YOU SEE`)* |
+| **9** | Version Scrub (Git Reflog) | Inspect VCS commit history in `Incident_Report.doc` (commit `7b8a1c9`) | `HISTORY` or `OVERRIDE FAILED` |
+| **10** | Honeypot Trap Bypass | Disarm ADI's credential-harvesting honeypot at `10_TRAP.exe` | `BYPASS` *(Do not submit credentials in trap!)* |
+| **11** | Final WIE Failsafe | IEEE WIE founding values cipher (Wisdom 6, Integrity 9, Empowerment 11) | `6-9-11` or `WISDOM-INTEGRITY-EMPOWERMENT` |
 ---
 
 ## ⏱️ Scoring & Tie-Breaker Formula
