@@ -101,17 +101,16 @@ To ensure competitive integrity during campus events:
 
 ---
 
-## 🧠 ETHAN Companion AI: Zero-Spoiler Hint Policy
+## 🧠 ETHAN Companion AI: Active Navigational Guidance (Zero-Spoiler)
 
-The in-station AI companion (ETHAN Hunt Core) dynamically assists participants without ruining the puzzles:
+The in-station AI companion (ETHAN Hunt Core) actively guides operators across **all 12 stages** without spoiling passwords:
 
-* **Stage 1 (Onboarding / Easy)**:
-  - ETHAN guides operators on the workstation mechanics: selecting files in `01_ORIGIN`, toggling the UV depolarizer to reveal invisible ink, and running `decrypt [code]`.
-  - He asks: *"Where does Dr. Aditi's foundational work begin?"* without giving away the keyword `"ORIGIN"`.
-* **Stages 2 to 11 (Moderate to Hard — Keep Them Guessing)**:
-  - **Zero Password Reveals**: ETHAN will never divulge direct solutions, passwords, or exact character strings.
-  - **Cryptographic Directives**: Offers tactical guidelines only (e.g. *"Index numbers correspond to character positions in the document. STRATCOM rules require manual extraction."*).
-  - **Atmospheric Jamming**: When rogue AI ADI takes control, ETHAN's signal is jammed or quarantined in the sandbox buffer, forcing participants to decipher the forensic evidence independently.
+* **Active Direction Across All 12 Stages**:
+  - Whenever participants click **👁️ ETHAN** or type `ethan` / `hint` in the terminal, ETHAN activates a glowing visual radar beacon highlighting the exact dossier sector or card to investigate for 3.5 seconds.
+  - Explains the cryptographic mechanism in play (e.g. UV filtering, A1Z26, leap year validation, contrast/brightness manipulation, typography comparison, Morse audio decoding, directory traversal, git commit rollback).
+  - Even during atmospheric signal jamming or sandbox quarantine, ETHAN transmits emergency intercepted telemetry so participants are never stranded without a compass.
+* **Zero Direct Password Spoilers**:
+  - ETHAN never divulges the exact password string. Investigators must perform the forensic deductions themselves and enter `decrypt [passcode]`.
 
 ---
 
@@ -119,17 +118,18 @@ The in-station AI companion (ETHAN Hunt Core) dynamically assists participants w
 
 | Stage | Puzzle Title | In-Game Mechanism | Master Solution Key |
 | :---: | :--- | :--- | :--- |
-| **1** | Vanished | Optical UV depolarizer reveals white-on-white text in `Farewell.doc` | `ORIGIN` |
-| **2** | The Trail | A1Z26 index extraction from `README.doc` (ignore decoy folders) | `LOOK BEHIND THE DATE` |
-| **3** | The Timeline | Audit log calendar anomaly detecting impossible leap day (`Feb 29, 2025`) | `28/02/2025` or `02292025` |
-| **4** | The Voice / Audit | Forensic timeline identifying unauthorized terminal override time | `22:46` |
-| **5** | Hello, Investigators | Rogue AI prompt instructs BLUE -> Aditi's note: choose the opposite | `WHITE` |
-| **6** | Which Aditi Is Real? | Typography inspector comparing authentic Arial 11pt vs synthetic Calibri | `AUTHENTIC` |
-| **7** | Morse From Aditi | **Web Audio Synthesizer** plays live CW Morse: *"DO NOT FOLLOW BLUE"* | `WHITE` |
-| **8** | The Folder Maze | Tree navigation through `WHITE/A/D/I` collecting hidden phrase tokens | `THE AI CAN MODIFY WHAT YOU SEE` |
-| **9** | Reality Is Edited | **Interactive Version History scrubber** exposing Aditi's genuine commit | `HISTORY` or `OVERRIDE FAILED` |
-| **10** | The Trap | Pulsing emergency shutdown button — submitting triggers a **+5m penalty**! | **Bypass / Do Not Submit** |
-| **11** | The WIE Failsafe | WIE Values cipher: Wisdom (6), Integrity (9), Empowerment (11) | `6-9-11` or `WISDOM-INTEGRITY-EMPOWERMENT` |
+| **1** | Vanished (Origin Cipher) | Optical UV depolarizer reveals white-on-white text in `Farewell.doc` | `ORIGIN` |
+| **2** | The Trail (Coordinate Cipher) | A1Z26 index extraction [1, 4, 9, 20, 9] from `README.doc` | `LOOK BEHIND THE DATE` |
+| **3** | The Timeline (Leap Year Anomaly) | Audit log calendar anomaly detecting impossible leap day (`Feb 29, 2025`) | `28/02/2025`, `29022025`, or `02292025` |
+| **4** | Security Audit (Timestamp Gap) | Forensic timeline identifying unauthorized terminal override time | `22:46` |
+| **5** | The Steganography Mask | Dark image `Dark_Terminal.png`; increase brightness/exposure to reveal faint text | `SHADOW_CORE` |
+| **6** | Hello, Investigators (ADI Directive) | Rogue AI prompt instructs BLUE -> Aditi's note: choose the opposite | `WHITE` |
+| **7** | Which Aditi Is Real? (Typography) | Typography inspector comparing authentic Arial 11pt vs synthetic Calibri | `AUTHENTIC` |
+| **8** | Morse From Aditi (Spectrogram) | **Web Audio Synthesizer** plays live CW Morse: *"DO NOT FOLLOW BLUE"* | `WHITE` or `DONOTFOLLOWBLUE` |
+| **9** | The Folder Maze (Root Tree) | Tree navigation through `WHITE/A/D/I` collecting hidden phrase tokens | `THE AI CAN MODIFY WHAT YOU SEE` |
+| **10** | Reality Is Edited (Version Scrub) | **Interactive Version History scrubber** exposing Aditi's genuine commit | `HISTORY` or `OVERRIDE FAILED` |
+| **11** | The Trap (Honeypot Bypass) | Pulsing emergency shutdown button — submitting triggers a **+5m penalty**! | `BYPASS` *(Do Not Submit in Trap)* |
+| **12** | The WIE Failsafe (Core Values) | WIE Values cipher: Wisdom (6), Integrity (9), Empowerment (11) | `6-9-11` or `WISDOM-INTEGRITY-EMPOWERMENT` |
 
 ---
 
