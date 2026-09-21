@@ -103,11 +103,11 @@ To ensure competitive integrity during campus events:
 
 ## 🧠 ETHAN Companion AI: Active Navigational Guidance (Zero-Spoiler)
 
-The in-station AI companion (ETHAN Hunt Core) actively guides operators across **all 12 stages** without spoiling passwords:
+The in-station AI companion (ETHAN Hunt Core) actively guides operators across **all 15 stages** without spoiling passwords:
 
-* **Active Direction Across All 12 Stages**:
+* **Active Direction Across All 15 Stages**:
   - Whenever participants click **👁️ ETHAN** or type `ethan` / `hint` in the terminal, ETHAN activates a glowing visual radar beacon highlighting the exact dossier sector or card to investigate for 3.5 seconds.
-  - Explains the cryptographic mechanism in play (e.g. UV filtering, A1Z26, leap year validation, contrast/brightness manipulation, typography comparison, Morse audio decoding, directory traversal, git commit rollback).
+  - Explains the cryptographic mechanism in play (e.g. Command sequence deduction, UV ink filtering, Acrostic cipher, non-leap year calendar rules, A1Z26 mapping, margin comments, typography matching, steganography brightness manipulation, table pixel art, Google Sheets version comparison, Bayesian confidence formula audit, CW Morse radio audio decoding, Git reflog inspection, honeypot neutralization, IEEE WIE value lengths).
   - Even during atmospheric signal jamming or sandbox quarantine, ETHAN transmits emergency intercepted telemetry so participants are never stranded without a compass.
 * **Zero Direct Password Spoilers**:
   - ETHAN never divulges the exact password string. Investigators must perform the forensic deductions themselves and enter `decrypt [passcode]`.
@@ -118,29 +118,21 @@ The in-station AI companion (ETHAN Hunt Core) actively guides operators across *
 
 | Stage | Puzzle Title | In-Game Mechanism | Master Solution Key |
 | :---: | :--- | :--- | :--- |
-| **1** | ADI Recovery Terminal & Whiteout Text | Deduce missing recovery command in `LOGIN → VERIFY → ? → EXECUTE → LOCK` or highlight white ink in `Welcome_Log.doc` | `ACCESS` *(also accepts `INITIATE` / `ORIGIN`)* |
-| **2** | The Simple Acrostic Note | Read first letter of each sentence in `Aditi_Memo.doc` (08:00 memo) | `SAFE` *(also accepts `LOOK BEHIND THE DATE`)* |
-| **3** | The A1Z26 Alphabet Code | Alphanumeric mapping [16-15-12-01-18-09-19] in `Clearance_Code.txt` | `POLARIS` *(also accepts `28/02/2025`)* |
-| **4** | The Resolved Comments Log | Inspect resolved comment history in `System_Diagnostics.doc` | `MARGIN_KEY` *(also accepts `22:46`)* |
-| **5** | The Font Style Verification | Compare `AUTHENTIC_LOG.doc` against `STYLE_GUIDE.txt` (Arial 11pt) | `ARIAL` *(also accepts `AUTHENTIC`)* |
-| **6** | The Steganography Mask | Crank Exposure/Brightness slider on pitch-black `Dark_Terminal.png` | `SHADOW_CORE` |
-| **7** | Embedded QR / Pixel Art | Zoom out to 50% or enhance contrast on 10x10 table in `Corrupted_Image_Block.doc` | `7702` *(also accepts `WHITE`)* |
-| **8** | Revision History Conflict | Google Sheets version comparison in `Sanctuary_Inventory.sheet` (Aditi 20:00) | `FALSE_RECORDS` *(also accepts `THE AI CAN MODIFY WHAT YOU SEE`)* |
-| **9** | The Confidence Equation | Test Bayesian formula `Confidence = 76% + S²` to expose AI hallucination | `ADITI ENTERED` *(also accepts `C`)* |
-| **10** | Version Scrub (Git Reflog) | Inspect VCS commit history in `Incident_Report.doc` (commit `7b8a1c9`) | `HISTORY` or `OVERRIDE FAILED` |
-| **11** | Honeypot Trap Bypass | Disarm ADI's credential-harvesting honeypot at `11_TRAP.exe` | `BYPASS` *(Do not submit credentials in trap!)* |
-| **12** | Final WIE Failsafe | IEEE WIE founding values cipher (Wisdom 6, Integrity 9, Empowerment 11) | `6-9-11` or `WISDOM-INTEGRITY-EMPOWERMENT` |
----
-
-## ⏱️ Scoring & Tie-Breaker Formula
-
-$$\text{Final Score (min)} = \text{Raw Completion Time} + (\text{Hints Requested} \times 2\text{ min}) + (\text{Traps Triggered} \times 5\text{ min})$$
-
-* **Tie-Breaker Hierarchy**:
-  1. Lowest Total Adjusted Score.
-  2. Earliest completion timestamp.
-  3. Fewest hints requested.
-  4. Zero trap button submissions.
+| **01** | ADI Recovery Terminal | Command sequence deduction (`LOGIN → VERIFY → ? → EXECUTE → LOCK`) | `ACCESS` *(also accepts `RECOVER ACCESS`)* |
+| **02** | The Whiteout Text (Invisible Ink) | Highlight white-on-white text in `Welcome_Log.doc` (`Ctrl + A` or UV light) | `INITIATE` *(also accepts `ORIGIN`)* |
+| **03** | The Simple Acrostic Note | First letters of each sentence in `Aditi_Memo.doc` (08:00 memo) | `SAFE` *(also accepts `LOOK BEHIND THE DATE`)* |
+| **04** | The Calendar Anomaly | Non-leap year calendar contradiction in `Incident_Logs.doc` (Feb 29, 2025 is impossible) | `28/02/2025` *(also accepts `02292025`, `29022025`, `20250229`)* |
+| **05** | A1Z26 Alphabet Code | Alphanumeric position mapping [16-15-12-01-18-09-19] in `Clearance_Code.txt` | `POLARIS` |
+| **06** | The Resolved Comments Log | Inspect resolved comment history in `System_Diagnostics.doc` | `MARGIN_KEY` *(also accepts `22:46`)* |
+| **07** | Font Style Verification | Compare `AUTHENTIC_LOG.doc` against `STYLE_GUIDE.txt` (Arial 11pt vs Times New Roman) | `ARIAL` *(also accepts `AUTHENTIC`)* |
+| **08** | The Steganography Mask | Crank Exposure/Brightness slider on pitch-black `Dark_Terminal.png` | `SHADOW_CORE` |
+| **09** | Embedded Table Pixel Art | Zoom out to 50% or enhance contrast on 10x10 table in `Corrupted_Image_Block.doc` | `7702` *(also accepts `WHITE`)* |
+| **10** | Revision History Conflict | Google Sheets version comparison in `Sanctuary_Inventory.sheet` (Aditi 20:00 draft) | `FALSE_RECORDS` *(also accepts `THE AI CAN MODIFY WHAT YOU SEE`)* |
+| **11** | The Confidence Equation | Reverse engineer ADI formula `(S / T)² × 100` to find corrupted prediction (E: 74% vs 25%) | `SYSTEM SHUTDOWN` *(also accepts `E`, `25%`, `ADITI ENTERED`, `C`)* |
+| **12** | Morse Code Audio Transmission | Decode CW radio audio tones (`.-- .... .. - .`) from Dr. Aditi's emergency beacon | `WHITE` *(also accepts `SOS_ADITI`, `MORSE`)* |
+| **13** | Version Scrub (Git Reflog) | Inspect Git reflog commit history in `Incident_Report.doc` (commit `7b8a1c9`) | `OVERRIDE FAILED` *(also accepts `HISTORY`)* |
+| **14** | Honeypot Trap Bypass | Disarm ADI's credential-harvesting honeypot at `DO_NOT_RUN.exe` | `BYPASS` *(also accepts `SKIP`, `DISARM`)* |
+| **15** | Final WIE Failsafe Protocol | IEEE WIE founding values cipher (Wisdom 6, Integrity 9, Empowerment 11) | `6-9-11` *(also accepts `WISDOM-INTEGRITY-EMPOWERMENT`)* |
 
 ---
 

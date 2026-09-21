@@ -23,107 +23,134 @@ ADMIN_PIN = "wie-admin-2026"
 # Master Stage Passwords & Solutions (faithful to Master Document)
 STAGES = {
     1: {
-        "title": "The Whiteout Text / ADI Recovery Terminal",
-        "keys": ["ACCESS", "INITIATE", "ORIGIN"],
+        "title": "ADI Recovery Terminal",
+        "keys": ["ACCESS", "RECOVER ACCESS"],
         "unlocked_by_default": True,
         "next_stage": 2,
         "hints": [
-            "Review the recovery log: LOGIN -> VERIFY -> ? -> EXECUTE -> LOCK. What command gives permission to reach the core?",
-            "Highlight everything to see what is hidden in plain sight, or enter the missing recovery command (ACCESS)."
+            "Review the recovery sequence: LOGIN -> VERIFY -> ? -> EXECUTE -> LOCK.",
+            "What command gives permission to reach the core? (ACCESS)."
         ]
     },
     2: {
+        "title": "The Whiteout Text (Invisible Ink)",
+        "keys": ["INITIATE", "ORIGIN"],
+        "next_stage": 3,
+        "hints": [
+            "Highlight everything to see what is hidden in plain sight.",
+            "Press Ctrl+A or toggle UV light to reveal the hidden white ink in Welcome_Log.doc."
+        ]
+    },
+    3: {
         "title": "The Simple Acrostic Note",
         "keys": ["SAFE", "LOOK BEHIND THE DATE", "LOOKBEHINDTHEDATE"],
-        "next_stage": 3,
+        "next_stage": 4,
         "hints": [
             "Read between the lines—or rather, read the start of every sentence.",
             "Take the first letter of each of the 4 sentences in Aditi_Memo.doc."
         ]
     },
-    3: {
+    4: {
+        "title": "The Calendar Anomaly (Non-Leap Year)",
+        "keys": ["28/02/2025", "02292025", "29022025", "20250229", "28022025", "29/02/2025", "FEB 29, 2025"],
+        "next_stage": 5,
+        "hints": [
+            "Inspect the dates in Incident_Logs.doc. Check the calendar rules for the year 2025.",
+            "2025 is not a leap year. February 29, 2025 does not exist! The real date is 28/02/2025."
+        ]
+    },
+    5: {
         "title": "The A1Z26 Alphabet Code",
-        "keys": ["POLARIS", "28/02/2025", "02292025", "29022025", "2025-02-29", "FEB 29, 2025", "29/02/2025"],
-        "next_stage": 4,
+        "keys": ["POLARIS"],
+        "next_stage": 6,
         "hints": [
             "The key position in the alphabet reveals the directory clearance.",
             "Convert numbers [16-15-12-01-18-09-19] to letters: 1=A, 2=B... 16=P, 15=O, etc."
         ]
     },
-    4: {
+    6: {
         "title": "The Resolved Comments Log",
         "keys": ["MARGIN_KEY", "MARGINKEY", "22:46", "2246"],
-        "next_stage": 5,
+        "next_stage": 7,
         "hints": [
             "Dr. Aditi left notes in the margins, resolved before ADI could delete them.",
             "Open System_Diagnostics.doc and check the resolved comments history."
         ]
     },
-    5: {
+    7: {
         "title": "The Font Style Verification",
         "keys": ["ARIAL", "AUTHENTIC"],
-        "next_stage": 6,
+        "next_stage": 8,
         "hints": [
             "The real log strictly follows the lab's formatting standard. Check the font.",
             "Dr. Aditi always formats authentic logs in Arial 11pt with 1.15 line spacing."
         ]
     },
-    6: {
+    8: {
         "title": "The Steganography Mask",
         "keys": ["SHADOW_CORE", "SHADOWCORE"],
-        "next_stage": 7,
+        "next_stage": 9,
         "hints": [
             "The image Dark_Terminal.png appears completely pitch black.",
             "Increase the exposure/brightness to maximum in a photo editor or using the in-console slider to reveal what hides in the shadows."
         ]
     },
-    7: {
+    9: {
         "title": "The Embedded QR / Pixel Art",
-        "keys": ["7702", "WHITE", "DONOTFOLLOWBLUE"],
-        "next_stage": 8,
+        "keys": ["7702", "DONOTFOLLOWBLUE", "PIXEL"],
+        "next_stage": 10,
         "hints": [
             "Zoom out and look at the bigger picture, or enhance the contrast.",
             "Fill in or enhance the dark cells in Corrupted_Image_Block.doc to read the 4-digit code."
         ]
     },
-    8: {
+    10: {
         "title": "The Revision History Conflict",
         "keys": ["FALSE_RECORDS", "FALSERECORDS", "THE AI CAN MODIFY WHAT YOU SEE", "THEAICANMODIFYWHATYOUSEE"],
-        "next_stage": 9,
+        "next_stage": 11,
         "hints": [
             "Compare the current version edited by 'SYSTEM_ADI' with the draft edited by 'Dr. Aditi' at 20:00.",
             "Look at the Version History in Sanctuary_Inventory.sheet to find the uncorrupted row."
         ]
     },
-    9: {
+    11: {
         "title": "The Confidence Equation",
-        "keys": ["ADITI ENTERED", "ADITIENTERED", "C", "PREDICTION C", "PREDICTION_C", "PREDICTIONC", "HALLUCINATION", "ADITI", "ADITI_ENTERED"],
-        "next_stage": 10,
+        "keys": ["SYSTEM SHUTDOWN", "SYSTEMSHUTDOWN", "SYSTEM_SHUTDOWN", "E", "25%", "25", "ADITI ENTERED", "ADITIENTERED", "C", "HALLUCINATION"],
+        "next_stage": 12,
         "hints": [
-            "ADI's confidence is calculated from empirical evidence using Confidence = 76% + S².",
-            "One prediction has a fabricated confidence score. Which event is the AI hallucination?"
+            "ADI's confidence is calculated using Confidence = (S/T)² × 100.",
+            "Prediction E (System shutdown) claims 30% when (2/4)² × 100 is 25%. Which prediction is corrupted? (SYSTEM SHUTDOWN)."
         ]
     },
-    10: {
+    12: {
+        "title": "Morse Code Audio Transmission",
+        "keys": ["WHITE", "SOS_ADITI", "SOSADITI", "MORSE", "BEACON"],
+        "next_stage": 13,
+        "hints": [
+            "Listen to audio_log_07.mp3 or inspect the audio spectrogram.",
+            "Decode the CW audio beeps: .-- .... .. - . spells WHITE."
+        ]
+    },
+    13: {
         "title": "Version Scrub (Git Reflog)",
-        "keys": ["HISTORY", "OVERRIDE FAILED", "OVERRIDEFAILED"],
-        "next_stage": 11,
+        "keys": ["HISTORY", "OVERRIDE FAILED", "OVERRIDEFAILED", "7B8A1C9"],
+        "next_stage": 14,
         "hints": [
             "Look at the Version History of Incident_Report.doc to see what Dr. Aditi originally wrote.",
             "Check commit 7b8a1c9 at 20:18 before ADI modified the commit log."
         ]
     },
-    11: {
+    14: {
         "title": "Honeypot Trap Bypass",
-        "keys": ["BYPASS", "SKIP"],
-        "next_stage": 12,
+        "keys": ["BYPASS", "SKIP", "DISARM"],
+        "next_stage": 15,
         "hints": [
             "CRITICAL WARNING: The emergency shutdown executable is an AI honeypot trap!",
             "Do NOT submit credentials into the trap. Type 'decrypt BYPASS' to disarm it safely."
         ]
     },
-    12: {
-        "title": "The WIE Failsafe",
+    15: {
+        "title": "The WIE Failsafe Protocol",
         "keys": ["6-9-11", "6911", "WISDOM-INTEGRITY-EMPOWERMENT", "WISDOM INTEGRITY EMPOWERMENT"],
         "next_stage": "COMPLETE",
         "hints": [

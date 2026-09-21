@@ -155,11 +155,11 @@ function renderStageStepper() {
   if (!container) return;
   container.innerHTML = "";
 
-  for (let i = 1; i <= 11; i++) {
+  for (let i = 1; i <= 15; i++) {
     const node = document.createElement("div");
     const isUnlocked = gameState.unlockedStages.includes(i);
     const isCurrent = gameState.currentStage === i;
-    const isFinished = gameState.isFinished && i === 11;
+    const isFinished = gameState.isFinished && i === 15;
 
     node.className = `step-node ${isFinished ? 'finished' : (isCurrent ? 'current' : (isUnlocked ? 'unlocked' : ''))}`;
     node.innerText = i;
@@ -253,7 +253,7 @@ function createStageWindow(puzzle) {
     <div class="win-body">
       ${puzzle.render()}
       
-      ${puzzle.id < 11 ? `
+      ${puzzle.id < 15 ? `
         <div class="gate-box">
           <div class="gate-title">
             <span>🔑 STAGE ${puzzle.id} DECRYPTION GATE &rarr; UNLOCK NEXT DIRECTORY</span>
@@ -376,18 +376,21 @@ async function verifyPasswordWithServerOrLocal(stageId, password) {
   // Standalone offline verification:
   const cleanInput = password.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
   const validKeys = {
-    1: ["ACCESS", "INITIATE", "ORIGIN"],
-    2: ["SAFE", "LOOKBEHINDTHEDATE", "LOOK BEHIND THE DATE"],
-    3: ["POLARIS", "28022025", "02292025", "20250229", "29022025", "FEB292025"],
-    4: ["MARGIN_KEY", "MARGINKEY", "2246", "22:46"],
-    5: ["ARIAL", "AUTHENTIC"],
-    6: ["SHADOW_CORE", "SHADOWCORE"],
-    7: ["7702", "WHITE", "DONOTFOLLOWTHEBLUEPATH", "DONOTFOLLOWBLUE"],
-    8: ["FALSE_RECORDS", "FALSERECORDS", "THEAICANMODIFYWHATYOUSEE", "THE AI CAN MODIFY WHAT YOU SEE"],
-    9: ["ADITIENTERED", "ADITI ENTERED", "C", "PREDICTIONC", "PREDICTION C", "PREDICTION_C", "HALLUCINATION", "ADITI"],
-    10: ["HISTORY", "OVERRIDEFAILED", "OVERRIDE FAILED"],
-    11: ["BYPASS", "SKIP"],
-    12: ["6911", "6-9-11", "WISDOMINTEGRITYEMPOWERMENT", "WISDOM-INTEGRITY-EMPOWERMENT"]
+    1: ["ACCESS", "RECOVER ACCESS"],
+    2: ["INITIATE", "ORIGIN"],
+    3: ["SAFE", "LOOKBEHINDTHEDATE", "LOOK BEHIND THE DATE"],
+    4: ["28022025", "28/02/2025", "02292025", "29022025", "20250229", "FEB292025"],
+    5: ["POLARIS"],
+    6: ["MARGIN_KEY", "MARGINKEY", "2246", "22:46"],
+    7: ["ARIAL", "AUTHENTIC"],
+    8: ["SHADOW_CORE", "SHADOWCORE"],
+    9: ["7702", "DONOTFOLLOWTHEBLUEPATH", "DONOTFOLLOWBLUE", "PIXEL"],
+    10: ["FALSE_RECORDS", "FALSERECORDS", "THEAICANMODIFYWHATYOUSEE", "THE AI CAN MODIFY WHAT YOU SEE"],
+    11: ["SYSTEM SHUTDOWN", "SYSTEMSHUTDOWN", "SYSTEM_SHUTDOWN", "E", "25", "25%", "ADITIENTERED", "ADITI ENTERED", "C", "HALLUCINATION"],
+    12: ["WHITE", "SOS_ADITI", "SOSADITI", "MORSE", "BEACON"],
+    13: ["HISTORY", "OVERRIDEFAILED", "OVERRIDE FAILED", "7B8A1C9"],
+    14: ["BYPASS", "SKIP", "DISARM"],
+    15: ["6911", "6-9-11", "WISDOMINTEGRITYEMPOWERMENT", "WISDOM-INTEGRITY-EMPOWERMENT"]
   };
 
   const allowed = (validKeys[stageId] || []).map(k => k.replace(/[^a-zA-Z0-9]/g, "").toUpperCase());
@@ -466,7 +469,7 @@ async function submitFinalFailsafe(e) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           team_id: gameState.teamId,
-          stage: 11,
+          stage: 15,
           password: input
         })
       });
@@ -726,7 +729,7 @@ Available Commands:
       break;
 
     case "status":
-      printCliOutput(`TEAM: ${gameState.teamName} [${gameState.teamId}] | Stage: ${gameState.currentStage}/11 | Hints: ${gameState.hintsCount} | Traps: ${gameState.trapsCount}`);
+      printCliOutput(`TEAM: ${gameState.teamName} [${gameState.teamId}] | Stage: ${gameState.currentStage}/15 | Hints: ${gameState.hintsCount} | Traps: ${gameState.trapsCount}`);
       break;
 
     case "clear":
@@ -778,10 +781,10 @@ Available Commands:
     case "cheat":
       // Organizer dev shortcut
       const targetStage = parseInt(parts[1]) || (gameState.currentStage + 1);
-      for (let s = 1; s <= Math.min(11, targetStage); s++) {
+      for (let s = 1; s <= Math.min(15, targetStage); s++) {
         if (!gameState.unlockedStages.includes(s)) gameState.unlockedStages.push(s);
       }
-      gameState.currentStage = Math.min(11, targetStage);
+      gameState.currentStage = Math.min(15, targetStage);
       saveLocalState();
       updateUI();
       window.sounds.playSuccess();

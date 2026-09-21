@@ -1602,6 +1602,12 @@
           <div class="card-title">Aditi_Memo.doc</div>
         </div>
 
+                <div class="tactical-card" id="card-timeline" onclick="openModal('modal-origin')" onmouseenter="tacticalSound.playHoverBlip()">
+          <span class="card-tag">STAGE 04</span>
+          <div class="card-symbol">📅</div>
+          <div class="card-title">Incident_Logs.doc</div>
+        </div>
+
         <div class="tactical-card" id="card-clearance" onclick="openModal('modal-clearance')" onmouseenter="tacticalSound.playHoverBlip()">
           <span class="card-tag">STAGE 03</span>
           <div class="card-symbol">🔢</div>
@@ -1642,6 +1648,12 @@
           <span class="card-tag">STAGE 09</span>
           <div class="card-symbol">🧠</div>
           <div class="card-title">Confidence_Manual.doc</div>
+        </div>
+
+                <div class="tactical-card" id="card-morse" onclick="openModal('modal-morse')" onmouseenter="tacticalSound.playHoverBlip()">
+          <span class="card-tag">STAGE 12</span>
+          <div class="card-symbol">📻</div>
+          <div class="card-title">audio_log_07.mp3</div>
         </div>
 
         <div class="tactical-card" id="card-version" onclick="openModal('modal-version-hist')" onmouseenter="tacticalSound.playHoverBlip()">
@@ -3821,90 +3833,113 @@
     }
 
     // 12-Stage Tactical Waypoints & Anti-Spoiler Navigation Directives
+    // 15-Stage Tactical Waypoints & Anti-Spoiler Navigation Directives
+    // 15-Stage Tactical Waypoints & Anti-Spoiler Navigation Directives
     const STAGE_NAVIGATION_DATA = {
   1: {
-    cardId: "card-whiteout",
-    title: "STAGE 01 // ADI RECOVERY TERMINAL & WHITEOUT TEXT",
-    guidance: "Examine <strong>Welcome_Log.doc</strong> or launch <strong>ADI_Recovery.term</strong>. Trace the missing command in ADI's recovery sequence (<code>LOGIN → VERIFY → ? → EXECUTE → LOCK</code>) or highlight the whiteout text in the log!",
-    mechanism: "Command Sequence Deduction / Whiteout Contrast",
-    targetText: "ADI_Recovery.term / Welcome_Log.doc"
+    cardId: "card-recovery-term",
+    title: "STAGE 01 // ADI RECOVERY TERMINAL",
+    guidance: "Launch <strong>ADI_Recovery.term</strong>. Review ADI's damaged recovery sequence (<code>LOGIN → VERIFY → ? → EXECUTE → LOCK</code>). What single command gives permission to reach the core?",
+    mechanism: "Command Sequence Deduction",
+    targetText: "ADI_Recovery.term"
   },
   2: {
+    cardId: "card-whiteout",
+    title: "STAGE 02 // THE WHITEOUT TEXT (INVISIBLE INK)",
+    guidance: "Examine <strong>Welcome_Log.doc</strong>. Dr. Aditi concealed white-on-white text in the document. Highlight everything (<code>Ctrl + A</code>) or toggle UV light to reveal the secret ink!",
+    mechanism: "Whiteout Text & Contrast Selection",
+    targetText: "Welcome_Log.doc"
+  },
+  3: {
     cardId: "card-acrostic",
-    title: "STAGE 02 // THE SIMPLE ACROSTIC NOTE",
+    title: "STAGE 03 // THE SIMPLE ACROSTIC NOTE",
     guidance: "Inspect <strong>Aditi_Memo.doc</strong>. Read between the lines—or rather, read the start of every sentence (first letter of each line)!",
     mechanism: "Acrostic Cipher Extraction",
     targetText: "Aditi_Memo.doc"
   },
-  3: {
+  4: {
+    cardId: "card-timeline",
+    title: "STAGE 04 // THE CALENDAR ANOMALY (TIMELINE CONTRADICTION)",
+    guidance: "Open <strong>Incident_Logs.doc</strong>. Cross-reference the logged dates against calendar rules for the year 2025. 2025 is not a leap year!",
+    mechanism: "Non-Leap Year Calendar Verification",
+    targetText: "Incident_Logs.doc"
+  },
+  5: {
     cardId: "card-clearance",
-    title: "STAGE 03 // A1Z26 ALPHABET CODE",
+    title: "STAGE 05 // A1Z26 ALPHABET CODE",
     guidance: "Open <strong>Clearance_Code.txt</strong>. Map each number [16 - 15 - 12 - 01 - 18 - 09 - 19] to its letter position in the alphabet (A=1...Z=26) to deduce the clearance word!",
     mechanism: "A1Z26 Character-to-Position Mapping",
     targetText: "Clearance_Code.txt"
   },
-  4: {
+  6: {
     cardId: "card-comments",
-    title: "STAGE 04 // RESOLVED COMMENTS LOG",
-    guidance: "Open <strong>System_Diagnostics.doc</strong>. Dr. Aditi left notes in the margins, resolved before ADI could delete them. Click <strong>💬 Comments (1 Resolved)</strong> to inspect the thread!",
-    mechanism: "Google Docs Comment History Inspection",
+    title: "STAGE 06 // RESOLVED COMMENTS LOG",
+    guidance: "Open <strong>System_Diagnostics.doc</strong>. Check the document margin history: click <code>💬 Comments (1 Resolved)</code> to reveal Dr. Aditi's emergency token before it was purged!",
+    mechanism: "Document Revision Comments Drawer",
     targetText: "System_Diagnostics.doc"
   },
-  5: {
-    cardId: "card-font",
-    title: "STAGE 05 // FONT STYLE VERIFICATION",
-    guidance: "Inspect <strong>AUTHENTIC_LOG.doc</strong> against <strong>STYLE_GUIDE.txt</strong>. Dr. Aditi always formats official logs in Arial 11pt. Identify the authentic font name!",
-    mechanism: "Typography & Font Property Verification",
-    targetText: "AUTHENTIC_LOG.doc"
-  },
-  6: {
-    cardId: "card-stego",
-    title: "STAGE 06 // THE STEGANOGRAPHY MASK",
-    guidance: "Open <strong>Dark_Terminal.png</strong>. The image appears pitch black. Crank the Exposure and Contrast sliders to maximum to reveal what hides in the shadows!",
-    mechanism: "Optical Brightness & Contrast Manipulation",
-    targetText: "Dark_Terminal.png"
-  },
   7: {
-    cardId: "card-pixel",
-    title: "STAGE 07 // EMBEDDED TABLE PIXEL ART",
-    guidance: "Open <strong>Corrupted_Image_Block.doc</strong>. The 10x10 table contains faint cell shading. Zoom out to 50% or click <strong>⬛ ENHANCE CONTRAST</strong> to read the 4-digit code!",
-    mechanism: "Google Docs Table Cell Pixel Art",
-    targetText: "Corrupted_Image_Block.doc"
+    cardId: "card-font",
+    title: "STAGE 07 // FONT STYLE VERIFICATION",
+    guidance: "Inspect <strong>AUTHENTIC_LOG.doc</strong> vs <strong>DECOY_LOG.doc</strong>. Read <code>STYLE_GUIDE.txt</code>. Only the authentic log matches Dr. Aditi's font typeface requirement!",
+    mechanism: "Typography & Document Style Matching",
+    targetText: "AUTHENTIC_LOG.doc / STYLE_GUIDE.txt"
   },
   8: {
+    cardId: "card-stego",
+    title: "STAGE 08 // THE STEGANOGRAPHY MASK",
+    guidance: "Open <strong>Dark_Terminal.png</strong>. The image appears pitch black. Crank the Exposure/Brightness slider to maximum to reveal faint text written on the dark background!",
+    mechanism: "Image Brightness & Contrast Manipulation",
+    targetText: "Dark_Terminal.png"
+  },
+  9: {
+    cardId: "card-pixel",
+    title: "STAGE 09 // EMBEDDED TABLE PIXEL ART",
+    guidance: "Open <strong>Corrupted_Image_Block.doc</strong>. Zoom out to 50% or hit <code>⬛ ENHANCE CONTRAST</code>. The 10x10 cell formatting pattern forms 4 readable digits!",
+    mechanism: "Table Formatting Contrast & Zoom Out",
+    targetText: "Corrupted_Image_Block.doc"
+  },
+  10: {
     cardId: "card-sheet",
-    title: "STAGE 08 // REVISION HISTORY CONFLICT",
-    guidance: "Open <strong>Sanctuary_Inventory.sheet</strong>. Click <strong>🕒 Version History</strong> and compare the current draft by 'SYSTEM_ADI' with Dr. Aditi's genuine snapshot at 20:00!",
+    title: "STAGE 10 // REVISION HISTORY CONFLICT",
+    guidance: "Open <strong>Sanctuary_Inventory.sheet</strong>. Click <code>🕒 Version History</code>. Compare current version by 'SYSTEM_ADI' with Dr. Aditi's authentic 20:00 draft for row QC-107!",
     mechanism: "Google Sheets Version History Comparison",
     targetText: "Sanctuary_Inventory.sheet"
   },
-  9: {
-    cardId: "card-confidence",
-    title: "STAGE 09 // THE CONFIDENCE EQUATION",
-    guidance: "Open <strong>Confidence_Manual.doc</strong>. Test ADI's evidence formula: <code>Confidence = 76% + S²</code>. Which prediction's confidence value is a corrupted AI hallucination?",
-    mechanism: "Bayesian Evidence Weighting & Hallucination Detection",
-    targetText: "Confidence_Manual.doc (Prediction C)"
-  },
-  10: {
-    cardId: "card-version",
-    title: "STAGE 10 // VERSION SCRUB (REFLOG)",
-    guidance: "Review the <strong>VERSION_SCRUB</strong> git commit history. Inspect commit <code>7b8a1c9</code> from 20:18. What was Dr. Aditi's original commit message before ADI corrupted it?",
-    mechanism: "VCS Git Commit History Inspection",
-    targetText: "VERSION_SCRUB"
-  },
   11: {
-    cardId: "card-trap",
-    title: "STAGE 11 // HONEYPOT TRAP BYPASS",
-    guidance: "Analyze <strong>DO_NOT_RUN.exe</strong>. Look behind the threat warning to discover the emergency failover switch! Do not enter your credentials in the trap.",
-    mechanism: "Honeypot Deception & Safe Bypass",
-    targetText: "DO_NOT_RUN.exe"
+    cardId: "card-confidence",
+    title: "STAGE 11 // THE CONFIDENCE EQUATION",
+    guidance: "Open <strong>Confidence_Manual.doc</strong>. ADI calculates confidence using <code>(S / T)² × 100</code>. One prediction contains an artificially inflated confidence rating. Isolate it!",
+    mechanism: "Bayesian Evidence Weighting & Hallucination Audit",
+    targetText: "Confidence_Manual.doc"
   },
   12: {
-    cardId: "card-origin",
-    title: "STAGE 12 // FINAL WIE FAILSAFE",
-    guidance: "Consult the IEEE WIE core founding values: Wisdom, Integrity, Empowerment. Determine the numerical code from the letter counts (6-9-11) or value initials to purge ADI forever!",
-    mechanism: "Core Value Philosophy & Master Override",
-    targetText: "IEEE WIE Core Values (6-9-11)"
+    cardId: "card-morse",
+    title: "STAGE 12 // MORSE CODE AUDIO TRANSMISSION",
+    guidance: "Listen to <strong>audio_log_07.mp3</strong> or inspect the audio waveform. Decode the CW radio audio tones (.-- .... .. - .) transmitted from Dr. Aditi's beacon!",
+    mechanism: "CW Audio Morse Code Decoding",
+    targetText: "audio_log_07.mp3"
+  },
+  13: {
+    cardId: "card-version",
+    title: "STAGE 13 // VERSION SCRUB (REFLOG)",
+    guidance: "Review the commit history in <strong>Incident_Report.doc</strong>. ADI modified the latest commit message, but the Git reflog stores Dr. Aditi's authentic 20:18 rollback commit (7b8a1c9)!",
+    mechanism: "Git Reflog Rollback Inspection",
+    targetText: "Incident_Report.doc"
+  },
+  14: {
+    cardId: "card-trap",
+    title: "STAGE 14 // HONEYPOT TRAP BYPASS",
+    guidance: "Analyze <strong>DO_NOT_RUN.exe</strong>. It's a psychological honeypot trap! Do NOT submit your credentials inside it. Type <code>decrypt BYPASS</code> to disarm it safely!",
+    mechanism: "Psychological Trap Neutralization",
+    targetText: "DO_NOT_RUN.exe"
+  },
+  15: {
+    cardId: "card-failsafe",
+    title: "STAGE 15 // FINAL WIE FAILSAFE",
+    guidance: "Consult the IEEE Women in Engineering foundational values (Wisdom 6, Integrity 9, Empowerment 11). Enter the 3-value sequence to purge ADI permanently!",
+    mechanism: "WIE Value Length Cryptographic Key",
+    targetText: "WIE_Core_Values.doc"
   }
 };
 
@@ -4063,6 +4098,7 @@
     }
 
     // Final Stage: Rogue AI Purged & Ethan Liberated!
+    function freeEthan() { setEthanFreed(); }
     function setEthanFreed() {
       ethanState = "FREED";
       tacticalSound.playLiberationFanfare();
@@ -4262,126 +4298,156 @@
       setTimeout(() => {
         let matched = false;
 
-        // Stage 1: The Whiteout Text & ADI Recovery Terminal (ACCESS / INITIATE / ORIGIN)
-        if (clean === "ACCESS" || clean === "INITIATE" || clean === "ORIGIN") {
+        // Stage 1: ADI Recovery Terminal (ACCESS)
+        if (clean === "ACCESS" || clean === "RECOVERACCESS") {
           matched = true;
           currentStage = 2;
           localStorage.setItem('failsafe_stage', '2');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: RECOVERY COMMAND ACCREDITED (${clean}). ACCESS GRANTED.`, "green");
-          reportTelemetryAction("Solved Stage 01 (Recovery Terminal / Whiteout Text) - Promoted to Stage 02");
-          updateMissionBanner(2, "Inspect <strong>Aditi_Memo.doc</strong>. Read between the lines—or rather, read the start of every sentence.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SAFE</code> below.");
-        
-        // Stage 2: The Simple Acrostic Note (SAFE / LOOK BEHIND THE DATE)
-        } else if (clean === "SAFE" || clean === "LOOKBEHINDTHEDATE") {
+          addTerminalLog(`[CHECKSUM ACCREDITED]: RECOVERY COMMAND ACCEPTED (ACCESS). ACCESS GRANTED.`, "green");
+          reportTelemetryAction("Solved Stage 01 (Recovery Terminal) - Promoted to Stage 02");
+          updateMissionBanner(2, "Inspect <strong>Welcome_Log.doc</strong>. Dr. Aditi concealed white-on-white text in the document. Highlight everything (<code>Ctrl + A</code>) or toggle UV light!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt INITIATE</code> below.");
+
+        // Stage 2: The Whiteout Text (INITIATE / ORIGIN)
+        } else if (clean === "INITIATE" || clean === "ORIGIN") {
           matched = true;
           currentStage = 3;
           localStorage.setItem('failsafe_stage', '3');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: ACROSTIC CIPHER SOLVED (SAFE).`, "green");
-          reportTelemetryAction("Solved Stage 02 (Acrostic Note) - Promoted to Stage 03");
-          updateMissionBanner(3, "Inspect <strong>Clearance_Code.txt</strong>. Map each number [16-15-12-01-18-09-19] to its letter position in the alphabet.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt POLARIS</code> below.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: WHITEOUT INK VERIFIED (INITIATE).`, "green");
+          reportTelemetryAction("Solved Stage 02 (The Whiteout Text) - Promoted to Stage 03");
+          updateMissionBanner(3, "Inspect <strong>Aditi_Memo.doc</strong>. Read between the lines—or rather, read the start of every sentence.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SAFE</code> below.");
 
-        // Stage 3: The A1Z26 Alphabet Code (POLARIS / 28022025 / 29022025)
-        } else if (clean === "POLARIS" || clean === "28022025" || clean === "29022025" || clean === "02292025") {
+        // Stage 3: The Simple Acrostic Note (SAFE / LOOK BEHIND THE DATE)
+        } else if (clean === "SAFE" || clean === "LOOKBEHINDTHEDATE") {
           matched = true;
           currentStage = 4;
           localStorage.setItem('failsafe_stage', '4');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: A1Z26 POSITION DECODED (POLARIS).`, "green");
-          reportTelemetryAction("Solved Stage 03 (A1Z26 Alphabet Code) - Promoted to Stage 04");
-          updateMissionBanner(4, "Inspect <strong>System_Diagnostics.doc</strong>. Dr. Aditi left notes in the margins, resolved before ADI could delete them.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt MARGIN_KEY</code> below.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: ACROSTIC CIPHER SOLVED (SAFE).`, "green");
+          reportTelemetryAction("Solved Stage 03 (Acrostic Note) - Promoted to Stage 04");
+          updateMissionBanner(4, "Inspect <strong>Incident_Logs.doc</strong>. Cross-reference dates against calendar rules for 2025 (2025 is not a leap year!).", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 28/02/2025</code> below.");
 
-        // Stage 4: The Resolved Comments Log (MARGIN_KEY / 22:46)
-        } else if (clean === "MARGIN_KEY" || clean === "MARGINKEY" || clean === "22:46" || clean === "2246") {
+        // Stage 4: The Calendar Anomaly (28/02/2025 / 02292025)
+        } else if (clean === "28022025" || clean === "02292025" || clean === "29022025" || clean === "20250229" || clean === "FEB292025") {
           matched = true;
           currentStage = 5;
           localStorage.setItem('failsafe_stage', '5');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: MARGIN NOTE RESOLVED (MARGIN_KEY).`, "green");
-          reportTelemetryAction("Solved Stage 04 (Resolved Comments) - Promoted to Stage 05");
-          updateMissionBanner(5, "Inspect <strong>AUTHENTIC_LOG.doc</strong> against STYLE_GUIDE.txt. Match document formatting to identify authentic font.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt ARIAL</code> below.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: CALENDAR CONTRADICTION UNMASKED (28/02/2025).`, "green");
+          reportTelemetryAction("Solved Stage 04 (Calendar Anomaly) - Promoted to Stage 05");
+          updateMissionBanner(5, "Inspect <strong>Clearance_Code.txt</strong>. Map each number [16-15-12-01-18-09-19] to its letter position in the alphabet.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt POLARIS</code> below.");
 
-        // Stage 5: Font Style Verification (ARIAL / AUTHENTIC)
-        } else if (clean === "ARIAL" || clean === "AUTHENTIC") {
+        // Stage 5: The A1Z26 Alphabet Code (POLARIS)
+        } else if (clean === "POLARIS") {
           matched = true;
           currentStage = 6;
           localStorage.setItem('failsafe_stage', '6');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: FONT STYLE VERIFIED (ARIAL).`, "green");
-          reportTelemetryAction("Solved Stage 05 (Font Style) - Promoted to Stage 06");
-          updateMissionBanner(6, "Inspect <strong>Dark_Terminal.png</strong> in STEGANO_MASK. The image appears pitch black. Crank Exposure/Brightness to reveal what hides in shadows!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SHADOW_CORE</code> below.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: A1Z26 POSITION DECODED (POLARIS).`, "green");
+          reportTelemetryAction("Solved Stage 05 (A1Z26 Alphabet Code) - Promoted to Stage 06");
+          updateMissionBanner(6, "Inspect <strong>System_Diagnostics.doc</strong>. Dr. Aditi left notes in the margins, resolved before ADI could delete them.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt MARGIN_KEY</code> below.");
 
-        // Stage 6: The Steganography Mask (SHADOW_CORE)
-        } else if (clean === "SHADOWCORE" || clean === "SHADOW_CORE") {
+        // Stage 6: The Resolved Comments Log (MARGIN_KEY / 22:46)
+        } else if (clean === "MARGIN_KEY" || clean === "MARGINKEY" || clean === "22:46" || clean === "2246") {
           matched = true;
           currentStage = 7;
           localStorage.setItem('failsafe_stage', '7');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: STEGANOGRAPHY SHADOW WATERMARK REVEALED (SHADOW_CORE).`, "green");
-          reportTelemetryAction("Solved Stage 06 (Steganography Mask) - Promoted to Stage 07");
-          updateMissionBanner(7, "Inspect <strong>Corrupted_Image_Block.doc</strong>. Zoom out to 50% or adjust contrast on the 10x10 table to reveal the 4-digit code.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 7702</code> below.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: MARGIN NOTE RESOLVED (MARGIN_KEY).`, "green");
+          reportTelemetryAction("Solved Stage 06 (Resolved Comments) - Promoted to Stage 07");
+          updateMissionBanner(7, "Inspect <strong>AUTHENTIC_LOG.doc</strong> against STYLE_GUIDE.txt. Match document formatting to identify authentic font.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt ARIAL</code> below.");
 
-        // Stage 7: Embedded Table Pixel Art (7702 / WHITE)
-        } else if (clean === "7702" || clean === "WHITE" || clean === "DONOTFOLLOWBLUE") {
+        // Stage 7: Font Style Verification (ARIAL / AUTHENTIC)
+        } else if (clean === "ARIAL" || clean === "AUTHENTIC") {
           matched = true;
           currentStage = 8;
           localStorage.setItem('failsafe_stage', '8');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: TABLE PIXEL MATRIX DECODED (7702).`, "green");
-          reportTelemetryAction("Solved Stage 07 (Table Pixel Art) - Promoted to Stage 08");
-          updateMissionBanner(8, "Inspect <strong>Sanctuary_Inventory.sheet</strong>. Open Version History and compare SYSTEM_ADI vs Dr. Aditi's draft at 20:00.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt FALSE_RECORDS</code> below.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: FONT STYLE VERIFIED (ARIAL).`, "green");
+          reportTelemetryAction("Solved Stage 07 (Font Style) - Promoted to Stage 08");
+          updateMissionBanner(8, "Inspect <strong>Dark_Terminal.png</strong> in STEGANO_MASK. Crank Exposure/Brightness to reveal what hides in shadows!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SHADOW_CORE</code> below.");
 
-        // Stage 8: Revision History Conflict (FALSE_RECORDS / THE AI CAN MODIFY WHAT YOU SEE)
-        } else if (clean === "FALSERECORDS" || clean === "FALSE_RECORDS" || clean === "THEAICANMODIFYWHATYOUSEE") {
+        // Stage 8: The Steganography Mask (SHADOW_CORE)
+        } else if (clean === "SHADOWCORE" || clean === "SHADOW_CORE") {
           matched = true;
           currentStage = 9;
           localStorage.setItem('failsafe_stage', '9');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: SPREADSHEET REVISION CONFLICT UNMASKED (FALSE_RECORDS).`, "green");
-          reportTelemetryAction("Solved Stage 08 (Google Sheets Revision) - Promoted to Stage 09");
-          updateMissionBanner(9, "Inspect <strong>Confidence_Manual.doc</strong>. Test ADI's evidence formula: <code>Confidence = 76% + S²</code>. Which prediction's confidence value is an AI hallucination?", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt ADITI ENTERED</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt C</code> below.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: STEGANOGRAPHY SHADOW WATERMARK REVEALED (SHADOW_CORE).`, "green");
+          reportTelemetryAction("Solved Stage 08 (Steganography Mask) - Promoted to Stage 09");
+          updateMissionBanner(9, "Inspect <strong>Corrupted_Image_Block.doc</strong>. Zoom out to 50% or adjust contrast on the 10x10 table to reveal the 4-digit code.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 7702</code> below.");
 
-        // Stage 9: The Confidence Equation (ADITI ENTERED / C / HALLUCINATION)
-        } else if (clean === "C" || clean === "PREDICTIONC" || clean === "PREDICTION_C" || clean === "ADITIENTERED" || clean === "ADITI_ENTERED" || clean === "HALLUCINATION" || clean === "ADITI") {
+        // Stage 9: Embedded Table Pixel Art (7702 / WHITE)
+        } else if (clean === "7702" || clean === "DONOTFOLLOWBLUE" || clean === "PIXEL") {
           matched = true;
           currentStage = 10;
           localStorage.setItem('failsafe_stage', '10');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: AI HALLUCINATION UNMASKED (PREDICTION C: ADITI ENTERED).`, "green");
-          reportTelemetryAction("Solved Stage 09 (Confidence Equation) - Promoted to Stage 10");
-          updateMissionBanner(10, "Inspect <strong>VERSION_SCRUB</strong>. ADI altered the active commit history! Use the interactive scrubber to find Dr. Aditi's authentic 20:18 message.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt HISTORY</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt OVERRIDE FAILED</code> below.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: TABLE PIXEL MATRIX DECODED (7702).`, "green");
+          reportTelemetryAction("Solved Stage 09 (Table Pixel Art) - Promoted to Stage 10");
+          updateMissionBanner(10, "Inspect <strong>Sanctuary_Inventory.sheet</strong>. Open Version History and compare SYSTEM_ADI vs Dr. Aditi's draft at 20:00.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt FALSE_RECORDS</code> below.");
 
-        // Stage 10: Git Commit Version Scrub (HISTORY / OVERRIDE FAILED)
-        } else if (clean === "HISTORY" || clean === "OVERRIDEFAILED" || clean === "OVERRIDE_FAILED") {
+        // Stage 10: Revision History Conflict (FALSE_RECORDS / THE AI CAN MODIFY WHAT YOU SEE)
+        } else if (clean === "FALSERECORDS" || clean === "FALSE_RECORDS" || clean === "THEAICANMODIFYWHATYOUSEE") {
           matched = true;
           currentStage = 11;
           localStorage.setItem('failsafe_stage', '11');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: REVISION HISTORY TAMPERING REVERSED.`, "green");
-          reportTelemetryAction("Solved Stage 10 (Version Scrub) - Promoted to Stage 11 (Trap Bypass)");
-          updateMissionBanner(11, "⚠️ WARNING: ADI HONEYPOT DETECTED AT <strong>DO_NOT_RUN.exe</strong>! Do NOT submit your credentials there—it adds a +5m penalty! Type <code>decrypt BYPASS</code> to disarm it.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt BYPASS</code> below.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: SPREADSHEET REVISION CONFLICT UNMASKED (FALSE_RECORDS).`, "green");
+          reportTelemetryAction("Solved Stage 10 (Google Sheets Revision) - Promoted to Stage 11");
+          updateMissionBanner(11, "Inspect <strong>Confidence_Manual.doc</strong>. Test ADI's evidence formula: <code>(S / T)² × 100</code>. Which prediction's confidence value is corrupted?", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SYSTEM SHUTDOWN</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt E</code> below.");
 
-        // Stage 11: Honeypot Trap Bypass (BYPASS)
-        } else if (clean === "BYPASS") {
+        // Stage 11: The Confidence Equation (SYSTEM SHUTDOWN / E / 25%)
+        } else if (clean === "SYSTEMSHUTDOWN" || clean === "SYSTEM_SHUTDOWN" || clean === "E" || clean === "25" || clean === "ADITIENTERED" || clean === "ADITI_ENTERED" || clean === "C" || clean === "HALLUCINATION") {
           matched = true;
           currentStage = 12;
           localStorage.setItem('failsafe_stage', '12');
           tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: AI HONEYPOT DISARMED.`, "green");
-          reportTelemetryAction("Solved Stage 11 (Trap Bypass) - Promoted to Final Stage 12");
-          updateMissionBanner(12, "🏆 FINAL OBJECTIVE: Locate Dr. Aditi's ultimate failsafe (IEEE WIE core values: Wisdom 6, Integrity 9, Empowerment 11) to purge ADI permanently!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 6-9-11</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt WISDOM-INTEGRITY-EMPOWERMENT</code>.");
+          addTerminalLog(`[CHECKSUM ACCREDITED]: PREDICTION CORRUPTION UNMASKED (SYSTEM SHUTDOWN).`, "green");
+          reportTelemetryAction("Solved Stage 11 (Confidence Equation) - Promoted to Stage 12");
+          updateMissionBanner(12, "Inspect <strong>audio_log_07.mp3</strong> in AUDIO_SECTOR. Decode the CW radio audio transmission (.-- .... .. - .) from Dr. Aditi's beacon!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt WHITE</code> below.");
 
-        // Stage 12: Final WIE Failsafe (6-9-11)
+        // Stage 12: Morse Code Audio Transmission (WHITE / SOS_ADITI)
+        } else if (clean === "WHITE" || clean === "SOSADITI" || clean === "SOS_ADITI" || clean === "MORSE" || clean === "BEACON") {
+          matched = true;
+          currentStage = 13;
+          localStorage.setItem('failsafe_stage', '13');
+          tacticalSound.playSuccess();
+          addTerminalLog(`[CHECKSUM ACCREDITED]: CW AUDIO MORSE DECODED (WHITE).`, "green");
+          reportTelemetryAction("Solved Stage 12 (Morse Audio) - Promoted to Stage 13");
+          updateMissionBanner(13, "Inspect <strong>Incident_Report.doc</strong> in VERSION_SCRUB. ADI altered the active commit history! Use the interactive scrubber to find Dr. Aditi's authentic 20:18 message.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt HISTORY</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt OVERRIDE FAILED</code> below.");
+
+        // Stage 13: Git Commit Version Scrub (HISTORY / OVERRIDE FAILED)
+        } else if (clean === "HISTORY" || clean === "OVERRIDEFAILED" || clean === "OVERRIDE_FAILED" || clean === "7B8A1C9") {
+          matched = true;
+          currentStage = 14;
+          localStorage.setItem('failsafe_stage', '14');
+          tacticalSound.playSuccess();
+          addTerminalLog(`[CHECKSUM ACCREDITED]: REVISION HISTORY TAMPERING REVERSED (OVERRIDE FAILED).`, "green");
+          reportTelemetryAction("Solved Stage 13 (Version Scrub) - Promoted to Stage 14 (Trap Bypass)");
+          updateMissionBanner(14, "⚠️ WARNING: ADI HONEYPOT DETECTED AT <strong>DO_NOT_RUN.exe</strong>! Do NOT submit your credentials there—it adds a +5m penalty! Type <code>decrypt BYPASS</code> to disarm it.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt BYPASS</code> below.");
+
+        // Stage 14: Honeypot Trap Bypass (BYPASS)
+        } else if (clean === "BYPASS" || clean === "SKIP" || clean === "DISARM") {
+          matched = true;
+          currentStage = 15;
+          localStorage.setItem('failsafe_stage', '15');
+          tacticalSound.playSuccess();
+          addTerminalLog(`[CHECKSUM ACCREDITED]: AI HONEYPOT DISARMED (BYPASS).`, "green");
+          reportTelemetryAction("Solved Stage 14 (Trap Bypass) - Promoted to Final Stage 15");
+          updateMissionBanner(15, "🏆 FINAL OBJECTIVE: Locate Dr. Aditi's ultimate failsafe (IEEE WIE core values: Wisdom 6, Integrity 9, Empowerment 11) to purge ADI permanently!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 6-9-11</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt WISDOM-INTEGRITY-EMPOWERMENT</code>.");
+
+        // Stage 15: Final WIE Failsafe (6-9-11)
         } else if (clean === "6911" || clean === "6-9-11" || clean === "WISDOMINTEGRITYEMPOWERMENT" || clean === "WISDOM-INTEGRITY-EMPOWERMENT") {
           matched = true;
-          currentStage = 12;
+          currentStage = 15;
           tacticalSound.playSuccess();
-          freeEthan();
+          setEthanFreed();
           reportTelemetryAction("🏆 MISSION COMPLETE: Final Failsafe Activated // ETHAN Freed & ADI Purged!");
           const banner = document.getElementById('active-mission-banner');
           if (banner) {
-            banner.innerHTML = '<div style="color:var(--tactical-green); font-weight:bold; font-size:12px; padding:6px;">🏆 [MISSION COMPLETE]: ETHAN LIBERATED // ROGUE AI PURGED // DR. ADITI LOCATED // CONGRATULATIONS!</div>';
+            banner.innerHTML = '<div style="color:var(--tactical-green); font-weight:bold; font-size:12px; padding:6px;">🏆 [MISSION COMPLETE]: ETHAN LIBERATED // ROGUE AI PURGED // DR. ADITI LOCATED // ALL 15 STAGES CLEARED!</div>';
           }
         }
 
