@@ -2940,9 +2940,9 @@
        JavaScript Engine
        ======================================================================== -->
   <script>
-    // 0. Active Stage Progression Ledger (12 Forensic Clearance Stages)
+    // 0. Active Stage Progression Ledger (15 Forensic Clearance Stages)
     let currentStage = parseInt(localStorage.getItem('failsafe_stage') || '1', 10);
-    if (isNaN(currentStage) || currentStage < 1 || currentStage > 12) currentStage = 1;
+    if (isNaN(currentStage) || currentStage < 1 || currentStage > 15) currentStage = 1;
 
     function setStage(stageNum) {
       currentStage = stageNum;
@@ -3399,9 +3399,9 @@
     function toggleTacticalAudio() {
       const btn = document.getElementById('btn-tactical-audio');
       const active = tacticalSound.toggleAmbience();
-      btn.innerText = active ? "🔊 AMBIENCE: ON" : "🔊 AMBIENCE: OFF";
-      btn.classList.toggle('active', active);
-      document.getElementById('spectrum-label').innerText = active ? "120Hz ENERGIZED" : "60Hz STABLE";
+      if (btn) { btn.innerText = active ? "🔊 AMBIENCE: ON" : "🔊 AMBIENCE: OFF"; btn.classList.toggle('active', active); }
+      const specLabel = document.getElementById('spectrum-label');
+      if (specLabel) specLabel.innerText = active ? "120Hz ENERGIZED" : "60Hz STABLE";
     }
 
     function toggleScanlines() {
@@ -3499,10 +3499,11 @@
     }
 
     const torusCanvas = document.getElementById('canvas-torus');
-    const torusCtx = torusCanvas.getContext('2d');
+    const torusCtx = torusCanvas ? torusCanvas.getContext('2d') : null;
     let torusAngle = 0;
 
     function renderTorus() {
+      if (!torusCanvas || !torusCtx) return;
       torusCanvas.width = torusCanvas.offsetWidth;
       torusCanvas.height = torusCanvas.offsetHeight;
       const w = torusCanvas.width, h = torusCanvas.height;
@@ -3515,7 +3516,8 @@
       const uSteps = 16, vSteps = 12;
       torusAngle += 0.022;
 
-      document.getElementById('torus-telemetry').innerText = `ROT: ${(torusAngle * 57.3 % 360).toFixed(1)}°`;
+      const torusTelEl = document.getElementById('torus-telemetry');
+      if (torusTelEl) torusTelEl.innerText = `ROT: ${(torusAngle * 57.3 % 360).toFixed(1)}°`;
 
       for (let i = 0; i < uSteps; i++) {
         const u = (i / uSteps) * Math.PI * 2;
@@ -3541,10 +3543,11 @@
     }
 
     const gridCanvas = document.getElementById('canvas-grid');
-    const gridCtx = gridCanvas.getContext('2d');
+    const gridCtx = gridCanvas ? gridCanvas.getContext('2d') : null;
     let gridTick = 0;
 
     function renderGrid() {
+      if (!gridCanvas || !gridCtx) return;
       gridCanvas.width = gridCanvas.offsetWidth;
       gridCanvas.height = gridCanvas.offsetHeight;
       const w = gridCanvas.width, h = gridCanvas.height;
@@ -3608,10 +3611,11 @@
     }
 
     const waveCanvas = document.getElementById('canvas-waves');
-    const waveCtx = waveCanvas.getContext('2d');
+    const waveCtx = waveCanvas ? waveCanvas.getContext('2d') : null;
     let waveStep = 0;
 
     function renderWaves() {
+      if (!waveCanvas || !waveCtx) return;
       waveCanvas.width = waveCanvas.offsetWidth;
       waveCanvas.height = waveCanvas.offsetHeight;
       const w = waveCanvas.width, h = waveCanvas.height;
@@ -3636,10 +3640,11 @@
     }
 
     const radarCanvas = document.getElementById('canvas-radar');
-    const radarCtx = radarCanvas.getContext('2d');
+    const radarCtx = radarCanvas ? radarCanvas.getContext('2d') : null;
     let radarSweep = 0;
 
     function renderRadar() {
+      if (!radarCanvas || !radarCtx) return;
       radarCanvas.width = radarCanvas.offsetWidth;
       radarCanvas.height = radarCanvas.offsetHeight;
       const w = radarCanvas.width, h = radarCanvas.height;
