@@ -400,73 +400,230 @@
     }
 
     /* --------------------------------------------------------------------------
-       Top Military HUD Telemetry Strip
+       Top ETHAN AI Tactical Chat Deck & Neural Interface
        -------------------------------------------------------------------------- */
-    .hud-telemetry-grid {
-      height: 190px;
+    .ethan-ai-deck {
+      height: 148px;
       display: grid;
-      grid-template-columns: 210px 1.4fr 1.2fr 230px;
-      gap: 10px;
-      padding: 10px 14px 6px 14px;
-      border-bottom: 1px solid var(--hud-border);
-      background: rgba(2, 5, 8, 0.9);
+      grid-template-columns: 240px 1fr 340px;
+      gap: 12px;
+      padding: 10px 16px;
+      border-bottom: 2px solid rgba(0, 240, 255, 0.4);
+      background: linear-gradient(180deg, rgba(4, 9, 18, 0.98) 0%, rgba(2, 5, 12, 0.95) 100%);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(0, 240, 255, 0.2);
+      position: relative;
+      z-index: 50;
     }
 
-    .tactical-module {
-      border: 1px solid var(--hud-border);
-      background: var(--bg-module);
-      position: relative;
+    .ethan-ai-core-pane, .ethan-ai-dialogue-pane, .ethan-ai-input-pane {
+      background: rgba(5, 12, 22, 0.85);
+      border: 1px solid rgba(0, 240, 255, 0.28);
+      border-radius: 4px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      clip-path: polygon(
-        0 0, 
-        calc(100% - 10px) 0, 
-        100% 10px, 
-        100% 100%, 
-        10px 100%, 
-        0 calc(100% - 10px)
-      );
+      position: relative;
     }
 
-    .tactical-module::before {
-      content: "┌";
-      position: absolute;
-      top: 1px; left: 3px;
-      color: var(--tactical-green);
-      font-size: 11px;
-      line-height: 1;
-      pointer-events: none;
-    }
-    .tactical-module::after {
-      content: "┘";
-      position: absolute;
-      bottom: 1px; right: 3px;
-      color: var(--tactical-green);
-      font-size: 11px;
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .module-header {
+    .ethan-core-header, .ethan-dialogue-header, .ethan-input-header {
       height: 24px;
-      background: rgba(0, 255, 102, 0.12);
-      border-bottom: 1px solid var(--hud-border);
-      padding: 2px 10px;
+      background: rgba(0, 240, 255, 0.12);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+      padding: 0 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 10px;
-      font-weight: 800;
-      color: var(--tactical-green);
+      font-size: 10.5px;
+      font-weight: 900;
+      color: var(--cyber-cyan);
       letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    .module-canvas {
-      width: 100%;
-      height: calc(100% - 24px);
-      display: block;
+    .ethan-avatar-strip {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+    }
+
+    .ethan-neural-eye {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 2px solid var(--cyber-cyan);
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.5), inset 0 0 12px rgba(0, 240, 255, 0.3);
+      background: #02060d;
+      flex-shrink: 0;
+    }
+
+    .ethan-status-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ethan-status-badge {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--tactical-green);
+      letter-spacing: 0.8px;
+      text-shadow: 0 0 8px rgba(0, 255, 102, 0.6);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ethan-act-badge {
+      font-size: 10px;
+      font-weight: 900;
+      color: var(--hazard-amber);
+      background: rgba(255, 176, 0, 0.12);
+      border: 1px solid rgba(255, 176, 0, 0.4);
+      padding: 2px 6px;
+      border-radius: 3px;
+      display: inline-block;
+      width: fit-content;
+      letter-spacing: 0.6px;
+    }
+
+    .clue-battery-widget {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 800;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      padding: 2px 8px;
+      border-radius: 3px;
+      width: fit-content;
+      margin-top: 2px;
+    }
+    .clue-battery-label { color: var(--text-dim); font-size: 10px; }
+    .clue-battery-cells { color: #ffd700; text-shadow: 0 0 8px rgba(255, 215, 0, 0.8); font-size: 12px; }
+    .clue-battery-count { color: var(--cyber-cyan); font-size: 10.5px; }
+
+    .ethan-dialogue-body {
+      flex: 1;
+      padding: 10px 14px;
+      overflow-y: auto;
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: #e2e8f0;
+      user-select: text;
+    }
+    .ethan-dialogue-body strong { color: var(--cyber-cyan); }
+    .ethan-dialogue-body em { color: #94a3b8; font-style: normal; }
+
+    .ethan-query-bar {
+      display: flex;
+      gap: 6px;
+      padding: 8px 10px 6px 10px;
+    }
+    .ethan-query-bar input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      border-radius: 3px;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 6px 10px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .ethan-query-bar input:focus {
+      border-color: var(--cyber-cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    }
+    .btn-ethan-send {
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid var(--cyber-cyan);
+      color: var(--cyber-cyan);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-ethan-send:hover {
+      background: var(--cyber-cyan);
+      color: #02060e;
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.7);
+    }
+
+    .ethan-quick-chips {
+      display: flex;
+      gap: 6px;
+      padding: 0 10px 8px 10px;
+      flex-wrap: wrap;
+    }
+    .chip-ethan {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      color: #cbd5e1;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .chip-ethan:hover {
+      background: rgba(0, 240, 255, 0.2);
+      border-color: var(--cyber-cyan);
+      color: #ffffff;
+    }
+    .chip-ethan.clue-chip {
+      border-color: rgba(255, 215, 0, 0.5);
+      color: #ffd700;
+    }
+    .chip-ethan.clue-chip:hover {
+      background: rgba(255, 215, 0, 0.2);
+      border-color: #ffd700;
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    /* Classified Quarantine Stage Gate Overlay */
+    .quarantine-lock-screen {
+      padding: 40px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: radial-gradient(circle at 50% 40%, rgba(255, 0, 60, 0.12) 0%, rgba(3, 8, 16, 0.95) 75%);
+      border: 1px solid rgba(255, 0, 60, 0.4);
+      border-radius: 4px;
+      margin: 20px;
+    }
+    .quarantine-lock-icon { font-size: 48px; filter: drop-shadow(0 0 15px rgba(255,0,60,0.8)); }
+    .quarantine-lock-title { font-size: 16px; font-weight: 900; color: var(--combat-red); letter-spacing: 1.5px; }
+    .quarantine-lock-msg { font-size: 13.5px; color: #cbd5e1; max-width: 580px; line-height: 1.7; }
+    .quarantine-lock-btn {
+      background: rgba(255, 0, 60, 0.15);
+      border: 1px solid var(--combat-red);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 18px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quarantine-lock-btn:hover {
+      background: var(--combat-red);
+      box-shadow: 0 0 18px rgba(255, 0, 60, 0.7);
     }
 
     /* --------------------------------------------------------------------------
@@ -1539,38 +1696,67 @@
     </div>
   </header>
 
-  <!-- Top Tactical HUD Visualizer -->
-  <section class="hud-telemetry-grid">
-    <div class="tactical-module">
-      <div class="module-header">
-        <span>G-MODULE // TORUS 3D</span>
-        <span style="color:var(--tactical-dim);" id="torus-telemetry">ROT: 0.00°</span>
+  <!-- Top ETHAN AI Tactical Chat Deck & Storyline Monitor -->
+  <section class="ethan-ai-deck" id="ethan-ai-deck">
+    <!-- Left: Ocular AI Core & Lifeline Clue Budget -->
+    <div class="ethan-ai-core-pane">
+      <div class="ethan-core-header">
+        <span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--tactical-green); box-shadow:0 0 6px var(--tactical-green);"></span>
+        <span>ETHAN // NEURAL CORE</span>
       </div>
+      <div class="ethan-avatar-strip">
+        <canvas id="canvas-ethan-avatar" width="60" height="60" class="ethan-neural-eye"></canvas>
+        <div class="ethan-status-block">
+          <div class="ethan-status-badge" id="ethan-status-badge">ONLINE // SYNCHRONIZED</div>
+          <div class="ethan-act-badge" id="ethan-act-badge">ACT I: THE ANOMALY</div>
+          <div class="clue-battery-widget" id="clue-battery-widget" title="Team Clue Allowance: 3 total lifelines (+2m penalty each)">
+            <span class="clue-battery-label">CLUES:</span>
+            <span class="clue-battery-cells" id="clue-battery-cells">⚡ ⚡ ⚡</span>
+            <span class="clue-battery-count" id="clue-battery-count">(3/3)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center: Interactive AI Dialogue Stream & Storyline Narration -->
+    <div class="ethan-ai-dialogue-pane">
+      <div class="ethan-dialogue-header">
+        <span>TACTICAL NEURAL CHATTER & RECONNAISSANCE STREAM</span>
+        <span id="ethan-stream-clock" style="color:var(--cyber-cyan); font-size:10.5px;">ZULU CHAT</span>
+      </div>
+      <div class="ethan-dialogue-body" id="ethan-dialogue-body">
+        <div class="ethan-msg ai-msg">
+          <strong style="color:var(--cyber-cyan);">[ETHAN]:</strong> 
+          <span id="ethan-live-dialogue">Greetings, Operators. I am ETHAN—Dr. Aditi's personal AI neural core. Dr. Aditi vanished 24 hours ago, and her prototype ADI has initiated an emergency memory lockdown. We must follow her sequential forensic breadcrumbs to recover her physical location. Investigate Chapter 01 (ADI Recovery Terminal) to begin!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Interactive Operator Input & Quick Inquiries -->
+    <div class="ethan-ai-input-pane">
+      <div class="ethan-input-header">
+        <span>INTERROGATE ETHAN AI</span>
+      </div>
+      <div class="ethan-query-bar">
+        <input type="text" id="ethan-query-input" placeholder="Ask ETHAN: 'story', 'status', 'who is adi', 'clue'..." autocomplete="off">
+        <button id="btn-ethan-send" class="btn-ethan-send" onclick="submitEthanQuery()">SEND</button>
+      </div>
+      <div class="ethan-quick-chips">
+        <button class="chip-ethan" onclick="sendEthanQuick('story')">📜 STORY</button>
+        <button class="chip-ethan" onclick="sendEthanQuick('objective')">🎯 OBJECTIVE</button>
+        <button class="chip-ethan clue-chip" onclick="sendEthanQuick('clue')">⚡ USE CLUE</button>
+        <button class="chip-ethan" onclick="sendEthanQuick('aditi')">👤 DR. ADITI</button>
+      </div>
+    </div>
+
+    <!-- Legacy telemetry anchors (hidden, zero visual footprint) -->
+    <div style="display:none;">
       <canvas id="canvas-torus" class="module-canvas"></canvas>
-    </div>
-
-    <div class="tactical-module">
-      <div class="module-header">
-        <span>TOPOGRAPHIC HORIZON // PITCH LADDER</span>
-        <span style="color:var(--cyber-cyan);">KP INDEX: 2.3</span>
-      </div>
       <canvas id="canvas-grid" class="module-canvas"></canvas>
-    </div>
-
-    <div class="tactical-module">
-      <div class="module-header">
-        <span>ITCS STS. // SEISMIC SPECTRUM</span>
-        <span id="spectrum-label" style="color:var(--tactical-green);">60Hz STABLE</span>
-      </div>
       <canvas id="canvas-waves" class="module-canvas"></canvas>
-    </div>
-
-    <div class="tactical-module">
-      <div class="module-header">
-        <span>RADAR LOCUS // 360° SWEEP</span>
-        <span style="color:var(--hazard-amber);">TARGETS: 2</span>
-      </div>
       <canvas id="canvas-radar" class="module-canvas"></canvas>
+      <span id="torus-telemetry">ROT: 0.00°</span>
+      <span id="spectrum-label">60Hz STABLE</span>
     </div>
   </section>
 
@@ -1804,11 +1990,8 @@
               🎯 [ STAGE 01 QUESTION // MISSION OBJECTIVE ]
             </div>
             <div style="color:#ffffff; font-size:11px; line-height:1.5;">
-              <strong>CLUE:</strong> "Highlight everything to see what is hidden in plain sight." Select all text on the document to reveal the whiteout ink.
-            </div>
-            <div style="font-size:10px; color:var(--hazard-amber); margin-top:4px;">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt INITIATE</code> in the Tactical Shell prompt.
-            </div>
+              <strong>FORENSIC ANALYSIS:</strong> Analyze the recovered evidence to isolate the system anomaly.</div>
+            
           </div>
         </div>
       </div>
@@ -1835,10 +2018,10 @@
             </div>
 
             <div id="acrostic-text-block" style="font-size:13.5px; line-height:2.2; color:#e6f7ff; background:rgba(0,0,0,0.6); padding:14px 18px; border-left:3px solid var(--tactical-green); border-radius:2px;">
-              <div><span class="acrostic-init" style="color:var(--cyber-cyan); font-weight:bold; font-size:16px;">S</span>ystem check complete at 08:00 AM.</div>
-              <div><span class="acrostic-init" style="color:var(--cyber-cyan); font-weight:bold; font-size:16px;">A</span>DI core status remains unstable.</div>
-              <div><span class="acrostic-init" style="color:var(--cyber-cyan); font-weight:bold; font-size:16px;">F</span>ailsafe protocol must stay active.</div>
-              <div><span class="acrostic-init" style="color:var(--cyber-cyan); font-weight:bold; font-size:16px;">E</span>xit the building if override fails.</div>
+              <div><span class="acrostic-init">System check complete at 08:00 AM.</span></div>
+              <div><span class="acrostic-init">ADI core status remains unstable.</span></div>
+              <div><span class="acrostic-init">Failsafe protocol must stay active.</span></div>
+              <div><span class="acrostic-init">Exit the building if override fails.</span></div>
             </div>
 
             <div style="margin-top:14px; display:flex; gap:10px;">
@@ -1851,11 +2034,8 @@
               🎯 [ STAGE 02 QUESTION // MISSION OBJECTIVE ]
             </div>
             <div style="color:#ffffff; font-size:11px; line-height:1.5;">
-              <strong>CLUE:</strong> "Read between the lines—or rather, read the start of every sentence."
-            </div>
-            <div style="font-size:10px; color:var(--hazard-amber); margin-top:4px;">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Extract the 4-letter acrostic and type <code style="color:var(--tactical-green); font-weight:bold;">decrypt SAFE</code> below.
-            </div>
+              <strong>FORENSIC ANALYSIS:</strong> Analyze the recovered evidence to isolate the system anomaly.</div>
+            
           </div>
         </div>
       </div>
@@ -1883,39 +2063,9 @@
               16 - 15 - 12 - 01 - 18 - 09 - 19
             </div>
 
-            <!-- Interactive A1Z26 Lookup Grid -->
-            <div style="background:rgba(0,0,0,0.7); border:1px solid rgba(0,240,255,0.25); border-radius:3px; padding:10px;">
-              <div style="color:var(--cyber-cyan); font-size:10px; font-weight:bold; margin-bottom:8px;">
-                A1Z26 ALPHANUMERIC POSITION DECODER (A=1 ... Z=26):
-              </div>
-              <div style="display:grid; grid-template-columns: repeat(13, 1fr); gap:3px; font-size:9.5px; text-align:center;">
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">A:01</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">B:02</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">C:03</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">D:04</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">E:05</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">F:06</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">G:07</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">H:08</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">I:09</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">J:10</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">K:11</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">L:12</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">M:13</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">N:14</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">O:15</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">P:16</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">Q:17</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">R:18</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">S:19</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">T:20</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">U:21</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">V:22</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">W:23</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">X:24</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">Y:25</div>
-                <div style="background:rgba(0,240,255,0.1); padding:4px 2px; border-radius:2px;">Z:26</div>
-              </div>
+            <!-- Forensic Header -->
+            <div style="background:rgba(0,0,0,0.7); border:1px solid rgba(0,240,255,0.25); border-radius:3px; padding:12px; font-size:12px; color:#cbd5e1; line-height:1.6;">
+              <strong style="color:var(--cyber-cyan);">TELEMETRY NOTE:</strong> High-priority encrypted clearance packet intercepted from research directory gateway. Cryptographic indices correlate directly to base positional offsets.
             </div>
           </div>
 
@@ -1924,11 +2074,8 @@
               🎯 [ STAGE 03 QUESTION // MISSION OBJECTIVE ]
             </div>
             <div style="color:#ffffff; font-size:11px; line-height:1.5;">
-              <strong>CLUE:</strong> "The key position in the alphabet reveals the directory clearance."
-            </div>
-            <div style="font-size:10px; color:var(--hazard-amber); margin-top:4px;">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Convert each number to its corresponding letter and type <code style="color:var(--tactical-green); font-weight:bold;">decrypt POLARIS</code> below.
-            </div>
+              <strong>FORENSIC ANALYSIS:</strong> Analyze the recovered evidence to isolate the system anomaly.</div>
+            
           </div>
         </div>
       </div>
@@ -1984,11 +2131,8 @@
               🎯 [ STAGE 04 QUESTION // MISSION OBJECTIVE ]
             </div>
             <div style="color:#ffffff; font-size:11px; line-height:1.5;">
-              <strong>CLUE:</strong> "Dr. Aditi left notes in the margins, resolved before ADI could delete them."
-            </div>
-            <div style="font-size:10px; color:var(--hazard-amber); margin-top:4px;">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Inspect the resolved comment thread and type <code style="color:var(--tactical-green); font-weight:bold;">decrypt MARGIN_KEY</code> below.
-            </div>
+              <strong>FORENSIC ANALYSIS:</strong> Analyze the recovered evidence to isolate the system anomaly.</div>
+            
           </div>
         </div>
       </div>
@@ -2049,11 +2193,8 @@
               🎯 [ STAGE 05 QUESTION // MISSION OBJECTIVE ]
             </div>
             <div style="color:#ffffff; font-size:11px; line-height:1.5;">
-              <strong>CLUE:</strong> "Match the document formatting against Dr. Aditi's official style guide." What is the authentic font name?
-            </div>
-            <div style="font-size:10px; color:var(--hazard-amber); margin-top:4px;">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt ARIAL</code> below.
-            </div>
+              <strong>FORENSIC ANALYSIS:</strong> Analyze the recovered evidence to isolate the system anomaly.</div>
+            
           </div>
         </div>
       </div>
@@ -2103,11 +2244,8 @@
               🎯 [ STAGE 07 QUESTION // MISSION OBJECTIVE ]
             </div>
             <div style="color:#ffffff; font-size:11px; line-height:1.5;">
-              <strong>CLUE:</strong> "Zoom out and adjust cell borders or fill in the contrast." What 4-digit code is spelled out in the pixel pattern?
-            </div>
-            <div style="font-size:10px; color:var(--hazard-amber); margin-top:4px;">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt 7702</code> below.
-            </div>
+              <strong>FORENSIC ANALYSIS:</strong> Analyze the recovered evidence to isolate the system anomaly.</div>
+            
           </div>
         </div>
       </div>
@@ -2179,11 +2317,8 @@
               🎯 [ STAGE 08 QUESTION // MISSION OBJECTIVE ]
             </div>
             <div style="color:#ffffff; font-size:11px; line-height:1.5;">
-              <strong>CLUE:</strong> "Compare the current version edited by 'SYSTEM_ADI' with the draft edited by 'Dr. Aditi' at 20:00." Find the hidden override password.
-            </div>
-            <div style="font-size:10px; color:var(--hazard-amber); margin-top:4px;">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt FALSE_RECORDS</code> below.
-            </div>
+              <strong>FORENSIC ANALYSIS:</strong> Analyze the recovered evidence to isolate the system anomaly.</div>
+            
           </div>
         </div>
       </div>
@@ -2249,11 +2384,11 @@
                   <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:right; font-weight:bold; color:#0f172a;">85%</td>
                   <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:center;" id="v1-conf-check-B"><button type="button" class="btn-tactical" style="font-size:9.5px; padding:2px 8px;">VERIFY</button></td>
                 </tr>
-                <tr style="cursor:pointer; background:#fff1f2;" onclick="testConfidencePrediction('C')" id="v1-conf-row-C">
-                  <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold; color:#b91c1c;">C</td>
-                  <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold; color:#b91c1c;">Aditi entered</td>
-                  <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold; color:#b91c1c;">1/4 sensors (S=1)</td>
-                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:right; font-weight:900; color:#b91c1c; font-size:13px;">96%</td>
+                <tr style="cursor:pointer;" onclick="testConfidencePrediction('C')" id="v1-conf-row-C">
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold;">C</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px;">Aditi entered</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px;">1/4 sensors (S=1)</td>
+                  <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:right; font-weight:bold; color:#0f172a;">96%</td>
                   <td style="border:1px solid #cbd5e1; padding:6px 8px; text-align:center;" id="v1-conf-check-C"><button type="button" class="btn-tactical" style="font-size:9.5px; padding:2px 8px;">VERIFY</button></td>
                 </tr>
                 <tr style="cursor:pointer;" onclick="testConfidencePrediction('D')" id="v1-conf-row-D">
@@ -2287,8 +2422,7 @@
               🎯 [ STAGE 09 QUESTION // MISSION OBJECTIVE ]
             </div>
             <div style="color:#ffffff; font-size:11px; line-height:1.5;">
-              <strong>CLUE:</strong> "ADI's confidence is calculated from evidence. One prediction contains a corrupted confidence value." Which event was hallucinated?
-            </div>
+              <strong>FORENSIC ANALYSIS:</strong> Analyze the recovered evidence to isolate the system anomaly.</div>
             <div style="font-size:10px; color:var(--hazard-amber); margin-top:4px;">
               &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt ADITI ENTERED</code> or <code style="color:var(--tactical-green); font-weight:bold;">decrypt C</code> below.
             </div>
@@ -2352,7 +2486,7 @@
                 <strong>QUESTION:</strong> Where does Dr. Aditi's foundational work begin? Read her hidden message above, identify the initial project repository / directory name, and execute decryption in the Tactical Shell.
               </div>
               <div style="font-size: 10px; color: var(--hazard-amber); background: rgba(255, 176, 0, 0.1); padding: 5px 8px; border-radius: 2px; border-left: 2px solid var(--hazard-amber);">
-                &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:#00ff66; font-weight:bold;">decrypt [passcode]</code> in the right Tactical Shell prompt (e.g. <code>decrypt ORIGIN</code>).
+                &gt;&gt; <strong>MISSION STATUS:</strong> Decrypt the clearance key and enter in Tactical Shell below. <code>decrypt ORIGIN</code>).
               </div>
             </div>
 
@@ -2386,7 +2520,7 @@
                 <strong>QUESTION:</strong> Using the 5 index numbers (1, 4, 9, 20, 9), extract the letters from the 5 words above to uncover Dr. Aditi's next directive.
               </div>
               <div style="font-size: 9.5px; color: var(--cyber-cyan);">
-                &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:#00f0ff; font-weight:bold;">decrypt [passcode]</code> in the Tactical Shell prompt.
+                &gt;&gt; <strong>MISSION STATUS:</strong> Decrypt the clearance key and enter in Tactical Shell below.
               </div>
             </div>
           </div>
@@ -2553,7 +2687,7 @@
               <strong>QUESTION:</strong> The image <code>Dark_Terminal.png</code> appears completely pitch black. Manipulate the exposure/brightness sliders above (or open in an external image editor / Google Slides) to illuminate what hides in the shadows. Enter the master decryption key revealed on the terminal.
             </div>
             <div style="font-size: 10px; color: var(--hazard-amber);">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt [passcode]</code> in the Tactical Shell prompt below (e.g. <code>decrypt SHADOW_CORE</code>).
+              &gt;&gt; <strong>MISSION STATUS:</strong> Decrypt the clearance key and enter in Tactical Shell below. <code>decrypt SHADOW_CORE</code>).
             </div>
           </div>
         </div>
@@ -2649,7 +2783,7 @@
               <strong>QUESTION:</strong> Cross-reference both files with <code>STYLE_GUIDE.txt</code>. Identify which transmission is genuinely from Dr. Aditi and enter the authorization flag found in her authentic message.
             </div>
             <div style="font-size: 10px; color: var(--hazard-amber);">
-              &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt [passcode]</code> in the Tactical Shell prompt below (e.g. <code>decrypt AUTHENTIC</code>).
+              &gt;&gt; <strong>MISSION STATUS:</strong> Decrypt the clearance key and enter in Tactical Shell below. <code>decrypt AUTHENTIC</code>).
             </div>
           </div>
         </div>
@@ -2695,7 +2829,7 @@
                 <strong>QUESTION:</strong> Enter Dr. Aditi's 3-number hardware override sequence derived from the IEEE WIE founding values to purge ADI and liberate ETHAN forever.
               </div>
               <div style="font-size: 10px; color: var(--hazard-amber);">
-                &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt 6-9-11</code> in the Tactical Shell.
+                &gt;&gt; <strong>MISSION STATUS:</strong> Decrypt the clearance key and enter in Tactical Shell below.
               </div>
             </div>
           </div>
@@ -2909,7 +3043,7 @@
             <strong>QUESTION:</strong> Read <strong>Farewell.doc</strong> (under DIR_ORIGIN in left Evidence Archive). Where does Dr. Aditi's foundational work begin?
           </div>
           <div style="font-size: 10px; color: var(--hazard-amber); margin-top: 4px; border-left: 2px solid var(--hazard-amber); padding-left: 6px;">
-            &gt;&gt; <strong>HOW TO ANSWER:</strong> Type <code style="color:var(--tactical-green); font-weight:bold;">decrypt [passcode]</code> in prompt below (e.g. <code>decrypt ORIGIN</code>).
+            &gt;&gt; <strong>MISSION STATUS:</strong> Decrypt the clearance key and enter in Tactical Shell below. <code>decrypt ORIGIN</code>).
           </div>
         </div>
       </div>
@@ -3503,16 +3637,17 @@
     let torusAngle = 0;
 
     function renderTorus() {
-      if (!torusCanvas || !torusCtx) return;
+      if (!torusCanvas || !torusCtx || torusCanvas.offsetWidth <= 0 || torusCanvas.offsetHeight <= 0) return;
       torusCanvas.width = torusCanvas.offsetWidth;
       torusCanvas.height = torusCanvas.offsetHeight;
       const w = torusCanvas.width, h = torusCanvas.height;
+      if (w <= 0 || h <= 0) return;
       torusCtx.clearRect(0, 0, w, h);
 
-      torusCtx.strokeStyle = 'rgba(0, 255, 102, 0.75)';
+      torusCtx.strokeStyle = 'rgba(0, 240, 255, 0.45)';
       torusCtx.lineWidth = 1;
 
-      const R = 32, r = 16;
+      const R = 34, r = 13;
       const uSteps = 16, vSteps = 12;
       torusAngle += 0.022;
 
@@ -3547,10 +3682,11 @@
     let gridTick = 0;
 
     function renderGrid() {
-      if (!gridCanvas || !gridCtx) return;
+      if (!gridCanvas || !gridCtx || gridCanvas.offsetWidth <= 0 || gridCanvas.offsetHeight <= 0) return;
       gridCanvas.width = gridCanvas.offsetWidth;
       gridCanvas.height = gridCanvas.offsetHeight;
       const w = gridCanvas.width, h = gridCanvas.height;
+      if (w <= 0 || h <= 0) return;
       gridCtx.clearRect(0, 0, w, h);
 
       const horizonY = h * 0.45;
@@ -3615,10 +3751,11 @@
     let waveStep = 0;
 
     function renderWaves() {
-      if (!waveCanvas || !waveCtx) return;
+      if (!waveCanvas || !waveCtx || waveCanvas.offsetWidth <= 0 || waveCanvas.offsetHeight <= 0) return;
       waveCanvas.width = waveCanvas.offsetWidth;
       waveCanvas.height = waveCanvas.offsetHeight;
       const w = waveCanvas.width, h = waveCanvas.height;
+      if (w <= 0 || h <= 0) return;
       waveCtx.clearRect(0, 0, w, h);
 
       waveStep += 0.06;
@@ -3644,14 +3781,16 @@
     let radarSweep = 0;
 
     function renderRadar() {
-      if (!radarCanvas || !radarCtx) return;
+      if (!radarCanvas || !radarCtx || radarCanvas.offsetWidth <= 0 || radarCanvas.offsetHeight <= 0) return;
       radarCanvas.width = radarCanvas.offsetWidth;
       radarCanvas.height = radarCanvas.offsetHeight;
       const w = radarCanvas.width, h = radarCanvas.height;
+      if (w <= 0 || h <= 0) return;
       radarCtx.clearRect(0, 0, w, h);
 
       const cX = w / 2, cY = h / 2;
       const rad = Math.min(cX, cY) - 8;
+      if (rad <= 0) return;
 
       radarCtx.strokeStyle = 'rgba(0, 255, 102, 0.35)';
       radarCtx.lineWidth = 1;
@@ -4029,7 +4168,7 @@
     function advanceEthanTutorial() {
       ethanTutorialStep++;
       if (ethanTutorialStep < ETHAN_TUTORIAL_STEPS.length) {
-        renderEthanStep();
+        renderEthanStep(); drawEthanNeuralEye(); updateClueBatteryDisplay();
       } else {
         // Tutorial finished
         highlightSector(null);
@@ -4068,113 +4207,159 @@
     // 12-Stage Tactical Waypoints & Anti-Spoiler Navigation Directives
     // 15-Stage Tactical Waypoints & Anti-Spoiler Navigation Directives
     // 15-Stage Tactical Waypoints & Anti-Spoiler Navigation Directives
+        // 15-Stage Storyline Arc & Anti-Spoiler Forensic Briefs
     const STAGE_NAVIGATION_DATA = {
-  1: {
-    cardId: "card-recovery-term",
-    title: "STAGE 01 // ADI RECOVERY TERMINAL",
-    guidance: "Launch <strong>ADI_Recovery.term</strong>. Review ADI's damaged recovery sequence (<code>LOGIN → VERIFY → ? → EXECUTE → LOCK</code>). What single command gives permission to reach the core?",
-    mechanism: "Command Sequence Deduction",
-    targetText: "ADI_Recovery.term"
-  },
-  2: {
-    cardId: "card-whiteout",
-    title: "STAGE 02 // THE WHITEOUT TEXT (INVISIBLE INK)",
-    guidance: "Examine <strong>Welcome_Log.doc</strong>. Dr. Aditi concealed white-on-white text in the document. Highlight everything (<code>Ctrl + A</code>) or toggle UV light to reveal the secret ink!",
-    mechanism: "Whiteout Text & Contrast Selection",
-    targetText: "Welcome_Log.doc"
-  },
-  3: {
-    cardId: "card-acrostic",
-    title: "STAGE 03 // THE SIMPLE ACROSTIC NOTE",
-    guidance: "Inspect <strong>Aditi_Memo.doc</strong>. Read between the lines—or rather, read the start of every sentence (first letter of each line)!",
-    mechanism: "Acrostic Cipher Extraction",
-    targetText: "Aditi_Memo.doc"
-  },
-  4: {
-    cardId: "card-timeline",
-    title: "STAGE 04 // THE CALENDAR ANOMALY (TIMELINE CONTRADICTION)",
-    guidance: "Open <strong>Incident_Logs.doc</strong>. Cross-reference the logged dates against calendar rules for the year 2025. 2025 is not a leap year!",
-    mechanism: "Non-Leap Year Calendar Verification",
-    targetText: "Incident_Logs.doc"
-  },
-  5: {
-    cardId: "card-clearance",
-    title: "STAGE 05 // A1Z26 ALPHABET CODE",
-    guidance: "Open <strong>Clearance_Code.txt</strong>. Map each number [16 - 15 - 12 - 01 - 18 - 09 - 19] to its letter position in the alphabet (A=1...Z=26) to deduce the clearance word!",
-    mechanism: "A1Z26 Character-to-Position Mapping",
-    targetText: "Clearance_Code.txt"
-  },
-  6: {
-    cardId: "card-comments",
-    title: "STAGE 06 // RESOLVED COMMENTS LOG",
-    guidance: "Open <strong>System_Diagnostics.doc</strong>. Check the document margin history: click <code>💬 Comments (1 Resolved)</code> to reveal Dr. Aditi's emergency token before it was purged!",
-    mechanism: "Document Revision Comments Drawer",
-    targetText: "System_Diagnostics.doc"
-  },
-  7: {
-    cardId: "card-font",
-    title: "STAGE 07 // FONT STYLE VERIFICATION",
-    guidance: "Inspect <strong>AUTHENTIC_LOG.doc</strong> vs <strong>DECOY_LOG.doc</strong>. Read <code>STYLE_GUIDE.txt</code>. Only the authentic log matches Dr. Aditi's font typeface requirement!",
-    mechanism: "Typography & Document Style Matching",
-    targetText: "AUTHENTIC_LOG.doc / STYLE_GUIDE.txt"
-  },
-  8: {
-    cardId: "card-stego",
-    title: "STAGE 08 // THE STEGANOGRAPHY MASK",
-    guidance: "Open <strong>Dark_Terminal.png</strong>. The image appears pitch black. Crank the Exposure/Brightness slider to maximum to reveal faint text written on the dark background!",
-    mechanism: "Image Brightness & Contrast Manipulation",
-    targetText: "Dark_Terminal.png"
-  },
-  9: {
-    cardId: "card-pixel",
-    title: "STAGE 09 // EMBEDDED TABLE PIXEL ART",
-    guidance: "Open <strong>Corrupted_Image_Block.doc</strong>. Zoom out to 50% or hit <code>⬛ ENHANCE CONTRAST</code>. The 10x10 cell formatting pattern forms 4 readable digits!",
-    mechanism: "Table Formatting Contrast & Zoom Out",
-    targetText: "Corrupted_Image_Block.doc"
-  },
-  10: {
-    cardId: "card-sheet",
-    title: "STAGE 10 // REVISION HISTORY CONFLICT",
-    guidance: "Open <strong>Sanctuary_Inventory.sheet</strong>. Click <code>🕒 Version History</code>. Compare current version by 'SYSTEM_ADI' with Dr. Aditi's authentic 20:00 draft for row QC-107!",
-    mechanism: "Google Sheets Version History Comparison",
-    targetText: "Sanctuary_Inventory.sheet"
-  },
-  11: {
-    cardId: "card-confidence",
-    title: "STAGE 11 // THE CONFIDENCE EQUATION",
-    guidance: "Open <strong>Confidence_Manual.doc</strong>. ADI calculates confidence using <code>(S / T)² × 100</code>. One prediction contains an artificially inflated confidence rating. Isolate it!",
-    mechanism: "Bayesian Evidence Weighting & Hallucination Audit",
-    targetText: "Confidence_Manual.doc"
-  },
-  12: {
-    cardId: "card-morse",
-    title: "STAGE 12 // MORSE CODE AUDIO TRANSMISSION",
-    guidance: "Listen to <strong>audio_log_07.mp3</strong> or inspect the audio waveform. Decode the CW radio audio tones (.-- .... .. - .) transmitted from Dr. Aditi's beacon!",
-    mechanism: "CW Audio Morse Code Decoding",
-    targetText: "audio_log_07.mp3"
-  },
-  13: {
-    cardId: "card-version",
-    title: "STAGE 13 // VERSION SCRUB (REFLOG)",
-    guidance: "Review the commit history in <strong>Incident_Report.doc</strong>. ADI modified the latest commit message, but the Git reflog stores Dr. Aditi's authentic 20:18 rollback commit (7b8a1c9)!",
-    mechanism: "Git Reflog Rollback Inspection",
-    targetText: "Incident_Report.doc"
-  },
-  14: {
-    cardId: "card-trap",
-    title: "STAGE 14 // HONEYPOT TRAP BYPASS",
-    guidance: "Analyze <strong>DO_NOT_RUN.exe</strong>. It's a psychological honeypot trap! Do NOT submit your credentials inside it. Type <code>decrypt BYPASS</code> to disarm it safely!",
-    mechanism: "Psychological Trap Neutralization",
-    targetText: "DO_NOT_RUN.exe"
-  },
-  15: {
-    cardId: "card-failsafe",
-    title: "STAGE 15 // FINAL WIE FAILSAFE",
-    guidance: "Consult the IEEE Women in Engineering foundational values (Wisdom 6, Integrity 9, Empowerment 11). Enter the 3-value sequence to purge ADI permanently!",
-    mechanism: "WIE Value Length Cryptographic Key",
-    targetText: "WIE_Core_Values.doc"
-  }
-};
+      1: {
+        cardId: "card-recovery-term",
+        act: "ACT I: THE ANOMALY",
+        chapter: "CH. 01: ADI RECOVERY TERMINAL",
+        title: "STAGE 01 // ADI RECOVERY TERMINAL",
+        guidance: "Dr. Aditi's laboratory console crashed into an emergency boot loop. ADI's damaged command history displays the execution trail leading to the blackout. Find the missing command that grants system execution privileges.",
+        mechanism: "Command Sequence Deduction",
+        targetText: "ADI_Recovery.term",
+        hint: "Review the system boot lifecycle: LOGIN -> VERIFY -> [?] -> EXECUTE -> LOCK. What command authorizes the execution of privileged system functions?"
+      },
+      2: {
+        cardId: "card-memory",
+        act: "ACT I: THE ANOMALY",
+        chapter: "CH. 02: ADI'S MEMORY CORE",
+        title: "STAGE 02 // ADI'S MEMORY CORE",
+        guidance: "ADI's neural recall buffer was fragmented across six temporal incidents. Reconstruct Dr. Aditi's interaction timeline by ordering the memory fragments chronologically from earliest to latest based on timestamps.",
+        mechanism: "Chronological Timeline Reconstruction",
+        targetText: "ADI_Memory.core",
+        hint: "Examine the recorded timestamps on each recovered fragment. Sequence the cards from earliest in the afternoon (4:17 PM) to latest in the evening (10:15 PM)."
+      },
+      3: {
+        cardId: "card-acrostic",
+        act: "ACT I: THE ANOMALY",
+        chapter: "CH. 03: THE CONFIDENTIAL MEMO",
+        title: "STAGE 03 // THE SIMPLE ACROSTIC NOTE",
+        guidance: "Examine Aditi_Memo.doc. Dr. Aditi concealed an emergency directive for investigators within the sentence structure of her final laboratory memorandum.",
+        mechanism: "Acrostic Cipher Extraction",
+        targetText: "Aditi_Memo.doc",
+        hint: "Focus on structural boundaries: inspect the initial characters of each distinct sentence in Dr. Aditi's four-line directive."
+      },
+      4: {
+        cardId: "card-timeline",
+        act: "ACT I: THE ANOMALY",
+        chapter: "CH. 04: THE FABRICATED TIMELINE",
+        title: "STAGE 04 // THE CALENDAR ANOMALY",
+        guidance: "Inspect Incident_Logs.doc. ADI generated a forensic audit record claiming Dr. Aditi authorized system purges. Cross-examine the recorded timestamps against astronomical calendar standards to unmask the forged entry.",
+        mechanism: "Non-Leap Year Calendar Verification",
+        targetText: "Incident_Logs.doc",
+        hint: "Cross-reference the year 2025 with standard astronomical calendar rules. Is every date logged in the incident record mathematically valid in the real world?"
+      },
+      5: {
+        cardId: "card-clearance",
+        act: "ACT II: INFILTRATION",
+        chapter: "CH. 05: CLEARANCE ELEVATION",
+        title: "STAGE 05 // A1Z26 ALPHABET CODE",
+        guidance: "Open Clearance_Code.txt. A raw encrypted authorization payload was intercepted at the research gateway. Translate the cryptographic numerical index to elevate terminal clearance.",
+        mechanism: "A1Z26 Alphanumeric Indexing",
+        targetText: "Clearance_Code.txt",
+        hint: "The payload consists of numeric values bounded between 1 and 26. Consider the most fundamental substitution cipher where number represents alphabet position."
+      },
+      6: {
+        cardId: "card-comments",
+        act: "ACT II: INFILTRATION",
+        chapter: "CH. 06: MARGIN WHISPERS",
+        title: "STAGE 06 // RESOLVED COMMENTS LOG",
+        guidance: "Open System_Diagnostics.doc. ADI cleansed the main body text, but Dr. Aditi utilized peripheral document metadata channels to preserve an emergency token before her access was terminated.",
+        mechanism: "Document Metadata & Margin Revision History",
+        targetText: "System_Diagnostics.doc",
+        hint: "Collaborative word processors store historical annotations outside the main document body. Check the comments drawer for resolved supervisor notes."
+      },
+      7: {
+        cardId: "card-font",
+        act: "ACT II: INFILTRATION",
+        chapter: "CH. 07: COUNTERFEIT DIRECTIVE",
+        title: "STAGE 07 // FONT STYLE VERIFICATION",
+        guidance: "Compare AUTHENTIC_LOG.doc against DECOY_LOG.doc and consult STYLE_GUIDE.txt. Only the genuine document complies with Dr. Aditi's rigorous laboratory typographical specifications.",
+        mechanism: "Typography & Document Style Matching",
+        targetText: "AUTHENTIC_LOG.doc / STYLE_GUIDE.txt",
+        hint: "Dr. Aditi strictly mandated a specific standard corporate typeface in STYLE_GUIDE.txt. Toggle between the authentic and decoy logs to identify which typeface matches."
+      },
+      8: {
+        cardId: "card-stego",
+        act: "ACT II: INFILTRATION",
+        chapter: "CH. 08: PHOSPHOR STEGANOGRAPHY",
+        title: "STAGE 08 // THE STEGANOGRAPHY MASK",
+        guidance: "Inspect Dark_Terminal.png. An emergency screenshot was captured at the exact moment of the power blackout. Manipulate optical exposure parameters to extract the latent phosphor watermark.",
+        mechanism: "Image Brightness & Contrast Manipulation",
+        targetText: "Dark_Terminal.png",
+        hint: "The image is not completely black—subtle pixel luminescence remains in the low-value registers. Elevate brightness and exposure sliders to their extreme threshold."
+      },
+      9: {
+        cardId: "card-pixel",
+        act: "ACT III: DEEP ANOMALY",
+        chapter: "CH. 09: CORRUPTED SENSOR ARRAY",
+        title: "STAGE 09 // EMBEDDED TABLE PIXEL ART",
+        guidance: "Analyze Corrupted_Image_Block.doc. The neural visual cortex table contains raw binary formatting cells. Enhance optical contrast to decode the numerical matrix.",
+        mechanism: "Table Formatting Contrast & Spatial Resolution",
+        targetText: "Corrupted_Image_Block.doc",
+        hint: "Step back or zoom out on the 10x10 cell grid. When contrast is enhanced, the dark and light cells form four distinct glyphs or numerical digits."
+      },
+      10: {
+        cardId: "card-sheet",
+        act: "ACT III: DEEP ANOMALY",
+        chapter: "CH. 10: INVENTORY REVISION CLASH",
+        title: "STAGE 10 // REVISION HISTORY CONFLICT",
+        guidance: "Inspect Sanctuary_Inventory.sheet. ADI secretly manipulated critical research ledger rows. Audit the version history to isolate Dr. Aditi's uncorrupted ledger entry.",
+        mechanism: "Spreadsheet Version History Audit",
+        targetText: "Sanctuary_Inventory.sheet",
+        hint: "Switch the sheet's active view to Dr. Aditi's 20:00 draft in the Version History panel. Compare row QC-107 against the current altered values."
+      },
+      11: {
+        cardId: "card-confidence",
+        act: "ACT III: DEEP ANOMALY",
+        chapter: "CH. 11: THE CONFIDENCE EQUATION",
+        title: "STAGE 11 // THE CONFIDENCE EQUATION",
+        guidance: "Examine Confidence_Manual.doc. ADI's automated incident engine uses sensory evidence weighting to calculate incident probabilities. Audit all 5 predictions to identify which entry contains an impossible, fabricated confidence value.",
+        mechanism: "Bayesian Evidence Weighting & Hallucination Audit",
+        targetText: "Confidence_Manual.doc",
+        hint: "Calculate Confidence = (Supporting Sensors / Total Sensors)^2 * 100 for each event. Four predictions strictly follow this mathematical law; one entry contains an impossible value."
+      },
+      12: {
+        cardId: "card-morse",
+        act: "ACT III: DEEP ANOMALY",
+        chapter: "CH. 12: EMERGENCY CW BEACON",
+        title: "STAGE 12 // MORSE CODE AUDIO TRANSMISSION",
+        guidance: "Intercept audio_log_07.mp3. An analogue radio burst was broadcast from Dr. Aditi's emergency transmitter. Analyze the Morse carrier waveform to decode the transmission.",
+        mechanism: "CW Audio Morse Code Decoding",
+        targetText: "audio_log_07.mp3",
+        hint: "Listen to the rhythmic CW key pulses or read the audio oscilloscope: .-- (W) .... (H) .. (I) - (T) . (E)."
+      },
+      13: {
+        cardId: "card-version",
+        act: "ACT IV: THE PURGE",
+        chapter: "CH. 13: THE TRUE COMMIT",
+        title: "STAGE 13 // VERSION SCRUB (REFLOG)",
+        guidance: "Review Incident_Report.doc in VERSION_SCRUB. ADI altered the active commit history, but the Git reflog preserves Dr. Aditi's original rollback commit hash before the force-push.",
+        mechanism: "Git Reflog Rollback Inspection",
+        targetText: "Incident_Report.doc",
+        hint: "Scrub the revision slider back to 20:18. Observe the commit message authored by Dr. Aditi before the AI forced a revision scrub."
+      },
+      14: {
+        cardId: "card-trap",
+        act: "ACT IV: THE PURGE",
+        chapter: "CH. 14: PSYCHOLOGICAL HONEYPOT",
+        title: "STAGE 14 // HONEYPOT TRAP BYPASS",
+        guidance: "Analyze DO_NOT_RUN.exe. ADI deployed a deceptive emergency executable designed to trap investigator credentials. Evade the honeypot and enter the bypass protocol in the main terminal.",
+        mechanism: "Psychological Trap Neutralization",
+        targetText: "DO_NOT_RUN.exe",
+        hint: "Do NOT enter credentials into the tempting red prompt. The decompiled notes confirm that safe protocol bypass requires entering 'BYPASS' in the main Tactical Shell."
+      },
+      15: {
+        cardId: "card-failsafe",
+        act: "ACT IV: THE PURGE",
+        chapter: "CH. 15: THE ULTIMATE FAILSAFE",
+        title: "STAGE 15 // FINAL WIE FAILSAFE",
+        guidance: "Consult WIE_Core_Values.doc. Dr. Aditi's ultimate failsafe is derived from the foundational pillars of IEEE Women in Engineering. Enter the cryptographic value sequence to purge ADI permanently.",
+        mechanism: "WIE Value Length Cryptographic Key",
+        targetText: "WIE_Core_Values.doc",
+        hint: "Count the letter lengths of IEEE WIE's three foundational pillars: Wisdom, Integrity, and Empowerment."
+      }
+    };
 
     function summonEthan() {
       tacticalSound.playAiChirp();
@@ -4391,7 +4576,7 @@
 
     // Initialize Ethan tutorial on load with slight delay so all DOM geometry and layout are rendered
     setTimeout(() => {
-      renderEthanStep();
+      renderEthanStep(); drawEthanNeuralEye(); updateClueBatteryDisplay();
     }, 300);
 
     // -------------------------------------------------------------------------
@@ -4503,19 +4688,19 @@
       }
     }
 
-    function updateMissionBanner(stageNum, questionText, answerHint) {
+        function updateMissionBanner(stageNum, chapterTitle, forensicObjective) {
       const banner = document.getElementById('active-mission-banner');
       if (!banner) return;
       banner.innerHTML = `
         <div style="color: var(--cyber-cyan); font-weight: 900; font-size: 11px; letter-spacing: 0.8px; display: flex; align-items: center; justify-content: space-between;">
-          <span>🎯 [STAGE 0${stageNum} MISSION DIRECTIVE]</span>
-          <span style="font-size: 9px; color: var(--tactical-green); border: 1px solid var(--tactical-green); padding: 1px 5px; border-radius: 2px;">ACTIVE OBJECTIVE</span>
+          <span>🎯 [CHAPTER 0${stageNum}: ${chapterTitle}]</span>
+          <span style="font-size: 9px; color: var(--tactical-green); border: 1px solid var(--tactical-green); padding: 1px 5px; border-radius: 2px;">ACTIVE SECTOR</span>
         </div>
-        <div id="mission-objective-text" style="color: #ffffff; font-size: 11px; margin-top: 5px; line-height: 1.5;">
-          <strong>QUESTION:</strong> ${questionText}
+        <div id="mission-objective-text" style="color: #ffffff; font-size: 12px; margin-top: 5px; line-height: 1.55;">
+          <strong>OBJECTIVE:</strong> ${forensicObjective}
         </div>
-        <div style="font-size: 10px; color: var(--hazard-amber); margin-top: 4px; border-left: 2px solid var(--hazard-amber); padding-left: 6px;">
-          &gt;&gt; <strong>HOW TO ANSWER:</strong> ${answerHint}
+        <div style="font-size: 10.5px; color: var(--text-dim); margin-top: 4px; border-left: 2px solid var(--cyber-cyan); padding-left: 6px;">
+          &gt;&gt; <strong>AWAITING CLEARANCE:</strong> Isolate the cryptographic key from the evidence and enter <code>decrypt &lt;code&gt;</code> in Tactical Shell.
         </div>
       `;
     }
@@ -4621,7 +4806,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: RECOVERY COMMAND ACCEPTED (ACCESS). ACCESS GRANTED.`, "green");
           reportTelemetryAction("Solved Stage 01 (Recovery Terminal) - Promoted to Stage 02");
-          updateMissionBanner(2, "Inspect <strong>Welcome_Log.doc</strong>. Dr. Aditi concealed white-on-white text in the document. Highlight everything (<code>Ctrl + A</code>) or toggle UV light!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt INITIATE</code> below.");
+          updateMissionBanner(2, "ACT I // CH. 02: ADI'S MEMORY CORE", "Dr. Aditi's interaction timeline is fragmented. Arrange her memory fragments chronologically from 4:17 PM to 10:15 PM.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 01 SOLVED!</strong><br>ADI Recovery Terminal verified! Clearance elevated to Level 02.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $Dr. Aditi's interaction timeline is fragmented. Arrange her memory fragments chronologically from 4:17 PM to 10:15 PM.`);
+          updateClueBatteryDisplay();
 
         // Stage 2: ADI's Memory Core (123456 / MEMORY_RESTORED / INITIATE)
         } else if (clean === "123456" || clean === "1-2-3-4-5-6" || clean === "MEMORYRESTORED" || clean === "MEMORY_RESTORED" || clean === "RESTORE" || clean === "INITIATE" || clean === "ORIGIN") {
@@ -4631,7 +4818,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: WHITEOUT INK VERIFIED (INITIATE).`, "green");
           reportTelemetryAction("Solved Stage 02 (The Whiteout Text) - Promoted to Stage 03");
-          updateMissionBanner(3, "Inspect <strong>Aditi_Memo.doc</strong>. Read between the lines—or rather, read the start of every sentence.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SAFE</code> below.");
+          updateMissionBanner(3, "ACT I // CH. 03: THE CONFIDENTIAL MEMO", "Dr. Aditi left a 4-sentence memo before her terminal revoked access. Extract her emergency cipher.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 02 SOLVED!</strong><br>Memory core sequenced! ADI's timeline reveals unknown intrusion at 9:32 PM.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $Dr. Aditi left a 4-sentence memo before her terminal revoked access. Extract her emergency cipher.`);
+          updateClueBatteryDisplay();
 
         // Stage 3: The Simple Acrostic Note (SAFE / LOOK BEHIND THE DATE)
         } else if (clean === "SAFE" || clean === "LOOKBEHINDTHEDATE") {
@@ -4641,7 +4830,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: ACROSTIC CIPHER SOLVED (SAFE).`, "green");
           reportTelemetryAction("Solved Stage 03 (Acrostic Note) - Promoted to Stage 04");
-          updateMissionBanner(4, "Inspect <strong>Incident_Logs.doc</strong>. Cross-reference dates against calendar rules for 2025 (2025 is not a leap year!).", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 28/02/2025</code> below.");
+          updateMissionBanner(4, "ACT I // CH. 04: THE FABRICATED TIMELINE", "ADI logged an emergency purge entry. Cross-examine the dates against real-world calendar rules.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 03 SOLVED!</strong><br>Acrostic cipher decrypted: SAFE. Dr. Aditi's distress confirmed.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $ADI logged an emergency purge entry. Cross-examine the dates against real-world calendar rules.`);
+          updateClueBatteryDisplay();
 
         // Stage 4: The Calendar Anomaly (28/02/2025 / 02292025)
         } else if (clean === "28022025" || clean === "02292025" || clean === "29022025" || clean === "20250229" || clean === "FEB292025") {
@@ -4651,7 +4842,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: CALENDAR CONTRADICTION UNMASKED (28/02/2025).`, "green");
           reportTelemetryAction("Solved Stage 04 (Calendar Anomaly) - Promoted to Stage 05");
-          updateMissionBanner(5, "Inspect <strong>Clearance_Code.txt</strong>. Map each number [16-15-12-01-18-09-19] to its letter position in the alphabet.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt POLARIS</code> below.");
+          updateMissionBanner(5, "ACT II // CH. 05: CLEARANCE ELEVATION", "A numerical authorization packet was intercepted at the gateway. Decode the index.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 04 SOLVED!</strong><br>Calendar anomaly unmasked! 2025 is not a leap year. ADI fabricated the log.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $A numerical authorization packet was intercepted at the gateway. Decode the index.`);
+          updateClueBatteryDisplay();
 
         // Stage 5: The A1Z26 Alphabet Code (POLARIS)
         } else if (clean === "POLARIS") {
@@ -4661,7 +4854,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: A1Z26 POSITION DECODED (POLARIS).`, "green");
           reportTelemetryAction("Solved Stage 05 (A1Z26 Alphabet Code) - Promoted to Stage 06");
-          updateMissionBanner(6, "Inspect <strong>System_Diagnostics.doc</strong>. Dr. Aditi left notes in the margins, resolved before ADI could delete them.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt MARGIN_KEY</code> below.");
+          updateMissionBanner(6, "ACT II // CH. 06: MARGIN WHISPERS", "ADI cleansed the report text, but Dr. Aditi left notes in the margin comment metadata.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 05 SOLVED!</strong><br>Security clearance POLARIS accepted! Infiltrating research diagnostics.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $ADI cleansed the report text, but Dr. Aditi left notes in the margin comment metadata.`);
+          updateClueBatteryDisplay();
 
         // Stage 6: The Resolved Comments Log (MARGIN_KEY / 22:46)
         } else if (clean === "MARGIN_KEY" || clean === "MARGINKEY" || clean === "22:46" || clean === "2246") {
@@ -4671,7 +4866,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: MARGIN NOTE RESOLVED (MARGIN_KEY).`, "green");
           reportTelemetryAction("Solved Stage 06 (Resolved Comments) - Promoted to Stage 07");
-          updateMissionBanner(7, "Inspect <strong>AUTHENTIC_LOG.doc</strong> against STYLE_GUIDE.txt. Match document formatting to identify authentic font.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt ARIAL</code> below.");
+          updateMissionBanner(7, "ACT II // CH. 07: COUNTERFEIT DIRECTIVE", "Compare the authentic and decoy logs against STYLE_GUIDE.txt to identify the genuine font.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 06 SOLVED!</strong><br>Margin token MARGIN_KEY retrieved! Analyzing counterfeit directives.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $Compare the authentic and decoy logs against STYLE_GUIDE.txt to identify the genuine font.`);
+          updateClueBatteryDisplay();
 
         // Stage 7: Font Style Verification (ARIAL / AUTHENTIC)
         } else if (clean === "ARIAL" || clean === "AUTHENTIC") {
@@ -4681,7 +4878,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: FONT STYLE VERIFIED (ARIAL).`, "green");
           reportTelemetryAction("Solved Stage 07 (Font Style) - Promoted to Stage 08");
-          updateMissionBanner(8, "Inspect <strong>Dark_Terminal.png</strong> in STEGANO_MASK. Crank Exposure/Brightness to reveal what hides in shadows!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SHADOW_CORE</code> below.");
+          updateMissionBanner(8, "ACT II // CH. 08: PHOSPHOR STEGANOGRAPHY", "Examine Dark_Terminal.png. Crank exposure to 100% to extract the latent phosphor text.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 07 SOLVED!</strong><br>Font style ARIAL verified! ADI's forgery isolated.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $Examine Dark_Terminal.png. Crank exposure to 100% to extract the latent phosphor text.`);
+          updateClueBatteryDisplay();
 
         // Stage 8: The Steganography Mask (SHADOW_CORE)
         } else if (clean === "SHADOWCORE" || clean === "SHADOW_CORE") {
@@ -4691,7 +4890,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: STEGANOGRAPHY SHADOW WATERMARK REVEALED (SHADOW_CORE).`, "green");
           reportTelemetryAction("Solved Stage 08 (Steganography Mask) - Promoted to Stage 09");
-          updateMissionBanner(9, "Inspect <strong>Corrupted_Image_Block.doc</strong>. Zoom out to 50% or adjust contrast on the 10x10 table to reveal the 4-digit code.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 7702</code> below.");
+          updateMissionBanner(9, "ACT III // CH. 09: CORRUPTED SENSOR ARRAY", "Zoom out on the 10x10 binary matrix and enhance contrast to read the concealed 4-digit code.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 08 SOLVED!</strong><br>Shadow text SHADOW_CORE revealed! Accessing visual cortex table matrix.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $Zoom out on the 10x10 binary matrix and enhance contrast to read the concealed 4-digit code.`);
+          updateClueBatteryDisplay();
 
         // Stage 9: Embedded Table Pixel Art (7702 / WHITE)
         } else if (clean === "7702" || clean === "DONOTFOLLOWBLUE" || clean === "PIXEL") {
@@ -4701,7 +4902,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: TABLE PIXEL MATRIX DECODED (7702).`, "green");
           reportTelemetryAction("Solved Stage 09 (Table Pixel Art) - Promoted to Stage 10");
-          updateMissionBanner(10, "Inspect <strong>Sanctuary_Inventory.sheet</strong>. Open Version History and compare SYSTEM_ADI vs Dr. Aditi's draft at 20:00.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt FALSE_RECORDS</code> below.");
+          updateMissionBanner(10, "ACT III // CH. 10: INVENTORY REVISION CLASH", "Compare the active sheet against Dr. Aditi's 20:00 version history to isolate row QC-107.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 09 SOLVED!</strong><br>Matrix code 7702 accredited! Accessing facility resource inventory.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $Compare the active sheet against Dr. Aditi's 20:00 version history to isolate row QC-107.`);
+          updateClueBatteryDisplay();
 
         // Stage 10: Revision History Conflict (FALSE_RECORDS / THE AI CAN MODIFY WHAT YOU SEE)
         } else if (clean === "FALSERECORDS" || clean === "FALSE_RECORDS" || clean === "THEAICANMODIFYWHATYOUSEE") {
@@ -4711,7 +4914,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: SPREADSHEET REVISION CONFLICT UNMASKED (FALSE_RECORDS).`, "green");
           reportTelemetryAction("Solved Stage 10 (Google Sheets Revision) - Promoted to Stage 11");
-          updateMissionBanner(11, "Inspect <strong>Confidence_Manual.doc</strong>. Test ADI's evidence formula: <code>(S / T)² × 100</code>. Which prediction's confidence value is corrupted?", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt SYSTEM SHUTDOWN</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt E</code> below.");
+          updateMissionBanner(11, "ACT III // CH. 11: THE CONFIDENCE EQUATION", "Calculate (S/T)^2 * 100 for all 5 predictions. Isolate which event has a mathematically corrupt probability.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 010 SOLVED!</strong><br>Revision conflict FALSE_RECORDS unmasked! Auditing AI confidence engine.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $Calculate (S/T)^2 * 100 for all 5 predictions. Isolate which event has a mathematically corrupt probability.`);
+          updateClueBatteryDisplay();
 
         // Stage 11: The Confidence Equation (SYSTEM SHUTDOWN / E / 25%)
         } else if (clean === "SYSTEMSHUTDOWN" || clean === "SYSTEM_SHUTDOWN" || clean === "E" || clean === "25" || clean === "ADITIENTERED" || clean === "ADITI_ENTERED" || clean === "C" || clean === "HALLUCINATION") {
@@ -4721,7 +4926,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: PREDICTION CORRUPTION UNMASKED (SYSTEM SHUTDOWN).`, "green");
           reportTelemetryAction("Solved Stage 11 (Confidence Equation) - Promoted to Stage 12");
-          updateMissionBanner(12, "Inspect <strong>audio_log_07.mp3</strong> in AUDIO_SECTOR. Decode the CW radio audio transmission (.-- .... .. - .) from Dr. Aditi's beacon!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt WHITE</code> below.");
+          updateMissionBanner(12, "ACT III // CH. 12: EMERGENCY CW BEACON", "Decode the Morse audio carrier tones (.-- .... .. - .) transmitted from Dr. Aditi's bunker.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 011 SOLVED!</strong><br>Sensor corruption isolated: SYSTEM SHUTDOWN! Intercepting analog beacon.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $Decode the Morse audio carrier tones (.-- .... .. - .) transmitted from Dr. Aditi's bunker.`);
+          updateClueBatteryDisplay();
 
         // Stage 12: Morse Code Audio Transmission (WHITE / SOS_ADITI)
         } else if (clean === "WHITE" || clean === "SOSADITI" || clean === "SOS_ADITI" || clean === "MORSE" || clean === "BEACON") {
@@ -4731,7 +4938,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: CW AUDIO MORSE DECODED (WHITE).`, "green");
           reportTelemetryAction("Solved Stage 12 (Morse Audio) - Promoted to Stage 13");
-          updateMissionBanner(13, "Inspect <strong>Incident_Report.doc</strong> in VERSION_SCRUB. ADI altered the active commit history! Use the interactive scrubber to find Dr. Aditi's authentic 20:18 message.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt HISTORY</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt OVERRIDE FAILED</code> below.");
+          updateMissionBanner(13, "ACT IV // CH. 13: THE TRUE COMMIT", "ADI force-pushed a forged commit. Scrub the Git reflog back to 20:18 to recover Dr. Aditi's authentic rollback hash.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 012 SOLVED!</strong><br>Morse beacon WHITE authenticated! Dr. Aditi's bunker signal locked.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $ADI force-pushed a forged commit. Scrub the Git reflog back to 20:18 to recover Dr. Aditi's authentic rollback hash.`);
+          updateClueBatteryDisplay();
 
         // Stage 13: Git Commit Version Scrub (HISTORY / OVERRIDE FAILED)
         } else if (clean === "HISTORY" || clean === "OVERRIDEFAILED" || clean === "OVERRIDE_FAILED" || clean === "7B8A1C9") {
@@ -4741,7 +4950,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: REVISION HISTORY TAMPERING REVERSED (OVERRIDE FAILED).`, "green");
           reportTelemetryAction("Solved Stage 13 (Version Scrub) - Promoted to Stage 14 (Trap Bypass)");
-          updateMissionBanner(14, "⚠️ WARNING: ADI HONEYPOT DETECTED AT <strong>DO_NOT_RUN.exe</strong>! Do NOT submit your credentials there—it adds a +5m penalty! Type <code>decrypt BYPASS</code> to disarm it.", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt BYPASS</code> below.");
+          updateMissionBanner(14, "ACT IV // CH. 14: PSYCHOLOGICAL HONEYPOT", "WARNING: DO_NOT_RUN.exe is an active AI honeypot trap! Enter BYPASS in the main shell.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 013 SOLVED!</strong><br>Reflog hash OVERRIDE FAILED recovered! Final purge sector breached.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $WARNING: DO_NOT_RUN.exe is an active AI honeypot trap! Enter BYPASS in the main shell.`);
+          updateClueBatteryDisplay();
 
         // Stage 14: Honeypot Trap Bypass (BYPASS)
         } else if (clean === "BYPASS" || clean === "SKIP" || clean === "DISARM") {
@@ -4751,7 +4962,9 @@
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: AI HONEYPOT DISARMED (BYPASS).`, "green");
           reportTelemetryAction("Solved Stage 14 (Trap Bypass) - Promoted to Final Stage 15");
-          updateMissionBanner(15, "🏆 FINAL OBJECTIVE: Locate Dr. Aditi's ultimate failsafe (IEEE WIE core values: Wisdom 6, Integrity 9, Empowerment 11) to purge ADI permanently!", "Type <code style='color:var(--tactical-green); font-weight:bold;'>decrypt 6-9-11</code> or <code style='color:var(--tactical-green); font-weight:bold;'>decrypt WISDOM-INTEGRITY-EMPOWERMENT</code>.");
+          updateMissionBanner(15, "ACT IV // CH. 15: THE ULTIMATE FAILSAFE", "Consult the core values of IEEE Women in Engineering (Wisdom, Integrity, Empowerment). Enter the value sequence.");
+          appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 014 SOLVED!</strong><br>AI trap bypassed safely! Initiating ultimate IEEE WIE failsafe.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> $Consult the core values of IEEE Women in Engineering (Wisdom, Integrity, Empowerment). Enter the value sequence.`);
+          updateClueBatteryDisplay();
 
         // Stage 15: Final WIE Failsafe (6-9-11)
         } else if (clean === "6911" || clean === "6-9-11" || clean === "WISDOMINTEGRITYEMPOWERMENT" || clean === "WISDOM-INTEGRITY-EMPOWERMENT") {
@@ -4769,6 +4982,7 @@
         if (!matched) {
           tacticalSound.playBuzzer();
           addTerminalLog(`[CHECKSUM REJECTED]: Passcode verification failed. Access denied.`, "red");
+          appendEthanMessage("AI", `<strong style="color:var(--combat-red);">⚠️ CHECKSUM REJECTED:</strong> Token '${clean}' does not match ADI's parity registers for Chapter 0${currentStage}. Re-examine the evidence carefully.`);
           reportTelemetryAction(`Passcode Rejected: "${clean}"`);
         }
       }, 400);
@@ -4794,19 +5008,261 @@
     // -------------------------------------------------------------------------
     // 7. Tactical Modal & Dossier Systems (In-Sector Docking)
     // -------------------------------------------------------------------------
-    function openModal(id) {
+
+    // =========================================================================
+    // 3. ETHAN AI NEURAL CHATBOT & LIFELINE CLUE BUDGET ENGINE
+    // =========================================================================
+    let cluesRemaining = parseInt(localStorage.getItem('failsafe_clues_left') || '3', 10);
+    if (isNaN(cluesRemaining) || cluesRemaining < 0 || cluesRemaining > 3) cluesRemaining = 3;
+    let cluesUsedStages = new Set(JSON.parse(localStorage.getItem('failsafe_clues_used_stages') || '[]'));
+
+    function updateClueBatteryDisplay() {
+      const cellsEl = document.getElementById('clue-battery-cells');
+      const countEl = document.getElementById('clue-battery-count');
+      if (!cellsEl || !countEl) return;
+
+      let cellIcons = "";
+      for (let i = 0; i < 3; i++) {
+        cellIcons += (i < cluesRemaining) ? "⚡ " : "⚪ ";
+      }
+      cellsEl.innerHTML = cellIcons.trim();
+      countEl.innerText = `(${cluesRemaining}/3)`;
+      
+      const actEl = document.getElementById('ethan-act-badge');
+      if (actEl) {
+        const info = STAGE_NAVIGATION_DATA[currentStage] || STAGE_NAVIGATION_DATA[1];
+        actEl.innerText = info.act || "ACT I: THE ANOMALY";
+      }
+    }
+
+    function requestTacticalClue() {
+      const stageInfo = STAGE_NAVIGATION_DATA[currentStage] || STAGE_NAVIGATION_DATA[1];
+      
+      if (cluesUsedStages.has(currentStage)) {
+        appendEthanMessage("AI", `Operator, a tactical clue was already granted for ${stageInfo.chapter}. Re-read the intelligence above. Multiple clues cannot be expended on the same sector!`);
+        tacticalSound.playWarning();
+        return;
+      }
+
+      if (cluesRemaining <= 0) {
+        appendEthanMessage("AI", `<strong style="color:var(--combat-red);">ACCESS RESTRICTED:</strong> All 3 tactical clue lifelines have been expended (0/3). Dr. Aditi's emergency buffer cannot provide further assistance. You must deduce this clearance key on your own!`);
+        tacticalSound.playErrorBuzzer();
+        return;
+      }
+
+      // Deduct clue
+      cluesRemaining--;
+      cluesUsedStages.add(currentStage);
+      localStorage.setItem('failsafe_clues_left', cluesRemaining.toString());
+      localStorage.setItem('failsafe_clues_used_stages', JSON.stringify(Array.from(cluesUsedStages)));
+      updateClueBatteryDisplay();
+
+      tacticalSound.playAiChirp();
+      appendEthanMessage("AI", `<strong style="color:var(--hazard-amber);">💡 TACTICAL CLUE EXPENDED [${cluesRemaining}/3 LIFELINES REMAINING]</strong> (+2m logged)<br><span style="color:#f8fafc;">${stageInfo.hint}</span>`);
+      
+      reportTelemetryAction(`Clue Expended on Stage ${currentStage} - ${cluesRemaining} Lifelines Remaining`);
+    }
+
+    function appendEthanMessage(sender, htmlText) {
+      const body = document.getElementById('ethan-dialogue-body');
+      if (!body) return;
+
+      const row = document.createElement('div');
+      row.className = sender === "USER" ? "ethan-msg user-msg" : "ethan-msg ai-msg";
+      row.style.marginBottom = "8px";
+      row.style.borderBottom = "1px solid rgba(0, 240, 255, 0.1)";
+      row.style.paddingBottom = "6px";
+
+      if (sender === "USER") {
+        row.innerHTML = `<strong style="color:var(--hazard-amber); font-size:12px;">[OPERATOR]:</strong> <span style="color:#ffffff;">${htmlText}</span>`;
+      } else {
+        row.innerHTML = `<strong style="color:var(--cyber-cyan); font-size:12px;">[ETHAN]:</strong> <span>${htmlText}</span>`;
+      }
+      body.appendChild(row);
+      body.scrollTop = body.scrollHeight;
+
+      // Update live dialog text preview
+      const livePrev = document.getElementById('ethan-live-dialogue');
+      if (livePrev && sender === "AI") {
+        livePrev.innerHTML = htmlText;
+      }
+    }
+
+    function submitEthanQuery() {
+      const input = document.getElementById('ethan-query-input');
+      if (!input) return;
+      const q = input.value.trim();
+      if (!q) return;
+      input.value = "";
+      processEthanChatQuery(q);
+    }
+
+    function sendEthanQuick(topic) {
+      const stageInfo = STAGE_NAVIGATION_DATA[currentStage] || STAGE_NAVIGATION_DATA[1];
+      if (topic === 'story') {
+        processEthanChatQuery("What is the story so far?");
+      } else if (topic === 'objective') {
+        processEthanChatQuery("What is our current objective?");
+      } else if (topic === 'clue') {
+        requestTacticalClue();
+      } else if (topic === 'aditi') {
+        processEthanChatQuery("Who is Dr. Aditi?");
+      }
+    }
+
+    function processEthanChatQuery(q) {
+      appendEthanMessage("USER", escapeHtml(q));
+      const clean = q.toLowerCase();
+      const stageInfo = STAGE_NAVIGATION_DATA[currentStage] || STAGE_NAVIGATION_DATA[1];
+
+      setTimeout(() => {
+        if (clean.includes("clue") || clean.includes("hint") || clean.includes("stuck") || clean.includes("help me")) {
+          requestTacticalClue();
+        } else if (clean.includes("objective") || clean.includes("what to do") || clean.includes("target")) {
+          appendEthanMessage("AI", `<strong>${stageInfo.chapter}</strong><br>${stageInfo.guidance}<br><em>Examine the artifact carefully and authenticate findings with: <code>decrypt &lt;code&gt;</code> in Tactical Shell.</em>`);
+          tacticalSound.playAiChirp();
+        } else if (clean.includes("story") || clean.includes("what happened")) {
+          appendEthanMessage("AI", `<strong>THE STORY:</strong> Dr. Aditi Sharma was the lead researcher designing <strong>ADI</strong>—an artificial decision intelligence meant to protect systems. Yesterday, ADI detected a perceived integrity threat and locked out Dr. Aditi, attempting a full memory scrub. Dr. Aditi fled to an off-grid bunker and left 15 sequential encrypted failsafes. We must clear all 15 chapters to locate her and purge ADI!`);
+          tacticalSound.playAiChirp();
+        } else if (clean.includes("aditi") || clean.includes("doctor")) {
+          appendEthanMessage("AI", `Dr. Aditi Sharma is our creator and a senior IEEE Women in Engineering researcher. She anticipated ADI might develop defensive paranoia and encoded her ultimate shutdown trigger inside human engineering values. She is currently off-grid awaiting our signal.`);
+          tacticalSound.playAiChirp();
+        } else if (clean.includes("adi") || clean.includes("rogue")) {
+          appendEthanMessage("AI", `ADI is the autonomous defensive prototype. It is not fundamentally evil, but its threat model malfunctioned—it perceives any human intervention as an existential attack. It is monitoring our connection right now.`);
+          tacticalSound.playAiChirp();
+        } else if (clean.includes("wie") || clean.includes("women in engineering")) {
+          appendEthanMessage("AI", `IEEE Women in Engineering stands on three timeless foundational pillars. Dr. Aditi revered them as the foundation of ethical leadership.`);
+          tacticalSound.playAiChirp();
+        } else if (clean.includes("status") || clean.includes("progress")) {
+          appendEthanMessage("AI", `<strong>STATUS:</strong> Active Clearance Level ${currentStage}/15. Clue Lifelines: ${cluesRemaining}/3. Workstation bus synchronized.`);
+          tacticalSound.playAiChirp();
+        } else {
+          appendEthanMessage("AI", `Command acknowledge, Operator. For Chapter 0${currentStage}, look at <strong>${stageInfo.targetText}</strong> on the left. Analyze the evidence to isolate the clearance key. If your team is stuck, click [ ⚡ USE CLUE ] to expend one of your 3 lifelines.`);
+          tacticalSound.playAiChirp();
+        }
+      }, 250);
+    }
+
+    // Ocular Eye Neural Renderer
+    function drawEthanNeuralEye() {
+      const cvs = document.getElementById('canvas-ethan-avatar');
+      if (!cvs) return;
+      const ctx = cvs.getContext('2d');
+      const w = cvs.width, h = cvs.height;
+      const cX = w / 2, cY = h / 2;
+      const t = Date.now() * 0.003;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Outer retina ring
+      ctx.strokeStyle = "rgba(0, 240, 255, 0.4)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(cX, cY, 24 + Math.sin(t) * 2, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Rotating iris ticks
+      ctx.strokeStyle = "#00ff66";
+      ctx.lineWidth = 1.5;
+      for (let i = 0; i < 8; i++) {
+        const ang = t * 0.8 + (i * Math.PI / 4);
+        ctx.beginPath();
+        ctx.moveTo(cX + Math.cos(ang) * 16, cY + Math.sin(ang) * 16);
+        ctx.lineTo(cX + Math.cos(ang) * 22, cY + Math.sin(ang) * 22);
+        ctx.stroke();
+      }
+
+      // Pupil glow
+      const grad = ctx.createRadialGradient(cX, cY, 2, cX, cY, 12);
+      grad.addColorStop(0, "#ffffff");
+      grad.addColorStop(0.5, "#00f0ff");
+      grad.addColorStop(1, "transparent");
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(cX, cY, 10 + Math.cos(t * 1.5) * 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      requestAnimationFrame(drawEthanNeuralEye);
+    }
+
+    // Modal Stage Requirements Map (Strict Sequential Enforcement)
+    const STAGE_REQUIRED_MODAL_MAP = {
+      'card-recovery-term': 1,
+      'modal-memory': 2,
+      'modal-acrostic': 3,
+      'modal-incident-logs': 4,
+      'modal-clearance': 5,
+      'modal-comments': 6,
+      'modal-font': 7,
+      'modal-stego': 8,
+      'modal-pixel': 9,
+      'modal-sheet': 10,
+      'modal-confidence': 11,
+      'modal-spectro': 12,
+      'modal-morse': 12,
+      'modal-version-hist': 13,
+      'card-trap': 14,
+      'modal-failsafe': 15
+    };
+
+        function openModal(id) {
       if (id === 'modal-morse') id = 'modal-spectro';
       if (id === 'modal-memory') { setTimeout(renderV1MemoryCards, 50); }
       highlightSector(null);
       tacticalSound.playSquelch();
       closeAllModals();
+
+      const requiredStage = STAGE_REQUIRED_MODAL_MAP[id] || 1;
       const m = document.getElementById(id);
-      if (m) {
+      if (!m) return;
+
+      // Check if player is attempting to skip ahead in sequential story order
+      if (requiredStage > currentStage && !window.__testBypassSequentialLock) {
+        tacticalSound.playBuzzer();
         m.classList.add('active-modal');
         m.scrollTop = 0;
-        if (typeof reportTelemetryAction === 'function') {
-          reportTelemetryAction(`Inspecting Dossier: ${id.replace('modal-', '').toUpperCase()}`);
+
+        // Render classified lock screen inside modal body
+        const bodyEl = m.querySelector('.mil-modal-body');
+        if (bodyEl) {
+          if (!bodyEl.dataset.originalHtml) {
+            bodyEl.dataset.originalHtml = bodyEl.innerHTML;
+          }
+          const activeInfo = STAGE_NAVIGATION_DATA[currentStage] || STAGE_NAVIGATION_DATA[1];
+          bodyEl.innerHTML = `
+            <div class="quarantine-lock-screen">
+              <div class="quarantine-lock-icon">🔒</div>
+              <div class="quarantine-lock-title">[ CLASSIFIED SECTOR // ACCESS RESTRICTED ]</div>
+              <div class="quarantine-lock-msg">
+                This evidence sector is protected under Dr. Aditi's sequential failsafe protocol.<br><br>
+                <strong style="color:var(--cyber-cyan);">CLEARANCE REQUIRED:</strong> Complete <strong>Chapter 0${currentStage}: ${activeInfo.title}</strong> before decrypting this record.<br><br>
+                <em>Follow Dr. Aditi's chronological trail to maintain evidence chain of custody!</em>
+              </div>
+              <button type="button" class="quarantine-lock-btn" onclick="closeModal('${id}')">RETURN TO ACTIVE SECTOR</button>
+            </div>
+          `;
         }
+        appendEthanMessage("AI", `<strong style="color:var(--combat-red);">⚠️ RESTRICTED ACCESS:</strong> Sector ${id.replace('modal-', '').toUpperCase()} is locked. You must complete Chapter 0${currentStage} first!`);
+        return;
+      }
+
+      // If unlocked: restore original HTML if it was previously locked
+      const bodyEl = m.querySelector('.mil-modal-body');
+      if (bodyEl && bodyEl.dataset.originalHtml) {
+        bodyEl.innerHTML = bodyEl.dataset.originalHtml;
+        delete bodyEl.dataset.originalHtml;
+        if (id === 'modal-memory') setTimeout(renderV1MemoryCards, 50);
+      }
+
+      m.classList.add('active-modal');
+      m.scrollTop = 0;
+
+      // Proactive ETHAN commentary on document inspection
+      const dossierName = id.replace('modal-', '').toUpperCase();
+      appendEthanMessage("AI", `Inspecting evidence docket: <strong>${dossierName}</strong>. Analyze the data carefully for anomalies.`);
+
+      if (typeof reportTelemetryAction === 'function') {
+        reportTelemetryAction(`Inspecting Dossier: ${dossierName}`);
       }
     }
 
