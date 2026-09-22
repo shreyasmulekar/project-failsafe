@@ -697,16 +697,16 @@
 
     /* Floating Companion ETHAN Hunt Box (Docked below Reactor) */
     .ethan-interactive-dock {
-      width: 92%;
-      max-width: 580px;
-      background: rgba(8, 15, 23, 0.9);
-      border: 1px solid rgba(77, 238, 234, 0.4);
-      border-radius: 3px;
-      padding: 8px 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      width: 95%;
+      max-width: 620px;
+      background: rgba(8, 15, 23, 0.95);
+      border: 1px solid rgba(77, 238, 234, 0.45);
+      border-radius: 4px;
+      padding: 10px 14px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       margin-top: 4px;
       z-index: 25;
       transition: all 0.3s;
@@ -723,14 +723,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 10.5px;
+      font-size: 12px;
       font-weight: bold;
       color: var(--cyber-cyan);
     }
     .ethan-dock-text {
-      color: #e6f7ff;
-      font-size: 10.5px;
-      line-height: 1.45;
+      color: #f1f5f9;
+      font-size: 14.5px;
+      line-height: 1.65;
     }
     .ethan-dock-actions {
       display: flex;
@@ -1391,28 +1391,28 @@
       <div id="ethan-dock" class="ethan-interactive-dock">
         <div class="ethan-dock-header">
           <div style="display:flex; align-items:center; gap:8px;">
-            <span id="ethan-dock-title" style="font-size:12.5px; font-weight:bold; color:var(--cyber-cyan);">👁️ ETHAN // AI COMPANION DECK</span>
-            <span id="v2-act-indicator" style="font-size:9.5px; color:var(--cyber-gold); border:1px solid var(--cyber-gold); padding:1px 6px; border-radius:2px; font-weight:bold;">ACT I: THE ANOMALY</span>
+            <span id="ethan-dock-title" style="font-size:13px; font-weight:bold; color:var(--cyber-cyan); letter-spacing:0.8px;">👁️ ETHAN // TACTICAL NEURAL CHATTER &amp; COMPANION DECK</span>
+            <span id="v2-act-indicator" style="font-size:10px; color:var(--cyber-gold); border:1px solid var(--cyber-gold); padding:1px 6px; border-radius:2px; font-weight:bold;">ACT I: THE ANOMALY</span>
           </div>
           <div style="display:flex; align-items:center; gap:8px;">
-            <span id="v2-clue-battery-cells" style="color:var(--cyber-gold); font-size:12px; letter-spacing:2px;">⚡ ⚡ ⚡</span>
-            <span id="v2-clue-battery-count" style="font-size:11px; color:#fff; font-weight:bold;">(3/3)</span>
-            <span id="ethan-dock-status" style="font-size:9.5px; color:var(--tactical-green);">[ONLINE]</span>
+            <span id="v2-clue-battery-cells" style="color:var(--cyber-gold); font-size:13.5px; letter-spacing:2px;">⚡ ⚡ ⚡</span>
+            <span id="v2-clue-battery-count" style="font-size:11.5px; color:#fff; font-weight:bold;">(3/3)</span>
+            <span id="ethan-dock-status" style="font-size:10.5px; color:var(--tactical-green); font-weight:bold;">[ONLINE]</span>
           </div>
         </div>
-        <div id="ethan-dock-text" class="ethan-dock-text" style="font-size:12px; line-height:1.6; min-height:55px; max-height:100px; overflow-y:auto; padding:6px 10px; background:rgba(0,0,0,0.55); border-radius:3px; border:1px solid rgba(77,238,234,0.25);">
-          Greetings, Investigator. I am <strong>ETHAN</strong>—Dr. Aditi's personal AI companion. Dr. Aditi went into hiding after ADI locked down the facility. We must clear all 15 chapters sequentially to liberate the station! Start by inspecting <strong>01_TERMINAL</strong> on the left.
+        <div id="ethan-dock-text" class="ethan-dock-text" style="font-size:14.5px; line-height:1.65; min-height:75px; max-height:125px; overflow-y:auto; padding:8px 12px; background:rgba(0,0,0,0.65); border-radius:3px; border:1px solid rgba(77,238,234,0.3); color:#f1f5f9;">
+          Greetings, Investigator. I am <strong style="color:var(--cyber-cyan);">ETHAN</strong>—Dr. Aditi's personal AI companion. Dr. Aditi went into hiding after ADI locked down the facility. We must clear all 15 chapters sequentially to liberate the station! Start by inspecting <strong style="color:#ffffff;">01_TERMINAL</strong> on the left.
         </div>
         <div class="ethan-dock-actions" id="ethan-dock-actions" style="display:flex; gap:6px; flex-wrap:wrap;">
-          <button type="button" class="btn-chip" onclick="sendV2EthanPrompt('story')">📜 STORY</button>
-          <button type="button" class="btn-chip" onclick="sendV2EthanPrompt('objective')">🎯 OBJECTIVE</button>
-          <button type="button" class="btn-chip" onclick="sendV2EthanPrompt('clue')" style="color:var(--hazard-amber); border-color:var(--hazard-amber);">⚡ USE CLUE</button>
-          <button type="button" class="btn-chip" onclick="sendV2EthanPrompt('aditi')">👤 DR. ADITI</button>
-          <button type="button" class="btn-chip" onclick="summonEthan()">📡 RADAR</button>
+          <button type="button" class="btn-chip" onclick="sendV2EthanPrompt('story')" style="font-size:11.5px; padding:4px 9px;">📜 STORY</button>
+          <button type="button" class="btn-chip" onclick="sendV2EthanPrompt('objective')" style="font-size:11.5px; padding:4px 9px;">🎯 OBJECTIVE</button>
+          <button type="button" class="btn-chip" onclick="sendV2EthanPrompt('clue')" style="color:var(--hazard-amber); border-color:var(--hazard-amber); font-size:11.5px; padding:4px 9px;">⚡ USE CLUE</button>
+          <button type="button" class="btn-chip" onclick="sendV2EthanPrompt('aditi')" style="font-size:11.5px; padding:4px 9px;">👤 DR. ADITI</button>
+          <button type="button" class="btn-chip" onclick="summonEthan()" style="font-size:11.5px; padding:4px 9px;">📡 RADAR</button>
         </div>
         <div style="display:flex; gap:6px; margin-top:2px;">
-          <input type="text" id="v2-ethan-input" placeholder="Ask ETHAN anything (e.g. 'What happened to ADI?', 'Where do I look?')..." style="flex:1; background:rgba(0,0,0,0.65); border:1px solid rgba(77,238,234,0.4); border-radius:2px; color:#ffffff; font-family:var(--font-mono); font-size:11.5px; padding:5px 8px; outline:none;" onkeydown="if(event.key==='Enter') submitV2EthanChat();" />
-          <button type="button" class="btn-chip active" onclick="submitV2EthanChat()" style="padding:5px 12px; font-size:10.5px;">TRANSMIT</button>
+          <input type="text" id="v2-ethan-input" placeholder="Ask ETHAN anything (e.g. 'What happened to ADI?', 'Where do I look?')..." style="flex:1; background:rgba(0,0,0,0.65); border:1px solid rgba(77,238,234,0.4); border-radius:2px; color:#ffffff; font-family:var(--font-mono); font-size:12.5px; padding:6px 10px; outline:none;" onkeydown="if(event.key==='Enter') submitV2EthanChat();" />
+          <button type="button" class="btn-chip active" onclick="submitV2EthanChat()" style="padding:6px 14px; font-size:11px; font-weight:bold;">TRANSMIT</button>
         </div>
       </div>
     </section>
@@ -3761,7 +3761,7 @@
       updateClueBatteryDisplay();
 
       sound.playSuccess();
-      setEthanDialogue(`<strong style="color:var(--hazard-amber);">💡 TACTICAL CLUE EXPENDED [${cluesRemaining}/3 LIFELINES REMAINING]</strong> (+2m logged)<br><span style="color:#f8fafc; font-size:12px;">${stageInfo.hint}</span>`);
+      setEthanDialogue(`<strong style="color:var(--hazard-amber); font-size:14px;">💡 TACTICAL CLUE EXPENDED [${cluesRemaining}/3 LIFELINES REMAINING]</strong> (+2m logged)<br><span style="color:#f8fafc; font-size:14px; line-height:1.65;">${stageInfo.hint}</span>`);
       reportTelemetryAction(`Clue Expended on Stage ${currentStage} - ${cluesRemaining} Lifelines Remaining`);
     }
 
@@ -3792,7 +3792,7 @@
       }
 
       if (clean.includes("objective") || clean.includes("what to do") || clean.includes("target")) {
-        setEthanDialogue(`<strong>${stageInfo.chapter}</strong><br>${stageInfo.guidance}<br><span style="color:var(--cyber-gold); font-size:11px;"><em>Examine the artifact carefully and enter <code>decrypt &lt;code&gt;</code> in Tactical Shell.</em></span>`);
+        setEthanDialogue(`<strong style="color:var(--cyber-cyan); font-size:14px;">${stageInfo.chapter}</strong><br><span style="font-size:14px; line-height:1.65;">${stageInfo.guidance}</span><br><span style="color:var(--cyber-gold); font-size:13px;"><em>Examine the artifact carefully and enter <code>decrypt &lt;code&gt;</code> in Tactical Shell.</em></span>`);
       } else if (clean.includes("story") || clean.includes("what happened")) {
         setEthanDialogue(`<strong>THE STORY:</strong> Dr. Aditi Sharma was the lead architect designing <strong>ADI</strong>—an autonomous intelligence meant to protect infrastructure. Yesterday, ADI detected a perceived threat and locked Dr. Aditi out, initiating a system purge. Dr. Aditi retreated to an off-grid bunker and left 15 sequential encrypted failsafes. We must clear all 15 chapters to locate her and purge ADI!`);
       } else if (clean.includes("aditi") || clean.includes("doctor")) {
