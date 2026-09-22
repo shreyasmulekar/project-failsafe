@@ -5125,6 +5125,9 @@
       startTelemetryHeartbeat();
     }
 
+    // Network Bridge & Live Server Sync
+    const API_BASE = window.location.protocol.startsWith("http") ? "" : "http://localhost:8000";
+
     async function handleTeamLogin(e) {
       e.preventDefault();
       const id = document.getElementById("auth-login-id").value.trim().toUpperCase();
@@ -5133,7 +5136,7 @@
       if (!id || !pass) return;
 
       try {
-        const res = await fetch("/api/teams/login", {
+        const res = await fetch(`${API_BASE}/api/teams/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ team_id: id, password: pass })
@@ -5166,7 +5169,7 @@
       if (!id || !pass || !name) return;
 
       try {
-        const res = await fetch("/api/teams/register", {
+        const res = await fetch(`${API_BASE}/api/teams/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ team_id: id, password: pass, team_name: name, members: members })
@@ -5211,7 +5214,7 @@
     async function reportTelemetryAction(actionText) {
       if (!currentTeam || !currentTeam.team_id) return;
       try {
-        const res = await fetch("/api/teams/activity", {
+        const res = await fetch(`${API_BASE}/api/teams/activity`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
