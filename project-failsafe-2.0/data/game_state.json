@@ -12,6 +12,8 @@
       "tamper_incidents": 0,
       "is_locked": false,
       "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
       "last_action": "Station online",
       "last_seen": null,
       "activity_log": [],
@@ -33,6 +35,8 @@
       "tamper_incidents": 0,
       "is_locked": false,
       "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
       "last_action": "Station online",
       "last_seen": null,
       "activity_log": [],
@@ -44,9 +48,5 @@
     }
   },
   "broadcasts": [],
-  "config": {
-    "total_stages": 9,
-    "event_title": "PROJECT FAILSAFE 2.0: AI ESCAPE ROOM",
-    "offline_mode": true
-  }
+  "created_at": "2026-09-21T00:00:00.000000"
 }

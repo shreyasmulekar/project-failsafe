@@ -1197,7 +1197,7 @@
     <!-- Top Header Bar -->
     <header class="hud-header">
       <div class="header-ticker">
-        <span id="header-team-badge" style="color:var(--hazard-amber); font-weight:bold; margin-right:8px; border:1px solid rgba(255,176,0,0.4); padding:2px 8px; border-radius:3px; background:rgba(255,176,0,0.1); font-size:10px; letter-spacing:1px;">OPERATOR: [NOT LOGGED IN]</span>
+        <span id="header-team-badge" onclick="handleManualLogout()" style="cursor:pointer; color:var(--hazard-amber); font-weight:bold; margin-right:8px; border:1px solid rgba(255,176,0,0.4); padding:2px 8px; border-radius:3px; background:rgba(255,176,0,0.1); font-size:10px; letter-spacing:1px;" title="Click to log out or switch team">OPERATOR: [NOT LOGGED IN]</span>
         <span>STRATCOM CYBER COMMAND 2050+</span>
         <span style="color:var(--text-dim);">//</span>
         <div class="header-ticker-text">
@@ -4183,6 +4183,13 @@
           if (data.remote_unlock && typeof proctorLockActive !== 'undefined' && proctorLockActive) {
             verifyProctorOverrideDirectly();
           }
+          if (data.force_logout) {
+            handleRemoteLogoutTriggered();
+            return;
+          }
+          if (data.remote_reset) {
+            handleRemoteResetTriggered();
+          }
           if (data.broadcasts && data.broadcasts.length > 0) {
             const latest = data.broadcasts[data.broadcasts.length - 1];
             if (typeof window.lastBroadcastId === 'undefined') window.lastBroadcastId = 0;
@@ -4193,6 +4200,78 @@
           }
         }
       } catch(e) {}
+    }
+
+    function handleRemoteLogoutTriggered() {
+      console.warn("Organizer remotely logged out this workstation.");
+      localStorage.removeItem("failsafe_auth_team");
+      currentTeam = null;
+      if (telemetryHeartbeatTimer) {
+        clearInterval(telemetryHeartbeatTimer);
+        telemetryHeartbeatTimer = null;
+      }
+      const badge = document.getElementById("header-team-badge");
+      if (badge) {
+        badge.innerText = "OPERATOR: [NOT LOGGED IN]";
+        badge.style.color = "var(--combat-red, #ff003c)";
+        badge.style.borderColor = "var(--combat-red, #ff003c)";
+        badge.style.background = "rgba(255, 0, 60, 0.12)";
+      }
+      document.querySelectorAll('.forensic-modal, .evidence-modal').forEach(m => {
+        if (m.id !== 'team-auth-modal') m.style.display = 'none';
+      });
+      const errEl = document.getElementById("auth-login-error");
+      if (errEl) errEl.innerText = "⚠️ Workstation remotely logged out by Organizer. Enter credentials to reconnect.";
+      const desc = document.getElementById("auth-modal-desc");
+      if (desc) desc.innerText = "SESSION TERMINATED BY ORGANIZER // Please re-authenticate your team credentials.";
+      showTeamAuthModal();
+      logTerm("⚠️ [COMMAND NOTICE]: Workstation session was remotely terminated by Organizer.", "red");
+      sound.playKlaxon();
+    }
+
+    function handleRemoteResetTriggered() {
+      console.warn("Organizer remotely reset this workstation to Stage 01.");
+      currentStage = 1;
+      localStorage.setItem('failsafe_stage', '1');
+      clueLifelines = 3;
+      usedClueStages.clear();
+      localStorage.setItem('failsafe_clue_battery', '3');
+      localStorage.removeItem('failsafe_used_clues');
+      updateClueLifelineHUD();
+      if (typeof proctorLockActive !== 'undefined') proctorLockActive = false;
+      if (typeof lockArmed !== 'undefined') lockArmed = false;
+      const overlay = document.getElementById('proctor-lockdown-overlay');
+      if (overlay) overlay.style.display = 'none';
+      setTimeout(() => { if (typeof lockArmed !== 'undefined') lockArmed = true; }, 3000);
+      updateDossierAccessGates(1);
+      applyStageGating(1);
+      document.querySelectorAll('.forensic-modal, .evidence-modal').forEach(m => {
+        if (m.id !== 'team-auth-modal') m.style.display = 'none';
+      });
+      coreState = 'INITIAL';
+      updateCoreVisual();
+      const resetMsg = "👁️ ETHAN // RADAR:\nSTAGE 01 // ADI RECOVERY TERMINAL\nStation reset to Stage 01 by Organizer Command Override. Initializing recovery protocol.";
+      speakEthan(resetMsg);
+      logTerm("🔄 [WORKSTATION REBOOTED]: Organizer command override has reset this station back to Stage 01.", "yellow");
+      showBroadcastToast("🔄 WORKSTATION REBOOT: Station reset to Stage 01 by Organizer.");
+      sound.playSuccess();
+      reportTelemetryAction("Workstation reset acknowledged - active at Stage 01");
+    }
+
+    async function handleManualLogout() {
+      if (!currentTeam) {
+        showTeamAuthModal();
+        return;
+      }
+      if (!confirm(`Log out team [${currentTeam.team_id}] from this workstation?`)) return;
+      try {
+        await fetch(`${API_BASE}/api/teams/logout`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ team_id: currentTeam.team_id })
+        });
+      } catch(e) {}
+      handleRemoteLogoutTriggered();
     }
 
     function showBroadcastToast(msg) {

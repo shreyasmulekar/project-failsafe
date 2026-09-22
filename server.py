@@ -12,6 +12,7 @@ import os
 import sys
 import time
 import urllib.parse
+import threading
 from datetime import datetime
 
 PORT = int(os.environ.get("PORT", sys.argv[1] if len(sys.argv) > 1 and sys.argv[1].isdigit() else 8000))
@@ -160,31 +161,76 @@ STAGES = {
     }
 }
 
-def load_game_state():
-    os.makedirs(DATA_DIR, exist_ok=True)
-    if not os.path.exists(DATA_FILE):
-        initial_state = {
-            "teams": {},
-            "broadcasts": [],
-            "created_at": datetime.now().isoformat()
-        }
-        save_game_state(initial_state)
-        return initial_state
-    try:
-        with open(DATA_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"Error loading data file: {e}, resetting...")
-        return {"teams": {}, "broadcasts": [], "created_at": datetime.now().isoformat()}
+import copy
 
-def save_game_state(state):
-    os.makedirs(DATA_DIR, exist_ok=True)
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(state, f, indent=2)
+STATE_LOCK = threading.Lock()
+CACHED_STATE = None
+STATE_DIRTY = False
+DISK_LOCK = threading.Lock()
+
+def save_game_state_to_disk(state):
+    with DISK_LOCK:
+        os.makedirs(DATA_DIR, exist_ok=True)
+        try:
+            with open(DATA_FILE, "w", encoding="utf-8") as f:
+                json.dump(state, f, indent=2)
+        except Exception:
+            pass
+
+def background_flusher():
+    global STATE_DIRTY
+    while True:
+        time.sleep(1.0)
+        to_save = None
+        if STATE_DIRTY:
+            with STATE_LOCK:
+                if STATE_DIRTY and CACHED_STATE is not None:
+                    STATE_DIRTY = False
+                    to_save = copy.deepcopy(CACHED_STATE)
+        if to_save:
+            save_game_state_to_disk(to_save)
+
+# Launch background flusher thread
+_flusher_thread = threading.Thread(target=background_flusher, daemon=True)
+_flusher_thread.start()
+
+def load_game_state():
+    global CACHED_STATE
+    with STATE_LOCK:
+        if CACHED_STATE is not None:
+            return CACHED_STATE
+        os.makedirs(DATA_DIR, exist_ok=True)
+        if not os.path.exists(DATA_FILE):
+            CACHED_STATE = {
+                "teams": {},
+                "broadcasts": [],
+                "created_at": datetime.now().isoformat()
+            }
+            save_game_state_to_disk(CACHED_STATE)
+            return CACHED_STATE
+        try:
+            with open(DATA_FILE, "r", encoding="utf-8") as f:
+                CACHED_STATE = json.load(f)
+        except Exception as e:
+            print(f"Error loading data file: {e}, resetting...")
+            CACHED_STATE = {"teams": {}, "broadcasts": [], "created_at": datetime.now().isoformat()}
+        return CACHED_STATE
+
+def save_game_state(state, immediate=False):
+    global CACHED_STATE, STATE_DIRTY
+    with STATE_LOCK:
+        CACHED_STATE = state
+        STATE_DIRTY = True
+    if immediate:
+        save_game_state_to_disk(state)
 
 class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=PUBLIC_DIR, **kwargs)
+
+    def log_message(self, format, *args):
+        # Silent logger for high-throughput 100-station telemetry
+        pass
 
     def _send_json(self, status_code, data):
         self.send_response(status_code)
@@ -277,7 +323,9 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     "is_finished": t.get("is_finished", False),
                     "tamper_incidents": t.get("tamper_incidents", 0),
                     "is_locked": t.get("is_locked", False),
-                    "activity_log": t.get("activity_log", [])[-15:],
+                    "force_logout": t.get("force_logout", False),
+                    "remote_reset": t.get("remote_reset", False),
+                    "activity_log": t.get("activity_log", [])[-20:],
                     "raw_time_sec": raw_time_sec,
                     "adjusted_time_sec": adjusted_sec,
                     "hints_count": t.get("hints_count", 0),
@@ -358,6 +406,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
 
             team["last_seen"] = time.time()
             team["last_action"] = "Logged in to Workstation"
+            team["force_logout"] = False
+            team["remote_reset"] = False
             save_game_state(state)
 
             self._send_json(200, {
@@ -384,6 +434,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     return
                 existing["last_seen"] = time.time()
                 existing["last_action"] = "Re-authenticated station"
+                existing["force_logout"] = False
+                existing["remote_reset"] = False
                 save_game_state(state)
                 self._send_json(200, {
                     "message": "Existing team logged in successfully",
@@ -404,6 +456,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 "tamper_incidents": 0,
                 "is_locked": False,
                 "remote_unlock": False,
+                "force_logout": False,
+                "remote_reset": False,
                 "last_action": "Registered station",
                 "last_seen": now,
                 "activity_log": [{
@@ -423,6 +477,23 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 "message": "Team registered successfully",
                 "team": state["teams"][team_id]
             })
+            return
+
+        if path == "/api/teams/logout":
+            team_id = data.get("team_id", "").strip().upper()
+            if team_id and team_id in state.get("teams", {}):
+                team = state["teams"][team_id]
+                team["last_action"] = "Logged out from Workstation"
+                team["force_logout"] = False
+                if "activity_log" not in team:
+                    team["activity_log"] = []
+                team["activity_log"].append({
+                    "time": datetime.now().strftime("%H:%M:%S"),
+                    "stage": team.get("current_stage", 1),
+                    "action": "Operator voluntarily logged out"
+                })
+                save_game_state(state)
+            self._send_json(200, {"success": True, "message": "Logged out successfully"})
             return
 
         if path == "/api/teams/activity":
@@ -448,6 +519,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     "current_stage": int(current_stage) if current_stage is not None else 1,
                     "tamper_incidents": int(tamper_incidents) if tamper_incidents is not None else 0,
                     "is_locked": bool(is_locked) if is_locked is not None else False,
+                    "force_logout": False,
+                    "remote_reset": False,
                     "last_seen": time.time(),
                     "last_action": action or "Station online",
                     "activity_log": []
@@ -483,11 +556,19 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 team["remote_unlock"] = False
                 team["is_locked"] = False
 
+            remote_reset = team.get("remote_reset", False)
+            if remote_reset and int(current_stage or 1) == 1:
+                team["remote_reset"] = False
+
+            force_logout = team.get("force_logout", False)
+
             save_game_state(state)
 
             self._send_json(200, {
                 "success": True,
                 "remote_unlock": remote_unlocked,
+                "remote_reset": remote_reset,
+                "force_logout": force_logout,
                 "current_stage": team.get("current_stage", 1),
                 "broadcasts": state.get("broadcasts", [])
             })
@@ -499,6 +580,25 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
 
             if pin != ADMIN_PIN:
                 self._send_json(403, {"error": "Invalid Admin PIN"})
+                return
+
+            if team_id == "ALL":
+                count = 0
+                for tid, t in state.get("teams", {}).items():
+                    t["remote_unlock"] = True
+                    t["is_locked"] = False
+                    t["last_action"] = "Remotely Unlocked by Organizer (ALL)"
+                    t.setdefault("activity_log", []).append({
+                        "time": datetime.now().strftime("%H:%M:%S"),
+                        "stage": t.get("current_stage", 1),
+                        "action": "Organizer Remote Unlock applied to ALL stations"
+                    })
+                    count += 1
+                save_game_state(state)
+                self._send_json(200, {
+                    "success": True,
+                    "message": f"Global unlock transmitted: All {count} workstations unlocked."
+                })
                 return
 
             team = state.get("teams", {}).get(team_id)
@@ -521,6 +621,125 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             self._send_json(200, {
                 "success": True,
                 "message": f"Workstation for {team_id} successfully unlocked remotely"
+            })
+            return
+
+        if path == "/api/admin/remote-logout":
+            pin = data.get("pin", data.get("admin_pin", "")).strip()
+            team_id = data.get("team_id", "").strip().upper()
+
+            if pin != ADMIN_PIN:
+                self._send_json(403, {"error": "Invalid Admin PIN"})
+                return
+
+            if team_id == "ALL":
+                count = 0
+                for tid, t in state.get("teams", {}).items():
+                    t["force_logout"] = True
+                    t["last_action"] = "Remotely Logged Out by Organizer (ALL)"
+                    t.setdefault("activity_log", []).append({
+                        "time": datetime.now().strftime("%H:%M:%S"),
+                        "stage": t.get("current_stage", 1),
+                        "action": "Organizer Remote Logout broadcasted to ALL stations"
+                    })
+                    count += 1
+                save_game_state(state)
+                self._send_json(200, {
+                    "success": True,
+                    "message": f"Global logout transmitted: All {count} workstations logged out."
+                })
+                return
+
+            team = state.get("teams", {}).get(team_id)
+            if not team:
+                self._send_json(404, {"error": f"Team '{team_id}' not found"})
+                return
+
+            team["force_logout"] = True
+            team["last_action"] = "Remotely Logged Out by Organizer"
+            if "activity_log" not in team:
+                team["activity_log"] = []
+            team["activity_log"].append({
+                "time": datetime.now().strftime("%H:%M:%S"),
+                "stage": team.get("current_stage", 1),
+                "action": "Organizer Remote Logout triggered"
+            })
+            save_game_state(state)
+
+            self._send_json(200, {
+                "success": True,
+                "message": f"Workstation for {team_id} successfully logged out remotely"
+            })
+            return
+
+        if path == "/api/admin/remote-reset":
+            pin = data.get("pin", data.get("admin_pin", "")).strip()
+            team_id = data.get("team_id", "").strip().upper()
+
+            if pin != ADMIN_PIN:
+                self._send_json(403, {"error": "Invalid Admin PIN"})
+                return
+
+            now = time.time()
+            if team_id == "ALL":
+                count = 0
+                for tid, t in state.get("teams", {}).items():
+                    t["current_stage"] = 1
+                    t["unlocked_stages"] = [1]
+                    t["hints_count"] = 0
+                    t["hints_history"] = []
+                    t["traps_count"] = 0
+                    t["tamper_incidents"] = 0
+                    t["is_locked"] = False
+                    t["is_finished"] = False
+                    t["start_time"] = now
+                    t["end_time"] = None
+                    t["remote_reset"] = True
+                    t["force_logout"] = False
+                    t["last_action"] = "Workstation Remotely Reset by Organizer (ALL)"
+                    t.setdefault("activity_log", []).append({
+                        "time": datetime.now().strftime("%H:%M:%S"),
+                        "stage": 1,
+                        "action": "Station completely reset to Stage 1 by Organizer (ALL)"
+                    })
+                    count += 1
+                save_game_state(state)
+                self._send_json(200, {
+                    "success": True,
+                    "message": f"Global reset transmitted: All {count} workstations reset to Stage 01."
+                })
+                return
+
+            team = state.get("teams", {}).get(team_id)
+            if not team:
+                self._send_json(404, {"error": f"Team '{team_id}' not found"})
+                return
+
+            team["current_stage"] = 1
+            team["unlocked_stages"] = [1]
+            team["hints_count"] = 0
+            team["hints_history"] = []
+            team["traps_count"] = 0
+            team["tamper_incidents"] = 0
+            team["is_locked"] = False
+            team["is_finished"] = False
+            team["start_time"] = now
+            team["end_time"] = None
+            team["remote_reset"] = True
+            team["force_logout"] = False
+            team["last_action"] = "Workstation Remotely Reset by Organizer"
+            if "activity_log" not in team:
+                team["activity_log"] = []
+            team["activity_log"].append({
+                "time": datetime.now().strftime("%H:%M:%S"),
+                "stage": 1,
+                "action": "Station completely reset to Stage 1 by Organizer"
+            })
+            save_game_state(state)
+
+            self._send_json(200, {
+                "success": True,
+                "message": f"Workstation for {team_id} successfully reset to Stage 01"
             })
             return
 

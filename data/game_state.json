@@ -6,14 +6,14 @@
       "password": "strikers-pass-99",
       "members": "Aditi R., Vikram S., Maya K.",
       "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
+      "unlocked_stages": [1],
       "hints_count": 0,
       "traps_count": 0,
       "tamper_incidents": 0,
       "is_locked": false,
       "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
       "last_action": "Station online",
       "last_seen": null,
       "activity_log": [],
@@ -29,14 +29,14 @@
       "password": "shadow-vault-42",
       "members": "Sneha P., Rohan M.",
       "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
+      "unlocked_stages": [1],
       "hints_count": 0,
       "traps_count": 0,
       "tamper_incidents": 0,
       "is_locked": false,
       "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
       "last_action": "Station online",
       "last_seen": null,
       "activity_log": [],
@@ -47,26 +47,6 @@
       "created_at": "2026-09-21T00:00:00.000000"
     }
   },
-  "broadcasts": [
-    {
-      "id": 1,
-      "message": "eyy",
-      "timestamp": 1790009023.4517827
-    },
-    {
-      "id": 2,
-      "message": "hey guys",
-      "timestamp": 1790015772.695853
-    },
-    {
-      "id": 3,
-      "message": "hasrhit is gay",
-      "timestamp": 1790053390.7387962
-    }
-  ],
-  "config": {
-    "total_stages": 11,
-    "event_title": "PROJECT FAILSAFE: IEEE WIE AI ESCAPE ROOM",
-    "offline_mode": true
-  }
+  "broadcasts": [],
+  "created_at": "2026-09-21T00:00:00.000000"
 }

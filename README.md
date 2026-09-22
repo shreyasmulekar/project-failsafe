@@ -64,21 +64,27 @@ When participants launch their workstation, they are greeted with the **Team Log
 
 ## 🛰️ Live Organizer Command Center (`admin.html`)
 
-The Organizer Command Center provides complete real-time situational awareness across all participant stations:
+The Organizer Command Center provides complete real-time situational awareness across up to 100 participant stations simultaneously:
 
-* **Live Leaderboard & Stage Progression**:
-  Instantly view which level/stage each team is on (Stage 1 through Final Stage 11).
+* **Simultaneous 100-Station Monitoring & Tactical Grid**:
+  - **🎛️ 100-Station Tactical Grid View**: High-density visual matrix of all room stations (Stations 01–100) with color-coded status badges: 🟢 Active, 🟡 Idle, 🔴 Locked (Breach), 🟣 Liberated (Finished), and ⚫ Offline.
+  - **📋 Detailed Table View**: Sortable leaderboard ranking all teams by stage, adjusted score, hint count, and breach count.
+  - Instantly tracks progression from Stage 01 through Final Stage 15 in real-time.
+* **🚪 Remote Workstation Logout**:
+  - Organizers can remotely log out any individual workstation (`[ 🚪 LOGOUT ]`) or perform a room-wide **`[ 🚪 LOGOUT ALL ]`**.
+  - The participant workstation immediately clears its session, sounds an alert, and returns to the authentication screen.
+* **🔄 Remote Workstation Reset**:
+  - Organizers can remotely reset any team back to Stage 01 (`[ 🔄 RESET ]`) or perform a tournament-wide **`[ 🔄 RESET ALL ]`**.
+  - Automatically resets stage progress back to Stage 01, resets the elapsed timer, refills the 3-clue lifeline battery (`[ ⚡ ⚡ ⚡ ]`), clears tamper breaches, and relocks future stages.
 * **Team Credentials & Password Visibility**:
   Organizers can view all registered team passwords. Passwords default to masked (`••••••••`) and can be unmasked with the one-click `[ 👁️ ]` toggle button.
 * **Real-Time Action Ticker**:
   Streams granular player actions with timestamps:
-  - *"Inspecting Sector: 01_ORIGIN (Farewell.doc)"*
-  - *"Toggled UV Optical Depolarizer: ACTIVE"*
-  - *"Submitted Decrypt Code: 'ORIGIN'"*
-  - *"Quarantined in Sandbox Buffer"*
+  - *"Inspecting Sector: 01_TERMINAL"*
+  - *"Submitted Decrypt Code: 'ACCESS'"*
   - *"🚨 Workstation Locked: Focus Loss Violation (#2)"*
 * **Anti-Cheat Alerts & One-Click Remote Unlock**:
-  When a team triggers the anti-cheat proctor lock, their row flashes a red `🚨 LOCKED` badge. Organizers can click **`[ 🔓 UNLOCK ]`** to unlock their terminal remotely from the organizer dashboard without walking to their desk.
+  When a team triggers the anti-cheat proctor lock, their tile/row flashes a red `🚨 LOCKED` badge. Organizers can click **`[ 🔓 UNLOCK ]`** to unlock their terminal remotely without walking to their desk.
 * **Global Broadcast Announcement System**:
   Type an urgent message or announcement and transmit to all stations. All connected participant workstations instantly display a flashing cyberpunk broadcast toast.
 * **Full Audit Trail**:
