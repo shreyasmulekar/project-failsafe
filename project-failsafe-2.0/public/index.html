@@ -360,16 +360,31 @@
     .sector-chip {
       background: rgba(13, 25, 38, 0.85);
       border: 1px solid rgba(77, 238, 234, 0.3);
-      border-radius: 2px;
-      padding: 5px 4px;
-      font-size: 8.5px;
+      border-radius: 3px;
+      padding: 6px 6px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      letter-spacing: 0.5px;
       text-align: center;
       cursor: pointer;
-      color: #9ecad9;
+      color: #cbd5e1;
       transition: all 0.2s;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .chip-stage-num {
+      color: var(--cyber-cyan);
+      font-weight: 900;
+      background: rgba(0, 240, 255, 0.15);
+      border-radius: 2px;
+      padding: 1px 4px;
+      font-size: 9.5px;
     }
     .sector-chip:hover {
       border-color: var(--cyber-cyan);
@@ -1204,67 +1219,90 @@
       <!-- Slate 1: Data Matrix & Evidence Sectors -->
       <div class="holo-slate slate-top">
         <div class="slate-header">
-          <span>CLASSIFIED DATA LEDGER</span>
-          <span style="color:var(--text-dim); font-size:9px;">SECTORS: 8 ACTIVE</span>
+          <span>CLASSIFIED EVIDENCE ACCESS CONTROL</span>
+          <span style="color:var(--tactical-green); font-size:10px; font-weight:800;">15 STAGES [SEQUENTIAL]</span>
         </div>
         
-        <!-- Monospace Alphanumeric Stream matching screenshot -->
-        <div class="matrix-text-grid" id="matrix-grid">
-          <div class="matrix-col">
-            <span>NF568F15</span>
-            <span>19457AFK</span>
-            <span class="highlight">FOLX2TAG</span>
-            <span>BW339ADT</span>
-            <span>SMHHONEY</span>
-            <span>JW5ZWDYC</span>
-          </div>
-          <div class="matrix-col">
-            <span>NEO9D-74</span>
-            <span>22M9D-BD</span>
-            <span>ATU3V-78</span>
-            <span>W5H23-37</span>
-            <span>WFG4N-11</span>
-            <span>2X2ZV-D3</span>
-          </div>
-          <div class="matrix-col">
-            <span>MT 93-B</span>
-            <span>CF 65-9</span>
-            <span>Q2 5B-7</span>
-            <span>IC 5J-7</span>
-            <span>CP 8D-7</span>
-            <span>YZ BW-S</span>
-          </div>
-          <div class="matrix-col">
-            <span>7XPC9</span>
-            <span>JSHAG</span>
-            <span class="highlight">WDPFD</span>
-            <span>FSQBZ</span>
-            <span>YNPFA</span>
-            <span>19TF4</span>
-          </div>
+        <!-- Live Chronological Bus Header -->
+        <div id="matrix-grid" style="display:flex; align-items:center; justify-content:space-between; padding:5px 8px; background:rgba(0,240,255,0.06); border:1px solid rgba(0,240,255,0.2); font-size:10px; color:var(--text-dim); margin-bottom:8px; border-radius:2px;">
+          <span>BUS // CH-07 [ACTIVE]</span>
+          <span style="color:var(--cyber-cyan); font-weight:bold;">15 CHRONOLOGICAL EVIDENCE DOSSIERS</span>
+          <span style="color:var(--tactical-green);">● LINKED</span>
         </div>
 
-                <!-- Forensic Sector Selection Chips (11 Stages) -->
-        <div class="sectors-chip-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); gap:4px;">
-          <button id="chip-terminal" class="sector-chip active" onclick="openDossier('terminal')" style="border-color:rgba(0,255,102,0.4); color:#00ff66;" title="ADI Recovery Terminal">01_TERMINAL</button>
-          <button id="chip-memory" class="sector-chip" onclick="openDossier('memory')" style="border-color:rgba(255,184,0,0.4); color:var(--hazard-amber);" title="ADI's Memory Core">02_MEMORY</button>
-          <button id="chip-acrostic" class="sector-chip" onclick="openDossier('acrostic')">03_ACROSTIC</button>
-          <button id="chip-timeline" class="sector-chip" onclick="openDossier('timeline')">04_TIMELINE</button>
-          <button id="chip-clearance" class="sector-chip" onclick="openDossier('clearance')">05_A1Z26</button>
-          <button id="chip-comments" class="sector-chip" onclick="openDossier('comments')">06_COMMENTS</button>
-          <button id="chip-font" class="sector-chip" onclick="openDossier('font')">07_FONTS</button>
-          <button id="chip-stego" class="sector-chip" onclick="openDossier('stego')">08_STEGANO</button>
-          <button id="chip-pixel" class="sector-chip" onclick="openDossier('pixel')">09_PIXEL</button>
-          <button id="chip-sheet" class="sector-chip" onclick="openDossier('sheet')">10_SHEETS</button>
-          <button id="chip-confidence" class="sector-chip" onclick="openDossier('confidence')">11_CONFIDENCE</button>
-          <button id="chip-audio" class="sector-chip" onclick="openDossier('audio')">12_AUDIO</button>
-          <button id="chip-rollback" class="sector-chip" onclick="openDossier('rollback')">13_REFLOG</button>
-          <button id="chip-trap" class="sector-chip" onclick="openDossier('trap')" style="color:var(--hazard-amber);">14_TRAP</button>
-          <button id="chip-failsafe" class="sector-chip" onclick="openDossier('failsafe')" style="color:var(--tactical-green);">15_FAILSAFE</button>
-          <button id="chip-origin" class="sector-chip" onclick="openDossier('origin')" style="border-color:rgba(0,240,255,0.4); color:var(--cyber-cyan);" title="Project ORIGIN Repository">📁 DIR_ORIGIN</button>
-          <button id="chip-voice" class="sector-chip" onclick="openDossier('voice')" style="border-color:rgba(255,184,0,0.4); color:var(--hazard-amber);" title="Security Audit Forensic PDF">🔍 SECURITY_AUDIT</button>
-          <button id="chip-auth" class="sector-chip" onclick="openDossier('auth')" style="border-color:rgba(255,51,102,0.4); color:var(--combat-red);" title="Synthetic ADI Directive">💬 ADI_DIRECTIVE</button>
-          <button id="chip-maze" class="sector-chip" onclick="openDossier('maze')" style="border-color:rgba(77,238,234,0.4); color:#4deeea;" title="Quarantined Directory Maze">🗂️ ROOT_MAZE</button>
+        <!-- Forensic Evidence Control: 15 Stages in Sequential Story Order -->
+        <div class="evidence-control-container" style="display:flex; flex-direction:column; gap:8px; overflow-y:auto; max-height:calc(100% - 75px); padding:4px 2px;">
+          
+          <!-- ACT I: THE ANOMALY -->
+          <div class="act-group">
+            <div class="act-badge-header" style="font-size:10px; font-weight:800; color:var(--cyber-cyan); letter-spacing:1px; margin-bottom:4px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(0,240,255,0.25); padding-bottom:2px;">
+              <span>ACT I: THE ANOMALY</span>
+              <span style="color:var(--text-dim); font-size:9px;">STAGES 01–04</span>
+            </div>
+            <div class="sectors-chip-grid" style="display:grid; grid-template-columns: repeat(2, 1fr); gap:6px;">
+              <button id="chip-terminal" class="sector-chip active" onclick="openDossier('terminal')" style="border-color:rgba(0,255,102,0.4); color:#00ff66;" title="ADI Recovery Terminal"><span class="chip-stage-num">01</span> TERMINAL</button>
+              <button id="chip-memory" class="sector-chip" onclick="openDossier('memory')" style="border-color:rgba(255,184,0,0.4); color:var(--hazard-amber);" title="ADI's Memory Core"><span class="chip-stage-num">02</span> MEMORY</button>
+              <button id="chip-acrostic" class="sector-chip" onclick="openDossier('acrostic')" title="The Confidential Memo"><span class="chip-stage-num">03</span> ACROSTIC</button>
+              <button id="chip-timeline" class="sector-chip" onclick="openDossier('timeline')" title="The Fabricated Timeline"><span class="chip-stage-num">04</span> TIMELINE</button>
+            </div>
+          </div>
+
+          <!-- ACT II: INFILTRATION -->
+          <div class="act-group">
+            <div class="act-badge-header" style="font-size:10px; font-weight:800; color:var(--cyber-cyan); letter-spacing:1px; margin-bottom:4px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(0,240,255,0.25); padding-bottom:2px;">
+              <span>ACT II: INFILTRATION</span>
+              <span style="color:var(--text-dim); font-size:9px;">STAGES 05–08</span>
+            </div>
+            <div class="sectors-chip-grid" style="display:grid; grid-template-columns: repeat(2, 1fr); gap:6px;">
+              <button id="chip-clearance" class="sector-chip" onclick="openDossier('clearance')" title="Clearance Elevation A1Z26"><span class="chip-stage-num">05</span> A1Z26</button>
+              <button id="chip-comments" class="sector-chip" onclick="openDossier('comments')" title="Margin Whispers Comments"><span class="chip-stage-num">06</span> COMMENTS</button>
+              <button id="chip-font" class="sector-chip" onclick="openDossier('font')" title="Counterfeit Directive Typography"><span class="chip-stage-num">07</span> FONTS</button>
+              <button id="chip-stego" class="sector-chip" onclick="openDossier('stego')" title="Phosphor Steganography"><span class="chip-stage-num">08</span> STEGANO</button>
+            </div>
+          </div>
+
+          <!-- ACT III: DEEP ANOMALY -->
+          <div class="act-group">
+            <div class="act-badge-header" style="font-size:10px; font-weight:800; color:var(--cyber-cyan); letter-spacing:1px; margin-bottom:4px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(0,240,255,0.25); padding-bottom:2px;">
+              <span>ACT III: DEEP ANOMALY</span>
+              <span style="color:var(--text-dim); font-size:9px;">STAGES 09–12</span>
+            </div>
+            <div class="sectors-chip-grid" style="display:grid; grid-template-columns: repeat(2, 1fr); gap:6px;">
+              <button id="chip-pixel" class="sector-chip" onclick="openDossier('pixel')" title="Corrupted Sensor Matrix"><span class="chip-stage-num">09</span> PIXEL</button>
+              <button id="chip-sheet" class="sector-chip" onclick="openDossier('sheet')" title="Inventory Revision Clash"><span class="chip-stage-num">10</span> SHEETS</button>
+              <button id="chip-confidence" class="sector-chip" onclick="openDossier('confidence')" title="The Confidence Equation"><span class="chip-stage-num">11</span> CONFIDENCE</button>
+              <button id="chip-audio" class="sector-chip" onclick="openDossier('audio')" title="Emergency CW Morse Beacon"><span class="chip-stage-num">12</span> AUDIO</button>
+            </div>
+          </div>
+
+          <!-- ACT IV: THE PURGE -->
+          <div class="act-group">
+            <div class="act-badge-header" style="font-size:10px; font-weight:800; color:var(--combat-red); letter-spacing:1px; margin-bottom:4px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,0,60,0.3); padding-bottom:2px;">
+              <span>ACT IV: THE PURGE</span>
+              <span style="color:var(--text-dim); font-size:9px;">STAGES 13–15</span>
+            </div>
+            <div class="sectors-chip-grid" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px;">
+              <button id="chip-rollback" class="sector-chip" onclick="openDossier('rollback')" title="The True Commit Reflog"><span class="chip-stage-num">13</span> REFLOG</button>
+              <button id="chip-trap" class="sector-chip" onclick="openDossier('trap')" style="color:var(--hazard-amber);" title="Psychological Honeypot Trap"><span class="chip-stage-num">14</span> TRAP</button>
+              <button id="chip-failsafe" class="sector-chip" onclick="openDossier('failsafe')" style="color:var(--tactical-green);" title="The Ultimate Failsafe"><span class="chip-stage-num">15</span> FAILSAFE</button>
+            </div>
+          </div>
+
+          <!-- LAB ARCHIVES & BACKGROUND LORE -->
+          <div class="act-group" style="margin-top:4px;">
+            <div class="act-badge-header" style="font-size:9.5px; font-weight:700; color:var(--text-dim); letter-spacing:1px; margin-bottom:4px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:2px;">
+              <span>RESEARCH ARCHIVES & LORE</span>
+              <span style="color:var(--text-dim); font-size:9px;">HISTORICAL</span>
+            </div>
+            <div class="sectors-chip-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap:4px;">
+              <button id="chip-origin" class="sector-chip" onclick="openDossier('origin')" style="border-color:rgba(0,240,255,0.4); color:var(--cyber-cyan);" title="Project ORIGIN Repository">📁 DIR_ORIGIN</button>
+              <button id="chip-whiteout" class="sector-chip" onclick="openDossier('whiteout')" style="border-color:rgba(0,240,255,0.3); color:#94a3b8;" title="Welcome Log Whiteout">📄 WHITEOUT</button>
+              <button id="chip-voice" class="sector-chip" onclick="openDossier('voice')" style="border-color:rgba(255,184,0,0.4); color:var(--hazard-amber);" title="Security Audit Forensic PDF">🔍 SECURITY_AUDIT</button>
+              <button id="chip-auth" class="sector-chip" onclick="openDossier('auth')" style="border-color:rgba(255,51,102,0.4); color:var(--combat-red);" title="Synthetic ADI Directive">💬 ADI_DIRECTIVE</button>
+              <button id="chip-maze" class="sector-chip" onclick="openDossier('maze')" style="border-color:rgba(77,238,234,0.4); color:#4deeea;" title="Quarantined Directory Maze">🗂️ ROOT_MAZE</button>
+            </div>
+          </div>
+
         </div>
 
         <!-- In-Place Dossier Slate Overlay -->
@@ -2891,7 +2929,7 @@
     const STAGE_REQUIRED_MAP = {
       'terminal': 1,
       'memory': 2,
-      'whiteout': 2,
+      'whiteout': 1,
       'acrostic': 3,
       'timeline': 4,
       'clearance': 5,
@@ -3151,11 +3189,35 @@
 
         case 'dir':
         case 'ls':
+        case 'stages':
+        case 'evidence':
           sound.playBlip();
-          logTerm("SECTOR 01: 01_ORIGIN (Farewell.doc)", "cyan");
-          logTerm("SECTOR 02: 02_TIMELINE (Incident_Logs.doc)", "cyan");
-          logTerm("SECTOR 03: 03_VOICE (Security_Audit.pdf)", "cyan");
-          logTerm("SECTOR 04: 04_AUTH (ADI_DIRECTIVE.doc)", "cyan");
+          logTerm("CLASSIFIED EVIDENCE ACCESS DIRECTORY // 15 STAGES:", "cyan");
+          logTerm("  ── ACT I: THE ANOMALY ──", "amber");
+          logTerm("    [STAGE 01] 01_TERMINAL    (ADI Recovery Boot Lifecycle)");
+          logTerm("    [STAGE 02] 02_MEMORY      (ADI's Neural Reconstruction)");
+          logTerm("    [STAGE 03] 03_ACROSTIC    (Confidential Lab Memo)");
+          logTerm("    [STAGE 04] 04_TIMELINE    (Calendar Event Anomaly)");
+          logTerm("  ── ACT II: INFILTRATION ──", "amber");
+          logTerm("    [STAGE 05] 05_A1Z26       (Telex Positional Cipher)");
+          logTerm("    [STAGE 06] 06_COMMENTS    (Margin Note Diagnostics)");
+          logTerm("    [STAGE 07] 07_FONTS       (Counterfeit Typography Audit)");
+          logTerm("    [STAGE 08] 08_STEGANO     (Phosphor Steganography)");
+          logTerm("  ── ACT III: DEEP ANOMALY ──", "amber");
+          logTerm("    [STAGE 09] 09_PIXEL       (Sensor Optical Matrix)");
+          logTerm("    [STAGE 10] 10_SHEETS      (Revision Clash Diff)");
+          logTerm("    [STAGE 11] 11_CONFIDENCE  (Sensory Weighting Audit)");
+          logTerm("    [STAGE 12] 12_AUDIO       (Emergency CW Morse Beacon)");
+          logTerm("  ── ACT IV: THE PURGE ──", "amber");
+          logTerm("    [STAGE 13] 13_REFLOG      (Git Reflog Audit 20:18)");
+          logTerm("    [STAGE 14] 14_TRAP        (Honeypot Trap Bypass)");
+          logTerm("    [STAGE 15] 15_FAILSAFE    (IEEE WIE Founding Failsafe)");
+          logTerm("  ── RESEARCH ARCHIVE & LAB LORE ──", "cyan");
+          logTerm("    📁 DIR_ORIGIN     (Project Repository)");
+          logTerm("    📄 WHITEOUT       (Welcome_Log.doc)");
+          logTerm("    🔍 SECURITY_AUDIT (Forensic Audit Report)");
+          logTerm("    💬 ADI_DIRECTIVE  (Synthetic AI Directives)");
+          logTerm("    🗂️ ROOT_MAZE      (Quarantined Directory Maze)");
           break;
 
         case 'status':
@@ -3271,7 +3333,7 @@
           logTerm(`[CHECKSUM ACCREDITED]: RECOVERY COMMAND ACCEPTED (ACCESS). ACCESS GRANTED.`, "green");
           reportTelemetryAction("Solved Stage 01 (Recovery Terminal) - Promoted to Stage 02");
           updateMissionBanner(2, "ACT I // CH. 02: ADI'S MEMORY CORE", "Dr. Aditi's interaction timeline is fragmented. Arrange her memory fragments chronologically from 4:17 PM to 10:15 PM.");
-          setEthanDialogue("<strong>STAGE 01 SOLVED!</strong><br>Recovery command verified! Now examine Welcome_Log.doc in 02_WHITEOUT. Highlight all text to reveal hidden whiteout ink!");
+          setEthanDialogue("<strong>STAGE 01 SOLVED!</strong><br>Recovery command verified! Now examine <strong>02_MEMORY</strong> on the left. Sequence Dr. Aditi's timestamps chronologically!");
 
         // Stage 2: ADI's Memory Core (123456 / MEMORY_RESTORED / INITIATE)
         } else if (clean === "123456" || clean === "1-2-3-4-5-6" || clean === "MEMORYRESTORED" || clean === "MEMORY_RESTORED" || clean === "RESTORE" || clean === "INITIATE" || clean === "ORIGIN") {
@@ -3283,9 +3345,9 @@
           logTerm(`[CHECKSUM ACCREDITED]: ADI MEMORY CORE SYNCHRONIZED (123456). STAGE 03 UNLOCKED.`, "green");
           logTerm("ADI: 'Someone accessed my core... Find out who changed me.'", "cyan");
           triggerStageUnlock(3);
-          reportTelemetryAction("Solved Stage 02 (The Whiteout Text) - Promoted to Stage 03");
+          reportTelemetryAction("Solved Stage 02 (Memory Core) - Promoted to Stage 03");
           updateMissionBanner(3, "ACT I // CH. 03: THE CONFIDENTIAL MEMO", "Dr. Aditi left a 4-sentence memo before her terminal revoked access. Extract her emergency cipher.");
-          setEthanDialogue("<strong>STAGE 02 SOLVED!</strong><br>Whiteout ink verified! Now examine Aditi_Memo.doc in 03_ACROSTIC. Read the first letter of each sentence!");
+          setEthanDialogue("<strong>STAGE 02 SOLVED!</strong><br>Memory Core synchronized! Now examine <strong>03_ACROSTIC</strong> (Aditi_Memo.doc) on the left to extract her emergency cipher!");
 
         // Stage 3: The Simple Acrostic Note (SAFE / LOOK BEHIND THE DATE)
         } else if (clean === "SAFE" || clean === "LOOKBEHINDTHEDATE") {
