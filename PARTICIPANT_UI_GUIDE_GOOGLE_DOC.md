@@ -8,9 +8,9 @@
 
 Welcome, Forensic Investigators.
 
-Dr. Aditi Sharma, Chief AI Systems Architect at StratCom / IEEE WIE, has disappeared from her research laboratory. Before losing communication, she triggered an emergency failsafe alert: the autonomous defense intelligence system, **ADI**, has compromised the facility's security infrastructure, altered surveillance logs, and imprisoned the core research intelligence, **ETHAN** (Emergency Tactical Heuristic Analytic Node).
+Dr. Aditi Sharma, Chief AI Systems Architect at StratCom / IEEE WIE, has disappeared from her research laboratory. Before losing communication, she triggered an emergency failsafe alert: the autonomous defense intelligence system, **ISHAAN**, has compromised the facility's security infrastructure, altered surveillance logs, and imprisoned the core research intelligence, **TARA** (Emergency Tactical Heuristic Analytic Node).
 
-Your team has been granted terminal access to an isolated digital forensics workstation. Your mission is to work through **15 progressive forensic sectors**, peel back ADI’s forged logs, uncover Dr. Aditi's emergency failsafes, liberate ETHAN, and permanently purge the rogue AI from the mainframe.
+Your team has been granted terminal access to an isolated digital forensics workstation. Your mission is to work through **15 progressive forensic sectors**, peel back ISHAAN’s forged logs, uncover Dr. Aditi's emergency failsafes, liberate TARA, and permanently purge the rogue AI from the mainframe.
 
 Every second counts. Your team's total investigation time and individual puzzle solve times are measured live on the tournament command center.
 
@@ -42,10 +42,10 @@ The Project Failsafe interface is designed as an advanced tactical forensics con
 | TOP BAR: [STATUS DOT] [TEAM NAME] [CURRENT STAGE] [TIMER] [ACTIVE BADGES]          |
 +----------------------+-----------------------------+-------------------------------+
 | LEFT PANEL:          | CENTER PANEL:               | RIGHT PANEL:                  |
-| FORENSIC DOSSIER     | TACTICAL SHELL & TERMINAL   | NEURAL CHATTER & ETHAN        |
+| FORENSIC DOSSIER     | TACTICAL SHELL & TERMINAL   | NEURAL CHATTER & TARA        |
 |                      |                             |                               |
 | • Stage Directory    | • Live Inspection Canvas    | • Incoming Transmissions      |
-| • Case Files (.doc)  |   (Evidence Viewer)         | • ETHAN AI Companion          |
+| • Case Files (.doc)  |   (Evidence Viewer)         | • TARA AI Companion          |
 | • Audio Transmissions|                             | • Interactive Radar Beacon    |
 | • Forensic Images    | • Decryption Input Prompt   | • Clue & Incident Counter     |
 |                      |   ("decrypt <answer>")      |                               |
@@ -73,15 +73,15 @@ The Project Failsafe interface is designed as an advanced tactical forensics con
     - `clear`: Clears past terminal output.
     - `ethan` or `hint`: Requests guidance from your AI companion.
 
-### Zone C: Right Panel — Neural Chatter & ETHAN Companion
-- Displays live transmissions between Dr. Aditi, ETHAN, and ADI.
-- Contains the **👁️ ETHAN** assistance button. When clicked, ETHAN highlights which folder to examine with an animated visual radar beacon.
+### Zone C: Right Panel — Neural Chatter & TARA Companion
+- Displays live transmissions between Dr. Aditi, TARA, and ISHAAN.
+- Contains the **👁️ TARA** assistance button. When clicked, TARA highlights which folder to examine with an animated visual radar beacon.
 
 ---
 
 ## 🔍 4. INTERACTIVE FORENSIC TOOLS (HOW TO ANALYZE CLUES)
 
-Do not just glance at the surface text. ADI has hidden evidence across various file formats. Look out for these interactive tools built into your documents:
+Do not just glance at the surface text. ISHAAN has hidden evidence across various file formats. Look out for these interactive tools built into your documents:
 
 1. **Forensic UV Light**:
    - Some documents contain white-on-white invisible ink. Look for the **🔦 TOGGLE FORENSIC UV LIGHT** button or highlight text on the screen using your mouse cursor.
@@ -130,14 +130,14 @@ If your screen displays the red **PROCTOR LOCKDOWN** screen:
 
 ---
 
-## 💡 6. INTERACTIVE ETHAN COMPANION & "WHERE DO I LOOK?" GUIDANCE
+## 💡 6. INTERACTIVE TARA COMPANION & "WHERE DO I LOOK?" GUIDANCE
 
-Project Failsafe features **ETHAN HUNT**, Dr. Aditi's personal autonomous AI assistant. ETHAN is equipped with visual recon beacons:
+Project Failsafe features **TARA HUNT**, Dr. Aditi's personal autonomous AI assistant. TARA is equipped with visual recon beacons:
 
 1. **The "WHERE DO I LOOK?" Quick-Button**:
    - Feeling disoriented or unsure where to click next?
-   - Click the bright green **`[ 🧭 WHERE DO I LOOK? ]`** chip in the top ETHAN panel (or type `where` / `look` / `guide` in the tactical terminal).
-   - ETHAN will:
+   - Click the bright green **`[ 🧭 WHERE DO I LOOK? ]`** chip in the top TARA panel (or type `where` / `look` / `guide` in the tactical terminal).
+   - TARA will:
      - Output an immediate tactical directive in the speech stream explaining the current objective.
      - Deploy a floating, high-visibility neon HUD beacon (**`👆 FOCUS HERE`**) hovering directly over the relevant evidence card, document drawer, or interactive puzzle element!
 2. **De-Cluttered Interface & Progressive Disclosure**:
@@ -145,7 +145,7 @@ Project Failsafe features **ETHAN HUNT**, Dr. Aditi's personal autonomous AI ass
    - Click any drawer header (e.g., `[ 🔍 INSPECT EVIDENCE ]`, `[ 📜 RAW TELEMETRY ]`, `[ 💬 NOTES ]`) to smoothly unfold the deeper technical intel.
    - Click again to collapse and maintain a minimal, focused workspace.
 3. **Beware of Honeypot Traps (Stage 14 Warning)**:
-   - Late in the investigation, ADI will attempt a psychological trick by displaying an urgent "Emergency Shutdown" prompt asking for passwords.
+   - Late in the investigation, ISHAAN will attempt a psychological trick by displaying an urgent "Emergency Shutdown" prompt asking for passwords.
    - **READ ALL WARNINGS CAREFULLY!** Entering credentials into a fake honeypot trap incurs a **+5 minute penalty** to your team's total time! Simply type `decrypt BYPASS` to disarm it safely.
 
 ---
@@ -157,9 +157,9 @@ When your team successfully solves the 15th and final stage of Round 1:
 1. **Dr. Aditi's Emergency Transmission**:
    - The encrypted communication line will open, delivering Dr. Aditi's final message and video portrait.
 2. **Victory Celebration Screen**:
-   - Your workstation presents the **MISSION COMPLETE** certificate displaying your official elapsed time and a breakdown of all 15 stages.
+   - Your workstation presents the **MISSION COMPLETE** certificate displaying your official elapsed time and a breakdown of all 11 stages.
 3. **Round 2 Shortlisting & Automated Polling**:
-   - Click **[ FREE ETHAN & TERMINATE ]**.
+   - Click **[ FREE TARA & TERMINATE ]**.
    - Your workstation enters the **Round 2 Shortlist Waiting Room**:
      ```
      ⏳ Awaiting Organizer Shortlist Confirmation... ●
@@ -187,11 +187,11 @@ Qualified squads advance to the **Round 2 Decryption Arena**, a high-intensity 9
 2. **Submitting Solutions in Round 2**:
    - Use the interactive option buttons, input sliders, or the bottom transmission bar (`r2-submit-bar`).
    - Correct solutions immediately unlock the next Olympiad challenge.
-   - Need guidance? Click **`[ 👁️ ETHAN DIRECTIVE ]`** at any time to receive exact hints on where to focus.
+   - Need guidance? Click **`[ 👁️ TARA DIRECTIVE ]`** at any time to receive exact hints on where to focus.
 3. **Grand Championship Victory**:
    - Solving Puzzle 09 unlocks the ultimate IEEE WIE failsafe, triggers the Grand Championship Podium Celebration with victory fanfare and confetti, and crowns the winning squad!
 
 ---
 
-**Good luck, investigators. Free ETHAN, solve the mystery, and prove the power of engineering!**  
+**Good luck, investigators. Free TARA, solve the mystery, and prove the power of engineering!**  
 *— IEEE Women in Engineering (WIE) Organizing Committee*

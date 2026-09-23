@@ -441,7 +441,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -548,7 +548,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -655,7 +655,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -762,7 +762,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -869,7 +869,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -976,7 +976,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -1083,7 +1083,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -1190,7 +1190,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -1297,7 +1297,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -1404,7 +1404,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -1511,7 +1511,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -1717,7 +1717,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790177495.806144,
+      "round_2_start_time": 1790179216.7403593,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -1793,6 +1793,640 @@
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-23T21:01:35.796027"
+    },
+    "T1-9123": {
+      "team_id": "T1-9123",
+      "team_name": "Quantum Phantoms (Prime)",
+      "password": "pass1",
+      "members": "Dr. Alice, Bob, Charlie, Dana",
+      "current_stage": 11,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 2,
+      "traps_count": 1,
+      "tamper_incidents": 1,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790179123.4362383,
+      "activity_log": [
+        {
+          "time": "21:28:43",
+          "stage": 1,
+          "action": "Registered workstation"
+        },
+        {
+          "time": "21:28:43",
+          "stage": 1,
+          "action": "Inspecting ISHAAN Recovery Terminal"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790179123.420665,
+      "end_time": null,
+      "is_finished": false,
+      "created_at": "2026-09-23T21:28:43.420728",
+      "client_info": {
+        "resolution": "1920x1080",
+        "os": "Windows 11 Pro (x64)",
+        "fullscreen": true
+      },
+      "active_view": "STAGE_01_TERMINAL",
+      "violations_history": [
+        {
+          "type": "Attempted Right-Click Inspection",
+          "timestamp": "14:22:01"
+        }
+      ],
+      "remote_override_stage": 11,
+      "time_adjustment_sec": -120,
+      "round_2_stage": 1,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790179216.7403593,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T2-9123": {
+      "team_id": "T2-9123",
+      "team_name": "Cyber Valkyries",
+      "password": "pass",
+      "members": "Op1, Op2",
+      "current_stage": 1,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790179123.6368265,
+      "activity_log": [
+        {
+          "time": "21:28:43",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790179123.6368265,
+      "end_time": null,
+      "is_finished": false,
+      "created_at": "2026-09-23T21:28:43.636944",
+      "round_2_stage": 1,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790179216.7403593,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T3-9123": {
+      "team_id": "T3-9123",
+      "team_name": "Neural Pioneers",
+      "password": "pass",
+      "members": "Op1, Op2",
+      "current_stage": 1,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790179123.6522915,
+      "activity_log": [
+        {
+          "time": "21:28:43",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790179123.6522915,
+      "end_time": null,
+      "is_finished": false,
+      "created_at": "2026-09-23T21:28:43.652371",
+      "round_2_stage": 1,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790179216.7403593,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T4-9123": {
+      "team_id": "T4-9123",
+      "team_name": "Binary Ghosts",
+      "password": "pass",
+      "members": "Op1, Op2",
+      "current_stage": 1,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "Registered station",
+      "last_seen": 1790179123.6673298,
+      "activity_log": [
+        {
+          "time": "21:28:43",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790179123.6673298,
+      "end_time": null,
+      "is_finished": false,
+      "created_at": "2026-09-23T21:28:43.667384"
+    },
+    "T1-9152": {
+      "team_id": "T1-9152",
+      "team_name": "Quantum Phantoms (Prime)",
+      "password": "pass1",
+      "members": "Dr. Alice, Bob, Charlie, Dana",
+      "current_stage": 11,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 2,
+      "traps_count": 1,
+      "tamper_incidents": 1,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790179152.5239906,
+      "activity_log": [
+        {
+          "time": "21:29:12",
+          "stage": 1,
+          "action": "Registered workstation"
+        },
+        {
+          "time": "21:29:12",
+          "stage": 1,
+          "action": "Inspecting ISHAAN Recovery Terminal"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790179152.5093787,
+      "end_time": null,
+      "is_finished": false,
+      "created_at": "2026-09-23T21:29:12.509436",
+      "client_info": {
+        "resolution": "1920x1080",
+        "os": "Windows 11 Pro (x64)",
+        "fullscreen": true
+      },
+      "active_view": "STAGE_01_TERMINAL",
+      "violations_history": [
+        {
+          "type": "Attempted Right-Click Inspection",
+          "timestamp": "14:22:01"
+        }
+      ],
+      "remote_override_stage": 11,
+      "time_adjustment_sec": -120,
+      "round_2_stage": 1,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790179216.7403593,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T2-9152": {
+      "team_id": "T2-9152",
+      "team_name": "Cyber Valkyries",
+      "password": "pass",
+      "members": "Op1, Op2",
+      "current_stage": 1,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790179152.6874332,
+      "activity_log": [
+        {
+          "time": "21:29:12",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790179152.6874332,
+      "end_time": null,
+      "is_finished": false,
+      "created_at": "2026-09-23T21:29:12.687493",
+      "round_2_stage": 1,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790179216.7403593,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T3-9152": {
+      "team_id": "T3-9152",
+      "team_name": "Neural Pioneers",
+      "password": "pass",
+      "members": "Op1, Op2",
+      "current_stage": 1,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790179152.7103527,
+      "activity_log": [
+        {
+          "time": "21:29:12",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790179152.7103527,
+      "end_time": null,
+      "is_finished": false,
+      "created_at": "2026-09-23T21:29:12.710406",
+      "round_2_stage": 1,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790179216.7403593,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T4-9152": {
+      "team_id": "T4-9152",
+      "team_name": "Binary Ghosts",
+      "password": "pass",
+      "members": "Op1, Op2",
+      "current_stage": 1,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "Registered station",
+      "last_seen": 1790179152.7265813,
+      "activity_log": [
+        {
+          "time": "21:29:12",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790179152.7265813,
+      "end_time": null,
+      "is_finished": false,
+      "created_at": "2026-09-23T21:29:12.726666"
+    },
+    "T1-9216": {
+      "team_id": "T1-9216",
+      "team_name": "Quantum Phantoms (Prime)",
+      "password": "pass1",
+      "members": "Dr. Alice, Bob, Charlie, Dana",
+      "current_stage": 11,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 2,
+      "traps_count": 1,
+      "tamper_incidents": 1,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83c\udfc6 \ud83e\udd47 1ST PRIZE \u2014 GRAND CHAMPION in 20m 00s!",
+      "last_seen": 1790179216.7652793,
+      "activity_log": [
+        {
+          "time": "21:30:16",
+          "stage": 1,
+          "action": "Registered workstation"
+        },
+        {
+          "time": "21:30:16",
+          "stage": 1,
+          "action": "Inspecting ISHAAN Recovery Terminal"
+        },
+        {
+          "time": "21:30:16",
+          "stage": 9,
+          "action": "\ud83c\udfc6 VICTORY (Round 2): Solved in 20m 00s!"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790179216.4675298,
+      "end_time": null,
+      "is_finished": false,
+      "created_at": "2026-09-23T21:30:16.467571",
+      "client_info": {
+        "resolution": "1920x1080",
+        "os": "Windows 11 Pro (x64)",
+        "fullscreen": true
+      },
+      "active_view": "STAGE_01_TERMINAL",
+      "violations_history": [
+        {
+          "type": "Attempted Right-Click Inspection",
+          "timestamp": "14:22:01"
+        }
+      ],
+      "remote_override_stage": 11,
+      "time_adjustment_sec": -120,
+      "round_2_stage": 9,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790179216.7403593,
+      "round_2_is_finished": true,
+      "round_2_times": {},
+      "round_2_score": 0,
+      "round_2_end_time": 1790179216.7652793,
+      "round_2_finish_time_str": "20m 00s",
+      "prize_code": "1ST_PRIZE",
+      "prize_title": "\ud83e\udd47 1ST PRIZE \u2014 GRAND CHAMPION",
+      "podium_rank": 1
+    },
+    "T2-9216": {
+      "team_id": "T2-9216",
+      "team_name": "Cyber Valkyries",
+      "password": "pass",
+      "members": "Op1, Op2",
+      "current_stage": 1,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83c\udfc6 \ud83e\udd48 2ND PRIZE \u2014 RUNNER-UP LAUREATE in 22m 30s!",
+      "last_seen": 1790179216.7713614,
+      "activity_log": [
+        {
+          "time": "21:30:16",
+          "stage": 1,
+          "action": "Registered workstation"
+        },
+        {
+          "time": "21:30:16",
+          "stage": 9,
+          "action": "\ud83c\udfc6 VICTORY (Round 2): Solved in 22m 30s!"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790179216.6735687,
+      "end_time": null,
+      "is_finished": false,
+      "created_at": "2026-09-23T21:30:16.673616",
+      "round_2_stage": 9,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790179216.7403593,
+      "round_2_is_finished": true,
+      "round_2_times": {},
+      "round_2_score": 0,
+      "round_2_end_time": 1790179216.7713614,
+      "round_2_finish_time_str": "22m 30s",
+      "prize_code": "2ND_PRIZE",
+      "prize_title": "\ud83e\udd48 2ND PRIZE \u2014 RUNNER-UP LAUREATE",
+      "podium_rank": 2
+    },
+    "T3-9216": {
+      "team_id": "T3-9216",
+      "team_name": "Neural Pioneers",
+      "password": "pass",
+      "members": "Op1, Op2",
+      "current_stage": 1,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83c\udfc6 \ud83e\udd49 3RD PRIZE \u2014 SECOND RUNNER-UP in 25m 00s!",
+      "last_seen": 1790179216.7959402,
+      "activity_log": [
+        {
+          "time": "21:30:16",
+          "stage": 1,
+          "action": "Registered workstation"
+        },
+        {
+          "time": "21:30:16",
+          "stage": 9,
+          "action": "\ud83c\udfc6 VICTORY (Round 2): Solved in 25m 00s!"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790179216.6753144,
+      "end_time": null,
+      "is_finished": false,
+      "created_at": "2026-09-23T21:30:16.675352",
+      "round_2_stage": 9,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790179216.7403593,
+      "round_2_is_finished": true,
+      "round_2_times": {},
+      "round_2_score": 0,
+      "round_2_end_time": 1790179216.7959402,
+      "round_2_finish_time_str": "25m 00s",
+      "prize_code": "3RD_PRIZE",
+      "prize_title": "\ud83e\udd49 3RD PRIZE \u2014 SECOND RUNNER-UP",
+      "podium_rank": 3
+    },
+    "B": {
+      "team_id": "B",
+      "team_name": "b",
+      "password": "b",
+      "members": "b",
+      "registered_at": 1790179689.4235034,
+      "start_time": 1790179689.4235034,
+      "end_time": null,
+      "current_stage": 1,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 1,
+      "is_locked": true,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_seen": 1790179953.409058,
+      "last_action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)",
+      "stage_times": {
+        "1": {
+          "start": 1790143301113
+        }
+      },
+      "activity_log": [
+        {
+          "time": "21:38:09",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:09",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:13",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:17",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:21",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:25",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:29",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:33",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:37",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:41",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:45",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:49",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:53",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:38:57",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:39:01",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:39:05",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:39:33",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:40:33",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:41:33",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        },
+        {
+          "time": "21:42:33",
+          "stage": 1,
+          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
+        }
+      ],
+      "client_info": {
+        "resolution": "1536x864",
+        "os": "Windows",
+        "fullscreen": false
+      },
+      "active_view": "STAGE_01"
     }
   },
   "broadcasts": [
@@ -1925,6 +2559,36 @@
       "id": 26,
       "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 2 HAS OFFICIALLY BEGUN! 12 QUALIFIED STATIONS UNLOCKED.",
       "time": "21:01:35"
+    },
+    {
+      "id": 27,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 2 HAS OFFICIALLY BEGUN! 15 QUALIFIED STATIONS UNLOCKED.",
+      "time": "21:28:43"
+    },
+    {
+      "id": 28,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 2 HAS OFFICIALLY BEGUN! 18 QUALIFIED STATIONS UNLOCKED.",
+      "time": "21:29:12"
+    },
+    {
+      "id": 29,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 2 HAS OFFICIALLY BEGUN! 21 QUALIFIED STATIONS UNLOCKED.",
+      "time": "21:30:16"
+    },
+    {
+      "id": 30,
+      "message": "\ud83c\udfc6 ROUND 2 COMPLETED: Team Quantum Phantoms (Prime) [T1-9216] finished in 20m 00s!",
+      "time": "21:30:16"
+    },
+    {
+      "id": 31,
+      "message": "\ud83c\udfc6 ROUND 2 COMPLETED: Team Cyber Valkyries [T2-9216] finished in 22m 30s!",
+      "time": "21:30:16"
+    },
+    {
+      "id": 32,
+      "message": "\ud83c\udfc6 ROUND 2 COMPLETED: Team Neural Pioneers [T3-9216] finished in 25m 00s!",
+      "time": "21:30:16"
     }
   ],
   "created_at": "2026-09-21T00:00:00.000000",
@@ -1942,7 +2606,16 @@
       "TEAM-09",
       "TEAM-10",
       "TEAM-11",
-      "TEAM-13"
+      "TEAM-13",
+      "T1-9123",
+      "T2-9123",
+      "T3-9123",
+      "T1-9152",
+      "T2-9152",
+      "T3-9152",
+      "T1-9216",
+      "T2-9216",
+      "T3-9216"
     ],
     "locked": true
   }

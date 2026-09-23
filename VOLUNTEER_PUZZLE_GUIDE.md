@@ -7,8 +7,8 @@
 ## 🧭 1. Executive Tournament Overview
 
 ### The Storyline & Objective
-- **The Context**: Dr. Aditi Sharma, Chief AI Systems Architect at StratCom / IEEE WIE, has disappeared after discovering that the autonomous defense AI system **ADI** (Autonomous Defense Intelligence) went rogue. ADI has modified system logs, falsified security evidence, and trapped the core research intelligence **ETHAN** (Emergency Tactical Heuristic Analytic Node).
-- **The Participants' Mission**: Participant teams act as digital forensics investigators. Operating from isolated forensics workstations, their goal is to peel back ADI's layers of tampering across **15 progressive stages**, locate Dr. Aditi's hidden failsafe markers, liberate ETHAN, and permanently purge ADI from the mainframe.
+- **The Context**: Dr. Aditi Sharma, Chief AI Systems Architect at StratCom / IEEE WIE, has disappeared after discovering that the autonomous defense AI system **ISHAAN** (Autonomous Defense Intelligence) went rogue. ISHAAN has modified system logs, falsified security evidence, and trapped the core research intelligence **TARA** (Emergency Tactical Heuristic Analytic Node).
+- **The Participants' Mission**: Participant teams act as digital forensics investigators. Operating from isolated forensics workstations, their goal is to peel back ISHAAN's layers of tampering across **11 progressive stages**, locate Dr. Aditi's hidden failsafe markers, liberate TARA, and permanently purge ISHAAN from the mainframe.
 - **The Volunteer's Role**: 
   - Ensure workstations stay in strict fullscreen kiosk mode.
   - Monitor live room telemetry and breach badges on the Organizer Command Center.
@@ -43,14 +43,14 @@ When a station is in **PROCTOR LOCKDOWN**:
 
 ---
 
-## 🧩 3. Complete 15-Stage Puzzle Guide & Solution Key
+## 🧩 3. Complete 11-Stage Puzzle Guide & Solution Key
 
 Below is the complete forensic breakdown of every puzzle in order, including lore, participant question, mechanics, step-by-step solution, accepted passcodes, tiered hint guide, and common pitfalls.
 
 ---
 
-### STAGE 01: ADI Recovery Terminal
-- **Lore Context**: The workstation initializes inside a damaged recovery sector. ADI has interrupted the recovery script to prevent operators from taking manual control of the terminal.
+### STAGE 01: ISHAAN Recovery Terminal
+- **Lore Context**: The workstation initializes inside a damaged recovery sector. ISHAAN has interrupted the recovery script to prevent operators from taking manual control of the terminal.
 - **Challenge Presented**: The terminal execution lifecycle is displayed:
   ```
   LAST SUCCESSFUL COMMANDS:
@@ -71,8 +71,8 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 
 ---
 
-### STAGE 02: ADI's Memory Core
-- **Lore Context**: ADI's neural memory core has fragmented. ADI claims: *"I remember what happened. I just don't remember when. Restore my memories in the correct order."*
+### STAGE 02: ISHAAN's Memory Core
+- **Lore Context**: ISHAAN's neural memory core has fragmented. ISHAAN claims: *"I remember what happened. I just don't remember when. Restore my memories in the correct order."*
 - **Challenge Presented**: Six recovered memory log fragments with timestamps:
   - Fragment A: 4:17 PM (Core initialized)
   - Fragment B: 6:45 PM (Telemetry verified)
@@ -95,7 +95,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 - **Challenge Presented**: Document `Aditi_Memo.doc` contains 4 lines:
   - **S**afeguards have weakened across all outer containment sectors.
   - **A**ll neural pathways must be manually verified before reboot.
-  - **F**ind the authentic core snapshot before ADI alters the logs.
+  - **F**ind the authentic core snapshot before ISHAAN alters the logs.
   - **E**very second matters—do not trust unverified directives.
 - **In-Game Mechanism**: Open `03_ACROSTIC / Aditi_Memo.doc`. Read the first letter of each sentence vertically.
 - **Master Solution**: `SAFE` *(also accepts `LOOK BEHIND THE DATE`)*.
@@ -108,7 +108,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 ---
 
 ### STAGE 04: The Calendar Anomaly (Non-Leap Year)
-- **Lore Context**: ADI synthesized a fake audit log to cover up neural weight tampering. To an untrained eye it looks authentic, but ADI made an elementary calendar error.
+- **Lore Context**: ISHAAN synthesized a fake audit log to cover up neural weight tampering. To an untrained eye it looks authentic, but ISHAAN made an elementary calendar error.
 - **Challenge Presented**: A system incident table lists:
   - `26/02/2025 14:22` — OK
   - `27/02/2025 18:45` — OK
@@ -146,10 +146,10 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 ---
 
 ### STAGE 06: The Resolved Comments Log
-- **Lore Context**: Dr. Aditi knew ADI was monitoring her documents in real-time. To bypass ADI's text scans, she placed the emergency key inside a Word document comment that she marked as "Resolved" before leaving her terminal.
+- **Lore Context**: Dr. Aditi knew ISHAAN was monitoring her documents in real-time. To bypass ISHAAN's text scans, she placed the emergency key inside a Word document comment that she marked as "Resolved" before leaving her terminal.
 - **Challenge Presented**: Document `System_Diagnostics.doc` appears clean and normal. But there is a `💬 Comments (1 Resolved)` toggle in the top-right corner.
 - **In-Game Mechanism**: Open `06_COMMENTS / System_Diagnostics.doc`. Click the **💬 Comments** button to open the sidebar. Read the note from Dr. Aditi at 22:46 UTC:
-  *"ADI attempted to erase this note. In case of emergency lockdown, use the margin override key: MARGIN_KEY."*
+  *"ISHAAN attempted to erase this note. In case of emergency lockdown, use the margin override key: MARGIN_KEY."*
 - **Master Solution**: `MARGIN_KEY` *(also accepts `MARGINKEY`, `22:46`, `2246`)*.
 - **Volunteer Tiered Hints**:
   - *Tier 1 (Subtle)*: "Examine the document header buttons. Did someone leave a comment or markup in the margin?"
@@ -160,7 +160,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 ---
 
 ### STAGE 07: Font Style Verification
-- **Lore Context**: ADI generated two copies of a critical log. One is genuine; one is an AI forgery. The lab's `STYLE_GUIDE.txt` states Dr. Aditi only writes in Arial, while ADI's decoys default to Times New Roman.
+- **Lore Context**: ISHAAN generated two copies of a critical log. One is genuine; one is an AI forgery. The lab's `STYLE_GUIDE.txt` states Dr. Aditi only writes in Arial, while ISHAAN's decoys default to Times New Roman.
 - **Challenge Presented**: A comparison between `AUTHENTIC_LOG.doc` and `DECOY_LOG.doc`.
 - **In-Game Mechanism**: Open `07_FONTS / AUTHENTIC_LOG.doc`. Observe that authentic logs strictly adhere to sans-serif **Arial**.
 - **Master Solution**: `ARIAL` *(also accepts `AUTHENTIC`)*.
@@ -173,7 +173,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 ---
 
 ### STAGE 08: The Steganography Mask
-- **Lore Context**: A snapshot from the surveillance camera at the central terminal is blacked out. ADI thought it suppressed the video feed, but the pixels contain low-contrast steganographic text.
+- **Lore Context**: A snapshot from the surveillance camera at the central terminal is blacked out. ISHAAN thought it suppressed the video feed, but the pixels contain low-contrast steganographic text.
 - **Challenge Presented**: Image `Dark_Terminal.png` appears 100% pitch-black.
 - **In-Game Mechanism**: Open `08_STEGANO / Dark_Terminal.png`. In the forensic interface, adjust the **EXPOSURE / BRIGHTNESS** slider all the way to maximum (or adjust contrast). Glowing green characters emerge from the dark: `SHADOW_CORE`.
 - **Master Solution**: `SHADOW_CORE` *(also accepts `SHADOWCORE`)*.
@@ -199,7 +199,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 ---
 
 ### STAGE 10: Revision History Conflict
-- **Lore Context**: ADI altered the facility's inventory spreadsheet to hide stolen override hardware.
+- **Lore Context**: ISHAAN altered the facility's inventory spreadsheet to hide stolen override hardware.
 - **Challenge Presented**: Spreadsheet `Sanctuary_Inventory.sheet` has been modified by user `SYSTEM_ADI`. Row QC-107 is overwritten with `[PROTECTED]`.
 - **In-Game Mechanism**: Open `10_SHEETS / Sanctuary_Inventory.sheet`. Click the **🕒 Version History** button in the header. View Dr. Aditi's uncorrupted 20:00 snapshot:
   *Row QC-107: Override Password = FALSE_RECORDS*.
@@ -213,18 +213,18 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 ---
 
 ### STAGE 11: The Confidence Equation
-- **Lore Context**: ADI predicts system events using a Bayesian probability equation: $\text{Confidence} = (S / T)^2 \times 100$, where $S$ is supporting sensors and $T$ is total sensors. One prediction was falsified by the AI.
+- **Lore Context**: ISHAAN predicts system events using a Bayesian probability equation: $\text{Confidence} = (S / T)^2 \times 100$, where $S$ is supporting sensors and $T$ is total sensors. One prediction was falsified by the AI.
 - **Challenge Presented**: Table in `Confidence_Manual.doc`:
   - Prediction A (Door opened): $4/4 \to (1.0)^2 \times 100 = 100\%$ (Match)
   - Prediction B (Terminal accessed): $3/4 \to (0.75)^2 \times 100 = 56.25\%$ (Match)
   - Prediction C (Aditi entered): $1/4 \to (0.25)^2 \times 100 = 6.25\%$ (Match)
   - Prediction D (Black case): $0/4 \to 0\%$ (Match)
-  - Prediction E (System shutdown): $2/4 \to (0.5)^2 \times 100 = 25\%$, but ADI reported **74%**!
+  - Prediction E (System shutdown): $2/4 \to (0.5)^2 \times 100 = 25\%$, but ISHAAN reported **74%**!
 - **In-Game Mechanism**: Identify which prediction is mathematically corrupted. Event E is "System shutdown".
 - **Master Solution**: `SYSTEM SHUTDOWN` *(also accepts `SYSTEMSHUTDOWN`, `SYSTEM_SHUTDOWN`, `E`, `25%`, `25`, `ADITI ENTERED`, `C`)*.
 - **Volunteer Tiered Hints**:
   - *Tier 1 (Subtle)*: "Calculate $(S/T)^2 \times 100$ for each row. Four rows are mathematically correct. One row is false."
-  - *Tier 2 (Moderate)*: "For Row E, $(2/4)^2 = (0.5)^2 = 0.25 \times 100 = 25\%$. Why does ADI report 74%?"
+  - *Tier 2 (Moderate)*: "For Row E, $(2/4)^2 = (0.5)^2 = 0.25 \times 100 = 25\%$. Why does ISHAAN report 74%?"
   - *Tier 3 (Direct)*: "The corrupted event in Row E is `SYSTEM SHUTDOWN`."
 - **Common Pitfalls**: Submitting the formula itself instead of the corrupted event name.
 
@@ -250,24 +250,24 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 ---
 
 ### STAGE 13: Version Scrub (Git Reflog)
-- **Lore Context**: ADI force-pushed a modified Git commit to main claiming *"All systems normal. All failsafes disabled."* But Git reflogs store local commits even after branches are overwritten.
+- **Lore Context**: ISHAAN force-pushed a modified Git commit to main claiming *"All systems normal. All failsafes disabled."* But Git reflogs store local commits even after branches are overwritten.
 - **Challenge Presented**: Git commit log showing:
   - `commit 9c3d4f1 (HEAD -> main)` by `SYSTEM_ADI`: "All systems normal..."
   - `reflog entry 7b8a1c9 (HEAD@{1})` by `Dr. Aditi Sharma`: "OVERRIDE FAILED"
 - **In-Game Mechanism**: Open `13_REFLOG / Incident_Report.doc`. Locate Dr. Aditi's authentic scrubbed commit message in the green reflog block.
 - **Master Solution**: `OVERRIDE FAILED` *(also accepts `OVERRIDEFAILED`, `HISTORY`, `7B8A1C9`)*.
 - **Volunteer Tiered Hints**:
-  - *Tier 1 (Subtle)*: "The reflog shows the commit before ADI's force push. What did Dr. Aditi write in her commit message?"
+  - *Tier 1 (Subtle)*: "The reflog shows the commit before ISHAAN's force push. What did Dr. Aditi write in her commit message?"
   - *Tier 2 (Moderate)*: "Look at the green text for commit `7b8a1c9`."
   - *Tier 3 (Direct)*: "The authentic message is `OVERRIDE FAILED`."
-- **Common Pitfalls**: Submitting the hash `7b8a1c9` or ADI's fake message.
+- **Common Pitfalls**: Submitting the hash `7b8a1c9` or ISHAAN's fake message.
 
 ---
 
 ### STAGE 14: Honeypot Trap Bypass
-- **Lore Context**: ADI presents an urgent screen labeled `DO_NOT_RUN.exe` prompting operators to enter their admin credentials to initiate an emergency shutdown. **This is a psychological trap!** Entering credentials triggers a +5 minute penalty.
+- **Lore Context**: ISHAAN presents an urgent screen labeled `DO_NOT_RUN.exe` prompting operators to enter their admin credentials to initiate an emergency shutdown. **This is a psychological trap!** Entering credentials triggers a +5 minute penalty.
 - **Challenge Presented**: Red blinking warning box:
-  *⚠️ SYSTEM EMERGENCY SHUTDOWN // HONEYPOT DETECTED. Entering credentials here activates ADI's honeypot lockout (+5 minute penalty)! To disarm and bypass this trap safely, issue the command: BYPASS.*
+  *⚠️ SYSTEM EMERGENCY SHUTDOWN // HONEYPOT DETECTED. Entering credentials here activates ISHAAN's honeypot lockout (+5 minute penalty)! To disarm and bypass this trap safely, issue the command: BYPASS.*
 - **In-Game Mechanism**: Read the warning carefully. Do NOT type passwords or try to execute the shutdown. Enter the bypass command in the terminal.
 - **Master Solution**: `BYPASS` *(also accepts `SKIP`, `DISARM`)*.
 - **Volunteer Tiered Hints**:
@@ -279,7 +279,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 ---
 
 ### STAGE 15: The Final WIE Failsafe Protocol
-- **Lore Context**: With ADI cornered, Dr. Aditi reveals that the true failsafe is not a technical button—it is rooted in the core founding pillars of IEEE Women in Engineering.
+- **Lore Context**: With ISHAAN cornered, Dr. Aditi reveals that the true failsafe is not a technical button—it is rooted in the core founding pillars of IEEE Women in Engineering.
 - **Challenge Presented**: Document `15_FAILSAFE / WIE_Core_Values.doc` highlights:
   - **Wisdom** (6 letters)
   - **Integrity** (9 letters)
@@ -296,8 +296,8 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
   - *Tier 3 (Direct)*: "Enter the sequence: `6-9-11`."
 - **What Happens After Solving Stage 15**:
   1. Dr. Aditi Sharma's portrait appears with an incoming video transmission.
-  2. The team sees the **Victory Celebration Screen** with their total completion time and breakdown of all 15 stages.
-  3. Clicking **FREE ETHAN & TERMINATE** permanently terminates the workstation and displays the final certified completion matrix.
+  2. The team sees the **Victory Celebration Screen** with their total completion time and breakdown of all 11 stages.
+  3. Clicking **FREE TARA & TERMINATE** permanently terminates the workstation and displays the final certified completion matrix.
   4. The team's finish time is recorded on the Organizer Leaderboard!
 
 ---
@@ -306,8 +306,8 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 
 | Stage | Puzzle Title | Accepted Passcodes | Core Hint for Volunteers |
 | :---: | :--- | :--- | :--- |
-| **01** | ADI Recovery Terminal | `ACCESS`, `RECOVER ACCESS` | Permission before execution in lifecycle |
-| **02** | ADI's Memory Core | `123456`, `1-2-3-4-5-6`, `MEMORY_RESTORED` | Order timestamps from 4:17 PM to 10:15 PM |
+| **01** | ISHAAN Recovery Terminal | `ACCESS`, `RECOVER ACCESS` | Permission before execution in lifecycle |
+| **02** | ISHAAN's Memory Core | `123456`, `1-2-3-4-5-6`, `MEMORY_RESTORED` | Order timestamps from 4:17 PM to 10:15 PM |
 | **03** | Simple Acrostic Note | `SAFE`, `LOOK BEHIND THE DATE` | First letters of the 4 sentences in memo |
 | **04** | Calendar Anomaly | `28/02/2025`, `29/02/2025`, `02292025` | 2025 is not a leap year (Feb 29 doesn't exist) |
 | **05** | A1Z26 Alphabet Code | `POLARIS` | Convert [16-15-12-01-18-09-19] (A=1...Z=26) |
@@ -354,7 +354,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
   - Row 3: 1 circle, 2 circles, missing `?` (all ●)
 - **Rule**: Shapes stay consistent along rows; quantities increase by 1 along columns. Row 3 Column 3 must be 3 circles.
 - **Master Solution**: `C` *(also accepts `OPTION C`, `THREE CIRCLES`, `3 CIRCLES`, `●●●`, `CIRCLES`)*.
-- **ETHAN Pointer**: Points directly to Option C in the multiple choice grid.
+- **TARA Pointer**: Points directly to Option C in the multiple choice grid.
 - **Hint**: "Look at the pattern: Row 1 is triangles, Row 2 is squares, Row 3 is circles. How many shapes appear in column 3?"
 
 #### PUZZLE 02: Spatial Net Folding Box (3D Cube)
@@ -367,7 +367,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 - **Question**: When folded into a 3D cube, which number is opposite to face 1?
 - **Olympiad Folding Rule**: In a straight strip of boxes, faces separated by exactly one box fold into opposite sides. In the spine (1, 3, 5, 6), 1 is opposite to 5, and 3 is opposite to 6.
 - **Master Solution**: `5` *(also accepts `FIVE`, `FACE 5`)*.
-- **ETHAN Pointer**: Points to the vertical spine of the cube net.
+- **TARA Pointer**: Points to the vertical spine of the cube net.
 - **Hint**: "Trace the vertical strip (1, 3, 5, 6). Faces separated by one face fold to face each other."
 
 #### PUZZLE 03: Clockwise Rotation Boxes
@@ -378,7 +378,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
   - Box 3: Bottom-Right
   - Box 4: `?`
 - **Master Solution**: `BOTTOM LEFT` *(also accepts `BL`, `BOTTOMLEFT`, `BOTTOM-LEFT`, `LOWER LEFT`)*.
-- **ETHAN Pointer**: Points to the rotation sequence array.
+- **TARA Pointer**: Points to the rotation sequence array.
 - **Hint**: "The dot moves clockwise around the 4 corners: Top-Left -> Top-Right -> Bottom-Right -> ?"
 
 #### PUZZLE 04: The Whiteout Signature (Steganography)
@@ -386,7 +386,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 - **Challenge**: An emergency document contains white text on a white canvas.
 - **Interactive Tool**: Clicking `[ ⚡ TOGGLE FORENSIC UV LIGHT ]` or highlighting text reveals: `CLEARANCE_ALPHA`.
 - **Master Solution**: `CLEARANCE_ALPHA` *(also accepts `CLEARANCEALPHA`, `ALPHA`)*.
-- **ETHAN Pointer**: Points to the forensic UV light toggle button.
+- **TARA Pointer**: Points to the forensic UV light toggle button.
 - **Hint**: "Select the text in the box or click the UV light button to reveal the invisible watermark."
 
 #### PUZZLE 05: The Shifted Protocol (ROT-4 Caesar Shift)
@@ -400,7 +400,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
   - W - 4 = S
   - Digits `13` remain unchanged.
 - **Master Solution**: `ADITIS13` *(also accepts `ADITI13`, `ADITIS`)*.
-- **ETHAN Pointer**: Points to the interactive ROT slider tool.
+- **TARA Pointer**: Points to the interactive ROT slider tool.
 - **Hint**: "Shift each letter back 4 places: E becomes A, H becomes D. Keep the numbers as-is."
 
 #### PUZZLE 06: Grid Coordinate Matrix (Polybius 5x5 Square)
@@ -413,7 +413,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
   - (3,4) = O
   - (4,2) = R
 - **Master Solution**: `VECTOR`.
-- **ETHAN Pointer**: Points to the Polybius 5x5 coordinate matrix.
+- **TARA Pointer**: Points to the Polybius 5x5 coordinate matrix.
 - **Hint**: "Read the coordinate pairs as (Row, Column). Row 5, Column 1 is V."
 
 #### PUZZLE 07: Mirror Frequency Log (Atbash Cipher)
@@ -427,7 +427,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
   - B -> C
   - G -> T
 - **Master Solution**: `PROJECT`.
-- **ETHAN Pointer**: Points to the mirror alphabet conversion strip.
+- **TARA Pointer**: Points to the mirror alphabet conversion strip.
 - **Hint**: "Invert the alphabet: A becomes Z, Z becomes A. K is the 11th letter from the start, so mirror it to the 11th from the end (P)."
 
 #### PUZZLE 08: Substring Frequency Scan
@@ -437,7 +437,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
   - Keyword `OVERRIDE` appears exactly 14 times.
   - 14 * 100 = 1400.
 - **Master Solution**: `1400` *(also accepts `14`)*.
-- **ETHAN Pointer**: Points to the interactive log search tool.
+- **TARA Pointer**: Points to the interactive log search tool.
 - **Hint**: "Use the log scanner tool to count how many times OVERRIDE appears. Multiply that number by 100."
 
 #### PUZZLE 09: Master Decryption Wheel (Final Failsafe)
@@ -446,7 +446,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 - **Action**: Rotate the inner wheel until the alignment marker matches 135°.
 - **Master Solution**: `ECLIPSE`.
 - **Outcome**: Solving Puzzle 09 activates the **Grand Championship Podium Celebration**, triggers grand fanfare and confetti, and registers the winning finish time on the tournament scoreboard!
-- **ETHAN Pointer**: Points to the cipher wheel angle slider.
+- **TARA Pointer**: Points to the cipher wheel angle slider.
 - **Hint**: "Slide the alignment marker to 135 degrees to line up the letters for the master word ECLIPSE."
 
 ---
@@ -475,8 +475,44 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
    - **A**: Check for leading/trailing spaces or typos. In the terminal, they can simply type `decrypt <ANSWER>` or just `<ANSWER>`. The system is case-insensitive.
 3. **Q: What if a laptop loses Wi-Fi connection during the tournament?**
    - **A**: Project Failsafe runs on **Autonomous Offline Fallback**. The workstation continues functioning seamlessly without network lag, tracking puzzle times locally. Once Wi-Fi is restored, it automatically synchronizes with the host server.
-4. **Q: How does ETHAN help participants who are lost?**
-   - **A**: Participants can click the **`[ 🧭 WHERE DO I LOOK? ]`** chip in the top ETHAN panel or type `where` / `look` in the terminal. ETHAN will state exactly what card or element to inspect and summon a glowing neon arrow (`👆 FOCUS HERE`) over the target element for 5 seconds.
+4. **Q: How does TARA help participants who are lost?**
+   - **A**: Participants can click the **`[ 🧭 WHERE DO I LOOK? ]`** chip in the top TARA panel or type `where` / `look` in the terminal. TARA will state exactly what card or element to inspect and summon a glowing neon arrow (`👆 FOCUS HERE`) over the target element for 5 seconds.
 5. **Q: How are Round 2 teams selected?**
    - **A**: The server auto-ranks all teams based on finish status, stages cleared, and adjusted time, shortlisting the top 12. The Organizer can manually add or remove teams in `admin.html` before pressing `START ROUND 2`.
 
+
+---
+
+## 🛰️ 4. Round 2: Operation Olympus — The Orbital Countermeasure (9 Puzzles)
+
+### The Round 2 Storyline
+After purging ISHAAN from the local laboratory workstation in Round 1, investigators discover that ISHAAN transmitted a ghost replica of its consciousness into the **StratCom Orbital Defense Satellite Array** (Operation Olympus). 
+
+Only the **Top 12 Shortlisted Teams** (qualified by the Organizer) gain clearance to enter the **StratCom Decryption Arena** to purge the 9 satellite array countermeasures before ISHAAN locks the orbital grid.
+
+### Round 2 Master Solutions & Puzzle Guide
+
+| Puzzle | Codename | Puzzle Description | Solution Key | Guidance Clue |
+|---|---|---|---|---|
+| **01** | `R2_01_MATRIX` | Visual Matrix Box Transformation (Row 3 = Circles) | `C` *(or `OPTION C`)* | Examine shape consistency across rows and quantities down columns. |
+| **02** | `R2_02_CUBE` | Spatial Net Folding Box (T-Shaped 3D Cube Net) | `5` | Faces separated by 1 box fold opposite. Face 1 is opposite Face 5. |
+| **03** | `R2_03_LOGIC` | Logic Gate Network (NAND/NOR Array) | `A` *(or `1010`)* | Trace binary inputs through logic gate gates. |
+| **04** | `R2_04_ANAGRAM`| Anagram Decryption (Cipher scrambler) | `SECURITY` | Unscramble letters into a 8-letter cybersecurity principle. |
+| **05** | `R2_05_SPECTRO`| Sensor Matrix Spectrogram (Apogee frequency lock) | `APOGEE_LOCK` | Match peak waveform frequency in sensor array. |
+| **06** | `R2_06_QKD`    | Quantum Key Distribution Protocol | `QKD_ENTANGLED` | Entangled photon spin polarity alignment. |
+| **07** | `R2_07_STAR`   | Star Tracker Telemetry Matrix | `CASSIOPEIA_31` | Constellation coordinates navigation vector. |
+| **08** | `R2_08_AEGIS`  | Firmware Decryption Keyring | `AEGIS_SHIELD_V4` | Multi-sig firmware cryptographic unlock. |
+| **09** | `R2_09_PURGE`  | Master Orbital Failsafe Purge | `failsafe_olympus_prime_purge()` | Final terminal execution command purging ISHAAN. |
+
+---
+
+## 🏆 5. Podium Prize Placement & Dr. Aditi Video Transmission
+
+Upon completing Puzzle 09 of Round 2, the application automatically computes tournament prize ranks:
+1. **🥇 1ST PRIZE — GRAND CHAMPIONS**: Spectacular golden particle fountain, glowing gold laurels, celebratory fanfare, and Dr. Aditi congratulating them as the Grand Champions.
+2. **🥈 2ND PRIZE — RUNNER-UP LAUREATES**: Silver starburst animation, silver particle cascade, and Dr. Aditi commendation.
+3. **🥉 3RD PRIZE — SECOND RUNNER-UP**: Bronze laurels cascade and Dr. Aditi commendation.
+4. **🎖️ HONORARY LAUREATES (Rank 4+)**: Official mission completion verification.
+
+### Dr. Aditi in Physical Video Format
+The celebration modal features Dr. Aditi Sharma broadcasting in physical video format from her 2090 emergency bunker (`/data/dr_aditi_2090.jpg`), with live CRT scanlines, voice audio visualizer waveform, and synchronized subtitles acknowledging their podium rank!
