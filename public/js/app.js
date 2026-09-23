@@ -832,21 +832,55 @@ function triggerIncomingBroadcastAlert(msg) {
 }
 
 // ==========================================================================
-// Anti-Cheat Window Focus Loss & Proctor Lockdown Engine
+// Anti-Cheat, Mobile Blocker & Strict Fullscreen Proctor Lockdown Engine
 // ==========================================================================
 let proctorLockActive = false;
 let lockArmed = false;
 let violationCount = 0;
+let fullscreenEnforcementActive = false;
 
 // Grace period on initial launch so window positioning doesn't falsely trigger
 setTimeout(() => {
   lockArmed = true;
-}, 3500);
+}, 2000);
 
-function triggerProctorLockdown() {
+// Hardware Blocker: Disallow mobile devices & smartphones
+function checkAndEnforceDesktopWorkstation() {
+  const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+  const isMobileUA = /Android|iPhone|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
+  const isDesktopOS = /Windows NT|Macintosh|X11; Linux x86_64/i.test(ua);
+  const isMobileDevice = isMobileUA && !isDesktopOS;
+  const blocker = document.getElementById('mobile-blocker-overlay');
+  if (blocker) {
+    if (isMobileDevice) {
+      blocker.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      return true;
+    } else {
+      blocker.style.display = 'none';
+      return false;
+    }
+  }
+  return false;
+}
+setTimeout(checkAndEnforceDesktopWorkstation, 100);
+window.addEventListener('resize', checkAndEnforceDesktopWorkstation);
+
+function handleCheatingAttempt(reason) {
+  violationCount++;
+  const breachReason = reason || "Unauthorized Browser Action";
+  printCliOutput(`🚨 [CHEATING ATTEMPT]: ${breachReason}. Incident logged.`, true);
+  if (window.sounds && window.sounds.playError) {
+    window.sounds.playError();
+  }
+}
+
+function triggerProctorLockdown(reason) {
   if (!lockArmed || proctorLockActive) return;
   proctorLockActive = true;
   violationCount++;
+  const breachReason = reason || "Workstation focus lost to external program";
+
   if (window.sounds && window.sounds.playAlarmSiren) {
     window.sounds.playAlarmSiren();
   }
@@ -854,11 +888,13 @@ function triggerProctorLockdown() {
   const overlay = document.getElementById('proctor-lockdown-overlay');
   const countEl = document.getElementById('proctor-violation-count');
   const timeEl = document.getElementById('proctor-violation-time');
+  const reasonEl = document.getElementById('proctor-violation-reason');
   const inputEl = document.getElementById('proctor-pin-input');
   const errEl = document.getElementById('proctor-error-msg');
 
   if (countEl) countEl.innerText = violationCount;
   if (timeEl) timeEl.innerText = new Date().toISOString().substring(11, 19) + 'Z';
+  if (reasonEl) reasonEl.innerText = breachReason;
   if (errEl) errEl.innerText = '';
   if (inputEl) {
     inputEl.value = '';
@@ -866,19 +902,78 @@ function triggerProctorLockdown() {
   }
   if (overlay) overlay.style.display = 'flex';
 
-  printCliOutput(`🚨 [SECURITY BREACH]: Workstation focus lost to external program. Tamper Incident #${violationCount} logged.`, true);
+  printCliOutput(`🚨 [SECURITY BREACH]: ${breachReason}. Tamper Incident #${violationCount} logged.`, true);
 }
+
+// Intercept right-click context menu (Disables Google Lens and external searching)
+window.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  handleCheatingAttempt("Right-Click / Google Lens Context Menu Blocked");
+  return false;
+}, true);
+
+// Prevent dragging images or text
+window.addEventListener('dragstart', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+}, true);
+
+// Enforce fullscreen changes
+function isAppFullscreen() {
+  return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+}
+
+function handleFullscreenChange() {
+  if (fullscreenEnforcementActive && lockArmed) {
+    if (!isAppFullscreen()) {
+      triggerProctorLockdown("Exited Fullscreen Mode (Pressed Esc / Window Resize)");
+    }
+  }
+}
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+document.addEventListener('MSFullscreenChange', handleFullscreenChange);
 
 // Detect when user clicks outside, Alt-Tabs, or switches applications
 window.addEventListener('blur', () => {
-  triggerProctorLockdown();
+  if (lockArmed && !proctorLockActive) {
+    triggerProctorLockdown("Lost Window Focus (Alt+Tab / Windows Key / External App)");
+  }
 });
 
 document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    triggerProctorLockdown();
+  if (document.hidden && lockArmed && !proctorLockActive) {
+    triggerProctorLockdown("Switched Browser Tab or Minimized Window");
   }
 });
+
+// Trap keyboard shortcuts: Windows key, Alt+Tab, DevTools
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Meta' || e.key === 'OS' || e.code === 'MetaLeft' || e.code === 'MetaRight' || e.keyCode === 91 || e.keyCode === 92) {
+    e.preventDefault();
+    triggerProctorLockdown("Windows Key / Start Menu Triggered");
+    return false;
+  }
+  if (e.altKey && (e.key === 'Tab' || e.keyCode === 9)) {
+    e.preventDefault();
+    triggerProctorLockdown("Alt+Tab Window Switch Attempted");
+    return false;
+  }
+  if (
+    e.key === 'F12' ||
+    (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
+    (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) ||
+    (e.shiftKey && e.key === 'F10')
+  ) {
+    e.preventDefault();
+    e.stopPropagation();
+    handleCheatingAttempt("Prohibited Shortcut / DevTools Attempt (" + e.key + ")");
+    return false;
+  }
+}, true);
 
 function verifyProctorOverride() {
   const inputEl = document.getElementById('proctor-pin-input');

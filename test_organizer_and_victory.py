@@ -178,6 +178,71 @@ def test_browser_ui():
         btn.click()
         time.sleep(1.5)
 
+        # 6a. Verify Organizer button was removed from participant dashboard
+        header_text = driver.find_element(By.CLASS_NAME, "header-actions").text
+        assert "ORGANIZER" not in header_text
+        print("Verified: Organizer button successfully removed from participant dashboard!")
+
+        # 6b. Verify Mobile Blocker overlay exists
+        mobile_blocker = driver.find_element(By.ID, "mobile-blocker-overlay")
+        assert mobile_blocker is not None
+        print("Verified: Mobile device blocker overlay present in workstation!")
+
+        # 6c. Verify Right-Click / Google Lens contextmenu suppression and breach reporting
+        violation_before = driver.execute_script("return violationCount;")
+        driver.execute_script("""
+            const ev = new MouseEvent('contextmenu', { bubbles: true, cancelable: true });
+            window.dispatchEvent(ev);
+        """)
+        time.sleep(0.5)
+        violation_after = driver.execute_script("return violationCount;")
+        assert violation_after > violation_before
+        print("Verified: Right-click / Google Lens context menu blocked and logged as cheat attempt!")
+
+        # 6d. Verify Fullscreen exit triggers proctor lockdown overlay with reason
+        driver.execute_script("""
+            triggerProctorLockdown("Exited Fullscreen Mode (Pressed Esc / Window Resize)");
+        """)
+        time.sleep(0.5)
+        proctor_overlay = driver.find_element(By.ID, "proctor-lockdown-overlay")
+        assert proctor_overlay.is_displayed()
+        reason_text = driver.find_element(By.ID, "proctor-violation-reason").text
+        assert "Exited Fullscreen Mode" in reason_text
+        print("Verified: Strict fullscreen exit triggers Proctor Lockdown with clear breach reason!")
+        driver.save_screenshot(r"C:\Users\shrey\.gemini\antigravity\brain\17c36665-51d0-4b98-8e9d-7e8fd18fcd27\screenshot_proctor_lockdown_breach.png")
+
+        # Unlock with organizer PIN
+        driver.execute_script("""
+            document.getElementById('proctor-pin-input').value = 'wie-admin-2026';
+            verifyProctorOverride();
+        """)
+        time.sleep(0.5)
+        assert not proctor_overlay.is_displayed()
+        print("Verified: Organizer PIN successfully unlocked workstation!")
+
+        # 6e. Verify Admin Dashboard reflects breach notification
+        admin_win_url = f"http://127.0.0.1:{PORT}/admin.html"
+        driver.get(admin_win_url)
+        time.sleep(2)
+        admin_body = driver.find_element(By.TAG_NAME, "body").text
+        assert "BREACH" in admin_body.upper() or "FULLSCREEN" in admin_body.upper() or "GOOGLE" in admin_body.upper()
+        print("Verified: Admin dashboard displays real-time breach notifications!")
+        driver.save_screenshot(r"C:\Users\shrey\.gemini\antigravity\brain\17c36665-51d0-4b98-8e9d-7e8fd18fcd27\screenshot_admin_breach_badge.png")
+
+        # Return to participant app for victory sequence
+        driver.get(app_url)
+        time.sleep(1.5)
+        driver.execute_script(f"""
+            localStorage.setItem("failsafe_server_url", "http://127.0.0.1:{PORT}");
+            localStorage.setItem("failsafe_stage_times", '{sample_times_json}');
+            currentTeam = {{
+                team_id: "OMEGA-77",
+                team_name: "Apex Cipher Hunters",
+                members: "Dr. Sarah, Alex Chen, Maya Lin",
+                password: "secret-pass-77"
+            }};
+        """)
+
         # Trigger victory sequence directly via JS
         print("Triggering Stage 15 Victory Sequence...")
         driver.execute_script("handleMissionVictorySequence();")

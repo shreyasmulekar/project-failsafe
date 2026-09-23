@@ -401,6 +401,32 @@
       gap: 4px;
     }
 
+    @keyframes pulse-breach {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 60, 0.8); }
+      50% { opacity: 0.75; transform: scale(0.97); box-shadow: 0 0 20px rgba(255, 176, 0, 1); }
+    }
+
+    .tamper-badge.google-lens {
+      background: rgba(255, 176, 0, 0.25);
+      border-color: #ffb000;
+      color: #ffd700;
+      animation: pulse-breach 1.2s infinite;
+    }
+
+    .tamper-badge.fullscreen-exit {
+      background: rgba(255, 0, 60, 0.28);
+      border-color: #ff003c;
+      color: #ff3366;
+      animation: pulse-breach 1.0s infinite;
+    }
+
+    .tamper-badge.focus-lost {
+      background: rgba(255, 77, 0, 0.25);
+      border-color: #ff4d00;
+      color: #ff9966;
+      animation: pulse-breach 1.4s infinite;
+    }
+
     .btn-table {
       background: rgba(0, 240, 255, 0.08);
       border: 1px solid var(--cyber-cyan);
@@ -873,6 +899,43 @@
       }
     }
 
+    let alertedBreachKeys = new Set();
+    function playOrganizerBreachAlert() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sawtooth";
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.35);
+        gain.gain.setValueAtTime(0.25, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.35);
+      } catch(e) {}
+    }
+
+    function checkAndAlertBreaches(teams) {
+      let newBreachFound = false;
+      teams.forEach(t => {
+        const act = t.last_action || '';
+        if (act.includes("Google") || act.includes("Lens") || act.includes("Right-Click") || act.includes("Fullscreen") || act.includes("Esc") || act.includes("Focus") || act.includes("Alt-Tab") || act.includes("Windows Key")) {
+          const key = `${t.team_id}_${act}`;
+          if (!alertedBreachKeys.has(key)) {
+            alertedBreachKeys.add(key);
+            newBreachFound = true;
+          }
+        }
+      });
+      if (newBreachFound) {
+        playOrganizerBreachAlert();
+      }
+    }
+
     async function fetchLeaderboardData() {
       await checkServerStatus();
       try {
@@ -880,6 +943,7 @@
         if (!res.ok) throw new Error("Server communication error");
         const data = await res.json();
         cachedTeams = data.leaderboard || [];
+        checkAndAlertBreaches(cachedTeams);
         updateKpis(cachedTeams);
         if (currentViewMode === 'GRID') {
           renderStationGrid();
@@ -1048,8 +1112,21 @@
           ? `<span class="stage-badge finished">🏆 LIBERATED ${t.finish_time_str ? `[${escapeHtml(t.finish_time_str)}]` : ''}</span>`
           : `<span class="stage-badge">Stage ${t.current_stage.toString().padStart(2, '0')}: ${escapeHtml(t.stage_title)}</span>`;
 
-        const tamperCol = (t.tamper_incidents > 0 || t.is_locked)
-          ? `<span class="tamper-badge">${t.is_locked ? '🚨 LOCKED' : '⚠️'} ${t.tamper_incidents} Breach${t.tamper_incidents > 1 ? 'es' : ''}</span>`
+        let specificBreachBadge = '';
+        const act = (t.last_action || '');
+        if (act.includes("Google") || act.includes("Lens") || act.includes("Right-Click")) {
+          specificBreachBadge = `<div class="tamper-badge google-lens" style="margin-top:4px;">🔍 GOOGLE SEARCH DETECTED</div>`;
+        } else if (act.includes("Fullscreen") || act.includes("Esc")) {
+          specificBreachBadge = `<div class="tamper-badge fullscreen-exit" style="margin-top:4px;">🚨 FULLSCREEN EXITED</div>`;
+        } else if (act.includes("Focus") || act.includes("Alt-Tab") || act.includes("Windows Key")) {
+          specificBreachBadge = `<div class="tamper-badge focus-lost" style="margin-top:4px;">🚨 FOCUS LOST (ALT-TAB / WIN)</div>`;
+        }
+
+        const tamperCol = (t.tamper_incidents > 0 || t.is_locked || specificBreachBadge)
+          ? `<div>
+               <span class="tamper-badge">${t.is_locked ? '🚨 LOCKED' : '⚠️'} ${t.tamper_incidents || 1} Breach${(t.tamper_incidents || 1) > 1 ? 'es' : ''}</span>
+               ${specificBreachBadge}
+             </div>`
           : `<span style="font-size:11px; color:var(--text-muted); font-family:var(--font-mono);">0 (Clean)</span>`;
 
         html += `
@@ -1154,6 +1231,16 @@
           pulseIndicator = `<span class="pulse-amber"></span> <span style="color:var(--hazard-amber); font-weight:bold;">IDLE</span>`;
         }
 
+        let specificBreachBadge = '';
+        const act = (t.last_action || '');
+        if (act.includes("Google") || act.includes("Lens") || act.includes("Right-Click")) {
+          specificBreachBadge = `<div class="tamper-badge google-lens" style="margin-top:4px;">🔍 GOOGLE SEARCH DETECTED</div>`;
+        } else if (act.includes("Fullscreen") || act.includes("Esc")) {
+          specificBreachBadge = `<div class="tamper-badge fullscreen-exit" style="margin-top:4px;">🚨 FULLSCREEN EXITED</div>`;
+        } else if (act.includes("Focus") || act.includes("Alt-Tab") || act.includes("Windows Key")) {
+          specificBreachBadge = `<div class="tamper-badge focus-lost" style="margin-top:4px;">🚨 FOCUS LOST (ALT-TAB / WIN)</div>`;
+        }
+
         const stageText = t.is_finished 
           ? `🏆 FINISHED ${t.finish_time_str ? `(${escapeHtml(t.finish_time_str)})` : ''}` 
           : `STAGE ${t.current_stage.toString().padStart(2, '0')}`;
@@ -1175,6 +1262,7 @@
             <div style="font-size:10px; color:var(--text-muted); font-family:var(--font-mono); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${escapeHtml(t.last_action)}">
               ${escapeHtml(t.last_action)}
             </div>
+            ${specificBreachBadge ? `<div style="margin: 4px 0;">${specificBreachBadge}</div>` : ''}
             <div class="station-card-actions">
               <button class="btn-table" onclick="showTeamPuzzleTimes('${escapeHtml(t.team_id)}')">⏱️ TIMES</button>
               ${t.is_locked ? `<button class="btn-table danger" onclick="remoteUnlockTeam('${escapeHtml(t.team_id)}')">🔓</button>` : ''}

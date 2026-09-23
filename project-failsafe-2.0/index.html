@@ -34,6 +34,18 @@
       padding: 0;
       user-select: none;
       -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    img, canvas, svg, video, .evidence-dossier, .clue-card, .puzzle-container, .terminal-body, .window-body, .slate-panel {
+      -webkit-user-drag: none !important;
+      -khtml-user-drag: none !important;
+      -moz-user-drag: none !important;
+      -o-user-drag: none !important;
+      user-drag: none !important;
+      pointer-events: auto;
     }
 
     body {
@@ -1357,16 +1369,40 @@
     </div>
   </div>
 
+  <!-- MOBILE DEVICE HARDWARE BLOCKADE OVERLAY -->
+  <div id="mobile-blocker-overlay" class="proctor-lockdown-overlay" style="display:none; z-index:999999999; background: radial-gradient(circle, #1a0208 0%, #080103 100%);">
+    <div class="proctor-lockdown-card" style="border-color:var(--combat-red); box-shadow: 0 0 60px rgba(255,0,60,0.7); max-width:520px; text-align:center;">
+      <div class="proctor-badge" style="border-color:var(--combat-red); color:var(--combat-red); background:rgba(255,0,60,0.15);">
+        <span>🚫 ACCESS RESTRICTED: DESKTOP ONLY</span>
+      </div>
+      <div class="proctor-title" style="color:#ff3366; font-size:18px; margin:16px 0 10px 0;">MOBILE DEVICE DETECTED</div>
+      <div class="proctor-desc" style="font-size:12px; line-height:1.6; color:#d8e5ee;">
+        This Project Failsafe Forensics Terminal requires a <strong>tactical desktop or laptop workstation</strong>.<br><br>
+        <div style="background:rgba(255,0,60,0.12); border:1px solid rgba(255,0,60,0.4); padding:10px 14px; border-radius:4px; margin-bottom:12px; color:#ffb0b0;">
+          ⚠️ <strong>ANTI-CHEAT SECURITY DIRECTIVE:</strong> Mobile phones and small touchscreens are strictly barred to prevent unauthorized search tools, Google Lens scanning, and unmonitored operation.
+        </div>
+        Please open this application on your assigned competition laptop or workstation computer to participate.
+      </div>
+      <div style="margin-top:16px; font-size:10px; color:#8ba0b2; letter-spacing:1px;">
+        IEEE WOMEN IN ENGINEERING // STRATCOM PROCTOR DIVISION
+      </div>
+    </div>
+  </div>
+
   <!-- ANTI-CHEAT PROCTOR TAMPER LOCKDOWN OVERLAY -->
   <div id="proctor-lockdown-overlay" class="proctor-lockdown-overlay">
     <div class="proctor-lockdown-card">
       <div class="proctor-badge">
-        <span>🚨 SECURITY VIOLATION: FOCUS LOST</span>
+        <span>🚨 SECURITY VIOLATION: LOCKDOWN ENGAGED</span>
       </div>
       <div class="proctor-title">STRATCOM WORKSTATION LOCKDOWN</div>
       <div class="proctor-desc">
-        This workstation has locked itself because an external software, window, or web browser was accessed during active forensic operation.<br><br>
-        <strong style="color:var(--combat-red);">STRICT ANTI-CHEAT PROTOCOL:</strong> Switching windows, using unauthorized notes, or opening external tools is strictly prohibited.
+        This workstation has locked itself due to an unauthorized system event or navigation breach.<br><br>
+        <div style="margin: 10px 0; padding: 10px 14px; background: rgba(255,0,60,0.15); border: 1px solid var(--combat-red); border-radius: 4px; font-size: 11px; text-align: left;">
+          <span style="color: var(--hazard-amber); font-weight: bold; display: block; margin-bottom: 3px;">DETECTED BREACH REASON:</span>
+          <div id="proctor-violation-reason" style="color: #ffffff; font-weight: bold; font-size: 12px; letter-spacing: 0.5px;">External Program / Window Focus Lost (Alt+Tab / Windows Key)</div>
+        </div>
+        <strong style="color:var(--combat-red);">STRICT ANTI-CHEAT PROTOCOL:</strong> Exiting fullscreen, switching windows, using unauthorized search tools, or opening external tools is strictly prohibited.
       </div>
 
       <div class="proctor-incident-ledger">
@@ -1433,7 +1469,6 @@
       </div>
       <div class="header-controls">
         <button class="btn-chip" onclick="showTeamAuthModal()" title="Switch or View Team Credentials">👥 TEAM ID</button>
-        <button class="btn-chip" onclick="openOrganizerDashboard()" title="Open Organizer Command Center (F2)">⚙️ ORGANIZER</button>
         <button class="btn-chip active" id="btn-sound-toggle" onclick="toggleAudio()">AUDIO: ON</button>
         <button class="btn-chip" onclick="toggleFullscreen()">⛶ FULLSCREEN</button>
         <button class="btn-chip" onclick="summonEthan()">👁️ ETHAN</button>
@@ -1841,11 +1876,27 @@
       if (sound.enabled) sound.playSuccess();
     }
 
+    function requestAppFullscreen() {
+      const el = document.documentElement;
+      const rfs = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+      if (rfs) {
+        try {
+          const p = rfs.call(el);
+          if (p && p.catch) p.catch(() => {});
+        } catch(e) {}
+      }
+    }
+
+    function isAppFullscreen() {
+      return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+    }
+
     function toggleFullscreen() {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(() => {});
+      if (!isAppFullscreen()) {
+        requestAppFullscreen();
+        logTerm("⛶ [KIOSK SECURED]: Workstation locked to full screen mode.", "cyan");
       } else {
-        document.exitFullscreen().catch(() => {});
+        logTerm("⚠️ [KIOSK POLICY]: Fullscreen is strictly enforced during competition. Exiting will trigger proctor lockdown.", "yellow");
       }
     }
 
@@ -4363,31 +4414,68 @@
     }
 
     // ==========================================================================
-    // 12. Anti-Cheat Window Focus Loss & Proctor Lockdown Engine
+    // 12. Anti-Cheat, Mobile Blocker & Strict Fullscreen Proctor Lockdown Engine
     // ==========================================================================
     let proctorLockActive = false;
     let lockArmed = false;
     let violationCount = 0;
+    let fullscreenEnforcementActive = false;
+    let isMissionFinished = false;
 
     // Grace period on initial launch so window positioning doesn't falsely trigger
     setTimeout(() => {
       lockArmed = true;
-    }, 3500);
+    }, 2000);
 
-    function triggerProctorLockdown() {
-      if (!lockArmed || proctorLockActive) return;
+    // Hardware Blocker: Disallow mobile devices & smartphones
+    function checkAndEnforceDesktopWorkstation() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+      const isMobileUA = /Android|iPhone|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
+      const isDesktopOS = /Windows NT|Macintosh|X11; Linux x86_64/i.test(ua);
+      const isMobileDevice = isMobileUA && !isDesktopOS;
+      const blocker = document.getElementById('mobile-blocker-overlay');
+      if (blocker) {
+        if (isMobileDevice) {
+          blocker.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+          return true;
+        } else {
+          blocker.style.display = 'none';
+          return false;
+        }
+      }
+      return false;
+    }
+    setTimeout(checkAndEnforceDesktopWorkstation, 100);
+    window.addEventListener('resize', checkAndEnforceDesktopWorkstation);
+
+    function handleCheatingAttempt(reason) {
+      if (!currentTeam || isMissionFinished) return;
+      violationCount++;
+      const breachReason = reason || "Unauthorized Browser Action";
+      logTerm(`🚨 [CHEATING ATTEMPT]: ${breachReason}. Incident logged and transmitted to Organizer.`, 'red');
+      reportTelemetryAction(`🚨 CHEATING ATTEMPT: ${breachReason}!`);
+      sound.playBuzzer();
+    }
+
+    function triggerProctorLockdown(reason) {
+      if (!lockArmed || proctorLockActive || isMissionFinished) return;
       proctorLockActive = true;
       violationCount++;
+      const breachReason = reason || "Workstation focus lost to external program";
+
       sound.playKlaxon();
 
       const overlay = document.getElementById('proctor-lockdown-overlay');
       const countEl = document.getElementById('proctor-violation-count');
       const timeEl = document.getElementById('proctor-violation-time');
+      const reasonEl = document.getElementById('proctor-violation-reason');
       const inputEl = document.getElementById('proctor-pin-input');
       const errEl = document.getElementById('proctor-error-msg');
 
       if (countEl) countEl.innerText = violationCount;
       if (timeEl) timeEl.innerText = new Date().toISOString().substring(11, 19) + 'Z';
+      if (reasonEl) reasonEl.innerText = breachReason;
       if (errEl) errEl.innerText = '';
       if (inputEl) {
         inputEl.value = '';
@@ -4395,23 +4483,84 @@
       }
       if (overlay) overlay.style.display = 'flex';
 
-      logTerm(`🚨 [SECURITY BREACH]: Workstation focus lost to external program. Tamper Incident #${violationCount} logged.`, 'red');
-      reportTelemetryAction(`🚨 Workstation Locked: Focus Loss Violation (#${violationCount})`);
+      logTerm(`🚨 [SECURITY BREACH]: ${breachReason}. Tamper Incident #${violationCount} logged.`, 'red');
+      reportTelemetryAction(`🚨 CRITICAL BREACH: ${breachReason}!`);
     }
 
-    // Detect when user switches tabs, minimizes, or leaves the application
+    // Intercept right-click context menu (Disables Google Lens and external searching)
+    window.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      handleCheatingAttempt("Right-Click / Google Lens Context Menu Blocked");
+      return false;
+    }, true);
+
+    // Prevent dragging images or text to external browser tabs/Google Lens
+    window.addEventListener('dragstart', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }, true);
+
+    // Strictly enforce Fullscreen state changes (Esc key, F11, resizing out of fullscreen)
+    function handleFullscreenChange() {
+      if (fullscreenEnforcementActive && currentTeam && !isMissionFinished && lockArmed) {
+        if (!isAppFullscreen()) {
+          triggerProctorLockdown("Exited Fullscreen Mode (Pressed Esc / Window Resize)");
+        }
+      }
+    }
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    // Detect when user clicks Windows key, Alt+Tab, minimizes, or switches window focus
     window.addEventListener('blur', () => {
-      if (document.hidden) {
-        triggerProctorLockdown();
+      if (fullscreenEnforcementActive && currentTeam && !isMissionFinished && lockArmed && !proctorLockActive) {
+        triggerProctorLockdown("Lost Window Focus (Alt+Tab / Windows Key / External App)");
       }
     });
 
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        triggerProctorLockdown();
+      if (document.hidden && fullscreenEnforcementActive && currentTeam && !isMissionFinished && lockArmed && !proctorLockActive) {
+        triggerProctorLockdown("Switched Browser Tab or Minimized Window");
       }
     });
 
+    // Trap keyboard shortcuts: Windows key, Alt+Tab, DevTools, Inspect Element
+    window.addEventListener('keydown', (e) => {
+      // Windows / Meta / OS key
+      if (e.key === 'Meta' || e.key === 'OS' || e.code === 'MetaLeft' || e.code === 'MetaRight' || e.keyCode === 91 || e.keyCode === 92) {
+        e.preventDefault();
+        if (fullscreenEnforcementActive && currentTeam && !isMissionFinished) {
+          triggerProctorLockdown("Windows Key / Start Menu Triggered");
+        }
+        return false;
+      }
+
+      // Alt+Tab interception (where allowed by browser)
+      if (e.altKey && (e.key === 'Tab' || e.keyCode === 9)) {
+        e.preventDefault();
+        if (fullscreenEnforcementActive && currentTeam && !isMissionFinished) {
+          triggerProctorLockdown("Alt+Tab Window Switch Attempted");
+        }
+        return false;
+      }
+
+      // Developer Tools & Source Inspection Shortcuts
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
+        (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) ||
+        (e.shiftKey && e.key === 'F10')
+      ) {
+        e.preventDefault();
+        e.stopPropagation();
+        handleCheatingAttempt("Prohibited Shortcut / DevTools Attempt (" + e.key + ")");
+        return false;
+      }
+    }, true);
 
     function verifyProctorOverride() {
       const inputEl = document.getElementById('proctor-pin-input');
@@ -4426,8 +4575,10 @@
         const overlay = document.getElementById('proctor-lockdown-overlay');
         if (overlay) overlay.style.display = 'none';
 
+        requestAppFullscreen();
+
         logTerm(`🏆 [PROCTOR OVERRIDE]: Workstation unlocked by Organizer at ${new Date().toISOString().substring(11, 19)}Z.`, 'green');
-        reportTelemetryAction("Proctor PIN Override Entered: Workstation Unlocked");
+        reportTelemetryAction("🏆 Proctor Unlocked Workstation");
 
         // Re-arm after 2.5 seconds so focus returning to the window does not re-trigger
         setTimeout(() => {
@@ -4485,6 +4636,8 @@
       const modal = document.getElementById("team-auth-modal");
       if (modal) modal.style.display = "none";
       logTerm(`OPERATOR CLEARANCE GRANTED: [${team.team_id}] ${team.team_name || ''}`, "green");
+      requestAppFullscreen();
+      fullscreenEnforcementActive = true;
       reportTelemetryAction("Workstation Authenticated & Operational");
       startTelemetryHeartbeat();
     }
