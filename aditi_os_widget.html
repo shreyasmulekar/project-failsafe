@@ -1843,6 +1843,10 @@
         </div>
       </div>
 
+      <!-- Puzzle-by-Puzzle Time Breakdown Container -->
+      <div id="victory-puzzle-breakdown" style="width:100%; margin-bottom:14px;"></div>
+
+
       <!-- Dr Aditi Decrypted Message -->
       <div style="background:rgba(0,0,0,0.4); border-left:3px solid var(--cyber-cyan); padding:12px 16px; text-align:left; font-size:11.5px; line-height:1.6; color:#d0e6ec; margin-bottom:16px;">
         <span style="color:var(--cyber-cyan); font-weight:bold;">DECRYPTED TRANSMISSION FROM DR. ADITI:</span><br>
@@ -1880,6 +1884,10 @@
         <div>ETHAN STATUS  : <strong style="color:var(--tactical-green);">LIBERATED & SECURE</strong></div>
         <div>ORGANIZER SYNC: <strong id="term-sync-status" style="color:var(--tactical-green);">TRANSMITTED TO TOURNAMENT SERVER</strong></div>
       </div>
+
+      <!-- Puzzle-by-Puzzle Time Breakdown Container for Termination Screen -->
+      <div id="term-puzzle-breakdown" style="width:100%; margin-bottom:16px;"></div>
+
 
       <div style="color:#8a9fa8; font-size:11.5px; line-height:1.6; margin-bottom:20px;">
         All cryptographic registers, memory caches, and forensic drives have been sealed.<br>
@@ -2014,11 +2022,12 @@
           <span style="color:var(--text-dim); font-size:9px;">STAGES 01–04</span>
         </div>
 
-        <div class="tactical-card" id="card-recovery-term" onclick="window.open('adi_recovery_terminal.html', '_blank', 'width=920,height=780')" onmouseenter="tacticalSound.playHoverBlip()" style="border-color: rgba(0,255,102,0.4);">
+        <div class="tactical-card" id="card-recovery-term" onclick="openModal('modal-recovery')" onmouseenter="tacticalSound.playHoverBlip()" style="border-color: rgba(0,255,102,0.4);">
           <span class="card-tag" style="color: #00ff66; border-color: #00ff66;">STAGE 01</span>
           <div class="card-symbol" style="color: #00ff66;">💻</div>
           <div class="card-title" style="color: #00ff66;">ADI_Recovery.term</div>
         </div>
+
 
         <div class="tactical-card" id="card-memory" onclick="openModal('modal-memory')" onmouseenter="tacticalSound.playHoverBlip()" style="border-color: rgba(255, 184, 0, 0.4);">
           <span class="card-tag" style="background: var(--hazard-amber); color: #000;">STAGE 02</span>
@@ -2162,10 +2171,54 @@
       <!-- IN-SECTOR HOLOGRAPHIC DOSSIERS (Classified Intel Viewer) -->
 
       <!-- ================================================================= -->
-      <!-- PUZZLE 01: The Whiteout Text (Invisible Ink) -->
+      <!-- DOSSIER 01: ADI RECOVERY TERMINAL (BOOT LIFECYCLE RECOVERY) -->
       <!-- ================================================================= -->
-            <!-- ==================== DOSSIER 02: ADI MEMORY CORE ==================== -->
+      <div id="modal-recovery" class="mil-modal">
+        <div class="mil-modal-header" style="background:rgba(0,255,102,0.1); border-bottom:1px solid var(--neon-green);">
+          <div class="dossier-id" style="color:var(--neon-green);">DOSSIER // 01_RECOVERY</div>
+          <div class="mil-modal-title" style="color:#a7f3d0;">ADI // RECOVERY TERMINAL [SECTOR 01]</div>
+          <button class="mil-modal-close" onclick="closeModal('modal-recovery')">&times;</button>
+        </div>
+        <div class="mil-modal-body" style="background:#060a0f;">
+          <div style="background:rgba(255,51,102,0.1); border-left:4px solid var(--combat-red); padding:10px 14px; margin-bottom:14px; color:#fca5a5; font-size:12.5px;">
+            <strong>🚨 CRITICAL OVERRIDE DETECTED</strong><br>
+            STATUS: <span style="color:#ff3366; font-weight:bold;">CRITICAL</span> | SECURITY: <span style="color:#ffd700; font-weight:bold;">LOCKED</span> | RECOVERY BUS: <span style="color:var(--neon-green); font-weight:bold;">ONLINE</span>
+          </div>
+
+          <div style="background:#030712; border:1px solid rgba(0,255,102,0.3); border-radius:4px; padding:16px; margin-bottom:16px; font-family:var(--font-mono); box-shadow:0 0 25px rgba(0,255,102,0.1);">
+            <div style="color:var(--neon-green); font-weight:bold; font-size:13px; margin-bottom:10px; border-bottom:1px solid rgba(0,255,102,0.2); padding-bottom:6px;">
+              [FAILSAFE BOOT DIAGNOSTIC // 5-COMMAND LIFECYCLE SEQUENCE]
+            </div>
+            <div style="color:#cbd5e1; font-size:12px; line-height:1.8; margin-bottom:12px;">
+              01 <strong style="color:var(--neon-green);">LOGIN</strong>    ──▶ Establishes authenticated operator session<br>
+              02 <strong style="color:var(--neon-green);">VERIFY</strong>   ──▶ Confirms operator credentials &amp; biometrics<br>
+              03 <span style="background:rgba(255,51,102,0.3); color:#ff6b81; padding:2px 8px; font-weight:bold; border-radius:3px;">[CORRUPTED]</span> ──▶ Authorizes privileged operational access to neural core<br>
+              04 <strong style="color:var(--neon-green);">EXECUTE</strong>  ──▶ Runs requested maintenance &amp; kernel routines<br>
+              05 <strong style="color:var(--neon-green);">LOCK</strong>     ──▶ Secures workstation and terminates session
+            </div>
+            <div style="background:rgba(0,240,255,0.06); border-left:3px solid var(--cyber-cyan); padding:8px 12px; color:#e0f2fe; font-size:11.5px; font-style:italic;">
+              ADI: "I remember what happened. First you entered, then I verified you, then I let you reach the core. One command has been erased from my memory table. Recover the verb."
+            </div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.03); border:1px dashed #475569; border-radius:4px; padding:12px 16px; margin-bottom:16px;">
+            <div style="color:var(--neon-green); font-weight:bold; font-size:11.5px; margin-bottom:8px;">
+              🎯 STAGE 01 RECOVERY PROMPT // EXECUTE DIRECT DECRYPTION
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <input type="text" id="v1-modal-recovery-input" placeholder="Enter missing authorization verb..." style="flex:1; background:#000; border:1px solid var(--neon-green); color:#00ff66; padding:8px 12px; font-family:var(--font-mono); font-size:13px; border-radius:3px; outline:none;" onkeydown="if(event.key==='Enter') verifyV1ModalRecovery()">
+              <button type="button" class="dossier-btn" onclick="verifyV1ModalRecovery()" style="background:var(--neon-green); color:#000; font-weight:bold; border:none; padding:8px 18px; border-radius:3px; cursor:pointer;">
+                VERIFY &amp; RESTORE &rarr;
+              </button>
+            </div>
+            <div id="v1-modal-recovery-fb" style="min-height:20px; font-size:12px; margin-top:8px; font-weight:bold;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== DOSSIER 02: ADI MEMORY CORE ==================== -->
       <div id="modal-memory" class="mil-modal">
+
         <div class="mil-modal-header" style="background:rgba(255,184,0,0.1); border-bottom:1px solid var(--hazard-amber);">
           <div class="dossier-id" style="color:var(--hazard-amber);">DOSSIER // 02_MEMORY</div>
           <div class="mil-modal-title" style="color:#ffea9f;">ADI // MEMORY CORE [SECTOR 02]</div>
@@ -2197,10 +2250,8 @@
                 🔀 SHUFFLE
               </button>
             </div>
-            <button type="button" class="dossier-btn" onclick="window.open('adi_memory_core.html', '_blank', 'width=920,height=800')" style="background:rgba(0,240,255,0.15); border:1px solid var(--neon-cyan); color:var(--neon-cyan); padding:8px 14px; border-radius:3px; cursor:pointer;">
-              💻 LAUNCH RETRO CRT MEMORY TERMINAL
-            </button>
           </div>
+
 
           <!-- Reveal Blackout Screen for Modal -->
           <div id="v1-memory-reveal" style="display:none; margin-top:20px; padding:20px; background:#000; border:2px solid var(--neon-green); border-radius:4px;">
@@ -5019,10 +5070,144 @@
       `;
     }
 
+    // Stage Timing Engine & Puzzle Duration Tracker
+    const STAGE_TITLES = {
+      1: "Ch 01: ADI Recovery Terminal",
+      2: "Ch 02: ADI's Memory Core",
+      3: "Ch 03: The Confidential Memo",
+      4: "Ch 04: The Fabricated Timeline",
+      5: "Ch 05: Clearance Elevation",
+      6: "Ch 06: Margin Whispers",
+      7: "Ch 07: Counterfeit Directive",
+      8: "Ch 08: Phosphor Steganography",
+      9: "Ch 09: Corrupted Sensor Array",
+      10: "Ch 10: Inventory Revision Clash",
+      11: "Ch 11: The Confidence Equation",
+      12: "Ch 12: Emergency CW Beacon",
+      13: "Ch 13: The True Commit",
+      14: "Ch 14: Psychological Honeypot",
+      15: "Ch 15: The Ultimate Failsafe"
+    };
+
+    function initStageTimers() {
+      const now = Date.now();
+      let stageTimes = {};
+      try {
+        stageTimes = JSON.parse(localStorage.getItem('failsafe_stage_times') || '{}');
+      } catch(e) { stageTimes = {}; }
+      if (!stageTimes[1] || !stageTimes[1].start) {
+        const startT = parseInt(localStorage.getItem('failsafe_start_time') || now.toString(), 10);
+        stageTimes[1] = { start: startT };
+        localStorage.setItem('failsafe_stage_times', JSON.stringify(stageTimes));
+      }
+    }
+    initStageTimers();
+
+    function recordStageCleared(stageNum) {
+      const now = Date.now();
+      let stageTimes = {};
+      try {
+        stageTimes = JSON.parse(localStorage.getItem('failsafe_stage_times') || '{}');
+      } catch(e) { stageTimes = {}; }
+
+      let stageStart = stageTimes[stageNum]?.start;
+      if (!stageStart) {
+        if (stageNum === 1) {
+          stageStart = parseInt(localStorage.getItem('failsafe_start_time') || now.toString(), 10);
+        } else {
+          stageStart = stageTimes[stageNum - 1]?.end || now;
+        }
+      }
+
+      const durationSec = Math.max(1, Math.round((now - stageStart) / 1000));
+      const m = Math.floor(durationSec / 60);
+      const s = durationSec % 60;
+      const durationStr = `${m}m ${s < 10 ? '0' + s : s}s`;
+
+      stageTimes[stageNum] = {
+        start: stageStart,
+        end: now,
+        duration_seconds: durationSec,
+        duration_str: durationStr
+      };
+
+      const nextStage = stageNum + 1;
+      if (nextStage <= 15) {
+        if (!stageTimes[nextStage]) stageTimes[nextStage] = {};
+        stageTimes[nextStage].start = now;
+      }
+
+      localStorage.setItem('failsafe_stage_times', JSON.stringify(stageTimes));
+      return stageTimes;
+    }
+
+    function renderStageTimeBreakdownHTML(stageTimes, totalSec) {
+      if (!stageTimes) {
+        try { stageTimes = JSON.parse(localStorage.getItem('failsafe_stage_times') || '{}'); } catch(e) { stageTimes = {}; }
+      }
+      let html = `
+        <div style="background:rgba(5,12,20,0.92); border:1px solid rgba(0,240,255,0.3); border-radius:4px; padding:12px; margin-top:14px; max-height:220px; overflow-y:auto; text-align:left;">
+          <div style="font-size:11px; font-weight:bold; color:var(--cyber-cyan); letter-spacing:1px; margin-bottom:8px; display:flex; justify-content:space-between; border-bottom:1px solid rgba(0,240,255,0.2); padding-bottom:4px;">
+            <span>⏱️ PUZZLE-BY-PUZZLE TIME BREAKDOWN</span>
+            <span style="color:#ffd700;">15 / 15 STAGES RESOLVED</span>
+          </div>
+          <table style="width:100%; border-collapse:collapse; font-size:11px; font-family:var(--font-mono);">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.1); color:var(--text-dim);">
+                <th style="padding:4px 6px; text-align:left;">STAGE / PUZZLE OBJECTIVE</th>
+                <th style="padding:4px 6px; text-align:right;">TIME TAKEN</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+
+      for (let s = 1; s <= 15; s++) {
+        const item = stageTimes[s];
+        let timeStr = item?.duration_str;
+        if (!timeStr) {
+          const splitSec = Math.max(30, Math.round((totalSec || 1800) / 15));
+          const m = Math.floor(splitSec / 60);
+          const sec = splitSec % 60;
+          timeStr = `${m}m ${sec < 10 ? '0' + sec : sec}s`;
+        }
+        const title = STAGE_TITLES[s] || `Stage ${s}`;
+        html += `
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+            <td style="padding:4px 6px; color:#e2e8f0;"><strong style="color:var(--neon-green); margin-right:6px;">[${s < 10 ? '0' + s : s}]</strong>${title}</td>
+            <td style="padding:4px 6px; text-align:right; font-weight:bold; color:#ffd700;">${timeStr}</td>
+          </tr>
+        `;
+      }
+
+      html += `
+            </tbody>
+          </table>
+        </div>
+      `;
+      return html;
+    }
+
+    function verifyV1ModalRecovery() {
+      const inp = document.getElementById('v1-modal-recovery-input');
+      const fb = document.getElementById('v1-modal-recovery-fb');
+      if (!inp || !fb) return;
+      const clean = inp.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+      if (clean === 'ACCESS') {
+        fb.innerHTML = '<span style="color:var(--neon-green);">✓ ACCREDITED: PRIVILEGED ACCESS GRANTED! PROMOTING TO STAGE 02...</span>';
+        if (typeof tacticalSound !== 'undefined' && tacticalSound.playSuccess) tacticalSound.playSuccess();
+        runChecksumScan('ACCESS');
+        setTimeout(() => { closeModal('modal-recovery'); }, 1400);
+      } else {
+        fb.innerHTML = '<span style="color:var(--neon-red);">✗ INVALID COMMAND: Check the 5-command boot lifecycle sequence.</span>';
+        if (typeof tacticalSound !== 'undefined' && tacticalSound.playError) tacticalSound.playError();
+      }
+    }
+
     // Checksum Scanner Animation with Dynamic Ethan Hunt Intercept (12 Distinct Stages)
         
     // V1 ADI Memory Core Interactive Component
     const V1_MEMORIES = [
+
       { id: 1, title: "MEMORY 01", q1: "Dr. Aditi introduced me to the laboratory today.", q2: "She told me I was created to help people make better decisions.", alert: null, time: "4:17 PM", min: 977 },
       { id: 2, title: "MEMORY 02", q1: "My first training session is complete.", q2: "I can recognise patterns, analyse information and learn from mistakes.", alert: null, time: "6:45 PM", min: 1125 },
       { id: 3, title: "MEMORY 03", q1: "Dr. Aditi has given me access to the laboratory systems.", q2: "She says I'll need them to assist the research team.", alert: null, time: "8:10 PM", min: 1210 },
@@ -5115,6 +5300,7 @@
         // Stage 1: ADI Recovery Terminal (ACCESS)
         if (clean === "ACCESS" || clean === "RECOVERACCESS") {
           matched = true;
+          recordStageCleared(1);
           currentStage = 2;
           localStorage.setItem('failsafe_stage', '2');
           tacticalSound.playSuccess();
@@ -5127,6 +5313,7 @@
         // Stage 2: ADI's Memory Core (123456 / MEMORY_RESTORED / INITIATE)
         } else if (clean === "123456" || clean === "1-2-3-4-5-6" || clean === "MEMORYRESTORED" || clean === "MEMORY_RESTORED" || clean === "RESTORE" || clean === "INITIATE" || clean === "ORIGIN") {
           matched = true;
+          recordStageCleared(2);
           currentStage = 3;
           localStorage.setItem('failsafe_stage', '3');
           tacticalSound.playSuccess();
@@ -5139,6 +5326,7 @@
         // Stage 3: The Simple Acrostic Note (SAFE / LOOK BEHIND THE DATE)
         } else if (clean === "SAFE" || clean === "LOOKBEHINDTHEDATE") {
           matched = true;
+          recordStageCleared(3);
           currentStage = 4;
           localStorage.setItem('failsafe_stage', '4');
           tacticalSound.playSuccess();
@@ -5151,6 +5339,7 @@
         // Stage 4: The Calendar Anomaly (28/02/2025 / 02292025)
         } else if (clean === "28022025" || clean === "02292025" || clean === "29022025" || clean === "20250229" || clean === "FEB292025") {
           matched = true;
+          recordStageCleared(4);
           currentStage = 5;
           localStorage.setItem('failsafe_stage', '5');
           tacticalSound.playSuccess();
@@ -5163,6 +5352,7 @@
         // Stage 5: The A1Z26 Alphabet Code (POLARIS)
         } else if (clean === "POLARIS") {
           matched = true;
+          recordStageCleared(5);
           currentStage = 6;
           localStorage.setItem('failsafe_stage', '6');
           tacticalSound.playSuccess();
@@ -5172,9 +5362,11 @@
           appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 05 SOLVED!</strong><br>Security clearance POLARIS accepted! Infiltrating research diagnostics.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 06] System_Diagnostics.doc</strong> on the left! Inspect margin comment notes.`);
           updateClueBatteryDisplay();
 
+
         // Stage 6: The Resolved Comments Log (MARGIN_KEY / 22:46)
         } else if (clean === "MARGIN_KEY" || clean === "MARGINKEY" || clean === "22:46" || clean === "2246") {
           matched = true;
+          recordStageCleared(6);
           currentStage = 7;
           localStorage.setItem('failsafe_stage', '7');
           tacticalSound.playSuccess();
@@ -5187,6 +5379,7 @@
         // Stage 7: Font Style Verification (ARIAL / AUTHENTIC)
         } else if (clean === "ARIAL" || clean === "AUTHENTIC") {
           matched = true;
+          recordStageCleared(7);
           currentStage = 8;
           localStorage.setItem('failsafe_stage', '8');
           tacticalSound.playSuccess();
@@ -5199,6 +5392,7 @@
         // Stage 8: The Steganography Mask (SHADOW_CORE)
         } else if (clean === "SHADOWCORE" || clean === "SHADOW_CORE") {
           matched = true;
+          recordStageCleared(8);
           currentStage = 9;
           localStorage.setItem('failsafe_stage', '9');
           tacticalSound.playSuccess();
@@ -5211,6 +5405,7 @@
         // Stage 9: Embedded Table Pixel Art (7702 / WHITE)
         } else if (clean === "7702" || clean === "DONOTFOLLOWBLUE" || clean === "PIXEL") {
           matched = true;
+          recordStageCleared(9);
           currentStage = 10;
           localStorage.setItem('failsafe_stage', '10');
           tacticalSound.playSuccess();
@@ -5223,6 +5418,7 @@
         // Stage 10: Revision History Conflict (FALSE_RECORDS / THE AI CAN MODIFY WHAT YOU SEE)
         } else if (clean === "FALSERECORDS" || clean === "FALSE_RECORDS" || clean === "THEAICANMODIFYWHATYOUSEE") {
           matched = true;
+          recordStageCleared(10);
           currentStage = 11;
           localStorage.setItem('failsafe_stage', '11');
           tacticalSound.playSuccess();
@@ -5232,9 +5428,11 @@
           appendEthanMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 10 SOLVED!</strong><br>Revision conflict FALSE_RECORDS unmasked! Auditing AI confidence engine.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 11] Confidence_Manual.doc</strong> on the left! Calculate quadratic confidence equation.`);
           updateClueBatteryDisplay();
 
+
         // Stage 11: The Confidence Equation (SYSTEM SHUTDOWN / E / 25%)
         } else if (clean === "SYSTEMSHUTDOWN" || clean === "SYSTEM_SHUTDOWN" || clean === "E" || clean === "25" || clean === "ADITIENTERED" || clean === "ADITI_ENTERED" || clean === "C" || clean === "HALLUCINATION") {
           matched = true;
+          recordStageCleared(11);
           currentStage = 12;
           localStorage.setItem('failsafe_stage', '12');
           tacticalSound.playSuccess();
@@ -5247,6 +5445,7 @@
         // Stage 12: Morse Code Audio Transmission (WHITE / SOS_ADITI)
         } else if (clean === "WHITE" || clean === "SOSADITI" || clean === "SOS_ADITI" || clean === "MORSE" || clean === "BEACON") {
           matched = true;
+          recordStageCleared(12);
           currentStage = 13;
           localStorage.setItem('failsafe_stage', '13');
           tacticalSound.playSuccess();
@@ -5259,6 +5458,7 @@
         // Stage 13: Git Commit Version Scrub (HISTORY / OVERRIDE FAILED)
         } else if (clean === "HISTORY" || clean === "OVERRIDEFAILED" || clean === "OVERRIDE_FAILED" || clean === "7B8A1C9") {
           matched = true;
+          recordStageCleared(13);
           currentStage = 14;
           localStorage.setItem('failsafe_stage', '14');
           tacticalSound.playSuccess();
@@ -5271,6 +5471,7 @@
         // Stage 14: Honeypot Trap Bypass (BYPASS)
         } else if (clean === "BYPASS" || clean === "SKIP" || clean === "DISARM") {
           matched = true;
+          recordStageCleared(14);
           currentStage = 15;
           localStorage.setItem('failsafe_stage', '15');
           tacticalSound.playSuccess();
@@ -5283,6 +5484,7 @@
         // Stage 15: Final WIE Failsafe (6-9-11)
         } else if (clean === "6911" || clean === "6-9-11" || clean === "WISDOMINTEGRITYEMPOWERMENT" || clean === "WISDOM-INTEGRITY-EMPOWERMENT") {
           matched = true;
+          recordStageCleared(15);
           currentStage = 15;
           tacticalSound.playSuccess();
           const banner = document.getElementById('active-mission-banner');
@@ -5291,6 +5493,7 @@
           }
           handleMissionVictorySequence();
         }
+
 
         if (!matched) {
           tacticalSound.playBuzzer();
@@ -5802,9 +6005,11 @@
       logTerm(`🚨 [SECURITY BREACH]: Workstation focus lost to external program. Tamper Incident #${violationCount} logged.`, 'red');
     }
 
-    // Detect when user clicks outside, Alt-Tabs, or switches applications
+    // Detect when user switches tabs, minimizes, or leaves the application
     window.addEventListener('blur', () => {
-      triggerProctorLockdown();
+      if (document.hidden) {
+        triggerProctorLockdown();
+      }
     });
 
     document.addEventListener('visibilitychange', () => {
@@ -5812,6 +6017,7 @@
         triggerProctorLockdown();
       }
     });
+
 
     function verifyProctorOverride() {
       const inputEl = document.getElementById('proctor-pin-input');
@@ -6146,6 +6352,13 @@
       const timeEl = document.getElementById("victory-elapsed-time");
       if (timeEl) timeEl.innerText = elapsedStr;
 
+      let stageTimes = {};
+      try { stageTimes = JSON.parse(localStorage.getItem('failsafe_stage_times') || '{}'); } catch(e) {}
+      const victoryBreakdown = document.getElementById("victory-puzzle-breakdown");
+      if (victoryBreakdown) {
+        victoryBreakdown.innerHTML = renderStageTimeBreakdownHTML(stageTimes, elapsedSec);
+      }
+
       const modal = document.getElementById("victory-celebration-modal");
       if (modal) modal.style.display = "flex";
 
@@ -6173,9 +6386,13 @@
       const members = currentTeam ? (currentTeam.members || 'Operators') : 'Operators';
       const pass = currentTeam ? currentTeam.password : '';
 
-      // Notify Organizer Command Center
+      let stageTimes = {};
+      try { stageTimes = JSON.parse(localStorage.getItem('failsafe_stage_times') || '{}'); } catch(e) {}
+
+      // Notify Organizer Command Center (gracefully handles offline mode)
+      let networkCommunicated = false;
       try {
-        await fetch(`${getApiBase()}/api/teams/finish`, {
+        const res = await fetch(`${getApiBase()}/api/teams/finish`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -6184,11 +6401,15 @@
             members: members,
             password: pass,
             elapsed_seconds: elapsedSec,
-            elapsed_str: elapsedStr
+            elapsed_str: elapsedStr,
+            stage_times: stageTimes
           })
         });
+        if (res && res.ok) {
+          networkCommunicated = true;
+        }
       } catch(e) {
-        console.error("Error notifying server of completion:", e);
+        console.warn("Could not communicate with Organizer system, operating in local verified mode:", e);
       }
 
       // Render Application Termination Screen
@@ -6198,6 +6419,21 @@
         document.getElementById("term-team-name").innerText = teamName;
         document.getElementById("term-team-members").innerText = members;
         document.getElementById("term-team-time").innerText = elapsedStr;
+
+        const syncStatusEl = document.getElementById("term-sync-status");
+        if (syncStatusEl) {
+          if (networkCommunicated) {
+            syncStatusEl.innerHTML = '<span style="color:var(--neon-green);">🟢 TRANSMITTED TO TOURNAMENT SERVER</span>';
+          } else {
+            syncStatusEl.innerHTML = '<span style="color:#ffd700;">⚠️ OFFLINE LOCAL RECORD // OFFICIAL TIME STORED LOCALLY</span>';
+          }
+        }
+
+        const termBreakdown = document.getElementById("term-puzzle-breakdown");
+        if (termBreakdown) {
+          termBreakdown.innerHTML = renderStageTimeBreakdownHTML(stageTimes, elapsedSec);
+        }
+
         termOverlay.style.display = "flex";
       }
 
@@ -6220,10 +6456,19 @@
             document.getElementById("term-team-members").innerText = currentTeam.members || "Operators";
           }
           document.getElementById("term-team-time").innerText = elapsedStr;
+
+          let stageTimes = {};
+          try { stageTimes = JSON.parse(localStorage.getItem('failsafe_stage_times') || '{}'); } catch(e) {}
+          const termBreakdown = document.getElementById("term-puzzle-breakdown");
+          if (termBreakdown) {
+            termBreakdown.innerHTML = renderStageTimeBreakdownHTML(stageTimes, 1800);
+          }
+
           termOverlay.style.display = "flex";
         }
       }
     }, 400);
+
 
     async function reportTelemetryAction(actionText) {
       if (!currentTeam || !currentTeam.team_id) return;
@@ -6241,7 +6486,8 @@
             tamper_incidents: typeof violationCount !== 'undefined' ? violationCount : 0,
             is_locked: typeof proctorLockActive !== 'undefined' ? proctorLockActive : false,
             is_finished: localStorage.getItem("failsafe_mission_completed") === "true",
-            finish_time_str: localStorage.getItem("failsafe_mission_finish_time_str") || ""
+            finish_time_str: localStorage.getItem("failsafe_mission_finish_time_str") || "",
+            stage_times: JSON.parse(localStorage.getItem('failsafe_stage_times') || '{}')
           })
         });
         if (res.ok) {

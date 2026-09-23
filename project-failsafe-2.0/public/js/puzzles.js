@@ -30,11 +30,13 @@ LAST SUCCESSFUL COMMANDS:
 04  EXECUTE
 05  LOCK
         </pre>
-        <div style="margin-top: 14px; display: flex; gap: 10px; align-items: center;">
-          <button type="button" class="gate-btn" onclick="window.open('adi_recovery_terminal.html', '_blank', 'width=920,height=780')" style="background: #00ff66; color: #000; font-weight: bold; padding: 6px 14px; border: none; border-radius: 3px; cursor: pointer;">
-            💻 LAUNCH INTERACTIVE RETRO CRT TERMINAL
-          </button>
-          <span style="font-size: 11px; color: #64748b;">(Or deduce the 6-letter command above)</span>
+        <div style="margin-top: 14px; background: rgba(0,255,102,0.06); border: 1px dashed #00ff66; padding: 10px; border-radius: 4px;">
+          <div style="font-size: 12px; color: #00ff66; font-weight: bold;">
+            🎯 DEDUCE THE 6-LETTER AUTHORIZATION COMMAND (LOGIN → VERIFY → ? → EXECUTE → LOCK)
+          </div>
+          <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">
+            Enter the recovered verb into the Stage Decryption Prompt below.
+          </div>
         </div>
       </div>
     `
@@ -57,13 +59,17 @@ LAST SUCCESSFUL COMMANDS:
           6 fragments recovered. Their original sequence has been lost.<br>
           ADI: <em>"I remember what happened. I just don't remember when. Restore my memories in the correct order."</em>
         </p>
-        <div style="display: flex; gap: 10px; margin-top: 14px;">
-          <button type="button" class="gate-btn" onclick="window.open('adi_memory_core.html', '_blank', 'width=920,height=800')" style="background: #ffb800; color: #000; font-weight: bold; padding: 8px 16px; border: none; border-radius: 3px; cursor: pointer;">
-            🧠 LAUNCH INTERACTIVE MEMORY CORE TERMINAL
-          </button>
+        <div style="margin-top: 14px; background: rgba(255,184,0,0.08); border: 1px dashed #ffb800; padding: 10px; border-radius: 4px;">
+          <div style="font-size: 12px; color: #ffd700; font-weight: bold;">
+            🧠 CHRONOLOGY CHALLENGE: REORDER FRAGMENTS (4:17 PM TO 10:15 PM)
+          </div>
+          <div style="font-size: 11px; color: #cbd5e1; margin-top: 4px;">
+            Extract the chronological numerical sequence (1-2-3-4-5-6) and submit below.
+          </div>
         </div>
       </div>
     `
+
   },
 
   _OLD_2: {
@@ -377,14 +383,13 @@ LAST SUCCESSFUL COMMANDS:
           <tr style="border-bottom: 1px solid #e2e8f0;"><td style="padding: 6px;">D — Black case detected</td><td style="padding: 6px;">0 / 4</td><td style="padding: 6px;">0%</td><td style="padding: 6px; color: green;">(0/4)² × 100 = 0% (MATCH)</td></tr>
           <tr style="border-bottom: 1px solid #e2e8f0; background: #fff1f2;"><td style="padding: 6px; font-weight: bold; color: #e11d48;">E — System shutdown</td><td style="padding: 6px; font-weight: bold;">2 / 4</td><td style="padding: 6px; font-weight: bold; color: #e11d48;">74% (CORRUPTED)</td><td style="padding: 6px; font-weight: bold; color: #e11d48;">(2/4)² × 100 = 25%</td></tr>
         </table>
-        <div style="display: flex; gap: 10px; align-items: center;">
-          <button type="button" onclick="window.open('confidence_equation.html', '_blank', 'width=980,height=820')" style="background: #0284c7; color: white; border: none; padding: 6px 14px; border-radius: 4px; font-size: 12px; cursor: pointer;">
-            🧠 LAUNCH FULL INTERACTIVE FORENSIC EQUATION LAB
-          </button>
-          <span style="font-size: 11px; color: #64748b;">Corrupted prediction: <strong>SYSTEM SHUTDOWN</strong> (or <strong>E</strong>)</span>
+        <div style="margin-top: 10px; background: rgba(2,132,199,0.1); border: 1px dashed #0284c7; padding: 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 12px; color: #38bdf8; font-weight: bold;">🎯 CORRUPTED EVENT ISOLATED: Row E (74% vs expected 25%)</span>
+          <span style="font-size: 11px; color: #cbd5e1;">Passcode Key: <strong>SYSTEM SHUTDOWN</strong></span>
         </div>
       </div>
     `
+
   },
 
   12: {

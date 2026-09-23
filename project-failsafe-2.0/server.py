@@ -356,7 +356,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     "hints_count": t.get("hints_count", 0),
                     "traps_count": t.get("traps_count", 0),
                     "finish_time_str": t.get("finish_time_str", ""),
-                    "unlocked_stages": t.get("unlocked_stages", [1])
+                    "unlocked_stages": t.get("unlocked_stages", [1]),
+                    "stage_times": t.get("stage_times", {})
                 })
 
             # Sort hierarchy:
@@ -529,6 +530,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             team_name = data.get("team_name", "").strip()
             members = data.get("members", "").strip()
             password = data.get("password", "").strip()
+            stage_times = data.get("stage_times", {})
 
             if not team_id:
                 self._send_json(400, {"error": "Missing team_id"})
@@ -559,6 +561,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     "last_seen": now,
                     "is_finished": True,
                     "finish_time_str": elapsed_str,
+                    "stage_times": stage_times,
                     "last_action": f"🏆 MISSION COMPLETE: ETHAN Liberated in {elapsed_str} // Workstation Terminated",
                     "activity_log": []
                 }
@@ -570,6 +573,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     team["members"] = members
                 if password:
                     team["password"] = password
+                if stage_times:
+                    team["stage_times"] = stage_times
                 team["is_finished"] = True
                 team["current_stage"] = 15
                 team["end_time"] = now
@@ -615,6 +620,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             password = data.get("password", "").strip()
             is_finished = data.get("is_finished")
             finish_time_str = data.get("finish_time_str", "")
+            stage_times = data.get("stage_times")
 
             if not team_id:
                 self._send_json(400, {"error": "Missing team_id"})
@@ -644,6 +650,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     "remote_reset": False,
                     "last_seen": now,
                     "last_action": action or "Station connected",
+                    "stage_times": stage_times or {},
                     "activity_log": [{
                         "time": datetime.now().strftime("%H:%M:%S"),
                         "stage": current_stage or 1,
@@ -659,6 +666,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     team["members"] = members
                 if password and not team.get("password"):
                     team["password"] = password
+                if stage_times:
+                    team["stage_times"] = stage_times
 
             team["last_seen"] = now
 

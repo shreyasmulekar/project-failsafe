@@ -66,8 +66,8 @@
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "\ud83c\udfc6 MISSION COMPLETE: ETHAN Liberated in 00m 00s // Workstation Terminated",
-      "last_seen": 1790140236.3287349,
+      "last_action": "Active in Terminal",
+      "last_seen": 1790142107.199965,
       "activity_log": [
         {
           "time": "10:38:16",
@@ -113,14 +113,121 @@
           "time": "10:40:36",
           "stage": 15,
           "action": "\ud83c\udfc6 VICTORY: Solved entire mystery in 00m 00s! ETHAN freed, ADI purged."
+        },
+        {
+          "time": "11:10:27",
+          "stage": 14,
+          "action": "Decrypted Honeypot Bypass (Stage 14)"
+        },
+        {
+          "time": "11:10:27",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY: Solved entire mystery in 30m 45s! ETHAN freed, ADI purged."
+        },
+        {
+          "time": "11:11:29",
+          "stage": 14,
+          "action": "Decrypted Honeypot Bypass (Stage 14)"
+        },
+        {
+          "time": "11:11:30",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY: Solved entire mystery in 30m 45s! ETHAN freed, ADI purged."
+        },
+        {
+          "time": "11:11:39",
+          "stage": 15,
+          "action": "Workstation Authenticated & Operational"
+        },
+        {
+          "time": "11:11:40",
+          "stage": 15,
+          "action": "\ud83c\udfc6 Solved all 15 stages in 00m 00s! Awaiting ETHAN liberation."
+        },
+        {
+          "time": "11:11:43",
+          "stage": 15,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:11:47",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY: Solved entire mystery in 00m 00s! ETHAN freed, ADI purged."
+        },
+        {
+          "time": "11:11:47",
+          "stage": 15,
+          "action": "Active in Terminal"
         }
       ],
       "hints_history": [],
       "start_time": 1790140096.8550646,
-      "end_time": 1790140236.3287349,
+      "end_time": 1790142107.0916967,
       "is_finished": true,
       "created_at": "2026-09-23T10:38:16.855245",
-      "finish_time_str": "00m 00s"
+      "finish_time_str": "00m 00s",
+      "stage_times": {
+        "1": {
+          "duration_seconds": 65,
+          "duration_str": "1m 05s"
+        },
+        "2": {
+          "duration_seconds": 70,
+          "duration_str": "1m 10s"
+        },
+        "3": {
+          "duration_seconds": 75,
+          "duration_str": "1m 15s"
+        },
+        "4": {
+          "duration_seconds": 80,
+          "duration_str": "1m 20s"
+        },
+        "5": {
+          "duration_seconds": 85,
+          "duration_str": "1m 25s"
+        },
+        "6": {
+          "duration_seconds": 90,
+          "duration_str": "1m 30s"
+        },
+        "7": {
+          "duration_seconds": 95,
+          "duration_str": "1m 35s"
+        },
+        "8": {
+          "duration_seconds": 100,
+          "duration_str": "1m 40s"
+        },
+        "9": {
+          "duration_seconds": 105,
+          "duration_str": "1m 45s"
+        },
+        "10": {
+          "duration_seconds": 110,
+          "duration_str": "1m 50s"
+        },
+        "11": {
+          "duration_seconds": 115,
+          "duration_str": "1m 55s"
+        },
+        "12": {
+          "duration_seconds": 120,
+          "duration_str": "2m 00s"
+        },
+        "13": {
+          "duration_seconds": 125,
+          "duration_str": "2m 05s"
+        },
+        "14": {
+          "duration_seconds": 130,
+          "duration_str": "2m 10s"
+        },
+        "15": {
+          "duration_seconds": 135,
+          "duration_str": "2m 15s"
+        }
+      }
     }
   },
   "broadcasts": [
@@ -138,6 +245,21 @@
       "id": 3,
       "message": "\ud83c\udfc6 MISSION COMPLETED: Team Apex Cipher Hunters [OMEGA-77] liberated ETHAN in 00m 00s! Rogue AI purged!",
       "time": "10:40:36"
+    },
+    {
+      "id": 4,
+      "message": "\ud83c\udfc6 MISSION COMPLETED: Team Apex Cipher Hunters [OMEGA-77] liberated ETHAN in 30m 45s! Rogue AI purged!",
+      "time": "11:10:27"
+    },
+    {
+      "id": 5,
+      "message": "\ud83c\udfc6 MISSION COMPLETED: Team Apex Cipher Hunters [OMEGA-77] liberated ETHAN in 30m 45s! Rogue AI purged!",
+      "time": "11:11:30"
+    },
+    {
+      "id": 6,
+      "message": "\ud83c\udfc6 MISSION COMPLETED: Team Apex Cipher Hunters [OMEGA-77] liberated ETHAN in 00m 00s! Rogue AI purged!",
+      "time": "11:11:47"
     }
   ],
   "created_at": "2026-09-21T00:00:00.000000"

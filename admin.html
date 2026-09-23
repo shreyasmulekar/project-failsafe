@@ -779,6 +779,22 @@
     </div>
   </div>
 
+  <!-- Puzzle Times Breakdown Modal -->
+  <div id="modal-puzzle-times" class="modal-backdrop">
+    <div class="modal-box" style="max-width: 650px;">
+      <div class="modal-header">
+        <span id="puzzle-times-modal-title">⏱️ PER-PUZZLE SOLVE TIMES</span>
+        <button class="modal-close" onclick="closeModal('modal-puzzle-times')">✕</button>
+      </div>
+      <div id="puzzle-times-container" style="max-height: 420px; overflow-y: auto; margin-bottom: 16px;">
+        <!-- Dynamically rendered -->
+      </div>
+      <div style="display:flex; justify-content:flex-end;">
+        <button class="btn-action" onclick="closeModal('modal-puzzle-times')">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const ADMIN_PIN = "wie-admin-2026";
     function getApiBase() {
@@ -1074,6 +1090,7 @@
             </td>
             <td style="text-align:center;">
               <div style="display:flex; gap:6px; justify-content:center; flex-wrap:wrap;">
+                <button class="btn-table" onclick="showTeamPuzzleTimes('${escapeHtml(t.team_id)}')" title="View per-puzzle solve times">⏱️ TIMES</button>
                 ${t.is_locked ? `<button class="btn-table danger" onclick="remoteUnlockTeam('${escapeHtml(t.team_id)}')" title="Unlock station">🔓 UNLOCK</button>` : ''}
                 <button class="btn-table warning" onclick="remoteLogoutTeam('${escapeHtml(t.team_id)}')" title="Force logout workstation">🚪 LOGOUT</button>
                 <button class="btn-table danger" onclick="remoteResetTeam('${escapeHtml(t.team_id)}')" title="Reset workstation to Stage 01">🔄 RESET</button>
@@ -1159,6 +1176,7 @@
               ${escapeHtml(t.last_action)}
             </div>
             <div class="station-card-actions">
+              <button class="btn-table" onclick="showTeamPuzzleTimes('${escapeHtml(t.team_id)}')">⏱️ TIMES</button>
               ${t.is_locked ? `<button class="btn-table danger" onclick="remoteUnlockTeam('${escapeHtml(t.team_id)}')">🔓</button>` : ''}
               <button class="btn-table warning" onclick="remoteLogoutTeam('${escapeHtml(t.team_id)}')">🚪 LOGOUT</button>
               <button class="btn-table danger" onclick="remoteResetTeam('${escapeHtml(t.team_id)}')">🔄 RESET</button>
@@ -1295,6 +1313,81 @@
       }
 
       openModal('modal-audit');
+    }
+
+    const STAGE_TITLES = {
+      1: "Ch 01: ADI Recovery Terminal",
+      2: "Ch 02: ADI's Memory Core",
+      3: "Ch 03: The Confidential Memo",
+      4: "Ch 04: The Fabricated Timeline",
+      5: "Ch 05: Clearance Elevation",
+      6: "Ch 06: Margin Whispers",
+      7: "Ch 07: Counterfeit Directive",
+      8: "Ch 08: Phosphor Steganography",
+      9: "Ch 09: Corrupted Sensor Array",
+      10: "Ch 10: Inventory Revision Clash",
+      11: "Ch 11: The Confidence Equation",
+      12: "Ch 12: Emergency CW Beacon",
+      13: "Ch 13: The True Commit",
+      14: "Ch 14: Psychological Honeypot",
+      15: "Ch 15: The Ultimate Failsafe"
+    };
+
+    function showTeamPuzzleTimes(teamId) {
+      const team = cachedTeams.find(t => t.team_id === teamId);
+      if (!team) return;
+
+      document.getElementById('puzzle-times-modal-title').innerText = `⏱️ PUZZLE SOLVE TIMES: ${team.team_name} [${team.team_id}]`;
+      const container = document.getElementById('puzzle-times-container');
+      const stageTimes = team.stage_times || {};
+
+      let totalSec = team.raw_time_sec || 0;
+      let html = `
+        <div style="background:rgba(5,12,20,0.95); border:1px solid rgba(0,240,255,0.3); border-radius:4px; padding:14px; font-family:var(--font-mono);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid rgba(0,240,255,0.2); padding-bottom:8px;">
+            <span style="color:var(--cyber-cyan); font-weight:bold; font-size:12px;">STAGE / OBJECTIVE</span>
+            <span style="color:var(--cyber-cyan); font-weight:bold; font-size:12px;">SOLVE TIME</span>
+          </div>
+      `;
+
+      let hasAny = false;
+      for (let i = 1; i <= 15; i++) {
+        const info = stageTimes[i] || stageTimes[String(i)];
+        const title = STAGE_TITLES[i] || `Stage ${i}`;
+        if (info && (info.duration_str || info.duration_seconds)) {
+          hasAny = true;
+          const durStr = info.duration_str || `${info.duration_seconds}s`;
+          html += `
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:11.5px;">
+              <span style="color:var(--text-white);"><span style="color:var(--tactical-green); font-weight:bold;">[STAGE ${i < 10 ? '0' + i : i}]</span> ${escapeHtml(title)}</span>
+              <span style="color:var(--tactical-green); font-weight:bold;">${escapeHtml(durStr)}</span>
+            </div>
+          `;
+        } else {
+          const isCleared = team.current_stage > i || team.is_finished;
+          html += `
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:11.5px; opacity:0.6;">
+              <span style="color:var(--text-dim);"><span style="color:var(--text-muted);">[STAGE ${i < 10 ? '0' + i : i}]</span> ${escapeHtml(title)}</span>
+              <span style="color:var(--text-muted); font-size:10px;">${isCleared ? 'CLEARED' : (team.current_stage === i ? '⏳ IN PROGRESS' : '🔒 LOCKED')}</span>
+            </div>
+          `;
+        }
+      }
+
+      const m = Math.floor(totalSec / 60);
+      const s = totalSec % 60;
+      const totalStr = `${m}m ${s < 10 ? '0' + s : s}s`;
+
+      html += `
+          <div style="margin-top:12px; padding-top:8px; border-top:1px solid var(--border-subtle); display:flex; justify-content:space-between; font-weight:bold; font-size:12px;">
+            <span style="color:var(--text-white);">TOTAL RAW TIME:</span>
+            <span style="color:var(--cyber-cyan);">${team.finish_time_str || totalStr}</span>
+          </div>
+        </div>
+      `;
+
+      container.innerHTML = html;
+      openModal('modal-puzzle-times');
     }
 
     function openBroadcastModal() { openModal('modal-broadcast'); }
