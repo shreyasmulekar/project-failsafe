@@ -4544,7 +4544,11 @@
         netBadge.style.borderColor = "var(--combat-red)";
       }
       if (msg) {
-        msg.innerHTML = `<span style="color:var(--combat-red);">Cannot reach ${escapeHtml(url)}. Verify IP and run server.</span>`;
+        if (url.includes("localhost") || url.includes("127.0.0.1")) {
+          msg.innerHTML = `<span style="color:#ffb000; font-weight:bold;">⚠️ 'localhost' is this laptop! On participant laptops, replace 'localhost' with the Organizer's IP (e.g. <code>http://192.168.x.x:8000</code>) and click TEST & LINK.</span>`;
+        } else {
+          msg.innerHTML = `<span style="color:var(--combat-red, #ff003c);">Cannot reach ${escapeHtml(url)}. Verify both laptops are on the same Wi-Fi and organizer server is running.</span>`;
+        }
       }
       return false;
     }
