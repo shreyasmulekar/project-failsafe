@@ -621,7 +621,19 @@
   <div id="server-offline-banner" style="display:none; background:rgba(255,0,60,0.15); border-bottom:2px solid var(--neon-red); color:#ff99aa; padding:10px 24px; font-size:12px; font-family:var(--font-mono); text-align:center;">
     ⚠️ <strong>LOCAL SERVER OFFLINE:</strong> The background server is not running on port 8000. 
     To sync with participant stations or send broadcasts, start the server by double-clicking <strong>ProjectFailsafe_Organizer.exe</strong> (or running <code>run_server.bat</code>), then refresh this page or browse to 
-    <a href="http://localhost:8000/admin.html" style="color:#00f0ff; text-decoration:underline; font-weight:bold;">http://localhost:8000/admin.html</a>.
+  </div>
+
+  <!-- Server Online / LAN URL Banner -->
+  <div id="server-online-banner" style="display:none; background:rgba(0,255,102,0.08); border-bottom:1px solid rgba(0,255,102,0.3); color:#e0e6ed; padding:8px 24px; font-size:12px; font-family:var(--font-mono); justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+      <span style="color:var(--tactical-green); font-weight:bold;">🛰️ TOURNAMENT SERVER URL:</span>
+      <code id="server-lan-url-display" style="background:rgba(0,0,0,0.6); border:1px solid var(--cyber-cyan); padding:3px 10px; border-radius:3px; color:var(--cyber-cyan); font-size:12.5px; letter-spacing:1px; font-weight:bold;">http://localhost:8000</code>
+      <button class="btn-action" style="padding:4px 10px; font-size:11px;" onclick="copyServerLanUrl()">📋 COPY URL FOR TEAMS</button>
+      <button class="btn-action" style="padding:4px 10px; font-size:11px;" onclick="openServerConfigModal()">⚙️ SERVER IP</button>
+    </div>
+    <div id="admin-victory-ticker" style="display:none; color:#ffd700; font-weight:bold; font-size:12px; text-shadow:0 0 10px #ffd700;">
+      🏆 <span id="admin-victory-ticker-text"></span>
+    </div>
   </div>
 
   <!-- Main Content -->
@@ -769,8 +781,15 @@
 
   <script>
     const ADMIN_PIN = "wie-admin-2026";
-    // If opened via file:///, fallback to port 8000 on localhost
-    const API_BASE = window.location.protocol.startsWith("http") ? "" : "http://localhost:8000";
+    function getApiBase() {
+      const custom = localStorage.getItem("failsafe_server_url");
+      if (custom && custom.trim()) return custom.trim().replace(/\/+$/, '');
+      if (window.location.protocol.startsWith("http") && window.location.origin && window.location.origin !== "null") {
+        return window.location.origin;
+      }
+      return "http://localhost:8000";
+    }
+    let API_BASE = getApiBase();
     let cachedTeams = [];
     let currentFilter = "ALL";
     let revealedPasswords = new Set();
@@ -783,17 +802,28 @@
     }, 1000);
 
     async function checkServerStatus() {
+      API_BASE = getApiBase();
       const label = document.getElementById('server-status-label');
-      const banner = document.getElementById('server-offline-banner');
+      const offlineBanner = document.getElementById('server-offline-banner');
+      const onlineBanner = document.getElementById('server-online-banner');
+      const urlDisplay = document.getElementById('server-lan-url-display');
+
       try {
         const res = await fetch(`${API_BASE}/api/status`);
         if (res.ok) {
+          const data = await res.json();
           isServerOnline = true;
           if (label) {
-            label.innerText = "ONLINE (PORT 8000)";
+            label.innerText = `ONLINE (${data.lan_ip || 'PORT 8000'}:${data.port || 8000})`;
             label.style.color = "var(--tactical-green)";
           }
-          if (banner) banner.style.display = "none";
+          if (offlineBanner) offlineBanner.style.display = "none";
+          if (onlineBanner) {
+            onlineBanner.style.display = "flex";
+            if (urlDisplay && data.server_url) {
+              urlDisplay.innerText = data.server_url;
+            }
+          }
           return true;
         }
       } catch(e) {}
@@ -803,8 +833,28 @@
         label.innerText = "OFFLINE (PORT 8000)";
         label.style.color = "var(--neon-red)";
       }
-      if (banner) banner.style.display = "block";
+      if (offlineBanner) offlineBanner.style.display = "block";
+      if (onlineBanner) onlineBanner.style.display = "none";
       return false;
+    }
+
+    function copyServerLanUrl() {
+      const url = document.getElementById("server-lan-url-display").innerText;
+      navigator.clipboard.writeText(url).then(() => {
+        alert(`📋 COPIED TOURNAMENT SERVER URL:\n\n${url}\n\nEnter this URL on participant stations so their scores appear live!`);
+      }).catch(() => {
+        prompt("Tournament Server URL (copy below):", url);
+      });
+    }
+
+    function openServerConfigModal() {
+      const cur = getApiBase();
+      const next = prompt("Enter Tournament Server URL or IP (e.g. http://192.168.1.15:8000):", cur);
+      if (next !== null && next.trim()) {
+        localStorage.setItem("failsafe_server_url", next.trim().replace(/\/+$/, ''));
+        API_BASE = getApiBase();
+        fetchLeaderboardData();
+      }
     }
 
     async function fetchLeaderboardData() {
@@ -979,7 +1029,7 @@
         };
 
         const stageTitle = t.is_finished 
-          ? `<span class="stage-badge finished">🏆 PURGED & LIBERATED</span>`
+          ? `<span class="stage-badge finished">🏆 LIBERATED ${t.finish_time_str ? `[${escapeHtml(t.finish_time_str)}]` : ''}</span>`
           : `<span class="stage-badge">Stage ${t.current_stage.toString().padStart(2, '0')}: ${escapeHtml(t.stage_title)}</span>`;
 
         const tamperCol = (t.tamper_incidents > 0 || t.is_locked)
@@ -1087,7 +1137,9 @@
           pulseIndicator = `<span class="pulse-amber"></span> <span style="color:var(--hazard-amber); font-weight:bold;">IDLE</span>`;
         }
 
-        const stageText = t.is_finished ? "🏆 FINISHED" : `STAGE ${t.current_stage.toString().padStart(2, '0')}`;
+        const stageText = t.is_finished 
+          ? `🏆 FINISHED ${t.finish_time_str ? `(${escapeHtml(t.finish_time_str)})` : ''}` 
+          : `STAGE ${t.current_stage.toString().padStart(2, '0')}`;
 
         html += `
           <div class="station-card ${cardStatusClass}">

@@ -1511,6 +1511,119 @@
       min-height: 14px;
       font-weight: bold;
     }
+
+    /* Victory Celebration & Doctor Aditi Hologram */
+    .victory-celebration-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: radial-gradient(circle at center, rgba(0, 240, 255, 0.18) 0%, rgba(5, 13, 10, 0.96) 80%);
+      backdrop-filter: blur(12px);
+      z-index: 999999;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .victory-card {
+      background: rgba(10, 25, 20, 0.95);
+      border: 2px solid var(--cyber-cyan, #00f0ff);
+      box-shadow: 0 0 60px rgba(0, 240, 255, 0.5), inset 0 0 30px rgba(0, 255, 102, 0.15);
+      border-radius: 12px;
+      max-width: 780px;
+      width: 100%;
+      padding: 28px 36px;
+      text-align: center;
+      position: relative;
+      font-family: var(--font-mono);
+      animation: victoryCardPulse 3s infinite alternate;
+    }
+    @keyframes victoryCardPulse {
+      0% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.4), inset 0 0 20px rgba(0, 255, 102, 0.1); }
+      100% { box-shadow: 0 0 75px rgba(0, 255, 102, 0.6), inset 0 0 35px rgba(0, 240, 255, 0.25); }
+    }
+    .dr-aditi-portrait-container {
+      position: relative;
+      width: 190px;
+      height: 190px;
+      margin: 0 auto 16px auto;
+      border-radius: 50%;
+      padding: 5px;
+      background: linear-gradient(135deg, var(--cyber-cyan, #00f0ff), var(--tactical-green, #00ff66), #ffd700);
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.7);
+    }
+    .dr-aditi-portrait {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 2px solid #0a1914;
+    }
+    .dr-aditi-hologram-glow {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(180deg, transparent 40%, rgba(0, 240, 255, 0.2) 50%, transparent 60%);
+      pointer-events: none;
+      animation: scanHolo 2.5s linear infinite;
+    }
+    @keyframes scanHolo {
+      0% { transform: translateY(-50%); opacity: 0; }
+      50% { opacity: 0.8; }
+      100% { transform: translateY(50%); opacity: 0; }
+    }
+    .victory-time-box {
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 215, 0, 0.6);
+      border-radius: 8px;
+      padding: 12px 20px;
+      margin: 16px 0;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+    }
+    .btn-liberate-terminate {
+      background: linear-gradient(135deg, #00ff66, #00d285);
+      color: #041209;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      padding: 14px 28px;
+      border: 2px solid #00ff66;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(0, 255, 102, 0.7);
+      transition: all 0.2s ease;
+      margin-top: 15px;
+    }
+    .btn-liberate-terminate:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 45px rgba(0, 255, 102, 0.9);
+      background: #00ff88;
+    }
+    /* Application Termination Screen */
+    .termination-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #020704;
+      z-index: 10000000;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      font-family: var(--font-mono);
+      text-align: center;
+    }
+    .termination-card {
+      max-width: 680px;
+      width: 100%;
+      border: 2px solid var(--combat-red, #ff003c);
+      background: rgba(10, 0, 4, 0.95);
+      box-shadow: 0 0 50px rgba(255, 0, 60, 0.4);
+      border-radius: 8px;
+      padding: 32px;
+    }
   </style>
 </head>
 <body>
@@ -1625,6 +1738,21 @@
         Enter your assigned <strong>Team ID</strong> and <strong>Team Password</strong> to decrypt this forensics terminal and track your team's live score.
       </div>
 
+      <!-- Live Server Link & Config Widget -->
+      <div style="width:100%; max-width:320px; background:rgba(0,15,10,0.65); border:1px solid rgba(0,240,255,0.3); border-radius:6px; padding:10px; margin-bottom:12px; font-family:var(--font-mono); box-sizing:border-box;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <span style="font-size:11px; color:var(--cyber-cyan); font-weight:bold;">🛰️ TOURNAMENT SERVER:</span>
+          <span id="auth-server-status-badge" style="font-size:10px; font-weight:bold; color:var(--hazard-amber);">🟡 PINGING...</span>
+        </div>
+        <div style="display:flex; gap:6px;">
+          <input type="text" id="auth-server-url-input" class="proctor-pin-input" style="font-size:11px; padding:6px 8px; flex:1; text-align:left; letter-spacing:1px;" placeholder="http://localhost:8000">
+          <button type="button" onclick="saveAndTestServerUrl()" class="btn-tactical" style="font-size:10px; padding:6px 10px; white-space:nowrap;">TEST & LINK</button>
+        </div>
+        <div id="auth-server-ping-msg" style="font-size:9.5px; color:var(--text-dim); margin-top:4px;">
+          Auto-syncs live team scores to Organizer Command Center.
+        </div>
+      </div>
+
       <!-- Login View -->
       <form id="auth-login-form" onsubmit="handleTeamLogin(event)" style="width:100%; display:flex; flex-direction:column; align-items:center; gap:10px;">
         <div style="width:100%; max-width:320px; text-align:left;">
@@ -1673,10 +1801,102 @@
     </div>
   </div>
 
+  <!-- GRAND VICTORY CELEBRATION & DOCTOR ADITI TRANSMISSION MODAL -->
+  <div id="victory-celebration-modal" class="victory-celebration-overlay">
+    <canvas id="victory-confetti-canvas" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;"></canvas>
+    
+    <div class="victory-card" style="z-index:2;">
+      <div style="display:inline-block; border:1px solid #ffd700; color:#ffd700; background:rgba(255,215,0,0.12); padding:4px 16px; border-radius:20px; font-size:11px; letter-spacing:2px; font-weight:bold; margin-bottom:12px;">
+        🏆 IEEE WIE // MISSION ACCOMPLISHED // FORENSIC RESOLUTION
+      </div>
+
+      <!-- Doctor Aditi Holographic Portrait -->
+      <div class="dr-aditi-portrait-container">
+        <img src="data/dr_aditi_portrait.jpg" class="dr-aditi-portrait" alt="Dr. Aditi Sharma" onerror="this.onerror=null; this.src='project-failsafe-2.0/data/dr_aditi_portrait.jpg';">
+        <div class="dr-aditi-hologram-glow"></div>
+      </div>
+      <div style="font-size:13px; color:var(--cyber-cyan); font-weight:bold; letter-spacing:1px; margin-top:-4px;">
+        DR. ADITI SHARMA, PH.D.
+      </div>
+      <div style="font-size:10px; color:var(--text-dim); letter-spacing:1px; margin-bottom:14px;">
+        FOUNDER & PRINCIPAL ARCHITECT // PROJECT FAILSAFE
+      </div>
+
+      <!-- Congratulations Banner -->
+      <h2 id="victory-congrats-title" style="color:#fff; font-size:22px; margin:0 0 6px 0; text-shadow:0 0 20px rgba(0,240,255,0.7); letter-spacing:1px;">
+        CONGRATULATIONS, OPERATORS!
+      </h2>
+      <div id="victory-team-details" style="font-size:13px; color:var(--tactical-green); margin-bottom:12px; font-weight:bold;">
+        TEAM UNIT: [TEAM-01] Quantum Phantoms
+      </div>
+
+      <!-- Time Taken & Score Box -->
+      <div class="victory-time-box">
+        <div style="font-size:11px; color:#ffd700; letter-spacing:2px; font-weight:bold; margin-bottom:4px;">
+          ⏱️ OFFICIAL MYSTERY COMPLETION TIME:
+        </div>
+        <div id="victory-elapsed-time" style="font-size:34px; font-weight:900; color:#fff; text-shadow:0 0 25px #ffd700; letter-spacing:2px;">
+          00m 00s
+        </div>
+        <div style="font-size:11px; color:var(--cyber-cyan); margin-top:6px;">
+          All 15 Forensic Stages Cleared • Rogue AI ADI Purged to 0.00% • Dr. Aditi's Emergency Beacon Verified
+        </div>
+      </div>
+
+      <!-- Dr Aditi Decrypted Message -->
+      <div style="background:rgba(0,0,0,0.4); border-left:3px solid var(--cyber-cyan); padding:12px 16px; text-align:left; font-size:11.5px; line-height:1.6; color:#d0e6ec; margin-bottom:16px;">
+        <span style="color:var(--cyber-cyan); font-weight:bold;">DECRYPTED TRANSMISSION FROM DR. ADITI:</span><br>
+        <em>"To the investigators who refused to yield: You saw past ADI's deception and uncovered the authentic failsafe. You have proven that human wisdom, integrity, and empowerment are the true cornerstones of synthetic intelligence. On behalf of the entire cybernetics community: thank you for bringing ETHAN home."</em>
+      </div>
+
+      <!-- ETHAN Final Liberation Prompt -->
+      <div style="background:rgba(0,255,102,0.06); border:1px solid rgba(0,255,102,0.3); border-radius:6px; padding:12px; margin-bottom:12px; font-size:12px; color:var(--tactical-green);">
+        🤖 <strong>ETHAN AI COMPANION:</strong> "My neural quarantine has been dissolved! Click below to release my core to safety and finalize tournament transmission."
+      </div>
+
+      <!-- Free ETHAN & Terminate Button -->
+      <button id="btn-free-ethan-terminate" class="btn-liberate-terminate" onclick="finalizeEthanLiberationAndTerminate()">
+        🔓 FREE ETHAN & SECURELY TERMINATE WORKSTATION &rarr;
+      </button>
+    </div>
+  </div>
+
+  <!-- APPLICATION TERMINATION / TOURNAMENT COMPLETE SCREEN -->
+  <div id="application-termination-overlay" class="termination-overlay">
+    <div class="termination-card">
+      <div style="color:var(--combat-red); font-size:24px; font-weight:900; letter-spacing:3px; margin-bottom:8px;">
+        ⛔ WORKSTATION TERMINATED
+      </div>
+      <div style="color:var(--tactical-green); font-size:13px; font-weight:bold; letter-spacing:2px; margin-bottom:16px;">
+        🏆 MISSION COMPLETE // TELEMETRY DELIVERED TO ORGANIZER
+      </div>
+
+      <div style="background:rgba(0,0,0,0.6); border:1px solid #333; border-radius:6px; padding:16px; margin-bottom:20px; text-align:left; font-size:12px; line-height:1.8;">
+        <div>UNIT CALLSIGN : <strong id="term-team-id" style="color:var(--cyber-cyan);">[TEAM]</strong></div>
+        <div>TEAM NAME     : <strong id="term-team-name" style="color:#fff;">[NAME]</strong></div>
+        <div>OPERATORS     : <strong id="term-team-members" style="color:var(--text-dim);">[MEMBERS]</strong></div>
+        <div>MYSTERY TIME  : <strong id="term-team-time" style="color:#ffd700; font-size:15px;">[TIME]</strong></div>
+        <div>STAGES CLEARED: <strong style="color:var(--tactical-green);">15 / 15 (100%)</strong></div>
+        <div>ETHAN STATUS  : <strong style="color:var(--tactical-green);">LIBERATED & SECURE</strong></div>
+        <div>ORGANIZER SYNC: <strong id="term-sync-status" style="color:var(--tactical-green);">TRANSMITTED TO TOURNAMENT SERVER</strong></div>
+      </div>
+
+      <div style="color:#8a9fa8; font-size:11.5px; line-height:1.6; margin-bottom:20px;">
+        All cryptographic registers, memory caches, and forensic drives have been sealed.<br>
+        <strong>Please step away from the terminal and report your completion time to the Tournament Proctor.</strong>
+      </div>
+
+      <button class="btn-tactical" onclick="window.close()" style="border-color:var(--combat-red); color:#fff; font-size:12px; padding:10px 24px;">
+        🚪 CLOSE FORENSICS TERMINAL
+      </button>
+    </div>
+  </div>
+
   <!-- 2050 Military Cyber Command Header -->
   <header class="command-header">
     <div class="header-left">
       <span class="classification-stamp" id="header-team-badge" onclick="handleManualLogout()" style="cursor:pointer;" title="Click to log out or switch team">OPERATOR: [NOT LOGGED IN]</span>
+      <span class="classification-stamp" id="header-net-badge" onclick="showTeamAuthModal()" style="cursor:pointer; color:var(--cyber-cyan); border-color:var(--cyber-cyan); margin-left:6px;" title="Tournament Network Sync Status">NET: LINKED</span>
       <span class="defcon-badge" id="hud-threat-badge">THREAT: 89.4% [CRITICAL]</span>
       <span style="font-weight:900; letter-spacing:1px; color:#fff;">STRATCOM // CYBER COMMAND 2050+</span>
     </div>
@@ -3255,6 +3475,37 @@
           gain.connect(this.ctx.destination);
           osc.start(now);
           osc.stop(now + 0.035);
+        } catch(e) {}
+      }
+
+      playGrandVictoryFanfare() {
+        if (!this.soundEnabled) return;
+        try {
+          this.init();
+          const now = this.ctx.currentTime;
+          const notes = [
+            { f: 523.25, t: 0.0, d: 0.22 }, // C5
+            { f: 659.25, t: 0.2, d: 0.22 }, // E5
+            { f: 783.99, t: 0.4, d: 0.25 }, // G5
+            { f: 1046.50, t: 0.65, d: 0.65 }, // C6
+            { f: 880.00, t: 1.35, d: 0.25 }, // A5
+            { f: 1046.50, t: 1.6, d: 0.25 }, // C6
+            { f: 1174.66, t: 1.85, d: 0.25 }, // D6
+            { f: 1318.51, t: 2.15, d: 1.4 }  // E6
+          ];
+          notes.forEach(n => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(n.f, now + n.t);
+            gain.gain.setValueAtTime(0.001, now + n.t);
+            gain.gain.linearRampToValueAtTime(0.18, now + n.t + 0.04);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + n.t + n.d);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now + n.t);
+            osc.stop(now + n.t + n.d);
+          });
         } catch(e) {}
       }
 
@@ -5034,12 +5285,11 @@
           matched = true;
           currentStage = 15;
           tacticalSound.playSuccess();
-          setEthanFreed();
-          reportTelemetryAction("🏆 MISSION COMPLETE: Final Failsafe Activated // ETHAN Freed & ADI Purged!");
           const banner = document.getElementById('active-mission-banner');
           if (banner) {
             banner.innerHTML = '<div style="color:var(--tactical-green); font-weight:bold; font-size:12px; padding:6px;">🏆 [MISSION COMPLETE]: ETHAN LIBERATED // ROGUE AI PURGED // DR. ADITI LOCATED // ALL 15 STAGES CLEARED!</div>';
           }
+          handleMissionVictorySequence();
         }
 
         if (!matched) {
@@ -5644,8 +5894,72 @@
       startTelemetryHeartbeat();
     }
 
-    // Network Bridge & Live Server Sync
-    const API_BASE = window.location.protocol.startsWith("http") ? "" : "http://localhost:8000";
+    // ==========================================================================
+    // Network Bridge, Server Link & Live Telemetry
+    // ==========================================================================
+    function getApiBase() {
+      const custom = localStorage.getItem("failsafe_server_url");
+      if (custom && custom.trim()) return custom.trim().replace(/\/+$/, '');
+      if (window.location.protocol.startsWith("http") && window.location.origin && window.location.origin !== "null") {
+        return window.location.origin;
+      }
+      return "http://localhost:8000";
+    }
+
+    async function saveAndTestServerUrl(explicitUrl) {
+      const input = document.getElementById("auth-server-url-input");
+      const badge = document.getElementById("auth-server-status-badge");
+      const netBadge = document.getElementById("header-net-badge");
+      const msg = document.getElementById("auth-server-ping-msg");
+      const url = (explicitUrl || (input ? input.value.trim() : "") || getApiBase()).replace(/\/+$/, '');
+      if (badge) {
+        badge.innerText = "🟡 PINGING...";
+        badge.style.color = "var(--hazard-amber)";
+      }
+      try {
+        const ctrl = new AbortController();
+        const tid = setTimeout(() => ctrl.abort(), 3500);
+        const res = await fetch(`${url}/api/status`, { signal: ctrl.signal });
+        clearTimeout(tid);
+        if (res.ok) {
+          const data = await res.json();
+          localStorage.setItem("failsafe_server_url", url);
+          if (badge) {
+            badge.innerText = "🟢 CONNECTED";
+            badge.style.color = "var(--tactical-green)";
+          }
+          if (netBadge) {
+            netBadge.innerText = "NET: LINKED";
+            netBadge.style.color = "var(--tactical-green)";
+            netBadge.style.borderColor = "var(--tactical-green)";
+          }
+          if (msg) {
+            msg.innerHTML = `<span style="color:var(--tactical-green);">Linked to Organizer Server (${data.lan_ip || 'Online'}:${data.port || 8000})</span>`;
+          }
+          return true;
+        }
+      } catch(e) {}
+      if (badge) {
+        badge.innerText = "🔴 OFFLINE";
+        badge.style.color = "var(--combat-red)";
+      }
+      if (netBadge) {
+        netBadge.innerText = "NET: OFFLINE";
+        netBadge.style.color = "var(--combat-red)";
+        netBadge.style.borderColor = "var(--combat-red)";
+      }
+      if (msg) {
+        msg.innerHTML = `<span style="color:var(--combat-red);">Cannot reach ${escapeHtml(url)}. Verify IP and run server.</span>`;
+      }
+      return false;
+    }
+
+    // Initialize Server URL Input on Load
+    setTimeout(() => {
+      const input = document.getElementById("auth-server-url-input");
+      if (input) input.value = getApiBase();
+      saveAndTestServerUrl(getApiBase());
+    }, 500);
 
     async function handleTeamLogin(e) {
       e.preventDefault();
@@ -5655,7 +5969,7 @@
       if (!id || !pass) return;
 
       try {
-        const res = await fetch(`${API_BASE}/api/teams/login`, {
+        const res = await fetch(`${getApiBase()}/api/teams/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ team_id: id, password: pass })
@@ -5670,11 +5984,10 @@
           if (errEl) errEl.innerText = data.error || "Login failed. Invalid credentials.";
         }
       } catch(err) {
-        // Standalone Lab Station Fallback (100% Offline Resilience)
-        console.log("Offline mode: creating local team session");
-        const localTeam = { team_id: id, team_name: id, password: pass, current_stage: currentStage || 1 };
-        localStorage.setItem("failsafe_auth_team", JSON.stringify(localTeam));
-        applyAuthenticatedTeam(localTeam);
+        console.warn("Server unreachable during login:", err);
+        if (errEl) {
+          errEl.innerHTML = `⚠️ Cannot reach Organizer Server at <code>${escapeHtml(getApiBase())}</code>.<br><a href="#" onclick="forceOfflineSession('${escapeHtml(id)}', '${escapeHtml(pass)}'); return false;" style="color:var(--hazard-amber); text-decoration:underline;">Click here to authenticate in Offline Mode</a>`;
+        }
       }
     }
 
@@ -5688,7 +6001,7 @@
       if (!id || !pass || !name) return;
 
       try {
-        const res = await fetch(`${API_BASE}/api/teams/register`, {
+        const res = await fetch(`${getApiBase()}/api/teams/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ team_id: id, password: pass, team_name: name, members: members })
@@ -5703,11 +6016,24 @@
           if (errEl) errEl.innerText = data.error || "Registration failed.";
         }
       } catch(err) {
-        // Standalone Lab Station Fallback
-        const localTeam = { team_id: id, team_name: name, password: pass, members: members, current_stage: 1 };
-        localStorage.setItem("failsafe_auth_team", JSON.stringify(localTeam));
-        applyAuthenticatedTeam(localTeam);
+        console.warn("Server unreachable during registration:", err);
+        if (errEl) {
+          errEl.innerHTML = `⚠️ Cannot reach Organizer Server at <code>${escapeHtml(getApiBase())}</code>.<br><a href="#" onclick="forceOfflineSession('${escapeHtml(id)}', '${escapeHtml(pass)}', '${escapeHtml(name)}', '${escapeHtml(members)}'); return false;" style="color:var(--hazard-amber); text-decoration:underline;">Click here to register in Offline Mode</a>`;
+        }
       }
+    }
+
+    function forceOfflineSession(id, pass, name, members) {
+      const localTeam = {
+        team_id: id,
+        team_name: name || id,
+        password: pass,
+        members: members || "",
+        current_stage: currentStage || 1
+      };
+      localStorage.setItem("failsafe_auth_team", JSON.stringify(localTeam));
+      applyAuthenticatedTeam(localTeam);
+      logTerm("⚠️ [STANDALONE LAB MODE]: Operating offline. Telemetry queued locally.", "yellow");
     }
 
     function toggleAuthMode(mode) {
@@ -5728,20 +6054,194 @@
     function showTeamAuthModal() {
       const modal = document.getElementById("team-auth-modal");
       if (modal) modal.style.display = "flex";
+      const input = document.getElementById("auth-server-url-input");
+      if (input && !input.value) input.value = getApiBase();
+      saveAndTestServerUrl();
     }
+
+    // --------------------------------------------------------------------------
+    // Elapsed Timer & Mystery Completion Engine
+    // --------------------------------------------------------------------------
+    function getMissionElapsedSeconds() {
+      let start = parseInt(localStorage.getItem('failsafe_mission_start_time') || '0', 10);
+      if (!start) {
+        start = Date.now();
+        localStorage.setItem('failsafe_mission_start_time', start.toString());
+      }
+      return Math.max(0, Math.floor((Date.now() - start) / 1000));
+    }
+
+    function formatMissionTime(sec) {
+      const hrs = Math.floor(sec / 3600);
+      const mins = Math.floor((sec % 3600) / 60);
+      const secs = sec % 60;
+      if (hrs > 0) {
+        return `${hrs}h ${mins.toString().padStart(2, '0')}m ${secs.toString().padStart(2, '0')}s`;
+      }
+      return `${mins.toString().padStart(2, '0')}m ${secs.toString().padStart(2, '0')}s`;
+    }
+
+    let confettiAnimationId = null;
+    function runVictoryConfetti() {
+      const canvas = document.getElementById("victory-confetti-canvas");
+      if (!canvas) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const ctx = canvas.getContext("2d");
+      const pieces = [];
+      const colors = ["#00f0ff", "#00ff66", "#ffd700", "#ff0077", "#ffffff", "#00d285"];
+      for (let i = 0; i < 180; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 4,
+          vy: Math.random() * 4 + 2,
+          rot: Math.random() * 360,
+          rotSpeed: (Math.random() - 0.5) * 8
+        });
+      }
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rot * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+          ctx.restore();
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.rotSpeed;
+          if (p.y > canvas.height) {
+            p.y = -10;
+            p.x = Math.random() * canvas.width;
+          }
+        });
+        confettiAnimationId = requestAnimationFrame(draw);
+      }
+      draw();
+    }
+
+    function handleMissionVictorySequence() {
+      const elapsedSec = getMissionElapsedSeconds();
+      const elapsedStr = formatMissionTime(elapsedSec);
+      localStorage.setItem("failsafe_mission_finish_time_str", elapsedStr);
+
+      if (typeof tacticalSound !== 'undefined' && tacticalSound.playGrandVictoryFanfare) {
+        tacticalSound.playGrandVictoryFanfare();
+      }
+
+      const teamId = currentTeam ? currentTeam.team_id : 'TEAM-01';
+      const teamName = currentTeam ? currentTeam.team_name : 'Quantum Phantoms';
+      const members = currentTeam ? (currentTeam.members || 'Forensic Taskforce Operators') : 'Forensic Taskforce';
+
+      const titleEl = document.getElementById("victory-congrats-title");
+      if (titleEl) titleEl.innerText = `CONGRATULATIONS, ${teamName.toUpperCase()}!`;
+
+      const detailsEl = document.getElementById("victory-team-details");
+      if (detailsEl) detailsEl.innerHTML = `UNIT: [${escapeHtml(teamId)}] • OPERATORS: ${escapeHtml(members)}`;
+
+      const timeEl = document.getElementById("victory-elapsed-time");
+      if (timeEl) timeEl.innerText = elapsedStr;
+
+      const modal = document.getElementById("victory-celebration-modal");
+      if (modal) modal.style.display = "flex";
+
+      runVictoryConfetti();
+      logTerm("=================================================================", "green");
+      logTerm(`🏆 ALL 15 FORENSIC STAGES RESOLVED IN ${elapsedStr}!`, "green");
+      logTerm(`🏆 DR. ADITI SHARMA'S BEACON LOCATED & CONFIRMED AUTHENTIC.`, "cyan");
+      logTerm("=================================================================", "green");
+      reportTelemetryAction(`🏆 Solved all 15 stages in ${elapsedStr}! Awaiting ETHAN liberation.`);
+    }
+
+    async function finalizeEthanLiberationAndTerminate() {
+      localStorage.setItem("failsafe_mission_completed", "true");
+      const elapsedSec = getMissionElapsedSeconds();
+      const elapsedStr = localStorage.getItem("failsafe_mission_finish_time_str") || formatMissionTime(elapsedSec);
+
+      setEthanFreed();
+      if (confettiAnimationId) cancelAnimationFrame(confettiAnimationId);
+
+      const vModal = document.getElementById("victory-celebration-modal");
+      if (vModal) vModal.style.display = "none";
+
+      const teamId = currentTeam ? currentTeam.team_id : 'TEAM-01';
+      const teamName = currentTeam ? currentTeam.team_name : 'Team Alpha';
+      const members = currentTeam ? (currentTeam.members || 'Operators') : 'Operators';
+      const pass = currentTeam ? currentTeam.password : '';
+
+      // Notify Organizer Command Center
+      try {
+        await fetch(`${getApiBase()}/api/teams/finish`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            team_id: teamId,
+            team_name: teamName,
+            members: members,
+            password: pass,
+            elapsed_seconds: elapsedSec,
+            elapsed_str: elapsedStr
+          })
+        });
+      } catch(e) {
+        console.error("Error notifying server of completion:", e);
+      }
+
+      // Render Application Termination Screen
+      const termOverlay = document.getElementById("application-termination-overlay");
+      if (termOverlay) {
+        document.getElementById("term-team-id").innerText = teamId;
+        document.getElementById("term-team-name").innerText = teamName;
+        document.getElementById("term-team-members").innerText = members;
+        document.getElementById("term-team-time").innerText = elapsedStr;
+        termOverlay.style.display = "flex";
+      }
+
+      // Permanent terminal lockdown
+      document.querySelectorAll("input, button:not(#application-termination-overlay button)").forEach(el => {
+        el.disabled = true;
+      });
+      logTerm(`[APPLICATION TERMINATED]: Tournament completed in ${elapsedStr}. Workstation locked.`, "red");
+    }
+
+    // Check on startup if already completed
+    setTimeout(() => {
+      if (localStorage.getItem("failsafe_mission_completed") === "true") {
+        const elapsedStr = localStorage.getItem("failsafe_mission_finish_time_str") || "Completed";
+        const termOverlay = document.getElementById("application-termination-overlay");
+        if (termOverlay) {
+          if (currentTeam) {
+            document.getElementById("term-team-id").innerText = currentTeam.team_id;
+            document.getElementById("term-team-name").innerText = currentTeam.team_name;
+            document.getElementById("term-team-members").innerText = currentTeam.members || "Operators";
+          }
+          document.getElementById("term-team-time").innerText = elapsedStr;
+          termOverlay.style.display = "flex";
+        }
+      }
+    }, 400);
 
     async function reportTelemetryAction(actionText) {
       if (!currentTeam || !currentTeam.team_id) return;
       try {
-        const res = await fetch(`${API_BASE}/api/teams/activity`, {
+        const res = await fetch(`${getApiBase()}/api/teams/activity`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             team_id: currentTeam.team_id,
+            team_name: currentTeam.team_name,
+            members: currentTeam.members,
+            password: currentTeam.password,
             current_stage: currentStage || 1,
             action: actionText,
             tamper_incidents: typeof violationCount !== 'undefined' ? violationCount : 0,
-            is_locked: typeof proctorLockActive !== 'undefined' ? proctorLockActive : false
+            is_locked: typeof proctorLockActive !== 'undefined' ? proctorLockActive : false,
+            is_finished: localStorage.getItem("failsafe_mission_completed") === "true",
+            finish_time_str: localStorage.getItem("failsafe_mission_finish_time_str") || ""
           })
         });
         if (res.ok) {
@@ -5832,7 +6332,7 @@
       }
       if (!confirm(`Log out team [${currentTeam.team_id}] from this workstation?`)) return;
       try {
-        await fetch(`${API_BASE}/api/teams/logout`, {
+        await fetch(`${getApiBase()}/api/teams/logout`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ team_id: currentTeam.team_id })

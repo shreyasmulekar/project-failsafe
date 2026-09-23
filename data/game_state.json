@@ -6,7 +6,9 @@
       "password": "strikers-pass-99",
       "members": "Aditi R., Vikram S., Maya K.",
       "current_stage": 1,
-      "unlocked_stages": [1],
+      "unlocked_stages": [
+        1
+      ],
       "hints_count": 0,
       "traps_count": 0,
       "tamper_incidents": 0,
@@ -29,7 +31,9 @@
       "password": "shadow-vault-42",
       "members": "Sneha P., Rohan M.",
       "current_stage": 1,
-      "unlocked_stages": [1],
+      "unlocked_stages": [
+        1
+      ],
       "hints_count": 0,
       "traps_count": 0,
       "tamper_incidents": 0,
@@ -45,8 +49,96 @@
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-21T00:00:00.000000"
+    },
+    "OMEGA-77": {
+      "team_id": "OMEGA-77",
+      "team_name": "Apex Cipher Hunters",
+      "password": "secret-pass-77",
+      "members": "Dr. Sarah, Alex Chen, Maya Lin",
+      "current_stage": 15,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83c\udfc6 MISSION COMPLETE: ETHAN Liberated in 00m 00s // Workstation Terminated",
+      "last_seen": 1790140236.3287349,
+      "activity_log": [
+        {
+          "time": "10:38:16",
+          "stage": 1,
+          "action": "Registered workstation"
+        },
+        {
+          "time": "10:38:16",
+          "stage": 14,
+          "action": "Decrypted Honeypot Bypass (Stage 14)"
+        },
+        {
+          "time": "10:38:16",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY: Solved entire mystery in 30m 45s! ETHAN freed, ADI purged."
+        },
+        {
+          "time": "10:40:23",
+          "stage": 14,
+          "action": "Decrypted Honeypot Bypass (Stage 14)"
+        },
+        {
+          "time": "10:40:23",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY: Solved entire mystery in 30m 45s! ETHAN freed, ADI purged."
+        },
+        {
+          "time": "10:40:31",
+          "stage": 15,
+          "action": "Workstation Authenticated & Operational"
+        },
+        {
+          "time": "10:40:32",
+          "stage": 15,
+          "action": "\ud83c\udfc6 Solved all 15 stages in 00m 00s! Awaiting ETHAN liberation."
+        },
+        {
+          "time": "10:40:35",
+          "stage": 15,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "10:40:36",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY: Solved entire mystery in 00m 00s! ETHAN freed, ADI purged."
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790140096.8550646,
+      "end_time": 1790140236.3287349,
+      "is_finished": true,
+      "created_at": "2026-09-23T10:38:16.855245",
+      "finish_time_str": "00m 00s"
     }
   },
-  "broadcasts": [],
+  "broadcasts": [
+    {
+      "id": 1,
+      "message": "\ud83c\udfc6 MISSION COMPLETED: Team Apex Cipher Hunters [OMEGA-77] liberated ETHAN in 30m 45s! Rogue AI purged!",
+      "time": "10:38:16"
+    },
+    {
+      "id": 2,
+      "message": "\ud83c\udfc6 MISSION COMPLETED: Team Apex Cipher Hunters [OMEGA-77] liberated ETHAN in 30m 45s! Rogue AI purged!",
+      "time": "10:40:23"
+    },
+    {
+      "id": 3,
+      "message": "\ud83c\udfc6 MISSION COMPLETED: Team Apex Cipher Hunters [OMEGA-77] liberated ETHAN in 00m 00s! Rogue AI purged!",
+      "time": "10:40:36"
+    }
+  ],
   "created_at": "2026-09-21T00:00:00.000000"
 }

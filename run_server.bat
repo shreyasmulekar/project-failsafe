@@ -12,12 +12,12 @@ where python >nul 2>nul
 if %errorlevel% neq 0 (
     echo [!] Python was not found in PATH.
     echo Trying py launcher...
-    start http://localhost:8000
+    start http://localhost:8000/admin.html
     py server.py
     pause
     exit /b
 )
 
-start "" http://localhost:8000
+start "" http://localhost:8000/admin.html
 python server.py
 pause

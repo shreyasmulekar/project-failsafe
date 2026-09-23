@@ -16,9 +16,10 @@ import threading
 from datetime import datetime
 
 PORT = int(os.environ.get("PORT", sys.argv[1] if len(sys.argv) > 1 and sys.argv[1].isdigit() else 8000))
-DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(ROOT_DIR, "data")
 DATA_FILE = os.path.join(DATA_DIR, "game_state.json")
-PUBLIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
+PUBLIC_DIR = os.path.join(ROOT_DIR, "public")
 ADMIN_PIN = "wie-admin-2026"
 
 # Master Stage Passwords & Solutions (faithful to Master Document)
@@ -226,7 +227,7 @@ def save_game_state(state, immediate=False):
 
 class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=PUBLIC_DIR, **kwargs)
+        super().__init__(*args, directory=ROOT_DIR, **kwargs)
 
     def log_message(self, format, *args):
         # Silent logger for high-throughput 100-station telemetry
@@ -236,8 +237,9 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(status_code)
         self.send_header("Content-Type", "application/json")
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+        self.send_header("Access-Control-Allow-Headers", "*")
+        self.send_header("Access-Control-Allow-Private-Network", "true")
         self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
         self.end_headers()
         self.wfile.write(json.dumps(data).encode("utf-8"))
@@ -245,8 +247,9 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(200)
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+        self.send_header("Access-Control-Allow-Headers", "*")
+        self.send_header("Access-Control-Allow-Private-Network", "true")
         self.end_headers()
 
     def do_GET(self):
@@ -254,36 +257,58 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
         path = parsed.path
         params = urllib.parse.parse_qs(parsed.query)
 
-        if path == "/api/status":
+        if path in ["/api/status", "/api/server-info"]:
+            import socket
+            lan_ip = "127.0.0.1"
+            try:
+                s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                s.connect(("8.8.8.8", 80))
+                lan_ip = s.getsockname()[0]
+                s.close()
+            except Exception:
+                pass
+            state = load_game_state()
             self._send_json(200, {
                 "status": "online",
                 "system": "PROJECT FAILSAFE SERVER",
+                "lan_ip": lan_ip,
+                "port": PORT,
+                "server_url": f"http://{lan_ip}:{PORT}",
+                "total_teams": len(state.get("teams", {})),
                 "server_time": time.time()
             })
             return
 
         if path in ["/admin", "/admin.html"]:
-            admin_file = os.path.join(PUBLIC_DIR, "admin.html")
-            if not os.path.exists(admin_file):
-                admin_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "admin.html")
+            admin_file = os.path.join(ROOT_DIR, "admin.html")
             if os.path.exists(admin_file):
                 self.send_response(200)
                 self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Access-Control-Allow-Origin", "*")
                 self.end_headers()
                 with open(admin_file, "rb") as f:
                     self.wfile.write(f.read())
                 return
 
-        if path in ["/", "/aditi_os_widget.html", "/index.html"]:
-            target_name = "aditi_os_widget.html" if path == "/" else os.path.basename(path)
-            root_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), target_name)
-            if not os.path.exists(root_file) and path == "/":
-                root_file = os.path.join(PUBLIC_DIR, "index.html")
-            if os.path.exists(root_file):
+        if path in ["/", "/index.html", "/aditi_os_widget.html"]:
+            target_file = os.path.join(ROOT_DIR, "aditi_os_widget.html")
+            if os.path.exists(target_file):
                 self.send_response(200)
                 self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Access-Control-Allow-Origin", "*")
                 self.end_headers()
-                with open(root_file, "rb") as f:
+                with open(target_file, "rb") as f:
+                    self.wfile.write(f.read())
+                return
+
+        if path in ["/v2", "/v2/", "/project-failsafe-2.0", "/project-failsafe-2.0/"]:
+            v2_file = os.path.join(ROOT_DIR, "project-failsafe-2.0", "index.html")
+            if os.path.exists(v2_file):
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                with open(v2_file, "rb") as f:
                     self.wfile.write(f.read())
                 return
 
@@ -298,7 +323,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             now = time.time()
 
             for tid, t in state.get("teams", {}).items():
-                start = t.get("start_time", now)
+                start = t.get("start_time") or now
                 end = t.get("end_time") or now
                 raw_time_sec = max(0, int(end - start))
                 hints_penalty_sec = t.get("hints_count", 0) * 120
@@ -307,7 +332,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
 
                 cur_stage = t.get("current_stage", 1)
                 stage_title = STAGES.get(cur_stage, {}).get("title", f"Stage {cur_stage}")
-                last_seen = t.get("last_seen", start)
+                last_seen = t.get("last_seen") or start or now
                 last_seen_sec_ago = max(0, int(now - last_seen))
 
                 leaderboard.append({
@@ -330,6 +355,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     "adjusted_time_sec": adjusted_sec,
                     "hints_count": t.get("hints_count", 0),
                     "traps_count": t.get("traps_count", 0),
+                    "finish_time_str": t.get("finish_time_str", ""),
                     "unlocked_stages": t.get("unlocked_stages", [1])
                 })
 
@@ -496,12 +522,99 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             self._send_json(200, {"success": True, "message": "Logged out successfully"})
             return
 
+        if path == "/api/teams/finish":
+            team_id = data.get("team_id", "").strip().upper()
+            elapsed_seconds = data.get("elapsed_seconds", 0)
+            elapsed_str = data.get("elapsed_str", "")
+            team_name = data.get("team_name", "").strip()
+            members = data.get("members", "").strip()
+            password = data.get("password", "").strip()
+
+            if not team_id:
+                self._send_json(400, {"error": "Missing team_id"})
+                return
+
+            if "teams" not in state:
+                state["teams"] = {}
+
+            now = time.time()
+            team = state["teams"].get(team_id)
+            if not team:
+                team = {
+                    "team_id": team_id,
+                    "team_name": team_name or f"Team {team_id}",
+                    "password": password,
+                    "members": members,
+                    "registered_at": now - (float(elapsed_seconds) if elapsed_seconds else 0),
+                    "start_time": now - (float(elapsed_seconds) if elapsed_seconds else 0),
+                    "end_time": now,
+                    "current_stage": 15,
+                    "unlocked_stages": list(range(1, 16)),
+                    "hints_count": 0,
+                    "traps_count": 0,
+                    "tamper_incidents": 0,
+                    "is_locked": False,
+                    "force_logout": False,
+                    "remote_reset": False,
+                    "last_seen": now,
+                    "is_finished": True,
+                    "finish_time_str": elapsed_str,
+                    "last_action": f"🏆 MISSION COMPLETE: ETHAN Liberated in {elapsed_str} // Workstation Terminated",
+                    "activity_log": []
+                }
+                state["teams"][team_id] = team
+            else:
+                if team_name:
+                    team["team_name"] = team_name
+                if members:
+                    team["members"] = members
+                if password:
+                    team["password"] = password
+                team["is_finished"] = True
+                team["current_stage"] = 15
+                team["end_time"] = now
+                team["finish_time_str"] = elapsed_str
+                team["last_action"] = f"🏆 MISSION COMPLETE: ETHAN Liberated in {elapsed_str} // Workstation Terminated"
+                team["last_seen"] = now
+
+            if "activity_log" not in team:
+                team["activity_log"] = []
+            team["activity_log"].append({
+                "time": datetime.now().strftime("%H:%M:%S"),
+                "stage": 15,
+                "action": f"🏆 VICTORY: Solved entire mystery in {elapsed_str}! ETHAN freed, ADI purged."
+            })
+
+            # Broadcast announcement
+            tname = team.get("team_name") or team_id
+            bcast_msg = f"🏆 MISSION COMPLETED: Team {tname} [{team_id}] liberated ETHAN in {elapsed_str}! Rogue AI purged!"
+            if "broadcasts" not in state:
+                state["broadcasts"] = []
+            state["broadcasts"].append({
+                "id": len(state["broadcasts"]) + 1,
+                "message": bcast_msg,
+                "time": datetime.now().strftime("%H:%M:%S")
+            })
+
+            save_game_state(state)
+            self._send_json(200, {
+                "success": True,
+                "message": "Mission completion recorded successfully",
+                "team": team
+            })
+            return
+
         if path == "/api/teams/activity":
             team_id = data.get("team_id", "").strip().upper()
             action = data.get("action", "").strip()
             current_stage = data.get("current_stage")
             tamper_incidents = data.get("tamper_incidents")
             is_locked = data.get("is_locked")
+            team_name = data.get("team_name", "").strip()
+            members = data.get("members", "").strip()
+            password = data.get("password", "").strip()
+            is_finished = data.get("is_finished")
+            finish_time_str = data.get("finish_time_str", "")
 
             if not team_id:
                 self._send_json(400, {"error": "Missing team_id"})
@@ -510,24 +623,43 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             if "teams" not in state:
                 state["teams"] = {}
             team = state["teams"].get(team_id)
+            now = time.time()
             if not team:
-                # Auto-initialize team record if station registered offline or dynamically
+                # Auto-initialize complete team record on dynamic connect
                 team = {
                     "team_id": team_id,
-                    "team_name": data.get("team_name") or f"Team {team_id}",
-                    "registered_at": time.time(),
+                    "team_name": team_name or f"Team {team_id}",
+                    "password": password,
+                    "members": members,
+                    "registered_at": now,
+                    "start_time": now,
+                    "end_time": None,
                     "current_stage": int(current_stage) if current_stage is not None else 1,
+                    "unlocked_stages": [1],
+                    "hints_count": 0,
+                    "traps_count": 0,
                     "tamper_incidents": int(tamper_incidents) if tamper_incidents is not None else 0,
                     "is_locked": bool(is_locked) if is_locked is not None else False,
                     "force_logout": False,
                     "remote_reset": False,
-                    "last_seen": time.time(),
-                    "last_action": action or "Station online",
-                    "activity_log": []
+                    "last_seen": now,
+                    "last_action": action or "Station connected",
+                    "activity_log": [{
+                        "time": datetime.now().strftime("%H:%M:%S"),
+                        "stage": current_stage or 1,
+                        "action": action or "Station connected"
+                    }]
                 }
                 state["teams"][team_id] = team
+            else:
+                # Update metadata if missing or newly provided
+                if team_name and (not team.get("team_name") or team.get("team_name") == f"Team {team_id}"):
+                    team["team_name"] = team_name
+                if members and not team.get("members"):
+                    team["members"] = members
+                if password and not team.get("password"):
+                    team["password"] = password
 
-            now = time.time()
             team["last_seen"] = now
 
             if action:
@@ -542,7 +674,12 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 if len(team["activity_log"]) > 40:
                     team["activity_log"] = team["activity_log"][-40:]
 
-            if current_stage is not None:
+            remote_reset = team.get("remote_reset", False)
+            if remote_reset:
+                if current_stage is not None and int(current_stage) == 1:
+                    team["remote_reset"] = False
+                    team["current_stage"] = 1
+            elif current_stage is not None:
                 team["current_stage"] = max(team.get("current_stage", 1), int(current_stage))
 
             if tamper_incidents is not None:
@@ -550,6 +687,13 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
 
             if is_locked is not None:
                 team["is_locked"] = bool(is_locked)
+
+            if is_finished is not None and bool(is_finished):
+                team["is_finished"] = True
+                if finish_time_str:
+                    team["finish_time_str"] = finish_time_str
+                if not team.get("end_time"):
+                    team["end_time"] = now
 
             remote_unlocked = team.get("remote_unlock", False)
             if remote_unlocked:
@@ -907,5 +1051,8 @@ def run_server():
         httpd.server_close()
         sys.exit(0)
 
+run = run_server
+
 if __name__ == "__main__":
     run_server()
+
