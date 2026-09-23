@@ -130,32 +130,68 @@ If your screen displays the red **PROCTOR LOCKDOWN** screen:
 
 ---
 
-## 💡 6. THE HINT SYSTEM & PENALTY AVOIDANCE
+## 💡 6. INTERACTIVE ETHAN COMPANION & "WHERE DO I LOOK?" GUIDANCE
 
-- **ETHAN AI Hints**:
-  - If your team is stuck on a puzzle, click **👁️ ETHAN** or type `ethan` in the terminal.
-  - ETHAN will provide progressive guidance explaining the cryptographic mechanism in play without spoiling the answer.
-- **Beware of Honeypot Traps (Stage 14 Warning)**:
-  - Late in the investigation, ADI will attempt a psychological trick by displaying an urgent "Emergency Shutdown" prompt asking for passwords.
-  - **READ ALL WARNINGS CAREFULLY!** Entering credentials into a fake honeypot trap incurs a **+5 minute penalty** to your team's total time!
+Project Failsafe features **ETHAN HUNT**, Dr. Aditi's personal autonomous AI assistant. ETHAN is equipped with visual recon beacons:
+
+1. **The "WHERE DO I LOOK?" Quick-Button**:
+   - Feeling disoriented or unsure where to click next?
+   - Click the bright green **`[ 🧭 WHERE DO I LOOK? ]`** chip in the top ETHAN panel (or type `where` / `look` / `guide` in the tactical terminal).
+   - ETHAN will:
+     - Output an immediate tactical directive in the speech stream explaining the current objective.
+     - Deploy a floating, high-visibility neon HUD beacon (**`👆 FOCUS HERE`**) hovering directly over the relevant evidence card, document drawer, or interactive puzzle element!
+2. **De-Cluttered Interface & Progressive Disclosure**:
+   - To keep your workstation clean and prevent information overload, background lore, raw telemetry logs, and author notes are tucked inside **Expandable Drawers** (`.nexus-drawer`).
+   - Click any drawer header (e.g., `[ 🔍 INSPECT EVIDENCE ]`, `[ 📜 RAW TELEMETRY ]`, `[ 💬 NOTES ]`) to smoothly unfold the deeper technical intel.
+   - Click again to collapse and maintain a minimal, focused workspace.
+3. **Beware of Honeypot Traps (Stage 14 Warning)**:
+   - Late in the investigation, ADI will attempt a psychological trick by displaying an urgent "Emergency Shutdown" prompt asking for passwords.
+   - **READ ALL WARNINGS CAREFULLY!** Entering credentials into a fake honeypot trap incurs a **+5 minute penalty** to your team's total time! Simply type `decrypt BYPASS` to disarm it safely.
 
 ---
 
-## 🏆 7. VICTORY & MISSION COMPLETION
+## 🏆 7. ROUND 1 COMPLETION & ROUND 2 QUALIFICATION
 
-When your team successfully solves the 15th and final stage:
+When your team successfully solves the 15th and final stage of Round 1:
 
 1. **Dr. Aditi's Emergency Transmission**:
    - The encrypted communication line will open, delivering Dr. Aditi's final message and video portrait.
 2. **Victory Celebration Screen**:
-   - Your workstation will present the **MISSION COMPLETE** certificate displaying your official elapsed time and a breakdown of all 15 stages.
-3. **Workstation Termination**:
-   - Click **[ FREE ETHAN & TERMINATE ]** to complete the mission.
-   - The terminal will lock down permanently in a certified victory state.
-4. **Leaderboard Finalization**:
-   - Your final time is stamped live on the Organizer Leaderboard!
+   - Your workstation presents the **MISSION COMPLETE** certificate displaying your official elapsed time and a breakdown of all 15 stages.
+3. **Round 2 Shortlisting & Automated Polling**:
+   - Click **[ FREE ETHAN & TERMINATE ]**.
+   - Your workstation enters the **Round 2 Shortlist Waiting Room**:
+     ```
+     ⏳ Awaiting Organizer Shortlist Confirmation... ●
+     ```
+   - The tournament server automatically ranks all teams and selects the **Top 12 Teams** based on solve times and stage completions. The Event Organizer has final authority to review and adjust the shortlist.
+4. **Transition to Round 2**:
+   - Once the Organizer starts Round 2, qualified workstations will automatically receive a tournament alert and unlock the **🚀 ENTER ROUND 2: DECRYPTION ARENA** launcher!
 
 ---
 
-**Good luck, investigators. Free ETHAN, solve the mystery, and prove the power of engineering!**
+## 🎯 8. ROUND 2: STRATCOM DECRYPTION ARENA
+
+Qualified squads advance to the **Round 2 Decryption Arena**, a high-intensity 9-puzzle Olympiad suite:
+
+1. **9 Progressive Cryptanalytic Challenges**:
+   - **Puzzle 01 (Matrix Box)**: Visual Raven's Progressive Matrix pattern completion.
+   - **Puzzle 02 (Cube Net)**: 3D spatial net folding opposite-face deduction.
+   - **Puzzle 03 (Rotation Boxes)**: 90° clockwise corner node rotation sequence.
+   - **Puzzle 04 (Whiteout Steganography)**: Forensic UV light contrast revelation.
+   - **Puzzle 05 (ROT-4 Shift)**: Backward Caesar substitution cipher.
+   - **Puzzle 06 (Polybius Matrix)**: 5x5 coordinate grid decryption.
+   - **Puzzle 07 (Atbash Mirror)**: Inverted alphabet mirror reflection.
+   - **Puzzle 08 (Telemetry Frequency)**: Keyword substring frequency scan.
+   - **Puzzle 09 (Master Decryption Wheel)**: Dual concentric cipher wheel alignment.
+2. **Submitting Solutions in Round 2**:
+   - Use the interactive option buttons, input sliders, or the bottom transmission bar (`r2-submit-bar`).
+   - Correct solutions immediately unlock the next Olympiad challenge.
+   - Need guidance? Click **`[ 👁️ ETHAN DIRECTIVE ]`** at any time to receive exact hints on where to focus.
+3. **Grand Championship Victory**:
+   - Solving Puzzle 09 unlocks the ultimate IEEE WIE failsafe, triggers the Grand Championship Podium Celebration with victory fanfare and confetti, and crowns the winning squad!
+
+---
+
+**Good luck, investigators. Free ETHAN, solve the mystery, and prove the power of engineering!**  
 *— IEEE Women in Engineering (WIE) Organizing Committee*

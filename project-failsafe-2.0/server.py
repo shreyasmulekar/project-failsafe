@@ -162,6 +162,103 @@ STAGES = {
     }
 }
 
+# ROUND 2: StratCom Decryption Arena (9 Progressive Forensic Challenges)
+ROUND2_STAGES = {
+    1: {
+        "title": "The Matrix Box Transformation",
+        "location": "Visual_Matrix.pdf",
+        "keys": ["C", "THREE CIRCLES", "3 CIRCLES", "THREECIRCLES", "●●●"],
+        "unlocked_by_default": True,
+        "next_stage": 2,
+        "penalty_points": 20,
+        "hints": [
+            "Look at the rule across rows: Row 1 = Triangles, Row 2 = Squares, Row 3 = Circles.",
+            "Rule across columns: Col 1 has 1 shape, Col 2 has 2 shapes, Col 3 has 3 shapes. Row 3, Column 3 must have 3 Circles (Option C)."
+        ]
+    },
+    2: {
+        "title": "The Spatial Net Folding Box",
+        "location": "Cube_Net_Terminal.pdf",
+        "keys": ["5"],
+        "next_stage": 3,
+        "penalty_points": 15,
+        "hints": [
+            "In a standard T-shaped cube net, faces separated by exactly one box along a straight line fold into opposite faces.",
+            "In the vertical line 1, 3, 5, 6: Box 1 and Box 5 are separated by Box 3 -> Face 1 is opposite Face 5."
+        ]
+    },
+    3: {
+        "title": "The Clockwise Rotation Boxes",
+        "location": "Rotation_Array.pdf",
+        "keys": ["BOTTOM LEFT", "BL", "BOTTOMLEFT", "BOTTOM-LEFT"],
+        "next_stage": 4,
+        "hints": [
+            "Trace the movement of the core node as it shifts 90 degrees clockwise.",
+            "Box 1: Top-Left -> Box 2: Top-Right -> Box 3: Bottom-Right -> Box 4: Bottom-Left (BL)."
+        ]
+    },
+    4: {
+        "title": "The Whiteout Signature",
+        "location": "Emergency_Log.doc",
+        "keys": ["CLEARANCE_ALPHA", "CLEARANCE ALPHA", "CLEARANCEALPHA"],
+        "next_stage": 5,
+        "hints": [
+            "Some messages are not meant to be read; they are meant to be highlighted.",
+            "Select all text (Ctrl+A) or toggle the UV filter to reveal: DECRYPTION KEY IS CLEARANCE_ALPHA."
+        ]
+    },
+    5: {
+        "title": "The ROT-4 IEEE Shift",
+        "location": "Encrypted_Beacon.txt",
+        "keys": ["ADITIS13", "ADITI-13", "ADITI 13"],
+        "next_stage": 6,
+        "hints": [
+            "Shift every letter backward by the number of letters in the acronym 'IEEE' (4).",
+            "EHMXMW13 shifted backward by 4 letters: E->A, H->D, M->I, X->T, M->I, W->S + 13 = ADITIS13."
+        ]
+    },
+    6: {
+        "title": "The Polybius Coordinate Trail",
+        "location": "Matrix_Coordinates.pdf",
+        "keys": ["VECTOR"],
+        "next_stage": 7,
+        "hints": [
+            "Map each pair in the 5x5 grid using (Row, Column) order.",
+            "(5,1)=V, (1,5)=E, (1,3)=C, (4,4)=T, (3,4)=O, (4,2)=R -> VECTOR."
+        ]
+    },
+    7: {
+        "title": "The Atbash Cipher Mirror",
+        "location": "Mirror_Log.txt",
+        "keys": ["PROJECT"],
+        "next_stage": 8,
+        "hints": [
+            "Reverse the alphabet so A <-> Z, B <-> Y, C <-> X.",
+            "KILQVBG mirrored: K->P, I->R, L->O, Q->J, V->E, B->Y, G->T -> PROJECT."
+        ]
+    },
+    8: {
+        "title": "The Find-and-Replace Frequency Count",
+        "location": "Mass_System_Log.txt",
+        "keys": ["1400", "1,400"],
+        "next_stage": 9,
+        "hints": [
+            "Count how many times the exact term 'OVERRIDE' appears in the log, then multiply that count by 100.",
+            "Searching for OVERRIDE finds 14 matches. 14 x 100 = 1400."
+        ]
+    },
+    9: {
+        "title": "The Cipher Wheel Layer Shift",
+        "location": "Wheel_Overlay.pdf",
+        "keys": ["ECLIPSE"],
+        "next_stage": "COMPLETE",
+        "hints": [
+            "Align the inner wheel over the outer wheel at 135 degrees clockwise.",
+            "The exposed cutouts align over the letters: E-C-L-I-P-S-E."
+        ]
+    }
+}
+
 import copy
 
 STATE_LOCK = threading.Lock()
@@ -205,6 +302,11 @@ def load_game_state():
             CACHED_STATE = {
                 "teams": {},
                 "broadcasts": [],
+                "current_round": 1,
+                "shortlist": {
+                    "round_2_qualified_team_ids": [],
+                    "locked": False
+                },
                 "created_at": datetime.now().isoformat()
             }
             save_game_state_to_disk(CACHED_STATE)
@@ -214,7 +316,17 @@ def load_game_state():
                 CACHED_STATE = json.load(f)
         except Exception as e:
             print(f"Error loading data file: {e}, resetting...")
-            CACHED_STATE = {"teams": {}, "broadcasts": [], "created_at": datetime.now().isoformat()}
+            CACHED_STATE = {
+                "teams": {},
+                "broadcasts": [],
+                "current_round": 1,
+                "shortlist": {"round_2_qualified_team_ids": [], "locked": False},
+                "created_at": datetime.now().isoformat()
+            }
+        if "current_round" not in CACHED_STATE:
+            CACHED_STATE["current_round"] = 1
+        if "shortlist" not in CACHED_STATE:
+            CACHED_STATE["shortlist"] = {"round_2_qualified_team_ids": [], "locked": False}
         return CACHED_STATE
 
 def save_game_state(state, immediate=False):
@@ -397,6 +509,106 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             })
             return
 
+        if path == "/api/admin/shortlist":
+            pin = params.get("pin", [""])[0]
+            if pin != ADMIN_PIN:
+                self._send_json(403, {"error": "Invalid Admin PIN"})
+                return
+
+            state = load_game_state()
+            now = time.time()
+            leaderboard = []
+
+            for tid, t in state.get("teams", {}).items():
+                start = t.get("start_time") or now
+                end = t.get("end_time") or now
+                raw_time_sec = max(0, int(end - start))
+                hints_penalty_sec = t.get("hints_count", 0) * 120
+                trap_penalty_sec = t.get("traps_count", 0) * 300
+                adjusted_sec = raw_time_sec + hints_penalty_sec + trap_penalty_sec
+
+                cur_stage = t.get("current_stage", 1)
+                stage_title = STAGES.get(cur_stage, {}).get("title", f"Stage {cur_stage}")
+                last_seen = t.get("last_seen") or start or now
+                last_seen_sec_ago = max(0, int(now - last_seen))
+
+                leaderboard.append({
+                    "team_id": tid,
+                    "team_name": t.get("team_name", tid),
+                    "members": t.get("members", ""),
+                    "current_stage": cur_stage,
+                    "stage_title": stage_title,
+                    "is_finished": t.get("is_finished", False),
+                    "raw_time_sec": raw_time_sec,
+                    "adjusted_time_sec": adjusted_sec,
+                    "finish_time_str": t.get("finish_time_str", ""),
+                    "hints_count": t.get("hints_count", 0),
+                    "traps_count": t.get("traps_count", 0)
+                })
+
+            leaderboard.sort(key=lambda x: (
+                -1 if x["is_finished"] else 0,
+                -x["current_stage"],
+                x["adjusted_time_sec"],
+                x["hints_count"],
+                x["traps_count"]
+            ))
+
+            shortlist_meta = state.setdefault("shortlist", {"round_2_qualified_team_ids": [], "locked": False})
+            qualified_ids = shortlist_meta.get("round_2_qualified_team_ids", [])
+
+            # Auto-populate top 12 if not yet initialized
+            if not qualified_ids and leaderboard:
+                qualified_ids = [t["team_id"] for t in leaderboard[:12]]
+                shortlist_meta["round_2_qualified_team_ids"] = qualified_ids
+                save_game_state(state)
+
+            ranked_teams = []
+            for i, t in enumerate(leaderboard):
+                tid = t["team_id"]
+                ranked_teams.append({
+                    **t,
+                    "rank": i + 1,
+                    "is_qualified": tid in qualified_ids,
+                    "auto_top_12": i < 12
+                })
+
+            self._send_json(200, {
+                "current_round": state.get("current_round", 1),
+                "locked": shortlist_meta.get("locked", False),
+                "qualified_team_ids": qualified_ids,
+                "qualified_count": len(qualified_ids),
+                "target_count": 12,
+                "ranked_teams": ranked_teams,
+                "total_teams": len(ranked_teams),
+                "server_time": now
+            })
+            return
+
+        if path == "/api/team/round_status":
+            team_id = params.get("team_id", [""])[0].strip().upper()
+            if not team_id:
+                self._send_json(400, {"error": "Missing team_id"})
+                return
+            state = load_game_state()
+            team = state.get("teams", {}).get(team_id, {})
+            shortlist_meta = state.get("shortlist", {})
+            qualified_ids = shortlist_meta.get("round_2_qualified_team_ids", [])
+            is_qualified = team_id in qualified_ids
+            current_round = state.get("current_round", 1)
+
+            self._send_json(200, {
+                "team_id": team_id,
+                "current_round": current_round,
+                "is_qualified_for_round_2": is_qualified,
+                "round_2_unlocked": current_round >= 2 and is_qualified,
+                "round_2_stage": team.get("round_2_stage", 1),
+                "round_2_stages_total": len(ROUND2_STAGES),
+                "round_2_is_finished": team.get("round_2_is_finished", False),
+                "round_2_finish_time_str": team.get("round_2_finish_time_str", "")
+            })
+            return
+
         # Serve static files
         super().do_GET()
 
@@ -530,6 +742,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             team_name = data.get("team_name", "").strip()
             members = data.get("members", "").strip()
             password = data.get("password", "").strip()
+            round_num = int(data.get("round", 1))
             stage_times = data.get("stage_times", {})
 
             if not team_id:
@@ -573,26 +786,36 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     team["members"] = members
                 if password:
                     team["password"] = password
-                if stage_times:
-                    team["stage_times"] = stage_times
-                team["is_finished"] = True
-                team["current_stage"] = 15
-                team["end_time"] = now
-                team["finish_time_str"] = elapsed_str
-                team["last_action"] = f"🏆 MISSION COMPLETE: ETHAN Liberated in {elapsed_str} // Workstation Terminated"
+
+                if round_num == 2:
+                    team["round_2_is_finished"] = True
+                    team["round_2_stage"] = 9
+                    team["round_2_end_time"] = now
+                    team["round_2_finish_time_str"] = elapsed_str
+                    if stage_times:
+                        team["round_2_stage_times"] = stage_times
+                    team["last_action"] = f"🏆 ROUND 2 COMPLETE: Solved 9 Puzzles in {elapsed_str}!"
+                else:
+                    if stage_times:
+                        team["stage_times"] = stage_times
+                    team["is_finished"] = True
+                    team["current_stage"] = 15
+                    team["end_time"] = now
+                    team["finish_time_str"] = elapsed_str
+                    team["last_action"] = f"🏆 MISSION COMPLETE: ETHAN Liberated in {elapsed_str} // Workstation Terminated"
                 team["last_seen"] = now
 
             if "activity_log" not in team:
                 team["activity_log"] = []
             team["activity_log"].append({
                 "time": datetime.now().strftime("%H:%M:%S"),
-                "stage": 15,
-                "action": f"🏆 VICTORY: Solved entire mystery in {elapsed_str}! ETHAN freed, ADI purged."
+                "stage": 9 if round_num == 2 else 15,
+                "action": f"🏆 VICTORY (Round {round_num}): Solved in {elapsed_str}!"
             })
 
             # Broadcast announcement
             tname = team.get("team_name") or team_id
-            bcast_msg = f"🏆 MISSION COMPLETED: Team {tname} [{team_id}] liberated ETHAN in {elapsed_str}! Rogue AI purged!"
+            bcast_msg = f"🏆 ROUND {round_num} COMPLETED: Team {tname} [{team_id}] finished in {elapsed_str}!"
             if "broadcasts" not in state:
                 state["broadcasts"] = []
             state["broadcasts"].append({
@@ -896,9 +1119,133 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             })
             return
 
+        if path == "/api/admin/shortlist/toggle":
+            pin = data.get("pin", data.get("admin_pin", "")).strip()
+            team_id = data.get("team_id", "").strip().upper()
+            qualified = data.get("qualified")
+
+            if pin != ADMIN_PIN:
+                self._send_json(403, {"error": "Invalid Admin PIN"})
+                return
+
+            if not team_id:
+                self._send_json(400, {"error": "Missing team_id"})
+                return
+
+            shortlist_meta = state.setdefault("shortlist", {"round_2_qualified_team_ids": [], "locked": False})
+            q_list = shortlist_meta.setdefault("round_2_qualified_team_ids", [])
+
+            if qualified is None:
+                if team_id in q_list:
+                    q_list.remove(team_id)
+                else:
+                    q_list.append(team_id)
+            elif qualified:
+                if team_id not in q_list:
+                    q_list.append(team_id)
+            else:
+                if team_id in q_list:
+                    q_list.remove(team_id)
+
+            save_game_state(state, immediate=True)
+            self._send_json(200, {
+                "success": True,
+                "team_id": team_id,
+                "is_qualified": team_id in q_list,
+                "qualified_count": len(q_list),
+                "qualified_team_ids": q_list
+            })
+            return
+
+        if path == "/api/admin/shortlist/reset":
+            pin = data.get("pin", data.get("admin_pin", "")).strip()
+            if pin != ADMIN_PIN:
+                self._send_json(403, {"error": "Invalid Admin PIN"})
+                return
+
+            now = time.time()
+            leaderboard = []
+            for tid, t in state.get("teams", {}).items():
+                start = t.get("start_time") or now
+                end = t.get("end_time") or now
+                raw_time_sec = max(0, int(end - start))
+                hints_penalty_sec = t.get("hints_count", 0) * 120
+                trap_penalty_sec = t.get("traps_count", 0) * 300
+                adjusted_sec = raw_time_sec + hints_penalty_sec + trap_penalty_sec
+                cur_stage = t.get("current_stage", 1)
+
+                leaderboard.append({
+                    "team_id": tid,
+                    "current_stage": cur_stage,
+                    "is_finished": t.get("is_finished", False),
+                    "adjusted_time_sec": adjusted_sec,
+                    "hints_count": t.get("hints_count", 0),
+                    "traps_count": t.get("traps_count", 0)
+                })
+
+            leaderboard.sort(key=lambda x: (
+                -1 if x["is_finished"] else 0,
+                -x["current_stage"],
+                x["adjusted_time_sec"],
+                x["hints_count"],
+                x["traps_count"]
+            ))
+
+            top_12 = [t["team_id"] for t in leaderboard[:12]]
+            state.setdefault("shortlist", {})["round_2_qualified_team_ids"] = top_12
+            save_game_state(state, immediate=True)
+            self._send_json(200, {
+                "success": True,
+                "message": f"Shortlist reset to automated top {len(top_12)} teams",
+                "qualified_count": len(top_12),
+                "qualified_team_ids": top_12
+            })
+            return
+
+        if path == "/api/admin/start_round_2":
+            pin = data.get("pin", data.get("admin_pin", "")).strip()
+            if pin != ADMIN_PIN:
+                self._send_json(403, {"error": "Invalid Admin PIN"})
+                return
+
+            shortlist_meta = state.setdefault("shortlist", {"round_2_qualified_team_ids": [], "locked": False})
+            q_list = shortlist_meta.get("round_2_qualified_team_ids", [])
+            state["current_round"] = 2
+            shortlist_meta["locked"] = True
+
+            now = time.time()
+            for tid in q_list:
+                if tid in state.get("teams", {}):
+                    t = state["teams"][tid]
+                    t["round_2_stage"] = 1
+                    t["round_2_unlocked_stages"] = [1]
+                    t["round_2_start_time"] = now
+                    t["round_2_is_finished"] = False
+                    t["round_2_times"] = {}
+                    t["round_2_score"] = 0
+                    t["last_action"] = "🚀 Round 2 Initialized: StratCom Decryption Arena Unlocked"
+
+            # Global broadcast
+            bcast_msg = f"🚀 TOURNAMENT ALERT: ROUND 2 HAS OFFICIALLY BEGUN! {len(q_list)} QUALIFIED STATIONS UNLOCKED."
+            state.setdefault("broadcasts", []).append({
+                "id": len(state.get("broadcasts", [])) + 1,
+                "message": bcast_msg,
+                "time": datetime.now().strftime("%H:%M:%S")
+            })
+
+            save_game_state(state, immediate=True)
+            self._send_json(200, {
+                "success": True,
+                "message": f"Round 2 started with {len(q_list)} qualified teams",
+                "current_round": 2,
+                "qualified_count": len(q_list)
+            })
+            return
+
         if path == "/api/stage/unlock":
             team_id = data.get("team_id", "").strip().upper()
             stage_num = int(data.get("stage", 1))
+            round_num = int(data.get("round", 1))
             password_input = data.get("password", "").strip().upper()
 
             if team_id not in state["teams"]:
@@ -906,9 +1253,10 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 return
 
             team = state["teams"][team_id]
-            stage_info = STAGES.get(stage_num)
+            stage_dict = ROUND2_STAGES if round_num == 2 else STAGES
+            stage_info = stage_dict.get(stage_num)
             if not stage_info:
-                self._send_json(400, {"error": f"Invalid stage {stage_num}"})
+                self._send_json(400, {"error": f"Invalid stage {stage_num} in round {round_num}"})
                 return
 
             clean_input = "".join(c for c in password_input if c.isalnum())
@@ -922,13 +1270,25 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
 
             if matched:
                 next_stage = stage_info.get("next_stage")
-                if next_stage == "COMPLETE":
-                    team["is_finished"] = True
-                    team["end_time"] = time.time()
-                elif isinstance(next_stage, int):
-                    if next_stage not in team["unlocked_stages"]:
-                        team["unlocked_stages"].append(next_stage)
-                    team["current_stage"] = max(team["current_stage"], next_stage)
+                if round_num == 2:
+                    team.setdefault("round_2_unlocked_stages", [1])
+                    if next_stage == "COMPLETE":
+                        team["round_2_is_finished"] = True
+                        team["round_2_end_time"] = time.time()
+                        team["last_action"] = "🏆 ROUND 2 COMPLETE: Solved all 9 forensic challenges!"
+                    elif isinstance(next_stage, int):
+                        if next_stage not in team["round_2_unlocked_stages"]:
+                            team["round_2_unlocked_stages"].append(next_stage)
+                        team["round_2_stage"] = max(team.get("round_2_stage", 1), next_stage)
+                        team["last_action"] = f"Round 2 - Stage {stage_num} Solved -> Advanced to Stage {next_stage}"
+                else:
+                    if next_stage == "COMPLETE":
+                        team["is_finished"] = True
+                        team["end_time"] = time.time()
+                    elif isinstance(next_stage, int):
+                        if next_stage not in team["unlocked_stages"]:
+                            team["unlocked_stages"].append(next_stage)
+                        team["current_stage"] = max(team["current_stage"], next_stage)
 
                 save_game_state(state)
                 self._send_json(200, {
@@ -947,15 +1307,17 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
         if path == "/api/hints/request":
             team_id = data.get("team_id", "").strip().upper()
             stage_num = int(data.get("stage", 1))
+            round_num = int(data.get("round", 1))
 
             if team_id not in state["teams"]:
                 self._send_json(404, {"error": "Team not registered"})
                 return
 
             team = state["teams"][team_id]
-            stage_info = STAGES.get(stage_num)
+            stage_dict = ROUND2_STAGES if round_num == 2 else STAGES
+            stage_info = stage_dict.get(stage_num)
             if not stage_info:
-                self._send_json(400, {"error": "Invalid stage"})
+                self._send_json(400, {"error": f"Invalid stage {stage_num} in round {round_num}"})
                 return
 
             hints_for_stage = [h for h in team.get("hints_history", []) if h["stage"] == stage_num]

@@ -302,7 +302,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 
 ---
 
-## 📋 4. Master Quick-Reference Solution Table
+## 📋 4. Master Quick-Reference Solution Table (Round 1)
 
 | Stage | Puzzle Title | Accepted Passcodes | Core Hint for Volunteers |
 | :---: | :--- | :--- | :--- |
@@ -324,7 +324,150 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 
 ---
 
-## 🛠️ 5. Volunteer Troubleshooting & FAQ
+## 🎯 5. Round 2: StratCom Decryption Arena (Top 12 Shortlist)
+
+### 5.1 Shortlisting & Qualification Process
+1. **Automatic Ranking**: As teams complete Round 1, the Organizer server automatically ranks teams:
+   - Rank 1: Finished teams ordered by lowest adjusted time (`raw_time + hints_penalty + trap_penalty`).
+   - Rank 2: In-progress teams ordered by highest stage cleared.
+   - The top 12 teams automatically receive gold qualification badges (`👑 #1` through `#12`).
+2. **Organizer Manipulation**:
+   - The Organizer opens `admin.html` and clicks `🎯 ROUND 2 SHORTLIST`.
+   - The Organizer can click `[ ✕ REMOVE ]` on any team or `[ + QUALIFY ]` on any standby team.
+   - Search filter allows finding teams instantly.
+   - Click `[ 🔄 RESET TO TOP 12 ]` to restore mathematical rankings.
+3. **Initiating Round 2**:
+   - Once the Organizer verifies the final 12 teams, they click **`🚀 LOCK SHORTLIST & START ROUND 2`**.
+   - A global broadcast notification is dispatched to all workstations.
+   - Qualified stations automatically transition from the termination screen into the **Round 2 Decryption Arena**.
+   - Standby teams receive a certified debriefing screen honoring their Round 1 participation.
+
+---
+
+### 5.2 Round 2 Complete Puzzle & Solution Guide
+
+#### PUZZLE 01: The Matrix Box Transformation
+- **Type**: Visual Raven's Progressive Matrix (3x3 Grid)
+- **Challenge**:
+  - Row 1: 1 triangle, 2 triangles, 3 triangles (all ▲)
+  - Row 2: 1 square, 2 squares, 3 squares (all ■)
+  - Row 3: 1 circle, 2 circles, missing `?` (all ●)
+- **Rule**: Shapes stay consistent along rows; quantities increase by 1 along columns. Row 3 Column 3 must be 3 circles.
+- **Master Solution**: `C` *(also accepts `OPTION C`, `THREE CIRCLES`, `3 CIRCLES`, `●●●`, `CIRCLES`)*.
+- **ETHAN Pointer**: Points directly to Option C in the multiple choice grid.
+- **Hint**: "Look at the pattern: Row 1 is triangles, Row 2 is squares, Row 3 is circles. How many shapes appear in column 3?"
+
+#### PUZZLE 02: Spatial Net Folding Box (3D Cube)
+- **Type**: 3D Spatial Geometry / Cube Net
+- **Challenge**: A flattened 2D T-shaped net of a 6-sided hardware cube containing digits 1 through 6:
+  - Box 1 (top)
+  - Row of boxes 2, 3, 4
+  - Box 5 (below 3)
+  - Box 6 (below 5)
+- **Question**: When folded into a 3D cube, which number is opposite to face 1?
+- **Olympiad Folding Rule**: In a straight strip of boxes, faces separated by exactly one box fold into opposite sides. In the spine (1, 3, 5, 6), 1 is opposite to 5, and 3 is opposite to 6.
+- **Master Solution**: `5` *(also accepts `FIVE`, `FACE 5`)*.
+- **ETHAN Pointer**: Points to the vertical spine of the cube net.
+- **Hint**: "Trace the vertical strip (1, 3, 5, 6). Faces separated by one face fold to face each other."
+
+#### PUZZLE 03: Clockwise Rotation Boxes
+- **Type**: 2D Spatial Orientation
+- **Challenge**: Sequence of 4 boxes showing a white core node rotating 90° clockwise:
+  - Box 1: Top-Left
+  - Box 2: Top-Right
+  - Box 3: Bottom-Right
+  - Box 4: `?`
+- **Master Solution**: `BOTTOM LEFT` *(also accepts `BL`, `BOTTOMLEFT`, `BOTTOM-LEFT`, `LOWER LEFT`)*.
+- **ETHAN Pointer**: Points to the rotation sequence array.
+- **Hint**: "The dot moves clockwise around the 4 corners: Top-Left -> Top-Right -> Bottom-Right -> ?"
+
+#### PUZZLE 04: The Whiteout Signature (Steganography)
+- **Type**: Visual Forensics / Color Palette Contrast
+- **Challenge**: An emergency document contains white text on a white canvas.
+- **Interactive Tool**: Clicking `[ ⚡ TOGGLE FORENSIC UV LIGHT ]` or highlighting text reveals: `CLEARANCE_ALPHA`.
+- **Master Solution**: `CLEARANCE_ALPHA` *(also accepts `CLEARANCEALPHA`, `ALPHA`)*.
+- **ETHAN Pointer**: Points to the forensic UV light toggle button.
+- **Hint**: "Select the text in the box or click the UV light button to reveal the invisible watermark."
+
+#### PUZZLE 05: The Shifted Protocol (ROT-4 Caesar Shift)
+- **Type**: Algorithmic Cryptanalysis / Substitution Cipher
+- **Challenge**: Encrypted transmission `EHMXMW13`. Shift rule: Shift backwards by 4 positions in the alphabet.
+  - E - 4 = A
+  - H - 4 = D
+  - M - 4 = I
+  - X - 4 = T
+  - M - 4 = I
+  - W - 4 = S
+  - Digits `13` remain unchanged.
+- **Master Solution**: `ADITIS13` *(also accepts `ADITI13`, `ADITIS`)*.
+- **ETHAN Pointer**: Points to the interactive ROT slider tool.
+- **Hint**: "Shift each letter back 4 places: E becomes A, H becomes D. Keep the numbers as-is."
+
+#### PUZZLE 06: Grid Coordinate Matrix (Polybius 5x5 Square)
+- **Type**: Polybius Coordinate Cipher
+- **Challenge**: Standard 5x5 grid (Row, Column) coordinates:
+  - (5,1) = V
+  - (1,5) = E
+  - (1,3) = C
+  - (4,4) = T
+  - (3,4) = O
+  - (4,2) = R
+- **Master Solution**: `VECTOR`.
+- **ETHAN Pointer**: Points to the Polybius 5x5 coordinate matrix.
+- **Hint**: "Read the coordinate pairs as (Row, Column). Row 5, Column 1 is V."
+
+#### PUZZLE 07: Mirror Frequency Log (Atbash Cipher)
+- **Type**: Classical Cryptanalysis / Inverted Alphabet
+- **Challenge**: Ciphertext `KILQVBG`. Mirror mapping: A<->Z, B<->Y, C<->X, etc.
+  - K -> P
+  - I -> R
+  - L -> O
+  - Q -> J
+  - V -> E
+  - B -> C
+  - G -> T
+- **Master Solution**: `PROJECT`.
+- **ETHAN Pointer**: Points to the mirror alphabet conversion strip.
+- **Hint**: "Invert the alphabet: A becomes Z, Z becomes A. K is the 11th letter from the start, so mirror it to the 11th from the end (P)."
+
+#### PUZZLE 08: Substring Frequency Scan
+- **Type**: Algorithmic Pattern Search / Telemetry Log Audit
+- **Challenge**: 50 lines of system telemetry logs.
+- **Question**: Count the total occurrences of keyword `OVERRIDE`. Multiply count by 100 to forge the authorization code.
+  - Keyword `OVERRIDE` appears exactly 14 times.
+  - 14 * 100 = 1400.
+- **Master Solution**: `1400` *(also accepts `14`)*.
+- **ETHAN Pointer**: Points to the interactive log search tool.
+- **Hint**: "Use the log scanner tool to count how many times OVERRIDE appears. Multiply that number by 100."
+
+#### PUZZLE 09: Master Decryption Wheel (Final Failsafe)
+- **Type**: Dual Concentric Cipher Wheel
+- **Challenge**: An interactive dual-rotor cipher wheel.
+- **Action**: Rotate the inner wheel until the alignment marker matches 135°.
+- **Master Solution**: `ECLIPSE`.
+- **Outcome**: Solving Puzzle 09 activates the **Grand Championship Podium Celebration**, triggers grand fanfare and confetti, and registers the winning finish time on the tournament scoreboard!
+- **ETHAN Pointer**: Points to the cipher wheel angle slider.
+- **Hint**: "Slide the alignment marker to 135 degrees to line up the letters for the master word ECLIPSE."
+
+---
+
+## 📋 6. Round 2 Master Quick-Reference Table
+
+| Puzzle | Title | Solution | Volunteer Key Hint |
+| :---: | :--- | :--- | :--- |
+| **R2-01** | Matrix Box Transformation | `C` | 3 Circles (Row 3, Column 3) |
+| **R2-02** | Spatial Cube Net | `5` | Face opposite to 1 in vertical spine |
+| **R2-03** | Clockwise Rotation Boxes | `BOTTOM LEFT` | 90° clockwise jump from Bottom-Right |
+| **R2-04** | Whiteout Steganography | `CLEARANCE_ALPHA` | Click UV light or highlight white text |
+| **R2-05** | ROT-4 Caesar Shift | `ADITIS13` | Shift letters back 4: EHMXMW13 -> ADITIS13 |
+| **R2-06** | Polybius 5x5 Square | `VECTOR` | Coordinates (Row, Col): (5,1)=V, (1,5)=E, etc. |
+| **R2-07** | Atbash Mirror Cipher | `PROJECT` | Mirror alphabet: KILQVBG -> PROJECT |
+| **R2-08** | Substring Frequency Count | `1400` | 14 occurrences of OVERRIDE * 100 = 1400 |
+| **R2-09** | Master Decryption Wheel | `ECLIPSE` | Rotate wheel to 135° alignment |
+
+---
+
+## 🛠️ 7. Volunteer Troubleshooting & FAQ
 
 1. **Q: A participant clicked outside or pressed Windows key and the screen is locked. What do I do?**
    - **A**: Don't panic. Walk to their workstation, enter the Master PIN `wie-admin-2026`, and hit Enter. The workstation will automatically re-enter fullscreen kiosk mode.
@@ -332,5 +475,8 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
    - **A**: Check for leading/trailing spaces or typos. In the terminal, they can simply type `decrypt <ANSWER>` or just `<ANSWER>`. The system is case-insensitive.
 3. **Q: What if a laptop loses Wi-Fi connection during the tournament?**
    - **A**: Project Failsafe runs on **Autonomous Offline Fallback**. The workstation continues functioning seamlessly without network lag, tracking puzzle times locally. Once Wi-Fi is restored, it automatically synchronizes with the host server.
-4. **Q: Can participants search Google or use Google Lens?**
-   - **A**: Strictly prohibited and technically disabled. If they somehow manage to search on another device, remind them that proctor rovers are monitoring and that the tournament emphasizes pure deductive reasoning.
+4. **Q: How does ETHAN help participants who are lost?**
+   - **A**: Participants can click the **`[ 🧭 WHERE DO I LOOK? ]`** chip in the top ETHAN panel or type `where` / `look` in the terminal. ETHAN will state exactly what card or element to inspect and summon a glowing neon arrow (`👆 FOCUS HERE`) over the target element for 5 seconds.
+5. **Q: How are Round 2 teams selected?**
+   - **A**: The server auto-ranks all teams based on finish status, stages cleared, and adjusted time, shortlisting the top 12. The Organizer can manually add or remove teams in `admin.html` before pressing `START ROUND 2`.
+
