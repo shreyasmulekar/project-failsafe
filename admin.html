@@ -603,6 +603,16 @@
       justify-content: space-between;
       align-items: center;
     }
+    @keyframes pin-shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+    .pin-shake {
+      animation: pin-shake 0.4s ease-in-out;
+      border-color: var(--combat-red) !important;
+      box-shadow: 0 0 10px rgba(255, 0, 60, 0.5) !important;
+    }
   </style>
 </head>
 <body>
@@ -639,6 +649,9 @@
       </button>
       <button class="btn-action success" onclick="exportCsv()">
         <span>📥</span> EXPORT CSV
+      </button>
+      <button class="btn-action" style="border-color:var(--combat-red); color:var(--combat-red);" onclick="handleAdminLogout()" title="Lock Organizer Command Center">
+        <span>🔒</span> LOGOUT
       </button>
     </div>
   </header>
@@ -821,8 +834,109 @@
     </div>
   </div>
 
+  <!-- ORGANIZER COMMAND CENTER ADMIN LOGIN GATE -->
+  <div id="admin-login-modal" class="modal-overlay" style="display:flex; z-index:999999; background:rgba(4, 7, 13, 0.96); backdrop-filter:blur(15px);">
+    <div class="modal-box" style="max-width:440px; border-color:var(--cyber-cyan); box-shadow:0 0 50px rgba(0,240,255,0.3); text-align:center; padding:32px 28px;">
+      <div style="display:inline-block; border:1px solid var(--cyber-cyan); background:rgba(0,240,255,0.12); color:var(--cyber-cyan); padding:4px 12px; font-family:var(--font-mono); font-size:10px; font-weight:bold; letter-spacing:1px; border-radius:3px; margin-bottom:14px;">
+        🛡️ IEEE WIE // STRATCOM RESTRICTED
+      </div>
+      <h2 style="font-family:var(--font-mono); font-size:18px; color:#fff; letter-spacing:1px; margin-bottom:8px;">ORGANIZER LOGIN</h2>
+      <p style="font-size:11.5px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">
+        Enter Master Organizer PIN or Administrator Security Credentials to decrypt live workstation telemetry, leaderboards, and stage overrides.
+      </p>
+
+      <form id="admin-login-form" onsubmit="handleAdminLogin(event)" style="display:flex; flex-direction:column; gap:12px; text-align:left;">
+        <label style="font-family:var(--font-mono); font-size:10px; color:var(--text-muted); letter-spacing:0.8px;">MASTER ORGANIZER PIN / PASSWORD:</label>
+        <div style="position:relative; width:100%;">
+          <input type="password" id="admin-auth-pin" placeholder="Enter PIN (e.g. wie-admin-2026)" autocomplete="current-password" required
+            style="width:100%; padding:12px 42px 12px 14px; background:#070d14; border:1px solid var(--border-subtle); color:#fff; font-family:var(--font-mono); font-size:14px; letter-spacing:2px; border-radius:4px; outline:none; box-sizing:border-box;">
+          <button type="button" onclick="toggleAdminPinVisibility()" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); background:transparent; border:none; color:var(--text-muted); cursor:pointer; font-size:14px;">👁️</button>
+        </div>
+        <div id="admin-login-error" style="color:var(--combat-red); font-family:var(--font-mono); font-size:11px; min-height:16px;"></div>
+        <button type="submit" class="btn-action active" style="width:100%; justify-content:center; padding:12px; font-size:12px; font-weight:bold; background:rgba(0,240,255,0.15); border-color:var(--cyber-cyan); color:var(--cyber-cyan); margin-top:4px;">
+          AUTHENTICATE ORGANIZER
+        </button>
+      </form>
+      <div style="margin-top:18px; font-size:9.5px; color:var(--text-muted); font-family:var(--font-mono); letter-spacing:0.5px;">
+        Default Venue PIN: <code>wie-admin-2026</code>
+      </div>
+    </div>
+  </div>
+
   <script>
     const ADMIN_PIN = "wie-admin-2026";
+
+    function isAdminAuthenticated() {
+      return sessionStorage.getItem("failsafe_admin_authenticated") === "true";
+    }
+
+    function checkAdminAuthOnLoad() {
+      const modal = document.getElementById("admin-login-modal");
+      if (isAdminAuthenticated()) {
+        if (modal) modal.style.display = "none";
+        fetchLeaderboardData();
+      } else {
+        if (modal) {
+          modal.style.display = "flex";
+          const input = document.getElementById("admin-auth-pin");
+          if (input) setTimeout(() => input.focus(), 200);
+        }
+      }
+    }
+
+    async function handleAdminLogin(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById("admin-auth-pin");
+      const errEl = document.getElementById("admin-login-error");
+      const pin = input ? input.value.trim() : "";
+      if (!pin) return;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/leaderboard?pin=${encodeURIComponent(pin)}`);
+        if (res.ok) {
+          sessionStorage.setItem("failsafe_admin_authenticated", "true");
+          const modal = document.getElementById("admin-login-modal");
+          if (modal) modal.style.display = "none";
+          if (errEl) errEl.innerText = "";
+          fetchLeaderboardData();
+          return;
+        }
+      } catch(err) {}
+
+      if (pin === ADMIN_PIN) {
+        sessionStorage.setItem("failsafe_admin_authenticated", "true");
+        const modal = document.getElementById("admin-login-modal");
+        if (modal) modal.style.display = "none";
+        if (errEl) errEl.innerText = "";
+        fetchLeaderboardData();
+        return;
+      }
+
+      if (errEl) errEl.innerText = "ACCESS DENIED: Invalid Organizer PIN.";
+      if (input) {
+        input.classList.add("pin-shake");
+        setTimeout(() => input.classList.remove("pin-shake"), 500);
+      }
+    }
+
+    function handleAdminLogout() {
+      sessionStorage.removeItem("failsafe_admin_authenticated");
+      const modal = document.getElementById("admin-login-modal");
+      if (modal) {
+        modal.style.display = "flex";
+        const input = document.getElementById("admin-auth-pin");
+        if (input) {
+          input.value = "";
+          input.focus();
+        }
+      }
+    }
+
+    function toggleAdminPinVisibility() {
+      const input = document.getElementById("admin-auth-pin");
+      if (input) input.type = input.type === "password" ? "text" : "password";
+    }
+
     function getApiBase() {
       const custom = localStorage.getItem("failsafe_server_url");
       if (custom && custom.trim()) return custom.trim().replace(/\/+$/, '');
@@ -937,6 +1051,7 @@
     }
 
     async function fetchLeaderboardData() {
+      if (!isAdminAuthenticated()) return;
       await checkServerStatus();
       try {
         const res = await fetch(`${API_BASE}/api/admin/leaderboard?pin=${encodeURIComponent(ADMIN_PIN)}`);
@@ -1576,9 +1691,13 @@
       }[tag] || tag));
     }
 
-    // Auto-poll every 2.5 seconds
-    fetchLeaderboardData();
-    setInterval(fetchLeaderboardData, 2500);
+    // Auto-poll every 2.5 seconds if authenticated
+    checkAdminAuthOnLoad();
+    setInterval(() => {
+      if (isAdminAuthenticated()) {
+        fetchLeaderboardData();
+      }
+    }, 2500);
   </script>
 </body>
 </html>

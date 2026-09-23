@@ -134,6 +134,32 @@ def test_browser_ui():
         driver.get(admin_url)
         time.sleep(2)
         
+        # Verify Admin Login Modal is displayed initially
+        login_modal = driver.find_element(By.ID, "admin-login-modal")
+        assert login_modal.is_displayed(), "Admin Login Modal should be visible before authentication"
+        print("Admin Login Gate is active and blocking unauthenticated access.")
+        driver.save_screenshot(r"C:\Users\shrey\.gemini\antigravity\brain\17c36665-51d0-4b98-8e9d-7e8fd18fcd27\screenshot_admin_login_modal.png")
+
+        # Test invalid PIN
+        pin_input = driver.find_element(By.ID, "admin-auth-pin")
+        pin_input.clear()
+        pin_input.send_keys("wrong-password-99")
+        driver.find_element(By.ID, "admin-login-form").submit()
+        time.sleep(1)
+        err_text = driver.find_element(By.ID, "admin-login-error").text
+        assert "ACCESS DENIED" in err_text
+        print("Invalid PIN rejected with ACCESS DENIED message.")
+
+        # Test valid PIN
+        pin_input.clear()
+        pin_input.send_keys("wie-admin-2026")
+        driver.find_element(By.ID, "admin-login-form").submit()
+        time.sleep(2)
+
+        # Modal should now be closed/hidden
+        assert not login_modal.is_displayed() or driver.execute_script("return document.getElementById('admin-login-modal').style.display;") == "none"
+        print("Admin authenticated successfully with master PIN!")
+
         # Verify team row is rendered
         body_text = driver.find_element(By.TAG_NAME, "body").text
         assert "OMEGA-77" in body_text
