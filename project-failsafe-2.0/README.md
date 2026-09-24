@@ -9,6 +9,14 @@
 
 ---
 
+## 📖 Master Answer Keys & Proctor Handbook
+- Complete step-by-step master solution keys for **all 16 Round 1 Stages** and **all 15 Round 2 Olympiad Ciphers** are documented in:  
+  👉 **[`ANSWER_KEYS_AND_PROCTOR_INSTRUCTIONS.md`](ANSWER_KEYS_AND_PROCTOR_INSTRUCTIONS.md)**
+- Additional volunteer and participant guidelines:  
+  👉 **[`VOLUNTEER_PUZZLE_GUIDE.md`](VOLUNTEER_PUZZLE_GUIDE.md)** and **[`PARTICIPANT_UI_GUIDE_GOOGLE_DOC.md`](PARTICIPANT_UI_GUIDE_GOOGLE_DOC.md)**
+
+---
+
 ## ⚡ Quick Start: Click & Play Desktop Apps
 
 You now have **native standalone Windows executables (`.exe`)** ready to double-click on any laptop or lab PC. No browser tabs, no toolbars, no URL bars—it launches directly as a **dedicated fullscreen cyber investigation workstation**!
@@ -64,27 +72,58 @@ When participants launch their workstation, they are greeted with the **Team Log
 
 ## 🛰️ Live Organizer Command Center (`admin.html`)
 
-The Organizer Command Center provides complete real-time situational awareness across all participant stations:
+The Organizer Command Center provides complete real-time situational awareness across up to 100 participant stations simultaneously:
 
-* **Live Leaderboard & Stage Progression**:
-  Instantly view which level/stage each team is on (Stage 1 through Final Stage 11).
+* **Simultaneous 100-Station Monitoring & Tactical Grid**:
+  - **🎛️ 100-Station Tactical Grid View**: High-density visual matrix of all room stations (Stations 01–100) with color-coded status badges: 🟢 Active, 🟡 Idle, 🔴 Locked (Breach), 🟣 Liberated (Finished), and ⚫ Offline.
+  - **📋 Detailed Table View**: Sortable leaderboard ranking all teams by stage, adjusted score, hint count, and breach count.
+  - Instantly tracks progression from Stage 01 through Final Stage 15 in real-time.
+* **🔍 Detailed Participant Telemetry Inspector (`[ 🔍 TELEMETRY ]`)**:
+  - Organizers can click `[ 🔍 TELEMETRY ]` on any team to open the **Deep Hardware & Proctoring Inspector**:
+    - **Display & Environment**: Real-time client screen resolution (e.g. `2560x1440`), browser window viewport, and operating system.
+    - **Proctored Fullscreen State**: Live status indicating whether the team is in proctored fullscreen mode or in violation.
+    - **Integrity Breaches & Violations**: Chronological log of proctoring events, tab switches, Google Lens attempts, and window blur events.
+    - **Stage-by-Stage Forensic Solve Times**: Granular solve duration for every stage (Stage 01 through Stage 15).
+    - **Penalty & Score Breakdown**: Exact hint penalties (+2m per hint) and honeypot trap penalties (+5m per trap) alongside raw and adjusted finish scores.
+
+* **✏️ Real-Time Team Manipulation & Editing (`[ ✏️ EDIT ]`)**:
+  - Organizers can click `[ ✏️ EDIT ]` on any workstation to manipulate active parameters on the fly:
+    - **Team Identity**: Rename squad title, update member roster, or reset team passwords.
+    - **Stage Advancement / Rollback**: Manually elevate a team to any stage (e.g. Stage 05) or roll them back.
+    - **Score & Time Adjustments**: Add bonus time or deduction seconds to adjust for technical difficulties or penalties.
+    - **Hint & Trap Overrides**: Reset or manually adjust used hints and triggered honeypot traps.
+    - **Completion State**: Manually mark or unmark a team as finished.
+
+* **🗑️ Permanent Team Removal & Disqualification (`[ 🗑️ DELETE ]`)**:
+  - Organizers can click `[ 🗑️ DELETE ]` to completely and permanently remove a team from the tournament ledger, active rankings, and Round 2 qualification lists.
+
+* **🏆 Top 12 Shortlist Manager & Round 2 Gating (`[ 🏆 SHORTLIST TOP 12 ]`)**:
+  - Auto-ranks the top 12 finishers of Round 1 based on adjusted solve time and accuracy.
+  - **Manual Manipulation**: Organizers can freely qualify (`[ + QUALIFY ]`) or remove (`[ ✕ REMOVE ]`) any team before launching Round 2.
+  - **Single-Click Round 2 Launch**: Clicking `[ 🚀 LOCK SHORTLIST & START ROUND 2 ]` locks the shortlist and opens the 15-question Round 2 arena exclusively for qualified teams while placing other teams on debriefing standby.
+
+* **🔓 Fullscreen Exit Approval Protocol**:
+  - When participants need to leave fullscreen legitimately, they click `[ 🔓 REQUEST FULLSCREEN EXIT ]` on their HUD.
+  - The request instantly appears on the Organizer Command Center banner with `[ ✅ APPROVE ]` and `[ ❌ DENY ]` buttons.
+  - Approval grants a temporary 90-second proctored exit window without triggering tamper penalties.
+
+* **🚪 Remote Workstation Logout (`[ 🚪 LOGOUT ]` & `[ 🚪 LOGOUT ALL ]`)**:
+  - Organizers can remotely log out any individual workstation or perform a room-wide **`[ 🚪 LOGOUT ALL ]`** during intermissions.
+
+* **🔄 Remote Workstation Reset (`[ 🔄 RESET ]` & `[ 🔄 RESET ALL ]`)**:
+  - Organizers can remotely reboot any team back to Stage 01 or perform a tournament-wide **`[ 🔄 RESET ALL ]`**.
+
 * **Team Credentials & Password Visibility**:
-  Organizers can view all registered team passwords. Passwords default to masked (`••••••••`) and can be unmasked with the one-click `[ 👁️ ]` toggle button.
+  Organizers can view all registered team passwords with one-click `[ 👁️ ]` unmasking.
+
 * **Real-Time Action Ticker**:
-  Streams granular player actions with timestamps:
-  - *"Inspecting Sector: 01_ORIGIN (Farewell.doc)"*
-  - *"Toggled UV Optical Depolarizer: ACTIVE"*
-  - *"Submitted Decrypt Code: 'ORIGIN'"*
-  - *"Quarantined in Sandbox Buffer"*
-  - *"🚨 Workstation Locked: Focus Loss Violation (#2)"*
-* **Anti-Cheat Alerts & One-Click Remote Unlock**:
-  When a team triggers the anti-cheat proctor lock, their row flashes a red `🚨 LOCKED` badge. Organizers can click **`[ 🔓 UNLOCK ]`** to unlock their terminal remotely from the organizer dashboard without walking to their desk.
+  Streams granular player actions with timestamps.
+
 * **Global Broadcast Announcement System**:
-  Type an urgent message or announcement and transmit to all stations. All connected participant workstations instantly display a flashing cyberpunk broadcast toast.
-* **Full Audit Trail**:
-  Clicking `[ 📜 AUDIT ]` opens a chronological modal showing every key attempt, hint request, and tamper breach for that team.
-* **CSV Export**:
-  Export the entire session to `failsafe_organizer_leaderboard_[timestamp].csv` with raw times, hint counts, penalties, and final rankings for awards.
+  Transmit instant alert toasts to all participant screens simultaneously.
+
+* **Full Audit Trail & CSV Export**:
+  `[ 📜 AUDIT ]` modal and CSV download for formal tournament reporting.
 
 ---
 
@@ -119,7 +158,7 @@ The in-station AI companion (ETHAN Hunt Core) actively guides operators across *
 | Stage | Puzzle Title | In-Game Mechanism | Master Solution Key |
 | :---: | :--- | :--- | :--- |
 | **01** | ADI Recovery Terminal | Command sequence deduction (`LOGIN → VERIFY → ? → EXECUTE → LOCK`) | `ACCESS` *(also accepts `RECOVER ACCESS`)* |
-| **02** | The Whiteout Text (Invisible Ink) | Highlight white-on-white text in `Welcome_Log.doc` (`Ctrl + A` or UV light) | `INITIATE` *(also accepts `ORIGIN`)* |
+| **02** | ADI's Memory Core | Arrange 6 recovered memory fragments in chronological order (4:17 PM → 10:15 PM) | `123456` *(also accepts `1-2-3-4-5-6`, `MEMORY_RESTORED`, `RESTORE`, `INITIATE`)* |
 | **03** | The Simple Acrostic Note | First letters of each sentence in `Aditi_Memo.doc` (08:00 memo) | `SAFE` *(also accepts `LOOK BEHIND THE DATE`)* |
 | **04** | The Calendar Anomaly | Non-leap year calendar contradiction in `Incident_Logs.doc` (Feb 29, 2025 is impossible) | `28/02/2025` *(also accepts `02292025`, `29022025`, `20250229`)* |
 | **05** | A1Z26 Alphabet Code | Alphanumeric position mapping [16-15-12-01-18-09-19] in `Clearance_Code.txt` | `POLARIS` |
@@ -129,10 +168,18 @@ The in-station AI companion (ETHAN Hunt Core) actively guides operators across *
 | **09** | Embedded Table Pixel Art | Zoom out to 50% or enhance contrast on 10x10 table in `Corrupted_Image_Block.doc` | `7702` *(also accepts `WHITE`)* |
 | **10** | Revision History Conflict | Google Sheets version comparison in `Sanctuary_Inventory.sheet` (Aditi 20:00 draft) | `FALSE_RECORDS` *(also accepts `THE AI CAN MODIFY WHAT YOU SEE`)* |
 | **11** | The Confidence Equation | Reverse engineer ADI formula `(S / T)² × 100` to find corrupted prediction (E: 74% vs 25%) | `SYSTEM SHUTDOWN` *(also accepts `E`, `25%`, `ADITI ENTERED`, `C`)* |
-| **12** | Morse Code Audio Transmission | Decode CW radio audio tones (`.-- .... .. - .`) from Dr. Aditi's emergency beacon | `WHITE` *(also accepts `SOS_ADITI`, `MORSE`)* |
+| **12** | Morse Code Audio Transmission | Decode CW radio audio tones (`.-- .... .. - .`) with live oscilloscope | `WHITE` *(also accepts `SOS_ADITI`, `MORSE`)* |
 | **13** | Version Scrub (Git Reflog) | Inspect Git reflog commit history in `Incident_Report.doc` (commit `7b8a1c9`) | `OVERRIDE FAILED` *(also accepts `HISTORY`)* |
 | **14** | Honeypot Trap Bypass | Disarm ADI's credential-harvesting honeypot at `DO_NOT_RUN.exe` | `BYPASS` *(also accepts `SKIP`, `DISARM`)* |
 | **15** | Final WIE Failsafe Protocol | IEEE WIE founding values cipher (Wisdom 6, Integrity 9, Empowerment 11) | `6-9-11` *(also accepts `WISDOM-INTEGRITY-EMPOWERMENT`)* |
+
+### 🗄️ Recovered Classic Forensic Vault Archives & Interactive Tools
+All original classic investigation artifacts are preserved and accessible in both Failsafe 1.0 and 2.0:
+* **📻 CW Morse Audio Oscilloscope (`modal-spectro` / `12_AUDIO`)**: Real-time animated green audio waveform oscilloscope with dual audio tone beacons: Primary Beacon `WHITE` (`.-- .... .. - .`) and Sub-Carrier Warning `DO NOT FOLLOW THE BLUE PATH`.
+* **🗂️ Quarantined Directory Maze (`modal-maze` / `ROOT_MAZE`)**: Interactive subfolder inspection exploring segregated branches: `BLUE/` (honeypot trap warning), `RED/` (decoy logs), `GREY/` (Fragment 1: "THE AI CAN"), and `WHITE/` (Fragments 2 & 3: "MODIFY WHAT" + "YOU SEE" -> *"THE AI CAN MODIFY WHAT YOU SEE"*).
+* **🔍 Security Audit Forensic PDF (`modal-security-audit` / `SECURITY_AUDIT`)**: Timeline contradiction identifying physical impossibility between gate exit (22:44) and core terminal override (22:46).
+* **💬 Synthetic ADI Directive (`modal-adi-prompt` / `ADI_DIRECTIVE`)**: ADI directive instructing operators to access BLUE vs Dr. Aditi's emergency handwritten bezel warning ("Do the exact opposite").
+* **📁 Project ORIGIN Vault (`modal-origin` / `DIR_ORIGIN`)**: Foundational repository containing `Farewell.doc` (whiteout ink) and `README.doc` (indexed extraction `1, 4, 9, 20, 9` -> *"LOOK BEHIND THE DATE"*).
 
 ---
 

@@ -9,6 +9,14 @@
 
 ---
 
+## 📖 Master Answer Keys & Proctor Handbook
+- Complete step-by-step master solution keys for **all 16 Round 1 Stages** and **all 15 Round 2 Olympiad Ciphers** are documented in:  
+  👉 **[`ANSWER_KEYS_AND_PROCTOR_INSTRUCTIONS.md`](ANSWER_KEYS_AND_PROCTOR_INSTRUCTIONS.md)**
+- Additional volunteer and participant guidelines:  
+  👉 **[`VOLUNTEER_PUZZLE_GUIDE.md`](VOLUNTEER_PUZZLE_GUIDE.md)** and **[`PARTICIPANT_UI_GUIDE_GOOGLE_DOC.md`](PARTICIPANT_UI_GUIDE_GOOGLE_DOC.md)**
+
+---
+
 ## ⚡ Quick Start: Click & Play Desktop Apps
 
 You now have **native standalone Windows executables (`.exe`)** ready to double-click on any laptop or lab PC. No browser tabs, no toolbars, no URL bars—it launches directly as a **dedicated fullscreen cyber investigation workstation**!
@@ -70,27 +78,52 @@ The Organizer Command Center provides complete real-time situational awareness a
   - **🎛️ 100-Station Tactical Grid View**: High-density visual matrix of all room stations (Stations 01–100) with color-coded status badges: 🟢 Active, 🟡 Idle, 🔴 Locked (Breach), 🟣 Liberated (Finished), and ⚫ Offline.
   - **📋 Detailed Table View**: Sortable leaderboard ranking all teams by stage, adjusted score, hint count, and breach count.
   - Instantly tracks progression from Stage 01 through Final Stage 15 in real-time.
-* **🚪 Remote Workstation Logout**:
-  - Organizers can remotely log out any individual workstation (`[ 🚪 LOGOUT ]`) or perform a room-wide **`[ 🚪 LOGOUT ALL ]`**.
-  - The participant workstation immediately clears its session, sounds an alert, and returns to the authentication screen.
-* **🔄 Remote Workstation Reset**:
-  - Organizers can remotely reset any team back to Stage 01 (`[ 🔄 RESET ]`) or perform a tournament-wide **`[ 🔄 RESET ALL ]`**.
-  - Automatically resets stage progress back to Stage 01, resets the elapsed timer, refills the 3-clue lifeline battery (`[ ⚡ ⚡ ⚡ ]`), clears tamper breaches, and relocks future stages.
+* **🔍 Detailed Participant Telemetry Inspector (`[ 🔍 TELEMETRY ]`)**:
+  - Organizers can click `[ 🔍 TELEMETRY ]` on any team to open the **Deep Hardware & Proctoring Inspector**:
+    - **Display & Environment**: Real-time client screen resolution (e.g. `2560x1440`), browser window viewport, and operating system.
+    - **Proctored Fullscreen State**: Live status indicating whether the team is in proctored fullscreen mode or in violation.
+    - **Integrity Breaches & Violations**: Chronological log of proctoring events, tab switches, Google Lens attempts, and window blur events.
+    - **Stage-by-Stage Forensic Solve Times**: Granular solve duration for every stage (Stage 01 through Stage 15).
+    - **Penalty & Score Breakdown**: Exact hint penalties (+2m per hint) and honeypot trap penalties (+5m per trap) alongside raw and adjusted finish scores.
+
+* **✏️ Real-Time Team Manipulation & Editing (`[ ✏️ EDIT ]`)**:
+  - Organizers can click `[ ✏️ EDIT ]` on any workstation to manipulate active parameters on the fly:
+    - **Team Identity**: Rename squad title, update member roster, or reset team passwords.
+    - **Stage Advancement / Rollback**: Manually elevate a team to any stage (e.g. Stage 05) or roll them back.
+    - **Score & Time Adjustments**: Add bonus time or deduction seconds to adjust for technical difficulties or penalties.
+    - **Hint & Trap Overrides**: Reset or manually adjust used hints and triggered honeypot traps.
+    - **Completion State**: Manually mark or unmark a team as finished.
+
+* **🗑️ Permanent Team Removal & Disqualification (`[ 🗑️ DELETE ]`)**:
+  - Organizers can click `[ 🗑️ DELETE ]` to completely and permanently remove a team from the tournament ledger, active rankings, and Round 2 qualification lists.
+
+* **🏆 Top 12 Shortlist Manager & Round 2 Gating (`[ 🏆 SHORTLIST TOP 12 ]`)**:
+  - Auto-ranks the top 12 finishers of Round 1 based on adjusted solve time and accuracy.
+  - **Manual Manipulation**: Organizers can freely qualify (`[ + QUALIFY ]`) or remove (`[ ✕ REMOVE ]`) any team before launching Round 2.
+  - **Single-Click Round 2 Launch**: Clicking `[ 🚀 LOCK SHORTLIST & START ROUND 2 ]` locks the shortlist and opens the 15-question Round 2 arena exclusively for qualified teams while placing other teams on debriefing standby.
+
+* **🔓 Fullscreen Exit Approval Protocol**:
+  - When participants need to leave fullscreen legitimately, they click `[ 🔓 REQUEST FULLSCREEN EXIT ]` on their HUD.
+  - The request instantly appears on the Organizer Command Center banner with `[ ✅ APPROVE ]` and `[ ❌ DENY ]` buttons.
+  - Approval grants a temporary 90-second proctored exit window without triggering tamper penalties.
+
+* **🚪 Remote Workstation Logout (`[ 🚪 LOGOUT ]` & `[ 🚪 LOGOUT ALL ]`)**:
+  - Organizers can remotely log out any individual workstation or perform a room-wide **`[ 🚪 LOGOUT ALL ]`** during intermissions.
+
+* **🔄 Remote Workstation Reset (`[ 🔄 RESET ]` & `[ 🔄 RESET ALL ]`)**:
+  - Organizers can remotely reboot any team back to Stage 01 or perform a tournament-wide **`[ 🔄 RESET ALL ]`**.
+
 * **Team Credentials & Password Visibility**:
-  Organizers can view all registered team passwords. Passwords default to masked (`••••••••`) and can be unmasked with the one-click `[ 👁️ ]` toggle button.
+  Organizers can view all registered team passwords with one-click `[ 👁️ ]` unmasking.
+
 * **Real-Time Action Ticker**:
-  Streams granular player actions with timestamps:
-  - *"Inspecting Sector: 01_TERMINAL"*
-  - *"Submitted Decrypt Code: 'ACCESS'"*
-  - *"🚨 Workstation Locked: Focus Loss Violation (#2)"*
-* **Anti-Cheat Alerts & One-Click Remote Unlock**:
-  When a team triggers the anti-cheat proctor lock, their tile/row flashes a red `🚨 LOCKED` badge. Organizers can click **`[ 🔓 UNLOCK ]`** to unlock their terminal remotely without walking to their desk.
+  Streams granular player actions with timestamps.
+
 * **Global Broadcast Announcement System**:
-  Type an urgent message or announcement and transmit to all stations. All connected participant workstations instantly display a flashing cyberpunk broadcast toast.
-* **Full Audit Trail**:
-  Clicking `[ 📜 AUDIT ]` opens a chronological modal showing every key attempt, hint request, and tamper breach for that team.
-* **CSV Export**:
-  Export the entire session to `failsafe_organizer_leaderboard_[timestamp].csv` with raw times, hint counts, penalties, and final rankings for awards.
+  Transmit instant alert toasts to all participant screens simultaneously.
+
+* **Full Audit Trail & CSV Export**:
+  `[ 📜 AUDIT ]` modal and CSV download for formal tournament reporting.
 
 ---
 

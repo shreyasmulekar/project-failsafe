@@ -44,18 +44,23 @@
 
     /* Header */
     .top-navbar {
-      height: 58px;
+      min-height: 52px;
+      height: auto;
       background: rgba(8, 12, 20, 0.96);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      padding: 0 24px;
+      padding: 6px 16px;
+      gap: 10px;
       font-family: var(--font-mono);
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-sizing: border-box;
+      max-width: 100vw;
     }
 
     .nav-brand {
@@ -106,23 +111,26 @@
 
     .nav-actions {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
+      justify-content: flex-end;
     }
     .btn-action {
       background: rgba(0, 240, 255, 0.08);
       border: 1px solid var(--cyber-cyan);
       color: var(--cyber-cyan);
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: bold;
-      padding: 6px 14px;
+      padding: 4px 8px;
       border-radius: 3px;
       cursor: pointer;
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
+      white-space: nowrap;
     }
     .btn-action:hover {
       background: var(--cyber-cyan);
@@ -613,6 +621,100 @@
       border-color: var(--combat-red) !important;
       box-shadow: 0 0 10px rgba(255, 0, 60, 0.5) !important;
     }
+
+    /* ==========================================================================
+       RESPONSIVE LAPTOP ADAPTATIONS (1280x720, 1366x768, 1536x864, 1920x1080)
+       ========================================================================== */
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    .admin-container {
+      max-width: 100%;
+      padding: clamp(12px, 1.6vw, 24px);
+      box-sizing: border-box;
+    }
+    .table-container {
+      overflow-x: auto;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-container table {
+      min-width: 1050px;
+    }
+    @media (max-width: 1440px) {
+      .top-navbar {
+        padding: 6px 12px;
+        gap: 8px;
+      }
+      .brand-title {
+        font-size: 12.5px;
+      }
+      .nav-telemetry {
+        font-size: 10.5px;
+        gap: 10px;
+      }
+      .kpi-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+      }
+      .kpi-card {
+        padding: 12px 14px;
+      }
+      .kpi-val {
+        font-size: 24px;
+      }
+      .btn-action {
+        font-size: 9.5px;
+        padding: 3px 7px;
+      }
+    }
+    @media (max-width: 1200px) {
+      .top-navbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    /* Cyber Shockwave Ripple Effect for Clicks & Touches */
+    .cyber-touch-ripple {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      border: 1.5px solid var(--cyber-cyan, #00f0ff);
+      box-shadow: 0 0 14px var(--cyber-cyan, #00f0ff), inset 0 0 8px rgba(0, 240, 255, 0.45);
+      transform: translate(-50%, -50%) scale(0.1);
+      opacity: 0.95;
+      animation: cyber-ripple-anim 0.52s cubic-bezier(0.1, 0.8, 0.25, 1) forwards;
+      z-index: 999999;
+    }
+    @keyframes cyber-ripple-anim {
+      0% {
+        transform: translate(-50%, -50%) scale(0.1);
+        opacity: 0.95;
+      }
+      60% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+      }
+    }
+
+    button, .btn-action, .btn-table, .station-card, .filter-chip {
+      transition: transform 0.12s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.15s ease, filter 0.15s ease !important;
+    }
+    button:active, .btn-action:active, .btn-table:active, .filter-chip:active {
+      transform: scale(0.96) translateY(1px) !important;
+      filter: brightness(1.25) contrast(1.1) !important;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.7) !important;
+    }
   </style>
 </head>
 <body>
@@ -637,8 +739,18 @@
       </button>
       <button class="btn-action" onclick="openBroadcastModal()">
         <span>📢</span> BROADCAST
+      </button>
       <button class="btn-action" style="border-color:var(--cyber-cyan); color:var(--cyber-cyan); font-weight:bold; box-shadow:0 0 10px rgba(0,240,255,0.2);" onclick="openRound2ShortlistModal()" title="View and manipulate Top 12 shortlist for Round 2">
         <span>🎯</span> ROUND 2 SHORTLIST
+      </button>
+      <button class="btn-action" id="btn-send-finished-r2" style="border-color:#00ff66; color:#00ff66; background:rgba(0,255,102,0.15); font-weight:bold; box-shadow:0 0 14px rgba(0,255,102,0.35);" onclick="sendAllFinishedToRound2()" title="Send all teams that have finished Round 1 straight into Round 2">
+        <span>🚀</span> SEND FINISHED TO R2
+      </button>
+      <button id="btn-global-fullscreen-exit" class="btn-action" style="border-color:#ffb000; color:#ffb000; font-weight:bold; box-shadow:0 0 10px rgba(255,176,0,0.3);" onclick="toggleGlobalFullscreenExit()" title="Permit all participants to exit fullscreen without triggers">
+        <span>🔓</span> ALLOW ALL EXIT FS
+      </button>
+      <button class="btn-action" style="border-color:#00ff66; color:#00ff66; font-weight:bold; box-shadow:0 0 10px rgba(0,255,102,0.3);" onclick="remoteUnlockTeam('ALL')" title="Remotely clear lockouts and reset breaches for all workstations">
+        <span>🔓</span> UNLOCK ALL STATIONS
       </button>
       <button class="btn-action" onclick="openMasterKeysModal()">
         <span>🔑</span> MASTER KEYS
@@ -646,8 +758,23 @@
       <button class="btn-action warning" style="border-color:var(--hazard-amber); color:var(--hazard-amber);" onclick="remoteLogoutAllTeams()" title="Force logout on all workstations">
         <span>🚪</span> LOGOUT ALL
       </button>
-      <button class="btn-action danger" style="border-color:var(--combat-red); color:var(--combat-red);" onclick="remoteResetAllTeams()" title="Force reset all workstations to Stage 01">
-        <span>🔄</span> RESET ALL
+      <button class="btn-action danger" style="border-color:var(--combat-red); color:var(--combat-red);" onclick="promptResetRound(1)" title="Reset Round 1 progress to Stage 01 for all workstations">
+        <span>🔄</span> RESET ROUND 1
+      </button>
+      <button class="btn-action danger" style="border-color:var(--cyber-cyan); color:var(--cyber-cyan); background:rgba(0,240,255,0.08);" onclick="promptResetRound(2)" title="Reset Round 2 progress to Puzzle 01 for all workstations">
+        <span>🎯</span> RESET ROUND 2
+      </button>
+      <button class="btn-action" style="border-color:#ffd700; color:#ffd700; background:rgba(255,215,0,0.12); font-weight:bold; box-shadow:0 0 14px rgba(255,215,0,0.3);" onclick="promptUnlockAllLevels()" title="Unlock all 16 Round 1 stages and 15 Round 2 puzzles for organizer testing">
+        <span>🔓</span> UNLOCK ALL (TEST)
+      </button>
+      <button class="btn-action" style="border-color:#ff003c; color:#ff8095; background:rgba(255,0,60,0.12); font-weight:bold; box-shadow:0 0 10px rgba(255,0,60,0.2);" onclick="promptLockAllLevels()" title="Lock all levels back and return stations to Stage 01">
+        <span>🔒</span> LOCK ALL
+      </button>
+      <button class="btn-action" style="border-color:#94a3b8; color:#cbd5e1; background:rgba(148,163,184,0.1);" onclick="promptClearBroadcasts()" title="Clear organizer broadcast history so stations don't show old toasts">
+        <span>🧹</span> CLEAR BROADCASTS
+      </button>
+      <button class="btn-action danger" style="border-color:#ff003c; color:#ff4d6d; background:rgba(255,0,60,0.14); font-weight:900; box-shadow:0 0 12px rgba(255,0,60,0.25);" onclick="promptPurgeAllTeams()" title="Permanently delete ALL teams at once from tournament database">
+        <span>🗑️</span> REMOVE ALL TEAMS
       </button>
       <button class="btn-action success" onclick="exportCsv()">
         <span>📥</span> EXPORT CSV
@@ -657,6 +784,56 @@
       </button>
     </div>
   </header>
+
+  <!-- TOURNAMENT COMMON ROUND CONTROLS & LAUNCH BAR -->
+  <div id="tournament-phase-bar" style="background:linear-gradient(90deg, #041019, #081e2b, #041019); border-bottom:2px solid var(--cyber-cyan); padding:10px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; box-shadow:0 6px 25px rgba(0,0,0,0.6); z-index:9000; position:relative;">
+    <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+      <!-- Round 1 Common Control -->
+      <div style="display:flex; align-items:center; gap:10px; background:rgba(0,240,255,0.06); padding:6px 14px; border-radius:4px; border:1px solid rgba(0,240,255,0.25);">
+        <span style="font-size:18px;">🏆</span>
+        <div>
+          <div style="font-size:10px; color:#94a3b8; letter-spacing:1px; font-weight:800;">ROUND 1 TOURNAMENT STATUS:</div>
+          <span id="badge-r1-phase-status" style="font-size:11.5px; font-weight:900; color:#ffd700; text-shadow:0 0 8px rgba(255,215,0,0.6);">
+            ⏳ STANDBY (TEAMS IN WAITING LOBBY)
+          </span>
+        </div>
+      </div>
+      <button id="btn-common-open-round-1" class="btn-action success" onclick="toggleRound1Launch()" style="font-size:12.5px; padding:9px 22px; font-weight:900; background:#00ff66; color:#02060e; border-color:#00ff66; box-shadow:0 0 20px rgba(0,255,102,0.5); cursor:pointer; letter-spacing:0.5px;">
+        <span>🚀</span> OPEN ROUND 1 (START ALL TEAMS)
+      </button>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+      <!-- Round 2 Common Control -->
+      <div style="display:flex; align-items:center; gap:10px; background:rgba(255,0,60,0.06); padding:6px 14px; border-radius:4px; border:1px solid rgba(255,0,60,0.25);">
+        <span style="font-size:18px;">🎯</span>
+        <div>
+          <div style="font-size:10px; color:#94a3b8; letter-spacing:1px; font-weight:800;">ROUND 2 ARENA STATUS:</div>
+          <span id="badge-r2-phase-status" style="font-size:11.5px; font-weight:900; color:#ff99aa; text-shadow:0 0 8px rgba(255,0,60,0.6);">
+            ⏳ AWAITING ORGANIZER START
+          </span>
+        </div>
+      </div>
+      <button id="btn-common-start-round-2" class="btn-action" onclick="promptStartRound2()" style="font-size:12.5px; padding:9px 22px; font-weight:900; background:rgba(0,240,255,0.18); color:#00f0ff; border-color:#00f0ff; box-shadow:0 0 18px rgba(0,240,255,0.4); cursor:pointer; letter-spacing:0.5px;">
+        <span>🎯</span> START ROUND 2 (OLYMPIAD)
+      </button>
+    </div>
+  </div>
+
+  <!-- Live Fullscreen Requests Alert Banner -->
+  <div id="fs-requests-banner" style="display:none; background:linear-gradient(90deg, rgba(255,176,0,0.2), rgba(255,0,60,0.2)); border-bottom:2px solid #ffb000; padding:10px 20px; font-family:var(--font-mono); box-shadow:0 0 20px rgba(255,176,0,0.3);">
+    <div style="max-width:1440px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:18px; animation:bounce-arrow 1s infinite;">⚠️</span>
+        <strong style="color:#ffb000; font-size:13px; letter-spacing:0.5px;">PENDING FULLSCREEN EXIT REQUESTS:</strong>
+        <div id="fs-requests-list" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;"></div>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button onclick="respondFullscreenExit('ALL', 'approve')" style="background:#00ff66; color:#02060e; border:none; padding:5px 12px; border-radius:3px; font-weight:900; cursor:pointer; font-size:11px;">✅ APPROVE FOR ALL TEAMS</button>
+        <button onclick="respondFullscreenExit('ALL', 'deny')" style="background:#ff003c; color:#fff; border:none; padding:5px 12px; border-radius:3px; font-weight:bold; cursor:pointer; font-size:11px;">❌ DENY ALL</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Server Offline Alert Banner -->
   <div id="server-offline-banner" style="display:none; background:rgba(255,0,60,0.15); border-bottom:2px solid var(--neon-red); color:#ff99aa; padding:10px 24px; font-size:12px; font-family:var(--font-mono); text-align:center;">
@@ -767,9 +944,12 @@
         Send an emergency push broadcast to all active participant terminals (e.g. <em>"10 minutes remaining in the round!"</em>).
       </p>
       <input type="text" id="broadcast-input" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid var(--cyber-cyan); border-radius:3px; padding:10px; font-family:var(--font-mono); color:#fff; font-size:13px;" placeholder="Type announcement here..." autocomplete="off">
-      <div style="display:flex; justify-content:flex-end; gap:10px;">
-        <button class="btn-action" onclick="closeModal('modal-broadcast')">CANCEL</button>
-        <button class="btn-action success" onclick="submitBroadcast()">TRANSMIT TO ALL STATIONS</button>
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:12px;">
+        <button type="button" class="btn-action" style="border-color:#ff003c; color:#ff8095; font-size:11px;" onclick="promptClearBroadcasts()">🧹 CLEAR BROADCAST HISTORY</button>
+        <div style="display:flex; gap:10px;">
+          <button class="btn-action" onclick="closeModal('modal-broadcast')">CANCEL</button>
+          <button class="btn-action success" onclick="submitBroadcast()">TRANSMIT TO ALL STATIONS</button>
+        </div>
       </div>
     </div>
   </div>
@@ -861,6 +1041,9 @@
             <button class="btn-action" onclick="resetShortlistToTop12()" style="font-size:11px; padding:6px 12px;" title="Reset to auto-ranked top 12">
               <span>🔄</span> AUTO-SELECT TOP 12
             </button>
+            <button class="btn-action" onclick="sendAllFinishedToRound2()" style="font-size:11px; padding:6px 12px; background:rgba(0,255,102,0.15); border-color:#00ff66; color:#00ff66; font-weight:bold;" title="Promote all teams who completed Round 1 directly to Round 2">
+              <span>🚀</span> SEND FINISHED TO R2
+            </button>
             <button class="btn-action danger" id="btn-start-round-2" onclick="promptStartRound2()" style="font-size:11px; padding:8px 16px; font-weight:bold; background:rgba(255,0,60,0.15); border-color:var(--combat-red); color:var(--combat-red);">
               <span>🚀</span> LOCK SHORTLIST &amp; START ROUND 2
             </button>
@@ -948,12 +1131,12 @@
             </select>
           </div>
           <div>
-            <label style="color:var(--text-muted); font-size:10px;">ROUND 1 STAGE (1-11):</label>
-            <input type="number" id="edit-team-stage" min="1" max="11" style="width:100%; padding:8px; background:rgba(0,0,0,0.6); border:1px solid var(--border-subtle); color:#fff; border-radius:3px;">
+            <label style="color:var(--text-muted); font-size:10px;">ROUND 1 STAGE (1-16):</label>
+            <input type="number" id="edit-team-stage" min="1" max="16" style="width:100%; padding:8px; background:rgba(0,0,0,0.6); border:1px solid var(--border-subtle); color:#fff; border-radius:3px;">
           </div>
           <div>
-            <label style="color:var(--text-muted); font-size:10px;">ROUND 2 STAGE (1-9):</label>
-            <input type="number" id="edit-team-r2-stage" min="1" max="9" style="width:100%; padding:8px; background:rgba(0,0,0,0.6); border:1px solid var(--border-subtle); color:#fff; border-radius:3px;">
+            <label style="color:var(--text-muted); font-size:10px;">ROUND 2 STAGE (1-15):</label>
+            <input type="number" id="edit-team-r2-stage" min="1" max="15" style="width:100%; padding:8px; background:rgba(0,0,0,0.6); border:1px solid var(--border-subtle); color:#fff; border-radius:3px;">
           </div>
         </div>
 
@@ -981,6 +1164,16 @@
             <input type="checkbox" id="edit-team-r2-finished">
             <span style="color:var(--hazard-amber); font-size:11px;">Mark Round 2 Complete (Podium)</span>
           </label>
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:10px; padding:10px; background:rgba(0,0,0,0.4); border:1px solid var(--border-subtle); border-radius:4px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <span style="font-size:11px; color:var(--text-muted); font-family:var(--font-mono); font-weight:bold;">⚡ TESTING &amp; RESETS:</span>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" class="btn-action" style="font-size:10.5px; padding:4px 10px; border-color:#ffd700; color:#ffd700;" onclick="unlockTeamLevelsFromModal()">🔓 UNLOCK ALL (TEST)</button>
+            <button type="button" class="btn-action" style="font-size:10.5px; padding:4px 10px; border-color:#ff003c; color:#ff8095;" onclick="lockTeamLevelsFromModal()">🔒 LOCK ALL</button>
+            <button type="button" class="btn-action danger" style="font-size:10.5px; padding:4px 10px;" onclick="resetTeamRoundFromModal(1)">🔄 RESET R1</button>
+            <button type="button" class="btn-action warning" style="font-size:10.5px; padding:4px 10px; border-color:var(--hazard-amber); color:var(--hazard-amber);" onclick="resetTeamRoundFromModal(2)">🎯 RESET R2</button>
+          </div>
         </div>
 
         <div id="edit-team-error" style="color:var(--combat-red); font-size:11px; min-height:16px;"></div>
@@ -1110,6 +1303,72 @@
 
   <script>
     const ADMIN_PIN = "wie-admin-2026";
+
+    // -------------------------------------------------------------------------
+    // Admin Interactive Sound Synthesizer & Cyber Shockwave Effects
+    // -------------------------------------------------------------------------
+    let audioCtx = null;
+    function getAdminAudioCtx() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) audioCtx = new AudioContext();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+      return audioCtx;
+    }
+
+    function playAdminClickSound() {
+      try {
+        const ctx = getAdminAudioCtx();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, now);
+        osc.frequency.exponentialRampToValueAtTime(1400, now + 0.035);
+        gain.gain.setValueAtTime(0.04, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.035);
+      } catch(e) {}
+    }
+
+    function spawnAdminRipple(x, y) {
+      try {
+        if (!x && !y) return;
+        const ripple = document.createElement('div');
+        ripple.className = 'cyber-touch-ripple';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.style.width = '64px';
+        ripple.style.height = '64px';
+        document.body.appendChild(ripple);
+        setTimeout(() => {
+          if (ripple.parentNode) ripple.parentNode.removeChild(ripple);
+        }, 550);
+      } catch(e) {}
+    }
+
+    let lastAdminClick = 0;
+    window.addEventListener('click', (e) => {
+      const now = Date.now();
+      if (now - lastAdminClick > 30) {
+        lastAdminClick = now;
+        playAdminClickSound();
+        spawnAdminRipple(e.clientX, e.clientY);
+      }
+    }, { capture: true, passive: true });
+
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches[0]) {
+        const t = e.touches[0];
+        playAdminClickSound();
+        spawnAdminRipple(t.clientX, t.clientY);
+      }
+    }, { capture: true, passive: true });
 
     function isAdminAuthenticated() {
       return sessionStorage.getItem("failsafe_admin_authenticated") === "true";
@@ -1305,6 +1564,9 @@
         cachedTeams = data.leaderboard || [];
         checkAndAlertBreaches(cachedTeams);
         updateKpis(cachedTeams);
+        if (typeof updateRoundPhaseControls === 'function') {
+          updateRoundPhaseControls(data.round_1_started, data.round_2_started);
+        }
         if (currentViewMode === 'GRID') {
           renderStationGrid();
         } else {
@@ -1436,9 +1698,15 @@
         const rank = idx + 1;
         let rankClass = "rank-cell";
         let rankSymbol = `#${rank}`;
-        if (rank === 1) { rankClass += " rank-1"; rankSymbol = "🥇 1"; }
-        else if (rank === 2) { rankClass += " rank-2"; rankSymbol = "🥈 2"; }
-        else if (rank === 3) { rankClass += " rank-3"; rankSymbol = "🥉 3"; }
+        if (t.round_2_is_finished) {
+          if (rank === 1) { rankClass += " rank-1"; rankSymbol = "🥇 1 (WINNER)"; }
+          else if (rank === 2) { rankClass += " rank-2"; rankSymbol = "🥈 2"; }
+          else if (rank === 3) { rankClass += " rank-3"; rankSymbol = "🥉 3"; }
+        } else {
+          if (rank === 1) { rankClass += " rank-1"; rankSymbol = "🥇 1"; }
+          else if (rank === 2) { rankClass += " rank-2"; rankSymbol = "🥈 2"; }
+          else if (rank === 3) { rankClass += " rank-3"; rankSymbol = "🥉 3"; }
+        }
 
         // Password reveal
         const isPwRevealed = revealedPasswords.has(t.team_id);
@@ -1468,9 +1736,30 @@
           return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
         };
 
-        const stageTitle = t.is_finished 
-          ? `<span class="stage-badge finished">🏆 LIBERATED ${t.finish_time_str ? `[${escapeHtml(t.finish_time_str)}]` : ''}</span>`
-          : `<span class="stage-badge">Stage ${t.current_stage.toString().padStart(2, '0')}: ${escapeHtml(t.stage_title)}</span>`;
+        const isR1Finished = !!t.is_finished || (parseInt(t.current_stage || 1, 10) >= 16);
+        const isInR2 = (parseInt(t.current_round || 1, 10) >= 2) || !!t.round_2_unlocked;
+
+        let stageTitle = '';
+        if (t.round_2_is_finished) {
+          stageTitle = `<span class="stage-badge finished" style="background:rgba(255,215,0,0.22); border-color:#ffd700; color:#ffd700; box-shadow:0 0 16px rgba(255,215,0,0.5); animation:pulse-strobe 1.5s infinite; font-weight:bold;">🏆 GRAND CHAMPION (R1+R2 CLEARED)</span>`;
+        } else if (isInR2) {
+          stageTitle = `<span class="stage-badge" style="background:rgba(0,255,102,0.18); border-color:#00ff66; color:#00ff66; font-weight:bold;">🎯 R2 PUZZLE ${(t.round_2_stage || 1).toString().padStart(2, '0')}: ACTIVE</span>`;
+        } else if (isR1Finished) {
+          stageTitle = `<span class="stage-badge finished" style="background:rgba(0,240,255,0.22); border-color:#00f0ff; color:#00f0ff; box-shadow:0 0 12px rgba(0,240,255,0.4); animation:pulse-strobe 2s infinite;">🏆 R1 CLEARED (READY FOR R2)</span>`;
+        } else {
+          stageTitle = `<span class="stage-badge">Stage ${t.current_stage.toString().padStart(2, '0')}: ${escapeHtml(t.stage_title)}</span>`;
+        }
+
+        let r2ActionBtn = '';
+        if (t.round_2_is_finished) {
+          r2ActionBtn = `<span class="badge" style="background:rgba(255,215,0,0.18); border:1px solid #ffd700; color:#ffd700; font-size:10px; padding:3px 6px; border-radius:3px; font-weight:bold;">🏆 FINISHED</span>`;
+        } else if (isInR2) {
+          r2ActionBtn = `<button class="btn-table" onclick="sendTeamToRound2('${escapeHtml(t.team_id)}')" title="Squad is live in Round 2. Click to resend promotion sync if needed." style="background:rgba(0,255,102,0.18); border-color:#00ff66; color:#00ff66; font-weight:bold;">🎯 IN ROUND 2</button>`;
+        } else if (isR1Finished) {
+          r2ActionBtn = `<button class="btn-table" onclick="sendTeamToRound2('${escapeHtml(t.team_id)}')" title="Send this squad to Round 2: StratCom Decryption Arena" style="background:linear-gradient(135deg, rgba(0,240,255,0.35), rgba(0,255,102,0.35)); border-color:#00ff66; color:#fff; font-weight:bold; box-shadow:0 0 15px rgba(0,255,102,0.7); animation:pulse-strobe 1.5s infinite;">🚀 SEND TO R2</button>`;
+        } else {
+          r2ActionBtn = `<button class="btn-table" onclick="sendTeamToRound2('${escapeHtml(t.team_id)}')" title="Force-advance squad to Round 2" style="border-color:rgba(0,240,255,0.4); color:#00f0ff; font-size:10px;">🚀 TO R2</button>`;
+        }
 
         let specificBreachBadge = '';
         const act = (t.last_action || '');
@@ -1482,9 +1771,14 @@
           specificBreachBadge = `<div class="tamper-badge focus-lost" style="margin-top:4px;">🚨 FOCUS LOST (ALT-TAB / WIN)</div>`;
         }
 
-        const tamperCol = (t.tamper_incidents > 0 || t.is_locked || specificBreachBadge)
+        const isLocked = !!t.is_locked;
+        const breachCount = t.tamper_incidents || (isLocked ? 1 : 0);
+        const tamperCol = (breachCount > 0 || isLocked)
           ? `<div>
-               <span class="tamper-badge">${t.is_locked ? '🚨 LOCKED' : '⚠️'} ${t.tamper_incidents || 1} Breach${(t.tamper_incidents || 1) > 1 ? 'es' : ''}</span>
+               <span class="tamper-badge" style="${isLocked ? 'background:rgba(255,0,60,0.25); border-color:#ff003c; color:#ff003c;' : ''}">
+                 ${isLocked ? '🚨 LOCKED' : '⚠️'} ${breachCount} Breach${breachCount > 1 ? 'es' : ''}
+               </span>
+               ${isLocked ? `<div style="margin-top:3px;"><button class="btn-table danger" onclick="remoteUnlockTeam('${escapeHtml(t.team_id)}')" style="font-size:9.5px; padding:2px 6px; font-weight:bold;">🔓 UNLOCK NOW</button></div>` : ''}
                ${specificBreachBadge}
              </div>`
           : `<span style="font-size:11px; color:var(--text-muted); font-family:var(--font-mono);">0 (Clean)</span>`;
@@ -1520,19 +1814,22 @@
                 <div style="color:${t.hints_count > 0 || t.traps_count > 0 ? 'var(--hazard-amber)' : 'var(--text-muted)'};">
                   Penalties: +${(t.hints_count * 2) + (t.traps_count * 5)}m
                 </div>
-                <div style="font-weight:bold; color:var(--tactical-green); margin-top:2px;">
-                  Score: ${formatTime(t.adjusted_time_sec)}
+                <div style="font-weight:bold; color:${t.round_2_is_finished ? '#ffd700' : 'var(--tactical-green)'}; margin-top:2px;">
+                  ${t.round_2_is_finished ? '🏆 TOTAL TIME: ' : 'Score: '}${formatTime(t.adjusted_time_sec)}
                 </div>
+                ${t.round_2_is_finished && rank === 1 ? '<div style="font-size:10px; font-weight:900; color:#ffd700; text-shadow:0 0 8px rgba(255,215,0,0.8); margin-top:2px;">👑 TOURNAMENT WINNER</div>' : ''}
               </div>
             </td>
             <td style="text-align:center;">
               <div style="display:flex; gap:6px; justify-content:center; flex-wrap:wrap;">
+                ${r2ActionBtn}
                 <button class="btn-table" onclick="showTeamTelemetry('${escapeHtml(t.team_id)}')" title="View detailed participant telemetry" style="border-color:var(--cyber-cyan); color:var(--cyber-cyan);">🔍 TELEMETRY</button>
                 <button class="btn-table" onclick="openEditTeamModal('${escapeHtml(t.team_id)}')" title="Edit team parameters" style="border-color:var(--tactical-green); color:var(--tactical-green);">✏️ EDIT</button>
-                <button class="btn-table" onclick="showTeamPuzzleTimes('${escapeHtml(t.team_id)}')" title="View per-puzzle solve times">⏱️ TIMES</button>
-                ${t.is_locked ? `<button class="btn-table danger" onclick="remoteUnlockTeam('${escapeHtml(t.team_id)}')" title="Unlock station">🔓 UNLOCK</button>` : ''}
+                <button class="btn-table" onclick="respondFullscreenExit('${escapeHtml(t.team_id)}', 'approve')" title="Authorize team to safely exit Chrome Fullscreen & Unlock" style="border-color:#ffb000; color:#ffb000;">🔓 FS EXIT</button>
+                <button class="btn-table ${t.is_locked ? 'danger' : 'warning'}" onclick="remoteUnlockTeam('${escapeHtml(t.team_id)}')" title="Remotely clear lock and reset breach incidents" style="${t.is_locked ? 'background:rgba(255,0,60,0.2); border-color:#ff003c; color:#ff003c;' : 'border-color:#00ff66; color:#00ff66;'}">🔓 UNLOCK</button>
                 <button class="btn-table warning" onclick="remoteLogoutTeam('${escapeHtml(t.team_id)}')" title="Force logout workstation">🚪 LOGOUT</button>
-                <button class="btn-table danger" onclick="remoteResetTeam('${escapeHtml(t.team_id)}')" title="Reset workstation to Stage 01">🔄 RESET</button>
+                <button class="btn-table danger" onclick="promptResetRoundTeam('${escapeHtml(t.team_id)}', 1)" title="Reset Round 1 to Stage 01 for this team">🔄 R1 RESET</button>
+                <button class="btn-table warning" onclick="promptResetRoundTeam('${escapeHtml(t.team_id)}', 2)" title="Reset Round 2 to Puzzle 01 for this team" style="border-color:var(--hazard-amber); color:var(--hazard-amber);">🎯 R2 RESET</button>
                 <button class="btn-table danger" onclick="promptDeleteTeam('${escapeHtml(t.team_id)}')" title="Permanently delete team" style="background:rgba(255,0,60,0.15); border-color:var(--combat-red); color:var(--combat-red);">🗑️ DELETE</button>
                 <button class="btn-table" onclick="showTeamAuditLog('${escapeHtml(t.team_id)}')">📜 AUDIT</button>
               </div>
@@ -1581,7 +1878,10 @@
         let cardStatusClass = "";
         let pulseIndicator = `<span class="pulse-green"></span> <span style="color:var(--tactical-green); font-weight:bold;">ACTIVE</span>`;
         
-        if (t.is_locked) {
+        if (t.round_2_is_finished) {
+          cardStatusClass = "finished";
+          pulseIndicator = `<span class="pulse-green"></span> <span style="color:#ffd700; font-weight:bold;">🏆 CHAMPION</span>`;
+        } else if (t.is_locked) {
           cardStatusClass = "locked";
           pulseIndicator = `<span class="pulse-red"></span> <span style="color:var(--combat-red); font-weight:bold;">LOCKED</span>`;
         } else if (t.is_finished) {
@@ -1604,9 +1904,20 @@
           specificBreachBadge = `<div class="tamper-badge focus-lost" style="margin-top:4px;">🚨 FOCUS LOST (ALT-TAB / WIN)</div>`;
         }
 
-        const stageText = t.is_finished 
-          ? `🏆 FINISHED ${t.finish_time_str ? `(${escapeHtml(t.finish_time_str)})` : ''}` 
-          : `STAGE ${t.current_stage.toString().padStart(2, '0')}`;
+        const isR2Finished = !!t.round_2_is_finished;
+        const isR1Finished = !!t.is_finished || (parseInt(t.current_stage || 1, 10) >= 16);
+        const isInR2 = (parseInt(t.current_round || 1, 10) >= 2) || !!t.round_2_unlocked;
+
+        let stageText = '';
+        if (isR2Finished) {
+          stageText = `🏆 R1+R2 CLEARED`;
+        } else if (isInR2) {
+          stageText = `🎯 R2 PUZZLE ${(t.round_2_stage || 1).toString().padStart(2, '0')}`;
+        } else if (isR1Finished) {
+          stageText = `🏆 R1 FINISHED`;
+        } else {
+          stageText = `STAGE ${t.current_stage.toString().padStart(2, '0')}`;
+        }
 
         html += `
           <div class="station-card ${cardStatusClass}">
@@ -1630,12 +1941,20 @@
               <button class="btn-table" onclick="showTeamTelemetry('${escapeHtml(t.team_id)}')">🔍</button>
               <button class="btn-table" onclick="openEditTeamModal('${escapeHtml(t.team_id)}')">✏️</button>
               <button class="btn-table" onclick="showTeamPuzzleTimes('${escapeHtml(t.team_id)}')">⏱️</button>
-              ${t.is_locked ? `<button class="btn-table danger" onclick="remoteUnlockTeam('${escapeHtml(t.team_id)}')">🔓</button>` : ''}
+              <button class="btn-table" onclick="respondFullscreenExit('${escapeHtml(t.team_id)}', 'approve')" title="Permit ${escapeHtml(t.team_id)} to Exit Fullscreen & Unlock" style="border-color:#ffb000; color:#ffb000;">🔓 FS</button>
+              <button class="btn-table ${t.is_locked ? 'danger' : 'warning'}" onclick="remoteUnlockTeam('${escapeHtml(t.team_id)}')" title="Unlock station and reset breaches" style="${t.is_locked ? 'background:rgba(255,0,60,0.2); border-color:#ff003c; color:#ff003c;' : 'border-color:#00ff66; color:#00ff66;'}">🔓</button>
               <button class="btn-table warning" onclick="remoteLogoutTeam('${escapeHtml(t.team_id)}')">🚪</button>
-              <button class="btn-table danger" onclick="remoteResetTeam('${escapeHtml(t.team_id)}')">🔄</button>
+              <button class="btn-table danger" onclick="promptResetRoundTeam('${escapeHtml(t.team_id)}', 1)" title="Reset Round 1 to Stage 01">🔄 R1</button>
+              <button class="btn-table warning" onclick="promptResetRoundTeam('${escapeHtml(t.team_id)}', 2)" title="Reset Round 2 to Puzzle 01" style="border-color:var(--hazard-amber); color:var(--hazard-amber);">🎯 R2</button>
               <button class="btn-table danger" onclick="promptDeleteTeam('${escapeHtml(t.team_id)}')">🗑️</button>
               <button class="btn-table" onclick="showTeamAuditLog('${escapeHtml(t.team_id)}')">📜</button>
             </div>
+            ${isR1Finished ? `
+              <div style="margin-top:6px;">
+                <button class="btn-table" onclick="sendTeamToRound2('${escapeHtml(t.team_id)}')" style="width:100%; font-size:10px; font-weight:bold; padding:4px; background:${isInR2 ? 'rgba(0,255,102,0.18)' : 'linear-gradient(135deg, rgba(0,240,255,0.3), rgba(0,255,102,0.3))'}; border-color:${isInR2 ? '#00ff66' : '#00f0ff'}; color:${isInR2 ? '#00ff66' : '#fff'}; box-shadow:${isInR2 ? 'none' : '0 0 10px rgba(0,240,255,0.4)'};">
+                  ${isInR2 ? '🎯 IN ROUND 2' : '🚀 SEND TO ROUND 2'}
+                </button>
+              </div>` : ''}
           </div>
         `;
       });
@@ -1643,7 +1962,11 @@
     }
 
     async function remoteUnlockTeam(teamId) {
-      if (!confirm(`Are you sure you want to remotely unlock workstation for ${teamId}?`)) return;
+      const isAll = (teamId === 'ALL');
+      const confirmMsg = isAll 
+        ? "Remotely unlock ALL participant workstations and reset all breach incidents to zero?"
+        : `Remotely unlock workstation for [${teamId}] and reset breaches?`;
+      if (!confirm(confirmMsg)) return;
       try {
         const res = await fetch(`${API_BASE}/api/admin/remote-unlock`, {
           method: 'POST',
@@ -1652,7 +1975,7 @@
         });
         const data = await res.json();
         if (data.success) {
-          alert(`Success: Workstation for ${teamId} has been remotely unlocked!`);
+          alert(`✅ Success: ${data.message || 'Workstation unlocked successfully.'}`);
           fetchLeaderboardData();
         } else {
           alert(`Error: ${data.error || 'Failed to unlock'}`);
@@ -1703,45 +2026,73 @@
       }
     }
 
-    async function remoteResetTeam(teamId) {
-      if (!confirm(`⚠️ REMOTE RESET TO STAGE 01:\n\nAre you sure you want to completely RESET team [${teamId}]?\n\nThis will:\n- Reset mission progress back to Stage 01\n- Reset timer and elapsed score\n- Refill clue battery to 3 [⚡ ⚡ ⚡]\n- Clear tamper breach locks\n- Relock future stages 2–15\n\nProceed?`)) return;
+    async function promptResetRound(roundNum) {
+      const roundLabel = roundNum === 2 ? "ROUND 2 (STRATCOM ARENA)" : "ROUND 1 (EVIDENCE VAULT)";
+      const promptPhrase = roundNum === 2 ? "RESET ROUND 2" : "RESET ROUND 1";
+      const details = roundNum === 2 
+        ? "• Clear all Round 2 progress, times, and completions back to Puzzle 01\n• Re-open and unlock the Round 2 shortlist\n• Retain all Round 1 scores, qualifications, and team registrations"
+        : "• Reset all workstations back to Stage 01\n• Reset Round 1 mission timers and clue batteries [⚡ ⚡ ⚡]\n• Clear finish flags and penalties\n• Retain team logins and registrations";
+
+      const conf = prompt(`⚠️ CRITICAL ORGANIZER OVERRIDE: ${roundLabel} RESET\n\n${details}\n\nTo confirm, type '${promptPhrase}' below:`);
+      if (conf !== promptPhrase) return;
+
       try {
-        const res = await fetch(`${API_BASE}/api/admin/remote-reset`, {
+        const res = await fetch(`${API_BASE}/api/admin/round/reset`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pin: ADMIN_PIN, team_id: teamId })
+          body: JSON.stringify({ pin: ADMIN_PIN, admin_pin: ADMIN_PIN, round: roundNum, team_id: 'ALL' })
         });
         const data = await res.json();
         if (data.success) {
-          alert(`✅ Success: ${data.message}`);
+          alert(`✅ ${roundLabel} RESET COMPLETE:\n\n${data.message}`);
           fetchLeaderboardData();
         } else {
-          alert(`Error: ${data.error || 'Failed to reset team'}`);
+          alert(`Error: ${data.error || 'Failed to reset round'}`);
         }
       } catch (err) {
         alert("⚠️ Failed to communicate with server at " + (API_BASE || "localhost:8000") + ".");
       }
     }
 
-    async function remoteResetAllTeams() {
-      const conf = prompt(`⚠️ DANGER: GLOBAL TOURNAMENT RESET\n\nType 'RESET ALL' to reboot all workstations back to Stage 01 (resets all stages, clues, timers, and locks):`);
-      if (conf !== 'RESET ALL') return;
+    async function promptResetRoundTeam(teamId, roundNum) {
+      const roundLabel = roundNum === 2 ? "ROUND 2 (Puzzle 01)" : "ROUND 1 (Stage 01)";
+      const msg = roundNum === 2
+        ? `⚠️ RESET ROUND 2 FOR [${teamId}]?\n\nThis will:\n- Reset team's Round 2 progress back to Puzzle 01\n- Reset Round 2 solve times and score\n- Clear Round 2 podium finish status\n- Retain team's Round 1 record\n\nProceed?`
+        : `⚠️ RESET ROUND 1 FOR [${teamId}]?\n\nThis will:\n- Reset workstation back to Stage 01\n- Reset elapsed mission timer and penalties\n- Refill clue battery to 3 [⚡ ⚡ ⚡]\n- Relock future stages 02–16\n\nProceed?`;
+
+      if (!confirm(msg)) return;
       try {
-        const res = await fetch(`${API_BASE}/api/admin/remote-reset`, {
+        const res = await fetch(`${API_BASE}/api/admin/round/reset`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pin: ADMIN_PIN, team_id: 'ALL' })
+          body: JSON.stringify({ pin: ADMIN_PIN, admin_pin: ADMIN_PIN, round: roundNum, team_id: teamId })
         });
         const data = await res.json();
         if (data.success) {
           alert(`✅ Success: ${data.message}`);
           fetchLeaderboardData();
         } else {
-          alert(`Error: ${data.error || 'Failed global reset'}`);
+          alert(`Error: ${data.error || 'Failed to reset round for team'}`);
         }
       } catch (err) {
         alert("⚠️ Failed to communicate with server at " + (API_BASE || "localhost:8000") + ".");
       }
+    }
+
+    async function resetTeamRoundFromModal(roundNum) {
+      const teamId = document.getElementById('edit-team-id')?.value;
+      if (!teamId) return;
+      await promptResetRoundTeam(teamId, roundNum);
+      closeModal('modal-edit-team');
+    }
+
+    // Backward-compatible aliases
+    async function remoteResetTeam(teamId) {
+      return promptResetRoundTeam(teamId, 1);
+    }
+
+    async function remoteResetAllTeams() {
+      return promptResetRound(1);
     }
 
     function showTeamAuditLog(teamId) {
@@ -1769,9 +2120,9 @@
       openModal('modal-audit');
     }
 
-    const STAGE_TITLES = {
-      1: "Ch 01: ADI Recovery Terminal",
-      2: "Ch 02: ADI's Memory Core",
+        const STAGE_TITLES = {
+      1: "Ch 01: ISHAAN Recovery Terminal",
+      2: "Ch 02: ISHAAN's Memory Core",
       3: "Ch 03: The Confidential Memo",
       4: "Ch 04: The Fabricated Timeline",
       5: "Ch 05: Clearance Elevation",
@@ -1779,12 +2130,13 @@
       7: "Ch 07: Counterfeit Directive",
       8: "Ch 08: Phosphor Steganography",
       9: "Ch 09: Corrupted Sensor Array",
-      10: "Ch 10: Inventory Revision Clash",
-      11: "Ch 11: The Confidence Equation",
-      12: "Ch 12: Emergency CW Beacon",
-      13: "Ch 13: The True Commit",
-      14: "Ch 14: Psychological Honeypot",
-      15: "Ch 15: The Ultimate Failsafe"
+      10: "Ch 10: Psychological Honeypot",
+      11: "Ch 11: The WIE Core Failsafe",
+      12: "Ch 12: The Whiteout Signature",
+      13: "Ch 13: The ROT-4 IEEE Shift",
+      14: "Ch 14: The Atbash Cipher Mirror",
+      15: "Ch 15: The Polybius Coordinate Trail",
+      16: "Ch 16: Frequency Override Count"
     };
 
     
@@ -1877,6 +2229,53 @@
         alert('Server communication error: ' + err.message);
       }
     }
+
+    async function promptPurgeAllTeams() {
+      const count = cachedTeams.length;
+      if (count === 0) {
+        alert("⚠️ Tournament ledger is already empty. No teams to remove.");
+        return;
+      }
+
+      const conf = prompt(
+        `🚨 DANGER: PERMANENT PURGE OF ALL TEAMS 🚨\n\n` +
+        `You are about to permanently DELETE ALL ${count} TEAMS from the tournament database!\n\n` +
+        `This will:\n` +
+        `• Permanently delete all team profiles, credentials, and passwords\n` +
+        `• Wipe all elapsed times, stage progress, and audit logs\n` +
+        `• Clear all shortlist qualifications for Round 2\n` +
+        `• Reset the tournament ledger to 0 teams\n\n` +
+        `THIS ACTION CANNOT BE UNDONE!\n\n` +
+        `To confirm, type 'PURGE ALL TEAMS' below:`
+      );
+
+      if (conf !== 'PURGE ALL TEAMS') {
+        if (conf !== null) {
+          alert("❌ Action cancelled. Verification phrase was incorrect.");
+        }
+        return;
+      }
+
+      try {
+        const res = await fetch(`${getApiBase()}/api/admin/teams/purge-all`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            admin_pin: sessionStorage.getItem('admin_pin') || ADMIN_PIN
+          })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          alert(`✅ GLOBAL PURGE COMPLETE:\n\n${data.message}`);
+          fetchLeaderboardData();
+        } else {
+          alert('Error executing global purge: ' + (data.error || 'Unknown failure'));
+        }
+      } catch (err) {
+        alert('Server communication error: ' + err.message);
+      }
+    }
+    window.promptPurgeAllTeams = promptPurgeAllTeams;
 
     // --- DETAILED PARTICIPANT TELEMETRY INSPECTOR ---
     function showTeamTelemetry(teamId) {
@@ -2173,6 +2572,8 @@
           ? `<button class="btn-action danger" onclick="toggleTeamQualification('${escapeHtml(t.team_id)}', true)" style="font-size:10.5px; padding:4px 10px; border-color:var(--combat-red); color:var(--combat-red);">✕ REMOVE</button>`
           : `<button class="btn-action success" onclick="toggleTeamQualification('${escapeHtml(t.team_id)}', false)" style="font-size:10.5px; padding:4px 10px; border-color:var(--tactical-green); color:var(--tactical-green);">+ QUALIFY</button>`;
 
+        const sendR2Btn = `<button class="btn-action" onclick="sendTeamToRound2('${escapeHtml(t.team_id)}')" style="font-size:10px; padding:3px 8px; margin-left:6px; border-color:#00ff66; color:#00ff66; background:rgba(0,255,102,0.12); font-weight:bold;" title="Send directly to Round 2">🚀 SEND TO R2</button>`;
+
         const timeStr = t.finish_time_str || `${Math.floor(t.adjusted_time_sec/60)}m ${t.adjusted_time_sec%60}s`;
 
         html += `
@@ -2189,7 +2590,7 @@
             </td>
             <td style="padding:10px 12px; font-weight:bold; color:var(--cyber-cyan);">${escapeHtml(timeStr)}</td>
             <td style="padding:10px 12px; text-align:center;">${statusPill}</td>
-            <td style="padding:10px 12px; text-align:right;">${actionBtn}</td>
+            <td style="padding:10px 12px; text-align:right;">${actionBtn}${sendR2Btn}</td>
           </tr>
         `;
       });
@@ -2238,6 +2639,107 @@
       }
     }
 
+    let isRound1Live = false;
+    let isRound2Live = false;
+
+    async function toggleRound1Launch() {
+      const pin = ADMIN_PIN;
+      if (!isRound1Live) {
+        if (!confirm("🚀 ARE YOU READY TO OPEN ROUND 1 FOR ALL TEAMS?\n\nThis will simultaneously unlock Stage 01 across all participant workstations currently waiting in the standby lobby.\n\nAll teams will begin at the exact same moment.")) return;
+        try {
+          const res = await fetch(`${API_BASE}/api/admin/start_round_1`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ pin: pin })
+          });
+          const data = await res.json();
+          if (res.ok && data.success) {
+            isRound1Live = true;
+            updateRoundPhaseControls(true, isRound2Live);
+            alert("✅ ROUND 1 IS NOW LIVE!\n\nAll participant workstations have been unlocked from the waiting lobby simultaneously.");
+            fetchLeaderboardData();
+          } else {
+            alert("Error opening Round 1: " + (data.error || "Failed to start Round 1"));
+          }
+        } catch(e) {
+          alert("Network Error: Unable to reach server.");
+        }
+      } else {
+        if (!confirm("⏸️ PAUSE ROUND 1?\n\nThis will place all participant workstations back into the Standby Waiting Lobby.")) return;
+        try {
+          const res = await fetch(`${API_BASE}/api/admin/pause_round_1`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ pin: pin })
+          });
+          const data = await res.json();
+          if (res.ok && data.success) {
+            isRound1Live = false;
+            updateRoundPhaseControls(false, isRound2Live);
+            alert("⏸️ Round 1 placed on standby. Workstations returned to waiting lobby.");
+            fetchLeaderboardData();
+          } else {
+            alert("Error pausing Round 1: " + (data.error || "Failed to pause Round 1"));
+          }
+        } catch(e) {
+          alert("Network Error: Unable to reach server.");
+        }
+      }
+    }
+
+    function updateRoundPhaseControls(r1Live, r2Live) {
+      isRound1Live = !!r1Live;
+      isRound2Live = !!r2Live;
+
+      const r1Badge = document.getElementById("badge-r1-phase-status");
+      const r1Btn = document.getElementById("btn-common-open-round-1");
+      if (r1Badge && r1Btn) {
+        if (isRound1Live) {
+          r1Badge.innerText = "🟢 LIVE (ROUND 1 IN PROGRESS)";
+          r1Badge.style.color = "#00ff66";
+          r1Badge.style.textShadow = "0 0 10px rgba(0,255,102,0.8)";
+          r1Btn.innerHTML = "<span>⏸️</span> HOLD / PAUSE ROUND 1";
+          r1Btn.style.background = "rgba(255,176,0,0.18)";
+          r1Btn.style.borderColor = "#ffb000";
+          r1Btn.style.color = "#ffb000";
+          r1Btn.style.boxShadow = "0 0 16px rgba(255,176,0,0.35)";
+        } else {
+          r1Badge.innerText = "⏳ STANDBY (TEAMS IN WAITING LOBBY)";
+          r1Badge.style.color = "#ffd700";
+          r1Badge.style.textShadow = "0 0 8px rgba(255,215,0,0.6)";
+          r1Btn.innerHTML = "<span>🚀</span> OPEN ROUND 1 (START ALL TEAMS)";
+          r1Btn.style.background = "#00ff66";
+          r1Btn.style.borderColor = "#00ff66";
+          r1Btn.style.color = "#02060e";
+          r1Btn.style.boxShadow = "0 0 20px rgba(0,255,102,0.5)";
+        }
+      }
+
+      const r2Badge = document.getElementById("badge-r2-phase-status");
+      const r2Btn = document.getElementById("btn-common-start-round-2");
+      if (r2Badge && r2Btn) {
+        if (isRound2Live) {
+          r2Badge.innerText = "🟢 LIVE (ROUND 2 ARENA ACTIVE)";
+          r2Badge.style.color = "#00ff66";
+          r2Badge.style.textShadow = "0 0 10px rgba(0,255,102,0.8)";
+          r2Btn.innerHTML = "<span>🎯</span> ROUND 2 IN PROGRESS";
+          r2Btn.style.background = "rgba(0,255,102,0.15)";
+          r2Btn.style.borderColor = "#00ff66";
+          r2Btn.style.color = "#00ff66";
+          r2Btn.style.boxShadow = "0 0 16px rgba(0,255,102,0.35)";
+        } else {
+          r2Badge.innerText = "⏳ AWAITING ORGANIZER START";
+          r2Badge.style.color = "#ff99aa";
+          r2Badge.style.textShadow = "0 0 8px rgba(255,0,60,0.6)";
+          r2Btn.innerHTML = "<span>🎯</span> START ROUND 2 (OLYMPIAD)";
+          r2Btn.style.background = "rgba(0,240,255,0.18)";
+          r2Btn.style.borderColor = "#00f0ff";
+          r2Btn.style.color = "#00f0ff";
+          r2Btn.style.boxShadow = "0 0 18px rgba(0,240,255,0.4)";
+        }
+      }
+    }
+
     async function promptStartRound2() {
       const qCount = document.getElementById("shortlist-qualified-count")?.innerText || "0";
       const confirmMsg = `⚠️ ARE YOU READY TO START ROUND 2?\\n\\n` +
@@ -2267,6 +2769,153 @@
       }
     }
 
+    async function sendTeamToRound2(teamId) {
+      if (!teamId) return;
+      const t = cachedTeams.find(x => x.team_id === teamId);
+      const teamName = t ? t.team_name : teamId;
+      const isFinished = t ? (t.is_finished || t.current_stage >= 16) : true;
+
+      const confirmMsg = isFinished
+        ? `🚀 SEND TO ROUND 2: SQUAD [${teamId}] (${teamName})\n\nThis squad has cleared all puzzles in Round 1!\n\nPromote them immediately into Round 2: StratCom Decryption Arena?`
+        : `⚠️ SQUAD [${teamId}] has not yet finished all Round 1 puzzles.\n\nDo you want to override and advance them to Round 2 anyway?`;
+
+      if (!confirm(confirmMsg)) return;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/send_to_round_2`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ pin: ADMIN_PIN, admin_pin: ADMIN_PIN, team_id: teamId })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          alert(`✅ SQUAD PROMOTED TO ROUND 2:\n\nSquad [${teamId}] is now unlocked and live in Round 2: StratCom Decryption Arena!`);
+          fetchLeaderboardData();
+          if (document.getElementById("modal-round2-shortlist")?.style.display === "flex") {
+            fetchShortlistData();
+          }
+        } else {
+          alert(`❌ Failed to promote squad: ${data.error || "Unknown error"}`);
+        }
+      } catch (err) {
+        alert(`Network error: ${err.message}`);
+      }
+    }
+
+    async function sendAllFinishedToRound2() {
+      const finishedTeams = cachedTeams.filter(t => t.is_finished || t.current_stage >= 16);
+      if (finishedTeams.length === 0) {
+        alert("ℹ️ No squads have finished all Round 1 puzzles yet.\n\nSquads are marked READY FOR R2 once they clear Stage 16.");
+        return;
+      }
+
+      const teamListStr = finishedTeams.map(t => `  • [${t.team_id}] ${t.team_name}`).join('\n');
+      const conf = confirm(`🚀 SEND ALL COMPLETED SQUADS TO ROUND 2?\n\nThe following ${finishedTeams.length} squad(s) have cleared all Round 1 puzzles:\n\n${teamListStr}\n\nClick OK to promote all finished squads into Round 2:`);
+      if (!conf) return;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/send_to_round_2`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ pin: ADMIN_PIN, admin_pin: ADMIN_PIN, team_id: "ALL_FINISHED" })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          alert(`✅ SQUADS PROMOTED TO ROUND 2:\n\n${data.message}`);
+          fetchLeaderboardData();
+          if (document.getElementById("modal-round2-shortlist")?.style.display === "flex") {
+            fetchShortlistData();
+          }
+        } else {
+          alert(`❌ Failed to advance squads: ${data.error || "Unknown error"}`);
+        }
+      } catch (err) {
+        alert(`Network error: ${err.message}`);
+      }
+    }
+
+    async function promptUnlockAllLevels(teamId = 'ALL') {
+      const targetLabel = teamId === 'ALL' ? 'ALL WORKSTATIONS' : `TEAM [${teamId}]`;
+      const conf = confirm(`🔓 TEST MODE OVERRIDE: UNLOCK ALL LEVELS\n\nThis will instantly unlock all 16 Round 1 Stages and all 15 Round 2 Puzzles for ${targetLabel} so the organizer can test any puzzle.\n\nClick OK to unlock all levels:`);
+      if (!conf) return;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/levels/unlock_all`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pin: ADMIN_PIN, admin_pin: ADMIN_PIN, team_id: teamId })
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert(`✅ ALL LEVELS UNLOCKED FOR TESTING:\n\n${data.message}`);
+          fetchLeaderboardData();
+        } else {
+          alert(`Error: ${data.error || 'Failed to unlock levels'}`);
+        }
+      } catch (err) {
+        alert("⚠️ Failed to communicate with server: " + err.message);
+      }
+    }
+
+    async function promptLockAllLevels(teamId = 'ALL') {
+      const targetLabel = teamId === 'ALL' ? 'ALL WORKSTATIONS' : `TEAM [${teamId}]`;
+      const conf = confirm(`🔒 RESTORE TOURNAMENT LOCK: LOCK ALL LEVELS\n\nThis will lock all levels back and return ${targetLabel} to Stage 01 with competitive sequential progression restored.\n\nClick OK to lock all levels:`);
+      if (!conf) return;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/levels/lock_all`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pin: ADMIN_PIN, admin_pin: ADMIN_PIN, team_id: teamId })
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert(`✅ ALL LEVELS LOCKED:\n\n${data.message}`);
+          fetchLeaderboardData();
+        } else {
+          alert(`Error: ${data.error || 'Failed to lock levels'}`);
+        }
+      } catch (err) {
+        alert("⚠️ Failed to communicate with server: " + err.message);
+      }
+    }
+
+    async function promptClearBroadcasts() {
+      if (!confirm("🧹 Clear all broadcast history?\n\nThis will purge past broadcasts so participant workstations do not see stale announcement toasts on launch.")) return;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/broadcast/clear`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pin: ADMIN_PIN, admin_pin: ADMIN_PIN })
+        });
+        const data = await res.json();
+        if (data.success) {
+          localStorage.removeItem("failsafe_global_broadcast");
+          alert("✅ All broadcasts cleared successfully!");
+          closeModal('modal-broadcast');
+        } else {
+          alert(`Error: ${data.error || 'Failed to clear broadcasts'}`);
+        }
+      } catch (err) {
+        alert("⚠️ Failed to communicate with server: " + err.message);
+      }
+    }
+
+    async function unlockTeamLevelsFromModal() {
+      const teamId = document.getElementById("edit-team-id")?.value;
+      if (!teamId) return;
+      await promptUnlockAllLevels(teamId);
+      closeModal('modal-edit-team');
+    }
+
+    async function lockTeamLevelsFromModal() {
+      const teamId = document.getElementById("edit-team-id")?.value;
+      if (!teamId) return;
+      await promptLockAllLevels(teamId);
+      closeModal('modal-edit-team');
+    }
+
     function openModal(id) {
       const m = document.getElementById(id);
       if (m) m.style.display = 'flex';
@@ -2289,8 +2938,150 @@
     setInterval(() => {
       if (isAdminAuthenticated()) {
         fetchLeaderboardData();
+        checkPendingFullscreenRequests();
       }
     }, 2500);
-  </script>
+  
+    // =========================================================================
+    // ROUND 2 SHORTLIST & FULLSCREEN CONTROL FUNCTIONS
+    // =========================================================================
+
+    function openRound2ShortlistModal() {
+      openModal("modal-shortlist-r2");
+      fetchShortlistData();
+    }
+
+    async function fetchShortlistData() {
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/shortlist?pin=${encodeURIComponent(ADMIN_PIN)}`);
+        if (res.ok) {
+          const data = await res.json();
+          allShortlistTeams = data.teams || [];
+          const qCountEl = document.getElementById("shortlist-qualified-count");
+          if (qCountEl) {
+            const qCount = allShortlistTeams.filter(t => t.is_qualified).length;
+            qCountEl.innerText = qCount;
+          }
+          renderShortlistTable();
+        }
+      } catch (err) {
+        console.error("Error fetching shortlist:", err);
+      }
+    }
+
+    async function remoteLogoutAllTeams() {
+      const confirmText = prompt("⚠️ DANGER: Force logout ALL 100 workstations?\n\nAll participant laptops will be immediately logged out and returned to the station authentication screen.\n\nType 'LOGOUT ALL' to confirm:");
+      if (confirmText !== "LOGOUT ALL") return;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/remote-logout`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ pin: ADMIN_PIN, team_id: "ALL" })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          alert(`🚪 GLOBAL LOGOUT SUCCESSFUL:\n\n${data.message}`);
+          fetchLeaderboardData();
+        } else {
+          alert(`Error: ${data.error || "Failed to trigger global logout"}`);
+        }
+      } catch (err) {
+        alert(`Network error: ${err.message}`);
+      }
+    }
+
+    // Alias for remoteResetAllTeams
+    async function remoteResetAllTeams() {
+      return promptResetRound(1);
+    }
+
+    let globalFullscreenExitAllowed = false;
+
+    async function toggleGlobalFullscreenExit() {
+      const newAction = globalFullscreenExitAllowed ? "deny" : "approve";
+      const confirmMsg = globalFullscreenExitAllowed
+        ? "Enforce Fullscreen Lockdown for ALL teams?\nParticipants will no longer be authorized to exit fullscreen."
+        : "Authorize ALL participants to safely exit Chrome fullscreen?\nParticipants will be allowed to exit fullscreen without triggering any violations or lockdowns.";
+      if (!confirm(confirmMsg)) return;
+
+      await respondFullscreenExit("ALL", newAction);
+    }
+
+    async function checkPendingFullscreenRequests() {
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/pending_fullscreen_requests`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ pin: ADMIN_PIN })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          globalFullscreenExitAllowed = !!data.global_fullscreen_exit_allowed;
+          const globalBtn = document.getElementById("btn-global-fullscreen-exit");
+          if (globalBtn) {
+            if (globalFullscreenExitAllowed) {
+              globalBtn.innerHTML = "<span>🔒</span> ENFORCE FULLSCREEN ALL";
+              globalBtn.style.borderColor = "var(--combat-red, #ff003c)";
+              globalBtn.style.color = "var(--combat-red, #ff003c)";
+              globalBtn.style.boxShadow = "0 0 15px rgba(255,0,60,0.4)";
+            } else {
+              globalBtn.innerHTML = "<span>🔓</span> ALLOW ALL EXIT FS";
+              globalBtn.style.borderColor = "#ffb000";
+              globalBtn.style.color = "#ffb000";
+              globalBtn.style.boxShadow = "0 0 10px rgba(255,176,0,0.3)";
+            }
+          }
+          renderFullscreenRequests(data.pending || []);
+        }
+      } catch (err) {}
+    }
+
+    function renderFullscreenRequests(pendingList) {
+      const banner = document.getElementById("fs-requests-banner");
+      const listEl = document.getElementById("fs-requests-list");
+      if (!banner || !listEl) return;
+
+      if (!pendingList || pendingList.length === 0) {
+        banner.style.display = "none";
+        listEl.innerHTML = "";
+        return;
+      }
+
+      banner.style.display = "block";
+      let html = "";
+      pendingList.forEach(p => {
+        html += `
+          <div style="background:rgba(0,0,0,0.4); border:1px solid rgba(255,176,0,0.6); padding:4px 10px; border-radius:3px; display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:11.5px;">
+            <span style="color:#fff; font-weight:bold;">${escapeHtml(p.team_id)} (${escapeHtml(p.team_name)})</span>
+            <span style="color:var(--hazard-amber);">[Stage 0${p.current_stage || 1}]</span>
+            <button onclick="respondFullscreenExit('${escapeHtml(p.team_id)}', 'approve')" style="background:var(--tactical-green); color:#000; border:none; padding:3px 8px; border-radius:2px; font-weight:bold; cursor:pointer; font-size:10.5px;">✅ APPROVE</button>
+            <button onclick="respondFullscreenExit('${escapeHtml(p.team_id)}', 'deny')" style="background:var(--combat-red); color:#fff; border:none; padding:3px 8px; border-radius:2px; font-weight:bold; cursor:pointer; font-size:10.5px;">❌ DENY</button>
+          </div>
+        `;
+      });
+      listEl.innerHTML = html;
+    }
+
+    async function respondFullscreenExit(teamId, action) {
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/approve_fullscreen_exit`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ pin: ADMIN_PIN, team_id: teamId, action: action })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          checkPendingFullscreenRequests();
+          fetchLeaderboardData();
+        } else {
+          alert(`Error: ${data.error || "Failed to process fullscreen exit response"}`);
+        }
+      } catch (err) {
+        alert(`Network error: ${err.message}`);
+      }
+    }
+
+</script>
 </body>
 </html>

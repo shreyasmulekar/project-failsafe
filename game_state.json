@@ -1,0 +1,87 @@
+{
+  "teams": {
+    "ALPHA": {
+      "team_id": "ALPHA",
+      "team_name": "Alpha Squad",
+      "start_time": 1790270543.2211044,
+      "end_time": 1790270993.2211044,
+      "current_round": 2,
+      "round_2_unlocked": true,
+      "round_2_stage": 15,
+      "round_2_is_finished": true,
+      "round_2_end_time": 1790270993.2211044,
+      "is_finished": true,
+      "current_stage": 16,
+      "hints_count": 0,
+      "traps_count": 0
+    },
+    "BETA": {
+      "team_id": "BETA",
+      "team_name": "Beta Cyphers",
+      "start_time": 1790270243.2211044,
+      "end_time": 1790270993.2211044,
+      "current_round": 2,
+      "round_2_unlocked": true,
+      "round_2_stage": 15,
+      "round_2_is_finished": true,
+      "round_2_end_time": 1790270993.2211044,
+      "is_finished": true,
+      "current_stage": 16,
+      "hints_count": 0,
+      "traps_count": 0
+    },
+    "GAMMA": {
+      "team_id": "GAMMA",
+      "team_name": "Gamma Vanguard",
+      "start_time": 1790270393.2211044,
+      "current_round": 2,
+      "round_2_unlocked": true,
+      "round_2_stage": 12,
+      "round_2_is_finished": false,
+      "is_finished": true,
+      "current_stage": 16,
+      "hints_count": 0,
+      "traps_count": 0
+    },
+    "DELTA": {
+      "team_id": "DELTA",
+      "team_name": "Delta Enigma",
+      "start_time": 1790270343.2211044,
+      "current_round": 2,
+      "round_2_unlocked": true,
+      "round_2_stage": 5,
+      "round_2_is_finished": false,
+      "is_finished": true,
+      "current_stage": 16,
+      "hints_count": 0,
+      "traps_count": 0
+    },
+    "EPSILON": {
+      "team_id": "EPSILON",
+      "team_name": "Epsilon Titans",
+      "start_time": 1790270643.2211044,
+      "end_time": 1790270993.2211044,
+      "current_round": 1,
+      "round_2_unlocked": false,
+      "round_2_stage": 1,
+      "round_2_is_finished": false,
+      "is_finished": true,
+      "current_stage": 16,
+      "hints_count": 0,
+      "traps_count": 0
+    },
+    "ZETA": {
+      "team_id": "ZETA",
+      "team_name": "Zeta Novas",
+      "start_time": 1790270793.2211044,
+      "current_round": 1,
+      "round_2_unlocked": false,
+      "round_2_stage": 1,
+      "round_2_is_finished": false,
+      "is_finished": false,
+      "current_stage": 10,
+      "hints_count": 0,
+      "traps_count": 0
+    }
+  }
+}
