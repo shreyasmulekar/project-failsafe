@@ -3073,8 +3073,8 @@
       </button>
     </div>
     <div class="ethan-actions">
-      <button id="btn-ethan-clue" class="btn-tactical clue-chip" onclick="requestTacticalClue()" onmouseenter="tacticalSound.playHoverBlip()" style="font-size:10px; border-color:var(--cyber-cyan); color:var(--cyber-cyan);">
-        💡 USE CLUE
+      <button id="btn-ethan-clue" class="btn-tactical clue-chip" onclick="requestTacticalClue()" onmouseenter="tacticalSound.playHoverBlip()" style="font-size:10px; border-color:var(--cyber-cyan); color:var(--cyber-cyan);" title="Expend a Tactical Clue (+2:00 Time Penalty added to mission clock)">
+        💡 USE CLUE (+2m)
       </button>
       <button id="btn-ethan-click" class="btn-tactical" onclick="explainWhereToClick()" onmouseenter="tacticalSound.playHoverBlip()" style="font-size:10px;">
         WHERE TO CLICK?
@@ -3309,7 +3309,7 @@
       </div>
 
       <div style="font-size:9.5px; color:#64748b; margin-top:14px; font-family:var(--font-mono, monospace);">
-        💡 RULE REMINDER: Each squad is allocated exactly <strong>3 Tactical Clues</strong> in Round 1. Mission timer begins the instant Round 1 is opened by the Organizer.
+        💡 RULE REMINDER: Each squad is allocated exactly <strong>3 Tactical Clues</strong> in Round 1. Each clue costs a <strong>+2:00 minute time penalty</strong> on your running mission clock. Mission timer begins the instant Round 1 is opened by the Organizer.
       </div>
 
     </div>
@@ -3474,7 +3474,7 @@
     </div>
 
     <!-- Live Clue Decrypt Lifelines Pill -->
-    <div id="header-clues-pill" class="nexus-timer-pill" style="border-color:rgba(255,215,0,0.5); background:rgba(255,215,0,0.06); cursor:pointer;" onclick="sendTaraQuick('clue')" title="Tactical Clue Decrypt Lifelines Remaining (3 Max)">
+    <div id="header-clues-pill" class="nexus-timer-pill" style="border-color:rgba(255,215,0,0.5); background:rgba(255,215,0,0.06); cursor:pointer;" onclick="sendTaraQuick('clue')" title="Tactical Clue Decrypt Lifelines Remaining (3 Max • Each Clue adds +2:00 Time Penalty)">
       <span style="color:#ffd700;">💡</span>
       <span class="timer-label" style="color:#ffd700;">CLUES:</span>
       <span id="header-clues-icons" style="letter-spacing:2px; font-size:12px;">🔋 🔋 🔋</span>
@@ -3590,7 +3590,7 @@
           <!-- Quick Action Guidance Chips -->
           <div class="nexus-assistant-chips">
             <button class="chip-ethan" onclick="triggerTaraWhereToLook()" style="border-color:var(--nexus-cyan); color:var(--nexus-cyan); font-weight:800;">🧭 WHERE TO CLICK?</button>
-            <button class="chip-ethan clue-chip" id="btn-tara-clue-chip" onclick="sendTaraQuick('clue')">💡 CLUES LEFT: <span id="tara-clue-chip-count">3/3</span></button>
+            <button class="chip-ethan clue-chip" id="btn-tara-clue-chip" onclick="sendTaraQuick('clue')" title="Click to use a Tactical Clue (+2:00 Time Penalty added to timer)">💡 CLUES LEFT: <span id="tara-clue-chip-count">3/3</span></button>
             <button class="chip-ethan" onclick="openStorylineModal()" style="border-color:#ffd700; color:#ffd700;">📖 MISSION STORY</button>
             <button class="chip-ethan" onclick="openActiveStageModal()">🔍 OPEN DOSSIER</button>
           </div>
@@ -8611,6 +8611,7 @@
           taraClueChip.style.opacity = "0.7";
         } else {
           taraClueChip.innerHTML = `💡 CLUES LEFT: <span id="tara-clue-chip-count">${cluesRemaining}/3</span>`;
+          taraClueChip.title = `Click to use a Tactical Clue (+2:00 Time Penalty added to timer)`;
           taraClueChip.style.borderColor = "var(--cyber-cyan)";
           taraClueChip.style.color = "var(--cyber-cyan)";
           taraClueChip.style.opacity = "1";
@@ -8625,7 +8626,8 @@
           ethanClueBtn.style.color = "var(--combat-red, #ff003c)";
           ethanClueBtn.style.opacity = "0.7";
         } else {
-          ethanClueBtn.innerHTML = `💡 USE CLUE (${cluesRemaining}/3)`;
+          ethanClueBtn.innerHTML = `💡 USE CLUE (${cluesRemaining}/3 | +2m)`;
+          ethanClueBtn.title = `Expend a Tactical Clue (+2:00 Time Penalty added to running clock)`;
           ethanClueBtn.style.borderColor = "var(--cyber-cyan)";
           ethanClueBtn.style.color = "var(--cyber-cyan)";
           ethanClueBtn.style.opacity = "1";
@@ -8639,7 +8641,7 @@
       }
     }
 
-    function requestTacticalClue() {
+    function requestTacticalClue(skipConfirm = false) {
       if (currentRound >= 2) {
         appendTaraMessage("AI", `<strong style="color:var(--combat-red);">🔒 ROUND 2 PROTOCOL:</strong> Clues are strictly disabled in Round 2 Core Reconstruction. All 15 puzzles must be decoded through independent forensic analysis!`);
         if (typeof tacticalSound !== 'undefined' && tacticalSound.playWarning) tacticalSound.playWarning();
@@ -8669,22 +8671,59 @@
         return;
       }
 
+      // Warn participants that using a clue incurs an official +2:00 time penalty
+      if (!skipConfirm) {
+        const ok = confirm(`⚠️ TACTICAL CLUE WARNING: EXPEND LIFELINE?\n\nUsing this clue will add a +2:00 TIME PENALTY (+120 seconds) to your team's official running mission clock.\n\nClues Remaining: ${cluesRemaining}/3\nSector: ${stageInfo.chapter}\n\nDo you want to expend a clue and incur the +2:00 time penalty?`);
+        if (!ok) return;
+      }
+
       // Deduct clue
       cluesRemaining--;
       cluesUsedStages.add(currentStage);
       localStorage.setItem('failsafe_clues_left', cluesRemaining.toString());
       localStorage.setItem('failsafe_clues_used_stages', JSON.stringify(Array.from(cluesUsedStages)));
-      updateClueBatteryDisplay();
 
-      if (typeof tacticalSound !== 'undefined' && tacticalSound.playAiChirp) tacticalSound.playAiChirp();
-      appendTaraMessage("AI", `<strong style="color:var(--hazard-amber);">💡 TACTICAL CLUE EXPENDED [${cluesRemaining}/3 LIFELINES REMAINING]</strong><br><span style="color:#f8fafc; font-size:15px; font-weight:bold;">"${stageInfo.hint}"</span>`);
+      // Apply +120s (2 minutes) time penalty per clue
+      const usedCluesCount = 3 - cluesRemaining;
+      const cluePenSec = usedCluesCount * 120;
+      const localTraps = parseInt(localStorage.getItem('failsafe_traps_count') || '0', 10);
+      const trapPenSec = localTraps * 300;
+      const totalPenalty = cluePenSec + trapPenSec;
+      localStorage.setItem('failsafe_penalty_seconds', totalPenalty.toString());
+      localStorage.setItem('failsafe_hints_used_count', usedCluesCount.toString());
+
+      updateClueBatteryDisplay();
+      if (typeof updateMissionTimerDisplay === 'function') updateMissionTimerDisplay();
+
+      if (typeof tacticalSound !== 'undefined' && tacticalSound.playWarning) {
+        tacticalSound.playWarning();
+      } else if (typeof tacticalSound !== 'undefined' && tacticalSound.playAiChirp) {
+        tacticalSound.playAiChirp();
+      }
+
+      appendTaraMessage("AI", `<strong style="color:var(--hazard-amber);">💡 TACTICAL CLUE EXPENDED [${cluesRemaining}/3 LIFELINES REMAINING]</strong><br><span style="color:#ff003c; font-size:12.5px; font-weight:bold;">⚠️ +2:00 TIME PENALTY APPLIED TO YOUR OFFICIAL RUNNING TIMER</span><br><span style="color:#f8fafc; font-size:15px; font-weight:bold;">"${stageInfo.hint}"</span>`);
       
       const speechBubble = document.getElementById('nexus-tara-speech');
       if (speechBubble) {
-        speechBubble.innerHTML = `<strong style="color:#ffd700;">💡 TARA CLUE [${cluesRemaining}/3 LEFT]:</strong> "${stageInfo.hint}"`;
+        speechBubble.innerHTML = `<strong style="color:#ffd700;">💡 TARA CLUE [${cluesRemaining}/3 LEFT | +2m PENALTY]:</strong> "${stageInfo.hint}"`;
       }
-      showBroadcastToast(`💡 CLUE GRANTED (${cluesRemaining}/3 left): ${stageInfo.hint}`);
-      reportTelemetryAction(`Clue Expended on Stage ${currentStage} - ${cluesRemaining} Lifelines Remaining`);
+      showBroadcastToast(`💡 CLUE GRANTED (+2:00 TIME PENALTY | ${cluesRemaining}/3 left): ${stageInfo.hint}`, 5000);
+      reportTelemetryAction(`Clue Expended on Stage ${currentStage} (+2:00 time penalty applied, ${cluesRemaining} lifelines remaining)`);
+
+      // Sync clue usage with server /api/hints/request
+      if (currentTeam && currentTeam.team_id) {
+        try {
+          fetch(`${getApiBase()}/api/hints/request`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              team_id: currentTeam.team_id,
+              stage: currentStage || 1,
+              round: 1
+            })
+          }).catch(e => console.warn("Hints API sync:", e));
+        } catch(e) {}
+      }
     }
 
     function appendTaraMessage(sender, htmlText) {
@@ -10197,6 +10236,7 @@
             current_stage: currentStage || 1,
             action: actionText,
             traps_count: parseInt(localStorage.getItem('failsafe_traps_count') || '0', 10),
+            hints_count: parseInt(localStorage.getItem('failsafe_hints_used_count') || (3 - cluesRemaining).toString(), 10),
             penalty_seconds: parseInt(localStorage.getItem('failsafe_penalty_seconds') || '0', 10),
             tamper_incidents: typeof violationCount !== 'undefined' ? violationCount : 0,
             is_locked: typeof proctorLockActive !== 'undefined' ? proctorLockActive : false,
@@ -10458,6 +10498,7 @@
       localStorage.removeItem('failsafe_mission_finish_time_str');
       localStorage.removeItem('failsafe_mission_completed');
       localStorage.removeItem('failsafe_penalty_seconds');
+      localStorage.removeItem('failsafe_hints_used_count');
       localStorage.setItem('failsafe_traps_count', '0');
       isMissionFinished = false;
       if (typeof updateMissionTimerDisplay === 'function') updateMissionTimerDisplay();

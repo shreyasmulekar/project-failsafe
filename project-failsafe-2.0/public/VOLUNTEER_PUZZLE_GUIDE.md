@@ -328,7 +328,7 @@ Below is the complete forensic breakdown of every puzzle in order, including lor
 
 ### 5.1 Shortlisting & Qualification Process
 1. **Automatic Ranking**: As teams complete Round 1, the Organizer server automatically ranks teams:
-   - Rank 1: Finished teams ordered by lowest adjusted time (`raw_time + hints_penalty + trap_penalty`).
+   - Rank 1: Finished teams ordered by lowest adjusted time (`raw_time + hints_penalty + trap_penalty`, where `hints_penalty = hints_count × 120s` [+2:00 per clue] and `trap_penalty = traps_count × 300s` [+5:00 per honeypot]).
    - Rank 2: In-progress teams ordered by highest stage cleared.
    - The top 12 teams automatically receive gold qualification badges (`👑 #1` through `#12`).
 2. **Organizer Manipulation**:

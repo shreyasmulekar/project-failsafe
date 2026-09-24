@@ -505,8 +505,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     end = now
                 raw_time_sec = max(0, int(end - start))
                 hints_penalty_sec = t.get("hints_count", 0) * 120
-                computed_traps = max(t.get("traps_count", 0), int(t.get("penalty_seconds", 0) // 300))
-                trap_penalty_sec = max(computed_traps * 300, t.get("penalty_seconds", 0))
+                trap_penalty_sec = t.get("traps_count", 0) * 300
                 time_adj_sec = t.get("time_adjustment_sec", 0)
                 adjusted_sec = raw_time_sec + hints_penalty_sec + trap_penalty_sec + time_adj_sec
 
@@ -535,7 +534,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     "time_adjustment_sec": time_adj_sec,
                     "adjusted_time_sec": adjusted_sec,
                     "hints_count": t.get("hints_count", 0),
-                    "traps_count": computed_traps,
+                    "traps_count": t.get("traps_count", 0),
                     "unlocked_stages": t.get("unlocked_stages", [1]),
                     "stage_times": t.get("stage_times", {}),
                     "client_info": t.get("client_info", {}),
@@ -1219,6 +1218,10 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             traps_from_client = data.get("traps_count")
             if traps_from_client is not None:
                 team["traps_count"] = max(team.get("traps_count", 0), int(traps_from_client))
+
+            hints_from_client = data.get("hints_count")
+            if hints_from_client is not None:
+                team["hints_count"] = max(team.get("hints_count", 0), int(hints_from_client))
 
             pen_from_client = data.get("penalty_seconds")
             if pen_from_client is not None:
@@ -2180,13 +2183,13 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 return
 
             hint_text = stage_info["hints"][hint_level - 1]
-            team["hints_count"] += 1
             team["hints_history"].append({
                 "stage": stage_num,
                 "level": hint_level,
                 "hint": hint_text,
                 "timestamp": time.time()
             })
+            team["hints_count"] = max(len(team["hints_history"]), int(team.get("hints_count", 0)))
             save_game_state(state)
 
             self._send_json(200, {

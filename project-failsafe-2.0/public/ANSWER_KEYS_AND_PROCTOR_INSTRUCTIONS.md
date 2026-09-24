@@ -76,9 +76,21 @@ Project Failsafe 2090 is an autonomous dual-round digital forensics and cybersec
 - If a participant attempts `Alt+Tab`, switches tabs, exits fullscreen (`Esc`/`F11`), or tries right-clicking / devtools:
   - The station immediately blacks out into `#proctor-lockdown-overlay`.
   - Breach counter increments and flashes on the organizer dashboard.
-- **To Unlock**:
+- To Unlock:
   - *Option 1 (From Organizer Dashboard)*: Click `[ 🔓 UNLOCK ]` on the team's card in `admin.html`.
   - *Option 2 (In Person at Laptop)*: Type PIN `wie-admin-2026` into the laptop's lockdown card and hit Enter.
+
+### E. Tournament Scoring & Time Penalties
+- **Official Scoring Formula**:
+  $$\text{Adjusted Time} = \text{Raw Elapsed Time} + (\text{Hints Expended} \times 120\text{s}) + (\text{Honeypot Traps} \times 300\text{s}) + \text{Manual Organizer Offset}$$
+- **Tactical Clue Penalty (+2:00 / +120s per Clue)**:
+  - Each clue expended immediately increases the running mission clock by **+2:00 minutes (+120 seconds)**.
+  - Automatically updates `hints_count` and `adjusted_time_sec` on the Organizer Leaderboard.
+- **Honeypot Trap Penalty (+5:00 / +300s per Trap)**:
+  - Submitting credentials to ISHAAN's `DO_NOT_RUN.exe` honeypot instead of issuing `BYPASS` incurs a **+5:00 minute (+300s)** penalty.
+- **Real-Time HUD Feedback**:
+  - Participant mission timers instantly advance to reflect all incurred penalties.
+  - An animated badge (`+2m PENALTY`, `+5m PENALTY`) pulses on the mission timer pill (`#nexus-penalty-badge`).
 
 ---
 
@@ -132,10 +144,13 @@ Project Failsafe 2090 is an autonomous dual-round digital forensics and cybersec
 1. **How Participants Submit**:
    - In Round 1, participants can type `decrypt <KEY>` into the bottom terminal prompt, OR click the glowing stage card and type the key into the dossier modal input, OR use the quick-decrypt bar.
    - In Round 2, participants can click any puzzle card in the StratCom grid and enter their solution into the dedicated passcode input box.
-2. **Tactical Clues (Battery of 3)**:
-   - Each squad starts with 3 battery clues in Round 1.
-   - Clicking `[ 💡 CLUES LEFT: X/3 ]` consumes a clue and reveals an in-game hint written by Dr. Aditi.
-   - Remind participants to conserve clues for the harder stages (Stages 08, 09, 11).
+2. **Tactical Clues (Battery of 3 — Costs +2:00 Time Penalty per Clue)**:
+   - Each squad is allocated exactly 3 Tactical Clues in Round 1.
+   - **Time Penalty Rule**: Each clue expended adds an immediate **+2:00 minute (+120 seconds) penalty** to the team's official running mission clock and leaderboard adjusted time.
+   - **Confirmation Guard**: Clicking `[ 💡 CLUES LEFT: X/3 ]` or `[ 💡 USE CLUE (+2m) ]` triggers a safety confirmation modal explicitly warning the squad about the +2:00 penalty so clues are never used by mistake.
+   - **Visual HUD Feedback**: Once confirmed, the running mission clock leaps forward by 2 minutes, a red `+2m PENALTY` badge pulses on the timer pill, and an alert toast broadcast appears on screen.
+   - **Limit**: Only 1 clue can be expended per stage (maximum 3 across all 16 stages). Clues are completely locked in Round 2.
+   - **Volunteer Guidance**: Remind participants to conserve clues for the most challenging forensic stages (e.g., Stage 08 Bitplane Stego, Stage 09 Heap Dump, Stage 11 Multi-Condition).
 3. **Where to Click Guide**:
    - Both rounds feature a permanent floating button: `🧭 WHERE TO CLICK & SUBMIT (ALL PUZZLES)`.
    - Participants who are visually lost should be directed to click this button or click TARA's `WHERE DO I LOOK?` chip.

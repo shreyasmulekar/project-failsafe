@@ -147,6 +147,11 @@ Project Failsafe features **TARA HUNT**, Dr. Aditi's personal autonomous AI assi
 3. **Beware of Honeypot Traps (Stage 14 Warning)**:
    - Late in the investigation, ISHAAN will attempt a psychological trick by displaying an urgent "Emergency Shutdown" prompt asking for passwords.
    - **READ ALL WARNINGS CAREFULLY!** Entering credentials into a fake honeypot trap incurs a **+5 minute penalty** to your team's total time! Simply type `decrypt BYPASS` to disarm it safely.
+4. **Tactical Clue Battery (3 Max — Each Clue Costs +2:00 Time Penalty)**:
+   - In Round 1, each squad is equipped with up to 3 Tactical Clue lifelines.
+   - Clicking `[ 💡 CLUES LEFT: X/3 ]` or `[ 💡 USE CLUE (+2m) ]` triggers a safety confirmation warning.
+   - **Penalty**: Expending a clue adds an immediate **+2:00 minute (+120 seconds) penalty** to your team's running mission clock and increases your final adjusted leaderboard score.
+   - When active, your timer pill displays a pulsing `+2m PENALTY` badge. Conserve clues for the toughest sectors!
 
 ---
 

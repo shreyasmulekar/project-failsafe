@@ -1,35 +1,782 @@
 {
   "teams": {
-    "TEAM-01-ALPHA": {
-      "team_id": "TEAM-01-ALPHA",
-      "team_name": "Quantum Strikers",
-      "password": "strikers-pass-99",
-      "members": "Aditi R., Vikram S., Maya K.",
-      "current_stage": 1,
-      "unlocked_stages": [1],
+    "ALFA-1": {
+      "team_id": "ALFA-1",
+      "team_name": "gabe_itch",
+      "password": "123456",
+      "members": "kirk",
+      "current_stage": 2,
+      "unlocked_stages": [
+        1
+      ],
       "hints_count": 0,
-      "traps_count": 0,
+      "traps_count": 5,
       "tamper_incidents": 0,
       "is_locked": false,
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "Station online",
-      "last_seen": null,
-      "activity_log": [],
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790263346.6688457,
+      "activity_log": [
+        {
+          "time": "20:49:50",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:49:54",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:49:58",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:02",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:06",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:10",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:14",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:18",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:22",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:26",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:30",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:34",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:38",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:42",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:46",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:50",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:54",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:50:58",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:02",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:06",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:10",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:14",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:18",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:22",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:26",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:30",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:34",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:38",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:42",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:46",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:50",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:54",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:51:58",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:52:02",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:52:06",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:52:10",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:52:14",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:52:18",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:52:22",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:52:26",
+          "stage": 1,
+          "action": "Active in Terminal"
+        }
+      ],
       "hints_history": [],
-      "start_time": null,
+      "start_time": 1790252651.6958535,
       "end_time": null,
       "is_finished": false,
-      "created_at": "2026-09-21T00:00:00.000000"
+      "created_at": "2026-09-24T17:54:11.695926",
+      "stage_times": {
+        "1": {
+          "start": 1790252575314,
+          "end": 1790262016458,
+          "duration_seconds": 9441,
+          "duration_str": "157m 21s"
+        },
+        "2": {
+          "start": 1790262016458,
+          "end": 1790259388674,
+          "duration_seconds": 1073,
+          "duration_str": "17m 53s"
+        },
+        "3": {
+          "start": 1790259388674
+        }
+      },
+      "client_info": {
+        "resolution": "1280x800",
+        "os": "Win32",
+        "fullscreen": false
+      },
+      "active_view": "STAGE_01",
+      "unlock_all_levels": false,
+      "lock_all_levels": false,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "current_round": 2,
+      "round_2_unlocked": true,
+      "round_2_stage": 1,
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "remote_reset_r2": false,
+      "fullscreen_exit_requested": false,
+      "fullscreen_exit_requested_at": 1790258518.7524297,
+      "fullscreen_exit_approved": true,
+      "fullscreen_exit_approved_until": 1790348052.30233,
+      "violations_history": [],
+      "penalty_seconds": 1800,
+      "send_to_round_2": true,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
     },
-    "TEAM-02-BETA": {
-      "team_id": "TEAM-02-BETA",
-      "team_name": "Cyber Phantoms",
-      "password": "shadow-vault-42",
-      "members": "Sneha P., Rohan M.",
+    "A": {
+      "team_id": "A",
+      "team_name": "a",
+      "password": "a",
+      "members": "a",
+      "registered_at": 1790261814.8606253,
+      "start_time": 1790278178.7030127,
+      "end_time": null,
       "current_stage": 1,
-      "unlocked_stages": [1],
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_seen": 1790277395.6957269,
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
+      "stage_times": {
+        "1": {
+          "start": 1790143301113,
+          "end": 1790245359476,
+          "duration_seconds": 102058,
+          "duration_str": "1700m 58s"
+        },
+        "2": {
+          "start": 1790245359476,
+          "end": 1790245474444,
+          "duration_seconds": 115,
+          "duration_str": "1m 55s"
+        },
+        "3": {
+          "start": 1790245474444,
+          "end": 1790245513196,
+          "duration_seconds": 39,
+          "duration_str": "0m 39s"
+        },
+        "4": {
+          "start": 1790245513196
+        }
+      },
+      "activity_log": [
+        {
+          "time": "00:42:31",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:42:35",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:42:39",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:42:43",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:42:47",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:42:48",
+          "stage": 1,
+          "action": "Inspecting Dossier: RECOVERY"
+        },
+        {
+          "time": "00:42:51",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:42:55",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:42:59",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:43:03",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:43:07",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:43:11",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:44:27",
+          "stage": 1,
+          "action": "Workstation Authenticated & Operational"
+        },
+        {
+          "time": "00:44:27",
+          "stage": 1,
+          "action": "Entered Round 2: StratCom Decryption Arena"
+        },
+        {
+          "time": "00:44:31",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:44:35",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:44:39",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:44:43",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:44:47",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:44:51",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:44:55",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:44:59",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:03",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:07",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:11",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:15",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:19",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:23",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:27",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:31",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:35",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:39",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:43",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:47",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:51",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:55",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:46:27",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:46:27",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:46:31",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:46:35",
+          "stage": 1,
+          "action": "Active in Terminal"
+        }
+      ],
+      "client_info": {
+        "resolution": "1536x864",
+        "os": "Windows",
+        "fullscreen": false
+      },
+      "active_view": "STAGE_01",
+      "remote_unlock": false,
+      "violations_history": [],
+      "penalty_seconds": 0,
+      "unlock_all_levels": false,
+      "lock_all_levels": false,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "current_round": 1,
+      "round_2_unlocked": false,
+      "round_2_stage": 1,
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "remote_reset_r2": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "PHANTOM-7": {
+      "team_id": "PHANTOM-7",
+      "team_name": "Phantom Taskforce",
+      "password": "CYBER-PASS-2026",
+      "members": "Dr. Miller, Cmdr. Shepard",
+      "registered_at": 1790262796.457838,
+      "start_time": 1790262796.457838,
+      "end_time": 1790262852.1429973,
+      "current_stage": 15,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_seen": 1790262852.1429973,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "stage_times": {},
+      "activity_log": [
+        {
+          "time": "20:43:16",
+          "stage": 16,
+          "action": "\ud83c\udfc6 Cleared all 16 Round 1 Stages! Standing by for Round 2."
+        },
+        {
+          "time": "20:43:16",
+          "stage": 16,
+          "action": "\ud83c\udfc6 Cleared all 16 Round 1 Stages! Standing by for Round 2."
+        },
+        {
+          "time": "20:43:18",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY (Round 1): Solved in 42m 15s!"
+        },
+        {
+          "time": "20:43:23",
+          "stage": 15,
+          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
+        },
+        {
+          "time": "20:44:10",
+          "stage": 16,
+          "action": "\ud83c\udfc6 Cleared all 16 Round 1 Stages! Standing by for Round 2."
+        },
+        {
+          "time": "20:44:12",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY (Round 1): Solved in 42m 15s!"
+        },
+        {
+          "time": "20:45:27",
+          "stage": 15,
+          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
+        }
+      ],
+      "remote_unlock": false,
+      "violations_history": [],
+      "is_finished": true,
+      "finish_time_str": "42m 15s",
+      "current_round": 2,
+      "round_2_unlocked": true,
+      "send_to_round_2": true,
+      "round_2_stage": 1,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "PHANTOM-2904": {
+      "team_id": "PHANTOM-2904",
+      "team_name": "Phantom Squad 2904",
+      "password": "CYBER-PASS-2026",
+      "members": "Dr. Miller, Cmdr. Shepard",
+      "registered_at": 1790262906.7623641,
+      "start_time": 1790262906.7623641,
+      "end_time": 1790262908.7990575,
+      "current_stage": 16,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_seen": 1790262926.2448277,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "stage_times": {
+        "1": {
+          "start": 1790262916989
+        }
+      },
+      "activity_log": [
+        {
+          "time": "20:45:06",
+          "stage": 16,
+          "action": "\ud83c\udfc6 Cleared all 16 Round 1 Stages! Standing by for Round 2."
+        },
+        {
+          "time": "20:45:06",
+          "stage": 16,
+          "action": "\ud83c\udfc6 Cleared all 16 Round 1 Stages! Standing by for Round 2."
+        },
+        {
+          "time": "20:45:08",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY (Round 1): Solved in 42m 15s!"
+        },
+        {
+          "time": "20:45:13",
+          "stage": 15,
+          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
+        },
+        {
+          "time": "20:45:18",
+          "stage": 16,
+          "action": "Checking for Round 2 promotion"
+        },
+        {
+          "time": "20:45:18",
+          "stage": 16,
+          "action": "Entered Round 2: StratCom Decryption Arena"
+        },
+        {
+          "time": "20:45:22",
+          "stage": 16,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:45:26",
+          "stage": 16,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "20:45:27",
+          "stage": 16,
+          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
+        }
+      ],
+      "remote_unlock": false,
+      "violations_history": [],
+      "is_finished": true,
+      "finish_time_str": "42m 15s",
+      "current_round": 2,
+      "round_2_unlocked": true,
+      "send_to_round_2": true,
+      "round_2_stage": 1,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_is_finished": false,
+      "client_info": {
+        "resolution": "800x600",
+        "os": "Windows",
+        "fullscreen": false
+      },
+      "active_view": "STAGE_16",
+      "penalty_seconds": 0,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "PHANTOM-8": {
+      "team_id": "PHANTOM-8",
+      "team_name": "Phantom Bravo",
+      "password": "BRAVO-PASS-2026",
+      "members": "Lt. Vance",
+      "registered_at": 1790262925.0832262,
+      "start_time": 1790262925.0832262,
+      "end_time": 1790262925.0832262,
+      "current_stage": 16,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_seen": 1790262925.0832262,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "stage_times": {},
+      "activity_log": [
+        {
+          "time": "20:45:25",
+          "stage": 16,
+          "action": "\ud83c\udfc6 Stage 16 Completed"
+        },
+        {
+          "time": "20:45:25",
+          "stage": 16,
+          "action": "\ud83c\udfc6 Stage 16 Completed"
+        },
+        {
+          "time": "20:45:27",
+          "stage": 16,
+          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
+        }
+      ],
+      "remote_unlock": false,
+      "violations_history": [],
+      "is_finished": true,
+      "finish_time_str": "49m 02s",
+      "current_round": 2,
+      "round_2_unlocked": true,
+      "send_to_round_2": true,
+      "round_2_stage": 1,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T-ALPHA": {
+      "team_id": "T-ALPHA",
+      "team_name": "Alpha Grand Champions",
+      "password": "Password123!",
+      "members": "Cadet A, Cadet B",
+      "current_stage": 16,
+      "unlocked_stages": [
+        1
+      ],
       "hints_count": 0,
       "traps_count": 0,
       "tamper_incidents": 0,
@@ -37,16 +784,747 @@
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "Station online",
-      "last_seen": null,
-      "activity_log": [],
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790272078.2864904,
+      "activity_log": [
+        {
+          "time": "23:00:55",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
       "hints_history": [],
-      "start_time": null,
+      "start_time": 1790271055.4039657,
+      "end_time": null,
+      "is_finished": true,
+      "created_at": "2026-09-24T23:00:55.404011",
+      "remote_override_stage": 16,
+      "round_2_stage": 1,
+      "current_round": 2,
+      "time_adjustment_sec": -200,
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T-BETA": {
+      "team_id": "T-BETA",
+      "team_name": "Beta Laureates",
+      "password": "Password123!",
+      "members": "Cadet A, Cadet B",
+      "current_stage": 16,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790272078.2956543,
+      "activity_log": [
+        {
+          "time": "23:01:21",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790271081.1544645,
+      "end_time": null,
+      "is_finished": true,
+      "created_at": "2026-09-24T23:01:21.154486",
+      "remote_override_stage": 16,
+      "round_2_stage": 1,
+      "current_round": 2,
+      "time_adjustment_sec": 400,
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T-GAMMA": {
+      "team_id": "T-GAMMA",
+      "team_name": "Gamma Decryptors",
+      "password": "Password123!",
+      "members": "Cadet A, Cadet B",
+      "current_stage": 16,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790272078.3077438,
+      "activity_log": [
+        {
+          "time": "23:01:21",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790271081.1627724,
+      "end_time": null,
+      "is_finished": true,
+      "created_at": "2026-09-24T23:01:21.162798",
+      "remote_override_stage": 16,
+      "round_2_stage": 1,
+      "current_round": 2,
+      "time_adjustment_sec": 0,
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T-DELTA": {
+      "team_id": "T-DELTA",
+      "team_name": "Delta Vanguard",
+      "password": "Password123!",
+      "members": "Cadet A, Cadet B",
+      "current_stage": 16,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790272078.3211942,
+      "activity_log": [
+        {
+          "time": "23:01:21",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790271081.1682367,
+      "end_time": null,
+      "is_finished": true,
+      "created_at": "2026-09-24T23:01:21.168255",
+      "remote_override_stage": 16,
+      "round_2_stage": 1,
+      "current_round": 2,
+      "time_adjustment_sec": 0,
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T-EPSILON": {
+      "team_id": "T-EPSILON",
+      "team_name": "Epsilon Finalists",
+      "password": "Password123!",
+      "members": "Cadet A, Cadet B",
+      "current_stage": 16,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790272078.3342593,
+      "activity_log": [
+        {
+          "time": "23:01:21",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790271081.1743193,
+      "end_time": null,
+      "is_finished": true,
+      "created_at": "2026-09-24T23:01:21.174374",
+      "remote_override_stage": 16,
+      "round_2_stage": 1,
+      "current_round": 1,
+      "time_adjustment_sec": -50,
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "T-ZETA": {
+      "team_id": "T-ZETA",
+      "team_name": "Zeta Operators",
+      "password": "Password123!",
+      "members": "Cadet A, Cadet B",
+      "current_stage": 10,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_seen": 1790272078.343418,
+      "activity_log": [
+        {
+          "time": "23:01:21",
+          "stage": 1,
+          "action": "Registered workstation"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790271081.181174,
       "end_time": null,
       "is_finished": false,
-      "created_at": "2026-09-21T00:00:00.000000"
+      "created_at": "2026-09-24T23:01:21.181193",
+      "remote_override_stage": 10,
+      "round_2_stage": 1,
+      "current_round": 1,
+      "time_adjustment_sec": 0,
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
+    },
+    "TEST-01": {
+      "team_id": "TEST-01",
+      "team_name": "Test Team",
+      "password": "",
+      "members": "Operator",
+      "registered_at": 1790273412.5563293,
+      "start_time": 1790273412.5563293,
+      "end_time": 1790273616.2958808,
+      "current_stage": 16,
+      "unlocked_stages": [
+        1
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_seen": 1790273616.3389466,
+      "last_action": "\ud83c\udfc6 Round 2 Finish: \ud83e\udd49 3RD PRIZE \u2014 SECOND RUNNER-UP in 00m 54s!",
+      "stage_times": {
+        "1": {
+          "start": 1790273561446,
+          "end": 1790273565563,
+          "duration_seconds": 4,
+          "duration_str": "0m 04s"
+        },
+        "2": {
+          "start": 1790273565563,
+          "end": 1790273566727,
+          "duration_seconds": 1,
+          "duration_str": "0m 01s"
+        },
+        "3": {
+          "start": 1790273566727,
+          "end": 1790273568358,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "4": {
+          "start": 1790273568358,
+          "end": 1790273570014,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "5": {
+          "start": 1790273570014,
+          "end": 1790273571688,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "6": {
+          "start": 1790273571688,
+          "end": 1790273573374,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "7": {
+          "start": 1790273573374,
+          "end": 1790273575024,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "8": {
+          "start": 1790273575024,
+          "end": 1790273576643,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "9": {
+          "start": 1790273576643,
+          "end": 1790273578313,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "10": {
+          "start": 1790273578313,
+          "end": 1790273579968,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "11": {
+          "start": 1790273579968,
+          "end": 1790273581620,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "12": {
+          "start": 1790273581620,
+          "end": 1790273583227,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "13": {
+          "start": 1790273583227,
+          "end": 1790273584881,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "14": {
+          "start": 1790273584881,
+          "end": 1790273586469,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "15": {
+          "start": 1790273586469,
+          "end": 1790273588185,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        },
+        "16": {
+          "start": 1790273588185,
+          "end": 1790273589769,
+          "duration_seconds": 2,
+          "duration_str": "0m 02s"
+        }
+      },
+      "activity_log": [
+        {
+          "time": "23:43:17",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:18",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:18",
+          "stage": 16,
+          "action": "Round 2: Solved Puzzle 05 (SQUARES)"
+        },
+        {
+          "time": "23:43:19",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:19",
+          "stage": 16,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "23:43:19",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:20",
+          "stage": 16,
+          "action": "Round 2: Solved Puzzle 06 (011)"
+        },
+        {
+          "time": "23:43:21",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:21",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:21",
+          "stage": 16,
+          "action": "Round 2: Solved Puzzle 07 (CLEARANCE)"
+        },
+        {
+          "time": "23:43:22",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:23",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:23",
+          "stage": 16,
+          "action": "Round 2: Solved Puzzle 08 (SE)"
+        },
+        {
+          "time": "23:43:23",
+          "stage": 16,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "23:43:24",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:24",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:25",
+          "stage": 16,
+          "action": "Round 2: Solved Puzzle 09 (NONE)"
+        },
+        {
+          "time": "23:43:25",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:26",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:26",
+          "stage": 16,
+          "action": "Round 2: Solved Puzzle 010 (RLRCK)"
+        },
+        {
+          "time": "23:43:27",
+          "stage": 16,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "23:43:27",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:28",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:28",
+          "stage": 16,
+          "action": "Round 2: Solved Puzzle 011 (NODC)"
+        },
+        {
+          "time": "23:43:29",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:29",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:30",
+          "stage": 16,
+          "action": "Round 2: Solved Puzzle 012 (102)"
+        },
+        {
+          "time": "23:43:30",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:31",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:31",
+          "stage": 16,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "23:43:31",
+          "stage": 16,
+          "action": "Round 2: Solved Puzzle 013 (3-EMPTY)"
+        },
+        {
+          "time": "23:43:32",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:33",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:33",
+          "stage": 16,
+          "action": "Round 2: Solved Puzzle 014 (FINALS)"
+        },
+        {
+          "time": "23:43:34",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:34",
+          "stage": 16,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "23:43:35",
+          "stage": 16,
+          "action": "Round 2: Solved Puzzle 015 (ECLIPSE)"
+        },
+        {
+          "time": "23:43:35",
+          "stage": 16,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "23:43:36",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY (Round 2): Solved in 00m 54s!"
+        },
+        {
+          "time": "23:43:36",
+          "stage": 16,
+          "action": "\ud83c\udfc6 Round 2 Finish: \ud83e\udd49 3RD PRIZE \u2014 SECOND RUNNER-UP in 00m 54s!"
+        }
+      ],
+      "client_info": {
+        "resolution": "800x600",
+        "os": "Windows",
+        "fullscreen": false
+      },
+      "active_view": "MODAL-R2-DOSSIER",
+      "remote_unlock": false,
+      "violations_history": [],
+      "penalty_seconds": 0,
+      "round_2_unlocked_stages": [
+        1,
+        14
+      ],
+      "round_2_stage": 15,
+      "round_2_is_finished": true,
+      "round_2_end_time": 1790273616.2958808,
+      "round_2_finish_time_str": "00m 54s",
+      "prize_code": "3RD_PRIZE",
+      "prize_title": "\ud83e\udd49 3RD PRIZE \u2014 SECOND RUNNER-UP",
+      "podium_rank": 3
     }
   },
-  "broadcasts": [],
-  "created_at": "2026-09-21T00:00:00.000000"
+  "broadcasts": [
+    {
+      "id": 1,
+      "message": "\ud83d\udee0\ufe0f TEST MODE: Organizer unlocked all levels (Stages 01\u201316 & Round 2 Arena).",
+      "time": "20:10:23",
+      "timestamp": 1790260823.7868562
+    },
+    {
+      "id": 2,
+      "message": "saaaaaaaaaaaaaaasssssssssssssshhhhhhhhhhhaaaaaaaaaaannnnnnnn",
+      "timestamp": 1790261313.9543834
+    },
+    {
+      "id": 3,
+      "message": "\ud83d\udd12 TEST MODE DEACTIVATED: All levels locked by Organizer. Stations reset to Stage 01.",
+      "time": "20:27:37",
+      "timestamp": 1790261857.0557714
+    },
+    {
+      "id": 4,
+      "message": "\ud83d\udd12 TEST MODE DEACTIVATED: All levels locked by Organizer. Stations reset to Stage 01.",
+      "time": "20:28:34",
+      "timestamp": 1790261914.0361748
+    },
+    {
+      "id": 5,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: Squad [gabe_itch] has been promoted to Round 2 by the Organizer!",
+      "time": "20:41:33"
+    },
+    {
+      "id": 6,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: Squad [gabe_itch] has been promoted to Round 2 by the Organizer!",
+      "time": "20:43:00"
+    },
+    {
+      "id": 7,
+      "message": "\ud83c\udfc6 ROUND 1 COMPLETED: Team Phantom Taskforce [PHANTOM-7] finished in 42m 15s!",
+      "time": "20:43:18"
+    },
+    {
+      "id": 8,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: Squad [Phantom Taskforce] has been promoted to Round 2 by the Organizer!",
+      "time": "20:43:23"
+    },
+    {
+      "id": 9,
+      "message": "\ud83c\udfc6 ROUND 1 COMPLETED: Team Phantom Taskforce [PHANTOM-7] finished in 42m 15s!",
+      "time": "20:44:12"
+    },
+    {
+      "id": 10,
+      "message": "\ud83c\udfc6 ROUND 1 COMPLETED: Team Phantom Squad 2904 [PHANTOM-2904] finished in 42m 15s!",
+      "time": "20:45:08"
+    },
+    {
+      "id": 11,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: Squad [Phantom Squad 2904] has been promoted to Round 2 by the Organizer!",
+      "time": "20:45:13"
+    },
+    {
+      "id": 12,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: Organizer has promoted 3 qualified squads to Round 2: StratCom Decryption Arena!",
+      "time": "20:45:27"
+    },
+    {
+      "id": 13,
+      "message": "\ud83c\udfc6 ROUND 2 COMPLETED: Team Test Team [TEST-01] finished in 00m 54s!",
+      "time": "23:43:36"
+    },
+    {
+      "id": 14,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "00:23:53"
+    },
+    {
+      "id": 15,
+      "message": "\u23f8\ufe0f TOURNAMENT NOTICE: Round 1 placed on standby by Organizer. All workstations returned to waiting lobby.",
+      "time": "00:23:56"
+    },
+    {
+      "id": 16,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "00:34:27"
+    },
+    {
+      "id": 17,
+      "message": "\u23f8\ufe0f TOURNAMENT NOTICE: Round 1 placed on standby by Organizer. All workstations returned to waiting lobby.",
+      "time": "00:35:03"
+    },
+    {
+      "id": 18,
+      "message": "\u23f8\ufe0f TOURNAMENT NOTICE: Round 1 placed on standby by Organizer. All workstations returned to waiting lobby.",
+      "time": "00:36:06"
+    },
+    {
+      "id": 19,
+      "message": "\u23f8\ufe0f TOURNAMENT NOTICE: Round 1 placed on standby by Organizer. All workstations returned to waiting lobby.",
+      "time": "00:36:44"
+    },
+    {
+      "id": 20,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "00:36:58"
+    },
+    {
+      "id": 21,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: Squad [Shadow Cyber Division] has been promoted to Round 2 by the Organizer!",
+      "time": "00:37:03"
+    },
+    {
+      "id": 22,
+      "message": "\u23f8\ufe0f TOURNAMENT NOTICE: Round 1 placed on standby by Organizer. All workstations returned to waiting lobby.",
+      "time": "00:41:39"
+    },
+    {
+      "id": 23,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "00:42:30"
+    },
+    {
+      "id": 24,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 2 HAS OFFICIALLY BEGUN! 12 QUALIFIED STATIONS UNLOCKED.",
+      "time": "00:43:34"
+    },
+    {
+      "id": 25,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "00:53:04"
+    },
+    {
+      "id": 26,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "00:56:40"
+    },
+    {
+      "id": 27,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "00:59:38"
+    }
+  ],
+  "created_at": "2026-09-21T00:00:00.000000",
+  "current_round": 1,
+  "shortlist": {
+    "round_2_qualified_team_ids": [
+      "T-ALPHA",
+      "T-BETA",
+      "T-GAMMA",
+      "T-DELTA",
+      "PHANTOM-8",
+      "PHANTOM-2904",
+      "PHANTOM-7",
+      "ALFA-1",
+      "T-EPSILON",
+      "T-ZETA",
+      "A",
+      "TEAM-LOBBY-6810"
+    ],
+    "locked": true
+  },
+  "round_2_started": true,
+  "round_2_active": false,
+  "test_mode_unlock_all": false,
+  "global_fullscreen_exit_allowed": true,
+  "round_1_started": true,
+  "round_1_start_time": 1790278178.7030127
 }

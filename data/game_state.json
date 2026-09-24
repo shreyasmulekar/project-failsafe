@@ -16,7 +16,7 @@
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "Active in Terminal",
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
       "last_seen": 1790263346.6688457,
       "activity_log": [
         {
@@ -268,8 +268,10 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790262693.1813798,
-      "round_2_is_finished": false
+      "round_2_start_time": 1790277214.750762,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "A": {
       "team_id": "A",
@@ -277,7 +279,7 @@
       "password": "a",
       "members": "a",
       "registered_at": 1790261814.8606253,
-      "start_time": 1790276818.2821212,
+      "start_time": 1790278178.7030127,
       "end_time": null,
       "current_stage": 1,
       "unlocked_stages": [
@@ -289,8 +291,8 @@
       "is_locked": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_seen": 1790277139.864817,
-      "last_action": "Active in Terminal",
+      "last_seen": 1790277395.6957269,
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "stage_times": {
         "1": {
           "start": 1790143301113,
@@ -316,202 +318,202 @@
       },
       "activity_log": [
         {
-          "time": "00:34:35",
+          "time": "00:42:31",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:34:39",
+          "time": "00:42:35",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:34:43",
+          "time": "00:42:39",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:34:47",
+          "time": "00:42:43",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:34:51",
+          "time": "00:42:47",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:34:55",
+          "time": "00:42:48",
+          "stage": 1,
+          "action": "Inspecting Dossier: RECOVERY"
+        },
+        {
+          "time": "00:42:51",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:34:59",
+          "time": "00:42:55",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:35:00",
-          "stage": 1,
-          "action": "Opened Mission Storyline Dossier"
-        },
-        {
-          "time": "00:35:03",
+          "time": "00:42:59",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:35:07",
+          "time": "00:43:03",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:35:11",
+          "time": "00:43:07",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:35:15",
+          "time": "00:43:11",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:35:16",
-          "stage": 1,
-          "action": "Opened Mission Storyline Dossier"
-        },
-        {
-          "time": "00:35:19",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:35:21",
-          "stage": 1,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "00:35:23",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:35:27",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:35:31",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:35:35",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:35:39",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:35:43",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:35:47",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:35:51",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:35:55",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:35:59",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:36:03",
-          "stage": 1,
-          "action": "Opened Mission Storyline Dossier"
-        },
-        {
-          "time": "00:36:03",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:36:06",
-          "stage": 1,
-          "action": "Opened Mission Storyline Dossier"
-        },
-        {
-          "time": "00:36:07",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:36:11",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:36:15",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:36:19",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:41:55",
+          "time": "00:44:27",
           "stage": 1,
           "action": "Workstation Authenticated & Operational"
         },
         {
-          "time": "00:41:56",
+          "time": "00:44:27",
           "stage": 1,
           "action": "Entered Round 2: StratCom Decryption Arena"
         },
         {
-          "time": "00:41:59",
+          "time": "00:44:31",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:42:03",
+          "time": "00:44:35",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:42:07",
+          "time": "00:44:39",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:42:11",
+          "time": "00:44:43",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:42:15",
+          "time": "00:44:47",
           "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "00:42:19",
+          "time": "00:44:51",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:44:55",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:44:59",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:03",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:07",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:11",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:15",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:19",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:23",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:27",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:31",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:35",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:39",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:43",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:47",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:51",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:45:55",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:46:27",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:46:27",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:46:31",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "00:46:35",
           "stage": 1,
           "action": "Active in Terminal"
         }
@@ -534,7 +536,14 @@
       "round_2_stage": 1,
       "round2_stages_cleared": [],
       "remote_override_stage": 1,
-      "remote_reset_r2": false
+      "remote_reset_r2": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "PHANTOM-7": {
       "team_id": "PHANTOM-7",
@@ -555,7 +564,7 @@
       "force_logout": false,
       "remote_reset": false,
       "last_seen": 1790262852.1429973,
-      "last_action": "\ud83d\ude80 Sent to Round 2 by Organizer",
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
       "stage_times": {},
       "activity_log": [
         {
@@ -605,8 +614,10 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790262803.2334538,
-      "round_2_is_finished": false
+      "round_2_start_time": 1790277214.750762,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "PHANTOM-2904": {
       "team_id": "PHANTOM-2904",
@@ -627,7 +638,7 @@
       "force_logout": false,
       "remote_reset": false,
       "last_seen": 1790262926.2448277,
-      "last_action": "\ud83d\ude80 Sent to Round 2 by Organizer",
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
       "stage_times": {
         "1": {
           "start": 1790262916989
@@ -691,7 +702,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790262913.4502733,
+      "round_2_start_time": 1790277214.750762,
       "round_2_is_finished": false,
       "client_info": {
         "resolution": "800x600",
@@ -699,7 +710,9 @@
         "fullscreen": false
       },
       "active_view": "STAGE_16",
-      "penalty_seconds": 0
+      "penalty_seconds": 0,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "PHANTOM-8": {
       "team_id": "PHANTOM-8",
@@ -720,7 +733,7 @@
       "force_logout": false,
       "remote_reset": false,
       "last_seen": 1790262925.0832262,
-      "last_action": "\ud83d\ude80 Sent to Round 2 by Organizer",
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
       "stage_times": {},
       "activity_log": [
         {
@@ -750,8 +763,10 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790262927.1256168,
-      "round_2_is_finished": false
+      "round_2_start_time": 1790277214.750762,
+      "round_2_is_finished": false,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "T-ALPHA": {
       "team_id": "T-ALPHA",
@@ -769,7 +784,7 @@
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "\u270f\ufe0f Organizer Adjusted Profile & Parameters (23:17:58)",
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
       "last_seen": 1790272078.2864904,
       "activity_log": [
         {
@@ -784,10 +799,16 @@
       "is_finished": true,
       "created_at": "2026-09-24T23:00:55.404011",
       "remote_override_stage": 16,
-      "round_2_stage": 15,
+      "round_2_stage": 1,
       "current_round": 2,
       "time_adjustment_sec": -200,
-      "round_2_is_finished": true
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "T-BETA": {
       "team_id": "T-BETA",
@@ -805,7 +826,7 @@
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "\u270f\ufe0f Organizer Adjusted Profile & Parameters (23:17:58)",
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
       "last_seen": 1790272078.2956543,
       "activity_log": [
         {
@@ -820,10 +841,16 @@
       "is_finished": true,
       "created_at": "2026-09-24T23:01:21.154486",
       "remote_override_stage": 16,
-      "round_2_stage": 15,
+      "round_2_stage": 1,
       "current_round": 2,
       "time_adjustment_sec": 400,
-      "round_2_is_finished": true
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "T-GAMMA": {
       "team_id": "T-GAMMA",
@@ -841,7 +868,7 @@
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "\u270f\ufe0f Organizer Adjusted Profile & Parameters (23:17:58)",
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
       "last_seen": 1790272078.3077438,
       "activity_log": [
         {
@@ -856,10 +883,16 @@
       "is_finished": true,
       "created_at": "2026-09-24T23:01:21.162798",
       "remote_override_stage": 16,
-      "round_2_stage": 12,
+      "round_2_stage": 1,
       "current_round": 2,
       "time_adjustment_sec": 0,
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "T-DELTA": {
       "team_id": "T-DELTA",
@@ -877,7 +910,7 @@
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "\u270f\ufe0f Organizer Adjusted Profile & Parameters (23:17:58)",
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
       "last_seen": 1790272078.3211942,
       "activity_log": [
         {
@@ -892,10 +925,16 @@
       "is_finished": true,
       "created_at": "2026-09-24T23:01:21.168255",
       "remote_override_stage": 16,
-      "round_2_stage": 5,
+      "round_2_stage": 1,
       "current_round": 2,
       "time_adjustment_sec": 0,
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "T-EPSILON": {
       "team_id": "T-EPSILON",
@@ -913,7 +952,7 @@
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "\u270f\ufe0f Organizer Adjusted Profile & Parameters (23:17:58)",
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
       "last_seen": 1790272078.3342593,
       "activity_log": [
         {
@@ -931,7 +970,13 @@
       "round_2_stage": 1,
       "current_round": 1,
       "time_adjustment_sec": -50,
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "T-ZETA": {
       "team_id": "T-ZETA",
@@ -949,7 +994,7 @@
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "\u270f\ufe0f Organizer Adjusted Profile & Parameters (23:17:58)",
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
       "last_seen": 1790272078.343418,
       "activity_log": [
         {
@@ -967,7 +1012,13 @@
       "round_2_stage": 1,
       "current_round": 1,
       "time_adjustment_sec": 0,
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "round_2_unlocked_stages": [
+        1
+      ],
+      "round_2_start_time": 1790277214.750762,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "TEST-01": {
       "team_id": "TEST-01",
@@ -1309,192 +1360,6 @@
       "prize_code": "3RD_PRIZE",
       "prize_title": "\ud83e\udd49 3RD PRIZE \u2014 SECOND RUNNER-UP",
       "podium_rank": 3
-    },
-    "TEAM-LOBBY-6714": {
-      "team_id": "TEAM-LOBBY-6714",
-      "team_name": "Shadow Cyber Division",
-      "password": "cyber-2026",
-      "members": "Arjun, Riya, Kabir",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790276715.8877962,
-      "activity_log": [
-        {
-          "time": "00:35:15",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "00:35:15",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790276818.2821212,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T00:35:15.832319",
-      "stage_times": {
-        "1": {
-          "start": 1790276712246
-        }
-      },
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": false
-      },
-      "active_view": "STAGE_01",
-      "violations_history": [],
-      "penalty_seconds": 0
-    },
-    "TEAM-LOBBY-6776": {
-      "team_id": "TEAM-LOBBY-6776",
-      "team_name": "Shadow Cyber Division",
-      "password": "cyber-2026",
-      "members": "Arjun, Riya, Kabir",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790276779.0192292,
-      "activity_log": [
-        {
-          "time": "00:36:18",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "00:36:19",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790276818.2821212,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T00:36:18.977716",
-      "stage_times": {
-        "1": {
-          "start": 1790276774414
-        }
-      },
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": false
-      },
-      "active_view": "STAGE_01",
-      "violations_history": [],
-      "penalty_seconds": 0
-    },
-    "TEAM-LOBBY-6810": {
-      "team_id": "TEAM-LOBBY-6810",
-      "team_name": "Shadow Cyber Division",
-      "password": "cyber-2026",
-      "members": "Arjun, Riya, Kabir",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "Entered Round 2: StratCom Decryption Arena",
-      "last_seen": 1790276827.356572,
-      "activity_log": [
-        {
-          "time": "00:36:51",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "00:36:51",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "00:36:55",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:36:59",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:37:03",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:37:03",
-          "stage": 1,
-          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
-        },
-        {
-          "time": "00:37:07",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:37:07",
-          "stage": 1,
-          "action": "Entered Round 2: StratCom Decryption Arena"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790276818.2821212,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T00:36:51.189918",
-      "stage_times": {
-        "1": {
-          "start": 1790276808551
-        }
-      },
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": true
-      },
-      "active_view": "STAGE_01",
-      "violations_history": [],
-      "penalty_seconds": 0,
-      "current_round": 2,
-      "round_2_unlocked": true,
-      "send_to_round_2": true,
-      "round_2_stage": 1,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_start_time": 1790276823.434438,
-      "round_2_is_finished": false
     }
   },
   "broadcasts": [
@@ -1610,6 +1475,31 @@
       "id": 22,
       "message": "\u23f8\ufe0f TOURNAMENT NOTICE: Round 1 placed on standby by Organizer. All workstations returned to waiting lobby.",
       "time": "00:41:39"
+    },
+    {
+      "id": 23,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "00:42:30"
+    },
+    {
+      "id": 24,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 2 HAS OFFICIALLY BEGUN! 12 QUALIFIED STATIONS UNLOCKED.",
+      "time": "00:43:34"
+    },
+    {
+      "id": 25,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "00:53:04"
+    },
+    {
+      "id": 26,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "00:56:40"
+    },
+    {
+      "id": 27,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "00:59:38"
     }
   ],
   "created_at": "2026-09-21T00:00:00.000000",
@@ -1629,12 +1519,12 @@
       "A",
       "TEAM-LOBBY-6810"
     ],
-    "locked": false
+    "locked": true
   },
   "round_2_started": true,
   "round_2_active": false,
   "test_mode_unlock_all": false,
   "global_fullscreen_exit_allowed": true,
-  "round_1_started": false,
-  "round_1_start_time": 1790276818.2821212
+  "round_1_started": true,
+  "round_1_start_time": 1790278178.7030127
 }
