@@ -1,15 +1,18 @@
-with open("aditi_os_widget.html", encoding="utf-8") as f:
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+with open('aditi_os_widget.html', encoding='utf-8') as f:
     text = f.read()
 
 import re
-
-# Check ROUND2_PUZZLE_DATA keys
-match = re.search(r'const ROUND2_PUZZLE_DATA = \{(.*?)\n    \};', text, re.DOTALL)
-if match:
-    data_str = match.group(1)
-    for i in range(1, 16):
-        key_pattern = rf'^\s*{i}:\s*\{{'
-        has_key = bool(re.search(key_pattern, data_str, re.MULTILINE))
-        print(f"Round 2 Puzzle {i:02d}: {'[OK] PRESENT' if has_key else '[FAIL] MISSING'}")
-else:
-    print("[FAIL] ROUND2_PUZZLE_DATA not found!")
+idx = text.find('const ROUND2_PUZZLE_DATA')
+if idx != -1:
+    print("Found ROUND2_PUZZLE_DATA at index:", idx)
+    # print up to 10000 chars or find where puzzles 5, 12, 13, 14 are
+    sub = text[idx:idx+25000]
+    for p_num in [5, 12, 13, 14]:
+        m = re.search(r'\b' + str(p_num) + r':\s*\{', sub)
+        if m:
+            print(f"=== PUZZLE {p_num} ===")
+            start = m.start()
+            print(sub[start:start+1800])
+            print("="*60)

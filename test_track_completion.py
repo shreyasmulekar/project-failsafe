@@ -101,8 +101,7 @@ R2_KEYS = [
     (1, "GUARD"), (2, "C"), (3, "BOTTOM LEFT"), (4, "5"),
     (5, "CIPHER"), (6, "SQUARES"), (7, "011"), (8, "CLEARANCE"),
     (9, "SE"), (10, "NONE"), (11, "RLRCK"), (12, "NODC"),
-    (13, "102"), (14, "3-EMPTY"), (15, "FINALS"), (16, "ECLIPSE"),
-    (17, "0110")
+    (13, "3-EMPTY"), (14, "FINALS"), (15, "ECLIPSE"), (16, "0110")
 ]
 
 mock_r2_times = {}
@@ -121,7 +120,7 @@ for s, k in R2_KEYS:
         "duration_str": "0m 45s"
     }
 
-print("All 17 Round 2 stages solved on backend.")
+print("All 16 Round 2 stages solved on backend.")
 
 print("\n=== 6. RECORD ROUND 2 TRACK FINISH (GRAND CHAMPION) ===")
 fin_r2 = post("/api/teams/finish", {
@@ -130,8 +129,8 @@ fin_r2 = post("/api/teams/finish", {
     "members": "Track Master",
     "password": "pass",
     "round": 2,
-    "elapsed_seconds": 765,
-    "elapsed_str": "12m 45s",
+    "elapsed_seconds": 720,
+    "elapsed_str": "12m 00s",
     "stage_times": mock_r2_times
 })
 print("R2 Grand Finish Result:", fin_r2)
@@ -142,7 +141,7 @@ team_final = next(t for t in lb_final["leaderboard"] if t["team_id"] == team_id)
 print("\n=== FINAL TEAM LEADERBOARD VERIFICATION ===")
 print(f"  Team ID: {team_id}")
 print(f"  R1 Finished: {team_final.get('is_finished')} (Stage {team_final.get('current_stage')}/21)")
-print(f"  R2 Finished: {team_final.get('round_2_is_finished')} (Stage {team_final.get('round_2_stage')}/17)")
+print(f"  R2 Finished: {team_final.get('round_2_is_finished')} (Stage {team_final.get('round_2_stage')}/16)")
 print(f"  Prize: {team_final.get('prize_title')}")
 print(f"  Podium Rank: #{team_final.get('podium_rank')}")
 

@@ -31,213 +31,218 @@
       ],
       "hints_count": 2,
       "traps_count": 0,
-      "tamper_incidents": 1,
-      "is_locked": true,
-      "remote_unlock": false,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": true,
       "force_logout": false,
       "remote_reset": false,
       "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
-      "last_seen": 1790317490.9195178,
+      "last_seen": 1790317909.4195118,
       "activity_log": [
         {
-          "time": "11:52:37",
+          "time": "11:59:36",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:52:41",
+          "time": "11:59:39",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:52:44",
+          "time": "11:59:43",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:52:48",
+          "time": "11:59:46",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:52:51",
+          "time": "11:59:50",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:52:55",
+          "time": "11:59:53",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:52:58",
+          "time": "11:59:57",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:02",
+          "time": "12:00:00",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:05",
+          "time": "12:00:04",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:09",
+          "time": "12:00:07",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:12",
+          "time": "12:00:11",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:16",
+          "time": "12:00:14",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:19",
+          "time": "12:00:18",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:23",
+          "time": "12:00:21",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:26",
+          "time": "12:00:25",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:30",
+          "time": "12:00:28",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:33",
+          "time": "12:00:32",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:37",
+          "time": "12:00:35",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:40",
+          "time": "12:00:39",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:44",
+          "time": "12:00:42",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:47",
+          "time": "12:00:46",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:51",
+          "time": "12:00:49",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:54",
+          "time": "12:00:53",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:53:58",
+          "time": "12:00:56",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:54:01",
+          "time": "12:01:00",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:54:05",
+          "time": "12:01:03",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:54:08",
+          "time": "12:01:07",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:54:12",
+          "time": "12:01:10",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:54:15",
+          "time": "12:01:14",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:54:19",
+          "time": "12:01:17",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:54:22",
+          "time": "12:01:21",
           "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:54:23",
+          "time": "12:01:24",
+          "stage": 21,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:01:28",
+          "stage": 21,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:01:31",
+          "stage": 21,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:01:35",
+          "stage": 21,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:01:36",
           "stage": 21,
           "action": "\ud83d\udea8 CRITICAL BREACH: Switched Browser Tab or Minimized Window!"
         },
         {
-          "time": "11:54:26",
+          "time": "12:01:38",
           "stage": 21,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "11:54:29",
+          "time": "12:01:42",
           "stage": 21,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "11:54:33",
+          "time": "12:01:45",
           "stage": 21,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "11:54:36",
+          "time": "12:01:49",
           "stage": 21,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "11:54:40",
+          "time": "12:03:14",
           "stage": 21,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "11:54:43",
-          "stage": 21,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "11:54:47",
-          "stage": 21,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "11:54:50",
-          "stage": 21,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+          "action": "Organizer Override PIN applied remotely (Breaches cleared)"
         }
       ],
       "hints_history": [
@@ -255,7 +260,7 @@
         }
       ],
       "start_time": 1790311128.0506306,
-      "end_time": 1790317274.0284543,
+      "end_time": 1790317714.9061465,
       "is_finished": true,
       "created_at": "2026-09-25T10:08:48.050804",
       "stage_times": {
@@ -391,7 +396,7 @@
         "os": "Win32",
         "fullscreen": true
       },
-      "active_view": "STAGE_21",
+      "active_view": "MODAL-R2-DOSSIER",
       "penalty_seconds": 240,
       "finish_time_str": "1h 23m 05s",
       "violations_history": [],
@@ -400,411 +405,12 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_end_time": 1790317218.5619612,
-      "round_2_finish_time_str": "1h 46m 10s",
-      "prize_code": "1ST_PRIZE",
-      "prize_title": "\ud83e\udd47 1ST PRIZE \u2014 GRAND CHAMPION",
-      "podium_rank": 1,
-      "round_2_start_time": 1790317498.8066244,
-      "round_2_times": {},
-      "round_2_score": 0
-    },
-    "SAK": {
-      "team_id": "SAK",
-      "team_name": "sak",
-      "password": "sak",
-      "members": "sak",
-      "current_stage": 21,
-      "unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "Active in Terminal",
-      "last_seen": 1790317622.020075,
-      "activity_log": [
-        {
-          "time": "11:54:59",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:03",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:06",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:10",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:13",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:16",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:20",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:24",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:27",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:31",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:34",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:38",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:41",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:44",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:48",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:51",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:55",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:59",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:59",
-          "stage": 21,
-          "action": "Inspecting Dossier: ORIGIN"
-        },
-        {
-          "time": "11:56:02",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:03",
-          "stage": 21,
-          "action": "Inspecting Dossier: INCIDENT-LOGS"
-        },
-        {
-          "time": "11:56:06",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:09",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:11",
-          "stage": 21,
-          "action": "Inspecting Dossier: SECURITY-AUDIT"
-        },
-        {
-          "time": "11:56:13",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:16",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:19",
-          "stage": 21,
-          "action": "Inspecting Dossier: ACROSTIC"
-        },
-        {
-          "time": "11:56:20",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:23",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:27",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:30",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:33",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:37",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:41",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:44",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:47",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:51",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:55",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:58",
-          "stage": 21,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:57:02",
-          "stage": 21,
-          "action": "Active in Terminal"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790311261.4492652,
-      "end_time": 1790317271.5678325,
-      "is_finished": true,
-      "created_at": "2026-09-25T10:11:01.449379",
-      "stage_times": {
-        "1": {
-          "start": 1790311236749,
-          "end": 1790311379662,
-          "duration_seconds": 143,
-          "duration_str": "2m 23s"
-        },
-        "2": {
-          "start": 1790311379662,
-          "end": 1790311477410,
-          "duration_seconds": 98,
-          "duration_str": "1m 38s"
-        },
-        "3": {
-          "start": 1790311477410,
-          "end": 1790311531128,
-          "duration_seconds": 54,
-          "duration_str": "0m 54s"
-        },
-        "4": {
-          "start": 1790311531128,
-          "end": 1790311605816,
-          "duration_seconds": 75,
-          "duration_str": "1m 15s"
-        },
-        "5": {
-          "start": 1790311605816,
-          "end": 1790311611338,
-          "duration_seconds": 6,
-          "duration_str": "0m 06s"
-        },
-        "6": {
-          "start": 1790311611338,
-          "end": 1790311703958,
-          "duration_seconds": 93,
-          "duration_str": "1m 33s"
-        },
-        "7": {
-          "start": 1790311703958,
-          "end": 1790311766216,
-          "duration_seconds": 62,
-          "duration_str": "1m 02s"
-        },
-        "8": {
-          "start": 1790311766216,
-          "end": 1790311895678,
-          "duration_seconds": 129,
-          "duration_str": "2m 09s"
-        },
-        "9": {
-          "start": 1790311895678,
-          "end": 1790312083260,
-          "duration_seconds": 188,
-          "duration_str": "3m 08s"
-        },
-        "10": {
-          "start": 1790312083260,
-          "end": 1790312096401,
-          "duration_seconds": 13,
-          "duration_str": "0m 13s"
-        },
-        "11": {
-          "start": 1790312096401,
-          "end": 1790312212855,
-          "duration_seconds": 116,
-          "duration_str": "1m 56s"
-        },
-        "12": {
-          "start": 1790312212855,
-          "end": 1790312231833,
-          "duration_seconds": 19,
-          "duration_str": "0m 19s"
-        },
-        "13": {
-          "start": 1790312231833,
-          "end": 1790312387349,
-          "duration_seconds": 156,
-          "duration_str": "2m 36s"
-        },
-        "14": {
-          "start": 1790312387349,
-          "end": 1790312670017,
-          "duration_seconds": 283,
-          "duration_str": "4m 43s"
-        },
-        "15": {
-          "start": 1790312670017,
-          "end": 1790312697229,
-          "duration_seconds": 27,
-          "duration_str": "0m 27s"
-        },
-        "16": {
-          "start": 1790312697229,
-          "end": 1790312772403,
-          "duration_seconds": 75,
-          "duration_str": "1m 15s"
-        },
-        "17": {
-          "start": 1790312772403,
-          "end": 1790312867686,
-          "duration_seconds": 95,
-          "duration_str": "1m 35s"
-        },
-        "18": {
-          "start": 1790312867686,
-          "end": 1790313268395,
-          "duration_seconds": 401,
-          "duration_str": "6m 41s"
-        },
-        "19": {
-          "start": 1790313268395,
-          "end": 1790313273298,
-          "duration_seconds": 5,
-          "duration_str": "0m 05s"
-        },
-        "20": {
-          "start": 1790313273298,
-          "end": 1790313433028,
-          "duration_seconds": 160,
-          "duration_str": "2m 40s"
-        },
-        "21": {
-          "start": 1790313433028,
-          "end": 1790313544568,
-          "duration_seconds": 112,
-          "duration_str": "1m 52s"
-        }
-      },
-      "client_info": {
-        "resolution": "1372x772",
-        "os": "Win32",
-        "fullscreen": false
-      },
-      "active_view": "MODAL-ACROSTIC",
-      "penalty_seconds": 0,
-      "violations_history": [],
-      "finish_time_str": "38m 27s",
-      "fullscreen_exit_requested": false,
-      "fullscreen_exit_approved": true,
-      "fullscreen_exit_approved_until": 1790401138.1927366,
-      "round_2_is_finished": false,
-      "round_2_stage": 1,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_end_time": 1790317218.5895357,
-      "round_2_finish_time_str": "1h 39m 41s",
-      "prize_code": "2ND_PRIZE",
-      "prize_title": "\ud83e\udd48 2ND PRIZE \u2014 RUNNER-UP LAUREATE",
-      "podium_rank": 2,
-      "round_2_start_time": 1790317498.8066244,
+      "round_2_end_time": 1790317714.9061465,
+      "round_2_finish_time_str": "1h 54m 27s",
+      "prize_code": "3RD_PRIZE",
+      "prize_title": "\ud83e\udd49 3RD PRIZE \u2014 SECOND RUNNER-UP",
+      "podium_rank": 3,
+      "round_2_start_time": 1790319244.3378153,
       "round_2_times": {},
       "round_2_score": 0
     },
@@ -1099,7 +705,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790317498.8066244,
+      "round_2_start_time": 1790319244.3378153,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0
@@ -1109,225 +715,245 @@
       "team_name": "s",
       "password": "shsh",
       "members": "s",
-      "current_stage": 4,
+      "current_stage": 18,
       "unlocked_stages": [
         1,
         2,
         3,
-        4
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18
       ],
-      "hints_count": 0,
-      "traps_count": 0,
+      "hints_count": 1,
+      "traps_count": 1,
       "tamper_incidents": 0,
       "is_locked": false,
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "Inspecting Dossier: PUZZLES-GUIDE",
-      "last_seen": 1790317623.4272673,
+      "last_action": "Active in Terminal",
+      "last_seen": 1790319278.3641205,
       "activity_log": [
         {
-          "time": "11:55:05",
-          "stage": 4,
+          "time": "12:22:53",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:07",
-          "stage": 4,
-          "action": "Inspecting Dossier: INCIDENT-LOGS"
+          "time": "12:22:53",
+          "stage": 18,
+          "action": "Passcode Rejected: \"6\" on Stage 18"
         },
         {
-          "time": "11:55:09",
-          "stage": 4,
+          "time": "12:22:55",
+          "stage": 18,
+          "action": "Passcode Rejected: \"7\" on Stage 18"
+        },
+        {
+          "time": "12:22:56",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:12",
-          "stage": 4,
+          "time": "12:22:56",
+          "stage": 18,
+          "action": "Passcode Rejected: \"8\" on Stage 18"
+        },
+        {
+          "time": "12:22:58",
+          "stage": 18,
+          "action": "Passcode Rejected: \"9\" on Stage 18"
+        },
+        {
+          "time": "12:22:59",
+          "stage": 18,
+          "action": "Passcode Rejected: \"10\" on Stage 18"
+        },
+        {
+          "time": "12:23:00",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:16",
-          "stage": 4,
+          "time": "12:23:01",
+          "stage": 18,
+          "action": "Passcode Rejected: \"11\" on Stage 18"
+        },
+        {
+          "time": "12:23:02",
+          "stage": 18,
+          "action": "Passcode Rejected: \"12\" on Stage 18"
+        },
+        {
+          "time": "12:23:03",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:19",
-          "stage": 4,
-          "action": "Inspecting Dossier: SECURITY-AUDIT"
-        },
-        {
-          "time": "11:55:19",
-          "stage": 4,
+          "time": "12:23:07",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:23",
-          "stage": 4,
+          "time": "12:23:10",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:26",
-          "stage": 4,
+          "time": "12:23:14",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:30",
-          "stage": 4,
+          "time": "12:23:17",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:33",
-          "stage": 4,
+          "time": "12:23:21",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:37",
-          "stage": 4,
+          "time": "12:23:24",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:40",
-          "stage": 4,
+          "time": "12:23:28",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:44",
-          "stage": 4,
+          "time": "12:23:31",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:47",
-          "stage": 4,
+          "time": "12:23:34",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:51",
-          "stage": 4,
+          "time": "12:23:38",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:54",
-          "stage": 4,
+          "time": "12:23:42",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:55:56",
-          "stage": 3,
-          "action": "Solved Stage 02 - Promoted to Stage 3"
-        },
-        {
-          "time": "11:55:58",
-          "stage": 3,
+          "time": "12:23:45",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:01",
-          "stage": 3,
+          "time": "12:23:49",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:05",
-          "stage": 3,
+          "time": "12:23:52",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:08",
-          "stage": 3,
+          "time": "12:23:56",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:12",
-          "stage": 3,
+          "time": "12:23:59",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:15",
-          "stage": 3,
+          "time": "12:24:02",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:16",
-          "stage": 3,
-          "action": "Inspecting Dossier: INCIDENT-LOGS"
-        },
-        {
-          "time": "11:56:19",
-          "stage": 3,
+          "time": "12:24:06",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:22",
-          "stage": 3,
+          "time": "12:24:09",
+          "stage": 18,
+          "action": "Passcode Rejected: \"NODEC\" on Stage 18"
+        },
+        {
+          "time": "12:24:10",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:26",
-          "stage": 3,
+          "time": "12:24:13",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:26",
-          "stage": 3,
-          "action": "Inspecting Dossier: PUZZLES-GUIDE"
+          "time": "12:24:13",
+          "stage": 18,
+          "action": "Passcode Rejected: \"NODEE\" on Stage 18"
         },
         {
-          "time": "11:56:29",
-          "stage": 3,
+          "time": "12:24:17",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:33",
-          "stage": 3,
+          "time": "12:24:20",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:36",
-          "stage": 3,
+          "time": "12:24:24",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:40",
-          "stage": 3,
+          "time": "12:24:27",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:43",
-          "stage": 3,
+          "time": "12:24:31",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:47",
-          "stage": 3,
+          "time": "12:24:34",
+          "stage": 18,
           "action": "Active in Terminal"
         },
         {
-          "time": "11:56:50",
-          "stage": 3,
+          "time": "12:24:38",
+          "stage": 18,
           "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:54",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:56:57",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:57:01",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:57:03",
-          "stage": 3,
-          "action": "Inspecting Dossier: PUZZLES-GUIDE"
         }
       ],
-      "hints_history": [],
+      "hints_history": [
+        {
+          "stage": 4,
+          "level": 1,
+          "hint": "Compare Dr. Aditi's building exit card-swipe against the chronological terminal activity in Security_Audit.pdf.",
+          "timestamp": 1790317747.642294
+        }
+      ],
       "start_time": 1790317054.1090884,
       "end_time": null,
       "is_finished": false,
@@ -1347,12 +973,96 @@
         },
         "3": {
           "start": 1790317554869,
-          "end": 1790317381450,
-          "duration_seconds": 32,
-          "duration_str": "0m 32s"
+          "end": 1790317726050,
+          "duration_seconds": 171,
+          "duration_str": "2m 51s"
         },
         "4": {
-          "start": 1790317381450
+          "start": 1790317726050,
+          "end": 1790317790719,
+          "duration_seconds": 65,
+          "duration_str": "1m 05s"
+        },
+        "5": {
+          "start": 1790317790719,
+          "end": 1790317803793,
+          "duration_seconds": 13,
+          "duration_str": "0m 13s"
+        },
+        "6": {
+          "start": 1790317803793,
+          "end": 1790318039875,
+          "duration_seconds": 236,
+          "duration_str": "3m 56s"
+        },
+        "7": {
+          "start": 1790318039875,
+          "end": 1790318262377,
+          "duration_seconds": 223,
+          "duration_str": "3m 43s"
+        },
+        "8": {
+          "start": 1790318262377,
+          "end": 1790318329054,
+          "duration_seconds": 67,
+          "duration_str": "1m 07s"
+        },
+        "9": {
+          "start": 1790318329054,
+          "end": 1790318351780,
+          "duration_seconds": 23,
+          "duration_str": "0m 23s"
+        },
+        "10": {
+          "start": 1790318351780,
+          "end": 1790318384287,
+          "duration_seconds": 33,
+          "duration_str": "0m 33s"
+        },
+        "11": {
+          "start": 1790318384287,
+          "end": 1790318394258,
+          "duration_seconds": 10,
+          "duration_str": "0m 10s"
+        },
+        "12": {
+          "start": 1790318394258,
+          "end": 1790318417645,
+          "duration_seconds": 23,
+          "duration_str": "0m 23s"
+        },
+        "13": {
+          "start": 1790318417645,
+          "end": 1790318625692,
+          "duration_seconds": 208,
+          "duration_str": "3m 28s"
+        },
+        "14": {
+          "start": 1790318625692,
+          "end": 1790318809681,
+          "duration_seconds": 184,
+          "duration_str": "3m 04s"
+        },
+        "15": {
+          "start": 1790318809681,
+          "end": 1790318835687,
+          "duration_seconds": 26,
+          "duration_str": "0m 26s"
+        },
+        "16": {
+          "start": 1790318835687,
+          "end": 1790318996138,
+          "duration_seconds": 160,
+          "duration_str": "2m 40s"
+        },
+        "17": {
+          "start": 1790318996138,
+          "end": 1790319062352,
+          "duration_seconds": 66,
+          "duration_str": "1m 06s"
+        },
+        "18": {
+          "start": 1790319062352
         }
       },
       "client_info": {
@@ -1360,8 +1070,8 @@
         "os": "Win32",
         "fullscreen": true
       },
-      "active_view": "MODAL-PUZZLES-GUIDE",
-      "penalty_seconds": 0
+      "active_view": "MODAL-CLOCK-LOOP",
+      "penalty_seconds": 420
     },
     "GG": {
       "team_id": "GG",
@@ -1376,114 +1086,14 @@
       ],
       "hints_count": 0,
       "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
+      "tamper_incidents": 1,
+      "is_locked": true,
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "Active in Terminal",
-      "last_seen": 1790317622.5037742,
+      "last_action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)",
+      "last_seen": 1790317682.0763457,
       "activity_log": [
-        {
-          "time": "11:54:49",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:54:52",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:54:56",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:54:59",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:03",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:06",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:10",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:13",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:17",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:20",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:24",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:27",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:31",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:34",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:38",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:41",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:45",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:48",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:52",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "11:55:55",
-          "stage": 3,
-          "action": "Active in Terminal"
-        },
         {
           "time": "11:55:59",
           "stage": 3,
@@ -1583,6 +1193,106 @@
           "time": "11:57:02",
           "stage": 3,
           "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:06",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:09",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:11",
+          "stage": 3,
+          "action": "Inspecting Dossier: PUZZLES-GUIDE"
+        },
+        {
+          "time": "11:57:13",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:16",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:20",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:23",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:27",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:30",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:31",
+          "stage": 3,
+          "action": "Inspecting Dossier: PUZZLES-GUIDE"
+        },
+        {
+          "time": "11:57:34",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:37",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:41",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:44",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:48",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:51",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:55",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:58",
+          "stage": 3,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "11:57:59",
+          "stage": 3,
+          "action": "\ud83d\udea8 CRITICAL BREACH: Windows Key / Start Menu Triggered!"
+        },
+        {
+          "time": "11:58:02",
+          "stage": 3,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         }
       ],
       "hints_history": [],
@@ -1974,7 +1684,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790317498.8066244,
+      "round_2_start_time": 1790319244.3378153,
       "round_2_is_finished": false,
       "round_2_end_time": 1790317459.777269,
       "round_2_finish_time_str": "12m 45s",
@@ -2124,7 +1834,7 @@
       "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "\ud83c\udfc6 \ud83e\udd48 2ND PRIZE \u2014 RUNNER-UP LAUREATE in 12m 45s!",
+      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
       "last_seen": 1790317498.848662,
       "activity_log": [
         {
@@ -2285,28 +1995,12 @@
       "current_round": 2,
       "round_2_unlocked": true,
       "send_to_round_2": true,
-      "round_2_stage": 17,
+      "round_2_stage": 1,
       "round_2_unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17
+        1
       ],
-      "round_2_start_time": 1790317498.8116295,
-      "round_2_is_finished": true,
+      "round_2_start_time": 1790319244.3378153,
+      "round_2_is_finished": false,
       "round_2_end_time": 1790317498.848662,
       "round_2_finish_time_str": "12m 45s",
       "round_2_stage_times": {
@@ -2415,7 +2109,9 @@
       },
       "prize_code": "2ND_PRIZE",
       "prize_title": "\ud83e\udd48 2ND PRIZE \u2014 RUNNER-UP LAUREATE",
-      "podium_rank": 2
+      "podium_rank": 2,
+      "round_2_times": {},
+      "round_2_score": 0
     },
     "ALFA-1": {
       "team_id": "ALFA-1",
@@ -2427,9 +2123,9 @@
       "hints_count": 0,
       "tamper_incidents": 0,
       "is_locked": false,
-      "start_time": 1790317530.0436726,
+      "start_time": 1790319244.2806063,
       "last_seen": 1790317530.0436726,
-      "last_action": "\ud83d\udea8 DO_NOT_RUN Honeypot Executed (+5m Penalty, Trap #1)",
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "penalty_seconds": 300,
       "activity_log": [
         {
@@ -2438,6 +2134,806 @@
           "action": "\ud83d\udea8 DO_NOT_RUN Honeypot Trap Triggered (+5m penalty applied, total traps: 1)"
         }
       ]
+    },
+    "SAK": {
+      "team_id": "SAK",
+      "team_name": "sak",
+      "password": "sak",
+      "members": "sak",
+      "registered_at": 1790317832.0059457,
+      "start_time": 1790317832.0059457,
+      "end_time": 1790317847.8835866,
+      "current_stage": 21,
+      "unlocked_stages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 1,
+      "is_locked": true,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_seen": 1790318425.9267416,
+      "last_action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)",
+      "stage_times": {
+        "1": {
+          "start": 1790311236749,
+          "end": 1790311379662,
+          "duration_seconds": 143,
+          "duration_str": "2m 23s"
+        },
+        "2": {
+          "start": 1790311379662,
+          "end": 1790311477410,
+          "duration_seconds": 98,
+          "duration_str": "1m 38s"
+        },
+        "3": {
+          "start": 1790311477410,
+          "end": 1790311531128,
+          "duration_seconds": 54,
+          "duration_str": "0m 54s"
+        },
+        "4": {
+          "start": 1790311531128,
+          "end": 1790311605816,
+          "duration_seconds": 75,
+          "duration_str": "1m 15s"
+        },
+        "5": {
+          "start": 1790311605816,
+          "end": 1790311611338,
+          "duration_seconds": 6,
+          "duration_str": "0m 06s"
+        },
+        "6": {
+          "start": 1790311611338,
+          "end": 1790311703958,
+          "duration_seconds": 93,
+          "duration_str": "1m 33s"
+        },
+        "7": {
+          "start": 1790311703958,
+          "end": 1790318250555,
+          "duration_seconds": 6547,
+          "duration_str": "109m 07s"
+        },
+        "8": {
+          "start": 1790318250555,
+          "end": 1790311895678,
+          "duration_seconds": 129,
+          "duration_str": "2m 09s"
+        },
+        "9": {
+          "start": 1790311895678,
+          "end": 1790312083260,
+          "duration_seconds": 188,
+          "duration_str": "3m 08s"
+        },
+        "10": {
+          "start": 1790312083260,
+          "end": 1790312096401,
+          "duration_seconds": 13,
+          "duration_str": "0m 13s"
+        },
+        "11": {
+          "start": 1790312096401,
+          "end": 1790312212855,
+          "duration_seconds": 116,
+          "duration_str": "1m 56s"
+        },
+        "12": {
+          "start": 1790312212855,
+          "end": 1790312231833,
+          "duration_seconds": 19,
+          "duration_str": "0m 19s"
+        },
+        "13": {
+          "start": 1790312231833,
+          "end": 1790312387349,
+          "duration_seconds": 156,
+          "duration_str": "2m 36s"
+        },
+        "14": {
+          "start": 1790312387349,
+          "end": 1790312670017,
+          "duration_seconds": 283,
+          "duration_str": "4m 43s"
+        },
+        "15": {
+          "start": 1790312670017,
+          "end": 1790312697229,
+          "duration_seconds": 27,
+          "duration_str": "0m 27s"
+        },
+        "16": {
+          "start": 1790312697229,
+          "end": 1790312772403,
+          "duration_seconds": 75,
+          "duration_str": "1m 15s"
+        },
+        "17": {
+          "start": 1790312772403,
+          "end": 1790312867686,
+          "duration_seconds": 95,
+          "duration_str": "1m 35s"
+        },
+        "18": {
+          "start": 1790312867686,
+          "end": 1790313268395,
+          "duration_seconds": 401,
+          "duration_str": "6m 41s"
+        },
+        "19": {
+          "start": 1790313268395,
+          "end": 1790313273298,
+          "duration_seconds": 5,
+          "duration_str": "0m 05s"
+        },
+        "20": {
+          "start": 1790313273298,
+          "end": 1790313433028,
+          "duration_seconds": 160,
+          "duration_str": "2m 40s"
+        },
+        "21": {
+          "start": 1790313433028,
+          "end": 1790313544568,
+          "duration_seconds": 112,
+          "duration_str": "1m 52s"
+        }
+      },
+      "activity_log": [
+        {
+          "time": "12:08:16",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:19",
+          "stage": 8,
+          "action": "Inspecting Dossier: SPECTRO"
+        },
+        {
+          "time": "12:08:19",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:23",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:26",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:30",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:33",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:37",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:40",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:44",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:47",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:51",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:54",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:08:58",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:01",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:05",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:08",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:12",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:15",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:19",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:22",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:26",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:29",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:33",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:36",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:40",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:43",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:47",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:50",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:54",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:09:57",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:10:01",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:10:04",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:10:08",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:10:11",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:10:15",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:10:18",
+          "stage": 8,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "12:10:22",
+          "stage": 8,
+          "action": "\ud83d\udea8 CRITICAL BREACH: Switched Browser Tab or Minimized Window!"
+        },
+        {
+          "time": "12:10:22",
+          "stage": 8,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "12:10:25",
+          "stage": 8,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        }
+      ],
+      "client_info": {
+        "resolution": "1372x772",
+        "os": "Win32",
+        "fullscreen": true
+      },
+      "active_view": "MODAL-SPECTRO",
+      "penalty_seconds": 0,
+      "is_finished": true,
+      "finish_time_str": "38m 27s"
+    },
+    "TEST-E2E-1790319235": {
+      "team_id": "TEST-E2E-1790319235",
+      "team_name": "E2E Protocol Verification Unit",
+      "password": "pass",
+      "members": "",
+      "current_stage": 21,
+      "unlocked_stages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "hints_count": 3,
+      "traps_count": 1,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83c\udfc6 ROUND 2 COMPLETE: Solved all 16 forensic challenges!",
+      "last_seen": 1790319235.5850039,
+      "activity_log": [
+        {
+          "time": "12:23:55",
+          "stage": 1,
+          "action": "Registered workstation"
+        },
+        {
+          "time": "12:23:55",
+          "stage": 1,
+          "action": "\ud83d\udea8 DO_NOT_RUN Honeypot Trap Triggered (+5m penalty applied, total traps: 1)"
+        }
+      ],
+      "hints_history": [
+        {
+          "stage": 1,
+          "level": 1,
+          "hint": "Look beyond what is visible to the naked eye. In Farewell.doc, Dr. Aditi concealed emergency coordinates using invisible white text at the bottom of the page.",
+          "timestamp": 1790319235.5878007
+        },
+        {
+          "stage": 2,
+          "level": 1,
+          "hint": "Check README.doc inside the ORIGIN directory. Look at Dr. Aditi's system identifier 'aDIti@28'.",
+          "timestamp": 1790319235.5899963
+        },
+        {
+          "stage": 3,
+          "level": 1,
+          "hint": "Carefully audit every date recorded in Incident_Logs.doc against Gregorian calendar rules.",
+          "timestamp": 1790319235.592212
+        }
+      ],
+      "start_time": 1790319235.5850039,
+      "end_time": 1790319235.6347642,
+      "is_finished": true,
+      "created_at": "2026-09-25T12:23:55.585026",
+      "penalty_seconds": 660,
+      "round_2_unlocked_stages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "round_2_stage": 16,
+      "round_2_is_finished": true,
+      "round_2_end_time": 1790319235.6679306
+    },
+    "TRACK-COMPLETION-1790319244": {
+      "team_id": "TRACK-COMPLETION-1790319244",
+      "team_name": "Full Track Squad",
+      "password": "pass",
+      "members": "Track Master",
+      "current_stage": 21,
+      "unlocked_stages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "hints_count": 0,
+      "traps_count": 0,
+      "tamper_incidents": 0,
+      "is_locked": false,
+      "remote_unlock": false,
+      "force_logout": false,
+      "remote_reset": false,
+      "last_action": "\ud83c\udfc6 \ud83e\udd49 3RD PRIZE \u2014 SECOND RUNNER-UP in 12m 00s!",
+      "last_seen": 1790319244.383873,
+      "activity_log": [
+        {
+          "time": "12:24:04",
+          "stage": 1,
+          "action": "Registered workstation"
+        },
+        {
+          "time": "12:24:04",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY (Round 1): Solved in 17m 30s!"
+        },
+        {
+          "time": "12:24:04",
+          "stage": 21,
+          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
+        },
+        {
+          "time": "12:24:04",
+          "stage": 15,
+          "action": "\ud83c\udfc6 VICTORY (Round 2): Solved in 12m 00s!"
+        }
+      ],
+      "hints_history": [],
+      "start_time": 1790319244.2806063,
+      "end_time": 1790319244.383873,
+      "is_finished": true,
+      "created_at": "2026-09-25T12:24:04.279321",
+      "stage_times": {
+        "1": {
+          "start": 1790318044.2856016,
+          "end": 1790318094.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "2": {
+          "start": 1790318094.2856016,
+          "end": 1790318144.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "3": {
+          "start": 1790318144.2856016,
+          "end": 1790318194.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "4": {
+          "start": 1790318194.2856016,
+          "end": 1790318244.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "5": {
+          "start": 1790318244.2856016,
+          "end": 1790318294.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "6": {
+          "start": 1790318294.2856016,
+          "end": 1790318344.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "7": {
+          "start": 1790318344.2856016,
+          "end": 1790318394.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "8": {
+          "start": 1790318394.2856016,
+          "end": 1790318444.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "9": {
+          "start": 1790318444.2856016,
+          "end": 1790318494.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "10": {
+          "start": 1790318494.2856016,
+          "end": 1790318544.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "11": {
+          "start": 1790318544.2856016,
+          "end": 1790318594.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "12": {
+          "start": 1790318594.2856016,
+          "end": 1790318644.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "13": {
+          "start": 1790318644.2856016,
+          "end": 1790318694.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "14": {
+          "start": 1790318694.2856016,
+          "end": 1790318744.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "15": {
+          "start": 1790318744.2856016,
+          "end": 1790318794.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "16": {
+          "start": 1790318794.2856016,
+          "end": 1790318844.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "17": {
+          "start": 1790318844.2856016,
+          "end": 1790318894.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "18": {
+          "start": 1790318894.2856016,
+          "end": 1790318944.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "19": {
+          "start": 1790318944.2856016,
+          "end": 1790318994.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "20": {
+          "start": 1790318994.2856016,
+          "end": 1790319044.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        },
+        "21": {
+          "start": 1790319044.2856016,
+          "end": 1790319094.2856016,
+          "duration_seconds": 50,
+          "duration_str": "0m 50s"
+        }
+      },
+      "finish_time_str": "17m 30s",
+      "current_round": 2,
+      "round_2_unlocked": true,
+      "send_to_round_2": true,
+      "round_2_stage": 17,
+      "round_2_unlocked_stages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "round_2_start_time": 1790319244.343282,
+      "round_2_is_finished": true,
+      "round_2_end_time": 1790319244.383873,
+      "round_2_finish_time_str": "12m 00s",
+      "round_2_stage_times": {
+        "1": {
+          "start": 1790318044.2856016,
+          "end": 1790318089.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "2": {
+          "start": 1790318089.2856016,
+          "end": 1790318134.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "3": {
+          "start": 1790318134.2856016,
+          "end": 1790318179.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "4": {
+          "start": 1790318179.2856016,
+          "end": 1790318224.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "5": {
+          "start": 1790318224.2856016,
+          "end": 1790318269.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "6": {
+          "start": 1790318269.2856016,
+          "end": 1790318314.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "7": {
+          "start": 1790318314.2856016,
+          "end": 1790318359.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "8": {
+          "start": 1790318359.2856016,
+          "end": 1790318404.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "9": {
+          "start": 1790318404.2856016,
+          "end": 1790318449.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "10": {
+          "start": 1790318449.2856016,
+          "end": 1790318494.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "11": {
+          "start": 1790318494.2856016,
+          "end": 1790318539.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "12": {
+          "start": 1790318539.2856016,
+          "end": 1790318584.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "13": {
+          "start": 1790318584.2856016,
+          "end": 1790318629.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "14": {
+          "start": 1790318629.2856016,
+          "end": 1790318674.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "15": {
+          "start": 1790318674.2856016,
+          "end": 1790318719.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        },
+        "16": {
+          "start": 1790318719.2856016,
+          "end": 1790318764.2856016,
+          "duration_seconds": 45,
+          "duration_str": "0m 45s"
+        }
+      },
+      "prize_code": "3RD_PRIZE",
+      "prize_title": "\ud83e\udd49 3RD PRIZE \u2014 SECOND RUNNER-UP",
+      "podium_rank": 3
     }
   },
   "broadcasts": [
@@ -2535,17 +3031,57 @@
       "id": 19,
       "message": "\ud83c\udfc6 ROUND 2 COMPLETED: Team Full Track Squad [TRACK-COMPLETION-1790317498] finished in 12m 45s!",
       "time": "11:54:58"
+    },
+    {
+      "id": 20,
+      "message": "\ud83c\udfc6 ROUND 2 COMPLETED: Team ABC [ABC] finished in 1h 54m 27s!",
+      "time": "11:58:34"
+    },
+    {
+      "id": 21,
+      "message": "\ud83c\udfc6 ROUND 2 COMPLETED: Team sak [SAK] finished in 1h 49m 23s!",
+      "time": "12:00:00"
+    },
+    {
+      "id": 22,
+      "message": "\ud83c\udfc6 ROUND 1 COMPLETED: Team sak [SAK] finished in 38m 27s!",
+      "time": "12:00:47"
+    },
+    {
+      "id": 23,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
+      "time": "12:24:04"
+    },
+    {
+      "id": 24,
+      "message": "\ud83c\udfc6 ROUND 1 COMPLETED: Team Full Track Squad [TRACK-COMPLETION-1790319244] finished in 17m 30s!",
+      "time": "12:24:04"
+    },
+    {
+      "id": 25,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 2 HAS OFFICIALLY BEGUN! 4 QUALIFIED STATIONS UNLOCKED.",
+      "time": "12:24:04"
+    },
+    {
+      "id": 26,
+      "message": "\ud83d\ude80 TOURNAMENT ALERT: Squad [Full Track Squad] has been promoted to Round 2 by the Organizer!",
+      "time": "12:24:04"
+    },
+    {
+      "id": 27,
+      "message": "\ud83c\udfc6 ROUND 2 COMPLETED: Team Full Track Squad [TRACK-COMPLETION-1790319244] finished in 12m 00s!",
+      "time": "12:24:04"
     }
   ],
   "created_at": "2026-09-21T00:00:00.000000",
   "current_round": 2,
   "shortlist": {
     "round_2_qualified_team_ids": [
-      "SAK",
       "ABC",
       "ROSH-01",
       "TRACK-COMPLETION-1790317367",
-      "TRACK-COMPLETION-1790317498"
+      "TRACK-COMPLETION-1790317498",
+      "TRACK-COMPLETION-1790319244"
     ],
     "locked": true
   },
@@ -2554,5 +3090,5 @@
   "test_mode_unlock_all": false,
   "global_fullscreen_exit_allowed": false,
   "round_1_started": true,
-  "round_1_start_time": 1790317498.758721
+  "round_1_start_time": 1790319244.2806063
 }

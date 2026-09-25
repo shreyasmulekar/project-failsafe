@@ -59,11 +59,10 @@
 | **R2** | **10** | The Base-Invariant Digital Root Flow | Digital_Root_Log.txt | `NONE` / `IMPOSSIBLE` |
 | **R2** | **11** | The Palindrome Filter Stream | Palindrome_Stream.txt | `RLRCK` |
 | **R2** | **12** | The Diagonal Word Weave | Matrix_Diagonal.pdf | `NODC` |
-| **R2** | **13** | The Perimeter Geometry Box Count | Grid_Perimeter.pdf | `102` |
-| **R2** | **14** | The Alternating Checker Pattern | Checker_State.png | `3-EMPTY` |
-| **R2** | **15** | The Shifted Ring Cipher | Ring_Shift.png | `FINALS` / `EBF` |
-| **R2** | **16** | The Cipher Wheel Protocol (RED QUESTION)| Cipher_Wheel_Spec.pdf | `ECLIPSE` |
-| **R2** | **17** | The Failsafe Logic Tree (GRAND FINALE) | Failsafe_Gate_Status.pdf | `0110` |
+| **R2** | **13** | The Alternating Checker Pattern | Stage_02 / Node_Strip.txt | `3-EMPTY` / `□□□` |
+| **R2** | **14** | The Shifted Ring Cipher | Ring_Shift.png | `FINALS` / `EBF` |
+| **R2** | **15** | The Cipher Wheel Protocol (RED QUESTION)| Cipher_Wheel_Spec.pdf | `ECLIPSE` |
+| **R2** | **16** | The Failsafe Logic Tree (GRAND FINALE) | Failsafe_Gate_Status.pdf | `0110` |
 
 ---
 
@@ -200,24 +199,23 @@
 - **Calculation**: N-7=G, B-7=U, H-7=A, Y-7=R, K-7=D.
 - **Key**: `GUARD`
 
-### R2 STAGES 02–16: The Olympiad Cipher Suite
+### R2 STAGES 02–15: The Olympiad Cipher Suite
 - **Stage 02 (Matrix Box)**: Option C (`THREE CIRCLES`)
 - **Stage 03 (Rotation Boxes)**: `BOTTOM LEFT` / `BL`
 - **Stage 04 (Cube Net Folding)**: `5`
-- **Stage 05 (Mod-Polybius)**: `CIPHER`
+- **Stage 05 (Mod-Polybius)**: `CIPHER` (Coordinates `(1,3) (2,4) (3,5) (2,3) (1,5) (4,2)` in standard 5x5 Polybius square decode to `CIPHER`)
 - **Stage 06 (QWERTY Trace)**: `SQUARES`
 - **Stage 07 (Logic Gate Circuits)**: `011`
 - **Stage 08 (Mirror Text Reflection)**: `CLEARANCE`
 - **Stage 09 (Compass Matrix Operator)**: `SE` / `SOUTH EAST`
 - **Stage 10 (Digital Root Analysis)**: `NONE` / `IMPOSSIBLE`
 - **Stage 11 (Palindrome Filter Stream)**: `RLRCK`
-- **Stage 12 (Matrix Diagonal Weave)**: `NODC`
-- **Stage 13 (Perimeter Geometry Count)**: `102`
-- **Stage 14 (Alternating Checker State)**: `3-EMPTY`
-- **Stage 15 (Concentric Ring Shift)**: `FINALS` / `EBF`
-- **Stage 16 (Cipher Wheel - RED QUESTION)**: `ECLIPSE`
+- **Stage 12 (Matrix Diagonal Weave)**: `NODC` (Diagonal (1,1) to (4,4) in 4x4 matrix; visual highlighting removed)
+- **Stage 13 (Alternating Checker State)**: `3-EMPTY` / `□□□` (Alternating sequence `[■] [□] [■■] [□□] [■■■] [ ? ]` -> Step 6: 3 Empty `□□□` or `3-EMPTY`)
+- **Stage 14 (Concentric Ring Shift)**: `FINALS` / `EBF`
+- **Stage 15 (Cipher Wheel - RED QUESTION)**: `ECLIPSE`
 
-### R2 STAGE 17: The Failsafe Logic Tree (Grand Finale)
+### R2 STAGE 16: The Failsafe Logic Tree (Grand Finale)
 - **Evidence**: `Failsafe_Gate_Status.pdf`
 - **Rules**:
   1. Alpha and Beta cannot both be OFF.

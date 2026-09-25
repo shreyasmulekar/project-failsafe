@@ -39,7 +39,7 @@ Project Failsafe 2090 is an autonomous dual-round digital forensics and cybersec
 |             │                                                                      |
 |             ▼ (Organizer clicks "🎯 START ROUND 2 (OLYMPIAD)" or approves team)    |
 |  [StratCom Decryption Arena Unlocked]                                              |
-|  - 17 Olympiad Forensic & Cryptanalytic Challenges                                     |
+|  - 16 Olympiad Forensic & Cryptanalytic Challenges                                     |
 |  - Automatic podium detection, celebration fanfare, and Dr. Aditi transmission     |
 +------------------------------------------------------------------------------------+
 ```
@@ -63,7 +63,7 @@ Project Failsafe 2090 is an autonomous dual-round digital forensics and cybersec
    - Status Badge displays: `⏳ AWAITING ORGANIZER START`
    - Open `ROUND 2 SHORTLIST` modal to review the Top 12 qualified teams.
    - Click `[ 🎯 START ROUND 2 (OLYMPIAD) ]` and type `CONFIRM`.
-   - **Result**: Qualified workstations switch from the completion hold screen into the 15-cipher Decryption Arena. Unqualified stations remain safely in standby debrief mode.
+   - **Result**: Qualified workstations switch from the completion hold screen into the 16-cipher Decryption Arena. Unqualified stations remain safely in standby debrief mode.
 3. **Emergency Single-Team Round 2 Promotion**:
    - In the Station Grid or Table View, click `[ 🚀 SEND TO ROUND 2 ]` on any specific team's row to instantly authorize and promote them individually.
 
@@ -122,7 +122,7 @@ Project Failsafe 2090 is an autonomous dual-round digital forensics and cybersec
 
 ---
 
-## 🎯 4. ROUND 2 MASTER ANSWER KEYS (All 17 Olympiad Challenges)
+## 🎯 4. ROUND 2 MASTER ANSWER KEYS (All 16 Olympiad Challenges)
 
 | Puzzle | Codename | Master Key | Alternative Accepted Keys | Mechanism & Volunteer Clue |
 | :---: | :--- | :--- | :--- | :--- |
@@ -130,19 +130,18 @@ Project Failsafe 2090 is an autonomous dual-round digital forensics and cybersec
 | **02** | Visual Matrix Box Transformation | `C` | `THREE CIRCLES`, `3 CIRCLES`, `●●●` | Row 1: Squares, Row 2: Triangles, Row 3: Circles. Count follows 1, 2, 3. Missing cell is 3 Circles (`Option C`). |
 | **03** | Spatial Rotation Boxes | `BOTTOM LEFT` | `BL`, `BOTTOMLEFT`, `BOTTOM-LEFT` | Dot rotates 90° clockwise in 2x2 grid: Top-Left -> Top-Right -> Bottom-Right -> `Bottom-Left`. |
 | **04** | 3D Cube Net Spatial Folding | `5` | — | T-shaped cross net. Faces separated by one face along vertical spine fold opposite. Face 1 opposite `Face 5`. |
-| **05** | Frequency Distribution Anagram | `CIPHER` | — | Frequency cryptanalysis unscrambles 6-letter word: `E-H-I-P-R-C` -> `CIPHER`. |
+| **05** | The Modulated Polybius Cipher | `CIPHER` | — | Standard 5x5 Polybius Square coordinates `(1,3) (2,4) (3,5) (2,3) (1,5) (4,2)` decode directly to `C-I-P-H-E-R`. |
 | **06** | Geometric Grid Progression | `SQUARES` | `3SQ`, `SQUARE`, `THREE SQUARES` | Shape progression across grid quadrant terminates in `SQUARES`. |
 | **07** | Quantum Logic Gate Array | `011` | `0,1,1`, `0-1-1` | Truth table output vector across 3 qubits after Hadamard and CNOT operations: `011`. |
 | **08** | Vigenère Keyword Substitution | `CLEARANCE` | — | Tabula recta decryption using secret key `TARA` produces `CLEARANCE`. |
 | **09** | 8-Point Compass Vector Drift | `SE` | `SOUTH EAST`, `SOUTHEAST` | Navigation telemetry vector sum of gyroscopic drift: North + East + South-East yields net drift `SE`. |
 | **10** | Diophantine Residue Equation | `NONE` | `IMPOSSIBLE`, `NO PRIME`, `0` | Parity inspection reveals modular contradiction $p^2 \equiv 2 \pmod 4$; no prime solution exists (`NONE`). |
 | **11** | Shifted Polyalphabetic Cipher | `RLRCK` | — | Decryption of 5-letter satellite beacon via key stream index yields `RLRCK`. |
-| **12** | Circular Transposition Lattice | `NODC` | — | Spiral reading of 4x4 matrix from outer perimeter inward extracts security token `NODC`. |
-| **13** | 3D Hypercube Layer Projection | `102` | `102 BOXES` | Volumetric voxel counting across all 3 spatial cross-sections: 36 + 48 + 18 = `102`. |
-| **14** | Binary Inversion State Machine | `3-EMPTY` | `3 EMPTY`, `EMPTY`, `□□□`, `3EMPTY` | Bitwise flip state after 7 clock cycles leaves all 3 registers cleared: `3-EMPTY`. |
-| **15** | Anagrammatic Branch Routing | `FINALS` | `EBF` | Unscrambling routing junction nodes (`F-I-N-A-L-S`) yields `FINALS`. |
-| **16** | Master StratCom Decryption Wheel | `ECLIPSE` | — | Align inner cipher wheel to 135° marker to decrypt master purge code: `ECLIPSE`. |
-| **17** | The Failsafe Logic Tree [Grand Finale] | `0110` | `0-1-1-0`, `0 1 1 0` | Cascading Boolean logic gate evaluation produces master kill-switch vector `0110`. |
+| **12** | The Diagonal Word Weave | `NODC` | — | Main diagonal of 4x4 matrix from top-left (1,1) to bottom-right (4,4) spells `NODC` (grid cell highlighting removed). |
+| **13** | The Alternating Checker Pattern | `3-EMPTY` | `3 EMPTY`, `EMPTY`, `□□□`, `3EMPTY` | Alternating filled/empty box sequence `[■] [□] [■■] [□□] [■■■] [ ? ]`. Count increments by 1; Step 6 is 3 Empty (`□□□` or `3-EMPTY`). |
+| **14** | Anagrammatic Branch Routing | `FINALS` | `EBF` | Unscrambling routing junction nodes (`F-I-N-A-L-S`) yields `FINALS`. |
+| **15** | Master StratCom Decryption Wheel | `ECLIPSE` | — | Align inner cipher wheel to 135° marker to decrypt master purge code: `ECLIPSE`. |
+| **16** | The Failsafe Logic Tree [Grand Finale] | `0110` | `0-1-1-0`, `0 1 1 0` | Cascading Boolean logic gate evaluation produces master kill-switch vector `0110`. |
 
 ---
 

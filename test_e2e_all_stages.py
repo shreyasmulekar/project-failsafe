@@ -107,7 +107,7 @@ r2_clue = post("/api/hints/request", {"team_id": team_id, "stage": 1, "round": 2
 print("Round 2 clue request (must fail):", r2_clue.get("success"), "| message:", r2_clue.get("message"))
 assert r2_clue.get("success") == False, "Clues must be blocked in Round 2!"
 
-print("\n=== 6. SOLVE ALL 17 ROUND 2 STAGES SEQUENTIALLY ===")
+print("\n=== 6. SOLVE ALL 16 ROUND 2 STAGES SEQUENTIALLY ===")
 R2_SOLUTIONS = [
     (1, "GUARD", 2),
     (2, "C", 3),
@@ -121,11 +121,10 @@ R2_SOLUTIONS = [
     (10, "NONE", 11),
     (11, "RLRCK", 12),
     (12, "NODC", 13),
-    (13, "102", 14),
-    (14, "3-EMPTY", 15),
-    (15, "FINALS", 16),
-    (16, "ECLIPSE", 17),
-    (17, "0110", "COMPLETE")
+    (13, "3-EMPTY", 14),
+    (14, "FINALS", 15),
+    (15, "ECLIPSE", 16),
+    (16, "0110", "COMPLETE")
 ]
 
 for stage_num, key, expected_next in R2_SOLUTIONS:
@@ -140,5 +139,5 @@ for stage_num, key, expected_next in R2_SOLUTIONS:
     assert res.get("success") == True, f"Failed at R2 Stage {stage_num}"
     assert next_s == expected_next, f"R2 Stage {stage_num} expected next {expected_next}, got {next_s}"
 
-print("✓ All 17 Round 2 Stages verified!")
-print("\n🎉 ALL TESTS PASSED SUCCESSFULLY! FULL 21-STAGE R1 AND 17-STAGE R2 INTEGRITY CONFIRMED.")
+print("✓ All 16 Round 2 Stages verified!")
+print("\n🎉 ALL TESTS PASSED SUCCESSFULLY! FULL 21-STAGE R1 AND 16-STAGE R2 INTEGRITY CONFIRMED.")

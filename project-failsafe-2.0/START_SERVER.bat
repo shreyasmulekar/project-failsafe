@@ -30,7 +30,7 @@ echo  SERVER URL FOR PARTICIPANT LAPTOPS:
 echo  http://10.100.8.89:8000
 echo.
 echo  ORGANIZER COMMAND CENTER URL:
-echo  http://localhost:8000/admin.html
+echo  http://127.0.0.1:8000/admin.html  (or http://localhost:8000/admin.html)
 echo =========================================================================
 echo.
 echo [NOTE] Keep this window open during the tournament!

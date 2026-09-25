@@ -306,34 +306,27 @@ ROUND2_STAGES = {
         "hints": []
     },
     13: {
-        "title": "The Perimeter Geometry Box Count",
-        "location": "Grid_Perimeter.pdf",
-        "keys": ["102", "102 BOXES"],
+        "title": "The Alternating Checker Pattern",
+        "location": "Stage_02 / Node_Strip.txt",
+        "keys": ["3-EMPTY", "3 EMPTY", "EMPTY", "□□□", "3EMPTY", "THREE EMPTY"],
         "next_stage": 14,
         "hints": []
     },
     14: {
-        "title": "The Alternating Checker Pattern",
-        "location": "Checker_State.png",
-        "keys": ["3-EMPTY", "3 EMPTY", "EMPTY", "□□□", "3EMPTY"],
+        "title": "The Shifted Ring Cipher",
+        "location": "Ring_Shift.png",
+        "keys": ["FINALS", "EBF"],
         "next_stage": 15,
         "hints": []
     },
     15: {
-        "title": "The Shifted Ring Cipher",
-        "location": "Ring_Shift.png",
-        "keys": ["FINALS", "EBF"],
+        "title": "The Cipher Wheel Protocol (THE RED QUESTION)",
+        "location": "Cipher_Wheel_Spec.pdf",
+        "keys": ["ECLIPSE"],
         "next_stage": 16,
         "hints": []
     },
     16: {
-        "title": "The Cipher Wheel Protocol (THE RED QUESTION)",
-        "location": "Cipher_Wheel_Spec.pdf",
-        "keys": ["ECLIPSE"],
-        "next_stage": 17,
-        "hints": []
-    },
-    17: {
         "title": "The Failsafe Logic Tree (Failsafe_Gate_Status.pdf)",
         "location": "Failsafe_Gate_Status.pdf",
         "keys": ["0110"],
@@ -2164,6 +2157,21 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             team = state["teams"][team_id]
             stage_dict = ROUND2_STAGES if round_num == 2 else STAGES
             stage_info = stage_dict.get(stage_num)
+
+            # Backwards compatibility fallbacks for Round 2 re-indexing
+            if round_num == 2 and stage_num == 17:
+                stage_info = {
+                    "title": "The Failsafe Logic Tree",
+                    "keys": ["0110"],
+                    "next_stage": "COMPLETE"
+                }
+            elif round_num == 2 and stage_num == 13 and password_input in ["102", "102 BOXES"]:
+                stage_info = {
+                    "title": "The Perimeter Geometry Box Count (Legacy)",
+                    "keys": ["102", "102 BOXES"],
+                    "next_stage": 14
+                }
+
             if not stage_info:
                 self._send_json(400, {"error": f"Invalid stage {stage_num} in round {round_num}"})
                 return
@@ -2184,7 +2192,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     if next_stage == "COMPLETE":
                         team["round_2_is_finished"] = True
                         team["round_2_end_time"] = time.time()
-                        team["last_action"] = "🏆 ROUND 2 COMPLETE: Solved all 17 forensic challenges!"
+                        team["last_action"] = "🏆 ROUND 2 COMPLETE: Solved all 16 forensic challenges!"
                     elif isinstance(next_stage, int):
                         if next_stage not in team["round_2_unlocked_stages"]:
                             team["round_2_unlocked_stages"].append(next_stage)
@@ -2368,15 +2376,23 @@ def run_server():
     except Exception:
         pass
 
+    http.server.ThreadingHTTPServer.allow_reuse_address = False
     server_address = ("", PORT)
-    httpd = http.server.ThreadingHTTPServer(server_address, FailsafeHandler)
+    try:
+        httpd = http.server.ThreadingHTTPServer(server_address, FailsafeHandler)
+    except OSError as e:
+        if "10048" in str(e) or "already in use" in str(e).lower():
+            print(f"[!] Port {PORT} is already in use by an active Project Failsafe server instance.")
+            print(f"[*] Access Organizer Console at: http://127.0.0.1:{PORT}/admin.html")
+            sys.exit(0)
+        raise
 
     print("=" * 65)
     print("      PROJECT FAILSAFE: AI ESCAPE ROOM SERVER ONLINE")
     print("=" * 65)
-    print(f"[*] Local Station URL  : http://localhost:{PORT}")
+    print(f"[*] Local Station URL  : http://127.0.0.1:{PORT} (or http://localhost:{PORT})")
     print(f"[*] LAN Network URL    : http://{lan_ip}:{PORT}")
-    print(f"[*] Organizer Console  : http://localhost:{PORT}/admin.html")
+    print(f"[*] Organizer Console  : http://127.0.0.1:{PORT}/admin.html")
     print(f"[*] Organizer Admin PIN: {ADMIN_PIN}")
     print(f"[*] Serving Assets from: {PUBLIC_DIR}")
     print("=" * 65)
