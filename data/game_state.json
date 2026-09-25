@@ -5,7 +5,7 @@
       "team_name": "gabe_itch",
       "password": "123456",
       "members": "kirk",
-      "current_stage": 12,
+      "current_stage": 1,
       "unlocked_stages": [
         1
       ],
@@ -15,8 +15,8 @@
       "is_locked": false,
       "remote_unlock": false,
       "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "remote_reset": true,
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790289747.5124147,
       "activity_log": [
         {
@@ -218,10 +218,25 @@
           "time": "04:12:27",
           "stage": 12,
           "action": "Active in Terminal"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790288662.425232,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-24T17:54:11.695926",
@@ -237,7 +252,7 @@
       },
       "active_view": "MODAL-ORIGIN",
       "unlock_all_levels": false,
-      "lock_all_levels": false,
+      "lock_all_levels": true,
       "test_mode_unlocked": false,
       "stages_cleared": [],
       "current_round": 1,
@@ -245,7 +260,7 @@
       "round_2_stage": 1,
       "round2_stages_cleared": [],
       "remote_override_stage": 1,
-      "remote_reset_r2": false,
+      "remote_reset_r2": true,
       "fullscreen_exit_requested": false,
       "fullscreen_exit_requested_at": 1790258518.7524297,
       "fullscreen_exit_approved": false,
@@ -256,12 +271,16 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790302549.5149136,
+      "round_2_start_time": 1790304110.9357748,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0,
       "finish_time_str": "",
-      "round_2_ready": false
+      "round_2_ready": false,
+      "round_2_stage_times": {},
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null
     },
     "A": {
       "team_id": "A",
@@ -269,7 +288,7 @@
       "password": "a",
       "members": "a",
       "registered_at": 1790261814.8606253,
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "current_stage": 1,
       "unlocked_stages": [
@@ -277,21 +296,21 @@
       ],
       "hints_count": 2,
       "traps_count": 0,
-      "tamper_incidents": 1,
-      "is_locked": true,
+      "tamper_incidents": 0,
+      "is_locked": false,
       "force_logout": false,
-      "remote_reset": false,
-      "last_seen": 1790302848.177664,
-      "last_action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)",
+      "remote_reset": true,
+      "last_seen": 1790303379.785265,
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "stage_times": {
         "1": {
           "start": 1790143301113,
-          "end": 1790245359476,
-          "duration_seconds": 102058,
-          "duration_str": "1700m 58s"
+          "end": 1790303328874,
+          "duration_seconds": 160028,
+          "duration_str": "2667m 08s"
         },
         "2": {
-          "start": 1790245359476,
+          "start": 1790303328874,
           "end": 1790245474444,
           "duration_seconds": 115,
           "duration_str": "1m 55s"
@@ -308,204 +327,224 @@
       },
       "activity_log": [
         {
-          "time": "07:48:31",
+          "time": "07:58:01",
           "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:05",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:06",
+          "stage": 1,
+          "action": "Inspecting Dossier: R2-DOSSIER"
+        },
+        {
+          "time": "07:58:08",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:12",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:15",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:19",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:22",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:23",
+          "stage": 1,
+          "action": "Inspecting Dossier: ORIGIN"
+        },
+        {
+          "time": "07:58:26",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:29",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:30",
+          "stage": 1,
+          "action": "Inspecting Dossier: ORIGIN"
+        },
+        {
+          "time": "07:58:33",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:36",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:40",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:41",
+          "stage": 1,
+          "action": "Inspecting Dossier: ORIGIN"
+        },
+        {
+          "time": "07:58:43",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:47",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:48",
+          "stage": 2,
+          "action": "Solved Stage 01 (Disappearing Message) - Promoted to Stage 02"
+        },
+        {
+          "time": "07:58:50",
+          "stage": 2,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:54",
+          "stage": 2,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:58:57",
+          "stage": 2,
+          "action": "Inspecting Dossier: ORIGIN"
+        },
+        {
+          "time": "07:58:57",
+          "stage": 2,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:59:01",
+          "stage": 2,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:59:04",
+          "stage": 2,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:59:04",
+          "stage": 2,
+          "action": "\ud83d\udea8 CRITICAL BREACH: Workstation Focus Lost: Switched Window or Clicked Outside!"
+        },
+        {
+          "time": "07:59:08",
+          "stage": 2,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "07:48:35",
-          "stage": 1,
+          "time": "07:59:11",
+          "stage": 2,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "07:48:38",
-          "stage": 1,
+          "time": "07:59:15",
+          "stage": 2,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "07:48:42",
-          "stage": 1,
+          "time": "07:59:18",
+          "stage": 2,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "07:48:45",
-          "stage": 1,
+          "time": "07:59:22",
+          "stage": 2,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "07:48:49",
-          "stage": 1,
+          "time": "07:59:25",
+          "stage": 2,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "07:48:52",
+          "time": "07:59:26",
           "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:59:28",
+          "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:59:29",
+          "stage": 2,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "07:48:56",
+          "time": "07:59:29",
           "stage": 1,
+          "action": "Inspecting Dossier: RECOVERY"
+        },
+        {
+          "time": "07:59:32",
+          "stage": 2,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "07:48:59",
+          "time": "07:59:32",
           "stage": 1,
+          "action": "Active in Terminal"
+        },
+        {
+          "time": "07:59:36",
+          "stage": 2,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "07:49:03",
-          "stage": 1,
+          "time": "07:59:39",
+          "stage": 2,
           "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         },
         {
-          "time": "07:49:06",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
         },
         {
-          "time": "07:49:10",
+          "time": "08:06:12",
           "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
         },
         {
-          "time": "07:49:13",
+          "time": "08:13:35",
           "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+          "action": "All levels locked by organizer - restored to Stage 01"
         },
         {
-          "time": "07:49:17",
+          "time": "08:14:03",
           "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:20",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:24",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:27",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:31",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:34",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:38",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:41",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:45",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:48",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:52",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:55",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:49:59",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:02",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:06",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:09",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:13",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:16",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:20",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:23",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:27",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:30",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:34",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:37",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:41",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:44",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "07:50:48",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+          "action": "Organizer Override PIN applied remotely (Breaches cleared)"
         }
       ],
       "client_info": {
@@ -513,12 +552,12 @@
         "os": "Windows",
         "fullscreen": true
       },
-      "active_view": "STAGE_01",
-      "remote_unlock": false,
+      "active_view": "STAGE_02",
+      "remote_unlock": true,
       "violations_history": [],
       "penalty_seconds": 240,
       "unlock_all_levels": false,
-      "lock_all_levels": false,
+      "lock_all_levels": true,
       "test_mode_unlocked": false,
       "stages_cleared": [],
       "current_round": 1,
@@ -526,11 +565,11 @@
       "round_2_stage": 1,
       "round2_stages_cleared": [],
       "remote_override_stage": 1,
-      "remote_reset_r2": false,
+      "remote_reset_r2": true,
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790302549.5149136,
+      "round_2_start_time": 1790304110.9357748,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0,
@@ -547,7 +586,11 @@
       ],
       "is_finished": false,
       "send_to_round_2": false,
-      "round_2_ready": false
+      "round_2_ready": false,
+      "round_2_stage_times": {},
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null
     },
     "PHANTOM-7": {
       "team_id": "PHANTOM-7",
@@ -555,7 +598,7 @@
       "password": "CYBER-PASS-2026",
       "members": "Dr. Miller, Cmdr. Shepard",
       "registered_at": 1790262796.457838,
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": 1790262852.1429973,
       "current_stage": 1,
       "unlocked_stages": [
@@ -566,9 +609,9 @@
       "tamper_incidents": 0,
       "is_locked": false,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_seen": 1790262852.1429973,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "stage_times": {},
       "activity_log": [
         {
@@ -640,6 +683,21 @@
           "time": "01:35:17",
           "stage": 15,
           "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "remote_unlock": true,
@@ -653,7 +711,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790302549.5149136,
+      "round_2_start_time": 1790304110.9357748,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0,
@@ -661,7 +719,18 @@
       "fullscreen_exit_approved": false,
       "fullscreen_exit_approved_until": 0,
       "hints_history": [],
-      "round_2_ready": false
+      "round_2_ready": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_stage_times": {},
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "PHANTOM-2904": {
       "team_id": "PHANTOM-2904",
@@ -669,7 +738,7 @@
       "password": "CYBER-PASS-2026",
       "members": "Dr. Miller, Cmdr. Shepard",
       "registered_at": 1790262906.7623641,
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": 1790262908.7990575,
       "current_stage": 1,
       "unlocked_stages": [
@@ -680,9 +749,9 @@
       "tamper_incidents": 0,
       "is_locked": false,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_seen": 1790262926.2448277,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "stage_times": {
         "1": {
           "start": 1790262916989
@@ -768,6 +837,21 @@
           "time": "01:35:17",
           "stage": 16,
           "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "remote_unlock": true,
@@ -781,7 +865,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790302549.5149136,
+      "round_2_start_time": 1790304110.9357748,
       "round_2_is_finished": false,
       "client_info": {
         "resolution": "800x600",
@@ -796,7 +880,18 @@
       "fullscreen_exit_approved": false,
       "fullscreen_exit_approved_until": 0,
       "hints_history": [],
-      "round_2_ready": false
+      "round_2_ready": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_stage_times": {},
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "PHANTOM-8": {
       "team_id": "PHANTOM-8",
@@ -804,7 +899,7 @@
       "password": "BRAVO-PASS-2026",
       "members": "Lt. Vance",
       "registered_at": 1790262925.0832262,
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": 1790262925.0832262,
       "current_stage": 1,
       "unlocked_stages": [
@@ -815,9 +910,9 @@
       "tamper_incidents": 0,
       "is_locked": false,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_seen": 1790262925.0832262,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "stage_times": {},
       "activity_log": [
         {
@@ -869,6 +964,21 @@
           "time": "01:35:17",
           "stage": 16,
           "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "remote_unlock": true,
@@ -882,7 +992,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790302549.5149136,
+      "round_2_start_time": 1790304110.9357748,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0,
@@ -890,7 +1000,18 @@
       "fullscreen_exit_approved": false,
       "fullscreen_exit_approved_until": 0,
       "hints_history": [],
-      "round_2_ready": false
+      "round_2_ready": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_stage_times": {},
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "T-ALPHA": {
       "team_id": "T-ALPHA",
@@ -907,8 +1028,8 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "remote_reset": true,
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790284092.6470184,
       "activity_log": [
         {
@@ -1110,14 +1231,29 @@
           "time": "02:38:12",
           "stage": 16,
           "action": "Entered Round 2: StratCom Decryption Arena"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-24T23:00:55.404011",
-      "remote_override_stage": 16,
+      "remote_override_stage": 1,
       "round_2_stage": 1,
       "current_round": 1,
       "time_adjustment_sec": -200,
@@ -1125,7 +1261,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790302549.5149136,
+      "round_2_start_time": 1790304110.9357748,
       "round_2_times": {},
       "round_2_score": 0,
       "stage_times": {
@@ -1146,7 +1282,17 @@
       "fullscreen_exit_approved_until": 0,
       "round_2_unlocked": false,
       "send_to_round_2": false,
-      "round_2_ready": false
+      "round_2_ready": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "round_2_stage_times": {},
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "T-BETA": {
       "team_id": "T-BETA",
@@ -1163,8 +1309,8 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "remote_reset": true,
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790272078.2956543,
       "activity_log": [
         {
@@ -1206,14 +1352,29 @@
           "time": "01:35:17",
           "stage": 16,
           "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-24T23:01:21.154486",
-      "remote_override_stage": 16,
+      "remote_override_stage": 1,
       "round_2_stage": 1,
       "current_round": 1,
       "time_adjustment_sec": 400,
@@ -1221,7 +1382,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790302549.5149136,
+      "round_2_start_time": 1790304110.9357748,
       "round_2_times": {},
       "round_2_score": 0,
       "fullscreen_exit_requested": false,
@@ -1230,7 +1391,17 @@
       "violations_history": [],
       "round_2_unlocked": false,
       "send_to_round_2": false,
-      "round_2_ready": false
+      "round_2_ready": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "round_2_stage_times": {},
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "T-GAMMA": {
       "team_id": "T-GAMMA",
@@ -1247,8 +1418,8 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "remote_reset": true,
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790272078.3077438,
       "activity_log": [
         {
@@ -1290,14 +1461,29 @@
           "time": "01:35:17",
           "stage": 16,
           "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-24T23:01:21.162798",
-      "remote_override_stage": 16,
+      "remote_override_stage": 1,
       "round_2_stage": 1,
       "current_round": 1,
       "time_adjustment_sec": 0,
@@ -1305,7 +1491,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790302549.5149136,
+      "round_2_start_time": 1790304110.9357748,
       "round_2_times": {},
       "round_2_score": 0,
       "fullscreen_exit_requested": false,
@@ -1314,7 +1500,17 @@
       "violations_history": [],
       "round_2_unlocked": false,
       "send_to_round_2": false,
-      "round_2_ready": false
+      "round_2_ready": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "round_2_stage_times": {},
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "T-DELTA": {
       "team_id": "T-DELTA",
@@ -1331,8 +1527,8 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "remote_reset": true,
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790272078.3211942,
       "activity_log": [
         {
@@ -1374,14 +1570,29 @@
           "time": "01:35:17",
           "stage": 16,
           "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-24T23:01:21.168255",
-      "remote_override_stage": 16,
+      "remote_override_stage": 1,
       "round_2_stage": 1,
       "current_round": 1,
       "time_adjustment_sec": 0,
@@ -1389,7 +1600,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790302549.5149136,
+      "round_2_start_time": 1790304110.9357748,
       "round_2_times": {},
       "round_2_score": 0,
       "fullscreen_exit_requested": false,
@@ -1398,7 +1609,17 @@
       "violations_history": [],
       "round_2_unlocked": false,
       "send_to_round_2": false,
-      "round_2_ready": false
+      "round_2_ready": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "round_2_stage_times": {},
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "T-EPSILON": {
       "team_id": "T-EPSILON",
@@ -1415,8 +1636,8 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "remote_reset": true,
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790272078.3342593,
       "activity_log": [
         {
@@ -1458,14 +1679,29 @@
           "time": "01:35:17",
           "stage": 16,
           "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-24T23:01:21.174374",
-      "remote_override_stage": 16,
+      "remote_override_stage": 1,
       "round_2_stage": 1,
       "current_round": 1,
       "time_adjustment_sec": -50,
@@ -1473,7 +1709,7 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790302549.5149136,
+      "round_2_start_time": 1790304110.9357748,
       "round_2_times": {},
       "round_2_score": 0,
       "fullscreen_exit_requested": false,
@@ -1482,468 +1718,17 @@
       "violations_history": [],
       "round_2_unlocked": false,
       "send_to_round_2": false,
-      "round_2_ready": false
-    },
-    "T-ZETA": {
-      "team_id": "T-ZETA",
-      "team_name": "Zeta Operators",
-      "password": "Password123!",
-      "members": "Cadet A, Cadet B",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": true,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
-      "last_seen": 1790272078.343418,
-      "activity_log": [
-        {
-          "time": "23:01:21",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "01:29:05",
-          "stage": 10,
-          "action": "Organizer ENFORCED Fullscreen (All Teams)"
-        },
-        {
-          "time": "01:30:12",
-          "stage": 10,
-          "action": "Organizer Remote Unlock & Breach Reset applied to ALL stations"
-        },
-        {
-          "time": "01:30:20",
-          "stage": 10,
-          "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
-        },
-        {
-          "time": "01:30:30",
-          "stage": 10,
-          "action": "Organizer ENFORCED Fullscreen (All Teams)"
-        },
-        {
-          "time": "01:35:17",
-          "stage": 10,
-          "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-24T23:01:21.181193",
-      "remote_override_stage": 10,
-      "round_2_stage": 1,
-      "current_round": 1,
-      "time_adjustment_sec": 0,
-      "round_2_is_finished": false,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_start_time": 1790302549.5149136,
-      "round_2_times": {},
-      "round_2_score": 0,
-      "fullscreen_exit_requested": false,
-      "fullscreen_exit_approved": false,
-      "fullscreen_exit_approved_until": 0,
-      "violations_history": [],
-      "send_to_round_2": false,
-      "round_2_unlocked": false,
-      "round_2_ready": false
-    },
-    "TEST-01": {
-      "team_id": "TEST-01",
-      "team_name": "Test Team",
-      "password": "",
-      "members": "Operator",
-      "registered_at": 1790273412.5563293,
-      "start_time": 1790302500.338465,
-      "end_time": 1790273616.2958808,
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_seen": 1790273616.3389466,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
-      "stage_times": {
-        "1": {
-          "start": 1790273561446,
-          "end": 1790273565563,
-          "duration_seconds": 4,
-          "duration_str": "0m 04s"
-        },
-        "2": {
-          "start": 1790273565563,
-          "end": 1790273566727,
-          "duration_seconds": 1,
-          "duration_str": "0m 01s"
-        },
-        "3": {
-          "start": 1790273566727,
-          "end": 1790273568358,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "4": {
-          "start": 1790273568358,
-          "end": 1790273570014,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "5": {
-          "start": 1790273570014,
-          "end": 1790273571688,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "6": {
-          "start": 1790273571688,
-          "end": 1790273573374,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "7": {
-          "start": 1790273573374,
-          "end": 1790273575024,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "8": {
-          "start": 1790273575024,
-          "end": 1790273576643,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "9": {
-          "start": 1790273576643,
-          "end": 1790273578313,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "10": {
-          "start": 1790273578313,
-          "end": 1790273579968,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "11": {
-          "start": 1790273579968,
-          "end": 1790273581620,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "12": {
-          "start": 1790273581620,
-          "end": 1790273583227,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "13": {
-          "start": 1790273583227,
-          "end": 1790273584881,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "14": {
-          "start": 1790273584881,
-          "end": 1790273586469,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "15": {
-          "start": 1790273586469,
-          "end": 1790273588185,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        },
-        "16": {
-          "start": 1790273588185,
-          "end": 1790273589769,
-          "duration_seconds": 2,
-          "duration_str": "0m 02s"
-        }
-      },
-      "activity_log": [
-        {
-          "time": "23:43:17",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:18",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:18",
-          "stage": 16,
-          "action": "Round 2: Solved Puzzle 05 (SQUARES)"
-        },
-        {
-          "time": "23:43:19",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:19",
-          "stage": 16,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "23:43:19",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:20",
-          "stage": 16,
-          "action": "Round 2: Solved Puzzle 06 (011)"
-        },
-        {
-          "time": "23:43:21",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:21",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:21",
-          "stage": 16,
-          "action": "Round 2: Solved Puzzle 07 (CLEARANCE)"
-        },
-        {
-          "time": "23:43:22",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:23",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:23",
-          "stage": 16,
-          "action": "Round 2: Solved Puzzle 08 (SE)"
-        },
-        {
-          "time": "23:43:23",
-          "stage": 16,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "23:43:24",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:24",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:25",
-          "stage": 16,
-          "action": "Round 2: Solved Puzzle 09 (NONE)"
-        },
-        {
-          "time": "23:43:25",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:26",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:26",
-          "stage": 16,
-          "action": "Round 2: Solved Puzzle 010 (RLRCK)"
-        },
-        {
-          "time": "23:43:27",
-          "stage": 16,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "23:43:27",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:28",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:28",
-          "stage": 16,
-          "action": "Round 2: Solved Puzzle 011 (NODC)"
-        },
-        {
-          "time": "23:43:29",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:29",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:30",
-          "stage": 16,
-          "action": "Round 2: Solved Puzzle 012 (102)"
-        },
-        {
-          "time": "23:43:30",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:31",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:31",
-          "stage": 16,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "23:43:31",
-          "stage": 16,
-          "action": "Round 2: Solved Puzzle 013 (3-EMPTY)"
-        },
-        {
-          "time": "23:43:32",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:33",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:33",
-          "stage": 16,
-          "action": "Round 2: Solved Puzzle 014 (FINALS)"
-        },
-        {
-          "time": "23:43:34",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:34",
-          "stage": 16,
-          "action": "Inspecting Dossier: R2-DOSSIER"
-        },
-        {
-          "time": "23:43:35",
-          "stage": 16,
-          "action": "Round 2: Solved Puzzle 015 (ECLIPSE)"
-        },
-        {
-          "time": "23:43:35",
-          "stage": 16,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "23:43:36",
-          "stage": 15,
-          "action": "\ud83c\udfc6 VICTORY (Round 2): Solved in 00m 54s!"
-        },
-        {
-          "time": "23:43:36",
-          "stage": 16,
-          "action": "\ud83c\udfc6 Round 2 Finish: \ud83e\udd49 3RD PRIZE \u2014 SECOND RUNNER-UP in 00m 54s!"
-        },
-        {
-          "time": "01:29:05",
-          "stage": 16,
-          "action": "Organizer ENFORCED Fullscreen (All Teams)"
-        },
-        {
-          "time": "01:30:12",
-          "stage": 16,
-          "action": "Organizer Remote Unlock & Breach Reset applied to ALL stations"
-        },
-        {
-          "time": "01:30:20",
-          "stage": 16,
-          "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
-        },
-        {
-          "time": "01:30:30",
-          "stage": 16,
-          "action": "Organizer ENFORCED Fullscreen (All Teams)"
-        },
-        {
-          "time": "01:34:41",
-          "stage": 16,
-          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
-        },
-        {
-          "time": "01:34:54",
-          "stage": 16,
-          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
-        },
-        {
-          "time": "01:35:17",
-          "stage": 16,
-          "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
-        }
-      ],
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": false
-      },
-      "active_view": "MODAL-R2-DOSSIER",
-      "remote_unlock": true,
-      "violations_history": [],
-      "penalty_seconds": 0,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_stage": 1,
-      "round_2_is_finished": false,
-      "round_2_end_time": 1790273616.2958808,
-      "round_2_finish_time_str": "00m 54s",
-      "prize_code": "3RD_PRIZE",
-      "prize_title": "\ud83e\udd49 3RD PRIZE \u2014 SECOND RUNNER-UP",
-      "podium_rank": 3,
-      "fullscreen_exit_requested": false,
-      "fullscreen_exit_approved": false,
-      "fullscreen_exit_approved_until": 0,
-      "current_round": 1,
-      "round_2_unlocked": false,
-      "send_to_round_2": false,
-      "round_2_start_time": 1790302549.5149136,
-      "hints_history": [],
-      "is_finished": false,
       "round_2_ready": false,
-      "round_2_times": {},
-      "round_2_score": 0
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "round_2_stage_times": {},
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "TEAM-LOBBY-6714": {
       "team_id": "TEAM-LOBBY-6714",
@@ -1960,7 +1745,7 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790276715.8877962,
       "activity_log": [
@@ -1998,10 +1783,25 @@
           "time": "01:35:17",
           "stage": 1,
           "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-25T00:35:15.832319",
@@ -2029,7 +1829,21 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_start_time": 1790303772.8958628,
+      "round_2_times": {},
+      "round_2_stage_times": {},
+      "round_2_score": 0,
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "TEAM-LOBBY-6776": {
       "team_id": "TEAM-LOBBY-6776",
@@ -2046,7 +1860,7 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790276779.0192292,
       "activity_log": [
@@ -2084,10 +1898,25 @@
           "time": "01:35:17",
           "stage": 1,
           "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-25T00:36:18.977716",
@@ -2115,7 +1944,21 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_start_time": 1790303772.8958628,
+      "round_2_times": {},
+      "round_2_stage_times": {},
+      "round_2_score": 0,
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "TEAM-LOBBY-6810": {
       "team_id": "TEAM-LOBBY-6810",
@@ -2132,8 +1975,8 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
+      "remote_reset": true,
+      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790276827.356572,
       "activity_log": [
         {
@@ -2200,10 +2043,25 @@
           "time": "01:35:17",
           "stage": 1,
           "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-25T00:36:51.189918",
@@ -2227,536 +2085,244 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_start_time": 1790302549.5149136,
+      "round_2_start_time": 1790304110.9357748,
       "round_2_is_finished": false,
       "round_2_times": {},
       "round_2_score": 0,
       "fullscreen_exit_requested": false,
       "fullscreen_exit_approved": false,
       "fullscreen_exit_approved_until": 0,
-      "round_2_ready": false
-    },
-    "CLUE-PEN-7790": {
-      "team_id": "CLUE-PEN-7790",
-      "team_name": "Penalty Verification Squad",
-      "password": "clue-test",
-      "members": "Agent One, Agent Two",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": true,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790277799.4408236,
-      "activity_log": [
-        {
-          "time": "00:53:11",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "00:53:11",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "00:53:13",
-          "stage": 1,
-          "action": "Clue Expended on Stage 1 (+2:00 time penalty applied, 2 lifelines remaining)"
-        },
-        {
-          "time": "00:53:15",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:53:19",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:29:05",
-          "stage": 1,
-          "action": "Organizer ENFORCED Fullscreen (All Teams)"
-        },
-        {
-          "time": "01:30:12",
-          "stage": 1,
-          "action": "Organizer Remote Unlock & Breach Reset applied to ALL stations"
-        },
-        {
-          "time": "01:30:20",
-          "stage": 1,
-          "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
-        },
-        {
-          "time": "01:30:30",
-          "stage": 1,
-          "action": "Organizer ENFORCED Fullscreen (All Teams)"
-        },
-        {
-          "time": "01:35:17",
-          "stage": 1,
-          "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T00:53:11.415975",
-      "stage_times": {
-        "1": {
-          "start": 1790277788814
-        }
-      },
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": true
-      },
-      "active_view": "STAGE_01",
-      "violations_history": [],
-      "penalty_seconds": 120,
-      "fullscreen_exit_requested": false,
-      "fullscreen_exit_approved": false,
-      "fullscreen_exit_approved_until": 0,
-      "current_round": 1,
-      "send_to_round_2": false,
-      "round_2_unlocked": false,
       "round_2_ready": false,
-      "round_2_stage": 1,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_is_finished": false
-    },
-    "CLUE-PEN-8005": {
-      "team_id": "CLUE-PEN-8005",
-      "team_name": "Penalty Verification Squad",
-      "password": "clue-test",
-      "members": "Agent One, Agent Two",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": true,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790278015.1590586,
-      "activity_log": [
-        {
-          "time": "00:56:47",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "00:56:47",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "00:56:49",
-          "stage": 1,
-          "action": "Clue Expended on Stage 1 (+2:00 time penalty applied, 2 lifelines remaining)"
-        },
-        {
-          "time": "00:56:51",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:56:55",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:29:05",
-          "stage": 1,
-          "action": "Organizer ENFORCED Fullscreen (All Teams)"
-        },
-        {
-          "time": "01:30:12",
-          "stage": 1,
-          "action": "Organizer Remote Unlock & Breach Reset applied to ALL stations"
-        },
-        {
-          "time": "01:30:20",
-          "stage": 1,
-          "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
-        },
-        {
-          "time": "01:30:30",
-          "stage": 1,
-          "action": "Organizer ENFORCED Fullscreen (All Teams)"
-        },
-        {
-          "time": "01:35:17",
-          "stage": 1,
-          "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T00:56:47.130391",
-      "stage_times": {
-        "1": {
-          "start": 1790278003557
-        }
-      },
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": true
-      },
-      "active_view": "STAGE_01",
-      "violations_history": [],
-      "penalty_seconds": 120,
-      "fullscreen_exit_requested": false,
-      "fullscreen_exit_approved": false,
-      "fullscreen_exit_approved_until": 0,
-      "current_round": 1,
-      "send_to_round_2": false,
-      "round_2_unlocked": false,
-      "round_2_ready": false,
-      "round_2_stage": 1,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_is_finished": false
-    },
-    "CLUE-PEN-8185": {
-      "team_id": "CLUE-PEN-8185",
-      "team_name": "Penalty Verification Squad",
-      "password": "clue-test",
-      "members": "Agent One, Agent Two",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": true,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790278194.2751465,
-      "activity_log": [
-        {
-          "time": "00:59:46",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "00:59:46",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "00:59:48",
-          "stage": 1,
-          "action": "Clue Expended on Stage 1 (+2:00 time penalty applied, 2 lifelines remaining)"
-        },
-        {
-          "time": "00:59:50",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "00:59:54",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:29:05",
-          "stage": 1,
-          "action": "Organizer ENFORCED Fullscreen (All Teams)"
-        },
-        {
-          "time": "01:30:12",
-          "stage": 1,
-          "action": "Organizer Remote Unlock & Breach Reset applied to ALL stations"
-        },
-        {
-          "time": "01:30:20",
-          "stage": 1,
-          "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
-        },
-        {
-          "time": "01:30:30",
-          "stage": 1,
-          "action": "Organizer ENFORCED Fullscreen (All Teams)"
-        },
-        {
-          "time": "01:35:17",
-          "stage": 1,
-          "action": "Organizer APPROVED Fullscreen Exit (All Teams)"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T00:59:46.243081",
-      "stage_times": {
-        "1": {
-          "start": 1790278183358
-        }
-      },
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": true
-      },
-      "active_view": "STAGE_01",
-      "violations_history": [],
-      "penalty_seconds": 120,
-      "fullscreen_exit_requested": false,
-      "fullscreen_exit_approved": false,
-      "fullscreen_exit_approved_until": 0,
-      "current_round": 1,
-      "send_to_round_2": false,
-      "round_2_unlocked": false,
-      "round_2_ready": false,
-      "round_2_stage": 1,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_is_finished": false
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_stage_times": {},
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "Q": {
       "team_id": "Q",
       "team_name": "q",
       "password": "q",
       "members": "q",
-      "current_stage": 1,
+      "current_stage": 21,
       "unlocked_stages": [
         1
       ],
       "hints_count": 0,
       "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": true,
+      "tamper_incidents": 1,
+      "is_locked": true,
+      "remote_unlock": false,
       "force_logout": false,
       "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790280744.5059059,
+      "last_action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)",
+      "last_seen": 1790304272.5684557,
       "activity_log": [
         {
-          "time": "01:39:48",
-          "stage": 2,
+          "time": "08:12:33",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:12:37",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:12:40",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:12:44",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:12:47",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:12:51",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:12:54",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:12:58",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:13:02",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:13:05",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:13:08",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:13:12",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:13:15",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:13:19",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:13:22",
+          "stage": 21,
+          "action": "\ud83c\udfc6 Organizer Key Entered: Workstation Unlocked"
+        },
+        {
+          "time": "08:13:25",
+          "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:39:52",
-          "stage": 2,
+          "time": "08:13:29",
+          "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:39:56",
-          "stage": 2,
+          "time": "08:13:29",
+          "stage": 21,
+          "action": "Entered Round 2: StratCom Decryption Arena"
+        },
+        {
+          "time": "08:13:31",
+          "stage": 21,
+          "action": "\ud83d\udea8 CRITICAL BREACH: Workstation Focus Lost: Switched Window or Clicked Outside!"
+        },
+        {
+          "time": "08:13:32",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
+        },
+        {
+          "time": "08:13:36",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
+        },
+        {
+          "time": "08:13:39",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:00",
-          "stage": 2,
+          "time": "08:13:43",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:04",
-          "stage": 2,
+          "time": "08:13:46",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:08",
-          "stage": 2,
+          "time": "08:13:50",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:12",
-          "stage": 2,
+          "time": "08:13:53",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:16",
-          "stage": 2,
+          "time": "08:13:57",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:28",
-          "stage": 2,
+          "time": "08:14:00",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:32",
-          "stage": 2,
+          "time": "08:14:04",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:36",
-          "stage": 2,
+          "time": "08:14:07",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:40",
-          "stage": 2,
+          "time": "08:14:11",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:44",
-          "stage": 2,
+          "time": "08:14:14",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:48",
-          "stage": 2,
+          "time": "08:14:18",
+          "stage": 1,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:49",
-          "stage": 2,
-          "action": "Inspecting Dossier: MEMORY"
+          "time": "08:14:19",
+          "stage": 1,
+          "action": "\ud83d\udea8 CRITICAL BREACH: Exited Fullscreen Security Perimeter!"
         },
         {
-          "time": "01:40:53",
-          "stage": 2,
+          "time": "08:14:22",
+          "stage": 21,
+          "action": "Workstation Authenticated & Operational"
+        },
+        {
+          "time": "08:14:26",
+          "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:40:56",
-          "stage": 2,
+          "time": "08:14:29",
+          "stage": 21,
           "action": "Active in Terminal"
         },
         {
-          "time": "01:41:00",
-          "stage": 2,
-          "action": "Active in Terminal"
+          "time": "08:14:31",
+          "stage": 21,
+          "action": "\ud83d\udea8 CRITICAL BREACH: Exited Fullscreen Security Perimeter!"
         },
         {
-          "time": "01:41:04",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:07",
-          "stage": 2,
-          "action": "Inspecting Dossier: PUZZLES-GUIDE"
-        },
-        {
-          "time": "01:41:08",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:12",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:16",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:20",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:24",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:28",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:32",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:36",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:40",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:44",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:48",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:52",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:41:56",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:42:00",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:42:04",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:42:08",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:42:12",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:42:16",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:42:20",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "01:42:24",
-          "stage": 2,
-          "action": "Active in Terminal"
+          "time": "08:14:32",
+          "stage": 21,
+          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
         }
       ],
       "hints_history": [],
@@ -2766,13 +2332,7 @@
       "created_at": "2026-09-25T01:17:39.522403",
       "stage_times": {
         "1": {
-          "start": 1790279244738,
-          "end": 1790280122147,
-          "duration_seconds": 877,
-          "duration_str": "14m 37s"
-        },
-        "2": {
-          "start": 1790280122147
+          "start": 1790304108280
         }
       },
       "client_info": {
@@ -2780,7 +2340,7 @@
         "os": "Win32",
         "fullscreen": false
       },
-      "active_view": "STAGE_02",
+      "active_view": "STAGE_21",
       "violations_history": [],
       "penalty_seconds": 240,
       "fullscreen_exit_requested": false,
@@ -2794,7 +2354,21 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": false,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_start_time": 1790303772.8958628,
+      "round_2_times": {},
+      "round_2_stage_times": {},
+      "round_2_score": 0,
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": false
     },
     "LIFE-664": {
       "team_id": "LIFE-664",
@@ -2811,7 +2385,7 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790280678.0552096,
       "activity_log": [
@@ -2874,10 +2448,25 @@
           "time": "01:41:18",
           "stage": 4,
           "action": "Active in Terminal"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-25T01:41:05.991623",
@@ -2905,7 +2494,21 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_start_time": 1790303772.8958628,
+      "round_2_times": {},
+      "round_2_stage_times": {},
+      "round_2_score": 0,
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "LIFE-729": {
       "team_id": "LIFE-729",
@@ -2922,7 +2525,7 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790280739.8784811,
       "activity_log": [
@@ -2980,10 +2583,25 @@
           "time": "01:42:19",
           "stage": 4,
           "action": "Clearance Elevated: Now at Stage 04"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-25T01:42:10.774343",
@@ -3011,7 +2629,21 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_start_time": 1790303772.8958628,
+      "round_2_times": {},
+      "round_2_stage_times": {},
+      "round_2_score": 0,
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "LIFE-863": {
       "team_id": "LIFE-863",
@@ -3028,7 +2660,7 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790280871.791838,
       "activity_log": [
@@ -3086,10 +2718,25 @@
           "time": "01:44:31",
           "stage": 4,
           "action": "Active in Terminal"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-25T01:44:23.751470",
@@ -3117,7 +2764,21 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_start_time": 1790303772.8958628,
+      "round_2_times": {},
+      "round_2_stage_times": {},
+      "round_2_score": 0,
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "LIFE-913": {
       "team_id": "LIFE-913",
@@ -3134,7 +2795,7 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790280928.1980095,
       "activity_log": [
@@ -3197,10 +2858,25 @@
           "time": "01:45:28",
           "stage": 4,
           "action": "Active in Terminal"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-25T01:45:16.164532",
@@ -3228,7 +2904,21 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_start_time": 1790303772.8958628,
+      "round_2_times": {},
+      "round_2_stage_times": {},
+      "round_2_score": 0,
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "LIFE-1003": {
       "team_id": "LIFE-1003",
@@ -3245,7 +2935,7 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790281017.2946749,
       "activity_log": [
@@ -3308,10 +2998,25 @@
           "time": "01:46:57",
           "stage": 4,
           "action": "Active in Terminal"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-25T01:46:45.257631",
@@ -3339,7 +3044,21 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_start_time": 1790303772.8958628,
+      "round_2_times": {},
+      "round_2_stage_times": {},
+      "round_2_score": 0,
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "LIFE-1081": {
       "team_id": "LIFE-1081",
@@ -3356,7 +3075,7 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790281085.961032,
       "activity_log": [
@@ -3374,10 +3093,25 @@
           "time": "01:48:05",
           "stage": 1,
           "action": "Inspecting Dossier: CLUE-CONFIRM"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-25T01:48:03.007721",
@@ -3405,7 +3139,21 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_start_time": 1790303772.8958628,
+      "round_2_times": {},
+      "round_2_stage_times": {},
+      "round_2_score": 0,
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "LIFE-1206": {
       "team_id": "LIFE-1206",
@@ -3422,7 +3170,7 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790281223.3806384,
       "activity_log": [
@@ -3510,10 +3258,25 @@
           "time": "01:50:23",
           "stage": 4,
           "action": "Active in Terminal"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-25T01:50:07.300108",
@@ -3541,7 +3304,21 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_is_finished": false
+      "round_2_is_finished": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_start_time": 1790303772.8958628,
+      "round_2_times": {},
+      "round_2_stage_times": {},
+      "round_2_score": 0,
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     },
     "LIFE-1278": {
       "team_id": "LIFE-1278",
@@ -3558,7 +3335,7 @@
       "is_locked": false,
       "remote_unlock": true,
       "force_logout": false,
-      "remote_reset": false,
+      "remote_reset": true,
       "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
       "last_seen": 1790281295.6157055,
       "activity_log": [
@@ -3646,10 +3423,25 @@
           "time": "01:51:35",
           "stage": 4,
           "action": "Active in Terminal"
+        },
+        {
+          "time": "08:03:38",
+          "stage": 16,
+          "action": "All levels unlocked for organizer testing"
+        },
+        {
+          "time": "08:06:12",
+          "stage": 1,
+          "action": "Round 2 reset to Puzzle 01 by Organizer (ALL)"
+        },
+        {
+          "time": "08:13:35",
+          "stage": 1,
+          "action": "All levels locked by organizer - restored to Stage 01"
         }
       ],
       "hints_history": [],
-      "start_time": 1790302500.338465,
+      "start_time": 1790304825.6024044,
       "end_time": null,
       "is_finished": false,
       "created_at": "2026-09-25T01:51:19.531323",
@@ -3677,2301 +3469,26 @@
       "round_2_unlocked_stages": [
         1
       ],
-      "round_2_is_finished": false
-    },
-    "TEST-R1-E2E": {
-      "team_id": "TEST-R1-E2E",
-      "team_name": "E2E Verification Phantoms",
-      "password": "pass",
-      "members": "Dr. Miller, Dr. Chen",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": true,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790283191.809068,
-      "activity_log": [
-        {
-          "time": "02:13:46",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "02:13:51",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "02:14:58",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "02:15:00",
-          "stage": 1,
-          "action": "Inspecting Dossier: CLUE-CONFIRM"
-        },
-        {
-          "time": "02:15:01",
-          "stage": 1,
-          "action": "Clue Expended on Stage 1 (+2:00 time penalty applied, 2 lifelines remaining)"
-        },
-        {
-          "time": "02:15:02",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:17:21",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "02:17:23",
-          "stage": 1,
-          "action": "Inspecting Dossier: CLUE-CONFIRM"
-        },
-        {
-          "time": "02:17:24",
-          "stage": 1,
-          "action": "Clue Expended on Stage 1 (+2:00 time penalty applied, 2 lifelines remaining)"
-        },
-        {
-          "time": "02:17:25",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:20:43",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "02:20:45",
-          "stage": 1,
-          "action": "Inspecting Dossier: CLUE-CONFIRM"
-        },
-        {
-          "time": "02:20:46",
-          "stage": 1,
-          "action": "Clue Expended on Stage 1 (+2:00 time penalty applied, 2 lifelines remaining)"
-        },
-        {
-          "time": "02:20:47",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:20:47",
-          "stage": 10,
-          "action": "Inspecting Dossier: HONEYPOT"
-        },
-        {
-          "time": "02:20:49",
-          "stage": 10,
-          "action": "\ud83d\udea8 DO_NOT_RUN Honeypot Trap Triggered (+5m penalty applied, total traps: 1)"
-        },
-        {
-          "time": "02:20:49",
-          "stage": 10,
-          "action": "\ud83d\udea8 HONEYPOT TRAP: DO_NOT_RUN.exe triggered (+5m penalty)"
-        },
-        {
-          "time": "02:20:51",
-          "stage": 10,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:20:52",
-          "stage": 10,
-          "action": "\ud83d\udea8 CRITICAL BREACH: Workstation Focus Lost: Switched Window or Application!"
-        },
-        {
-          "time": "02:20:55",
-          "stage": 10,
-          "action": "Organizer Override PIN applied remotely (Breaches cleared)"
-        },
-        {
-          "time": "02:20:55",
-          "stage": 10,
-          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
-        },
-        {
-          "time": "02:20:55",
-          "stage": 10,
-          "action": "\ud83c\udfc6 Workstation Restored & Unlocked by Organizer"
-        },
-        {
-          "time": "02:20:56",
-          "stage": 10,
-          "action": "\ud83c\udfc6 Workstation Restored & Unlocked by Organizer"
-        },
-        {
-          "time": "02:20:57",
-          "stage": 16,
-          "action": "\ud83c\udfc6 Solved all 16 stages in 07m 13s! Awaiting TARA liberation."
-        },
-        {
-          "time": "02:20:58",
-          "stage": 15,
-          "action": "\ud83c\udfc6 VICTORY (Round 1): Solved in 07m 13s!"
-        },
-        {
-          "time": "02:20:59",
-          "stage": 16,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:23:11",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": 1790283058.7619426,
-      "is_finished": false,
-      "created_at": "2026-09-25T02:13:46.631192",
-      "stage_times": {
-        "1": {
-          "start": 1790283191633
-        }
-      },
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": false
-      },
-      "active_view": "STAGE_01",
-      "penalty_seconds": 540,
-      "violations_history": [],
-      "fullscreen_exit_approved": true,
-      "fullscreen_exit_approved_until": 1790369455.2321181,
-      "finish_time_str": "07m 13s",
-      "current_round": 1,
-      "send_to_round_2": false,
-      "round_2_unlocked": false,
-      "round_2_ready": false,
-      "round_2_stage": 1,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_is_finished": false
-    },
-    "TEST-R1-1790283216": {
-      "team_id": "TEST-R1-1790283216",
-      "team_name": "E2E Squad TEST-R1-1790283216",
-      "password": "pass",
-      "members": "Dr. Miller, Dr. Chen",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": true,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
-      "last_seen": 1790283246.1172855,
-      "activity_log": [
-        {
-          "time": "02:23:38",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "02:23:42",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "02:23:43",
-          "stage": 1,
-          "action": "Inspecting Dossier: CLUE-CONFIRM"
-        },
-        {
-          "time": "02:23:44",
-          "stage": 1,
-          "action": "Clue Expended on Stage 1 (+2:00 time penalty applied, 2 lifelines remaining)"
-        },
-        {
-          "time": "02:23:45",
-          "stage": 10,
-          "action": "Inspecting Dossier: HONEYPOT"
-        },
-        {
-          "time": "02:23:46",
-          "stage": 10,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:23:46",
-          "stage": 10,
-          "action": "\ud83d\udea8 DO_NOT_RUN Honeypot Trap Triggered (+5m penalty applied, total traps: 1)"
-        },
-        {
-          "time": "02:23:46",
-          "stage": 10,
-          "action": "\ud83d\udea8 HONEYPOT TRAP: DO_NOT_RUN.exe triggered (+5m penalty)"
-        },
-        {
-          "time": "02:23:49",
-          "stage": 10,
-          "action": "\ud83d\udea8 CRITICAL BREACH: Workstation Focus Lost: Switched Window or Application!"
-        },
-        {
-          "time": "02:23:50",
-          "stage": 10,
-          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
-        },
-        {
-          "time": "02:23:52",
-          "stage": 10,
-          "action": "Organizer Override PIN applied remotely (Breaches cleared)"
-        },
-        {
-          "time": "02:23:53",
-          "stage": 10,
-          "action": "\ud83c\udfc6 Workstation Restored & Unlocked by Organizer"
-        },
-        {
-          "time": "02:23:54",
-          "stage": 10,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:23:54",
-          "stage": 16,
-          "action": "\ud83c\udfc6 Solved all 16 stages in 07m 12s! Awaiting TARA liberation."
-        },
-        {
-          "time": "02:23:56",
-          "stage": 15,
-          "action": "\ud83c\udfc6 VICTORY (Round 1): Solved in 07m 12s!"
-        },
-        {
-          "time": "02:23:58",
-          "stage": 16,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:24:00",
-          "stage": 16,
-          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
-        },
-        {
-          "time": "02:24:02",
-          "stage": 16,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:24:02",
-          "stage": 16,
-          "action": "Entered Round 2: StratCom Decryption Arena"
-        },
-        {
-          "time": "02:24:03",
-          "stage": 16,
-          "action": "Waiting Room Polling Active"
-        },
-        {
-          "time": "02:24:06",
-          "stage": 16,
-          "action": "Active in Terminal"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": 1790283236.3142252,
-      "is_finished": false,
-      "created_at": "2026-09-25T02:23:38.491745",
-      "stage_times": {
-        "1": {
-          "start": 1790283221923
-        }
-      },
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": false
-      },
-      "active_view": "MODAL-HONEYPOT",
-      "penalty_seconds": 420,
-      "violations_history": [],
-      "fullscreen_exit_approved": true,
-      "fullscreen_exit_approved_until": 1790369632.7503989,
-      "finish_time_str": "07m 12s",
-      "current_round": 1,
-      "round_2_unlocked": false,
-      "send_to_round_2": false,
-      "round_2_stage": 1,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_start_time": 1790302549.5149136,
       "round_2_is_finished": false,
-      "round_2_ready": false,
+      "unlock_all_levels": false,
+      "lock_all_levels": true,
+      "test_mode_unlocked": false,
+      "stages_cleared": [],
+      "round2_stages_cleared": [],
+      "remote_override_stage": 1,
+      "round_2_start_time": 1790303772.8958628,
       "round_2_times": {},
-      "round_2_score": 0
-    },
-    "TEST-R1-1790283270": {
-      "team_id": "TEST-R1-1790283270",
-      "team_name": "E2E Squad TEST-R1-1790283270",
-      "password": "pass",
-      "members": "Dr. Miller, Dr. Chen",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": true,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
-      "last_seen": 1790283300.325485,
-      "activity_log": [
-        {
-          "time": "02:24:32",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "02:24:36",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "02:24:37",
-          "stage": 1,
-          "action": "Inspecting Dossier: CLUE-CONFIRM"
-        },
-        {
-          "time": "02:24:38",
-          "stage": 1,
-          "action": "Clue Expended on Stage 1 (+2:00 time penalty applied, 2 lifelines remaining)"
-        },
-        {
-          "time": "02:24:39",
-          "stage": 10,
-          "action": "Inspecting Dossier: HONEYPOT"
-        },
-        {
-          "time": "02:24:40",
-          "stage": 10,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:24:41",
-          "stage": 10,
-          "action": "\ud83d\udea8 DO_NOT_RUN Honeypot Trap Triggered (+5m penalty applied, total traps: 1)"
-        },
-        {
-          "time": "02:24:41",
-          "stage": 10,
-          "action": "\ud83d\udea8 HONEYPOT TRAP: DO_NOT_RUN.exe triggered (+5m penalty)"
-        },
-        {
-          "time": "02:24:43",
-          "stage": 10,
-          "action": "\ud83d\udea8 CRITICAL BREACH: Workstation Focus Lost: Switched Window or Application!"
-        },
-        {
-          "time": "02:24:44",
-          "stage": 10,
-          "action": "\ud83d\udea8 Workstation Locked: Focus Loss Violation (#1)"
-        },
-        {
-          "time": "02:24:46",
-          "stage": 10,
-          "action": "Organizer Override PIN applied remotely (Breaches cleared)"
-        },
-        {
-          "time": "02:24:47",
-          "stage": 10,
-          "action": "\ud83c\udfc6 Workstation Restored & Unlocked by Organizer"
-        },
-        {
-          "time": "02:24:48",
-          "stage": 10,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:24:49",
-          "stage": 16,
-          "action": "\ud83c\udfc6 Solved all 16 stages in 07m 12s! Awaiting TARA liberation."
-        },
-        {
-          "time": "02:24:50",
-          "stage": 15,
-          "action": "\ud83c\udfc6 VICTORY (Round 1): Solved in 07m 12s!"
-        },
-        {
-          "time": "02:24:52",
-          "stage": 16,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:24:54",
-          "stage": 16,
-          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
-        },
-        {
-          "time": "02:24:56",
-          "stage": 16,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "02:24:56",
-          "stage": 16,
-          "action": "Entered Round 2: StratCom Decryption Arena"
-        },
-        {
-          "time": "02:24:57",
-          "stage": 16,
-          "action": "Waiting Room Polling Active"
-        },
-        {
-          "time": "02:25:00",
-          "stage": 16,
-          "action": "Active in Terminal"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": 1790283290.453169,
-      "is_finished": false,
-      "created_at": "2026-09-25T02:24:32.729605",
-      "stage_times": {
-        "1": {
-          "start": 1790283276134
-        }
-      },
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": false
-      },
-      "active_view": "MODAL-HONEYPOT",
-      "penalty_seconds": 420,
-      "violations_history": [],
-      "fullscreen_exit_approved": true,
-      "fullscreen_exit_approved_until": 1790369686.9594023,
-      "finish_time_str": "07m 12s",
-      "current_round": 1,
-      "round_2_unlocked": false,
-      "send_to_round_2": false,
-      "round_2_stage": 1,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_start_time": 1790302549.5149136,
-      "round_2_is_finished": false,
-      "round_2_ready": false,
-      "round_2_times": {},
-      "round_2_score": 0
-    },
-    "TEST_SEC": {
-      "team_id": "TEST_SEC",
-      "team_name": "Security Test Squad",
-      "password": "pass",
-      "members": "Agent Alpha, Agent Beta",
-      "registered_at": 1790286144.63118,
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_seen": 1790286208.0918925,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "stage_times": {},
-      "activity_log": [
-        {
-          "time": "03:12:24",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "03:12:24",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "03:12:27",
-          "stage": 1,
-          "action": "\ud83d\udea8 CRITICAL BREACH: Prohibited Action: Google Lens / Gemini Search Attempt (Right-Click Blocked)!"
-        },
-        {
-          "time": "03:12:28",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "03:12:29",
-          "stage": 1,
-          "action": "\ud83c\udfc6 Organizer Key Entered: Workstation Unlocked"
-        },
-        {
-          "time": "03:12:30",
-          "stage": 1,
-          "action": "\ud83d\udea8 CRITICAL BREACH: Workstation Focus Lost: Switched Window or Clicked Outside!"
-        },
-        {
-          "time": "03:12:32",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "03:13:11",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "03:13:14",
-          "stage": 1,
-          "action": "\ud83d\udea8 CRITICAL BREACH: Prohibited Action: Google Lens / Gemini Search Attempt (Right-Click Blocked)!"
-        },
-        {
-          "time": "03:13:15",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "03:13:16",
-          "stage": 1,
-          "action": "\ud83c\udfc6 Organizer Key Entered: Workstation Unlocked"
-        },
-        {
-          "time": "03:13:17",
-          "stage": 1,
-          "action": "\ud83d\udea8 CRITICAL BREACH: Workstation Focus Lost: Switched Window or Clicked Outside!"
-        },
-        {
-          "time": "03:13:19",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "03:13:22",
-          "stage": 1,
-          "action": "Organizer Override PIN applied remotely (Breaches cleared)"
-        },
-        {
-          "time": "03:13:23",
-          "stage": 1,
-          "action": "\ud83d\udea8 Workstation Locked: Security Breach Violation (#1)"
-        },
-        {
-          "time": "03:13:23",
-          "stage": 1,
-          "action": "\ud83c\udfc6 Workstation Restored & Unlocked by Organizer"
-        },
-        {
-          "time": "03:13:26",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "03:13:26",
-          "stage": 1,
-          "action": "\ud83d\udea8 CRITICAL BREACH: Switched Browser Tab or Opened New Tab!"
-        },
-        {
-          "time": "03:13:28",
-          "stage": 1,
-          "action": "\ud83c\udfc6 Organizer Key Entered: Workstation Unlocked"
-        }
-      ],
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": true
-      },
-      "active_view": "STAGE_01",
-      "penalty_seconds": 0,
-      "remote_unlock": true,
-      "violations_history": [],
-      "hints_history": [],
-      "is_finished": false,
-      "current_round": 1,
-      "send_to_round_2": false,
-      "round_2_unlocked": false,
-      "round_2_ready": false,
-      "round_2_stage": 1,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_is_finished": false
-    },
-    "CLUE_SQUAD": {
-      "team_id": "CLUE_SQUAD",
-      "team_name": "Tactical Clue Squad",
-      "password": "pass",
-      "members": "Detective A, Detective B",
-      "registered_at": 1790286711.6600075,
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_seen": 1790286900.8992934,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "stage_times": {
-        "1": {
-          "start": 1790286887801,
-          "end": 1790286897059,
-          "duration_seconds": 9,
-          "duration_str": "0m 09s"
-        },
-        "2": {
-          "start": 1790286897059
-        }
-      },
-      "activity_log": [
-        {
-          "time": "03:21:51",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "03:21:51",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "03:21:53",
-          "stage": 1,
-          "action": "Clue Expended on Stage 1 (+2:00 time penalty applied, 2 lifelines remaining)"
-        },
-        {
-          "time": "03:21:55",
-          "stage": 1,
-          "action": "Inspecting Dossier: RECOVERY"
-        },
-        {
-          "time": "03:21:55",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "03:22:23",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "03:22:25",
-          "stage": 1,
-          "action": "Clue Expended on Stage 1 (+2:00 time penalty applied, 2 lifelines remaining)"
-        },
-        {
-          "time": "03:22:26",
-          "stage": 1,
-          "action": "Inspecting Dossier: RECOVERY"
-        },
-        {
-          "time": "03:22:26",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "03:22:30",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "03:22:32",
-          "stage": 1,
-          "action": "Terminal: decrypt ACCESS"
-        },
-        {
-          "time": "03:22:33",
-          "stage": 2,
-          "action": "Solved Stage 01 (Recovery Terminal) - Promoted to Stage 02"
-        },
-        {
-          "time": "03:22:33",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "03:22:34",
-          "stage": 2,
-          "action": "Clue Expended on Stage 2 (+2:00 time penalty applied, 1 lifelines remaining)"
-        },
-        {
-          "time": "03:22:37",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "03:24:46",
-          "stage": 1,
-          "action": "Workstation Authenticated & Operational"
-        },
-        {
-          "time": "03:24:48",
-          "stage": 1,
-          "action": "Clue Expended on Stage 1 (+2:00 time penalty applied, 2 lifelines remaining)"
-        },
-        {
-          "time": "03:24:50",
-          "stage": 1,
-          "action": "Inspecting Dossier: RECOVERY"
-        },
-        {
-          "time": "03:24:50",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "03:24:53",
-          "stage": 1,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "03:24:56",
-          "stage": 1,
-          "action": "Terminal: decrypt ACCESS"
-        },
-        {
-          "time": "03:24:57",
-          "stage": 2,
-          "action": "Solved Stage 01 (Recovery Terminal) - Promoted to Stage 02"
-        },
-        {
-          "time": "03:24:57",
-          "stage": 2,
-          "action": "Active in Terminal"
-        },
-        {
-          "time": "03:24:58",
-          "stage": 2,
-          "action": "Clue Expended on Stage 2 (+2:00 time penalty applied, 1 lifelines remaining)"
-        },
-        {
-          "time": "03:25:00",
-          "stage": 2,
-          "action": "Active in Terminal"
-        }
-      ],
-      "client_info": {
-        "resolution": "800x600",
-        "os": "Windows",
-        "fullscreen": false
-      },
-      "active_view": "STAGE_02",
-      "penalty_seconds": 240,
-      "hints_history": [],
-      "remote_unlock": true,
-      "is_finished": false,
-      "current_round": 1,
-      "send_to_round_2": false,
-      "round_2_unlocked": false,
-      "round_2_ready": false,
-      "round_2_stage": 1,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_is_finished": false
-    },
-    "TEST-E2E-1790297826": {
-      "team_id": "TEST-E2E-1790297826",
-      "team_name": "E2E Protocol Verification Unit",
-      "password": "pass",
-      "members": "",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790297828.8041914,
-      "activity_log": [
-        {
-          "time": "06:27:08",
-          "stage": 1,
-          "action": "Registered workstation"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T06:27:08.804295"
-    },
-    "TEST-E2E-1790297933": {
-      "team_id": "TEST-E2E-1790297933",
-      "team_name": "E2E Protocol Verification Unit",
-      "password": "pass",
-      "members": "",
-      "current_stage": 21,
-      "unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21
-      ],
-      "hints_count": 3,
-      "traps_count": 1,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83c\udfc6 ROUND 2 COMPLETE: Solved all 17 forensic challenges!",
-      "last_seen": 1790297935.915752,
-      "activity_log": [
-        {
-          "time": "06:28:55",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "06:29:08",
-          "stage": 1,
-          "action": "\ud83d\udea8 DO_NOT_RUN Honeypot Trap Triggered (+5m penalty applied, total traps: 1)"
-        }
-      ],
-      "hints_history": [
-        {
-          "stage": 1,
-          "level": 1,
-          "hint": "Try interacting with the text formatting directly rather than just reading it.",
-          "timestamp": 1790297939.9658816
-        },
-        {
-          "stage": 2,
-          "level": 1,
-          "hint": "Check README.doc inside the ORIGIN directory. Calculate the ASCII sum of aDIti@28 (or index letters from words).",
-          "timestamp": 1790297942.0005498
-        },
-        {
-          "stage": 3,
-          "level": 1,
-          "hint": "Look closely at the calendar validity of every listed date in Incident_Logs.doc.",
-          "timestamp": 1790297944.0380218
-        }
-      ],
-      "start_time": 1790297935.915752,
-      "end_time": 1790297990.7963076,
-      "is_finished": true,
-      "created_at": "2026-09-25T06:28:55.915830",
-      "penalty_seconds": 660,
-      "round_2_unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17
-      ],
-      "round_2_stage": 17,
-      "round_2_is_finished": true,
-      "round_2_end_time": 1790298029.4130433
-    },
-    "TEST-E2E-1790298203": {
-      "team_id": "TEST-E2E-1790298203",
-      "team_name": "E2E Protocol Verification Unit",
-      "password": "pass",
-      "members": "",
-      "current_stage": 21,
-      "unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21
-      ],
-      "hints_count": 3,
-      "traps_count": 1,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83c\udfc6 ROUND 2 COMPLETE: Solved all 17 forensic challenges!",
-      "last_seen": 1790298205.5035338,
-      "activity_log": [
-        {
-          "time": "06:33:25",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "06:33:37",
-          "stage": 1,
-          "action": "\ud83d\udea8 DO_NOT_RUN Honeypot Trap Triggered (+5m penalty applied, total traps: 1)"
-        }
-      ],
-      "hints_history": [
-        {
-          "stage": 1,
-          "level": 1,
-          "hint": "Try interacting with the text formatting directly rather than just reading it.",
-          "timestamp": 1790298209.5675666
-        },
-        {
-          "stage": 2,
-          "level": 1,
-          "hint": "Check README.doc inside the ORIGIN directory. Calculate the ASCII sum of aDIti@28 (or index letters from words).",
-          "timestamp": 1790298211.610907
-        },
-        {
-          "stage": 3,
-          "level": 1,
-          "hint": "Look closely at the calendar validity of every listed date in Incident_Logs.doc.",
-          "timestamp": 1790298213.6483402
-        }
-      ],
-      "start_time": 1790298205.5035338,
-      "end_time": 1790298260.3678913,
-      "is_finished": true,
-      "created_at": "2026-09-25T06:33:25.503597",
-      "penalty_seconds": 660,
-      "round_2_unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17
-      ],
-      "round_2_stage": 17,
-      "round_2_is_finished": true,
-      "round_2_end_time": 1790298298.9188392
-    },
-    "CLUE-1790299012": {
-      "team_id": "CLUE-1790299012",
-      "team_name": "CLUE_VERIFY_TEAM",
-      "password": "pass",
-      "members": "",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790299014.7153833,
-      "activity_log": [
-        {
-          "time": "06:46:54",
-          "stage": 1,
-          "action": "Registered workstation"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T06:46:54.715422"
-    },
-    "CLUE-1790299150": {
-      "team_id": "CLUE-1790299150",
-      "team_name": "CLUE_VERIFY_TEAM",
-      "password": "pass",
-      "members": "",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790299152.4157457,
-      "activity_log": [
-        {
-          "time": "06:49:12",
-          "stage": 1,
-          "action": "Registered workstation"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T06:49:12.415798"
-    },
-    "CLUE-1790299225": {
-      "team_id": "CLUE-1790299225",
-      "team_name": "CLUE_VERIFY_TEAM",
-      "password": "pass",
-      "members": "",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790299227.136941,
-      "activity_log": [
-        {
-          "time": "06:50:27",
-          "stage": 1,
-          "action": "Registered workstation"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T06:50:27.136998"
-    },
-    "CLUE-1790299280": {
-      "team_id": "CLUE-1790299280",
-      "team_name": "CLUE_VERIFY_TEAM",
-      "password": "pass",
-      "members": "",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790299283.0090327,
-      "activity_log": [
-        {
-          "time": "06:51:23",
-          "stage": 1,
-          "action": "Registered workstation"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T06:51:23.009080"
-    },
-    "TEST-E2E-1790299308": {
-      "team_id": "TEST-E2E-1790299308",
-      "team_name": "E2E Protocol Verification Unit",
-      "password": "pass",
-      "members": "",
-      "current_stage": 21,
-      "unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21
-      ],
-      "hints_count": 3,
-      "traps_count": 1,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83c\udfc6 ROUND 2 COMPLETE: Solved all 17 forensic challenges!",
-      "last_seen": 1790299310.5165148,
-      "activity_log": [
-        {
-          "time": "06:51:50",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "06:52:02",
-          "stage": 1,
-          "action": "\ud83d\udea8 DO_NOT_RUN Honeypot Trap Triggered (+5m penalty applied, total traps: 1)"
-        }
-      ],
-      "hints_history": [
-        {
-          "stage": 1,
-          "level": 1,
-          "hint": "Try interacting with the text formatting directly rather than just reading it.",
-          "timestamp": 1790299314.6013103
-        },
-        {
-          "stage": 2,
-          "level": 1,
-          "hint": "Check README.doc inside the ORIGIN directory. Calculate the ASCII sum of aDIti@28 (or index letters from words).",
-          "timestamp": 1790299316.6232476
-        },
-        {
-          "stage": 3,
-          "level": 1,
-          "hint": "Look closely at the calendar validity of every listed date in Incident_Logs.doc.",
-          "timestamp": 1790299318.6483264
-        }
-      ],
-      "start_time": 1790299310.5165148,
-      "end_time": 1790299365.3284028,
-      "is_finished": true,
-      "created_at": "2026-09-25T06:51:50.516668",
-      "penalty_seconds": 660,
-      "round_2_unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17
-      ],
-      "round_2_stage": 17,
-      "round_2_is_finished": true,
-      "round_2_end_time": 1790299403.941519
-    },
-    "TRACK-COMPLETION-1790301679": {
-      "team_id": "TRACK-COMPLETION-1790301679",
-      "team_name": "Full Track Squad",
-      "password": "pass",
-      "members": "",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790301682.116746,
-      "activity_log": [
-        {
-          "time": "07:31:22",
-          "stage": 1,
-          "action": "Registered workstation"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T07:31:22.116834"
-    },
-    "TRACK-COMPLETION-1790301768": {
-      "team_id": "TRACK-COMPLETION-1790301768",
-      "team_name": "Full Track Squad",
-      "password": "pass",
-      "members": "",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790301770.2408743,
-      "activity_log": [
-        {
-          "time": "07:32:50",
-          "stage": 1,
-          "action": "Registered workstation"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T07:32:50.241153"
-    },
-    "TRACK-COMPLETION-1790301803": {
-      "team_id": "TRACK-COMPLETION-1790301803",
-      "team_name": "Full Track Squad",
-      "password": "pass",
-      "members": "Track Master",
-      "current_stage": 21,
-      "unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83c\udfc6 MISSION COMPLETE: TARA Liberated in 17m 30s // Workstation Terminated",
-      "last_seen": 1790301852.1983552,
-      "activity_log": [
-        {
-          "time": "07:33:25",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "07:34:12",
-          "stage": 15,
-          "action": "\ud83c\udfc6 VICTORY (Round 1): Solved in 17m 30s!"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790301805.2325373,
-      "end_time": 1790301852.1983552,
-      "is_finished": true,
-      "created_at": "2026-09-25T07:33:25.232588",
-      "stage_times": {
-        "1": {
-          "start": 1790300607.2677276,
-          "end": 1790300657.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "2": {
-          "start": 1790300657.2677276,
-          "end": 1790300707.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "3": {
-          "start": 1790300707.2677276,
-          "end": 1790300757.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "4": {
-          "start": 1790300757.2677276,
-          "end": 1790300807.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "5": {
-          "start": 1790300807.2677276,
-          "end": 1790300857.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "6": {
-          "start": 1790300857.2677276,
-          "end": 1790300907.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "7": {
-          "start": 1790300907.2677276,
-          "end": 1790300957.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "8": {
-          "start": 1790300957.2677276,
-          "end": 1790301007.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "9": {
-          "start": 1790301007.2677276,
-          "end": 1790301057.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "10": {
-          "start": 1790301057.2677276,
-          "end": 1790301107.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "11": {
-          "start": 1790301107.2677276,
-          "end": 1790301157.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "12": {
-          "start": 1790301157.2677276,
-          "end": 1790301207.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "13": {
-          "start": 1790301207.2677276,
-          "end": 1790301257.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "14": {
-          "start": 1790301257.2677276,
-          "end": 1790301307.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "15": {
-          "start": 1790301307.2677276,
-          "end": 1790301357.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "16": {
-          "start": 1790301357.2677276,
-          "end": 1790301407.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "17": {
-          "start": 1790301407.2677276,
-          "end": 1790301457.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "18": {
-          "start": 1790301457.2677276,
-          "end": 1790301507.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "19": {
-          "start": 1790301507.2677276,
-          "end": 1790301557.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "20": {
-          "start": 1790301557.2677276,
-          "end": 1790301607.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "21": {
-          "start": 1790301607.2677276,
-          "end": 1790301657.2677276,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        }
-      },
-      "finish_time_str": "17m 30s"
-    },
-    "TRACK-COMPLETION-1790301968": {
-      "team_id": "TRACK-COMPLETION-1790301968",
-      "team_name": "Full Track Squad",
-      "password": "pass",
-      "members": "Track Master",
-      "current_stage": 21,
-      "unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 2 Initialized: StratCom Decryption Arena Unlocked",
-      "last_seen": 1790302060.7420766,
-      "activity_log": [
-        {
-          "time": "07:36:10",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "07:36:57",
-          "stage": 15,
-          "action": "\ud83c\udfc6 VICTORY (Round 1): Solved in 17m 30s!"
-        },
-        {
-          "time": "07:37:03",
-          "stage": 21,
-          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
-        },
-        {
-          "time": "07:37:40",
-          "stage": 15,
-          "action": "\ud83c\udfc6 VICTORY (Round 2): Solved in 12m 45s!"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790301972.7268353,
-      "end_time": 1790302060.7420766,
-      "is_finished": true,
-      "created_at": "2026-09-25T07:36:10.684355",
-      "stage_times": {
-        "1": {
-          "start": 1790300772.7443511,
-          "end": 1790300822.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "2": {
-          "start": 1790300822.7443511,
-          "end": 1790300872.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "3": {
-          "start": 1790300872.7443511,
-          "end": 1790300922.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "4": {
-          "start": 1790300922.7443511,
-          "end": 1790300972.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "5": {
-          "start": 1790300972.7443511,
-          "end": 1790301022.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "6": {
-          "start": 1790301022.7443511,
-          "end": 1790301072.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "7": {
-          "start": 1790301072.7443511,
-          "end": 1790301122.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "8": {
-          "start": 1790301122.7443511,
-          "end": 1790301172.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "9": {
-          "start": 1790301172.7443511,
-          "end": 1790301222.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "10": {
-          "start": 1790301222.7443511,
-          "end": 1790301272.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "11": {
-          "start": 1790301272.7443511,
-          "end": 1790301322.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "12": {
-          "start": 1790301322.7443511,
-          "end": 1790301372.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "13": {
-          "start": 1790301372.7443511,
-          "end": 1790301422.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "14": {
-          "start": 1790301422.7443511,
-          "end": 1790301472.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "15": {
-          "start": 1790301472.7443511,
-          "end": 1790301522.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "16": {
-          "start": 1790301522.7443511,
-          "end": 1790301572.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "17": {
-          "start": 1790301572.7443511,
-          "end": 1790301622.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "18": {
-          "start": 1790301622.7443511,
-          "end": 1790301672.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "19": {
-          "start": 1790301672.7443511,
-          "end": 1790301722.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "20": {
-          "start": 1790301722.7443511,
-          "end": 1790301772.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "21": {
-          "start": 1790301772.7443511,
-          "end": 1790301822.7443511,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        }
-      },
-      "finish_time_str": "17m 30s",
-      "current_round": 2,
-      "round_2_unlocked": true,
-      "send_to_round_2": true,
-      "round_2_stage": 1,
-      "round_2_unlocked_stages": [
-        1
-      ],
-      "round_2_start_time": 1790302549.5149136,
-      "round_2_is_finished": false,
-      "round_2_end_time": 1790302060.7420766,
-      "round_2_finish_time_str": "12m 45s",
-      "round_2_stage_times": {
-        "1": {
-          "start": 1790300772.7443511,
-          "end": 1790300817.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "2": {
-          "start": 1790300817.7443511,
-          "end": 1790300862.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "3": {
-          "start": 1790300862.7443511,
-          "end": 1790300907.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "4": {
-          "start": 1790300907.7443511,
-          "end": 1790300952.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "5": {
-          "start": 1790300952.7443511,
-          "end": 1790300997.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "6": {
-          "start": 1790300997.7443511,
-          "end": 1790301042.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "7": {
-          "start": 1790301042.7443511,
-          "end": 1790301087.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "8": {
-          "start": 1790301087.7443511,
-          "end": 1790301132.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "9": {
-          "start": 1790301132.7443511,
-          "end": 1790301177.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "10": {
-          "start": 1790301177.7443511,
-          "end": 1790301222.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "11": {
-          "start": 1790301222.7443511,
-          "end": 1790301267.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "12": {
-          "start": 1790301267.7443511,
-          "end": 1790301312.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "13": {
-          "start": 1790301312.7443511,
-          "end": 1790301357.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "14": {
-          "start": 1790301357.7443511,
-          "end": 1790301402.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "15": {
-          "start": 1790301402.7443511,
-          "end": 1790301447.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "16": {
-          "start": 1790301447.7443511,
-          "end": 1790301492.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "17": {
-          "start": 1790301492.7443511,
-          "end": 1790301537.7443511,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        }
-      },
-      "prize_code": "HONORARY_LAUREATE",
-      "prize_title": "\ud83c\udf96\ufe0f HONORARY LAUREATE (#4)",
-      "podium_rank": 4,
-      "round_2_times": {},
-      "round_2_score": 0
-    },
-    "CLUE-POPUP-1790302358": {
-      "team_id": "CLUE-POPUP-1790302358",
-      "team_name": "Clue Popup Verification Squad",
-      "password": "pass",
-      "members": "",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790302360.9796004,
-      "activity_log": [
-        {
-          "time": "07:42:40",
-          "stage": 1,
-          "action": "Registered workstation"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T07:42:40.979653"
-    },
-    "CLUE-POPUP-1790302448": {
-      "team_id": "CLUE-POPUP-1790302448",
-      "team_name": "Clue Popup Verification Squad",
-      "password": "pass",
-      "members": "",
-      "current_stage": 1,
-      "unlocked_stages": [
-        1
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83d\ude80 Round 1 Officially Launched by Organizer",
-      "last_seen": 1790302451.0188096,
-      "activity_log": [
-        {
-          "time": "07:44:11",
-          "stage": 1,
-          "action": "Registered workstation"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": null,
-      "is_finished": false,
-      "created_at": "2026-09-25T07:44:11.018851"
-    },
-    "TRACK-COMPLETION-1790302496": {
-      "team_id": "TRACK-COMPLETION-1790302496",
-      "team_name": "Full Track Squad",
-      "password": "pass",
-      "members": "Track Master",
-      "current_stage": 21,
-      "unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21
-      ],
-      "hints_count": 0,
-      "traps_count": 0,
-      "tamper_incidents": 0,
-      "is_locked": false,
-      "remote_unlock": false,
-      "force_logout": false,
-      "remote_reset": false,
-      "last_action": "\ud83c\udfc6 \ud83c\udf96\ufe0f HONORARY LAUREATE (#4) in 12m 45s!",
-      "last_seen": 1790302588.4669585,
-      "activity_log": [
-        {
-          "time": "07:44:58",
-          "stage": 1,
-          "action": "Registered workstation"
-        },
-        {
-          "time": "07:45:45",
-          "stage": 15,
-          "action": "\ud83c\udfc6 VICTORY (Round 1): Solved in 17m 30s!"
-        },
-        {
-          "time": "07:45:51",
-          "stage": 21,
-          "action": "Organizer sent station to Round 2: StratCom Decryption Arena"
-        },
-        {
-          "time": "07:46:28",
-          "stage": 15,
-          "action": "\ud83c\udfc6 VICTORY (Round 2): Solved in 12m 45s!"
-        }
-      ],
-      "hints_history": [],
-      "start_time": 1790302500.338465,
-      "end_time": 1790302588.4669585,
-      "is_finished": true,
-      "created_at": "2026-09-25T07:44:58.293221",
-      "stage_times": {
-        "1": {
-          "start": 1790301300.3618498,
-          "end": 1790301350.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "2": {
-          "start": 1790301350.3618498,
-          "end": 1790301400.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "3": {
-          "start": 1790301400.3618498,
-          "end": 1790301450.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "4": {
-          "start": 1790301450.3618498,
-          "end": 1790301500.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "5": {
-          "start": 1790301500.3618498,
-          "end": 1790301550.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "6": {
-          "start": 1790301550.3618498,
-          "end": 1790301600.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "7": {
-          "start": 1790301600.3618498,
-          "end": 1790301650.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "8": {
-          "start": 1790301650.3618498,
-          "end": 1790301700.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "9": {
-          "start": 1790301700.3618498,
-          "end": 1790301750.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "10": {
-          "start": 1790301750.3618498,
-          "end": 1790301800.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "11": {
-          "start": 1790301800.3618498,
-          "end": 1790301850.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "12": {
-          "start": 1790301850.3618498,
-          "end": 1790301900.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "13": {
-          "start": 1790301900.3618498,
-          "end": 1790301950.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "14": {
-          "start": 1790301950.3618498,
-          "end": 1790302000.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "15": {
-          "start": 1790302000.3618498,
-          "end": 1790302050.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "16": {
-          "start": 1790302050.3618498,
-          "end": 1790302100.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "17": {
-          "start": 1790302100.3618498,
-          "end": 1790302150.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "18": {
-          "start": 1790302150.3618498,
-          "end": 1790302200.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "19": {
-          "start": 1790302200.3618498,
-          "end": 1790302250.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "20": {
-          "start": 1790302250.3618498,
-          "end": 1790302300.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        },
-        "21": {
-          "start": 1790302300.3618498,
-          "end": 1790302350.3618498,
-          "duration_seconds": 50,
-          "duration_str": "0m 50s"
-        }
-      },
-      "finish_time_str": "17m 30s",
-      "current_round": 2,
-      "round_2_unlocked": true,
-      "send_to_round_2": true,
-      "round_2_stage": 17,
-      "round_2_unlocked_stages": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17
-      ],
-      "round_2_start_time": 1790302551.5840456,
-      "round_2_is_finished": true,
-      "round_2_end_time": 1790302588.4669585,
-      "round_2_finish_time_str": "12m 45s",
-      "round_2_stage_times": {
-        "1": {
-          "start": 1790301300.3618498,
-          "end": 1790301345.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "2": {
-          "start": 1790301345.3618498,
-          "end": 1790301390.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "3": {
-          "start": 1790301390.3618498,
-          "end": 1790301435.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "4": {
-          "start": 1790301435.3618498,
-          "end": 1790301480.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "5": {
-          "start": 1790301480.3618498,
-          "end": 1790301525.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "6": {
-          "start": 1790301525.3618498,
-          "end": 1790301570.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "7": {
-          "start": 1790301570.3618498,
-          "end": 1790301615.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "8": {
-          "start": 1790301615.3618498,
-          "end": 1790301660.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "9": {
-          "start": 1790301660.3618498,
-          "end": 1790301705.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "10": {
-          "start": 1790301705.3618498,
-          "end": 1790301750.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "11": {
-          "start": 1790301750.3618498,
-          "end": 1790301795.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "12": {
-          "start": 1790301795.3618498,
-          "end": 1790301840.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "13": {
-          "start": 1790301840.3618498,
-          "end": 1790301885.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "14": {
-          "start": 1790301885.3618498,
-          "end": 1790301930.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "15": {
-          "start": 1790301930.3618498,
-          "end": 1790301975.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "16": {
-          "start": 1790301975.3618498,
-          "end": 1790302020.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        },
-        "17": {
-          "start": 1790302020.3618498,
-          "end": 1790302065.3618498,
-          "duration_seconds": 45,
-          "duration_str": "0m 45s"
-        }
-      },
-      "prize_code": "HONORARY_LAUREATE",
-      "prize_title": "\ud83c\udf96\ufe0f HONORARY LAUREATE (#4)",
-      "podium_rank": 4
+      "round_2_stage_times": {},
+      "round_2_score": 0,
+      "round_2_finish_time_str": "",
+      "prize_code": "",
+      "podium_rank": null,
+      "remote_reset_r2": true
     }
   },
-  "broadcasts": [
-    {
-      "id": 1,
-      "message": "\ud83c\udfc6 ROUND 1 COMPLETED: Team Full Track Squad [TRACK-COMPLETION-1790301803] finished in 17m 30s!",
-      "time": "07:34:12"
-    },
-    {
-      "id": 2,
-      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
-      "time": "07:36:12"
-    },
-    {
-      "id": 3,
-      "message": "\ud83c\udfc6 ROUND 1 COMPLETED: Team Full Track Squad [TRACK-COMPLETION-1790301968] finished in 17m 30s!",
-      "time": "07:36:57"
-    },
-    {
-      "id": 4,
-      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 2 HAS OFFICIALLY BEGUN! 15 QUALIFIED STATIONS UNLOCKED.",
-      "time": "07:37:01"
-    },
-    {
-      "id": 5,
-      "message": "\ud83d\ude80 TOURNAMENT ALERT: Squad [Full Track Squad] has been promoted to Round 2 by the Organizer!",
-      "time": "07:37:03"
-    },
-    {
-      "id": 6,
-      "message": "\ud83c\udfc6 ROUND 2 COMPLETED: Team Full Track Squad [TRACK-COMPLETION-1790301968] finished in 12m 45s!",
-      "time": "07:37:40"
-    },
-    {
-      "id": 7,
-      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
-      "time": "07:42:43"
-    },
-    {
-      "id": 8,
-      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
-      "time": "07:44:13"
-    },
-    {
-      "id": 9,
-      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 1 IS OFFICIALLY OPEN! All workstations unlocked simultaneously. Good luck, agents!",
-      "time": "07:45:00"
-    },
-    {
-      "id": 10,
-      "message": "\ud83c\udfc6 ROUND 1 COMPLETED: Team Full Track Squad [TRACK-COMPLETION-1790302496] finished in 17m 30s!",
-      "time": "07:45:45"
-    },
-    {
-      "id": 11,
-      "message": "\ud83d\ude80 TOURNAMENT ALERT: ROUND 2 HAS OFFICIALLY BEGUN! 16 QUALIFIED STATIONS UNLOCKED.",
-      "time": "07:45:49"
-    },
-    {
-      "id": 12,
-      "message": "\ud83d\ude80 TOURNAMENT ALERT: Squad [Full Track Squad] has been promoted to Round 2 by the Organizer!",
-      "time": "07:45:51"
-    },
-    {
-      "id": 13,
-      "message": "\ud83c\udfc6 ROUND 2 COMPLETED: Team Full Track Squad [TRACK-COMPLETION-1790302496] finished in 12m 45s!",
-      "time": "07:46:28"
-    }
-  ],
+  "broadcasts": [],
   "created_at": "2026-09-21T00:00:00.000000",
-  "current_round": 2,
+  "current_round": 1,
   "shortlist": {
     "round_2_qualified_team_ids": [
       "T-ALPHA",
@@ -5983,21 +3500,15 @@
       "PHANTOM-7",
       "ALFA-1",
       "T-EPSILON",
-      "T-ZETA",
       "A",
-      "TEAM-LOBBY-6810",
-      "TEST-01",
-      "TEST-R1-1790283216",
-      "TEST-R1-1790283270",
-      "TRACK-COMPLETION-1790301968",
-      "TRACK-COMPLETION-1790302496"
+      "TEAM-LOBBY-6810"
     ],
     "locked": true
   },
-  "round_2_started": true,
+  "round_2_started": false,
   "round_2_active": false,
   "test_mode_unlock_all": false,
   "global_fullscreen_exit_allowed": false,
   "round_1_started": true,
-  "round_1_start_time": 1790302500.338465
+  "round_1_start_time": 1790304825.6024044
 }

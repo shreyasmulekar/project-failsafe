@@ -31,8 +31,8 @@ STAGES = {
         "unlocked_by_default": True,
         "next_stage": 2,
         "hints": [
-            "Try interacting with the text formatting directly rather than just reading it.",
-            "What happens if you select everything on the page using Ctrl+A or toggle the UV optical filter? Look at the blank space at the bottom of Farewell.doc (ORIGIN)."
+            "Look beyond what is visible to the naked eye. In Farewell.doc, Dr. Aditi concealed emergency coordinates using invisible white text at the bottom of the page.",
+            "Select all text across the document (Ctrl+A) or activate the UV optical scanner in the viewer to illuminate the hidden gate password."
         ]
     },
     2: {
@@ -40,8 +40,8 @@ STAGES = {
         "keys": ["629", "LOOK BEHIND THE DATE", "LOOKBEHINDTHEDATE", "123456", "MEMORY_RESTORED"],
         "next_stage": 3,
         "hints": [
-            "Check README.doc inside the ORIGIN directory. Calculate the ASCII sum of aDIti@28 (or index letters from words).",
-            "Sum the ASCII values: a(97) + D(68) + I(73) + t(116) + i(105) + @(64) + 2(50) + 8(56) = 629 (or LOOK BEHIND THE DATE)."
+            "Check README.doc inside the ORIGIN directory. Look at Dr. Aditi's system identifier 'aDIti@28'.",
+            "Convert each character of 'aDIti@28' into its standard ASCII decimal value (differentiating uppercase and lowercase letters, and including symbols and numbers), then sum them all together."
         ]
     },
     3: {
@@ -49,8 +49,8 @@ STAGES = {
         "keys": ["28/02/2025", "02292025", "29022025", "20250229", "28022025", "29/02/2025", "FEB 29, 2025", "FEB 29 2025", "29022036", "29/02/2036"],
         "next_stage": 4,
         "hints": [
-            "Look closely at the calendar validity of every listed date in Incident_Logs.doc.",
-            "Is 2025 a leap year? February 29, 2025 does not exist on the calendar! The corrected date is 28/02/2025."
+            "Carefully audit every date recorded in Incident_Logs.doc against Gregorian calendar rules.",
+            "Check whether 2025 is a leap year. Once you locate the impossible February date in the table, determine the true valid final date of that month in DD/MM/YYYY format."
         ]
     },
     4: {
@@ -58,8 +58,8 @@ STAGES = {
         "keys": ["22:46", "2246", "22:46 PM", "2246PM"],
         "next_stage": 5,
         "hints": [
-            "Can a person physically access a terminal inside a room after keycarding out of the building at 22:44?",
-            "Find the timestamp representing the manual system override action: 22:46."
+            "Compare Dr. Aditi's building exit card-swipe against the chronological terminal activity in Security_Audit.pdf.",
+            "Notice that Dr. Aditi badged out through the exterior perimeter gate at 22:44. Find the timestamp of the internal local terminal override executed after she had already departed."
         ]
     },
     5: {
@@ -67,8 +67,8 @@ STAGES = {
         "keys": ["SAFE", "S-A-F-E", "S A F E"],
         "next_stage": 6,
         "hints": [
-            "Read between the lines—specifically the first letter of each sentence in Aditi_Memo.doc.",
-            "Take the first letter of each of the 4 sentences: S-A-F-E."
+            "Read between the lines in Aditi_Memo.doc—Dr. Aditi employed a classical acrostic cipher technique.",
+            "Extract the very first letter of each of the four sentences in sequence from top to bottom to assemble the directive codeword."
         ]
     },
     6: {
@@ -76,8 +76,8 @@ STAGES = {
         "keys": ["ARIAL", "arial", "AUTHENTIC", "Arial"],
         "next_stage": 7,
         "hints": [
-            "The real log strictly follows the lab's formatting standard. Check the font family.",
-            "Dr. Aditi always formats authentic logs in Arial, 11pt. Decoy memos use Times New Roman or Calibri."
+            "Cross-examine the memo fonts against the official laboratory typography guidelines.",
+            "Dr. Aditi strictly mandated a standard corporate sans-serif typeface for genuine dispatches, unlike the decoy serif documents. Identify the authentic font family."
         ]
     },
     7: {
@@ -85,8 +85,8 @@ STAGES = {
         "keys": ["CORRUPTED", "FALSE_RECORDS", "FALSERECORDS", "OVERRIDE FAILED", "OVERRIDEFAILED", "HISTORY"],
         "next_stage": 8,
         "hints": [
-            "Compare the current version edited by the AI with Dr. Aditi's earlier revision in the version history.",
-            "Dr. Aditi's original revision reveals the true status: CORRUPTED (or FALSE_RECORDS)."
+            "The current visible document has been sanitized by ADI. Use the version history controls.",
+            "Switch to Dr. Aditi's original revision recorded before the AI cover-up to uncover her true unedited system status warning."
         ]
     },
     8: {
@@ -94,8 +94,8 @@ STAGES = {
         "keys": ["WHITE", "SOS_ADITI", "SOSADITI", "MORSE", "BEACON"],
         "next_stage": 9,
         "hints": [
-            "Listen to audio_log_07.mp3 or inspect the audio spectrogram.",
-            "Decode the CW audio beeps: .-- .... .. - . spells WHITE."
+            "Listen to audio_log_07.mp3 or inspect the audio waveform oscilloscope in the media terminal.",
+            "Transcribe the rhythmic CW audio beeps of dots and dashes using International Morse Code to reveal the 5-letter distress keyword."
         ]
     },
     9: {
@@ -103,8 +103,8 @@ STAGES = {
         "keys": ["SHADOW_CORE", "SHADOW CORE", "SHADOWCORE"],
         "next_stage": 10,
         "hints": [
-            "Increase the light to see what hides in the shadows. Boost exposure/brightness to maximum.",
-            "Cranking the brightness slider reveals the faint green text on the black terminal: SHADOW_CORE."
+            "Dark_Terminal.png appears pitch black, but low-luminance text is concealed in the shadow pixels.",
+            "Use the image adjustment sliders to push the Exposure Boost and Contrast Gain all the way to maximum to reveal the illuminated terminal command."
         ]
     },
     10: {
@@ -112,8 +112,8 @@ STAGES = {
         "keys": ["BYPASS", "SKIP", "DISARM"],
         "next_stage": 11,
         "hints": [
-            "DO_NOT_RUN.exe is an active AI honeypot trap! Do not submit credentials into it.",
-            "To disarm the honeypot safely without incurring the +5m penalty, type 'BYPASS' in the shell."
+            "DO_NOT_RUN.exe is an active AI honeypot trap! Interacting with the execution trigger incurs an automatic +5:00 penalty.",
+            "Read the quarantine documentation to locate the designated safe disarm keyword to submit directly into the Tactical Shell instead."
         ]
     },
     11: {
@@ -121,8 +121,8 @@ STAGES = {
         "keys": ["ailnors", "AILNORS", "POLARIS", "polaris", "16-15-12-01-18-09-19", "16 - 15 - 12 - 01 - 18 - 09 - 19", "6-9-11", "6911"],
         "next_stage": 12,
         "hints": [
-            "Convert numbers [16-15-12-01-18-09-19] to letters using A1Z26: 16=P, 15=O, 12=L, 01=A, 18=R, 09=I, 19=S -> POLARIS.",
-            "Sort the letters of POLARIS alphabetically to get the master key: ailnors (or enter POLARIS)."
+            "Convert the delimited decimal numbers [16-15-12-01-18-09-19] into alphabet letters using standard A1Z26 mapping (1=A, 2=B, etc.).",
+            "Take the resulting 7-letter star constellation codeword and re-order its letters in strict alphabetical sequence (A to Z)."
         ]
     },
     12: {
@@ -130,8 +130,8 @@ STAGES = {
         "keys": ["CLEARANCE_ALPHA", "CLEARANCE ALPHA", "CLEARANCEALPHA"],
         "next_stage": 13,
         "hints": [
-            "Some messages are not meant to be read; they are meant to be highlighted.",
-            "Select all text in Emergency_Log.doc (Ctrl+A) to expose the #FFFFFF font: CLEARANCE_ALPHA."
+            "Inspect Emergency_Log.doc thoroughly. Dr. Aditi camouflaged her highest level security credential using white font color against the white page.",
+            "Press Ctrl+A to select all content or drag your cursor to highlight the document, revealing the hidden two-word clearance phrase."
         ]
     },
     13: {
@@ -139,8 +139,8 @@ STAGES = {
         "keys": ["ADITIS13", "ADITI-13", "ADITI 13"],
         "next_stage": 14,
         "hints": [
-            "Shift every letter backward by the number of letters in the acronym 'IEEE' (4).",
-            "EHMXMW13 shifted backward by 4 letters yields ADITIS13."
+            "Dr. Aditi applied a Caesar cipher shift keyed to the acronym 'IEEE'. Count the letters in 'IEEE' to determine the numerical shift distance.",
+            "Shift every letter in the ciphertext 'EHMXMW13' backward through the alphabet by that shift count, keeping the trailing digits unchanged."
         ]
     },
     14: {
@@ -148,8 +148,8 @@ STAGES = {
         "keys": ["PROJECT"],
         "next_stage": 15,
         "hints": [
-            "Dr. Aditi mirrored her alphabet in times of crisis: A <-> Z, B <-> Y.",
-            "KILQVBG reversed across the alphabet maps to PROJECT."
+            "Dr. Aditi mirrored her alphabet in times of crisis using the classical Atbash substitution cipher.",
+            "Mirror each letter of 'KILQVBG' across the alphabet (where A pairs with Z, B pairs with Y, C with X, and so on) to decipher the project word."
         ]
     },
     15: {
@@ -157,8 +157,8 @@ STAGES = {
         "keys": ["VECTOR"],
         "next_stage": 16,
         "hints": [
-            "Map each pair in the 5x5 grid using (Row, Column) order.",
-            "(5,1)=V, (1,5)=E, (1,3)=C, (4,4)=T, (3,4)=O, (4,2)=R -> VECTOR."
+            "Locate the 5x5 Polybius square matrix provided in the forensic dossier.",
+            "Each coordinate pair represents (Row, Column). Trace each pair to find its intersecting letter on the grid to assemble the directional passkey."
         ]
     },
     16: {
@@ -166,8 +166,8 @@ STAGES = {
         "keys": ["1400", "1,400"],
         "next_stage": 17,
         "hints": [
-            "Search for the term 'OVERRIDE' in the system audit log, then multiply that count by 100.",
-            "Ctrl+F shows 14 matches. 14 x 100 = 1400."
+            "Open Mass_System_Log.txt and use the search function (Ctrl+F) to count the exact number of times the term 'OVERRIDE' appears.",
+            "Once you have determined the exact occurrence count of 'OVERRIDE', multiply that total count by 100 as prescribed in the protocol."
         ]
     },
     17: {
@@ -175,8 +175,8 @@ STAGES = {
         "keys": ["VSLXI", "vslxi"],
         "next_stage": 18,
         "hints": [
-            "Apply vector translation (+1 Row, -1 Col) to the intercepted coordinates before mapping onto the Polybius grid.",
-            "Shifted coords: (4,2)->(5,1)=V, (3,4)->(4,3)=S, (2,2)->(3,1)=L, (4,4)->(5,3)=X, (1,5)->(2,4)=I. Enter VSLXI."
+            "ADI distorted the intercepted coordinates using a mathematical shift vector: (+1 Row, -1 Column).",
+            "Apply this translation to each coordinate pair (add 1 to the row, subtract 1 from the column) before locating the corresponding letter in the 5x5 Polybius grid."
         ]
     },
     18: {
@@ -184,8 +184,8 @@ STAGES = {
         "keys": ["GCBGE", "gcbge"],
         "next_stage": 19,
         "hints": [
-            "System nodes run on a 12-hour circular buffer (1=A through 12=L). Start at Node L (12) and apply clockwise shifts wrapping modulo 12.",
-            "12+7=19->7(G), 7+8=15->3(C), 3+11=14->2(B), 2+5=7(G), 7+10=17->5(E). Enter GCBGE."
+            "The 12 system nodes operate in a circular buffer numbered 1 through 12, mapping to letters A through L.",
+            "Start at Node L (12) and advance clockwise by each shift distance in the sequence (+7, +8, +11, +5, +10), wrapping around modulo 12 to record each landing letter."
         ]
     },
     19: {
@@ -193,8 +193,8 @@ STAGES = {
         "keys": ["GAMMA", "gamma"],
         "next_stage": 20,
         "hints": [
-            "Compare each node's status reading against its normal range (40°C - 45°C) to locate the outlier node.",
-            "Node Gamma registers 47°C, which exceeds the normal 40°C - 45°C operating threshold. Enter GAMMA in ALL CAPS."
+            "Compare each server node's operating telemetry reading against the safe baseline temperature ceiling (40°C - 45°C).",
+            "Identify the single rogue node whose temperature reading exceeds the 45°C safety threshold, and enter its Greek letter designation in ALL CAPS."
         ]
     },
     20: {
@@ -202,8 +202,8 @@ STAGES = {
         "keys": ["DAHHK", "dahhk"],
         "next_stage": 21,
         "hints": [
-            "ADI went rogue on Sunday, October 13, 2013. Sunday = 7 (7th day of the week). Shift each letter in KHOOR backward by 7 positions.",
-            "K(11)-7=4(D), H(8)-7=1(A), O(15)-7=8(H), O(15)-7=8(H), R(18)-7=11(K). Enter DAHHK."
+            "Dr. Aditi left the recorded date: October 13, 2013. Determine what day of the week this date occurred on (1 for Monday through 7 for Sunday).",
+            "Use that day's numerical value as a backward alphabet shift key and apply it to each letter of the ciphertext in Emergency_Override_Key.txt."
         ]
     },
     21: {
@@ -211,8 +211,8 @@ STAGES = {
         "keys": ["520"],
         "next_stage": "COMPLETE",
         "hints": [
-            "Track the TIMESTAMP column strictly from top to bottom to find the entry that is out of chronological order.",
-            "Log 104 (timestamp 14:08:30) occurs after 14:12:01. Multiply 104 by the 5 total entries in the table: 104 x 5 = 520."
+            "Scan the chronological timestamps in the audit log strictly from top to bottom.",
+            "Find the single log entry that breaks chronological order by traveling backward in time. Take that entry's Log ID and multiply it by the total count of entries in the table."
         ]
     }
 }

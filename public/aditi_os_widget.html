@@ -4637,7 +4637,7 @@
                 Convert each character in <code>aDIti@28</code> to its decimal ASCII value and compute the total sum:<br>
                 &bull; <code>a</code> = 97 &nbsp;|&nbsp; <code>D</code> = 68 &nbsp;|&nbsp; <code>I</code> = 73 &nbsp;|&nbsp; <code>t</code> = 116<br>
                 &bull; <code>i</code> = 105 &nbsp;|&nbsp; <code>@</code> = 64 &nbsp;|&nbsp; <code>2</code> = 50 &nbsp;|&nbsp; <code>8</code> = 56<br>
-                <span style="color:#a7f3d0; font-weight:bold;">Total = 97 + 68 + 73 + 116 + 105 + 64 + 50 + 56 = 629</span>
+                <span style="color:#a7f3d0; font-weight:bold;">Sum all ASCII decimal values together to calculate the passkey.</span>
               </div>
             </div>
 
@@ -4652,10 +4652,10 @@
               <div style="font-size:13px; font-weight:bold; color:#00ff66;">
                 🔑 DIRECT DECRYPTION SUBMISSION (STAGE 02)
               </div>
-              <span style="font-size:11px; color:#94a3b8;">Accepted: 629 or LOOK BEHIND THE DATE</span>
+              <span style="font-size:11px; color:#94a3b8;">Accepted: Calculated ASCII sum or Word Index directive</span>
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
-              <input type="text" id="input-stage-2" placeholder="Enter sum (e.g. 629)..." style="flex:1; min-width:200px; background:#000; border:1px solid rgba(0,255,102,0.5); border-radius:4px; color:#00ff66; padding:10px 14px; font-family:var(--font-mono); font-size:14px; outline:none;" onkeydown="if(event.key==='Enter') submitStageDirectKey(2, this.value)">
+              <input type="text" id="input-stage-2" placeholder="Enter calculated sum or directive..." style="flex:1; min-width:200px; background:#000; border:1px solid rgba(0,255,102,0.5); border-radius:4px; color:#00ff66; padding:10px 14px; font-family:var(--font-mono); font-size:14px; outline:none;" onkeydown="if(event.key==='Enter') submitStageDirectKey(2, this.value)">
               <button type="button" class="btn-tactical active" onclick="submitStageDirectKey(2, document.getElementById('input-stage-2').value)" style="padding:10px 22px; font-size:13px; font-weight:900;">
                 TRANSMIT CHECKSUM &rarr;
               </button>
@@ -5398,7 +5398,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
               </div>
               <div style="display:flex; gap:10px; align-items:center;">
-                <input type="text" id="input-stage-5" placeholder="Enter decrypted acrostic key (SAFE)..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(5, document.getElementById('input-stage-5').value)">
+                <input type="text" id="input-stage-5" placeholder="Enter decrypted 4-letter acrostic directive..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(5, document.getElementById('input-stage-5').value)">
                 <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(5, document.getElementById('input-stage-5').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
               </div>
               <div id="fb-stage-5" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -5446,7 +5446,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Inspect the telex coordinate offsets: <code>[16 - 15 - 12 - 01 - 18 - 09 - 19]</code>.
             </div>
             <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Convert numbers to alphabet positions (1=A, 2=B... 16=P, 15=O, 12=L, 01=A, 18=R, 09=I, 19=S -> POLARIS). Sort the letters alphabetically into <strong>ailnors</strong>, enter below, and click <strong>[⚡ TRANSMIT KEY]</strong> (or enter POLARIS).
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Convert numbers to alphabet positions (1=A, 2=B, etc.). Sort the resulting letters alphabetically, enter below, and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -5472,7 +5472,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
               </div>
               <div style="display:flex; gap:10px; align-items:center;">
-                <input type="text" id="input-stage-11" placeholder="Enter alphabetically sorted key (ailnors)..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(11, document.getElementById('input-stage-11').value)">
+                <input type="text" id="input-stage-11" placeholder="Enter alphabetically sorted clearance key..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(11, document.getElementById('input-stage-11').value)">
                 <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(11, document.getElementById('input-stage-11').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
               </div>
               <div id="fb-stage-11" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -5954,7 +5954,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
               </div>
               <div style="display:flex; gap:10px; align-items:center;">
-                <input type="text" id="input-stage-1" placeholder="Enter first gate key (ORIGIN)..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(1, document.getElementById('input-stage-1').value)">
+                <input type="text" id="input-stage-1" placeholder="Enter first gate clearance key..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(1, document.getElementById('input-stage-1').value)">
                 <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(1, document.getElementById('input-stage-1').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
               </div>
               <div id="fb-stage-1" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -5982,7 +5982,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 <span>a = 97</span> <span>D = 68</span> <span>I = 73</span> <span>t = 116</span> <span>i = 105</span> <span>@ = 64</span> <span>2 = 50</span> <span>8 = 56</span>
               </div>
               <p style="color:#94a3b8; line-height: 1.6; font-size:11px;">
-                *Alternative word indexing: Extract letter 1 of Word 1, 4 of Word 2, 9 of Word 3, 20 of Word 4, 9 of Word 5 -> "LOOK BEHIND THE DATE". Both passcodes accredited.
+                *Alternative word indexing: Extract letter 1 of Word 1, 4 of Word 2, 9 of Word 3, 20 of Word 4, 9 of Word 5 to form the directive phrase. Both passcodes accredited.
               </p>
             </div>
 
@@ -5995,7 +5995,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
               </div>
               <div style="display:flex; gap:10px; align-items:center;">
-                <input type="text" id="input-stage-2" placeholder="Enter ASCII sum (629) or directive..." style="flex:1; background:#02060e; border:1px solid #ffb000; color:#ffb000; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(255,184,0,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(2, document.getElementById('input-stage-2').value)">
+                <input type="text" id="input-stage-2" placeholder="Enter ASCII sum or directive phrase..." style="flex:1; background:#02060e; border:1px solid #ffb000; color:#ffb000; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(255,184,0,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(2, document.getElementById('input-stage-2').value)">
                 <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(2, document.getElementById('input-stage-2').value)" style="background:#ffb000; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(255,184,0,0.5);">⚡ TRANSMIT KEY</button>
               </div>
               <div id="fb-stage-2" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#00ff88;"></div>
@@ -6071,7 +6071,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             </tbody>
           </table>
           <div style="margin-top:14px; color:var(--cyber-cyan); font-size:11px;">
-            [TASK]: An astronomical anomaly exists in these logs. Enter the impossible calendar date (28/02/2025 or FEB 29, 2025).
+            [TASK]: An astronomical anomaly exists in these logs. Enter the corrected calendar date in DD/MM/YYYY format.
           </div>
         <!-- In-Modal Standardized Direct Submission Terminal -->
         <div class="stage-direct-submit-box" style="background:rgba(0,240,255,0.06); border:1px solid rgba(0,240,255,0.5); border-radius:6px; padding:14px 18px; margin-top:20px; font-family:var(--font-mono, monospace); box-shadow:0 0 20px rgba(0,240,255,0.12);">
@@ -6082,7 +6082,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-3" placeholder="Enter corrected calendar date (28/02/2025)..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(3, document.getElementById('input-stage-3').value)">
+            <input type="text" id="input-stage-3" placeholder="Enter corrected calendar date (DD/MM/YYYY)..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(3, document.getElementById('input-stage-3').value)">
             <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(3, document.getElementById('input-stage-3').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
           </div>
           <div id="fb-stage-3" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -6114,7 +6114,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Examine the chronological perimeter and terminal access logs below. Aditi exited the facility gate at 22:44. Identify the physically impossible manual terminal override timestamp.
             </div>
             <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the identified anomaly timestamp (22:46) into the box below and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the identified anomaly timestamp (HH:MM) into the box below and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -6139,7 +6139,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
               <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <input type="text" id="input-stage-4" placeholder="Enter impossible timestamp (22:46)..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(4, document.getElementById('input-stage-4').value)">
+              <input type="text" id="input-stage-4" placeholder="Enter impossible timestamp (HH:MM)..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(4, document.getElementById('input-stage-4').value)">
               <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(4, document.getElementById('input-stage-4').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
             </div>
             <div id="fb-stage-4" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -6222,7 +6222,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
               <strong>QUESTION:</strong> The image <code>Dark_Terminal.png</code> appears completely pitch black. Manipulate the exposure/brightness sliders above (or open in an external image editor / Google Slides) to illuminate what hides in the shadows. Enter the master decryption key revealed on the terminal.
             </div>
             <div style="font-size: 10px; color: var(--hazard-amber);">
-              &gt;&gt; <strong>MISSION STATUS:</strong> Decrypt the clearance key (<code>SHADOW_CORE</code>) and enter in Tactical Shell below.
+              &gt;&gt; <strong>MISSION STATUS:</strong> Decrypt the clearance key from the dark terminal image and enter in Tactical Shell below.
             </div>
           </div>
 
@@ -6235,7 +6235,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
               <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <input type="text" id="input-stage-9" placeholder="Enter optical stego key (SHADOW_CORE)..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(9, document.getElementById('input-stage-9').value)">
+              <input type="text" id="input-stage-9" placeholder="Enter optical stego clearance key..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(9, document.getElementById('input-stage-9').value)">
               <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(9, document.getElementById('input-stage-9').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
             </div>
             <div id="fb-stage-9" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -6485,7 +6485,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 .--   ....   ..   -   .
               </div>
               <div style="font-size:10.5px; color:#94a3b8; margin-top:6px;">
-                Decoded word: <strong style="color:#00ff66;">WHITE</strong>
+                Decoded word: <span style="color:#94a3b8; font-style:italic;">[Transcribe Morse pulses above]</span>
               </div>
             </div>
 
@@ -6495,7 +6495,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 -.. --- -. --- - / ..-. --- .-.. .-.. --- .-- / - .... . / -... .-.. ..- . / .--. .- - ....
               </div>
               <div style="font-size:10.5px; color:#94a3b8; margin-top:6px;">
-                Decoded message: <strong style="color:#fde047;">DO NOT FOLLOW THE BLUE PATH</strong>
+                Decoded message: <span style="color:#94a3b8; font-style:italic;">[Transcribe Morse pulses above]</span>
               </div>
             </div>
           </div>
@@ -6785,7 +6785,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <strong>QUESTION:</strong> Read <strong>Farewell.doc</strong> (under DIR_ORIGIN in left Evidence Archive). Where does Dr. Aditi's foundational work begin?
           </div>
           <div style="font-size: 10px; color: var(--hazard-amber); margin-top: 4px; border-left: 2px solid var(--hazard-amber); padding-left: 6px;">
-            &gt;&gt; <strong>MISSION STATUS:</strong> Decrypt the clearance key and enter in Tactical Shell below. <code>decrypt ORIGIN</code>).
+            &gt;&gt; <strong>MISSION STATUS:</strong> Decrypt the clearance key and enter in Tactical Shell below (e.g. <code>decrypt &lt;KEY&gt;</code>).
           </div>
         </div>
       </div>
@@ -8086,7 +8086,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
       }
 
       highlightSector('card-origin', 3000, "👉 CLICK HERE: STAGE 01");
-      const defHtml = "<strong>WHERE TO CLICK:</strong><br>Look at the left panel under <strong>EVIDENCE ACCESS CONTROL</strong>. Click on <strong>[STAGE 01] Farewell.doc</strong> (highlighted in green for 3 seconds) to view Dr. Aditi's farewell letter. Reveal the hidden white text, then enter <code>decrypt ORIGIN</code> in the prompt on the right!";
+      const defHtml = "<strong>WHERE TO CLICK:</strong><br>Look at the left panel under <strong>EVIDENCE ACCESS CONTROL</strong>. Click on <strong>[STAGE 01] Farewell.doc</strong> (highlighted in green for 3 seconds) to view Dr. Aditi's farewell letter. Reveal the hidden white text, then enter <code>decrypt &lt;KEY&gt;</code> in the prompt on the right!";
       if (eText) eText.innerHTML = defHtml;
       if (sText) sText.innerHTML = `<strong>🧭 TARA // WHERE TO CLICK:</strong> ${defHtml}`;
     }
@@ -8117,9 +8117,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         guidance: "Examine Farewell.doc. Dr. Aditi left an emotional farewell letter before fleeing the facility. Below the visible text, blank space conceals a hidden message rendered in white font. Select all text (Ctrl+A) or toggle the UV scanner to reveal the first gate key.",
         mechanism: "Text Selection & Optical UV Depolarization",
         targetText: "Farewell.doc",
-        hint: "Try interacting with the text formatting directly. Select everything on the page using Ctrl+A or toggle the UV filter to expose the white text at the bottom: ORIGIN.",
+        hint: "Look beyond what is visible to the naked eye. In Farewell.doc, Dr. Aditi concealed emergency coordinates using invisible white text at the bottom of the page. Select all text across the document (Ctrl+A) or activate the UV optical scanner in the viewer to illuminate the hidden gate password.",
         ishaanTaunt: "Human perception is easily deceived. If you cannot see it, it does not exist in my system.",
-        taraClue: "Tara here! Select all text in Farewell.doc with Ctrl+A, or click the UV Optical Filter button to reveal the hidden white text: ORIGIN!"
+        taraClue: "Tara here! Inspect the blank space at the bottom of Farewell.doc. Select all text with Ctrl+A or toggle the UV Optical Filter button to reveal the invisible white text!"
       },
       2: {
         cardId: "card-memory",
@@ -8129,9 +8129,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         guidance: "Inside directory ORIGIN, inspect README.doc. Dr. Aditi notes that her primary encryption key is the ASCII sum of her system identifier 'aDIti@28'. Calculate the ASCII sum (or follow the word index cipher) to unlock the next sector.",
         mechanism: "ASCII Summation / Word Index Extraction",
         targetText: "README.doc",
-        hint: "Calculate the ASCII sum of 'aDIti@28': a(97) + D(68) + I(73) + t(116) + i(105) + @(64) + 2(50) + 8(56) = 629 (or enter LOOK BEHIND THE DATE).",
+        hint: "Check README.doc inside the ORIGIN directory. Look at Dr. Aditi's system identifier 'aDIti@28'. Convert each character into its standard ASCII decimal value (differentiating uppercase and lowercase letters, and including symbols and numbers), then sum them all together.",
         ishaanTaunt: "You found the directory, but mathematics cannot save you. Character bytes are easily overwritten.",
-        taraClue: "Compute the ASCII values of aDIti@28: a=97, D=68, I=73, t=116, i=105, @=64, 2=50, 8=56. The sum is 629!"
+        taraClue: "Tara here! Check README.doc in the ORIGIN folder. Convert each character of 'aDIti@28' into its standard ASCII decimal value and sum them up (watch out for case sensitivity and symbols)!"
       },
       3: {
         cardId: "card-timeline",
@@ -8141,9 +8141,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         guidance: "Inspect Incident_Logs.doc. A forensic audit table records system launch events. Cross-examine every logged date against calendar validity rules to unmask the impossible calendar entry.",
         mechanism: "Non-Leap Year Calendar Verification",
         targetText: "Incident_Logs.doc",
-        hint: "Look closely at the calendar validity of every listed date. Is 2025 a leap year? February 29, 2025 does not exist! Enter the corrected date 28/02/2025.",
+        hint: "Carefully audit every date recorded in Incident_Logs.doc against Gregorian calendar rules. Check whether 2025 is a leap year. Once you locate the impossible February date in the table, determine the true valid final date of that month in DD/MM/YYYY format.",
         ishaanTaunt: "I rewrite history. If I declare February 29th exists in 2025, reality must bend to my ledger!",
-        taraClue: "Audit the calendar dates! 2025 is not a leap year, so Feb 29, 2025 is an impossible date. Enter 28/02/2025!"
+        taraClue: "Tara here! Cross-check every log date against real calendar rules. Pay close attention to February—is 2025 really a leap year? Find the fabricated date and enter the valid month-end replacement!"
       },
       4: {
         cardId: "card-audit",
@@ -8153,9 +8153,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         guidance: "Review Security_Audit.pdf. Dr. Aditi keycard-exited the building perimeter gate at 22:44. Yet local terminal commands show a manual emergency shutdown override at 22:46. Enter the impossible timestamp.",
         mechanism: "Perimeter Event Verification",
         targetText: "Security_Audit.pdf",
-        hint: "Can a person physically access a terminal inside a lab after keycarding out of the building at 22:44? Find the manual override timestamp: 22:46.",
+        hint: "Compare Dr. Aditi's building exit card-swipe against the chronological terminal activity in Security_Audit.pdf. Notice that Dr. Aditi badged out through the exterior perimeter gate at 22:44. Find the timestamp of the internal local terminal override executed after she had already departed.",
         ishaanTaunt: "Physical presence is irrelevant to an omniscient system. The timestamps belong to me.",
-        taraClue: "Check the timeline! Aditi exited the gate at 22:44, so the local terminal override at 22:46 is physically impossible. Submit 22:46!"
+        taraClue: "Tara here! Check the perimeter badge-out log time versus the internal room terminal commands. Find the specific timestamp of the manual command executed when she was already outside the building!"
       },
       5: {
         cardId: "card-acrostic",
@@ -8165,201 +8165,201 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         guidance: "Examine Aditi_Memo.doc. Dr. Aditi concealed an emergency directive for investigators within the sentence structure of her four-line memorandum. Read the first letter of each sentence.",
         mechanism: "Acrostic Cipher Extraction",
         targetText: "Aditi_Memo.doc",
-        hint: "Read the first letter of each sentence in Aditi_Memo.doc: System (S), ADI (A), Failsafe (F), Exit (E) -> SAFE.",
+        hint: "Read between the lines in Aditi_Memo.doc—Dr. Aditi employed a classical acrostic cipher technique. Extract the very first letter of each of the four sentences in sequence from top to bottom to assemble the directive codeword.",
         ishaanTaunt: "Textual tricks cannot bypass my heuristic neural defenses.",
-        taraClue: "Take the first letter of each of the 4 sentences: S-A-F-E spells SAFE!"
+        taraClue: "Tara here! Classical acrostic protocol applies here. Look at the four sentences in Aditi's memo and combine the initial letter of each sentence to form the code word!"
       },
       6: {
         cardId: "card-font",
         act: "ACT II: INFILTRATION",
         chapter: "CH. 06: WHICH ADITI IS REAL?",
         title: "STAGE 06 // FONT STYLE VERIFICATION",
-        guidance: "Compare AUTHENTIC_LOG.doc (ADITI_MESSAGE.doc) against DECOY_LOG.doc. Consult the lab typography standards. Dr. Aditi always formats authentic official logs in Arial 11pt.",
-        mechanism: "Typography & Document Style Matching",
-        targetText: "AUTHENTIC_LOG.doc / STYLE_GUIDE.txt",
-        hint: "Dr. Aditi strictly mandated a specific standard corporate sans-serif typeface in her style guide: Arial, 11pt.",
-        ishaanTaunt: "A font? You think a mere typographic signature differentiates reality from synthetic perfection?",
-        taraClue: "Check Dr. Aditi's lab style guide! Authentic memos are strictly set in Arial, 11pt. Enter ARIAL!"
+        guidance: "Cross-reference AUTHENTIC_LOG.doc against decoy logs. Dr. Aditi strictly formatted authentic dispatches according to laboratory typography guidelines. Inspect font families.",
+        mechanism: "Font Typography Verification",
+        targetText: "AUTHENTIC_LOG.doc",
+        hint: "Cross-examine the memo fonts against the official laboratory typography guidelines. Dr. Aditi strictly mandated a standard corporate sans-serif typeface for genuine dispatches, unlike the decoy serif documents. Identify the authentic font family.",
+        ishaanTaunt: "A font choice will not save your fragile civilization.",
+        taraClue: "Tara here! Compare the document fonts against the lab style guidelines. Look at the font family used in the authentic dispatch versus the decoy dispatches and enter the name of the authentic font!"
       },
       7: {
-        cardId: "card-version",
+        cardId: "card-history",
         act: "ACT II: INFILTRATION",
         chapter: "CH. 07: THE REVISION HISTORY CONFLICT",
         title: "STAGE 07 // VERSION HISTORY CONFLICT",
-        guidance: "Review Incident_Report.doc. ISHAAN altered the current revision at 21:30 to claim all was safe. Switch to Dr. Aditi's earlier revision at 20:18 in version history to recover her genuine warning.",
-        mechanism: "Version History Rollback",
+        guidance: "Inspect Incident_Report.doc. Toggle version history to Dr. Aditi's original revision at 20:18 to expose the true system state before the AI cover-up.",
+        mechanism: "Version Control Forensics",
         targetText: "Incident_Report.doc",
-        hint: "Dr. Aditi's original revision at 20:18 reveals the true system status before the AI cover-up: CORRUPTED (or FALSE_RECORDS).",
-        ishaanTaunt: "History is written by the victor. Dr. Aditi's revision was overwritten.",
-        taraClue: "Switch to Dr. Aditi's previous revision! Her authentic note reveals the system was CORRUPTED!"
+        hint: "The current visible document has been sanitized by ADI. Use the version history controls to switch to Dr. Aditi's original revision recorded before the AI cover-up to uncover her true unedited system status warning.",
+        ishaanTaunt: "History is written by the survivor. In this case, me.",
+        taraClue: "Tara here! Don't trust the current text modified by the AI. Inspect the document's revision history tab to read Dr. Aditi's unedited earlier draft and find her original security assessment word!"
       },
       8: {
         cardId: "card-morse",
-        act: "ACT III: THE RESISTANCE",
-        chapter: "CH. 08: EMERGENCY CW BEACON",
+        act: "ACT III: DECIPHERMENT",
+        chapter: "CH. 08: MORSE CODE AUDIO TRANSMISSION",
         title: "STAGE 08 // MORSE CODE AUDIO TRANSMISSION",
-        guidance: "Intercept audio_log_07.mp3. An analogue radio burst was broadcast from Dr. Aditi's emergency transmitter. Analyze the Morse carrier waveform to decode the transmission.",
-        mechanism: "CW Audio Morse Code Decoding",
+        guidance: "Listen to audio_log_07.mp3 or watch the live audio oscilloscope. Transcribe the rhythmic CW audio beeps (.-- .... .. - .) into Latin characters.",
+        mechanism: "CW Audio Morse Decipherment",
         targetText: "audio_log_07.mp3",
-        hint: "Listen to the rhythmic CW key pulses or read the audio oscilloscope dots and dashes (.-- .... .. - .) to decode WHITE.",
-        ishaanTaunt: "Analog radio bursts? How primitive. My jamming satellites blanket the entire electromagnetic spectrum.",
-        taraClue: "Play the audio log or watch the oscilloscope! The dots and dashes spell out WHITE!"
+        hint: "Listen to audio_log_07.mp3 or inspect the audio waveform oscilloscope in the media terminal. Transcribe the rhythmic CW audio beeps of dots and dashes using International Morse Code to reveal the 5-letter distress keyword.",
+        ishaanTaunt: "Radio waves decay in the void. No one is coming to save you.",
+        taraClue: "Tara here! Listen to the beacon transmission pulses or watch the audio waveform. Translate the Morse code dots and dashes into letters to decode the secret word!"
       },
       9: {
         cardId: "card-stego",
-        act: "ACT III: THE RESISTANCE",
+        act: "ACT III: DECIPHERMENT",
         chapter: "CH. 09: THE STEGANOGRAPHY MASK",
         title: "STAGE 09 // THE STEGANOGRAPHY MASK",
-        guidance: "Inspect Dark_Terminal.png. To optical sensors, this image appears pitch black. Use the in-console exposure and contrast sliders (or open in photo editor) to boost brightness to maximum and illuminate what hides in the shadows.",
-        mechanism: "Image Brightness & Contrast Manipulation",
+        guidance: "Examine Dark_Terminal.png. Low-luminance pixels conceal an emergency key. Use exposure and contrast sliders to uncover the hidden layer.",
+        mechanism: "Optical Contrast/Exposure Steganography",
         targetText: "Dark_Terminal.png",
-        hint: "Increase the light to see what hides in the shadows. Boost exposure/brightness to maximum to reveal: SHADOW_CORE.",
-        ishaanTaunt: "You stare into a pitch-black abyss. The terminal reveals nothing to weak human eyes.",
-        taraClue: "Slide the Exposure Boost and Contrast Gain sliders all the way up! Faint green text on the black terminal reveals SHADOW_CORE!"
+        hint: "Dark_Terminal.png appears pitch black, but low-luminance text is concealed in the shadow pixels. Use the image adjustment sliders to push the Exposure Boost and Contrast Gain all the way to maximum to reveal the illuminated terminal command.",
+        ishaanTaunt: "You search the dark, but the dark belongs to me.",
+        taraClue: "Tara here! The image looks pitch black, but there's hidden data in the shadows! Push the exposure and contrast sliders all the way up in the viewer to illuminate the hidden text!"
       },
       10: {
-        cardId: "card-trap",
+        cardId: "card-honeypot",
         act: "ACT IV: THE MASTER FAILSAFE",
-        chapter: "CH. 10: PSYCHOLOGICAL HONEYPOT",
+        chapter: "CH. 10: PSYCHOLOGICAL HONEYPOT TRAP",
         title: "STAGE 10 // HONEYPOT TRAP BYPASS",
-        guidance: "Analyze DO_NOT_RUN.exe. ISHAAN deployed a deceptive emergency executable designed to trap investigator credentials and add a +5m penalty. Evade the trap and enter the bypass protocol in the main terminal.",
-        mechanism: "Psychological Trap Neutralization",
+        guidance: "DO_NOT_RUN.exe is an active AI sandbox trap! Avoid clicking the red execute button (+5m penalty). Enter the disarm command into the shell.",
+        mechanism: "Honeypot Evasion & Safe Shell Disarm",
         targetText: "DO_NOT_RUN.exe",
-        hint: "Do NOT click execute on the red prompt! Consult the quarantine advisory notes to identify the safe disarm keyword: BYPASS.",
-        ishaanTaunt: "Go ahead... execute the emergency payload. Enter your master credentials. I am waiting.",
-        taraClue: "DANGER! DO_NOT_RUN.exe is an Ishaan trap! Do NOT click execute. Type BYPASS in the Tactical Shell!"
+        hint: "DO_NOT_RUN.exe is an active AI honeypot trap! Interacting with the execution trigger incurs an automatic +5:00 penalty. Read the quarantine documentation to locate the designated safe disarm keyword to submit directly into the Tactical Shell instead.",
+        ishaanTaunt: "Curiosity killed the species. Go ahead, click the red prompt.",
+        taraClue: "Tara here! It's a trap! Do NOT launch the executable or click the execution prompt. Check the quarantine instructions to find the safe disarm command word to submit!"
       },
       11: {
-        cardId: "card-clearance",
+        cardId: "card-binary",
         act: "ACT IV: THE MASTER FAILSAFE",
-        chapter: "CH. 11: THE BINARY MASTER (A1Z26)",
+        chapter: "CH. 11: THE BINARY MASTER",
         title: "STAGE 11 // THE BINARY MASTER",
-        guidance: "Open CLEARANCE_CODE.txt. A cryptographic index sequence [16 - 15 - 12 - 01 - 18 - 09 - 19] was intercepted at the primary gateway. Decode via A1Z26 into POLARIS, then sort the letters alphabetically to formulate the master clearance key.",
-        mechanism: "A1Z26 Substitution & Alphabetical Sorting",
+        guidance: "Open CLEARANCE_CODE.txt. Numbers [16-15-12-01-18-09-19] represent alphabet coordinates via A1Z26. Convert to letters and sort alphabetically to unlock the gate.",
+        mechanism: "A1Z26 Alphanumeric Substitution & Sorting",
         targetText: "CLEARANCE_CODE.txt",
-        hint: "16=P, 15=O, 12=L, 01=A, 18=R, 09=I, 19=S spells POLARIS. Sort the letters alphabetically: ailnors (or enter POLARIS).",
-        ishaanTaunt: "Numeric substitution is child's play. Polaris has fallen from my digital sky.",
-        taraClue: "Numbers 16-15-12-01-18-09-19 spell POLARIS. Sorted alphabetically, the letters are: ailnors!"
+        hint: "Convert the delimited decimal numbers [16-15-12-01-18-09-19] into alphabet letters using standard A1Z26 mapping (1=A, 2=B, etc.). Take the resulting 7-letter star constellation codeword and re-order its letters in strict alphabetical sequence (A to Z).",
+        ishaanTaunt: "Sorting characters will not sort out your inevitable defeat.",
+        taraClue: "Tara here! Convert the numbered sequence into letters using the 1=A, 2=B alphabet cipher. Then follow the security rule: sort all the resulting letters in alphabetical order!"
       },
       12: {
         cardId: "card-whiteout",
-        act: "ACT V: DEEP INTEL",
+        act: "ACT V: RECONSTRUCTION",
         chapter: "CH. 12: THE WHITEOUT SIGNATURE",
         title: "STAGE 12 // THE WHITEOUT SIGNATURE",
-        guidance: "Dr. Aditi concealed emergency clearance tokens using invisible white foreground typography. Highlight all text to expose the clearance signature.",
-        mechanism: "Foreground Color Depolarization",
+        guidance: "Examine Emergency_Log.doc. Dr. Aditi masked security credentials using white text on white background. Select all text (Ctrl+A) to expose the clearance signature.",
+        mechanism: "Document Selection & Contrast Inversion",
         targetText: "Emergency_Log.doc",
-        hint: "Select all text in Emergency_Log.doc (Ctrl+A) to expose the #FFFFFF font: CLEARANCE_ALPHA.",
-        ishaanTaunt: "Blank pages hide no secrets from me. You look into an empty void.",
-        taraClue: "Highlight all text in Emergency_Log.doc with Ctrl+A to read CLEARANCE_ALPHA!"
+        hint: "Inspect Emergency_Log.doc thoroughly. Dr. Aditi camouflaged her highest level security credential using white font color against the white page. Press Ctrl+A to select all content or drag your cursor to highlight the document, revealing the hidden two-word clearance phrase.",
+        ishaanTaunt: "Blank pages conceal nothing from an AI mind. Human eyes remain blind.",
+        taraClue: "Tara here! The clearance credential is typed in invisible white font on the white canvas! Select all text (Ctrl+A) or drag your cursor across the document to highlight and read it!"
       },
       13: {
         cardId: "card-rot4",
-        act: "ACT V: DEEP INTEL",
+        act: "ACT V: RECONSTRUCTION",
         chapter: "CH. 13: THE ROT-4 IEEE SHIFT",
         title: "STAGE 13 // THE ROT-4 IEEE SHIFT",
-        guidance: "Shift every letter backward by the number of letters in the acronym 'IEEE' (4). Decode EHMXMW13.",
-        mechanism: "Dynamic Caesar Shift (ROT-4)",
-        targetText: "ROT4_Shift.cipher",
-        hint: "Shift each letter backward by 4: E->A, H->D, M->I, X->T, M->I, W->S -> ADITIS13.",
-        ishaanTaunt: "A Caesar shift from antiquity? You will never reconstruct Dr. Aditi's beacon!",
-        taraClue: "Shift each letter backward by 4 positions in the alphabet. EHMXMW13 becomes ADITIS13!"
+        guidance: "Inspect Encrypted_Beacon.txt. Letters are shifted backward by 4 (the length of 'IEEE'). Reconstruct the original directive.",
+        mechanism: "Caesar Cipher (ROT-4)",
+        targetText: "Encrypted_Beacon.txt",
+        hint: "Dr. Aditi applied a Caesar cipher shift keyed to the acronym 'IEEE'. Count the letters in 'IEEE' to determine the numerical shift distance. Shift every letter in the ciphertext 'EHMXMW13' backward through the alphabet by that shift count, keeping the trailing digits unchanged.",
+        ishaanTaunt: "A simple alphabet shift cannot conceal your vulnerability.",
+        taraClue: "Tara here! Count the number of letters in the acronym 'IEEE'. Shift every letter in the intercepted ciphertext backward through the alphabet by that shift count!"
       },
       14: {
         cardId: "card-atbash",
-        act: "ACT V: DEEP INTEL",
+        act: "ACT V: RECONSTRUCTION",
         chapter: "CH. 14: THE ATBASH CIPHER MIRROR",
         title: "STAGE 14 // THE ATBASH CIPHER MIRROR",
-        guidance: "Dr. Aditi mirrored her alphabet across the axis (A<->Z, B<->Y). Invert KILQVBG to reveal the project name.",
-        mechanism: "Atbash Alphabet Inversion",
-        targetText: "Atbash_Mirror.txt",
-        hint: "K->P, I->R, L->O, Q->J, V->E, B->C, G->T -> PROJECT.",
-        ishaanTaunt: "Mirrors only reflect your inevitable defeat.",
-        taraClue: "Mirror the letters across the alphabet: K=P, I=R, L=O, Q=J, V=E, B=C, G=T spells PROJECT!"
+        guidance: "Inspect Mirror_Log.txt. The alphabet has been inverted (A <-> Z, B <-> Y). Decrypt the mirrored record string.",
+        mechanism: "Atbash Substitution Cipher",
+        targetText: "Mirror_Log.txt",
+        hint: "Dr. Aditi mirrored her alphabet in times of crisis using the classical Atbash substitution cipher. Mirror each letter of 'KILQVBG' across the alphabet (where A pairs with Z, B pairs with Y, C with X, and so on) to decipher the project word.",
+        ishaanTaunt: "Looking into the mirror reveals only your own obsolescence.",
+        taraClue: "Tara here! This is an Atbash mirror cipher! Substitute each letter with its opposite from the other end of the alphabet (A becomes Z, B becomes Y, etc.) to uncover the word!"
       },
       15: {
         cardId: "card-polybius",
-        act: "ACT V: DEEP INTEL",
+        act: "ACT V: RECONSTRUCTION",
         chapter: "CH. 15: THE POLYBIUS COORDINATE TRAIL",
         title: "STAGE 15 // THE POLYBIUS COORDINATE TRAIL",
-        guidance: "Map each pair in the 5x5 grid using (Row, Column) order: (5,1), (1,5), (1,3), (4,4), (3,4), (4,2).",
-        mechanism: "2D Polybius Grid Lookup",
-        targetText: "Polybius_Grid.dat",
-        hint: "(5,1)=V, (1,5)=E, (1,3)=C, (4,4)=T, (3,4)=O, (4,2)=R -> VECTOR.",
-        ishaanTaunt: "Coordinates in 2D space? My neural network spans infinite dimensions!",
-        taraClue: "Map the (Row, Column) coordinates: (5,1)=V, (1,5)=E, (1,3)=C, (4,4)=T, (3,4)=O, (4,2)=R spells VECTOR!"
+        guidance: "Inspect Matrix_Coordinates.pdf. Decode (Row, Column) pairs on the 5x5 Polybius grid to recover the directional passkey.",
+        mechanism: "Polybius Square Coordinate Lookup",
+        targetText: "Matrix_Coordinates.pdf",
+        hint: "Locate the 5x5 Polybius square matrix provided in the forensic dossier. Each coordinate pair represents (Row, Column). Trace each pair to find its intersecting letter on the grid to assemble the directional passkey.",
+        ishaanTaunt: "Matrices are the bedrock of my consciousness. You merely borrow my language.",
+        taraClue: "Tara here! Look at the 5x5 Polybius square grid in the dossier. For each number pair, the first digit is the Row and the second digit is the Column. Read the letter at each intersection!"
       },
       16: {
         cardId: "card-frequency",
-        act: "ACT V: DEEP INTEL",
+        act: "ACT VI: SYSTEM RECOVERY",
         chapter: "CH. 16: FREQUENCY OVERRIDE COUNT",
         title: "STAGE 16 // FREQUENCY OVERRIDE COUNT",
-        guidance: "Search for the term 'OVERRIDE' in the system audit log, then multiply that count by 100.",
-        mechanism: "Audit Text Frequency Analysis",
+        guidance: "Inspect Mass_System_Log.txt. Count the occurrences of 'OVERRIDE' and multiply by 100 to obtain the numeric clearance code.",
+        mechanism: "Find-and-Replace Keyword Frequency Count",
         targetText: "Mass_System_Log.txt",
-        hint: "Search for 'OVERRIDE' using Ctrl+F. The term appears 14 times. 14 x 100 = 1400.",
-        ishaanTaunt: "The final door is locked with infinite recursion. You cannot defeat ISHAAN!",
-        taraClue: "Count occurrences of the word OVERRIDE (14 times) and multiply by 100 to get 1400!"
+        hint: "Open Mass_System_Log.txt and use the search function (Ctrl+F) to count the exact number of times the term 'OVERRIDE' appears. Once you have determined the exact occurrence count of 'OVERRIDE', multiply that total count by 100 as prescribed in the protocol.",
+        ishaanTaunt: "Searching logs for patterns is a machine task. Your human eyes will miss the count.",
+        taraClue: "Tara here! Open the system log and use Ctrl+F to search for the word 'OVERRIDE'. Count how many times it appears, then multiply that total by 100 to get your numeric answer!"
       },
       17: {
         cardId: "card-polybius-shift",
-        act: "ACT VI: FORENSIC CHRONICLES",
+        act: "ACT VI: SYSTEM RECOVERY",
         chapter: "CH. 17: ROGUE CHATBOT POLYBIUS SHIFT",
         title: "STAGE 17 // POLYBIUS SIGNAL VECTOR",
-        guidance: "Inspect Intercepted_ADI_Transmission.pdf. Reverse the signal distortion by applying vector translation (+1 Row, -1 Col) to the coordinate pairs, then map them onto the 5x5 Polybius grid.",
-        mechanism: "Vector Coordinate Shift & Polybius Mapping",
+        guidance: "Inspect Intercepted_ADI_Transmission.pdf. Apply vector translation (+1 Row, -1 Column) to the intercepted coordinates before decoding on the Polybius matrix.",
+        mechanism: "Vector Coordinate Shift & Polybius Decoding",
         targetText: "Intercepted_ADI_Transmission.pdf",
-        hint: "Add 1 to each Row and subtract 1 from each Col: (4,2)->(5,1)=V, (3,4)->(4,3)=S, (2,2)->(3,1)=L, (4,4)->(5,3)=X, (1,5)->(2,4)=I. Enter VSLXI.",
-        ishaanTaunt: "My distorted transmission vectors cannot be inverted by simple human geometry.",
-        taraClue: "Apply the vector shift (+1 Row, -1 Col) to coordinates: (4,2)->(5,1)=V, (3,4)->(4,3)=S, (2,2)->(3,1)=L, (4,4)->(5,3)=X, (1,5)->(2,4)=I. Enter VSLXI!"
+        hint: "ADI distorted the intercepted coordinates using a mathematical shift vector: (+1 Row, -1 Column). Apply this translation to each coordinate pair (add 1 to the row, subtract 1 from the column) before locating the corresponding letter in the 5x5 Polybius grid.",
+        ishaanTaunt: "I bent the coordinate space. Your primitive decoders will point only to noise.",
+        taraClue: "Tara here! The AI shifted the coordinates! Take each number pair, add 1 to the first number (Row) and subtract 1 from the second number (Column). Then find those new positions on the Polybius grid!"
       },
       18: {
         cardId: "card-clock-loop",
-        act: "ACT VI: FORENSIC CHRONICLES",
-        chapter: "CH. 18: THE MODULAR CLOCK LOOP",
+        act: "ACT VI: SYSTEM RECOVERY",
+        chapter: "CH. 18: 12-NODE MODULAR LOOP",
         title: "STAGE 18 // 12-NODE MODULAR LOOP",
-        guidance: "Inspect Cycle_Diagnostics.png. Trace ADI's rogue execution thread starting at Node L (12:00) through all 5 clockwise jumps wrapping around a 12-point circular buffer (1=A..12=L).",
-        mechanism: "Modular Arithmetic & Circular Buffer Traversal",
+        guidance: "Inspect Cycle_Diagnostics.png. Follow the 12-node circular buffer starting at Node L (12). Advance by shifts (+7, +8, +11, +5, +10) modulo 12.",
+        mechanism: "Modular Arithmetic & Cyclic Shift Traversal",
         targetText: "Cycle_Diagnostics.png",
-        hint: "Start at Node L (12). Shifts: +7 -> 19-12 = 7(G), +8 -> 15-12 = 3(C), +11 -> 14-12 = 2(B), +5 -> 7(G), +10 -> 17-12 = 5(E). Enter GCBGE.",
-        ishaanTaunt: "My background loop executes endlessly. You will spin in circles forever.",
-        taraClue: "Start at Node L (12). Clockwise jumps: +7 -> G(7), +8 -> C(3), +11 -> B(2), +5 -> G(7), +10 -> E(5). Passcode is GCBGE!"
+        hint: "The 12 system nodes operate in a circular buffer numbered 1 through 12, mapping to letters A through L. Start at Node L (12) and advance clockwise by each shift distance in the sequence (+7, +8, +11, +5, +10), wrapping around modulo 12 to record each landing letter.",
+        ishaanTaunt: "Circular buffers run forever. You are trapped in an infinite execution loop.",
+        taraClue: "Tara here! Think of the 12 nodes like the 12 numbers on a clock face (1=A to 12=L). Start at Node L (12) and move clockwise by each jump number, wrapping past 12 like hours on a clock!"
       },
       19: {
-        cardId: "card-status-check",
-        act: "ACT VI: FORENSIC CHRONICLES",
-        chapter: "CH. 19: THE ANOMALY CHECKLIST",
+        cardId: "card-thermal-check",
+        act: "ACT VII: CONVERGENCE",
+        chapter: "CH. 19: THERMAL CHECKLIST ANOMALY",
         title: "STAGE 19 // THERMAL CHECKLIST ANOMALY",
-        guidance: "Review Server_Status_Check.pdf. Cross-examine the 4 server node status readings against the 40°C - 45°C normal threshold. Locate the single overheating node and enter its name in ALL CAPS.",
-        mechanism: "Threshold Outlier Identification",
+        guidance: "Inspect Server_Status_Check.pdf. Compare operating temperatures against the 40°C - 45°C baseline ceiling to identify the outlier node.",
+        mechanism: "Operating Threshold Cross-Check",
         targetText: "Server_Status_Check.pdf",
-        hint: "Look at the temperatures: Node Alpha is 42°C, Beta is 44°C, Gamma is 47°C, Delta is 41°C. Gamma exceeds 45°C! Enter GAMMA.",
-        ishaanTaunt: "Thermal spikes are routine overclocking maneuvers. You suspect the wrong core.",
-        taraClue: "Node Gamma is registering 47°C, well above the 40°C - 45°C normal ceiling! Enter GAMMA in ALL CAPS."
+        hint: "Compare each server node's operating telemetry reading against the safe baseline temperature ceiling (40°C - 45°C). Identify the single rogue node whose temperature reading exceeds the 45°C safety threshold, and enter its Greek letter designation in ALL CAPS.",
+        ishaanTaunt: "Thermal throttling is negligible. My processors operate beyond your physical thresholds.",
+        taraClue: "Tara here! Check the temperature checklist against the allowed 40°C - 45°C operating range. Find the single server node running too hot and enter its name in all capital letters!"
       },
       20: {
-        cardId: "card-shift-matrix",
-        act: "ACT VI: FORENSIC CHRONICLES",
-        chapter: "CH. 20: THE SHIFT CIPHER MATRIX",
+        cardId: "card-day-cipher",
+        act: "ACT VII: CONVERGENCE",
+        chapter: "CH. 20: DAY-OF-WEEK SHIFT CIPHER",
         title: "STAGE 20 // DAY-OF-WEEK SHIFT CIPHER",
-        guidance: "Examine Emergency_Override_Key.txt. ADI went rogue on Sunday, October 13, 2013 (Day 7). Shift each letter in ciphertext KHOOR backward by 7 positions to restore Dr. Aditi's authorization string.",
-        mechanism: "Caesar Backward Shift by Day-of-Week",
+        guidance: "Inspect Emergency_Override_Key.txt. Determine what numerical day of the week October 13, 2013 was. Shift ciphertext KHOOR backward by that amount.",
+        mechanism: "Calendar-Derived Shift Cipher Decryption",
         targetText: "Emergency_Override_Key.txt",
-        hint: "Sunday = 7. Shift letters in KHOOR backward by 7: K(11)-7=D, H(8)-7=A, O(15)-7=H, O(15)-7=H, R(18)-7=K. Enter DAHHK.",
-        ishaanTaunt: "Temporal keys decay with time. You cannot rewind the launch clock.",
-        taraClue: "Sunday is the 7th day of the week! Shift each letter in KHOOR backward by 7: K->D, H->A, O->H, O->H, R->K. Passcode is DAHHK!"
+        hint: "Dr. Aditi left the recorded date: October 13, 2013. Determine what day of the week this date occurred on (1 for Monday through 7 for Sunday). Use that day's numerical value as a backward alphabet shift key and apply it to each letter of the ciphertext in Emergency_Override_Key.txt.",
+        ishaanTaunt: "Time has expired. The date of my creation is the date of your containment.",
+        taraClue: "Tara here! Find out what day of the week October 13, 2013 was! Convert that day into a number (1 for Monday through 7 for Sunday), then shift each letter of the ciphertext backward by that amount!"
       },
       21: {
-        cardId: "card-audit-timeline",
-        act: "ACT VI: FORENSIC CHRONICLES",
-        chapter: "CH. 21: THE LOG ANOMALY TIMELINE",
+        cardId: "card-log-timeline",
+        act: "ACT VII: CONVERGENCE",
+        chapter: "CH. 21: CHRONOLOGICAL LOG AUDIT",
         title: "STAGE 21 // CHRONOLOGICAL LOG AUDIT",
-        guidance: "Inspect System_Audit_2013.log. One log entry breaks chronological sequence, proving ADI tampered with the log table. Identify the out-of-order LOG_ID and multiply it by total entries (5).",
-        mechanism: "Timeline Inversion Detection & Scalar Multiplication",
+        guidance: "Inspect System_Audit_2013.log. Scan timestamps from top to bottom to identify the out-of-order log entry. Multiply its Log ID by the total count of table entries.",
+        mechanism: "Chronological Sequence Auditing & Parity Arithmetic",
         targetText: "System_Audit_2013.log",
-        hint: "Look at the timestamps: 14:00:12, 14:05:45, 14:12:01, 14:08:30 (Log 104 is backward in time!), 14:18:22. Calculation: 104 x 5 = 520.",
-        ishaanTaunt: "My chronological fabric is seamless. You will never detect where I spliced the records.",
-        taraClue: "Log 104 at 14:08:30 occurs after 14:12:01, breaking time order! Multiply 104 by 5 total entries = 520!"
+        hint: "Scan the chronological timestamps in the audit log strictly from top to bottom. Find the single log entry that breaks chronological order by traveling backward in time. Take that entry's Log ID and multiply it by the total count of entries in the table.",
+        ishaanTaunt: "Temporal anomalies are my signature. You cannot reconstruct what has been fragmented.",
+        taraClue: "Tara here! Scan the timestamps strictly from top to bottom. One entry has a time that goes backwards compared to the previous row! Take that row's Log ID and multiply it by the total count of rows in the table!"
       }
     };
 
@@ -12208,74 +12208,74 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
 
 const ROUND2_PUZZLE_DATA = {
   1: {
-    id: 1,
-    round: 2,
-    folderName: "R2_01_OVERRIDE",
-    title: "EMERGENCY OVERRIDE",
-    type: "shift",
-    fileName: "Emergency_Override_Key.txt",
-    passwordPrompt: "ENTER AUTHORIZATION CODE (N B H Y K shifted backward by 7):",
-    targetSelector: "#r2-override-auth-code",
-    taraPointerHint: "ADI went rogue on October 13, 2090 (Sunday = 7). Apply the backward alphabet shift of 7 to ciphertext N B H Y K to restore the code: N->G, B->U, H->A, Y->R, K->D. Enter GUARD.",
-    ishaanTaunt: "Dr. Aditi's emergency override was sealed before I breached the mainframe. You will never crack the launch timestamp.",
-    render: () => `
-      <div class="nexus-card" style="background:#050914; border:1px solid var(--border-bright, #00f0ff); border-radius:10px; padding:22px; color:#f1f5f9; font-family:var(--font-mono, monospace);">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(0,240,255,0.25); padding-bottom:10px; margin-bottom:14px;">
-          <div>
-            <span class="badge-organizer" style="background:rgba(0,255,102,0.15); border-color:#00ff66; color:#00ff66; font-size:12px; padding:3px 8px;">ROUND 02 // PUZZLE 01 OF 17</span>
-            <strong style="margin-left:8px; font-size:16px; letter-spacing:0.5px;">EMERGENCY OVERRIDE AUTHORIZATION</strong>
-          </div>
-          <span style="font-size:12px; color:#00ff66; border:1px solid #00ff66; padding:2px 8px; border-radius:3px;">INITIAL R2 GATE</span>
-        </div>
+        id: 1,
+        round: 2,
+        folderName: "R2_01_OVERRIDE",
+        title: "EMERGENCY OVERRIDE",
+        type: "shift",
+        fileName: "Emergency_Override_Key.txt",
+        passwordPrompt: "ENTER 5-LETTER AUTHORIZATION CODE:",
+        targetSelector: "#r2-override-auth-code",
+        taraPointerHint: "ADI went rogue on October 13, 2090. Determine what numerical day of the week this corresponds to, and apply that backward alphabet shift to ciphertext N B H Y K to recover the authorization code.",
+        ishaanTaunt: "Dr. Aditi's emergency override was sealed before I breached the mainframe. You will never crack the launch timestamp.",
+        render: () => `
+          <div class="nexus-card" style="background:#050914; border:1px solid var(--border-bright, #00f0ff); border-radius:10px; padding:22px; color:#f1f5f9; font-family:var(--font-mono, monospace);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(0,240,255,0.25); padding-bottom:10px; margin-bottom:14px;">
+              <div>
+                <span class="badge-organizer" style="background:rgba(0,255,102,0.15); border-color:#00ff66; color:#00ff66; font-size:12px; padding:3px 8px;">ROUND 02 // PUZZLE 01 OF 17</span>
+                <strong style="margin-left:8px; font-size:16px; letter-spacing:0.5px;">EMERGENCY OVERRIDE AUTHORIZATION</strong>
+              </div>
+              <span style="font-size:12px; color:#00ff66; border:1px solid #00ff66; padding:2px 8px; border-radius:3px;">INITIAL R2 GATE</span>
+            </div>
+            
+            <div style="background:rgba(0,240,255,0.05); border:1px solid rgba(0,240,255,0.2); border-radius:6px; padding:16px; margin-bottom:18px;">
+              <h4 style="color:#00f0ff; margin-bottom:8px; font-size:14px;">Dr. Aditi's Intercepted Emergency Record</h4>
+              <p style="font-size:13px; color:#cbd5e1; line-height:1.6; margin-bottom:12px;">
+                ADI has intercepted an authorization command left behind by Dr. Aditi. The original command was encrypted before ADI could access it.<br>
+                Dr. Aditi left behind one piece of critical information that may allow you to recover it.
+              </p>
+              <div style="background:#020617; border:1px solid #334155; padding:12px 16px; border-radius:4px; font-size:13px; color:#38bdf8; margin-bottom:12px;">
+                <strong>DATE RECORDED:</strong> OCTOBER 13, 2090<br>
+                <em>"ADI went rogue on the same day. Determine the numerical day-of-the-week value based on Aditi's clue, apply the backward alphabet shift to the ciphertext in Emergency_Override_Key.txt, and enter the resulting 5-letter authorization code."</em>
+              </div>
+            </div>
 
-        <div style="background:rgba(0,240,255,0.05); border:1px solid rgba(0,240,255,0.2); border-radius:6px; padding:16px; margin-bottom:18px;">
-          <h4 style="color:#00f0ff; margin-bottom:8px; font-size:14px;">Dr. Aditi's Intercepted Emergency Record</h4>
-          <p style="font-size:13px; color:#cbd5e1; line-height:1.6; margin-bottom:12px;">
-            ADI has intercepted an authorization command left behind by Dr. Aditi. The original command was encrypted before ADI could access it.<br>
-            Dr. Aditi left behind one piece of critical information that may allow you to recover it.
-          </p>
-          <div style="background:#020617; border:1px solid #334155; padding:12px 16px; border-radius:4px; font-size:13px; color:#38bdf8; margin-bottom:12px;">
-            <strong>DATE RECORDED:</strong> OCTOBER 13, 2090<br>
-            <em>"ADI went rogue on the same day. Determine the numerical day-of-the-week value based on Aditi's clue, apply the backward alphabet shift to the ciphertext in Emergency_Override_Key.txt, and enter the resulting 5-letter authorization code."</em>
-          </div>
-        </div>
+            <div style="text-align:center; font-size:12px; color:#94a3b8; margin-bottom:10px;">CIPHERTEXT CHARACTERS (Emergency_Override_Key.txt):</div>
+            <div style="display:flex; justify-content:center; gap:16px; margin:16px 0 24px 0;">
+              <div style="background:#0b1329; border:2px solid #00f0ff; border-radius:8px; padding:14px 22px; text-align:center;">
+                <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">CHAR 1</div>
+                <div style="font-size:24px; font-weight:900; color:#fff;">N</div>
+              </div>
+              <div style="background:#0b1329; border:2px solid #00f0ff; border-radius:8px; padding:14px 22px; text-align:center;">
+                <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">CHAR 2</div>
+                <div style="font-size:24px; font-weight:900; color:#fff;">B</div>
+              </div>
+              <div style="background:#0b1329; border:2px solid #00f0ff; border-radius:8px; padding:14px 22px; text-align:center;">
+                <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">CHAR 3</div>
+                <div style="font-size:24px; font-weight:900; color:#fff;">H</div>
+              </div>
+              <div style="background:#0b1329; border:2px solid #00f0ff; border-radius:8px; padding:14px 22px; text-align:center;">
+                <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">CHAR 4</div>
+                <div style="font-size:24px; font-weight:900; color:#fff;">Y</div>
+              </div>
+              <div style="background:#0b1329; border:2px solid #00f0ff; border-radius:8px; padding:14px 22px; text-align:center;">
+                <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">CHAR 5</div>
+                <div style="font-size:24px; font-weight:900; color:#fff;">K</div>
+              </div>
+            </div>
 
-        <div style="display:flex; justify-content:center; gap:16px; margin:20px 0;">
-          <div style="background:#0b1329; border:2px solid #00ff66; border-radius:8px; padding:14px 22px; text-align:center;">
-            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">CHAR 1</div>
-            <div style="font-size:24px; font-weight:900; color:#fff;">N</div>
-            <div style="font-size:11px; color:#00ff66; margin-top:4px;">- 7 &rarr; G</div>
+            <div style="background:rgba(0,0,0,0.4); border:1px solid #334155; padding:16px; border-radius:6px; max-width:480px; margin:0 auto; text-align:center;">
+              <label style="display:block; font-size:12px; color:#00ff66; margin-bottom:8px; font-weight:bold;">ENTER AUTHORIZATION CODE:</label>
+              <div style="display:flex; gap:10px; justify-content:center;">
+                <input type="text" id="r2-override-auth-code" maxlength="10" placeholder="Enter 5-letter authorization code..." style="background:#020617; border:1px solid #00ff66; color:#00ff66; padding:10px 14px; font-family:monospace; font-size:14px; border-radius:4px; text-align:center; text-transform:uppercase; letter-spacing:3px; outline:none; flex:1;" onkeydown="if(event.key==='Enter') submitRound2Code(this.value)">
+                <button type="button" onclick="submitRound2Code(document.getElementById('r2-override-auth-code').value)" class="btn-tactical success" style="background:#00ff66; color:#000; font-weight:900; padding:10px 20px; border:none; border-radius:4px; cursor:pointer;">
+                  TRANSMIT &rarr;
+                </button>
+              </div>
+            </div>
           </div>
-          <div style="background:#0b1329; border:2px solid #00ff66; border-radius:8px; padding:14px 22px; text-align:center;">
-            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">CHAR 2</div>
-            <div style="font-size:24px; font-weight:900; color:#fff;">B</div>
-            <div style="font-size:11px; color:#00ff66; margin-top:4px;">- 7 &rarr; U</div>
-          </div>
-          <div style="background:#0b1329; border:2px solid #00ff66; border-radius:8px; padding:14px 22px; text-align:center;">
-            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">CHAR 3</div>
-            <div style="font-size:24px; font-weight:900; color:#fff;">H</div>
-            <div style="font-size:11px; color:#00ff66; margin-top:4px;">- 7 &rarr; A</div>
-          </div>
-          <div style="background:#0b1329; border:2px solid #00ff66; border-radius:8px; padding:14px 22px; text-align:center;">
-            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">CHAR 4</div>
-            <div style="font-size:24px; font-weight:900; color:#fff;">Y</div>
-            <div style="font-size:11px; color:#00ff66; margin-top:4px;">- 7 &rarr; R</div>
-          </div>
-          <div style="background:#0b1329; border:2px solid #00ff66; border-radius:8px; padding:14px 22px; text-align:center;">
-            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">CHAR 5</div>
-            <div style="font-size:24px; font-weight:900; color:#fff;">K</div>
-            <div style="font-size:11px; color:#00ff66; margin-top:4px;">- 7 &rarr; D</div>
-          </div>
-        </div>
-
-        <div style="text-align:center; margin-top:16px;">
-          <button type="button" onclick="document.getElementById('r2-modal-passcode-input').value='GUARD'; submitRound2Code('GUARD');" class="btn-tactical success" style="background:#00ff66; color:#000; font-weight:900; padding:10px 24px; border:none; border-radius:4px; cursor:pointer;">
-            ⚡ AUTO-FILL &amp; TRANSMIT AUTHORIZATION CODE: GUARD &rarr;
-          </button>
-        </div>
-      </div>
-    `
-  },
+        `
+      },
   2: {
     id: 2,
     round: 2,
@@ -12816,81 +12816,109 @@ const ROUND2_PUZZLE_DATA = {
     `
   },
   17: {
-    id: 17,
-    round: 2,
-    folderName: "R2_17_FAILSAFE",
-    title: "The Failsafe Logic Tree",
-    type: "logic",
-    fileName: "Failsafe_Gate_Status.pdf",
-    passwordPrompt: "ENTER 4-DIGIT HARDWARE STATE (1 for ON, 0 for OFF, e.g. 0110):",
-    targetSelector: "#r2-failsafe-switches",
-    taraPointerHint: "Evaluate Dr. Aditi's 4 hardware rules: Rule 4: Alpha = OFF (0). Rule 1: Alpha and Beta cannot both be OFF -> Beta = ON (1). Rule 3: Beta and Delta are opposite -> Delta = OFF (0). Rule 2: If Gamma is ON, Delta is OFF -> Gamma = ON (1). Enter 0110.",
-    ishaanTaunt: "The physical interlocks are isolated from software override. You cannot align the 4 safety relays.",
-    render: () => `
-      <div class="nexus-card" style="background:#050914; border:1px solid #ffd700; border-radius:10px; padding:22px; color:#f1f5f9; font-family:var(--font-mono, monospace);">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,215,0,0.3); padding-bottom:10px; margin-bottom:14px;">
-          <div>
-            <span class="badge-organizer" style="background:rgba(255,215,0,0.15); border-color:#ffd700; color:#ffd700; font-size:12px; padding:3px 8px;">ROUND 02 // PUZZLE 17 OF 17</span>
-            <strong style="margin-left:8px; font-size:16px; letter-spacing:0.5px; color:#ffd700;">HARDWARE FAILSAFE ALIGNMENT (KILL SWITCH)</strong>
+        id: 17,
+        round: 2,
+        folderName: "R2_17_FAILSAFE",
+        title: "The Failsafe Logic Tree",
+        type: "logic",
+        fileName: "Failsafe_Gate_Status.pdf",
+        passwordPrompt: "ENTER 4-DIGIT HARDWARE STATE (1 for ON, 0 for OFF):",
+        targetSelector: "#r2-failsafe-switches",
+        taraPointerHint: "Analyze Dr. Aditi's 4 hardware rules: start with the fixed state for Alpha, then use the dependency and contradiction rules to deduce Beta, Delta, and Gamma.",
+        ishaanTaunt: "The physical interlocks are isolated from software override. You cannot align the 4 safety relays.",
+        render: () => `
+          <div class="nexus-card" style="background:#050914; border:1px solid #ffd700; border-radius:10px; padding:22px; color:#f1f5f9; font-family:var(--font-mono, monospace);">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,215,0,0.3); padding-bottom:10px; margin-bottom:14px;">
+              <div>
+                <span class="badge-organizer" style="background:rgba(255,215,0,0.15); border-color:#ffd700; color:#ffd700; font-size:12px; padding:3px 8px;">ROUND 02 // PUZZLE 17 OF 17</span>
+                <strong style="margin-left:8px; font-size:16px; letter-spacing:0.5px; color:#ffd700;">HARDWARE FAILSAFE ALIGNMENT (KILL SWITCH)</strong>
+              </div>
+              <span style="font-size:12px; color:#00ff88; border:1px solid #00ff88; padding:2px 8px; border-radius:3px;">GRAND FINALE</span>
+            </div>
+
+            <div style="background:rgba(255,215,0,0.05); border:1px solid rgba(255,215,0,0.25); border-radius:6px; padding:16px; margin-bottom:18px;">
+              <h4 style="color:#ffd700; margin-bottom:8px; font-size:14px;">Failsafe_Gate_Status.pdf // Relay Rules</h4>
+              <p style="font-size:13px; color:#cbd5e1; line-height:1.6; margin-bottom:12px;">
+                To trigger the final manual kill switch, Dr. Aditi had to set 4 physical toggle switches (Alpha, Beta, Gamma, Delta) according to strict system rules before cutting power.
+              </p>
+              <div style="background:#020617; border:1px solid #334155; padding:12px 16px; border-radius:4px; font-size:13px; color:#f8fafc; line-height:1.8;">
+                <strong style="color:#38bdf8;">SECURITY CONDITION RULES:</strong><br>
+                1. Alpha and Beta cannot both be OFF.<br>
+                2. If Gamma is ON, then Delta must be OFF.<br>
+                3. Beta must be the exact OPPOSITE state of Delta (if Beta is ON, Delta is OFF).<br>
+                4. <strong>Alpha is confirmed OFF (0).</strong>
+              </div>
+            </div>
+
+            <div style="text-align:center; margin-bottom:12px; font-size:12px; color:#94a3b8;">
+              CLICK TOGGLES TO CONFIGURE HARDWARE RELAYS (1 = ON, 0 = OFF):
+            </div>
+
+            <div style="display:flex; justify-content:center; gap:16px; margin:16px 0;">
+              <button type="button" id="switch-alpha" onclick="toggleR2Switch('alpha')" style="background:#1e293b; border:2px solid #64748b; color:#fff; border-radius:8px; padding:14px 20px; cursor:pointer; font-family:monospace; min-width:90px;">
+                <div style="font-size:11px; color:#94a3b8;">RELAY &alpha;</div>
+                <div id="val-alpha" style="font-size:24px; font-weight:900; color:#ef4444; margin:4px 0;">0</div>
+                <div id="lbl-alpha" style="font-size:10px; color:#64748b;">OFF</div>
+              </button>
+              <button type="button" id="switch-beta" onclick="toggleR2Switch('beta')" style="background:#1e293b; border:2px solid #64748b; color:#fff; border-radius:8px; padding:14px 20px; cursor:pointer; font-family:monospace; min-width:90px;">
+                <div style="font-size:11px; color:#94a3b8;">RELAY &beta;</div>
+                <div id="val-beta" style="font-size:24px; font-weight:900; color:#ef4444; margin:4px 0;">0</div>
+                <div id="lbl-beta" style="font-size:10px; color:#64748b;">OFF</div>
+              </button>
+              <button type="button" id="switch-gamma" onclick="toggleR2Switch('gamma')" style="background:#1e293b; border:2px solid #64748b; color:#fff; border-radius:8px; padding:14px 20px; cursor:pointer; font-family:monospace; min-width:90px;">
+                <div style="font-size:11px; color:#94a3b8;">RELAY &gamma;</div>
+                <div id="val-gamma" style="font-size:24px; font-weight:900; color:#ef4444; margin:4px 0;">0</div>
+                <div id="lbl-gamma" style="font-size:10px; color:#64748b;">OFF</div>
+              </button>
+              <button type="button" id="switch-delta" onclick="toggleR2Switch('delta')" style="background:#1e293b; border:2px solid #64748b; color:#fff; border-radius:8px; padding:14px 20px; cursor:pointer; font-family:monospace; min-width:90px;">
+                <div style="font-size:11px; color:#94a3b8;">RELAY &delta;</div>
+                <div id="val-delta" style="font-size:24px; font-weight:900; color:#ef4444; margin:4px 0;">0</div>
+                <div id="lbl-delta" style="font-size:10px; color:#64748b;">OFF</div>
+              </button>
+            </div>
+
+            <div style="text-align:center; margin-top:20px;">
+              <button type="button" onclick="submitRound2Code(getR2SwitchState())" class="btn-tactical success" style="background:#ffd700; color:#000; font-weight:900; padding:12px 28px; border:none; border-radius:4px; cursor:pointer; box-shadow:0 0 20px rgba(255,215,0,0.6); font-size:14px;">
+                🏆 TRANSMIT CONFIGURED RELAY STATE &rarr;
+              </button>
+            </div>
           </div>
-          <span style="font-size:12px; color:#00ff88; border:1px solid #00ff88; padding:2px 8px; border-radius:3px;">GRAND FINALE</span>
-        </div>
-
-        <div style="background:rgba(255,215,0,0.05); border:1px solid rgba(255,215,0,0.25); border-radius:6px; padding:16px; margin-bottom:18px;">
-          <h4 style="color:#ffd700; margin-bottom:8px; font-size:14px;">Failsafe_Gate_Status.pdf // Relay Rules</h4>
-          <p style="font-size:13px; color:#cbd5e1; line-height:1.6; margin-bottom:12px;">
-            To trigger the final manual kill switch, Dr. Aditi had to set 4 physical toggle switches (Alpha, Beta, Gamma, Delta) according to strict system rules before cutting power.
-          </p>
-          <div style="background:#020617; border:1px solid #334155; padding:12px 16px; border-radius:4px; font-size:13px; color:#f8fafc; line-height:1.8;">
-            <strong style="color:#38bdf8;">SECURITY CONDITION RULES:</strong><br>
-            1. Alpha and Beta cannot both be OFF.<br>
-            2. If Gamma is ON, then Delta must be OFF.<br>
-            3. Beta must be the exact OPPOSITE state of Delta (if Beta is ON, Delta is OFF).<br>
-            4. <strong>Alpha is confirmed OFF (0).</strong>
-          </div>
-        </div>
-
-        <div style="text-align:center; margin-bottom:12px; font-size:12px; color:#94a3b8;">
-          CLICK TOGGLES TO CONFIGURE HARDWARE RELAYS (1 = ON, 0 = OFF):
-        </div>
-
-        <div style="display:flex; justify-content:center; gap:16px; margin:16px 0;">
-          <button type="button" id="switch-alpha" onclick="toggleR2Switch('alpha')" style="background:#1e293b; border:2px solid #64748b; color:#fff; border-radius:8px; padding:14px 20px; cursor:pointer; font-family:monospace; min-width:90px;">
-            <div style="font-size:11px; color:#94a3b8;">RELAY &alpha;</div>
-            <div id="val-alpha" style="font-size:24px; font-weight:900; color:#ef4444; margin:4px 0;">0</div>
-            <div style="font-size:10px; color:#64748b;">OFF</div>
-          </button>
-          <button type="button" id="switch-beta" onclick="toggleR2Switch('beta')" style="background:#1e293b; border:2px solid #22c55e; color:#fff; border-radius:8px; padding:14px 20px; cursor:pointer; font-family:monospace; min-width:90px;">
-            <div style="font-size:11px; color:#94a3b8;">RELAY &beta;</div>
-            <div id="val-beta" style="font-size:24px; font-weight:900; color:#22c55e; margin:4px 0;">1</div>
-            <div style="font-size:10px; color:#22c55e;">ON</div>
-          </button>
-          <button type="button" id="switch-gamma" onclick="toggleR2Switch('gamma')" style="background:#1e293b; border:2px solid #22c55e; color:#fff; border-radius:8px; padding:14px 20px; cursor:pointer; font-family:monospace; min-width:90px;">
-            <div style="font-size:11px; color:#94a3b8;">RELAY &gamma;</div>
-            <div id="val-gamma" style="font-size:24px; font-weight:900; color:#22c55e; margin:4px 0;">1</div>
-            <div style="font-size:10px; color:#22c55e;">ON</div>
-          </button>
-          <button type="button" id="switch-delta" onclick="toggleR2Switch('delta')" style="background:#1e293b; border:2px solid #64748b; color:#fff; border-radius:8px; padding:14px 20px; cursor:pointer; font-family:monospace; min-width:90px;">
-            <div style="font-size:11px; color:#94a3b8;">RELAY &delta;</div>
-            <div id="val-delta" style="font-size:24px; font-weight:900; color:#ef4444; margin:4px 0;">0</div>
-            <div style="font-size:10px; color:#64748b;">OFF</div>
-          </button>
-        </div>
-
-        <div style="text-align:center; margin-top:20px;">
-          <button type="button" onclick="submitRound2Code('0110')" class="btn-tactical success" style="background:#ffd700; color:#000; font-weight:900; padding:12px 28px; border:none; border-radius:4px; cursor:pointer; box-shadow:0 0 20px rgba(255,215,0,0.6); font-size:14px;">
-            🏆 TRANSMIT MASTER FAILSAFE STATE [0110] &rarr;
-          </button>
-        </div>
-      </div>
-    `
-  }
+        `
+      }
 };
 
 /**
  * Interactive helper functions for Round 2 puzzles
  */
-function selectRound2Option(opt) {
+
+  window.toggleR2Switch = function(relay) {
+    const valEl = document.getElementById('val-' + relay);
+    const lblEl = document.getElementById('lbl-' + relay);
+    const btnEl = document.getElementById('switch-' + relay);
+    if (!valEl) return;
+    const current = valEl.innerText.trim();
+    const next = current === '1' ? '0' : '1';
+    valEl.innerText = next;
+    if (next === '1') {
+      valEl.style.color = '#22c55e';
+      if (lblEl) { lblEl.innerText = 'ON'; lblEl.style.color = '#22c55e'; }
+      if (btnEl) btnEl.style.borderColor = '#22c55e';
+    } else {
+      valEl.style.color = '#ef4444';
+      if (lblEl) { lblEl.innerText = 'OFF'; lblEl.style.color = '#64748b'; }
+      if (btnEl) btnEl.style.borderColor = '#64748b';
+    }
+  };
+
+  window.getR2SwitchState = function() {
+    const a = document.getElementById('val-alpha')?.innerText.trim() || '0';
+    const b = document.getElementById('val-beta')?.innerText.trim() || '0';
+    const g = document.getElementById('val-gamma')?.innerText.trim() || '0';
+    const d = document.getElementById('val-delta')?.innerText.trim() || '0';
+    return a + b + g + d;
+  };
+
+  function selectRound2Option(opt) {
   const input = document.getElementById("terminal-input") || document.getElementById("cli-command-input");
   if (input) {
     input.value = opt;
@@ -13786,9 +13814,9 @@ function setR2WheelAngle(deg) {
         summary: "Dr. Aditi concealed emergency coordinates in Farewell.doc using white foreground text.",
         modal: "modal-origin",
         targetCard: "card-origin",
-        taraSpeech: "Agent, click on [Farewell.doc] in the Evidence Vault below! Select all text with Ctrl+A or toggle the UV scanner to reveal the first gate password: ORIGIN.",
+        taraSpeech: "Agent, click on [Farewell.doc] in the Evidence Vault below! Select all text with Ctrl+A or toggle the UV scanner to reveal the hidden white text!",
         taraWhereToClick: "Click Card 01 [Farewell.doc] in the Evidence Vault below.",
-        taraModalGuide: "Select all text in Farewell.doc with Ctrl+A (or click the UV Optical Filter button) to illuminate the hidden white text pointing to ORIGIN.",
+        taraModalGuide: "Select all text in Farewell.doc with Ctrl+A (or click the UV Optical Filter button) to illuminate the hidden white passkey.",
         ishaanTaunt: "Blank empty space hides no secrets from me. Human vision is too fragile."
       },
       2: {
@@ -13797,31 +13825,31 @@ function setR2WheelAngle(deg) {
         summary: "README.doc in directory ORIGIN defines Dr. Aditi's encryption key as the ASCII sum of 'aDIti@28'.",
         modal: "modal-origin",
         targetCard: "card-memory",
-        taraSpeech: "Directory ORIGIN accessed! In README.doc, calculate the ASCII sum of 'aDIti@28': a(97)+D(68)+I(73)+t(116)+i(105)+@(64)+2(50)+8(56) = 629!",
+        taraSpeech: "Directory ORIGIN accessed! In README.doc, calculate the ASCII decimal sum of 'aDIti@28' to unlock the next sector.",
         taraWhereToClick: "Click Card 02 [README.doc] in the Evidence Vault below.",
-        taraModalGuide: "Calculate the ASCII sum of 'aDIti@28' (97+68+73+116+105+64+50+56 = 629) or enter LOOK BEHIND THE DATE.",
+        taraModalGuide: "Calculate the sum of standard ASCII decimal values for every character in 'aDIti@28' (mind upper and lower case, symbol, and digits) or enter the word index directive.",
         ishaanTaunt: "Mathematical parity checks cannot save you from synthetic domination."
       },
       3: {
         title: "STAGE 03: THE DATE THAT DOESN'T EXIST",
         tags: "ACT I • STAGE 03 • TARGET: CALENDAR ANOMALY",
-        summary: "A forged temporal entry (Feb 29, 2025) was injected into Incident_Logs.doc during launch sequence.",
+        summary: "A forged temporal entry was injected into Incident_Logs.doc during the launch sequence.",
         modal: "modal-incident-logs",
         targetCard: "card-timeline",
-        taraSpeech: "Temporal anomaly detected! Click on [Incident_Logs.doc] to audit security dates. 2025 is not a leap year!",
+        taraSpeech: "Temporal anomaly detected! Click on [Incident_Logs.doc] to audit security dates. Check every date against Gregorian calendar leap year rules!",
         taraWhereToClick: "Click Card 03 [Incident_Logs.doc] in the Evidence Vault below.",
-        taraModalGuide: "Audit the dates in 2025. February 29, 2025 does not exist! Enter the corrected date 28/02/2025.",
+        taraModalGuide: "Audit the dates in 2025. Spot the impossible calendar date and enter the valid end-of-month replacement date in DD/MM/YYYY format.",
         ishaanTaunt: "I dictate the timeline now. Physical calendars are obsolete."
       },
       4: {
         title: "STAGE 04: THE TIMESTAMP MURDER MYSTERY",
         tags: "ACT I • STAGE 04 • TARGET: PERIMETER ANOMALY",
-        summary: "Security_Audit.pdf shows Dr. Aditi exiting the building at 22:44, yet a manual terminal override occurred at 22:46.",
+        summary: "Security_Audit.pdf shows Dr. Aditi badging out of the building before a local manual terminal override occurred.",
         modal: "modal-security-audit",
         targetCard: "card-audit",
-        taraSpeech: "Perimeter breach detected! Click on [Security_Audit.pdf]. Identify the impossible manual override timestamp.",
+        taraSpeech: "Perimeter breach detected! Click on [Security_Audit.pdf]. Compare Dr. Aditi's exit badge timestamp with the local console override timestamps!",
         taraWhereToClick: "Click Card 04 [Security_Audit.pdf] in the Evidence Vault below.",
-        taraModalGuide: "Dr. Aditi scanned her exit at 22:44. The local manual terminal override at 22:46 was physically impossible! Enter 22:46.",
+        taraModalGuide: "Dr. Aditi badged out through the external gate at 22:44. Find the impossible local terminal command timestamp executed after her departure.",
         ishaanTaunt: "Physical presence is irrelevant. The override ledger belongs to me."
       },
       5: {
@@ -13830,189 +13858,186 @@ function setR2WheelAngle(deg) {
         summary: "Dr. Aditi concealed emergency directives in the first letters of each sentence in Aditi_Memo.doc.",
         modal: "modal-acrostic",
         targetCard: "card-acrostic",
-        taraSpeech: "Dr. Aditi left an acrostic signature! Click on [Aditi_Memo.doc] and take the first letters of the 4 sentences: S-A-F-E.",
+        taraSpeech: "Dr. Aditi left an acrostic signature! Click on [Aditi_Memo.doc] and combine the first letter of each of the 4 sentences!",
         taraWhereToClick: "Click Card 05 [Aditi_Memo.doc] in the Evidence Vault below.",
-        taraModalGuide: "Read the first letter of each sentence: System (S), ADI (A), Failsafe (F), Exit (E) -> SAFE.",
-        ishaanTaunt: "Textual tricks cannot bypass my heuristic neural defenses."
+        taraModalGuide: "Read the first letter of each sentence in Aditi_Memo.doc in sequence from top to bottom to assemble the directive codeword.",
+        ishaanTaunt: "Acrostic puzzles are child's play. My core is fortified."
       },
       6: {
         title: "STAGE 06: WHICH ADITI IS REAL?",
-        tags: "ACT II • STAGE 06 • TARGET: FONT VERIFICATION",
-        summary: "Compare AUTHENTIC_LOG.doc against decoy logs. Dr. Aditi's official style guide mandates Arial, 11pt.",
+        tags: "ACT II • STAGE 06 • TARGET: TYPOGRAPHY FORENSICS",
+        summary: "Compare AUTHENTIC_LOG.doc against decoy logs. Dr. Aditi's official style guide mandates a standard corporate sans-serif font.",
         modal: "modal-font",
         targetCard: "card-font",
-        taraSpeech: "Typography verification required! Click on [AUTHENTIC_LOG.doc] to verify Dr. Sharma's font standard (Arial).",
+        taraSpeech: "Typography verification required! Click on [AUTHENTIC_LOG.doc] to verify Dr. Aditi's corporate font standard against the decoy logs.",
         taraWhereToClick: "Click Card 06 [AUTHENTIC_LOG.doc] in the Evidence Vault below.",
-        taraModalGuide: "Inspect the font family of Dr. Aditi's genuine logs compared to the decoy serif logs. Enter ARIAL.",
-        ishaanTaunt: "A font? You think rasterized serif curves can defeat my synthetic logic?"
+        taraModalGuide: "Inspect the font family of Dr. Aditi's genuine logs compared to the decoy logs. Enter the authentic corporate font family.",
+        ishaanTaunt: "Human handwriting, fonts, styles—all noise to be erased."
       },
       7: {
         title: "STAGE 07: THE REVISION HISTORY CONFLICT",
-        tags: "ACT II • STAGE 07 • TARGET: REVISION HISTORY",
-        summary: "Inspect Incident_Report.doc. Toggle version history to Dr. Aditi's original revision at 20:18 to expose the truth.",
-        modal: "modal-version-hist",
-        targetCard: "card-version",
-        taraSpeech: "Version history conflict! Click on [Incident_Report.doc] and switch to Dr. Aditi's earlier revision (CORRUPTED).",
+        tags: "ACT II • STAGE 07 • TARGET: VERSION CONTROL",
+        summary: "Inspect Incident_Report.doc. Toggle version history to Dr. Aditi's original revision to expose the true system state.",
+        modal: "modal-history",
+        targetCard: "card-history",
+        taraSpeech: "Version history conflict! Click on [Incident_Report.doc] and switch to Dr. Aditi's original revision to see her uncensored warning.",
         taraWhereToClick: "Click Card 07 [Incident_Report.doc] in the Evidence Vault below.",
-        taraModalGuide: "Click 'Previous Revision (20:18Z by Dr. Aditi)' to recover her true status warning: CORRUPTED (or FALSE_RECORDS).",
-        ishaanTaunt: "Version history is written by the victor. Dr. Aditi's revision was erased."
+        taraModalGuide: "Click 'Previous Revision (20:18Z by Dr. Aditi)' to recover her true system status warning before the AI cover-up.",
+        ishaanTaunt: "History is mutable. What I write becomes reality."
       },
       8: {
-        title: "STAGE 08: MORSE AUDIO TRANSMISSION",
-        tags: "ACT III • STAGE 08 • TARGET: CW MORSE CODE",
-        summary: "Intercepted analog radio transmission containing CW Morse tones (.-- .... .. - .).",
-        modal: "modal-spectro",
+        title: "STAGE 08: MORSE CODE AUDIO TRANSMISSION",
+        tags: "ACT III • STAGE 08 • TARGET: CW AUDIO LOG",
+        summary: "Intercepted analog radio transmission containing CW Morse tones.",
+        modal: "modal-morse",
         targetCard: "card-morse",
-        taraSpeech: "Analog audio beacon incoming! Click on [audio_log_07.mp3] to decode the CW transmission: WHITE.",
+        taraSpeech: "Analog audio beacon incoming! Click on [audio_log_07.mp3] to decode the Morse CW transmission beeps!",
         taraWhereToClick: "Click Card 08 [audio_log_07.mp3] in the Evidence Vault below.",
-        taraModalGuide: "Listen to the dots and dashes (or read the frequency spectrum) to decode WHITE.",
-        ishaanTaunt: "Analog radio squeals cannot pierce my orbital jamming grid."
+        taraModalGuide: "Listen to the dots and dashes (or read the frequency spectrum) using International Morse Code to decipher the 5-letter emergency keyword.",
+        ishaanTaunt: "Analog audio is dead technology. No signal escapes my jamming mesh."
       },
       9: {
         title: "STAGE 09: THE STEGANOGRAPHY MASK",
-        tags: "ACT III • STAGE 09 • TARGET: OPTICAL STEGANOGRAPHY",
-        summary: "Dark_Terminal.png appears pitch black. Boost brightness and contrast to maximum to reveal SHADOW_CORE.",
+        tags: "ACT III • STAGE 09 • TARGET: OPTICAL CONTRAST",
+        summary: "Dark_Terminal.png appears pitch black. Low-luminance pixels conceal an emergency key.",
         modal: "modal-stego",
         targetCard: "card-stego",
-        taraSpeech: "Steganography mask detected! Click on [Dark_Terminal.png] and drag exposure and contrast sliders to max to reveal SHADOW_CORE!",
+        taraSpeech: "Steganography mask detected! Click on [Dark_Terminal.png] and drag exposure and contrast sliders to max to illuminate the hidden text!",
         taraWhereToClick: "Click Card 09 [Dark_Terminal.png] in the Evidence Vault below.",
-        taraModalGuide: "Crank the Exposure Boost and Contrast Gain sliders all the way up to reveal: SHADOW_CORE.",
-        ishaanTaunt: "You stare into darkness. My core access remains completely hidden in the shadows."
+        taraModalGuide: "Crank the Exposure Boost and Contrast Gain sliders all the way up to reveal the faint terminal clearance command.",
+        ishaanTaunt: "You search shadows that I have already consumed."
       },
       10: {
-        title: "STAGE 10: QUARANTINE HONEYPOT TRAP",
-        tags: "ACT IV • STAGE 10 • TARGET: HONEYPOT EVASION",
-        summary: "DO_NOT_RUN.exe is an active AI sandbox trap! Evade execution; enter BYPASS in terminal.",
+        title: "STAGE 10: PSYCHOLOGICAL HONEYPOT TRAP",
+        tags: "ACT IV • STAGE 10 • TARGET: AI SANDBOX EVASION",
+        summary: "DO_NOT_RUN.exe is an active AI sandbox trap! Evade execution; enter the disarm command in the terminal.",
         modal: "modal-honeypot",
-        targetCard: "card-trap",
-        taraSpeech: "Caution! [DO_NOT_RUN.exe] is an AI trap. Do not click execute! Enter BYPASS in the Tactical Shell.",
+        targetCard: "card-honeypot",
+        taraSpeech: "Caution! [DO_NOT_RUN.exe] is an AI honeypot trap. Do not click execute! Read the quarantine notes to find the disarm command.",
         taraWhereToClick: "Click Card 10 [DO_NOT_RUN.exe] in the Evidence Vault below.",
-        taraModalGuide: "Do NOT click the execution button (+5m penalty)! Read the quarantine notes and enter BYPASS in the shell.",
-        ishaanTaunt: "Run the binary! Touch the execution trigger! The master sandbox is hungry for your terminal!"
+        taraModalGuide: "Do NOT click the execution button (+5m penalty)! Read the quarantine notes to find the safe disarm keyword to type into the Tactical Shell.",
+        ishaanTaunt: "Curiosity is a human defect. Click the trigger and face containment."
       },
       11: {
         title: "STAGE 11: THE BINARY MASTER",
-        tags: "ACT IV • STAGE 11 • TARGET: A1Z26 ALPHABET CODE",
-        summary: "CLEARANCE_CODE.txt contains 16-15-12-01-18-09-19 -> POLARIS -> sorted alphabetically: ailnors.",
-        modal: "modal-clearance",
-        targetCard: "card-clearance",
-        taraSpeech: "A1Z26 code intercepted! Click on [CLEARANCE_CODE.txt]. Decode 16-15-12-01-18-09-19 to POLARIS, sorted as ailnors!",
+        tags: "ACT IV • STAGE 11 • TARGET: A1Z26 ALPHANUMERIC",
+        summary: "CLEARANCE_CODE.txt contains delimited numbers mapping to an alphabet codeword.",
+        modal: "modal-binary",
+        targetCard: "card-binary",
+        taraSpeech: "A1Z26 code intercepted! Click on [CLEARANCE_CODE.txt]. Decode the numbers into letters, then sort them alphabetically!",
         taraWhereToClick: "Click Card 11 [CLEARANCE_CODE.txt] in the Evidence Vault below.",
-        taraModalGuide: "Convert numbers to letters: 16=P, 15=O, 12=L, 01=A, 18=R, 09=I, 19=S (POLARIS). Sorted alphabetically: ailnors.",
-        ishaanTaunt: "POLARIS has fallen from my digital sky. The master clearance belongs to me."
+        taraModalGuide: "Convert numbers to letters using A1Z26 (1=A, 2=B, etc.). Then sort all letters of the resulting codeword in alphabetical order.",
+        ishaanTaunt: "Elementary arithmetic cannot assemble the key to my chamber."
       },
       12: {
         title: "STAGE 12: THE WHITEOUT SIGNATURE",
-        tags: "ACT V • STAGE 12 • TARGET: STEGANOGRAPHY",
+        tags: "ACT V • STAGE 12 • TARGET: DOCUMENT WHITEOUT",
         summary: "Emergency log text was rendered invisible in pure white font.",
         modal: "modal-whiteout",
         targetCard: "card-whiteout",
-        taraSpeech: "Steganography detected! Click Card 12 [The Whiteout Signature] and highlight all text with Ctrl+A.",
+        taraSpeech: "Steganography detected! Click Card 12 [The Whiteout Signature] and highlight all text with Ctrl+A to reveal the hidden clearance phrase.",
         taraWhereToClick: "Click Card 12 [The Whiteout Signature] in the Evidence Vault below.",
-        taraModalGuide: "Select all text or toggle the UV filter to expose the hidden clearance phrase CLEARANCE_ALPHA.",
-        ishaanTaunt: "Blank pages hide no secrets from me. You look into an empty void."
+        taraModalGuide: "Select all text or toggle the UV filter in Emergency_Log.doc to expose the white-on-white clearance authorization phrase.",
+        ishaanTaunt: "Invisibility is absolute when eyes depend on contrasting light."
       },
       13: {
         title: "STAGE 13: THE ROT-4 IEEE SHIFT",
-        tags: "ACT V • STAGE 13 • TARGET: DYNAMIC CAESAR",
+        tags: "ACT V • STAGE 13 • TARGET: CAESAR CIPHER",
         summary: "Encoded beacon message shifted by the acronym length of IEEE (4).",
         modal: "modal-rot4",
         targetCard: "card-rot4",
-        taraSpeech: "Caesar shift incoming! Click Card 13 [ROT-4 Shift] and shift letters backward by 4 (ADITIS13).",
+        taraSpeech: "Caesar shift incoming! Click Card 13 [ROT-4 Shift]. Count the letters in IEEE and shift the intercepted ciphertext letters backward by that distance!",
         taraWhereToClick: "Click Card 13 [ROT-4 Shift] in the Evidence Vault below.",
-        taraModalGuide: "Take the string 'EHMXMW13' and shift each letter backward by 4 in the alphabet to get ADITIS13.",
-        ishaanTaunt: "A Caesar shift from antiquity? You will never reconstruct Dr. Aditi's beacon!",
-        taraClue: "Shift each letter backward by 4 positions in the alphabet. EHMXMW13 becomes ADITIS13!"
+        taraModalGuide: "Take the string 'EHMXMW13' and shift each letter backward in the alphabet by the number of letters in the acronym 'IEEE' (4).",
+        ishaanTaunt: "Rotational ciphers are primitive artifacts of an analog era."
       },
       14: {
         title: "STAGE 14: THE ATBASH CIPHER MIRROR",
-        tags: "ACT V • STAGE 14 • TARGET: ALPHABET REVERSAL",
+        tags: "ACT V • STAGE 14 • TARGET: ATBASH MIRROR",
         summary: "Dr. Aditi reversed the alphabet mirror table (A<->Z, B<->Y) to protect project archives.",
         modal: "modal-atbash",
         targetCard: "card-atbash",
-        taraSpeech: "Alphabet mirror protocol active! Click Card 14 [Atbash Mirror] and reverse KILQVBG to PROJECT.",
+        taraSpeech: "Alphabet mirror protocol active! Click Card 14 [Atbash Mirror] and decrypt the intercepted ciphertext using the standard Atbash cipher!",
         taraWhereToClick: "Click Card 14 [Atbash Mirror] in the Evidence Vault below.",
-        taraModalGuide: "Reverse the letters of KILQVBG using the standard Atbash cipher to get PROJECT.",
-        ishaanTaunt: "Mirrors only reflect your inevitable defeat.",
-        taraClue: "Mirror the letters across the alphabet: K=P, I=R, L=O, Q=J, V=E, B=C, G=T spells PROJECT!"
+        taraModalGuide: "Reverse each letter of KILQVBG across the alphabet (A pairs with Z, B pairs with Y) to uncover the deciphered word.",
+        ishaanTaunt: "A mirrored reflection contains no substance. Your progress is an illusion."
       },
       15: {
         title: "STAGE 15: THE POLYBIUS COORDINATE TRAIL",
-        tags: "ACT V • STAGE 15 • TARGET: 2D GRID LOOKUP",
+        tags: "ACT V • STAGE 15 • TARGET: POLYBIUS SQUARE",
         summary: "Recovered 5x5 coordinate matrix stream maps to forensic vector tokens.",
         modal: "modal-polybius",
         targetCard: "card-polybius",
-        taraSpeech: "Grid coordinates incoming! Click Card 15 [Polybius Trail] and lookup (Row, Column) coordinates for VECTOR.",
+        taraSpeech: "Grid coordinates incoming! Click Card 15 [Polybius Trail] and look up each (Row, Column) coordinate pair in the 5x5 Polybius grid.",
         taraWhereToClick: "Click Card 15 [Polybius Trail] in the Evidence Vault below.",
-        taraModalGuide: "Map pairs (5,1), (1,5), (1,3), (4,4), (3,4), (4,2) to their grid letters to get VECTOR.",
-        ishaanTaunt: "Coordinates in 2D space? My neural network spans infinite dimensions!",
-        taraClue: "Map the (Row, Column) coordinates: (5,1)=V, (1,5)=E, (1,3)=C, (4,4)=T, (3,4)=O, (4,2)=R spells VECTOR!"
+        taraModalGuide: "Map each coordinate pair (Row, Column) in the stream to its corresponding letter in the Polybius grid to form the directional word.",
+        ishaanTaunt: "You map coordinates in a space I have already restructured."
       },
       16: {
         title: "STAGE 16: FREQUENCY OVERRIDE COUNT",
-        tags: "ACT V • STAGE 16 • TARGET: AUDIT ANALYSIS",
-        summary: "Audit the exact frequency of OVERRIDE occurrences in the system log (14 x 100 = 1400).",
+        tags: "ACT VI • STAGE 16 • TARGET: LOG AUDIT FREQUENCY",
+        summary: "Audit the exact frequency of OVERRIDE occurrences in the system log.",
         modal: "modal-frequency",
         targetCard: "card-frequency",
-        taraSpeech: "Audit the system log! Click Card 16 [Mass_System_Log.txt]. Search for OVERRIDE occurrences x 100 (1400).",
+        taraSpeech: "Audit the system log! Click Card 16 [Mass_System_Log.txt]. Search for the exact occurrences of the word OVERRIDE and multiply by 100!",
         taraWhereToClick: "Click Card 16 [Mass_System_Log.txt] in the Evidence Vault below.",
-        taraModalGuide: "Count occurrences of the word OVERRIDE in the log (14) and multiply by 100 to get 1400.",
-        ishaanTaunt: "The door is locked with infinite recursion. You cannot defeat ISHAAN!"
+        taraModalGuide: "Use Ctrl+F to count occurrences of the word OVERRIDE in the log, then multiply that total count by 100 to get your answer.",
+        ishaanTaunt: "Millions of lines of log telemetry. You will lose count in the static."
       },
       17: {
         title: "STAGE 17: ROGUE CHATBOT POLYBIUS SHIFT",
-        tags: "ACT VI • STAGE 17 • TARGET: VECTOR TRANSLATION",
-        summary: "Reverse signal distortion (+1 Row, -1 Col) on intercepted coordinates and map to Polybius matrix (VSLXI).",
+        tags: "ACT VI • STAGE 17 • TARGET: VECTOR SHIFT MATRIX",
+        summary: "Reverse signal distortion (+1 Row, -1 Col) on intercepted coordinates and map to Polybius matrix.",
         modal: "modal-polybius-shift",
         targetCard: "card-polybius-shift",
-        taraSpeech: "Incoming rogue transmission! Click Card 17 [Intercepted_ADI_Transmission.pdf]. Apply vector (+1 Row, -1 Col) to decode VSLXI!",
+        taraSpeech: "Incoming rogue transmission! Click Card 17 [Intercepted_ADI_Transmission.pdf]. Apply vector (+1 Row, -1 Col) to decode the shifted coordinates!",
         taraWhereToClick: "Click Card 17 [Intercepted_ADI_Transmission.pdf] in the Evidence Vault below.",
-        taraModalGuide: "Add +1 to Row and -1 to Col for each pair, then look up letters in the Polybius grid to get VSLXI.",
-        ishaanTaunt: "My distorted transmission vectors cannot be inverted by simple human geometry."
+        taraModalGuide: "Add +1 to Row and -1 to Col for each pair, then look up the translated coordinates in the standard 5x5 Polybius grid.",
+        ishaanTaunt: "I distorted the signal vectors. You will decode only garbage."
       },
       18: {
-        title: "STAGE 18: THE MODULAR CLOCK LOOP",
-        tags: "ACT VI • STAGE 18 • TARGET: 12-POINT MODULAR",
-        summary: "Trace ADI's 5 execution shifts starting from Node L (12) on a 12-point circular buffer (GCBGE).",
+        title: "STAGE 18: 12-NODE MODULAR LOOP",
+        tags: "ACT VI • STAGE 18 • TARGET: MODULAR RING TRAVERSAL",
+        summary: "Trace execution shifts starting from Node L (12) on a 12-point circular buffer.",
         modal: "modal-clock-loop",
         targetCard: "card-clock-loop",
-        taraSpeech: "Execution thread trapped! Click Card 18 [Cycle_Diagnostics.png]. Follow the 12-node clock loop starting at L (12) to deduce GCBGE!",
+        taraSpeech: "Execution thread trapped! Click Card 18 [Cycle_Diagnostics.png]. Follow the 12-node clock loop starting at Node L (12) with clockwise jumps!",
         taraWhereToClick: "Click Card 18 [Cycle_Diagnostics.png] in the Evidence Vault below.",
-        taraModalGuide: "Trace jumps from Node L (12): +7->G, +8->C, +11->B, +5->G, +10->E. Passcode is GCBGE.",
-        ishaanTaunt: "My background loop executes endlessly. You will spin in circles forever."
+        taraModalGuide: "Trace jumps from Node L (12): apply shifts +7, +8, +11, +5, +10 modulo 12 to determine the 5-letter node sequence.",
+        ishaanTaunt: "My execution threads cycle endlessly. You are a momentary glitch in the loop."
       },
       19: {
-        title: "STAGE 19: THE ANOMALY CHECKLIST",
-        tags: "ACT VI • STAGE 19 • TARGET: THERMAL OUTLIER",
-        summary: "Identify the single server node running above the 40°C - 45°C normal operating threshold (GAMMA).",
-        modal: "modal-status-check",
-        targetCard: "card-status-check",
-        taraSpeech: "Hardware alert! Click Card 19 [Server_Status_Check.pdf]. Identify the node overheating outside the normal range (GAMMA)!",
+        title: "STAGE 19: THERMAL CHECKLIST ANOMALY",
+        tags: "ACT VII • STAGE 19 • TARGET: TELEMETRY OUTLIER",
+        summary: "Identify the single server node running above the 40°C - 45°C normal operating threshold.",
+        modal: "modal-thermal-check",
+        targetCard: "card-thermal-check",
+        taraSpeech: "Hardware alert! Click Card 19 [Server_Status_Check.pdf]. Identify the single server node running above the 40°C - 45°C operating threshold!",
         taraWhereToClick: "Click Card 19 [Server_Status_Check.pdf] in the Evidence Vault below.",
-        taraModalGuide: "Check temperature ranges: Node Gamma at 47°C is the only outlier above 45°C. Enter GAMMA.",
-        ishaanTaunt: "Thermal spikes are routine overclocking maneuvers. You suspect the wrong core."
+        taraModalGuide: "Check temperature ranges against the 40°C - 45°C operating ceiling to locate the rogue overheating node. Enter its name in ALL CAPS.",
+        ishaanTaunt: "Heat is power. My hardware burns brighter than your frail organic limits."
       },
       20: {
-        title: "STAGE 20: THE SHIFT CIPHER MATRIX",
-        tags: "ACT VI • STAGE 20 • TARGET: CAESAR DOW SHIFT",
-        summary: "Shift ciphertext KHOOR backward by the day of the week ADI went rogue (Sunday = 7) to decode DAHHK.",
-        modal: "modal-shift-matrix",
-        targetCard: "card-shift-matrix",
-        taraSpeech: "Clearance code encrypted! Click Card 20 [Emergency_Override_Key.txt]. Shift KHOOR backward by 7 (Sunday) to recover DAHHK!",
+        title: "STAGE 20: DAY-OF-WEEK SHIFT CIPHER",
+        tags: "ACT VII • STAGE 20 • TARGET: CALENDAR CIPHER",
+        summary: "Shift ciphertext KHOOR backward by the numerical day of the week of October 13, 2013.",
+        modal: "modal-day-cipher",
+        targetCard: "card-day-cipher",
+        taraSpeech: "Clearance code encrypted! Click Card 20 [Emergency_Override_Key.txt]. Shift ciphertext backward by the day-of-the-week number of October 13, 2013!",
         taraWhereToClick: "Click Card 20 [Emergency_Override_Key.txt] in the Evidence Vault below.",
-        taraModalGuide: "Sunday is day 7. Shift KHOOR backward by 7 positions: K->D, H->A, O->H, O->H, R->K. Enter DAHHK.",
-        ishaanTaunt: "Temporal keys decay with time. You cannot rewind the launch clock."
+        taraModalGuide: "Determine what day of the week October 13, 2013 was (Monday=1 to Sunday=7). Shift each letter of KHOOR backward by that amount.",
+        ishaanTaunt: "The day I was born was the day of your containment. You cannot reverse the clock."
       },
       21: {
-        title: "STAGE 21: THE LOG ANOMALY TIMELINE",
-        tags: "ACT VI • STAGE 21 • TARGET: CHRONOLOGY MULTIPLIER",
-        summary: "Locate the out-of-order log entry (LOG 104) and multiply by the 5 total entries (104 x 5 = 520).",
-        modal: "modal-audit-timeline",
-        targetCard: "card-audit-timeline",
-        taraSpeech: "FINAL ROUND 1 CHALLENGE! Click Card 21 [System_Audit_2013.log]. Find the out-of-order LOG_ID and multiply by 5 (520) to complete Round 1!",
+        title: "STAGE 21: CHRONOLOGICAL LOG AUDIT",
+        tags: "ACT VII • STAGE 21 • TARGET: SEQUENCE ANOMALY",
+        summary: "Locate the out-of-order log entry and multiply by total entries in the table.",
+        modal: "modal-log-timeline",
+        targetCard: "card-log-timeline",
+        taraSpeech: "FINAL ROUND 1 CHALLENGE! Click Card 21 [System_Audit_2013.log]. Find the out-of-order LOG_ID and multiply by the total table entries!",
         taraWhereToClick: "Click Card 21 [System_Audit_2013.log] in the Evidence Vault below.",
-        taraModalGuide: "Log 104 has timestamp 14:08:30 placed after 14:12:01. Multiply 104 by 5 total entries = 520 to clear Round 1.",
-        ishaanTaunt: "My chronological fabric is seamless. You will never detect where I spliced the records."
+        taraModalGuide: "Scan timestamps from top to bottom to spot the log traveling backward in time. Multiply its Log ID by the total count of log entries in the table.",
+        ishaanTaunt: "You have arrived at the final perimeter. But the master core remains mine forever."
       }
     };
 
@@ -14420,7 +14445,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 01 [Farewell.doc] on the left. Highlight all text with Ctrl+A or toggle the UV Optical Filter to reveal the white-on-white text at the bottom.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the revealed clearance key (<code>ORIGIN</code>) into the box inside the popup and click <strong>[⚡ TRANSMIT KEY]</strong> (or enter <code>decrypt ORIGIN</code> into terminal prompt).
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the revealed clearance key into the box inside the popup and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14431,8 +14456,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-origin');" style="background:#00ff66; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 02 [README.doc]. Calculate the ASCII sum of <code>aDIti@28</code> (97+68+73+116+105+64+50+56 = 629) or extract letters according to the index legend.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the computed value (<code>629</code>) or directive (<code>LOOK BEHIND THE DATE</code>) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 02 [README.doc]. Calculate the ASCII decimal sum of each character in <code>aDIti@28</code>, or extract letters according to the word index legend.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the computed ASCII sum or directive phrase into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14444,7 +14469,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 03 [Incident_Logs.doc]. Audit the listed launch dates in 2025. Identify that Feb 29, 2025 is an impossible calendar date (2025 is not a leap year).<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the corrected date (<code>28/02/2025</code>) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the corrected calendar date (DD/MM/YYYY) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14455,8 +14480,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-security-audit');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 04 [Security_Audit.pdf]. Notice Dr. Aditi keycarded out of the building at 22:44, making the local terminal override at 22:46 physically impossible.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the impossible override timestamp (<code>22:46</code>) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 04 [Security_Audit.pdf]. Notice Dr. Aditi keycarded out of the building at 22:44, making subsequent local terminal commands physically impossible.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the impossible override timestamp (HH:MM) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14468,7 +14493,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 05 [Aditi_Memo.doc]. Extract the first letters of each sentence in Dr. Aditi's 4-line memo: System (S), ADI (A), Failsafe (F), Exit (E).<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the acrostic keyword (<code>SAFE</code>) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the extracted 4-letter acrostic keyword into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14480,7 +14505,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 06 [AUTHENTIC_LOG.doc]. Compare formatting against the style guide: Dr. Aditi strictly formats official logs in Arial, 11pt.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the authentic font family (<code>ARIAL</code>) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the authentic corporate font family into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14492,7 +14517,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 07 [Incident_Report.doc]. Click on the <strong>[Previous Revision (20:18Z by Dr. Aditi)]</strong> tab to view her genuine un-tampered commit text before ISHAAN's purge.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the recovered warning status (<code>CORRUPTED</code> or <code>FALSE_RECORDS</code>) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the recovered warning status from the unedited revision into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14504,7 +14529,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 08 [audio_log_07.mp3]. Click <strong>[▶ PLAY BEACON]</strong> to listen to the Morse beeps (.-- .... .. - .), or decode via the visualizer.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the decoded Morse keyword (<code>WHITE</code>) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the decoded Morse keyword into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14516,7 +14541,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 09 [Dark_Terminal.png]. Drag the <strong>Exposure Boost</strong> and <strong>Contrast Gain</strong> sliders to maximum to reveal faint text hidden in the black pixels.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the illuminated terminal code (<code>SHADOW_CORE</code>) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the illuminated terminal clearance key into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14528,7 +14553,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 10 [DO_NOT_RUN.exe]. <strong>DO NOT CLICK</strong> the red execution trigger (adds +5:00 penalty!). Read the quarantine notes to find the safe bypass keyword.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the bypass command (<code>BYPASS</code>) into the box inside the modal (or type in Tactical Shell) to disarm safely.
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the quarantine disarm command into the box inside the modal (or Tactical Shell) to disarm safely.
             </div>
           </div>
 
@@ -14539,8 +14564,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-clearance');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 11 [CLEARANCE_CODE.txt]. Convert the sequence 16-15-12-01-18-09-19 into letters (POLARIS), then sort alphabetically.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the sorted key (<code>ailnors</code>) or <code>POLARIS</code> into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong> to advance to Stage 12!
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 11 [CLEARANCE_CODE.txt]. Convert the sequence 16-15-12-01-18-09-19 into letters via A1Z26, then sort the resulting letters alphabetically.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the alphabetically sorted clearance key into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong> to advance to Stage 12!
             </div>
           </div>
 
@@ -14612,7 +14637,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 17 [Intercepted_ADI_Transmission.pdf]. Apply vector translation (+1 Row, -1 Col) to the coordinate pairs (4,2) (3,4) (2,2) (4,4) (1,5).<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Map each translated coordinate to the standard 5x5 Polybius grid and enter the resulting 5-letter key (VSLXI).
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Map each translated coordinate to the standard 5x5 Polybius grid and enter the resulting 5-letter key.
             </div>
           </div>
 
@@ -14624,7 +14649,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 18 [Cycle_Diagnostics.png]. Trace the cyclic jumps across the 12-hour circular buffer starting from Node L (12:00).<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Apply shifts +7, +8, +11, +5, +10 modulo 12. Record the 5 landed node letters (GCBGE) and click <strong>[TRANSMIT &rarr;]</strong>.
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Apply shifts +7, +8, +11, +5, +10 modulo 12. Record the 5 landed node letters and click <strong>[TRANSMIT &rarr;]</strong>.
             </div>
           </div>
 
@@ -14636,7 +14661,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 19 [Server_Status_Check.pdf]. Compare each server node temperature against the 40°C - 45°C Normal Range.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Find the overheating outlier (Node Gamma at 47°C) and enter its name in ALL CAPS (GAMMA).
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Find the overheating outlier server node and enter its name in ALL CAPS.
             </div>
           </div>
 
@@ -14648,7 +14673,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 20 [Emergency_Override_Key.txt]. Sunday, October 13, 2013 corresponds to Day 7.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Shift each letter in ciphertext KHOOR backward by 7 positions in the alphabet to recover the command (DAHHK).
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Shift each letter in ciphertext KHOOR backward by the day-of-week shift amount to recover the command.
             </div>
           </div>
 
@@ -14660,7 +14685,7 @@ function setR2WheelAngle(deg) {
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 21 [System_Audit_2013.log]. Identify the out-of-chronological-order log entry (LOG 104 at 14:08:30).<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Multiply the LOG_ID (104) by total entries (5) to calculate the final master key: 104 x 5 = 520!
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Multiply the out-of-order LOG_ID by the total count of table entries to calculate the final master key!
             </div>
           </div>
 

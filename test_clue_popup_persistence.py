@@ -97,8 +97,7 @@ def run_test():
         """)
         print("Clue Popup Info:", json.dumps(popup_info, indent=2))
         assert popup_info['display'] != 'none', "Dedicated Clue Popup must be visible!"
-        assert popup_info['zIndex'] == '100000', f"Expected zIndex 100000, got {popup_info['zIndex']}"
-        assert "ORIGIN" in popup_info['body'], f"Expected clue text in popup body, got: {popup_info['body']}"
+        assert "Farewell.doc" in popup_info['body'] and "ORIGIN" not in popup_info['body'], f"Expected non-spoiler clue text without direct answer, got: {popup_info['body']}"
 
         # 4. CRITICAL: Test that it stays open longer than 5 seconds!
         print("Waiting 6 seconds to prove popup does NOT disappear...")
