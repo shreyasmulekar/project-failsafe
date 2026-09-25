@@ -1,0 +1,29 @@
+Line    4: AI Escape Room — Puzzle Master Document
+Line   18: 1. Executive Summary & Narrative Flow
+Line   20: 1.1 Storyline Architecture
+Line   22: Narrative Phase
+Line   26: The Setup
+Line   48: 2. Event Mechanics & System Architecture
+Line   58: │ 1. SINGLE SOLUTION: Every puzzle must resolve to exactly ONE key.       │
+Line   60: │ 2. NO OUTSIDE KNOWLEDGE: Solutions must rely on logic, not trivia.      │
+Line   62: │ 3. FEASIBILITY: All actions (selecting text, version history) must be   │
+Line   66: │ 4. ISOLATION TEST: Every Google Form must be verified in an Incognito   │
+Line  122: Mechanism: Google Sheets Version History
+Line  126: Setup: A spreadsheet with budget/inventory numbers that seem completely normal.
+Line  132: Master Output / Key: FALSE_RECORDS
+Line  138: Mechanism: Image Adjustment / Contrast Manipulation
+Line  142: Setup: A dark image Dark_Terminal.png that appears completely black.
+Line  148: Master Output / Key: SHADOW_CORE
+Line  154: Mechanism: Google Docs Table Cell Background Colors
+Line  164: Master Output / Key: 7702
+Line  170: Mechanism: Text Color set to White on a White Background
+Line  174: Location: Stage_01 / Welcome_Log.doc
+Line  176: Setup: A Google Doc displays a standard welcome message from Dr. Aditi:
+Line  184: Setup: A short 4-line note inside Aditi_Memo.doc:
+Line  198: Master Output / Key: SAFE
+Line  204: Mechanism: Character-to-position mapping (A=1, B=2, ..., Z=26).
+Line  212: Master Output / Key: POLARIS
+Line  218: Mechanism: Google Docs comment history inspection.
+Line  226: Master Output / Key: MARGIN_KEY
+Line  232: Mechanism: Property and formatting verification.
+Line  240: Master Output / Key: ARIAL

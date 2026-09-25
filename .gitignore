@@ -8,3 +8,7 @@ __pycache__/
 .system_generated/
 .DS_Store
 Thumbs.db
+
+# Temporary test captures and transcript dumps
+shot_*.png
+step_*.txt

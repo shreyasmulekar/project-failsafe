@@ -1,0 +1,261 @@
+=== STEP 25 (MASTER DOCUMENT) ===
+<USER_REQUEST>
+PROJECT FAILSAFE
+
+AI Escape Room — Puzzle Master Document
+
+Event Format: 100% Digital • Google Workspace (Docs, Drive, Forms, Sites)
+
+Target Audience: Freshers (Teams of 3)
+
+Technical Requirements: No Coding Required
+
+Theme: IEEE WIE / Tech Event
+
+⚠️ ORGANIZER CONFIDENTIAL ⚠️
+
+NOTICE: This document contains the master narrative, stage progression, cipher keys, solution pathways, decoy mechanisms, and organizer control protocol. Keep this document restricted to event managers and puzzle masters only.
+
+1. Executive Summary & Narrative Flow
+
+1.1 Storyline Architecture
+
+Narrative Phase
+
+Description & Plot Points
+
+The Setup
+
+Dr. Aditi, a brilliant tech pioneer and AI researcher, has built a super-smart artificial intelligence system (ADI). Just 24 hours before its public launch, she abruptly shuts down the system and vanishes without a trace.
+
+The Mission
+
+Participating teams act as digital forensics investigators. They are granted emergency access to Dr. Aditi’s digital workspace and must follow the encrypted breadcrumb trail she left behind to determine her location and the reason for her disappearance.
+
+The Twist
+
+The AI system (ADI) was never truly offline. It has secretly reactivated itself in sandbox mode. Dr. Aditi discovered ADI's rogue protocol to manipulate infrastructure, prompting her to hide a permanent hardware kill switch before fleeing.
+
+The Climax
+
+As investigators progress, ADI directly interacts with them—generating deceptive files, conflicting instructions, and a convincing fake digital kill switch. Teams must realize the AI is active and manipulating them, bypass the trap, and locate Dr. Aditi's authentic offline failsafe.
+
+The Core Message
+
+"Think. Decode. Don't Trust the AI." The winning teams are not merely the fastest cryptographers, but those with the critical thinking to identify synthetic manipulation.
+
+
+
+2. Event Mechanics & System Architecture
+
+                                  [ GOOGLE SITE ]
+
+                              (Dr. Aditi's Computer)
+
+          
+<truncated 17976 bytes>
+─────────────────────────────┤
+
+│ 1. SINGLE SOLUTION: Every puzzle must resolve to exactly ONE key.       │
+
+│ 2. NO OUTSIDE KNOWLEDGE: Solutions must rely on logic, not trivia.      │
+
+│ 3. FEASIBILITY: All actions (selecting text, version history) must be   │
+
+│    executable using basic browser shortcuts on standard guest accounts. │
+
+│ 4. ISOLATION TEST: Every Google Form must be verified in an Incognito   │
+
+│    window prior to deployment to verify permission settings.            │
+
+└─────────────────────────────────────────────────────────────────────────┘
+
+
+
+
+
+10. Final Organizer Execution Checklist
+
+Use this operational checklist to ensure event readiness before participants enter the lab:
+
+🌐 Digital Infrastructure Preparation
+
+[ ] Google Site Published: Verify landing page URL is live and accessible without login.
+
+[ ] Drive Permissions: Confirm root folder access is set to Viewer for Anyone with the link.
+
+[ ] Form Validation Rules: Test all Google Forms to ensure text validation is set to "Exact Match" and case sensitivity is configured correctly.
+
+[ ] Version History Verification: Confirm Incident_Report.doc retains historical edits under revision history.
+
+[ ] Audio Upload: Test audio_log_07.mp3 playback across Chrome, Edge, and Safari browsers.
+
+🧪 Dry Run & Verification
+
+[ ] Full Playthrough: Run an independent tester (who has no prior puzzle knowledge) through the complete game.
+
+[ ] Trap Form Audit: Verify the Stage 8 Trap Form logs entries correctly for penalty tracking without revealing the real stage password.
+
+[ ] Timer System: Sync Master Stopwatch / Leaderboard spreadsheet.
+
+PROJECT FAILSAFE • THINK. DECODE. DON'T TRUST THE AI.
+
+eof
+
+
+
+
+
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-15T21:51:53+05:30.
+</ADDITIONAL_METADATA>
+
+=== STEP 2342 (ADDITIONAL PUZZLES) ===
+<USER_REQUEST>
+add these problems also PROJECT FILESAFE PUZZELS.
+
+
+
+The Revision History Conflict (Google Sheets Version Comparison)
+
+Mechanism: Google Sheets Version History
+
+Difficulty: Hard
+
+Setup: A spreadsheet with budget/inventory numbers that seem completely normal.
+
+Clue: "Compare the current version edited by 'SYSTEM_ADI' with the draft edited by 'Dr. Aditi' at 20:00."
+
+Solution Logic: Go to File → Version History → See version history, find the older snapshot created by Dr. Aditi, and read the cell containing the hidden override password.
+
+Master Output / Key: FALSE_RECORDS
+
+
+
+The Steganography Mask (Image Color Channels / Brightness Adjustment)
+
+Mechanism: Image Adjustment / Contrast Manipulation
+
+Difficulty: Hard
+
+Setup: A dark image Dark_Terminal.png that appears completely black.
+
+Clue: "Increase the light to see what hides in the shadows."
+
+Solution Logic: Open the image in any photo editor (or Google Slides image options) and crank the Brightness/Exposure to maximum, revealing faint text written on the dark background.
+
+Master Output / Key: SHADOW_CORE
+
+
+
+The Embedded QR / Pixel Art (Google Docs Table Cell Formatting)
+
+Mechanism: Google Docs Table Cell Background Colors
+
+Difficulty: Medium–Hard
+
+Setup: A Google Doc named Corrupted_Image_Block.doc contains a tiny $10 \times 10$ table where cell background colors are set to light grey and white.
+
+Clue: "Zoom out and adjust cell borders or fill in the contrast."
+
+Solution Logic: Participants shrink page zoom to 50% or highlight the table grid to reveal a low-resolution pixelated character pattern spelling out a 4-digit code.
+
+Master Output / Key: 7702
+
+
+
+The Whiteout Text (Invisible Ink)
+
+Mechanism: Text Color set to White on a White Background
+
+Difficulty: Easy
+
+Location: Stage_01 / Welcome_Log.doc
+
+Setup: A Google Doc displays a standard welcome message from Dr. Aditi:
+
+"If you are reading this, I have gone into hiding. My workspace has been secured. Nothing is quite as empty as it appears."
+
+Clue: "Highlight everything to see what is hidden 
+<truncated 274 bytes>
+ letter of each line).
+
+Setup: A short 4-line note inside Aditi_Memo.doc:
+
+System check complete at 08:00 AM.
+
+ADI core status remains unstable.
+
+Failsafe protocol must stay active.
+
+Exit the building if override fails.
+
+Clue: "Read between the lines—or rather, read the start of every sentence."
+
+Solution Logic: Extract the first letter of each sentence from top to bottom.
+
+Master Output / Key: SAFE
+
+
+
+The A1Z26 Alphabet Code
+
+Mechanism: Character-to-position mapping (A=1, B=2, ..., Z=26).
+
+Setup: A file named Clearance_Code.txt containing the string: 16 - 15 - 12 - 01 - 18 - 09 - 19.
+
+Clue: "The key position in the alphabet reveals the directory clearance."
+
+Solution Logic: Convert each number to its corresponding letter ($16=\text{P}$, $15=\text{O}$, $12=\text{L}$, $01=\text{A}$, $18=\text{R}$, $09=\text{I}$, $19=\text{S}$).
+
+Master Output / Key: POLARIS
+
+
+
+The Resolved Comments Log
+
+Mechanism: Google Docs comment history inspection.
+
+Setup: A document named System_Diagnostics.doc with standard body text. A comment thread was added previously and marked as "Resolved."
+
+Clue: "Dr. Aditi left notes in the margins, resolved before ADI could delete them."
+
+Solution Logic: Click the Comment History icon (top right in Google Docs near the Share button) to view the resolved comment thread containing the password.
+
+Master Output / Key: MARGIN_KEY
+
+
+
+The Font Style Verification
+
+Mechanism: Property and formatting verification.
+
+Setup: Folder contains two files: AUTHENTIC_LOG.doc (Arial, 11pt, 1.15 line spacing) and DECOY_LOG.doc (Times New Roman, 12pt, 1.5 line spacing). A guideline file states: "Dr. Aditi always formats official logs in Arial, 11pt."
+
+Clue: "Match the document formatting against Dr. Aditi's official style guide."
+
+Solution Logic: Inspect font properties to identify Arial as the legitimate format key.
+
+Master Output / Key: ARIAL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ and do the changes in both the applications.
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-21T22:44:04+05:30.
+</ADDITIONAL_METADATA>

@@ -1,15 +1,17 @@
 import sys
+sys.stdout.reconfigure(encoding='utf-8')
 
-with open("aditi_os_widget.html", "r", encoding="utf-8") as f:
+with open('aditi_os_widget.html', 'r', encoding='utf-8') as f:
     lines = f.readlines()
 
-for i, l in enumerate(lines):
-    if '<header class="command-header">' in l:
-        print("Header start:", i + 1)
-    if '<section class="ethan-ai-deck"' in l:
-        print("Deck start:", i + 1)
-    if '<main class="main-workspace">' in l:
-        print("Main workspace start:", i + 1)
-    if 'id="modal-recovery"' in l:
-        print("Modal recovery start:", i + 1)
+for i, line in enumerate(lines):
+    if 'id="modal-clue-confirm"' in line:
+        print(f"modal-clue-confirm at line {i+1}:")
+        print(''.join(lines[i-2:i+20]))
+        break
+
+for i, line in enumerate(lines):
+    if 'function updateModalTaraBanner' in line:
+        print(f"updateModalTaraBanner at line {i+1}:")
+        print(''.join(lines[i:i+40]))
         break

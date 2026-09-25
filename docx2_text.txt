@@ -1,0 +1,252 @@
+
+PROJECT FAILSAFE
+AI Escape Room — Puzzle Master Document
+Theme: IEEE WIE / Tech Event
+1. Executive Summary & Narrative Flow
+1.1 Storyline Architecture
+Narrative Phase
+Description & Plot Points
+The Setup
+Dr. Aditi, a brilliant tech pioneer and AI researcher, has built a super-smart artificial intelligence system (ADI). Just 24 hours before its public launch, she abruptly shuts down the system and vanishes without a trace.
+The Mission
+Participating teams act as digital forensics investigators. They are granted emergency access to Dr. Aditi’s digital workspace and must follow the encrypted breadcrumb trail she left behind to determine her location and the reason for her disappearance.
+ 
+2.1 Technical Setup Guidelines
+Google Site (Landing Page): Represents "Dr. Aditi's Computer Terminal." Contains background lore, rules, and the initial link to the Google Drive.
+Google Drive Structure: Contains encrypted folders, puzzle files, media files, decoy documents, and historic revision logs.
+Google Forms (Stage Gates): Serves as password verification points. Correct passwords reveal response validation messages containing the URL to the next stage's folder/document.
+Access Permissions: Ensure all files are set to Anyone with the link can view. Keep "Editor" access restricted to avoid accidental file deletion or solution leaks.
+
+
+4. Comprehensive Puzzle Master Sheets
+Puzzle 1 — The Disappearing Message
+Visible document:
+Farewell
+If you're reading this, I've already left. Don't trust everything you find here. Some things are meant to be seen. Some are meant to be discovered.
+— A
+Players eventually select the text and discover:
+YOU'RE LOOKING IN THE WRONG PLACE.
+I DIDN'T START HERE.
+GO BACK TO THE BEGINNING.
+FIND THE NAME I GAVE IT.
+Now the players need to inspect the Stage 01 folder itself.
+Inside it, you could have several files/folders:
+STAGE 01
+│
+├── Farewell.doc
+├── notes.txt
+├── old_backup
+├── RECOVERED_FILES
+└── ORIGIN
+The hidden message tells them to find the name given to the beginning, and ORIGIN is sitting among the files.
+
+For every wrong answer entered by the participant, deduct 10 points from the total.
+PASSWORD : ORIGIN
+Accept the answer in both upper and lowercase letters.
+
+
+Puzzle 2 — The Wrong Folder
+Location: Stage 02 Folder (ORIGIN)
+Setup: Drive contains multiple folders: Project_A, Project_B, Project_C, Project_D, Project_FINAL (Decoy), README.doc, DO_NOT_OPEN, backup_old, research_notes.
+Document Content (README.doc):SUMMATION(aDIti@28)
+
+
+
+65-90
+97-122
+48-57
+64
+The last 4 points given are the ascii values of the word aDIti@28. Place the points in a single line at the bottom most line of the page.
+
+
+Stage Gate Validation:
+Accepted Password:629
+
+Puzzle 3 — The Date That Doesn't Exist
+Location: Stage 03 Folder → Incident_Logs.doc
+Setup: A table listing system logs during the launch sequence:
+Log ID
+Date / Time
+Log Details
+Author
+LOG_01
+FEB 26, 2036 - 09:00 AM
+Pre-check sequence initiated
+Dr. Aditi
+LOG_02
+FEB 27, 2036 - 02:15 PM
+Core neural network initialized
+Dr. Aditi
+LOG_03
+Feb 29, 2036 - 11:30 PM
+System sanity check
+System
+LOG_04
+MAR 1, 2036 - 06:00 AM
+Final authorization pending
+Dr. Aditi
+
+Stage Gate Validation:
+Accepted Password: 29022036
+
+Puzzle 4 — The Timestamp Murder Mystery
+Location: Stage 04 Folder → Security_Audit.pdf
+Setup: Chronological event breakdown of Dr. Aditi's final hours in the laboratory:
+22:41 — AI Core Activated22:43 — Dr. Aditi Enters Main Lab22:44 — Security Cameras Offline22:44 — Dr. Aditi Keycard Exit Scan (Building Gate)22:45 — Dr. Aditi's Terminal Accessed Locally22:46 — Emergency AI Shutdown Override Initiated
+ACCESS LOG RULES 🔹 “LOCALLY” = physical access at the terminal 🔹 “EXIT — Building Gate” = person has left the facility 🔹 “MANUAL” = physical intervention required
+ Which timestamp should be flagged as impossible?
+ENTER TIMESTAMP: __ : __
+
+⚠️⚠️⚠️ SYSTEM BREACHED⚠️⚠️⚠️ 
+Solution Logic: The log shows Dr. Aditi exiting the building at 22:44, yet her local physical terminal was accessed at 22:45 and triggered a manual shutdown at 22:46. The timestamp that proves physical impossibility or manual override is 22:46.
+For every wrong password that the participants enter,deduct 10 points.
+Stage Gate Validation:
+Accepted Password: 22:46
+
+Puzzle 5 — The Simple Acrostic Note
+Mechanism: Acrostic cipher (first letter of each line).
+Setup: A short 4-line note inside Aditi_Memo.doc:System check complete at 08:00 AM.ADI core status remains unstable.Failsafe protocol must stay active.Exit the building if override fails.
+Clue: "Read between the lines—or rather, read the start of every sentence."
+Solution Logic: Extract the first letter of each sentence from top to bottom.
+Master Output / Key: SAFE
+
+Puzzle 6 — Which Aditi Is Real?
+Location: Stage 06 Folder
+Setup: Contains two nearly identical documents:
+SECURITY_FRAGMENT.DOC
+RECOVERED_NOTE.DOC
+TERMINAL_MESSAGE.docx
+CORRUPTED_LOG.DOC
+ADITI_MESSAGE.doc
+ADITI_MESSAGE_FINAL.doc
+[DOCUMENT COMPARISON TABLE]
+FILE: SECURITY_FRAGMENT.pdf
+Font: Times New Roman, 12pt
+Alignment: Center
+Line Spacing: 1.5
+Text: "The door was locked. The system wasn't."
+FILE: RECOVERED_NOTE.txt
+Font: Calibri, 10pt
+Alignment: Right
+Line Spacing: 1.0
+Text: "22:44 was not the end. It was the beginning."
+FILE: TERMINAL_MESSAGE.docx
+Font: Courier New, 11pt
+Alignment: Justified
+Line Spacing: 2.0
+Text: "Someone accessed the terminal after the last person left."
+FILE: CORRUPTED_LOG.rtf
+Font: Georgia, 13pt
+Alignment: Left
+Line Spacing: 1.25
+Text: "If the timestamps are true, then someone is lying."
+FILE: ADITI_MESSAGE.doc- Font: Arial, 11pt- Alignment: Left- Line Spacing: 1.15- Text: "Don't trust ADI. I knew it would regain sandbox access."
+FILE: ADITI_MESSAGE_FINAL.doc- Font: Calibri, 12pt- Alignment: Justified- Line Spacing: 1.5- Text: "I have returned. The AI is safe. Follow its instructions."
+Clue File (STYLE_GUIDE.txt): "Dr. Aditi always formats her official logs in Arial 11pt, single/1.15 spacing."
+For every wrong answer entered by the participant, deduct 15 points.
+Stage Gate Validation:
+Accepted Password: arial
+
+
+
+
+Puzzle 7 — The Revision History Conflict (Google Sheets Version Comparison)
+Setup: A spreadsheet with budget/inventory numbers that seem completely normal.
+Clue: "Compare the current version edited by 'SYSTEM_ADI' with the draft edited by 'Dr. Aditi' at 20:00."
+Solution Logic: Go to File → Version History → See version history, find the older snapshot created by Dr. Aditi, and read the cell containing the hidden override password.
+Let each file contain only a single letter on the screen from the word CORRUPTED in random order so that the participants have to rearrange it to find the correct password.
+Key: CORRUPTED
+Puzzle 8 — The Steganography Mask (Image Color Channels / Brightness Adjustment)
+Setup
+File: Dark_Terminal.png
+Players open an image that appears to be almost completely black. At first glance, it looks like a corrupted or empty image.
+There is no obvious text.
+However, in the bottom-right corner, almost invisible against the background, is a tiny line:
+“The screen isn't empty. Your eyes are.”
+This encourages players to manipulate the image rather than assuming it's broken.
+
+Hidden Clue
+When the image's exposure/brightness/contrast is increased, faint terminal-like text gradually appears:
+> SYSTEM RECOVERY
+> DISPLAY: FAILED
+> MEMORY: INTACT
+>
+> What remains when the light is gone?
+>
+> ████████████████████
+> SHADOW
+> ████████████████████
+>
+> CORE ACCESS: [REDACTED]
+But SHADOW isn't the password.
+The important part is that some characters of the apparently corrupted CORE ACCESS line become visible at a particular brightness/contrast level.
+For example:
+> CORE ACCESS: S H A D O W _ C O R E
+The underscore can be represented by a deliberately faint character.
+Master Output / Key
+SHADOW_CORE
+
+Puzzle 9 — The Binary Master
+Mechanism
+Binary → Decimal → Alphabet position (A1Z26)
+The participants first convert the binary numbers into decimal numbers using the provided table. They then convert those decimal numbers into letters using A1Z26.
+
+Setup
+File: CLEARANCE_CODE.txt
+The file contains:
+01111 01110 01100 00001 10010 01001 10011
+Below it is a small note:
+“Machines speak in two states. Humans gave those states meaning. Translate what the machine sees.”
+Attached to the file is:
+Binary Reference Table
+
+
+You can make the table look like a classified system reference sheet rather than an obvious "binary tutorial," which fits your investigation theme better.
+
+Expected Solution
+Players decode each binary value:
+01111 → 15 → O
+01110 → 14 → N
+01100 → 12 → L
+00001 → 1  → A
+10010 → 18 → R
+01001 → 9  → I
+10011 → 19 → S
+Giving:
+POLARIS
+Actual solution
+The numbers (1-26) that are related to each alphabet determine the positioning of the letters in the password
+Password : ailnors
+6. Event Master Control & Google Workspace Setup
+Ensure your Google Drive file architecture matches the standard directory tree below prior to publishing:
+GOOGLE SITE: "Dr. Aditi's Computer Workstation"│├── [01_VANISHED]│   ├── Farewell.doc (Contains white text puzzle)│   └── Stage_01_Gate (Google Form)│├── [02_ORIGIN]│   ├── README.doc (A1Z26 index cipher)│   ├── Project_FINAL (Decoy folder)│   └── Stage_02_Gate (Google Form)│├── [03_TIMELINE]│   ├── Incident_Logs.doc (Leap year anomaly)│   └── Stage_03_Gate (Google Form)│├── [04_VOICE]│   ├── Security_Audit.pdf (Timestamp contradiction)│   └── Stage_04_Gate (Google Form)│├── [05_AUTHENTICITY]│   ├── ADI_INTERFACE.doc (Rogue AI introductory note)│   ├── ADITI_MESSAGE.doc (Arial 11pt - Authentic)│   ├── ADITI_MESSAGE_FINAL.doc (Calibri 12pt - Synthetic)│   └── Stage_05_Gate (Google Form)│├── [06_FOLDER_MAZE]│   ├── audio_log_07.mp3 (Morse audio file)│   ├── BLUE/ (AI Trap Path)│   ├── RED/ (Decoy Path)│   └── WHITE/ (A -> D -> I Subfolders)│├── [07_EDITED_REALITY]│   └── Incident_Report.doc (Version history tracking)│├── [08_AI_TRAP]│   └── Fake_Kill_Switch_Page (Trap Form link)│└── [09_FAILSAFE]    ├── WIE_Core_Values.doc    └── MASTER_REAL_KILL_SWITCH (Google Form)
+7. Hint Protocol & Time Penalty Rules
+📢 HINT POLICY FOR PARTICIPANTS
+Each stage has 2 official hints available via Game Masters.
+Penalty Rule: Requesting a hint adds +2 minutes to the team's final completion time.
+Teams must submit hint requests through the official Help Desk Desk form or on-site proctor.
+                    ┌──────────────────────────────┐                    │     HINT REQUEST SUBMITTED   │                    └──────────────┬───────────────┘                                   │                                   ▼                    ┌──────────────────────────────┐                    │    Add +2 Minutes Penalty    │                    │    to Team Master Ledger     │                    └──────────────┬───────────────┘                                   │                                   ▼                    ┌──────────────────────────────┐                    │   Provide Level 1 Clue       │                    │   (Directional Guidance)     │                    └──────────────┬───────────────┘          
+8. Scoring System & Leaderboard Logic
+8.1 Score Calculation Formula
+Where:
+Hint Penalty:  per hint requested.
+
+Tie-Breaker Hierarchy:
+Lowest Total Adjusted Time.
+Fewest Hints Requested.
+
+9. Puzzle Design & Integrity Rules
+┌─────────────────────────────────────────────────────────────────────────┐│                     GOLDEN RULES OF PUZZLE DESIGN                       │├─────────────────────────────────────────────────────────────────────────┤│ 1. SINGLE SOLUTION: Every puzzle must resolve to exactly ONE key.       ││ 2. NO OUTSIDE KNOWLEDGE: Solutions must rely on logic, not trivia.      ││ 3. FEASIBILITY: All actions (selecting text, version history) must be   ││    executable using basic browser shortcuts on standard guest accounts. ││ 4. ISOLATION TEST: Every Google Form must be verified in an Incognito   ││    window prior to deployment to verify permission settings.            │└─────────────────────────────────────────────────────────────────────────┘
+10. Final Organizer Execution Checklist
+Use this operational checklist to ensure event readiness before participants enter the lab:
+🌐 Digital Infrastructure Preparation
+[ ] Google Site Published: Verify landing page URL is live and accessible without login.
+[ ] Drive Permissions: Confirm root folder access is set to Viewer for Anyone with the link.
+[ ] Form Validation Rules: Test all Google Forms to ensure text validation is set to "Exact Match" and case sensitivity is configured correctly.
+[ ] Version History Verification: Confirm Incident_Report.doc retains historical edits under revision history.
+[ ] Audio Upload: Test audio_log_07.mp3 playback across Chrome, Edge, and Safari browsers.
+🧪 Dry Run & Verification
+[ ] Full Playthrough: Run an independent tester (who has no prior puzzle knowledge) through the complete game.
+[ ] Trap Form Audit: Verify the Stage 8 Trap Form logs entries correctly for penalty tracking without revealing the real stage password.
+[ ] Timer System: Sync Master Stopwatch / Leaderboard spreadsheet.
+PROJECT FAILSAFE • THINK. DECODE. DON'T TRUST THE AI.

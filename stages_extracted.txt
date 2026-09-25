@@ -1,0 +1,59 @@
+--------------------------------------------------
+Stage 8 Trap Form logs entries correctly for penalty tracking without revealing the real stage password.
+
+[ ] Timer System: Sync Master Stopwatch / Leaderboard spreadsheet.
+
+PROJECT FAILSAFE • THINK. DECODE. DON'T TRUST THE AI.
+
+eof
+
+
+
+
+
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-15T21:51:53+05:30.
+</ADDITIONAL_METADATA>
+
+=== STEP 2342 (ADDITIONAL PUZZLES) ===
+<USER_REQUEST>
+add these problems also PROJECT FILESAFE PUZZELS.
+
+
+
+The Revision History Conflict (Google Sheets Version Comparison)
+
+Mechanism: Google Sheets Version History
+
+Difficulty: Hard
+
+Setup: A spreadsheet with budget/inventory numbers that seem completely normal.
+
+Clue: "Compare the current version edited by 'SYSTEM_ADI' with the draft edited by 'Dr. Aditi' at 20:00."
+
+Solution Logic: Go to File → Version History → See version history, find the older snapshot created by Dr. Aditi, and read the cell containing the hidden override password.
+
+Master Output / Key: FALSE_RECORDS
+
+
+
+The Steganography Mask (Image Color Channels / Brightness Adjustment)
+
+Mechanism: Image Adjustment / Contrast Manipulation
+
+Difficulty: Hard
+
+Setup: A dark image Dark_Terminal.png that appears completely black.
+
+Clue: "Increase the light to see what hides in the shadows."
+
+Solution Logic: Open the image in any photo editor (or Google Slides image options) and crank the Brightness/Exposure to maximum, revealing faint text written on the dark background.
+
+Master Output / Key: SHADOW_CORE
+
+
+
+The Embedded QR / 
+

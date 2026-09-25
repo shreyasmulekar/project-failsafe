@@ -1,0 +1,10 @@
+import sys
+
+sys.stdout.reconfigure(encoding='utf-8')
+
+with open('aditi_os_widget.html', 'r', encoding='utf-8') as f:
+    text = f.read()
+
+idx = text.find('async function submitRound2Code')
+if idx != -1:
+    print(text[idx+3500:idx+5500])
