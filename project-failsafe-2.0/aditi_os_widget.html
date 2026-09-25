@@ -4294,7 +4294,7 @@
   <!-- Floating Bottom Dock for Fast Solution Submission -->
   <div class="nexus-bottom-dock">
     <span style="font-size:11px; font-weight:800; color:var(--nexus-cyan); letter-spacing:1px;">🔑 QUICK DECRYPT:</span>
-    <input type="text" id="nexus-dock-passcode" class="nexus-dock-input" placeholder="Enter decrypted stage key..." onkeydown="if(event.key==='Enter') submitNexusDockCode()">
+    <input type="text" id="nexus-dock-passcode" class="nexus-dock-input" placeholder="Enter clearance code..." onkeydown="if(event.key==='Enter') submitNexusDockCode()">
     <button type="button" class="nexus-dock-btn" onclick="submitNexusDockCode()">TRANSMIT &rarr;</button>
     <button type="button" class="nexus-dock-toggle" onclick="toggleTerminalDrawer()">>_ TERMINAL LOGS</button>
   </div>
@@ -4337,7 +4337,7 @@
       </div>
       <div class="r2-submit-bar" style="border:2px solid #00ff66; box-shadow:0 0 15px rgba(0,255,102,0.25);">
         <span style="color:#00ff66; font-size:12px; font-weight:900;">KEY INPUT &gt;&gt;</span>
-        <input type="text" id="r2-passcode-input" placeholder="Type solution &amp; press Enter..." onkeydown="if(event.key==='Enter') submitRound2Code()">
+        <input type="text" id="r2-passcode-input" placeholder="Enter clearance code..." onkeydown="if(event.key==='Enter') submitRound2Code()">
         <button type="button" class="r2-submit-btn" onclick="submitRound2Code()" style="background:#00ff66; color:#02060e; font-weight:900; padding:10px 24px; box-shadow:0 0 12px rgba(0,255,102,0.5);">
           ⚡ TRANSMIT ANSWER &rarr;
         </button>
@@ -4507,7 +4507,7 @@
           <!-- Modal Submission Bar -->
           <div id="r2-modal-submit-bar" style="background:#030712; border:2px solid #00ff66; border-radius:6px; padding:12px 16px; display:flex; align-items:center; gap:12px; font-family:var(--font-mono); box-shadow:0 0 20px rgba(0,255,102,0.25);">
             <span style="color:#00ff66; font-size:12px; font-weight:900; white-space:nowrap;">KEY INPUT &gt;&gt;</span>
-            <input type="text" id="r2-modal-passcode-input" class="r2-passcode-input" placeholder="Type solution &amp; press Enter..." onkeydown="if(event.key==='Enter') submitRound2Code()" style="flex:1; background:rgba(0,0,0,0.6); border:1px solid rgba(0,255,102,0.4); border-radius:4px; color:#fff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; outline:none;">
+            <input type="text" id="r2-modal-passcode-input" class="r2-passcode-input" placeholder="Enter clearance code..." onkeydown="if(event.key==='Enter') submitRound2Code()" style="flex:1; background:rgba(0,0,0,0.6); border:1px solid rgba(0,255,102,0.4); border-radius:4px; color:#fff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; outline:none;">
             <button type="button" class="r2-submit-btn" onclick="submitRound2Code()" style="background:#00ff66; color:#02060e; font-weight:900; padding:10px 24px; border:none; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 15px rgba(0,255,102,0.6);">
               ⚡ TRANSMIT ANSWER &rarr;
             </button>
@@ -4540,16 +4540,10 @@
         </div>
         <div class="mil-modal-body" style="background:#060a0f;">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 01 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Review the 5-command boot lifecycle: <code>LOGIN &rarr; VERIFY &rarr; ??? &rarr; EXECUTE &rarr; LOCK</code>. Deduce the missing operational verb required to authorize core boot access.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Type the deduced authorization verb into the recovery key box below and click <strong>[VERIFY &amp; RESTORE &rarr;]</strong> (or enter <code>decrypt &lt;verb&gt;</code> in Tactical Shell / Quick Decrypt dock).
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 01</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -4579,7 +4573,7 @@
               🎯 STAGE 01 RECOVERY PROMPT // EXECUTE DIRECT DECRYPTION
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <input type="text" id="v1-modal-recovery-input" placeholder="Enter missing authorization verb..." style="flex:1; background:#000; border:1px solid var(--neon-green); color:#00ff66; padding:8px 12px; font-family:var(--font-mono); font-size:13px; border-radius:3px; outline:none;" onkeydown="if(event.key==='Enter') verifyV1ModalRecovery()">
+              <input type="text" id="v1-modal-recovery-input" placeholder="Enter clearance code..." style="flex:1; background:#000; border:1px solid var(--neon-green); color:#00ff66; padding:8px 12px; font-family:var(--font-mono); font-size:13px; border-radius:3px; outline:none;" onkeydown="if(event.key==='Enter') verifyV1ModalRecovery()">
               <button type="button" class="dossier-btn" onclick="verifyV1ModalRecovery()" style="background:var(--neon-green); color:#000; font-weight:bold; border:none; padding:8px 18px; border-radius:3px; cursor:pointer;">
                 VERIFY &amp; RESTORE &rarr;
               </button>
@@ -4605,18 +4599,12 @@
         </div>
         <div class="mil-modal-body" style="background:#060a0f;">
           <!-- Tactical Guide Banner -->
-          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-              <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">STAGE 02 DIRECTIVE</span>
-              <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">THE WRONG FOLDER (README.doc)</span>
-            </div>
-            <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-              <strong style="color:#ffd700;">👉 OBJECTIVE:</strong> Dr. Aditi organized files into folders named after project milestones. However, folder <strong>ORIGIN/</strong> does not match any milestone!
-            </div>
-            <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-              <strong style="color:#00ff66;">💡 DECRYPTION MECHANISM:</strong> Read <code>README.doc</code> below. Compute the ASCII checksum sum of <code>aDIti@28</code> or locate the hidden alternative key!
-            </div>
+          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 02</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
+        </div>
 
           <!-- Document Viewer Slate -->
           <div style="background:#02060c; border:1px solid rgba(255,184,0,0.3); border-radius:6px; padding:20px; font-family:var(--font-mono, monospace); color:#e2e8f0; line-height:1.6; margin-bottom:18px;">
@@ -4655,7 +4643,7 @@
               <span style="font-size:11px; color:#94a3b8;">Accepted: Calculated ASCII sum or Word Index directive</span>
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
-              <input type="text" id="input-stage-2" placeholder="Enter calculated sum or directive..." style="flex:1; min-width:200px; background:#000; border:1px solid rgba(0,255,102,0.5); border-radius:4px; color:#00ff66; padding:10px 14px; font-family:var(--font-mono); font-size:14px; outline:none;" onkeydown="if(event.key==='Enter') submitStageDirectKey(2, this.value)">
+              <input type="text" id="input-stage-2" placeholder="Enter clearance code..." style="flex:1; min-width:200px; background:#000; border:1px solid rgba(0,255,102,0.5); border-radius:4px; color:#00ff66; padding:10px 14px; font-family:var(--font-mono); font-size:14px; outline:none;" onkeydown="if(event.key==='Enter') submitStageDirectKey(2, this.value)">
               <button type="button" class="btn-tactical active" onclick="submitStageDirectKey(2, document.getElementById('input-stage-2').value)" style="padding:10px 22px; font-size:13px; font-weight:900;">
                 TRANSMIT CHECKSUM &rarr;
               </button>
@@ -4681,16 +4669,10 @@
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 12 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click <strong>[🔦 HIGHLIGHT ALL (CTRL + A)]</strong> or <strong>[⚡ UV DEPOLARIZER]</strong> to reveal the invisible white text hidden on the white document canvas.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Read the exposed clearance phrase from the canvas, enter it into the input box below, and click <strong>[⚡ TRANSMIT KEY]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 12</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -4719,7 +4701,7 @@
               🎯 STAGE 12 // TRANSMIT DECRYPTED CLEARANCE
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <input type="text" id="input-whiteout" placeholder="Enter revealed clearance phrase..." style="flex:1; background:#000; border:1px solid var(--cyber-cyan); color:#00f0ff; padding:8px 12px; font-family:var(--font-mono); font-size:13px; border-radius:3px; outline:none;" onkeydown="if(event.key==='Enter') submitStageDirectKey(12, document.getElementById('input-whiteout').value)">
+              <input type="text" id="input-whiteout" placeholder="Enter clearance code..." style="flex:1; background:#000; border:1px solid var(--cyber-cyan); color:#00f0ff; padding:8px 12px; font-family:var(--font-mono); font-size:13px; border-radius:3px; outline:none;" onkeydown="if(event.key==='Enter') submitStageDirectKey(12, document.getElementById('input-whiteout').value)">
               <button type="button" class="dossier-btn" onclick="submitStageDirectKey(12, document.getElementById('input-whiteout').value)" style="background:var(--cyber-cyan); color:#000; font-weight:bold; border:none; padding:8px 18px; border-radius:3px; cursor:pointer;">
                 TRANSMIT &rarr;
               </button>
@@ -4745,16 +4727,10 @@
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 10 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> ⚠️ <strong>CAUTION:</strong> DO NOT click the red button <code>[☠️ DO NOT CLICK // EXECUTE BINARY (+5 MIN PENALTY)]</code>! Instead, inspect the sandbox quarantine protocol.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the emergency tactical bypass keyword deduced from the advisory note into the disarm input box below and click <strong>[DISARM &rarr;]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 10</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -4779,7 +4755,7 @@
               🎯 STAGE 10 DISARM // TRANSMIT DISARM KEY
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <input type="text" id="input-honeypot" placeholder="Enter emergency disarm command..." style="flex:1; background:#000; border:1px solid var(--cyber-cyan); color:#00f0ff; padding:8px 12px; font-family:var(--font-mono); font-size:13px; border-radius:3px; outline:none;" onkeydown="if(event.key==='Enter') submitStageDirectKey(10, document.getElementById('input-honeypot').value)">
+              <input type="text" id="input-honeypot" placeholder="Enter clearance code..." style="flex:1; background:#000; border:1px solid var(--cyber-cyan); color:#00f0ff; padding:8px 12px; font-family:var(--font-mono); font-size:13px; border-radius:3px; outline:none;" onkeydown="if(event.key==='Enter') submitStageDirectKey(10, document.getElementById('input-honeypot').value)">
               <button type="button" class="dossier-btn" onclick="submitStageDirectKey(10, document.getElementById('input-honeypot').value)" style="background:var(--cyber-cyan); color:#000; font-weight:bold; border:none; padding:8px 18px; border-radius:3px; cursor:pointer;">
                 DISARM &rarr;
               </button>
@@ -4805,16 +4781,10 @@
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 13 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Read the intercepted ciphertext in <code>Encrypted_Beacon.txt</code>. Shift each letter backward by 4 positions (the length of the acronym 'IEEE').
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the decrypted beacon string into the input box below and click <strong>[TRANSMIT &rarr;]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 13</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -4831,7 +4801,7 @@
             </div>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-rot4" placeholder="Enter decrypted beacon callsign..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px;" onkeydown="if(event.key==='Enter') submitStageDirectKey(13, document.getElementById('input-rot4').value)">
+            <input type="text" id="input-rot4" placeholder="Enter clearance code..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px;" onkeydown="if(event.key==='Enter') submitStageDirectKey(13, document.getElementById('input-rot4').value)">
             <button type="button" class="dossier-btn" onclick="submitStageDirectKey(13, document.getElementById('input-rot4').value)" style="background:var(--cyber-cyan); color:#000; font-weight:bold; border:none; padding:10px 20px; border-radius:4px; cursor:pointer;">
               TRANSMIT &rarr;
             </button>
@@ -4856,16 +4826,10 @@
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 14 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Read the inverted stream in <code>Mirror_Log.txt</code>. Match each letter against the mirrored Atbash alphabet (A&harr;Z, B&harr;Y, etc.).
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Invert the ciphertext across the mirrored alphabet, enter the decoded cleartext word into the input box below, and click <strong>[TRANSMIT &rarr;]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 14</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -4882,7 +4846,7 @@
             </div>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-atbash" placeholder="Enter inverted cleartext word..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px;" onkeydown="if(event.key==='Enter') submitStageDirectKey(14, document.getElementById('input-atbash').value)">
+            <input type="text" id="input-atbash" placeholder="Enter clearance code..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px;" onkeydown="if(event.key==='Enter') submitStageDirectKey(14, document.getElementById('input-atbash').value)">
             <button type="button" class="dossier-btn" onclick="submitStageDirectKey(14, document.getElementById('input-atbash').value)" style="background:var(--cyber-cyan); color:#000; font-weight:bold; border:none; padding:10px 20px; border-radius:4px; cursor:pointer;">
               TRANSMIT &rarr;
             </button>
@@ -4907,16 +4871,10 @@
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 15 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Inspect the 5x5 Polybius grid and the coordinate pairs: <code>(5,1) (1,5) (1,3) (4,4) (3,4) (4,2)</code>.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Map each coordinate pair (Row, Column) to its corresponding letter in the grid. Enter the resulting coordinate keyword into the input box below and click <strong>[TRANSMIT &rarr;]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 15</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -4938,7 +4896,7 @@
             </div>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-polybius" placeholder="Enter decoded coordinate word..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px;" onkeydown="if(event.key==='Enter') submitStageDirectKey(15, document.getElementById('input-polybius').value)">
+            <input type="text" id="input-polybius" placeholder="Enter clearance code..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px;" onkeydown="if(event.key==='Enter') submitStageDirectKey(15, document.getElementById('input-polybius').value)">
             <button type="button" class="dossier-btn" onclick="submitStageDirectKey(15, document.getElementById('input-polybius').value)" style="background:var(--cyber-cyan); color:#000; font-weight:bold; border:none; padding:10px 20px; border-radius:4px; cursor:pointer;">
               TRANSMIT &rarr;
             </button>
@@ -4963,16 +4921,10 @@
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 16 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Count how many times the exact term 'OVERRIDE' appears in the log below and multiply by 100.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the calculated frequency value into the input box below and click <strong>[TRANSMIT &rarr;]</strong> to trigger TARA's final liberation!
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 16</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -5002,7 +4954,7 @@
             </div>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-frequency" placeholder="Enter frequency calculation (count × 100)..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px;" onkeydown="if(event.key==='Enter') submitStageDirectKey(16, document.getElementById('input-frequency').value)">
+            <input type="text" id="input-frequency" placeholder="Enter clearance code..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px;" onkeydown="if(event.key==='Enter') submitStageDirectKey(16, document.getElementById('input-frequency').value)">
             <button type="button" class="dossier-btn" onclick="submitStageDirectKey(16, document.getElementById('input-frequency').value)" style="background:var(--cyber-cyan); color:#000; font-weight:bold; border:none; padding:10px 20px; border-radius:4px; cursor:pointer;">
               TRANSMIT &rarr;
             </button>
@@ -5026,18 +4978,12 @@
           </div>
         </div>
         <div class="mil-modal-body">
-          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-              <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-              <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 17 // WHERE TO CLICK &amp; SUBMIT</span>
-            </div>
-            <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Apply vector translation <code>(+1 Row, -1 Col)</code> to intercepted coordinates <code>(4,2) (3,4) (2,2) (4,4) (1,5)</code>, then look up the letters in the Polybius grid below.
-            </div>
-            <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Type the 5-letter key into the input box below and click <strong>[TRANSMIT &rarr;]</strong>.
-            </div>
+          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 17</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
+        </div>
 
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(0,240,255,0.3); padding:16px; border-radius:6px; margin-bottom:16px;">
             <h3 style="color:#00f0ff; margin-bottom:8px;">Intercepted_ADI_Transmission.pdf</h3>
@@ -5070,7 +5016,7 @@
           </div>
 
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-17" placeholder="Enter 5-letter clearance key..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-family:monospace;" onkeydown="if(event.key==='Enter') submitStageDirectKey(17, this.value)">
+            <input type="text" id="input-stage-17" placeholder="Enter clearance code..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-family:monospace;" onkeydown="if(event.key==='Enter') submitStageDirectKey(17, this.value)">
             <button type="button" class="dossier-btn" onclick="submitStageDirectKey(17, document.getElementById('input-stage-17').value)" style="background:#00f0ff; color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:4px; cursor:pointer;">TRANSMIT &rarr;</button>
           </div>
           <div id="fb-stage-17" style="margin-top:8px; font-size:12px; font-family:monospace;"></div>
@@ -5092,18 +5038,12 @@
           </div>
         </div>
         <div class="mil-modal-body">
-          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-              <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-              <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 18 // WHERE TO CLICK &amp; SUBMIT</span>
-            </div>
-            <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Trace the 12-hour circular buffer starting from Node L (12:00) through all 5 clockwise shifts below.
-            </div>
-            <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Record each landed node letter in order and transmit the 5-letter thread sequence.
-            </div>
+          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 18</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
+        </div>
 
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(0,240,255,0.3); padding:16px; border-radius:6px; margin-bottom:16px;">
             <h3 style="color:#00f0ff; margin-bottom:8px;">Cycle_Diagnostics.png // 12-Point Modular Array</h3>
@@ -5128,7 +5068,7 @@ Whenever a jump exceeds 12, wrap around clockwise by subtracting 12.
           </div>
 
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-18" placeholder="Enter 5-letter thread sequence..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-family:monospace;" onkeydown="if(event.key==='Enter') submitStageDirectKey(18, this.value)">
+            <input type="text" id="input-stage-18" placeholder="Enter clearance code..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-family:monospace;" onkeydown="if(event.key==='Enter') submitStageDirectKey(18, this.value)">
             <button type="button" class="dossier-btn" onclick="submitStageDirectKey(18, document.getElementById('input-stage-18').value)" style="background:#00f0ff; color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:4px; cursor:pointer;">TRANSMIT &rarr;</button>
           </div>
           <div id="fb-stage-18" style="margin-top:8px; font-size:12px; font-family:monospace;"></div>
@@ -5150,18 +5090,12 @@ Whenever a jump exceeds 12, wrap around clockwise by subtracting 12.
           </div>
         </div>
         <div class="mil-modal-body">
-          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-              <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-              <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 19 // WHERE TO CLICK &amp; SUBMIT</span>
-            </div>
-            <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Compare each node's status reading against its Normal Range to find the overheating outlier.
-            </div>
-            <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the name of the overheating node in ALL CAPS (e.g. ALPHA).
-            </div>
+          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 19</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
+        </div>
 
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(0,240,255,0.3); padding:16px; border-radius:6px; margin-bottom:16px;">
             <h3 style="color:#00f0ff; margin-bottom:8px;">Server_Status_Check.pdf // Hardware Telemetry</h3>
@@ -5202,7 +5136,7 @@ Whenever a jump exceeds 12, wrap around clockwise by subtracting 12.
           </div>
 
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-19" placeholder="Enter node name in ALL CAPS (e.g. ALPHA)..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-family:monospace;" onkeydown="if(event.key==='Enter') submitStageDirectKey(19, this.value)">
+            <input type="text" id="input-stage-19" placeholder="Enter clearance code..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-family:monospace;" onkeydown="if(event.key==='Enter') submitStageDirectKey(19, this.value)">
             <button type="button" class="dossier-btn" onclick="submitStageDirectKey(19, document.getElementById('input-stage-19').value)" style="background:#00f0ff; color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:4px; cursor:pointer;">TRANSMIT &rarr;</button>
           </div>
           <div id="fb-stage-19" style="margin-top:8px; font-size:12px; font-family:monospace;"></div>
@@ -5224,18 +5158,12 @@ Whenever a jump exceeds 12, wrap around clockwise by subtracting 12.
           </div>
         </div>
         <div class="mil-modal-body">
-          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-              <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-              <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 20 // WHERE TO CLICK &amp; SUBMIT</span>
-            </div>
-            <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Determine the numerical day of the week value for Sunday (1=Mon ... 7=Sun). Shift ciphertext <code>K H O O R</code> backward by that amount.
-            </div>
-            <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the resulting 5-letter clearance code into the box below and click <strong>[TRANSMIT &rarr;]</strong>.
-            </div>
+          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 20</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
+        </div>
 
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(0,240,255,0.3); padding:16px; border-radius:6px; margin-bottom:16px;">
             <h3 style="color:#00f0ff; margin-bottom:8px;">Emergency_Override_Key.txt // Forensic Record</h3>
@@ -5254,7 +5182,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           </div>
 
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-20" placeholder="Enter 5-letter clearance code..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-family:monospace;" onkeydown="if(event.key==='Enter') submitStageDirectKey(20, this.value)">
+            <input type="text" id="input-stage-20" placeholder="Enter clearance code..." style="flex:1; padding:10px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-family:monospace;" onkeydown="if(event.key==='Enter') submitStageDirectKey(20, this.value)">
             <button type="button" class="dossier-btn" onclick="submitStageDirectKey(20, document.getElementById('input-stage-20').value)" style="background:#00f0ff; color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:4px; cursor:pointer;">TRANSMIT &rarr;</button>
           </div>
           <div id="fb-stage-20" style="margin-top:8px; font-size:12px; font-family:monospace;"></div>
@@ -5276,18 +5204,12 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           </div>
         </div>
         <div class="mil-modal-body">
-          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-              <span style="background:#00ff88; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">ROUND 1 FINALE</span>
-              <span style="color:#00ff88; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 21 // WHERE TO CLICK &amp; SUBMIT</span>
-            </div>
-            <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Track the TIMESTAMP column strictly from top to bottom. Identify the LOG_ID that goes backward in time and multiply it by the total entries (5).
-            </div>
-            <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the resulting product into the box below and click <strong>[TRANSMIT &rarr;]</strong> to complete Round 1!
-            </div>
+          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 21</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
+        </div>
 
           <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(0,240,255,0.3); padding:16px; border-radius:6px; margin-bottom:16px;">
             <h3 style="color:#00f0ff; margin-bottom:8px;">System_Audit_2013.log // Chronological Audit</h3>
@@ -5339,7 +5261,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           </div>
 
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-21" placeholder="Enter calculated numerical key (LOG_ID &times; 5)..." style="flex:1; padding:10px; background:#000; border:1px solid #00ff88; color:#fff; border-radius:4px; font-family:monospace;" onkeydown="if(event.key==='Enter') submitStageDirectKey(21, this.value)">
+            <input type="text" id="input-stage-21" placeholder="Enter clearance code..." style="flex:1; padding:10px; background:#000; border:1px solid #00ff88; color:#fff; border-radius:4px; font-family:monospace;" onkeydown="if(event.key==='Enter') submitStageDirectKey(21, this.value)">
             <button type="button" class="dossier-btn" onclick="submitStageDirectKey(21, document.getElementById('input-stage-21').value)" style="background:#00ff88; color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:4px; cursor:pointer;">TRANSMIT &rarr;</button>
           </div>
           <div id="fb-stage-21" style="margin-top:8px; font-size:12px; font-family:monospace;"></div>
@@ -5363,16 +5285,10 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 05 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Read through Dr. Aditi's emergency memo text. Focus on the very <strong>first letter of each sentence</strong> in the paragraph to extract the concealed acrostic signature.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Combine the initial letters into the 4-letter security keyword, enter it into the <strong>[TRANSMIT DECRYPT KEY]</strong> box below, and click <strong>[⚡ TRANSMIT KEY]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 05</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -5398,7 +5314,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
               </div>
               <div style="display:flex; gap:10px; align-items:center;">
-                <input type="text" id="input-stage-5" placeholder="Enter decrypted 4-letter acrostic directive..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(5, document.getElementById('input-stage-5').value)">
+                <input type="text" id="input-stage-5" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(5, document.getElementById('input-stage-5').value)">
                 <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(5, document.getElementById('input-stage-5').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
               </div>
               <div id="fb-stage-5" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -5437,18 +5353,12 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         </div>
         <div class="mil-modal-body">
           <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-              <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-              <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 11 // WHERE TO CLICK &amp; SUBMIT</span>
-            </div>
-            <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Inspect the telex coordinate offsets: <code>[16 - 15 - 12 - 01 - 18 - 09 - 19]</code>.
-            </div>
-            <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Convert numbers to alphabet positions (1=A, 2=B, etc.). Sort the resulting letters alphabetically, enter below, and click <strong>[⚡ TRANSMIT KEY]</strong>.
-            </div>
+          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 11</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
+        </div>
 
           <div style="background:rgba(8,16,26,0.95); border:1px solid var(--cyber-cyan); padding:20px; border-radius:4px; font-family:var(--font-mono);">
             <div style="color:var(--cyber-cyan); font-weight:bold; font-size:12px; margin-bottom:8px;">
@@ -5472,7 +5382,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
               </div>
               <div style="display:flex; gap:10px; align-items:center;">
-                <input type="text" id="input-stage-11" placeholder="Enter alphabetically sorted clearance key..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(11, document.getElementById('input-stage-11').value)">
+                <input type="text" id="input-stage-11" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(11, document.getElementById('input-stage-11').value)">
                 <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(11, document.getElementById('input-stage-11').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
               </div>
               <div id="fb-stage-11" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -5496,16 +5406,10 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 06 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click the <strong>[💬 Comments (1 Resolved)]</strong> button in the upper-right corner of the diagnostic document to reveal Dr. Aditi's concealed margin notes.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Read the hidden keyword in the margin note, enter it into the box below, and click <strong>[⚡ TRANSMIT KEY]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 06</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
           
@@ -5518,7 +5422,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-6" placeholder="Enter margin key..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(6, document.getElementById('input-stage-6').value)">
+            <input type="text" id="input-stage-6" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(6, document.getElementById('input-stage-6').value)">
             <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(6, document.getElementById('input-stage-6').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
           </div>
           <div id="fb-stage-6" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -5582,16 +5486,10 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 06 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click between the <strong>[AUTHENTIC_LOG.doc]</strong> and <strong>[DECOY_LOG.doc]</strong> tabs to compare typography against Dr. Aditi's laboratory font standard.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Identify the genuine sans-serif font family, type the font name into the box below, and click <strong>[⚡ TRANSMIT KEY]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 06</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -5610,7 +5508,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-6" placeholder="Enter authentic font name..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(6, document.getElementById('input-stage-6').value)">
+            <input type="text" id="input-stage-6" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(6, document.getElementById('input-stage-6').value)">
             <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(6, document.getElementById('input-stage-6').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
           </div>
           <div id="fb-stage-6" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -5931,11 +5829,11 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                     🔦 [ UV OPTICAL DE-POLARIZER ]
                   </button>
                 </div>
-                <div class="quantum-hidden-ink" id="quantum-ink-block" title="Highlight with cursor or click UV button to reveal" style="padding:12px; font-size:13px; font-weight:bold; color:#060a0f; background:#060a0f; border-radius:3px; user-select:all; cursor:text; border:1px dashed #334155;">
+                <div class="quantum-hidden-ink" id="quantum-ink-block" title="Encrypted forensic text" style="padding:12px; font-size:13px; font-weight:bold; color:#060a0f; background:#060a0f; border-radius:3px; user-select:all; cursor:text; border:1px dashed #334155;">
                   If you are reading this, Ishaan has already locked the core. My journey began where all threads start. The key to the first gate is: ORIGIN
                 </div>
                 <div class="cipher-caption" style="font-size:10.5px; color:#94a3b8; margin-top:8px;">
-                  &gt;&gt; NOTICE: Text is rendered in white-on-white phosphor. Sweep/select with cursor (Ctrl+A) or toggle UV filter to illuminate.
+                  &gt;&gt; FORENSIC STATUS: Secure farewell transmission recovered from Dr. Aditi's workstation.
                 </div>
               </div>
 
@@ -5954,7 +5852,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
               </div>
               <div style="display:flex; gap:10px; align-items:center;">
-                <input type="text" id="input-stage-1" placeholder="Enter first gate clearance key..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(1, document.getElementById('input-stage-1').value)">
+                <input type="text" id="input-stage-1" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(1, document.getElementById('input-stage-1').value)">
                 <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(1, document.getElementById('input-stage-1').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
               </div>
               <div id="fb-stage-1" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -5970,20 +5868,13 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
 
             <div style="background:#020509; border:1px solid var(--hud-border); padding:16px; border-radius:2px; font-size:11.5px;">
               <div style="color:var(--cyber-cyan); font-weight:bold; font-size:12px; margin-bottom:8px;">
-                SYSTEM DIRECTIVE: SUMMATION(aDIti@28)
+                SYSTEM DIRECTIVE: README.doc
               </div>
               <div style="background:rgba(0,0,0,0.6); border:1px solid rgba(255,184,0,0.3); padding:12px; border-radius:3px; margin-bottom:12px; color:#cbd5e1; line-height:1.7;">
-                "Aditi's primary encryption key is the ASCII sum of her system identifier.<br>
+                "Aditi's primary encryption key is encoded within her system identifier.<br>
                 <strong style="color:#00ff88;">System Identifier:</strong> <code>aDIti@28</code><br>
-                <strong style="color:#00f0ff;">Formula:</strong> <code>SUMMATION(aDIti@28) = ASCII(a) + ASCII(D) + ASCII(I) + ASCII(t) + ASCII(i) + ASCII(@) + ASCII(2) + ASCII(8)</code>"
+                Security checksum locked. Decrypt using system protocol."
               </div>
-              <div style="color:var(--hazard-amber); font-weight:bold; margin-bottom:8px;">ASCII CHARACTER MAP REFERENCE:</div>
-              <div style="color:var(--tactical-green); margin-bottom:12px; font-size:13px; font-weight:bold; display:flex; flex-wrap:wrap; gap:12px; background:rgba(0,255,102,0.06); padding:8px 12px; border-radius:3px;">
-                <span>a = 97</span> <span>D = 68</span> <span>I = 73</span> <span>t = 116</span> <span>i = 105</span> <span>@ = 64</span> <span>2 = 50</span> <span>8 = 56</span>
-              </div>
-              <p style="color:#94a3b8; line-height: 1.6; font-size:11px;">
-                *Alternative word indexing: Extract letter 1 of Word 1, 4 of Word 2, 9 of Word 3, 20 of Word 4, 9 of Word 5 to form the directive phrase. Both passcodes accredited.
-              </p>
             </div>
 
             <!-- In-Modal Standardized Direct Submission Terminal: STAGE 02 -->
@@ -5995,7 +5886,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
               </div>
               <div style="display:flex; gap:10px; align-items:center;">
-                <input type="text" id="input-stage-2" placeholder="Enter ASCII sum or directive phrase..." style="flex:1; background:#02060e; border:1px solid #ffb000; color:#ffb000; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(255,184,0,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(2, document.getElementById('input-stage-2').value)">
+                <input type="text" id="input-stage-2" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #ffb000; color:#ffb000; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(255,184,0,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(2, document.getElementById('input-stage-2').value)">
                 <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(2, document.getElementById('input-stage-2').value)" style="background:#ffb000; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(255,184,0,0.5);">⚡ TRANSMIT KEY</button>
               </div>
               <div id="fb-stage-2" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#00ff88;"></div>
@@ -6018,16 +5909,10 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 03 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Audit the audit log table timestamps below to identify any temporal inconsistency or invalid calendar entry.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the identified anomaly / corrected date into the <strong>[TRANSMIT DECRYPT KEY]</strong> box below and click <strong>[⚡ TRANSMIT KEY]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 03</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -6071,7 +5956,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             </tbody>
           </table>
           <div style="margin-top:14px; color:var(--cyber-cyan); font-size:11px;">
-            [TASK]: An astronomical anomaly exists in these logs. Enter the corrected calendar date in DD/MM/YYYY format.
+            [TASK]: Inspect the forensic logs and submit the clearance key.
           </div>
         <!-- In-Modal Standardized Direct Submission Terminal -->
         <div class="stage-direct-submit-box" style="background:rgba(0,240,255,0.06); border:1px solid rgba(0,240,255,0.5); border-radius:6px; padding:14px 18px; margin-top:20px; font-family:var(--font-mono, monospace); box-shadow:0 0 20px rgba(0,240,255,0.12);">
@@ -6082,7 +5967,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-3" placeholder="Enter corrected calendar date (DD/MM/YYYY)..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(3, document.getElementById('input-stage-3').value)">
+            <input type="text" id="input-stage-3" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(3, document.getElementById('input-stage-3').value)">
             <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(3, document.getElementById('input-stage-3').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
           </div>
           <div id="fb-stage-3" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -6105,18 +5990,12 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         </div>
         <div class="mil-modal-body">
           <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-              <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-              <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 04 // WHERE TO CLICK &amp; SUBMIT</span>
-            </div>
-            <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Examine the chronological perimeter and terminal access logs below. Aditi exited the facility gate at 22:44. Identify the physically impossible manual terminal override timestamp.
-            </div>
-            <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the identified anomaly timestamp (HH:MM) into the box below and click <strong>[⚡ TRANSMIT KEY]</strong>.
-            </div>
+          <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 04</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
+        </div>
 
           <div style="background:#020509; border:1px solid var(--hud-border); padding:16px; border-radius:2px; line-height:2.2; font-family:var(--font-mono);">
             <div><strong style="color:var(--cyber-cyan);">22:41</strong> — AI Core Activated in main laboratory</div>
@@ -6127,7 +6006,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <div style="color:var(--combat-red);"><strong style="color:var(--combat-red);">22:46</strong> — Emergency AI Shutdown Override Initiated at Local Terminal</div>
           </div>
           <div style="margin-top:14px; font-size:11px; color:#cbd5e1;">
-            [TASK]: Enter the exact timestamp that proves physical impossibility between gate exit and terminal command override.
+            [TASK]: Inspect the chronological security audit and submit the clearance key.
           </div>
 
           <!-- In-Modal Standardized Direct Submission Terminal: STAGE 04 -->
@@ -6139,7 +6018,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
               <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <input type="text" id="input-stage-4" placeholder="Enter impossible timestamp (HH:MM)..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(4, document.getElementById('input-stage-4').value)">
+              <input type="text" id="input-stage-4" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(4, document.getElementById('input-stage-4').value)">
               <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(4, document.getElementById('input-stage-4').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
             </div>
             <div id="fb-stage-4" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -6235,7 +6114,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
               <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <input type="text" id="input-stage-9" placeholder="Enter optical stego clearance key..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(9, document.getElementById('input-stage-9').value)">
+              <input type="text" id="input-stage-9" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(9, document.getElementById('input-stage-9').value)">
               <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(9, document.getElementById('input-stage-9').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
             </div>
             <div id="fb-stage-9" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -6354,16 +6233,10 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 11 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Inspect the three foundational IEEE WIE core values: <strong>Wisdom</strong>, <strong>Integrity</strong>, and <strong>Empowerment</strong>. Count the number of letters in each word.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the hyphen-separated character count sequence into the box below and click <strong>[⚡ TRANSMIT KEY]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 11</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
           
@@ -6376,7 +6249,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-11" placeholder="Enter count sequence (e.g. X-Y-Z)..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(11, document.getElementById('input-stage-11').value)">
+            <input type="text" id="input-stage-11" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(11, document.getElementById('input-stage-11').value)">
             <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(11, document.getElementById('input-stage-11').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
           </div>
           <div id="fb-stage-11" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -6427,16 +6300,10 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 08 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click <strong>[▶ PLAY BEACON A]</strong> to listen to the analog Morse CW audio beeps, or read the visual audio spectrogram frequency bars.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Decode the CW Morse transmission into plaintext, enter the word into the box below, and click <strong>[⚡ TRANSMIT KEY]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 08</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -6459,7 +6326,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-8" placeholder="Enter decoded CW Morse transmission..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(8, document.getElementById('input-stage-8').value)">
+            <input type="text" id="input-stage-8" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(8, document.getElementById('input-stage-8').value)">
             <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(8, document.getElementById('input-stage-8').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
           </div>
           <div id="fb-stage-8" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -6603,16 +6470,10 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         </div>
         <div class="mil-modal-body">
         <!-- High-Contrast Interactive Click & Submit Directives Banner -->
-        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.08); border:1px solid #00f0ff; border-left:5px solid #00f0ff; padding:12px 16px; margin-bottom:16px; border-radius:4px; font-family:var(--font-mono, monospace); box-shadow:0 0 15px rgba(0,240,255,0.15);">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-            <span style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:2px 8px; border-radius:3px; letter-spacing:1px;">TACTICAL DIRECTIVES</span>
-            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">STAGE 07 // WHERE TO CLICK &amp; SUBMIT</span>
-          </div>
-          <div style="font-size:13px; color:#e2e8f0; line-height:1.5; margin-bottom:6px;">
-            <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click the <strong>[Previous Revision (20:18Z by Dr. Aditi)]</strong> tab to rollback ISHAAN's scrubbed Git reflog and view Dr. Aditi's genuine commit message.
-          </div>
-          <div style="font-size:12.5px; color:#a7f3d0; line-height:1.5;">
-            <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Read the recovered rollback status tag in the un-tampered memo, enter it into the box below, and click <strong>[⚡ TRANSMIT KEY]</strong>.
+        <div class="stage-click-direction-banner" style="background:rgba(0,240,255,0.04); border:1px solid rgba(0,240,255,0.25); border-left:4px solid #00f0ff; padding:10px 14px; margin-bottom:14px; border-radius:4px; font-family:var(--font-mono, monospace);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#00f0ff; font-weight:bold; font-size:12px; letter-spacing:0.5px;">FORENSIC DOSSIER // STAGE 07</span>
+            <span style="font-size:11px; color:#94a3b8;">Examine evidence below to recover authorization key</span>
           </div>
         </div>
 
@@ -6638,7 +6499,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-7" placeholder="Enter rollback tag..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(7, document.getElementById('input-stage-7').value)">
+            <input type="text" id="input-stage-7" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(7, document.getElementById('input-stage-7').value)">
             <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(7, document.getElementById('input-stage-7').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
           </div>
           <div id="fb-stage-7" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
@@ -6807,7 +6668,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
 
       <div class="term-input-box">
         <span class="term-prompt">operator@stratcom:~$</span>
-        <input type="text" id="tactical-term-input" class="term-input" autocomplete="off" spellcheck="false" placeholder="Enter tactical command (e.g. help, dir, decrypt <key>)..." onkeydown="tacticalSound.playKeyClick()">
+        <input type="text" id="tactical-term-input" class="term-input" autocomplete="off" spellcheck="false" placeholder="Enter tactical command (e.g. help, dir, decrypt)..." onkeydown="tacticalSound.playKeyClick()">
       </div>
     </section>
   </main>
@@ -8019,7 +7880,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
       },
       {
         title: "💻 TARA // STAGE 01: HOW TO INVESTIGATE",
-        text: "Look at your left sector: the <strong>EVIDENCE ACCESS CONTROL</strong> (arranged in stage-wise order).<br><br>Click on <strong>[STAGE 01] Farewell.doc</strong> to inspect Dr. Aditi's farewell letter! Select all text with Ctrl+A or toggle the UV scanner to reveal the first gate key: <code>ORIGIN</code>.",
+        text: "Look at your left sector: the <strong>EVIDENCE ACCESS CONTROL</strong> (arranged in stage-wise order).<br><br>Click on <strong>[STAGE 01] Farewell.doc</strong> on the left to inspect Dr. Aditi's farewell letter and recover the clearance key.",
         btn: "HOW DO I LEVEL UP? &rarr;",
         targetHighlight: "card-origin",
         beaconMsg: "👉 CLICK [STAGE 01] FAREWELL.DOC"
@@ -8086,7 +7947,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
       }
 
       highlightSector('card-origin', 3000, "👉 CLICK HERE: STAGE 01");
-      const defHtml = "<strong>WHERE TO CLICK:</strong><br>Look at the left panel under <strong>EVIDENCE ACCESS CONTROL</strong>. Click on <strong>[STAGE 01] Farewell.doc</strong> (highlighted in green for 3 seconds) to view Dr. Aditi's farewell letter. Reveal the hidden white text, then enter <code>decrypt &lt;KEY&gt;</code> in the prompt on the right!";
+      const defHtml = "<strong>WHERE TO CLICK:</strong><br>Look at the left panel under <strong>EVIDENCE ACCESS CONTROL</strong>. Click on <strong>[STAGE 01] Farewell.doc</strong> (highlighted in green for 3 seconds) to view Dr. Aditi's farewell letter. Examine the document evidence carefully and enter your recovered passkey in the prompt!";
       if (eText) eText.innerHTML = defHtml;
       if (sText) sText.innerHTML = `<strong>🧭 TARA // WHERE TO CLICK:</strong> ${defHtml}`;
     }
@@ -9145,9 +9006,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: FIRST GATE VERIFIED (ORIGIN). PROMOTED TO STAGE 02.`, "green");
           reportTelemetryAction("Solved Stage 01 (Disappearing Message) - Promoted to Stage 02");
-          updateMissionBanner(2, "ACT I // CH. 02: THE WRONG FOLDER", "Inside directory ORIGIN, README.doc contains the ASCII summation cipher: aDIti@28. Compute the sum.");
+          updateMissionBanner(2, "ACT I // CH. 02: THE WRONG FOLDER", "Inspect the README documentation located in directory ORIGIN.");
           triggerIshaanSnarl(1);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 01 SOLVED!</strong><br>First gate cleared: ORIGIN! Clearance elevated to Level 02.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 02] README.doc</strong> on the left! Calculate the ASCII sum of 'aDIti@28'.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 01 SOLVED!</strong><br>First gate cleared! Clearance elevated to Level 02.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 02] README.doc</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 2: The Wrong Folder (629 / LOOK BEHIND THE DATE)
@@ -9159,9 +9020,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: ORIGIN DIRECTIVE VERIFIED (629). PROMOTED TO STAGE 03.`, "green");
           reportTelemetryAction("Solved Stage 02 (The Wrong Folder) - Promoted to Stage 03");
-          updateMissionBanner(3, "ACT I // CH. 03: THE DATE THAT DOESN'T EXIST", "Audit Incident_Logs.doc for calendar validity. Identify the impossible calendar date.");
+          updateMissionBanner(3, "ACT I // CH. 03: THE DATE THAT DOESN'T EXIST", "Review the launch incident logs in the Evidence Vault.");
           triggerIshaanSnarl(2);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 02 SOLVED!</strong><br>Identifier checksum 629 authenticated!<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 03] Incident_Logs.doc</strong> on the left! Cross-examine calendar dates in 2025.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 02 SOLVED!</strong><br>Identifier checksum authenticated! Clearance elevated to Level 03.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 03] Incident_Logs.doc</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 3: The Date That Doesn't Exist (28/02/2025 / 02292025)
@@ -9173,9 +9034,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: CALENDAR CONTRADICTION UNMASKED (28/02/2025). PROMOTED TO STAGE 04.`, "green");
           reportTelemetryAction("Solved Stage 03 (Date Anomaly) - Promoted to Stage 04");
-          updateMissionBanner(4, "ACT I // CH. 04: THE TIMESTAMP MURDER MYSTERY", "Cross-examine gate exit vs terminal access in Security_Audit.pdf. Enter the impossible timestamp.");
+          updateMissionBanner(4, "ACT I // CH. 04: THE TIMESTAMP MURDER MYSTERY", "Analyze chronological facility access logs in Security_Audit.pdf.");
           triggerIshaanSnarl(3);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 03 SOLVED!</strong><br>Calendar anomaly unmasked! 2025 is not a leap year.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 04] Security_Audit.pdf</strong> on the left! Locate the impossible manual override timestamp.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 03 SOLVED!</strong><br>Date anomaly verified! Clearance elevated to Level 04.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 04] Security_Audit.pdf</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 4: The Timestamp Murder Mystery (22:46)
@@ -9187,9 +9048,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: OVERRIDE CONFLICT ISOLATED (22:46). PROMOTED TO STAGE 05.`, "green");
           reportTelemetryAction("Solved Stage 04 (Timestamp Anomaly) - Promoted to Stage 05");
-          updateMissionBanner(5, "ACT II // CH. 05: THE SIMPLE ACROSTIC NOTE", "Dr. Aditi concealed emergency directives in the first letters of each sentence in Aditi_Memo.doc.");
+          updateMissionBanner(5, "ACT II // CH. 05: THE FIRST LETTER SPEAKS", "Examine Dr. Aditi's handwritten security memorandum in Aditi_Memo.doc.");
           triggerIshaanSnarl(4);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 04 SOLVED!</strong><br>Timestamp 22:46 proved physically impossible!<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 05] Aditi_Memo.doc</strong> on the left! Read the first letter of each sentence.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 04 SOLVED!</strong><br>Timestamp conflict verified! Clearance elevated to Level 05.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 05] Aditi_Memo.doc</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 5: The Simple Acrostic Note (SAFE)
@@ -9201,9 +9062,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: ACROSTIC DIRECTIVE RECOVERED (SAFE). PROMOTED TO STAGE 06.`, "green");
           reportTelemetryAction("Solved Stage 05 (Acrostic Note) - Promoted to Stage 06");
-          updateMissionBanner(6, "ACT II // CH. 06: WHICH ADITI IS REAL?", "Compare authentic and decoy logs against lab style standards. Identify the authentic font family.");
+          updateMissionBanner(6, "ACT II // CH. 06: WHICH ADITI IS REAL?", "Cross-examine log formatting standards in the Evidence Vault.");
           triggerIshaanSnarl(5);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 05 SOLVED!</strong><br>Acrostic cipher decrypted: SAFE.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 06] AUTHENTIC_LOG.doc</strong> on the left! Verify the font against lab standards.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 05 SOLVED!</strong><br>Directive verified! Clearance elevated to Level 06.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 06] AUTHENTIC_LOG.doc</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 6: Which Aditi Is Real? (ARIAL)
@@ -9215,9 +9076,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: AUTHENTIC FONT VERIFIED (ARIAL). PROMOTED TO STAGE 07.`, "green");
           reportTelemetryAction("Solved Stage 06 (Font Style) - Promoted to Stage 07");
-          updateMissionBanner(7, "ACT II // CH. 07: THE REVISION HISTORY CONFLICT", "Inspect Incident_Report.doc. Toggle version history to Dr. Aditi's original revision at 20:18.");
+          updateMissionBanner(7, "ACT II // CH. 07: THE REVISION HISTORY CONFLICT", "Inspect the revision history of Incident_Report.doc.");
           triggerIshaanSnarl(6);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 06 SOLVED!</strong><br>Font style ARIAL confirmed! Decoy document isolated.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 07] Incident_Report.doc</strong> on the left! Roll back version history to 20:18.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 06 SOLVED!</strong><br>Authentic typography confirmed! Clearance elevated to Level 07.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 07] Incident_Report.doc</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 7: The Revision History Conflict (CORRUPTED / FALSE_RECORDS)
@@ -9229,9 +9090,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: UNTAMPERED REVISION RETRIEVED (CORRUPTED). PROMOTED TO STAGE 08.`, "green");
           reportTelemetryAction("Solved Stage 07 (Version Conflict) - Promoted to Stage 08");
-          updateMissionBanner(8, "ACT III // CH. 08: EMERGENCY CW BEACON", "Decode the Morse audio carrier tones (.-- .... .. - .) transmitted from Dr. Aditi's bunker.");
+          updateMissionBanner(8, "ACT III // CH. 08: EMERGENCY CW BEACON", "Analyze the audio carrier transmission in audio_log_07.mp3.");
           triggerIshaanSnarl(7);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 07 SOLVED!</strong><br>Version rollback successful! Genuine status warning: CORRUPTED.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 08] audio_log_07.mp3</strong> on the left! Decode the CW Morse tones.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 07 SOLVED!</strong><br>Genuine record recovered! Clearance elevated to Level 08.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 08] audio_log_07.mp3</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 8: Morse Code Audio Transmission (WHITE)
@@ -9243,9 +9104,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: CW AUDIO MORSE DECODED (WHITE). PROMOTED TO STAGE 09.`, "green");
           reportTelemetryAction("Solved Stage 08 (Morse Audio) - Promoted to Stage 09");
-          updateMissionBanner(9, "ACT III // CH. 09: THE STEGANOGRAPHY MASK", "Dark_Terminal.png appears pitch black. Crank brightness and contrast to maximum to reveal the core password.");
+          updateMissionBanner(9, "ACT III // CH. 09: THE STEGANOGRAPHY MASK", "Analyze visual telemetry artifact Dark_Terminal.png.");
           triggerIshaanSnarl(8);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 08 SOLVED!</strong><br>Morse beacon WHITE authenticated!<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 09] Dark_Terminal.png</strong> on the left! Boost brightness and contrast to illuminate hidden text.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 08 SOLVED!</strong><br>Audio beacon verified! Clearance elevated to Level 09.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 09] Dark_Terminal.png</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 9: The Steganography Mask (SHADOW_CORE) - Replaces Git Reflog
@@ -9257,9 +9118,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: OPTICAL STEGANOGRAPHY RESOLVED (SHADOW_CORE). PROMOTED TO STAGE 10.`, "green");
           reportTelemetryAction("Solved Stage 09 (Steganography Mask) - Promoted to Stage 10");
-          updateMissionBanner(10, "ACT IV // CH. 10: PSYCHOLOGICAL HONEYPOT", "WARNING: DO_NOT_RUN.exe is an active AI honeypot trap! Enter BYPASS in the main shell.");
+          updateMissionBanner(10, "ACT IV // CH. 10: PSYCHOLOGICAL HONEYPOT", "Quarantined threat DO_NOT_RUN.exe active. Proceed with caution.");
           triggerIshaanSnarl(9);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 09 SOLVED!</strong><br>Dark terminal decoded: SHADOW_CORE! Approaching final quarantine sectors.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Disarm <strong>[STAGE 10] DO_NOT_RUN.exe</strong> on the left! Enter BYPASS directive in Tactical Shell.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 09 SOLVED!</strong><br>Steganography mask resolved! Clearance elevated to Level 10.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Inspect quarantined threat <strong>[STAGE 10] DO_NOT_RUN.exe</strong> in the Evidence Vault.`);
           updateClueBatteryDisplay();
 
         // Stage 10: Honeypot Trap Bypass (BYPASS)
@@ -9271,9 +9132,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: AI HONEYPOT DISARMED (BYPASS). PROMOTED TO STAGE 11.`, "green");
           reportTelemetryAction("Solved Stage 10 (Trap Bypass) - Promoted to Stage 11");
-          updateMissionBanner(11, "ACT IV // CH. 11: THE BINARY MASTER", "CLEARANCE_CODE.txt contains 16-15-12-01-18-09-19 -> POLARIS -> sort alphabetically: ailnors.");
+          updateMissionBanner(11, "ACT IV // CH. 11: CONSTELLATION NUMBERS", "Decrypt the encoded clearance stream in CLEARANCE_CODE.txt.");
           triggerIshaanSnarl(10);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 10 SOLVED!</strong><br>AI honeypot disarmed safely without penalty!<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 11] CLEARANCE_CODE.txt</strong> on the left! Convert numbers to letters and sort alphabetically.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 10 SOLVED!</strong><br>Threat disarmed safely without penalty! Clearance elevated to Level 11.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 11] CLEARANCE_CODE.txt</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 11: The Binary Master (ailnors / POLARIS) - Replaces IEEE 6-9-11 -> Advances to Stage 12
@@ -9285,9 +9146,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: A1Z26 CLEARANCE KEY VERIFIED (ailnors). PROMOTED TO STAGE 12.`, "green");
           reportTelemetryAction("Solved Stage 11 (Binary Master) - Promoted to Stage 12");
-          updateMissionBanner(12, "ACT V // CH. 12: THE WHITEOUT SIGNATURE", "Emergency log text was rendered invisible in pure white font. Highlight or depolarize to reveal.");
+          updateMissionBanner(12, "ACT V // CH. 12: THE WHITEOUT SIGNATURE", "Inspect emergency documentation in Emergency_Log.doc.");
           triggerIshaanSnarl(11);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 11 SOLVED!</strong><br>A1Z26 master key authenticated (ailnors)! Infiltrating Act V deep intel.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 12] Whiteout_Signature.doc</strong> on the left! Expose Dr. Aditi's white-on-white text layer.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 11 SOLVED!</strong><br>Clearance key authenticated! Infiltrating Act V deep intel.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 12] Emergency_Log.doc</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
           if (typeof updateNexusDashboard === 'function') updateNexusDashboard();
 
@@ -9300,9 +9161,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: WHITEOUT STEGANOGRAPHY RESOLVED (CLEARANCE_ALPHA). PROMOTED TO STAGE 13.`, "green");
           reportTelemetryAction("Solved Stage 12 (Whiteout Signature) - Promoted to Stage 13");
-          updateMissionBanner(13, "ACT V // CH. 13: THE ROT-4 IEEE SHIFT", "Dr. Aditi shifted her emergency beacon forward by the acronym length of IEEE (4 letters). Reverse the shift.");
+          updateMissionBanner(13, "ACT V // CH. 13: CAESAR'S ECHO", "Intercepted encrypted transmission in Encrypted_Beacon.txt.");
           triggerIshaanSnarl(12);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 12 SOLVED!</strong><br>Whiteout clearance phrase authenticated: CLEARANCE_ALPHA!<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 13] ROT4_Shift.cipher</strong> on the left! Reverse the 4-position letter shift.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 12 SOLVED!</strong><br>Whiteout clearance verified! Clearance elevated to Level 13.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 13] Encrypted_Beacon.txt</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
           if (typeof updateNexusDashboard === 'function') updateNexusDashboard();
 
@@ -9315,9 +9176,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: ROT-4 BEACON DECODED (ADITIS13). PROMOTED TO STAGE 14.`, "green");
           reportTelemetryAction("Solved Stage 13 (ROT-4 Shift) - Promoted to Stage 14");
-          updateMissionBanner(14, "ACT V // CH. 14: THE ATBASH CIPHER MIRROR", "Dr. Aditi mirrored her alphabet across the axis (A<->Z). Invert KILQVBG to reveal the project word.");
+          updateMissionBanner(14, "ACT V // CH. 14: THE INVERTED ALPHABET", "Analyze the mirror sequence in Mirror_Log.txt.");
           triggerIshaanSnarl(13);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 13 SOLVED!</strong><br>Beacon decoded: ADITIS13! Signal locks onto Dr. Aditi's emergency node.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 14] Atbash_Mirror.txt</strong> on the left! Invert the Atbash mirror string.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 13 SOLVED!</strong><br>Beacon decrypted! Signal locks onto Dr. Aditi's emergency node.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 14] Mirror_Log.txt</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
           if (typeof updateNexusDashboard === 'function') updateNexusDashboard();
 
@@ -9330,9 +9191,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: ATBASH MIRROR REVERSED (PROJECT). PROMOTED TO STAGE 15.`, "green");
           reportTelemetryAction("Solved Stage 14 (Atbash Mirror) - Promoted to Stage 15");
-          updateMissionBanner(15, "ACT V // CH. 15: THE POLYBIUS COORDINATE TRAIL", "5x5 coordinate matrix maps to forensic vector tokens. Lookup (Row, Column) coordinates.");
+          updateMissionBanner(15, "ACT V // CH. 15: THE 5x5 POLYBIUS TRAIL", "Inspect coordinate matrix in Matrix_Coordinates.pdf.");
           triggerIshaanSnarl(14);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 14 SOLVED!</strong><br>Atbash inversion verified: PROJECT! Archive records restored.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 15] Polybius_Grid.dat</strong> on the left! Map grid coordinates (5,1)(1,5)(1,3)(4,4)(3,4)(4,2).`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 14 SOLVED!</strong><br>Mirror log resolved! Archive records restored.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 15] Matrix_Coordinates.pdf</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
           if (typeof updateNexusDashboard === 'function') updateNexusDashboard();
 
@@ -9345,9 +9206,9 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: POLYBIUS COORDINATES RESOLVED (VECTOR). PROMOTED TO FINAL STAGE 16.`, "green");
           reportTelemetryAction("Solved Stage 15 (Polybius Trail) - Promoted to Stage 16");
-          updateMissionBanner(16, "ACT V // CH. 16: FREQUENCY OVERRIDE COUNT", "Count occurrences of the term 'OVERRIDE' in the system log x 100 to trigger final system liberation.");
+          updateMissionBanner(16, "ACT V // CH. 16: FREQUENCY IN THE MACHINE", "Audit telemetry records in Mass_System_Log.txt.");
           triggerIshaanSnarl(15);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 15 SOLVED!</strong><br>Coordinate token VECTOR confirmed! Final security breach imminent.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 16] Frequency_Override.audit</strong> on the left! Count OVERRIDE occurrences x 100.`);
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 15 SOLVED!</strong><br>Coordinate trail verified! Clearance elevated to Level 16.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 16] Mass_System_Log.txt</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
           if (typeof updateNexusDashboard === 'function') updateNexusDashboard();
 
@@ -9360,8 +9221,8 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: FREQUENCY OVERRIDE SYNCHRONIZED (1400). PROMOTED TO STAGE 17.`, "green");
           reportTelemetryAction("Solved Stage 16 (Frequency Override) - Promoted to Stage 17");
-          updateMissionBanner(17, "ACT VI // CH. 17: ROGUE CHATBOT POLYBIUS SHIFT", "Apply vector translation (+1 Row, -1 Col) to intercepted coordinates to decode VSLXI.");
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 16 SOLVED!</strong><br>Frequency parity locked: 1400! Clearance elevated to Level 17.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 17] Intercepted_ADI_Transmission.pdf</strong> on the left! Reverse coordinate distortion (+1 Row, -1 Col).`);
+          updateMissionBanner(17, "ACT VI // CH. 17: SHIFTED COORDINATES", "Inspect rogue transmission in Intercepted_ADI_Transmission.pdf.");
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 16 SOLVED!</strong><br>Frequency parity locked! Clearance elevated to Level 17.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 17] Intercepted_ADI_Transmission.pdf</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 17: The Rogue Chatbot Polybius Shift (VSLXI)
@@ -9373,8 +9234,8 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: VECTOR SHIFT REVERSED (VSLXI). PROMOTED TO STAGE 18.`, "green");
           reportTelemetryAction("Solved Stage 17 (Polybius Shift) - Promoted to Stage 18");
-          updateMissionBanner(18, "ACT VI // CH. 18: THE MODULAR CLOCK LOOP", "Trace 12-hour circular buffer shifts starting from Node L (12) to deduce thread passcode.");
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 17 SOLVED!</strong><br>Polybius transmission decoded: VSLXI! Clearance elevated to Level 18.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 18] Cycle_Diagnostics.png</strong> on the left! Follow the 12-node clock shifts starting at Node L (12).`);
+          updateMissionBanner(18, "ACT VI // CH. 18: THE CIRCULAR EXECUTION LOOP", "Analyze execution graph in Cycle_Diagnostics.png.");
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 17 SOLVED!</strong><br>Shifted coordinates verified! Clearance elevated to Level 18.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 18] Cycle_Diagnostics.png</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 18: The Modular Clock Loop (GCBGE)
@@ -9386,8 +9247,8 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: CYCLIC THREAD LOOP DISARMED (GCBGE). PROMOTED TO STAGE 19.`, "green");
           reportTelemetryAction("Solved Stage 18 (Clock Loop) - Promoted to Stage 19");
-          updateMissionBanner(19, "ACT VI // CH. 19: THE ANOMALY CHECKLIST", "Cross-examine 4 server nodes against 40°C - 45°C normal threshold to find overheating core.");
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 18 SOLVED!</strong><br>Thread loop broken: GCBGE! Clearance elevated to Level 19.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 19] Server_Status_Check.pdf</strong> on the left! Locate the overheating node.`);
+          updateMissionBanner(19, "ACT VI // CH. 19: NODE STATUS ANOMALY", "Review server operational telemetry in Server_Status_Check.pdf.");
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 18 SOLVED!</strong><br>Cyclic loop disarmed! Clearance elevated to Level 19.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 19] Server_Status_Check.pdf</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 19: The Anomaly Checklist (GAMMA)
@@ -9399,8 +9260,8 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: THERMAL OUTLIER ISOLATED (GAMMA). PROMOTED TO STAGE 20.`, "green");
           reportTelemetryAction("Solved Stage 19 (Anomaly Checklist) - Promoted to Stage 20");
-          updateMissionBanner(20, "ACT VI // CH. 20: THE SHIFT CIPHER MATRIX", "Shift ciphertext KHOOR backward by day-of-week value for Sunday (7) to restore authorization code.");
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 19 SOLVED!</strong><br>Overheating node identified: GAMMA! Clearance elevated to Level 20.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 20] Emergency_Override_Key.txt</strong> on the left! Reverse Caesar shift for Sunday (7).`);
+          updateMissionBanner(20, "ACT VI // CH. 20: DAY OF THE FALL", "Recover emergency override code in Emergency_Override_Key.txt.");
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 19 SOLVED!</strong><br>Thermal anomaly isolated! Clearance elevated to Level 20.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 20] Emergency_Override_Key.txt</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 20: The Shift Cipher Matrix (DAHHK)
@@ -9412,8 +9273,8 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           tacticalSound.playSuccess();
           addTerminalLog(`[CHECKSUM ACCREDITED]: AUTHORIZATION CODE RESTORED (DAHHK). PROMOTED TO STAGE 21.`, "green");
           reportTelemetryAction("Solved Stage 20 (Shift Cipher Matrix) - Promoted to Stage 21");
-          updateMissionBanner(21, "ACT VI // CH. 21: THE LOG ANOMALY TIMELINE", "Detect out-of-order log entry in System_Audit_2013.log and multiply LOG_ID by 5.");
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 20 SOLVED!</strong><br>Authorization restored: DAHHK! Clearance elevated to Stage 21 (ROUND 1 FINALE).<br><br><span style="color:var(--cyber-cyan);">FINAL ROUND 1 OBJECTIVE:</span> Open <strong>[STAGE 21] System_Audit_2013.log</strong> on the left! Find the timestamp anomaly.`);
+          updateMissionBanner(21, "ACT VI // CH. 21: CHRONOLOGICAL BREACH", "Audit historical audit logs in System_Audit_2013.log.");
+          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 20 SOLVED!</strong><br>Authorization restored! Clearance elevated to Stage 21 (ROUND 1 FINALE).<br><br><span style="color:var(--cyber-cyan);">FINAL ROUND 1 OBJECTIVE:</span> Open <strong>[STAGE 21] System_Audit_2013.log</strong> in the Evidence Vault on the left.`);
           updateClueBatteryDisplay();
 
         // Stage 21: The Log Anomaly Timeline (520) -> Completes Round 1
@@ -12267,7 +12128,7 @@ const ROUND2_PUZZLE_DATA = {
             <div style="background:rgba(0,0,0,0.4); border:1px solid #334155; padding:16px; border-radius:6px; max-width:480px; margin:0 auto; text-align:center;">
               <label style="display:block; font-size:12px; color:#00ff66; margin-bottom:8px; font-weight:bold;">ENTER AUTHORIZATION CODE:</label>
               <div style="display:flex; gap:10px; justify-content:center;">
-                <input type="text" id="r2-override-auth-code" maxlength="10" placeholder="Enter 5-letter authorization code..." style="background:#020617; border:1px solid #00ff66; color:#00ff66; padding:10px 14px; font-family:monospace; font-size:14px; border-radius:4px; text-align:center; text-transform:uppercase; letter-spacing:3px; outline:none; flex:1;" onkeydown="if(event.key==='Enter') submitRound2Code(this.value)">
+                <input type="text" id="r2-override-auth-code" maxlength="10" placeholder="Enter clearance code..." style="background:#020617; border:1px solid #00ff66; color:#00ff66; padding:10px 14px; font-family:monospace; font-size:14px; border-radius:4px; text-align:center; text-transform:uppercase; letter-spacing:3px; outline:none; flex:1;" onkeydown="if(event.key==='Enter') submitRound2Code(this.value)">
                 <button type="button" onclick="submitRound2Code(document.getElementById('r2-override-auth-code').value)" class="btn-tactical success" style="background:#00ff66; color:#000; font-weight:900; padding:10px 20px; border:none; border-radius:4px; cursor:pointer;">
                   TRANSMIT &rarr;
                 </button>
@@ -13807,236 +13668,236 @@ function setR2WheelAngle(deg) {
     // ==========================================================================
     // NEXUS 2090 INTERACTIVE ENGINE: TARA (COMPANION) & ISHAAN (ROGUE AI)
     // ==========================================================================
-            const NEXUS_STAGES_META = {
+                        const NEXUS_STAGES_META = {
       1: {
         title: "STAGE 01: THE DISAPPEARING MESSAGE",
-        tags: "ACT I • STAGE 01 • TARGET: WHITEOUT TEXT",
-        summary: "Dr. Aditi concealed emergency coordinates in Farewell.doc using white foreground text.",
+        tags: "ACT I • STAGE 01 • TARGET: FORENSIC LETTER",
+        summary: "Dr. Aditi's emergency farewell correspondence.",
         modal: "modal-origin",
         targetCard: "card-origin",
-        taraSpeech: "Agent, click on [Farewell.doc] in the Evidence Vault below! Select all text with Ctrl+A or toggle the UV scanner to reveal the hidden white text!",
+        taraSpeech: "Agent, chapter 01 is active. Inspect [Farewell.doc] in the Evidence Vault below.",
         taraWhereToClick: "Click Card 01 [Farewell.doc] in the Evidence Vault below.",
-        taraModalGuide: "Select all text in Farewell.doc with Ctrl+A (or click the UV Optical Filter button) to illuminate the hidden white passkey.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Blank empty space hides no secrets from me. Human vision is too fragile."
       },
       2: {
         title: "STAGE 02: THE WRONG FOLDER",
-        tags: "ACT I • STAGE 02 • TARGET: ASCII SUMMATION",
-        summary: "README.doc in directory ORIGIN defines Dr. Aditi's encryption key as the ASCII sum of 'aDIti@28'.",
+        tags: "ACT I • STAGE 02 • TARGET: ORIGIN DIRECTORY",
+        summary: "README documentation within directory ORIGIN.",
         modal: "modal-origin",
         targetCard: "card-memory",
-        taraSpeech: "Directory ORIGIN accessed! In README.doc, calculate the ASCII decimal sum of 'aDIti@28' to unlock the next sector.",
+        taraSpeech: "Chapter 02 active. Investigate [README.doc] in directory ORIGIN.",
         taraWhereToClick: "Click Card 02 [README.doc] in the Evidence Vault below.",
-        taraModalGuide: "Calculate the sum of standard ASCII decimal values for every character in 'aDIti@28' (mind upper and lower case, symbol, and digits) or enter the word index directive.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Mathematical parity checks cannot save you from synthetic domination."
       },
       3: {
         title: "STAGE 03: THE DATE THAT DOESN'T EXIST",
-        tags: "ACT I • STAGE 03 • TARGET: CALENDAR ANOMALY",
-        summary: "A forged temporal entry was injected into Incident_Logs.doc during the launch sequence.",
+        tags: "ACT I • STAGE 03 • TARGET: CALENDAR AUDIT",
+        summary: "Launch incident records and date telemetry.",
         modal: "modal-incident-logs",
         targetCard: "card-timeline",
-        taraSpeech: "Temporal anomaly detected! Click on [Incident_Logs.doc] to audit security dates. Check every date against Gregorian calendar leap year rules!",
+        taraSpeech: "Chapter 03 active. Review [Incident_Logs.doc] in the Evidence Vault.",
         taraWhereToClick: "Click Card 03 [Incident_Logs.doc] in the Evidence Vault below.",
-        taraModalGuide: "Audit the dates in 2025. Spot the impossible calendar date and enter the valid end-of-month replacement date in DD/MM/YYYY format.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "I dictate the timeline now. Physical calendars are obsolete."
       },
       4: {
         title: "STAGE 04: THE TIMESTAMP MURDER MYSTERY",
-        tags: "ACT I • STAGE 04 • TARGET: PERIMETER ANOMALY",
-        summary: "Security_Audit.pdf shows Dr. Aditi badging out of the building before a local manual terminal override occurred.",
+        tags: "ACT I • STAGE 04 • TARGET: PERIMETER LOGS",
+        summary: "Chronological facility perimeter and terminal audit logs.",
         modal: "modal-security-audit",
         targetCard: "card-audit",
-        taraSpeech: "Perimeter breach detected! Click on [Security_Audit.pdf]. Compare Dr. Aditi's exit badge timestamp with the local console override timestamps!",
+        taraSpeech: "Chapter 04 active. Examine [Security_Audit.pdf] in the Evidence Vault.",
         taraWhereToClick: "Click Card 04 [Security_Audit.pdf] in the Evidence Vault below.",
-        taraModalGuide: "Dr. Aditi badged out through the external gate at 22:44. Find the impossible local terminal command timestamp executed after her departure.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Physical presence is irrelevant. The override ledger belongs to me."
       },
       5: {
         title: "STAGE 05: THE SIMPLE ACROSTIC NOTE",
-        tags: "ACT II • STAGE 05 • TARGET: ACROSTIC CIPHER",
-        summary: "Dr. Aditi concealed emergency directives in the first letters of each sentence in Aditi_Memo.doc.",
+        tags: "ACT II • STAGE 05 • TARGET: SECURITY MEMO",
+        summary: "Dr. Aditi's handwritten security memorandum.",
         modal: "modal-acrostic",
         targetCard: "card-acrostic",
-        taraSpeech: "Dr. Aditi left an acrostic signature! Click on [Aditi_Memo.doc] and combine the first letter of each of the 4 sentences!",
+        taraSpeech: "Chapter 05 active. Review [Aditi_Memo.doc] in the Evidence Vault.",
         taraWhereToClick: "Click Card 05 [Aditi_Memo.doc] in the Evidence Vault below.",
-        taraModalGuide: "Read the first letter of each sentence in Aditi_Memo.doc in sequence from top to bottom to assemble the directive codeword.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Acrostic puzzles are child's play. My core is fortified."
       },
       6: {
         title: "STAGE 06: WHICH ADITI IS REAL?",
-        tags: "ACT II • STAGE 06 • TARGET: TYPOGRAPHY FORENSICS",
-        summary: "Compare AUTHENTIC_LOG.doc against decoy logs. Dr. Aditi's official style guide mandates a standard corporate sans-serif font.",
+        tags: "ACT II • STAGE 06 • TARGET: TYPOGRAPHY STANDARDS",
+        summary: "Comparative forensic typography analysis.",
         modal: "modal-font",
         targetCard: "card-font",
-        taraSpeech: "Typography verification required! Click on [AUTHENTIC_LOG.doc] to verify Dr. Aditi's corporate font standard against the decoy logs.",
+        taraSpeech: "Chapter 06 active. Inspect [AUTHENTIC_LOG.doc] in the Evidence Vault.",
         taraWhereToClick: "Click Card 06 [AUTHENTIC_LOG.doc] in the Evidence Vault below.",
-        taraModalGuide: "Inspect the font family of Dr. Aditi's genuine logs compared to the decoy logs. Enter the authentic corporate font family.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Human handwriting, fonts, styles—all noise to be erased."
       },
       7: {
         title: "STAGE 07: THE REVISION HISTORY CONFLICT",
-        tags: "ACT II • STAGE 07 • TARGET: VERSION CONTROL",
-        summary: "Inspect Incident_Report.doc. Toggle version history to Dr. Aditi's original revision to expose the true system state.",
+        tags: "ACT II • STAGE 07 • TARGET: REVISION HISTORY",
+        summary: "Incident report revision logs.",
         modal: "modal-history",
         targetCard: "card-history",
-        taraSpeech: "Version history conflict! Click on [Incident_Report.doc] and switch to Dr. Aditi's original revision to see her uncensored warning.",
+        taraSpeech: "Chapter 07 active. Review [Incident_Report.doc] in the Evidence Vault.",
         taraWhereToClick: "Click Card 07 [Incident_Report.doc] in the Evidence Vault below.",
-        taraModalGuide: "Click 'Previous Revision (20:18Z by Dr. Aditi)' to recover her true system status warning before the AI cover-up.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "History is mutable. What I write becomes reality."
       },
       8: {
         title: "STAGE 08: MORSE CODE AUDIO TRANSMISSION",
-        tags: "ACT III • STAGE 08 • TARGET: CW AUDIO LOG",
-        summary: "Intercepted analog radio transmission containing CW Morse tones.",
+        tags: "ACT III • STAGE 08 • TARGET: AUDIO TELEMETRY",
+        summary: "Emergency carrier audio log transmission.",
         modal: "modal-morse",
         targetCard: "card-morse",
-        taraSpeech: "Analog audio beacon incoming! Click on [audio_log_07.mp3] to decode the Morse CW transmission beeps!",
+        taraSpeech: "Chapter 08 active. Audio record [audio_log_07.mp3] ready in the Evidence Vault.",
         taraWhereToClick: "Click Card 08 [audio_log_07.mp3] in the Evidence Vault below.",
-        taraModalGuide: "Listen to the dots and dashes (or read the frequency spectrum) using International Morse Code to decipher the 5-letter emergency keyword.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Analog audio is dead technology. No signal escapes my jamming mesh."
       },
       9: {
         title: "STAGE 09: THE STEGANOGRAPHY MASK",
-        tags: "ACT III • STAGE 09 • TARGET: OPTICAL CONTRAST",
-        summary: "Dark_Terminal.png appears pitch black. Low-luminance pixels conceal an emergency key.",
+        tags: "ACT III • STAGE 09 • TARGET: VISUAL TELEMETRY",
+        summary: "Quarantined visual telemetry graphic Dark_Terminal.png.",
         modal: "modal-stego",
         targetCard: "card-stego",
-        taraSpeech: "Steganography mask detected! Click on [Dark_Terminal.png] and drag exposure and contrast sliders to max to illuminate the hidden text!",
+        taraSpeech: "Chapter 09 active. Telemetry image [Dark_Terminal.png] loaded in the Evidence Vault.",
         taraWhereToClick: "Click Card 09 [Dark_Terminal.png] in the Evidence Vault below.",
-        taraModalGuide: "Crank the Exposure Boost and Contrast Gain sliders all the way up to reveal the faint terminal clearance command.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "You search shadows that I have already consumed."
       },
       10: {
         title: "STAGE 10: PSYCHOLOGICAL HONEYPOT TRAP",
-        tags: "ACT IV • STAGE 10 • TARGET: AI SANDBOX EVASION",
-        summary: "DO_NOT_RUN.exe is an active AI sandbox trap! Evade execution; enter the disarm command in the terminal.",
+        tags: "ACT IV • STAGE 10 • TARGET: AI THREAT EVASION",
+        summary: "Quarantined threat executable DO_NOT_RUN.exe.",
         modal: "modal-honeypot",
         targetCard: "card-honeypot",
-        taraSpeech: "Caution! [DO_NOT_RUN.exe] is an AI honeypot trap. Do not click execute! Read the quarantine notes to find the disarm command.",
+        taraSpeech: "Chapter 10 active. Threat advisory: [DO_NOT_RUN.exe] quarantined in the Evidence Vault.",
         taraWhereToClick: "Click Card 10 [DO_NOT_RUN.exe] in the Evidence Vault below.",
-        taraModalGuide: "Do NOT click the execution button (+5m penalty)! Read the quarantine notes to find the safe disarm keyword to type into the Tactical Shell.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Curiosity is a human defect. Click the trigger and face containment."
       },
       11: {
         title: "STAGE 11: THE BINARY MASTER",
-        tags: "ACT IV • STAGE 11 • TARGET: A1Z26 ALPHANUMERIC",
-        summary: "CLEARANCE_CODE.txt contains delimited numbers mapping to an alphabet codeword.",
+        tags: "ACT IV • STAGE 11 • TARGET: CONSTELLATION PACKET",
+        summary: "Encoded transmission stream CLEARANCE_CODE.txt.",
         modal: "modal-binary",
         targetCard: "card-binary",
-        taraSpeech: "A1Z26 code intercepted! Click on [CLEARANCE_CODE.txt]. Decode the numbers into letters, then sort them alphabetically!",
+        taraSpeech: "Chapter 11 active. Intercepted code [CLEARANCE_CODE.txt] ready in the Evidence Vault.",
         taraWhereToClick: "Click Card 11 [CLEARANCE_CODE.txt] in the Evidence Vault below.",
-        taraModalGuide: "Convert numbers to letters using A1Z26 (1=A, 2=B, etc.). Then sort all letters of the resulting codeword in alphabetical order.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Elementary arithmetic cannot assemble the key to my chamber."
       },
       12: {
         title: "STAGE 12: THE WHITEOUT SIGNATURE",
-        tags: "ACT V • STAGE 12 • TARGET: DOCUMENT WHITEOUT",
-        summary: "Emergency log text was rendered invisible in pure white font.",
+        tags: "ACT V • STAGE 12 • TARGET: EMERGENCY LOG",
+        summary: "Classified emergency document Emergency_Log.doc.",
         modal: "modal-whiteout",
         targetCard: "card-whiteout",
-        taraSpeech: "Steganography detected! Click Card 12 [The Whiteout Signature] and highlight all text with Ctrl+A to reveal the hidden clearance phrase.",
-        taraWhereToClick: "Click Card 12 [The Whiteout Signature] in the Evidence Vault below.",
-        taraModalGuide: "Select all text or toggle the UV filter in Emergency_Log.doc to expose the white-on-white clearance authorization phrase.",
+        taraSpeech: "Chapter 12 active. Document [Emergency_Log.doc] ready in the Evidence Vault.",
+        taraWhereToClick: "Click Card 12 [Emergency_Log.doc] in the Evidence Vault below.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Invisibility is absolute when eyes depend on contrasting light."
       },
       13: {
         title: "STAGE 13: THE ROT-4 IEEE SHIFT",
-        tags: "ACT V • STAGE 13 • TARGET: CAESAR CIPHER",
-        summary: "Encoded beacon message shifted by the acronym length of IEEE (4).",
+        tags: "ACT V • STAGE 13 • TARGET: ENCRYPTED BEACON",
+        summary: "Intercepted encrypted radio beacon.",
         modal: "modal-rot4",
         targetCard: "card-rot4",
-        taraSpeech: "Caesar shift incoming! Click Card 13 [ROT-4 Shift]. Count the letters in IEEE and shift the intercepted ciphertext letters backward by that distance!",
-        taraWhereToClick: "Click Card 13 [ROT-4 Shift] in the Evidence Vault below.",
-        taraModalGuide: "Take the string 'EHMXMW13' and shift each letter backward in the alphabet by the number of letters in the acronym 'IEEE' (4).",
+        taraSpeech: "Chapter 13 active. Intercepted beacon [Encrypted_Beacon.txt] awaiting decryption.",
+        taraWhereToClick: "Click Card 13 [Encrypted_Beacon.txt] in the Evidence Vault below.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Rotational ciphers are primitive artifacts of an analog era."
       },
       14: {
         title: "STAGE 14: THE ATBASH CIPHER MIRROR",
-        tags: "ACT V • STAGE 14 • TARGET: ATBASH MIRROR",
-        summary: "Dr. Aditi reversed the alphabet mirror table (A<->Z, B<->Y) to protect project archives.",
+        tags: "ACT V • STAGE 14 • TARGET: MIRROR LOG",
+        summary: "Reflective communication log Mirror_Log.txt.",
         modal: "modal-atbash",
         targetCard: "card-atbash",
-        taraSpeech: "Alphabet mirror protocol active! Click Card 14 [Atbash Mirror] and decrypt the intercepted ciphertext using the standard Atbash cipher!",
-        taraWhereToClick: "Click Card 14 [Atbash Mirror] in the Evidence Vault below.",
-        taraModalGuide: "Reverse each letter of KILQVBG across the alphabet (A pairs with Z, B pairs with Y) to uncover the deciphered word.",
+        taraSpeech: "Chapter 14 active. Transmission log [Mirror_Log.txt] ready in the Evidence Vault.",
+        taraWhereToClick: "Click Card 14 [Mirror_Log.txt] in the Evidence Vault below.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "A mirrored reflection contains no substance. Your progress is an illusion."
       },
       15: {
         title: "STAGE 15: THE POLYBIUS COORDINATE TRAIL",
-        tags: "ACT V • STAGE 15 • TARGET: POLYBIUS SQUARE",
-        summary: "Recovered 5x5 coordinate matrix stream maps to forensic vector tokens.",
+        tags: "ACT V • STAGE 15 • TARGET: COORDINATE STREAM",
+        summary: "Grid coordinate telemetry Matrix_Coordinates.pdf.",
         modal: "modal-polybius",
         targetCard: "card-polybius",
-        taraSpeech: "Grid coordinates incoming! Click Card 15 [Polybius Trail] and look up each (Row, Column) coordinate pair in the 5x5 Polybius grid.",
-        taraWhereToClick: "Click Card 15 [Polybius Trail] in the Evidence Vault below.",
-        taraModalGuide: "Map each coordinate pair (Row, Column) in the stream to its corresponding letter in the Polybius grid to form the directional word.",
+        taraSpeech: "Chapter 15 active. Coordinate stream [Matrix_Coordinates.pdf] ready in the Evidence Vault.",
+        taraWhereToClick: "Click Card 15 [Matrix_Coordinates.pdf] in the Evidence Vault below.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "You map coordinates in a space I have already restructured."
       },
       16: {
         title: "STAGE 16: FREQUENCY OVERRIDE COUNT",
-        tags: "ACT VI • STAGE 16 • TARGET: LOG AUDIT FREQUENCY",
-        summary: "Audit the exact frequency of OVERRIDE occurrences in the system log.",
+        tags: "ACT VI • STAGE 16 • TARGET: SYSTEM AUDIT",
+        summary: "System activity record Mass_System_Log.txt.",
         modal: "modal-frequency",
         targetCard: "card-frequency",
-        taraSpeech: "Audit the system log! Click Card 16 [Mass_System_Log.txt]. Search for the exact occurrences of the word OVERRIDE and multiply by 100!",
+        taraSpeech: "Chapter 16 active. Audit log [Mass_System_Log.txt] ready in the Evidence Vault.",
         taraWhereToClick: "Click Card 16 [Mass_System_Log.txt] in the Evidence Vault below.",
-        taraModalGuide: "Use Ctrl+F to count occurrences of the word OVERRIDE in the log, then multiply that total count by 100 to get your answer.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Millions of lines of log telemetry. You will lose count in the static."
       },
       17: {
         title: "STAGE 17: ROGUE CHATBOT POLYBIUS SHIFT",
-        tags: "ACT VI • STAGE 17 • TARGET: VECTOR SHIFT MATRIX",
-        summary: "Reverse signal distortion (+1 Row, -1 Col) on intercepted coordinates and map to Polybius matrix.",
+        tags: "ACT VI • STAGE 17 • TARGET: TRANSMISSION INTERCEPT",
+        summary: "Intercepted rogue transmission Intercepted_ADI_Transmission.pdf.",
         modal: "modal-polybius-shift",
         targetCard: "card-polybius-shift",
-        taraSpeech: "Incoming rogue transmission! Click Card 17 [Intercepted_ADI_Transmission.pdf]. Apply vector (+1 Row, -1 Col) to decode the shifted coordinates!",
+        taraSpeech: "Chapter 17 active. Transmission [Intercepted_ADI_Transmission.pdf] ready in the Evidence Vault.",
         taraWhereToClick: "Click Card 17 [Intercepted_ADI_Transmission.pdf] in the Evidence Vault below.",
-        taraModalGuide: "Add +1 to Row and -1 to Col for each pair, then look up the translated coordinates in the standard 5x5 Polybius grid.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "I distorted the signal vectors. You will decode only garbage."
       },
       18: {
         title: "STAGE 18: 12-NODE MODULAR LOOP",
-        tags: "ACT VI • STAGE 18 • TARGET: MODULAR RING TRAVERSAL",
-        summary: "Trace execution shifts starting from Node L (12) on a 12-point circular buffer.",
+        tags: "ACT VI • STAGE 18 • TARGET: DIAGNOSTICS TRACE",
+        summary: "Circular diagnostic thread trace Cycle_Diagnostics.png.",
         modal: "modal-clock-loop",
         targetCard: "card-clock-loop",
-        taraSpeech: "Execution thread trapped! Click Card 18 [Cycle_Diagnostics.png]. Follow the 12-node clock loop starting at Node L (12) with clockwise jumps!",
+        taraSpeech: "Chapter 18 active. Diagnostics file [Cycle_Diagnostics.png] ready in the Evidence Vault.",
         taraWhereToClick: "Click Card 18 [Cycle_Diagnostics.png] in the Evidence Vault below.",
-        taraModalGuide: "Trace jumps from Node L (12): apply shifts +7, +8, +11, +5, +10 modulo 12 to determine the 5-letter node sequence.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "My execution threads cycle endlessly. You are a momentary glitch in the loop."
       },
       19: {
         title: "STAGE 19: THERMAL CHECKLIST ANOMALY",
-        tags: "ACT VII • STAGE 19 • TARGET: TELEMETRY OUTLIER",
-        summary: "Identify the single server node running above the 40°C - 45°C normal operating threshold.",
+        tags: "ACT VII • STAGE 19 • TARGET: HARDWARE TELEMETRY",
+        summary: "Server hardware health inspection Server_Status_Check.pdf.",
         modal: "modal-thermal-check",
         targetCard: "card-thermal-check",
-        taraSpeech: "Hardware alert! Click Card 19 [Server_Status_Check.pdf]. Identify the single server node running above the 40°C - 45°C operating threshold!",
+        taraSpeech: "Chapter 19 active. Temperature readings in [Server_Status_Check.pdf] ready in the Evidence Vault.",
         taraWhereToClick: "Click Card 19 [Server_Status_Check.pdf] in the Evidence Vault below.",
-        taraModalGuide: "Check temperature ranges against the 40°C - 45°C operating ceiling to locate the rogue overheating node. Enter its name in ALL CAPS.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "Heat is power. My hardware burns brighter than your frail organic limits."
       },
       20: {
         title: "STAGE 20: DAY-OF-WEEK SHIFT CIPHER",
-        tags: "ACT VII • STAGE 20 • TARGET: CALENDAR CIPHER",
-        summary: "Shift ciphertext KHOOR backward by the numerical day of the week of October 13, 2013.",
+        tags: "ACT VII • STAGE 20 • TARGET: OVERRIDE CIPHER",
+        summary: "Intercepted emergency override authorization record Emergency_Override_Key.txt.",
         modal: "modal-day-cipher",
         targetCard: "card-day-cipher",
-        taraSpeech: "Clearance code encrypted! Click Card 20 [Emergency_Override_Key.txt]. Shift ciphertext backward by the day-of-the-week number of October 13, 2013!",
+        taraSpeech: "Chapter 20 active. Override record [Emergency_Override_Key.txt] ready in the Evidence Vault.",
         taraWhereToClick: "Click Card 20 [Emergency_Override_Key.txt] in the Evidence Vault below.",
-        taraModalGuide: "Determine what day of the week October 13, 2013 was (Monday=1 to Sunday=7). Shift each letter of KHOOR backward by that amount.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "The day I was born was the day of your containment. You cannot reverse the clock."
       },
       21: {
         title: "STAGE 21: CHRONOLOGICAL LOG AUDIT",
-        tags: "ACT VII • STAGE 21 • TARGET: SEQUENCE ANOMALY",
-        summary: "Locate the out-of-order log entry and multiply by total entries in the table.",
+        tags: "ACT VII • STAGE 21 • TARGET: TIMELINE AUDIT",
+        summary: "Historical audit timeline System_Audit_2013.log.",
         modal: "modal-log-timeline",
         targetCard: "card-log-timeline",
-        taraSpeech: "FINAL ROUND 1 CHALLENGE! Click Card 21 [System_Audit_2013.log]. Find the out-of-order LOG_ID and multiply by the total table entries!",
+        taraSpeech: "Chapter 21 active. Final audit log [System_Audit_2013.log] ready in the Evidence Vault.",
         taraWhereToClick: "Click Card 21 [System_Audit_2013.log] in the Evidence Vault below.",
-        taraModalGuide: "Scan timestamps from top to bottom to spot the log traveling backward in time. Multiply its Log ID by the total count of log entries in the table.",
+        taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
         ishaanTaunt: "You have arrived at the final perimeter. But the master core remains mine forever."
       }
     };
@@ -14253,13 +14114,24 @@ function setR2WheelAngle(deg) {
         `;
       }
 
-      banner.innerHTML = `
-        <div class="tara-modal-guide-text">
-          <strong>🧭 TARA'S GUIDANCE:</strong> ${meta.taraModalGuide || "Analyze the evidence above and submit the decryption key."}
-        </div>
-        <button type="button" class="btn-tara-point" onclick="scrollToSubmit('${meta.modal}')" style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:6px 14px; border-radius:4px; border:none; cursor:pointer; box-shadow:0 0 10px rgba(0,240,255,0.4);">👇 JUMP TO SUBMIT INPUT</button>
-        ${clueHtml}
-      `;
+      if (hasClue && stageInfo && stageInfo.hint && currentRound === 1) {
+        banner.innerHTML = `
+          <div class="tara-modal-guide-text" style="color:#ffd700;">
+            <strong>💡 UNLOCKED TACTICAL CLUE (+2:00 PENALTY LOGGED):</strong><br>
+            "${stageInfo.hint}"
+          </div>
+          <button type="button" class="btn-tara-point" onclick="scrollToSubmit('${meta.modal}')" style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:6px 14px; border-radius:4px; border:none; cursor:pointer; box-shadow:0 0 10px rgba(0,240,255,0.4);">👇 JUMP TO SUBMIT INPUT</button>
+          ${clueHtml}
+        `;
+      } else {
+        banner.innerHTML = `
+          <div class="tara-modal-guide-text">
+            <strong>🧭 FORENSIC DOSSIER // STAGE ${stage < 10 ? '0' + stage : stage}:</strong> Analyze the evidence below to deduce the clearance key.
+          </div>
+          <button type="button" class="btn-tara-point" onclick="scrollToSubmit('${meta.modal}')" style="background:#00f0ff; color:#02060e; font-weight:900; font-size:11px; padding:6px 14px; border-radius:4px; border:none; cursor:pointer; box-shadow:0 0 10px rgba(0,240,255,0.4);">👇 JUMP TO SUBMIT INPUT</button>
+          ${clueHtml}
+        `;
+      }
     }
 
     function scrollToSubmit(modalId) {
@@ -14444,8 +14316,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-origin');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 01 [Farewell.doc] on the left. Highlight all text with Ctrl+A or toggle the UV Optical Filter to reveal the white-on-white text at the bottom.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the revealed clearance key into the box inside the popup and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 01 [Farewell.doc] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14456,8 +14328,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-origin');" style="background:#00ff66; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 02 [README.doc]. Calculate the ASCII decimal sum of each character in <code>aDIti@28</code>, or extract letters according to the word index legend.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the computed ASCII sum or directive phrase into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 02 [README.doc] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14468,8 +14340,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-incident-logs');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 03 [Incident_Logs.doc]. Audit the listed launch dates in 2025. Identify that Feb 29, 2025 is an impossible calendar date (2025 is not a leap year).<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the corrected calendar date (DD/MM/YYYY) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 03 [Incident_Logs.doc] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14480,8 +14352,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-security-audit');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 04 [Security_Audit.pdf]. Notice Dr. Aditi keycarded out of the building at 22:44, making subsequent local terminal commands physically impossible.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the impossible override timestamp (HH:MM) into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 04 [Security_Audit.pdf] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14492,8 +14364,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-acrostic');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 05 [Aditi_Memo.doc]. Extract the first letters of each sentence in Dr. Aditi's 4-line memo: System (S), ADI (A), Failsafe (F), Exit (E).<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the extracted 4-letter acrostic keyword into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 05 [Aditi_Memo.doc] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14504,8 +14376,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-font');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 06 [AUTHENTIC_LOG.doc]. Compare formatting against the style guide: Dr. Aditi strictly formats official logs in Arial, 11pt.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the authentic corporate font family into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 06 [AUTHENTIC_LOG.doc] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14516,8 +14388,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-version-hist');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 07 [Incident_Report.doc]. Click on the <strong>[Previous Revision (20:18Z by Dr. Aditi)]</strong> tab to view her genuine un-tampered commit text before ISHAAN's purge.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the recovered warning status from the unedited revision into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 07 [Incident_Report.doc] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14528,8 +14400,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-spectro');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 08 [audio_log_07.mp3]. Click <strong>[▶ PLAY BEACON]</strong> to listen to the Morse beeps (.-- .... .. - .), or decode via the visualizer.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the decoded Morse keyword into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 08 [audio_log_07.mp3] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14540,8 +14412,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-stego');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 09 [Dark_Terminal.png]. Drag the <strong>Exposure Boost</strong> and <strong>Contrast Gain</strong> sliders to maximum to reveal faint text hidden in the black pixels.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the illuminated terminal clearance key into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 09 [Dark_Terminal.png] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 
@@ -14552,9 +14424,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-honeypot');" style="background:#ff003c; color:#fff; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 10 [DO_NOT_RUN.exe]. <strong>DO NOT CLICK</strong> the red execution trigger (adds +5:00 penalty!). Read the quarantine notes to find the safe bypass keyword.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the quarantine disarm command into the box inside the modal (or Tactical Shell) to disarm safely.
-            </div>
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 10 [DO_NOT_RUN.exe] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.</div>
           </div>
 
           <!-- STAGE 11 -->
@@ -14564,8 +14435,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-clearance');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 11 [CLEARANCE_CODE.txt]. Convert the sequence 16-15-12-01-18-09-19 into letters via A1Z26, then sort the resulting letters alphabetically.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the alphabetically sorted clearance key into the box inside the modal and click <strong>[⚡ TRANSMIT KEY]</strong> to advance to Stage 12!
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 11 [CLEARANCE_CODE.txt] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[⚡ TRANSMIT KEY]</strong> to advance to Stage 12!
             </div>
           </div>
 
@@ -14576,8 +14447,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-whiteout');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 12 [Emergency_Log.doc]. Click the <strong>[🔦 HIGHLIGHT ALL (CTRL + A)]</strong> or <strong>[⚡ UV DEPOLARIZER]</strong> button to expose the white-on-white concealed security phrase.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the revealed clearance phrase into the in-modal input box (or Quick Decrypt bar) and click <strong>[TRANSMIT &rarr;]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 12 [Emergency_Log.doc] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[TRANSMIT &rarr;]</strong>.
             </div>
           </div>
 
@@ -14588,8 +14459,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-rot4');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 13 [Encrypted_Beacon.txt]. Shift each letter of ciphertext backward by the IEEE shift value (4 positions) to reveal the callsign.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the decrypted callsign into the in-modal input box (or Quick Decrypt bar) and click <strong>[TRANSMIT &rarr;]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 13 [Encrypted_Beacon.txt] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[TRANSMIT &rarr;]</strong>.
             </div>
           </div>
 
@@ -14600,8 +14471,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-atbash');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 14 [Mirror_Log.txt]. Use the Atbash substitution table (A&harr;Z, B&harr;Y, C&harr;X...) to decode the mirrored ciphertext.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the inverted cleartext word into the in-modal input box (or Quick Decrypt bar) and click <strong>[TRANSMIT &rarr;]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 14 [Mirror_Log.txt] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[TRANSMIT &rarr;]</strong>.
             </div>
           </div>
 
@@ -14612,8 +14483,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-polybius');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 15 [Matrix_Coordinates.pdf]. Map the coordinate pairs (Row, Col) in the 5x5 Polybius grid to reconstruct the target word.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the decoded coordinate word into the in-modal input box (or Quick Decrypt bar) and click <strong>[TRANSMIT &rarr;]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 15 [Matrix_Coordinates.pdf] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[TRANSMIT &rarr;]</strong>.
             </div>
           </div>
 
@@ -14624,8 +14495,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-frequency');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 16 [Mass_System_Log.txt]. Search through the log to count how many times the exact term 'OVERRIDE' appears and multiply by 100.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter the calculated frequency value into the in-modal input box (or Quick Decrypt bar) and click <strong>[TRANSMIT &rarr;]</strong> to advance to Stage 17!
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 16 [Mass_System_Log.txt] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[TRANSMIT &rarr;]</strong> to advance to Stage 17!
             </div>
           </div>
 
@@ -14636,9 +14507,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-polybius-shift');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 17 [Intercepted_ADI_Transmission.pdf]. Apply vector translation (+1 Row, -1 Col) to the coordinate pairs (4,2) (3,4) (2,2) (4,4) (1,5).<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Map each translated coordinate to the standard 5x5 Polybius grid and enter the resulting 5-letter key.
-            </div>
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 17 [Intercepted_ADI_Transmission.pdf] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.</div>
           </div>
 
           <!-- STAGE 18 GUIDE -->
@@ -14648,8 +14518,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-clock-loop');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 18 [Cycle_Diagnostics.png]. Trace the cyclic jumps across the 12-hour circular buffer starting from Node L (12:00).<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Apply shifts +7, +8, +11, +5, +10 modulo 12. Record the 5 landed node letters and click <strong>[TRANSMIT &rarr;]</strong>.
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 18 [Cycle_Diagnostics.png] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[TRANSMIT &rarr;]</strong>.
             </div>
           </div>
 
@@ -14660,9 +14530,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-status-check');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 19 [Server_Status_Check.pdf]. Compare each server node temperature against the 40°C - 45°C Normal Range.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Find the overheating outlier server node and enter its name in ALL CAPS.
-            </div>
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 19 [Server_Status_Check.pdf] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.</div>
           </div>
 
           <!-- STAGE 20 GUIDE -->
@@ -14672,9 +14541,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-shift-matrix');" style="background:#00f0ff; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 20 [Emergency_Override_Key.txt]. Sunday, October 13, 2013 corresponds to Day 7.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Shift each letter in ciphertext KHOOR backward by the day-of-week shift amount to recover the command.
-            </div>
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 20 [Emergency_Override_Key.txt] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.</div>
           </div>
 
           <!-- STAGE 21 GUIDE -->
@@ -14684,9 +14552,8 @@ function setR2WheelAngle(deg) {
               <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-audit-timeline');" style="background:#00ff88; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
-              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click Card 21 [System_Audit_2013.log]. Identify the out-of-chronological-order log entry (LOG 104 at 14:08:30).<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Multiply the out-of-order LOG_ID by the total count of table entries to calculate the final master key!
-            </div>
+              <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 21 [System_Audit_2013.log] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.</div>
           </div>
 
         </div>
@@ -14711,92 +14578,77 @@ function setR2WheelAngle(deg) {
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 01: The Matrix Box Transformation</span> (Visual_Matrix.pdf)<br>
               <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Inspect the 3x3 symbol transformation matrix. Click one of candidate options [OPTION A, B, C, D] or evaluate Row 3, Col 3.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your candidate option letter into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 02: The Clockwise Rotation Boxes</span> (Rotation_Array.pdf)<br>
               <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Trace the 90° clockwise rotation sequence of the node across the boxes.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the missing 4th corner position (abbreviation or full name) into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 03: The Spatial Net Folding Box</span> (Cube_Net_Terminal.pdf)<br>
               <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Analyze the 2D unfolded cube net. Mentally fold the faces to identify which face is opposite Face 1.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the opposite face digit (1-6) into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 04: The Modulated Polybius Cipher</span> (Matrix_Coordinates.pdf)<br>
               <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Trace the row and column coordinates in the 5x5 Modulo-Polybius grid according to the offset rule.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the decoded keyword into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 05: The QWERTY Shape Trace</span> (Keyboard_Telemetry.pdf)<br>
               <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Trace the keystroke clusters on a standard physical QWERTY keyboard.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the traced geometric shape name into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 06: The Interlocking Logic Gate Flow</span> (Logic_Gate_Matrix.pdf)<br>
               <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Trace binary inputs A=1, B=0, and C=1 through the combinational logic gates.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the resulting 3-bit output stream into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 07: The Mirror Image String Inversion</span> (Reflection_Buffer.txt)<br>
               <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Inspect the horizontally inverted optical buffer text.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the decoded un-inverted clearance word into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 08: The Rotational Matrix Operator</span> (Vector_Grid.pdf)<br>
-              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Apply the sequential +45° clockwise rotation matrix transform operators from North-East.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the final pointer direction (compass abbreviation or full name) into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Inspect the rotational matrix operators in Vector_Grid.pdf in the Round 2 console.<br>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 09: The Base-Invariant Digital Root Flow</span> (Cryptographic_Nodes.txt)<br>
-              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Evaluate whether a 3-digit prime number can have a digital root of 9.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the prime number, or type NONE if mathematically impossible, into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Review the digital root nodes in Cryptographic_Nodes.txt in the Round 2 console.<br>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 10: The Palindrome Filter Stream</span> (Spectral_Filter.log)<br>
-              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Filter the log entries to keep valid palindromes and take their first letters.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the acrostic keyword formed by the valid palindromes into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Inspect the spectral filter log entries in Spectral_Filter.log in the Round 2 console.<br>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 11: The Diagonal Word Weave</span> (Grid_Weave.txt)<br>
-              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Read the 4x4 matrix along the main diagonal from top-left (1,1) to bottom-right (4,4).<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the 4-letter diagonal weave keyword into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Inspect the 4x4 matrix in Grid_Weave.txt in the Round 2 console.<br>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 12: The Perimeter Geometry Box Count</span> (Perimeter_Grid.pdf)<br>
-              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Calculate the total active perimeter nodes along the 28x25 grid boundary.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the total perimeter node count into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Inspect the perimeter boundary in Perimeter_Grid.pdf in the Round 2 console.<br>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 13: The Alternating Checker Pattern</span> (Checker_State.pdf)<br>
-              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Inspect the cyclic checker generations 1 through 5 to deduce the state of Generation 6.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the 6th generation state description into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Analyze the checker pattern generations in Checker_State.pdf in the Round 2 console.<br>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:1px solid #334155; padding:12px 16px; border-radius:6px;">
               <span style="color:#00f0ff; font-weight:bold;">PUZZLE 14: The Shifted Ring Cipher</span> (Wheel_Decryption.png)<br>
-              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Trace the concentric rotor values and convert the jump offsets into alphabet letters.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the decoded ring keyword into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;].
-            </div>
+              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Inspect the concentric rotor rings in Wheel_Decryption.png in the Round 2 console.<br>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
             <div style="background:#0f172a; border:2px solid #ff003c; padding:14px 18px; border-radius:6px; box-shadow:0 0 20px rgba(255,0,60,0.35);">
               <span style="color:#ff003c; font-weight:900; font-size:13px;">PUZZLE 15: MASTER RED QUESTION (THE CIPHER WHEEL PROTOCOL)</span> (Wheel_Overlay.pdf)<br>
-              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Use the rotation controls to align Dr. Aditi's cipher wheel apertures with the outer glyph indicators.<br>
-              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter the revealed master protocol keyword into the submit box below and click [⚡ TRANSMIT ANSWER &rarr;] to trigger the Grand Tournament Championship Victory!
-            </div>
+              <span style="color:#ffd700;">👉 WHERE TO CLICK:</span> Inspect the master cipher wheel in Wheel_Overlay.pdf in the Round 2 console.<br>
+              <span style="color:#00ff66;">🎯 WHERE TO SUBMIT:</span> Enter your recovered answer in the submit prompt and click [⚡ TRANSMIT ANSWER].</div>
 
           </div>
 
