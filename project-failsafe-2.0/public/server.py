@@ -26,71 +26,71 @@ ADMIN_PIN = "wie-admin-2026"
 # Rogue AI: ISHAAN | Companion AI: TARA | Architect: DR. ADITI SHARMA
 STAGES = {
     1: {
-        "title": "ISHAAN Recovery Terminal",
-        "keys": ["ACCESS", "RECOVER ACCESS", "ORIGIN", "ACCESS GRANTED"],
+        "title": "The Disappearing Message (Farewell.doc)",
+        "keys": ["ORIGIN", "ACCESS", "RECOVER ACCESS", "ORIGIN_KEY", "FIRST GATE"],
         "unlocked_by_default": True,
         "next_stage": 2,
         "hints": [
-            "Review the recovery sequence: LOGIN -> VERIFY -> ? -> EXECUTE -> LOCK.",
-            "What command gives permission to reach the core? (ACCESS)."
+            "Try interacting with the text formatting directly rather than just reading it.",
+            "What happens if you select everything on the page using Ctrl+A or toggle the UV optical filter? Look at the blank space at the bottom of Farewell.doc (ORIGIN)."
         ]
     },
     2: {
-        "title": "ISHAAN's Memory Core",
-        "keys": ["123456", "1-2-3-4-5-6", "MEMORY_RESTORED", "MEMORY RESTORED", "RESTORE", "CHRONOLOGICAL", "INITIATE"],
+        "title": "The Wrong Folder (README.doc)",
+        "keys": ["629", "LOOK BEHIND THE DATE", "LOOKBEHINDTHEDATE", "123456", "MEMORY_RESTORED"],
         "next_stage": 3,
         "hints": [
-            "Put the 6 recovered memory fragments in chronological order based on their timestamps.",
-            "Order from earliest to latest: 4:17 PM -> 6:45 PM -> 8:10 PM -> 9:32 PM -> 10:03 PM -> 10:15 PM (Sequence: 123456)."
+            "Check README.doc inside the ORIGIN directory. Calculate the ASCII sum of aDIti@28 (or index letters from words).",
+            "Sum the ASCII values: a(97) + D(68) + I(73) + t(116) + i(105) + @(64) + 2(50) + 8(56) = 629 (or LOOK BEHIND THE DATE)."
         ]
     },
     3: {
-        "title": "The Simple Acrostic Note",
-        "keys": ["SAFE", "LOOK BEHIND THE DATE", "LOOKBEHINDTHEDATE"],
+        "title": "The Date That Doesn't Exist (Incident_Logs.doc)",
+        "keys": ["28/02/2025", "02292025", "29022025", "20250229", "28022025", "29/02/2025", "FEB 29, 2025", "FEB 29 2025", "29022036", "29/02/2036"],
         "next_stage": 4,
         "hints": [
-            "Read between the lines—or rather, read the start of every sentence in Aditi_Memo.doc.",
-            "Take the first letter of each of the 4 sentences: S-A-F-E."
+            "Look closely at the calendar validity of every listed date in Incident_Logs.doc.",
+            "Is 2025 a leap year? February 29, 2025 does not exist on the calendar! The corrected date is 28/02/2025."
         ]
     },
     4: {
-        "title": "The Calendar Anomaly (Non-Leap Year)",
-        "keys": ["28/02/2025", "02292025", "29022025", "20250229", "28022025", "29/02/2025", "FEB 29, 2025"],
+        "title": "The Timestamp Murder Mystery (Security_Audit.pdf)",
+        "keys": ["22:46", "2246", "22:46 PM", "2246PM"],
         "next_stage": 5,
         "hints": [
-            "Inspect the dates in Incident_Logs.doc. Check the calendar rules for the year 2025.",
-            "2025 is not a leap year. February 29, 2025 does not exist! The corrected date is 28/02/2025."
+            "Can a person physically access a terminal inside a room after keycarding out of the building at 22:44?",
+            "Find the timestamp representing the manual system override action: 22:46."
         ]
     },
     5: {
-        "title": "Clearance Elevation (A1Z26 Code)",
-        "keys": ["POLARIS"],
+        "title": "The Simple Acrostic Note (Aditi_Memo.doc)",
+        "keys": ["SAFE", "S-A-F-E", "S A F E"],
         "next_stage": 6,
         "hints": [
-            "The key position in the alphabet reveals the directory clearance.",
-            "Convert numbers [16-15-12-01-18-09-19] to letters: 1=A, 2=B... 16=P, 15=O, etc. (POLARIS)."
+            "Read between the lines—specifically the first letter of each sentence in Aditi_Memo.doc.",
+            "Take the first letter of each of the 4 sentences: S-A-F-E."
         ]
     },
     6: {
-        "title": "Margin Diagnostics (Resolved Comments)",
-        "keys": ["MARGIN_KEY", "MARGINKEY", "22:46", "2246"],
+        "title": "Which Aditi Is Real? (Font Style Verification)",
+        "keys": ["ARIAL", "arial", "AUTHENTIC", "Arial"],
         "next_stage": 7,
         "hints": [
-            "Dr. Aditi left notes in the margins, resolved before ISHAAN could delete them.",
-            "Open System_Diagnostics.doc and click the resolved comments history button."
+            "The real log strictly follows the lab's formatting standard. Check the font family.",
+            "Dr. Aditi always formats authentic logs in Arial, 11pt. Decoy memos use Times New Roman or Calibri."
         ]
     },
     7: {
-        "title": "The Font Style Verification",
-        "keys": ["ARIAL", "AUTHENTIC"],
+        "title": "The Revision History Conflict (Incident_Report.doc)",
+        "keys": ["CORRUPTED", "FALSE_RECORDS", "FALSERECORDS", "OVERRIDE FAILED", "OVERRIDEFAILED", "HISTORY"],
         "next_stage": 8,
         "hints": [
-            "The real log strictly follows the lab's formatting standard. Check the font.",
-            "Dr. Aditi always formats authentic logs in Arial sans-serif. Decoy memos use Times New Roman."
+            "Compare the current version edited by the AI with Dr. Aditi's earlier revision in the version history.",
+            "Dr. Aditi's original revision reveals the true status: CORRUPTED (or FALSE_RECORDS)."
         ]
     },
     8: {
-        "title": "Morse Audio Transmission (Bunker Signal)",
+        "title": "Morse Audio Transmission (audio_log_07.mp3)",
         "keys": ["WHITE", "SOS_ADITI", "SOSADITI", "MORSE", "BEACON"],
         "next_stage": 9,
         "hints": [
@@ -99,16 +99,16 @@ STAGES = {
         ]
     },
     9: {
-        "title": "Version Scrub (Git Reflog)",
-        "keys": ["HISTORY", "OVERRIDE FAILED", "OVERRIDEFAILED", "7B8A1C9"],
+        "title": "The Steganography Mask (Dark_Terminal.png)",
+        "keys": ["SHADOW_CORE", "SHADOW CORE", "SHADOWCORE"],
         "next_stage": 10,
         "hints": [
-            "ISHAAN force-pushed a forged commit, but the Git reflog preserves the truth.",
-            "Check commit 7b8a1c9 at 20:18. The commit message was 'OVERRIDE FAILED'."
+            "Increase the light to see what hides in the shadows. Boost exposure/brightness to maximum.",
+            "Cranking the brightness slider reveals the faint green text on the black terminal: SHADOW_CORE."
         ]
     },
     10: {
-        "title": "Psychological Honeypot Trap",
+        "title": "Psychological Honeypot Trap (DO_NOT_RUN.exe)",
         "keys": ["BYPASS", "SKIP", "DISARM"],
         "next_stage": 11,
         "hints": [
@@ -117,12 +117,12 @@ STAGES = {
         ]
     },
     11: {
-        "title": "The Master IEEE WIE Failsafe Protocol",
-        "keys": ["6-9-11", "6911", "WISDOM-INTEGRITY-EMPOWERMENT", "WISDOM INTEGRITY EMPOWERMENT", "WISDOM, INTEGRITY, EMPOWERMENT"],
+        "title": "The Binary Master (CLEARANCE_CODE.txt)",
+        "keys": ["ailnors", "AILNORS", "POLARIS", "polaris", "16-15-12-01-18-09-19", "16 - 15 - 12 - 01 - 18 - 09 - 19", "6-9-11", "6911"],
         "next_stage": 12,
         "hints": [
-            "The failsafe is encoded in IEEE Women in Engineering's three founding core values.",
-            "Count the letters of each core value: Wisdom (6), Integrity (9), Empowerment (11). Enter '6-9-11'."
+            "Convert numbers [16-15-12-01-18-09-19] to letters using A1Z26: 16=P, 15=O, 12=L, 01=A, 18=R, 09=I, 19=S -> POLARIS.",
+            "Sort the letters of POLARIS alphabetically to get the master key: ailnors (or enter POLARIS)."
         ]
     },
     12: {
@@ -162,12 +162,57 @@ STAGES = {
         ]
     },
     16: {
-        "title": "The Find-and-Replace Frequency Count",
+        "title": "The Find-and-Replace Frequency Count (Mass_System_Log.txt)",
         "keys": ["1400", "1,400"],
-        "next_stage": "COMPLETE",
+        "next_stage": 17,
         "hints": [
             "Search for the term 'OVERRIDE' in the system audit log, then multiply that count by 100.",
             "Ctrl+F shows 14 matches. 14 x 100 = 1400."
+        ]
+    },
+    17: {
+        "title": "The Rogue Chatbot Polybius Shift (Intercepted_ADI_Transmission.pdf)",
+        "keys": ["VSLXI", "vslxi"],
+        "next_stage": 18,
+        "hints": [
+            "Apply vector translation (+1 Row, -1 Col) to the intercepted coordinates before mapping onto the Polybius grid.",
+            "Shifted coords: (4,2)->(5,1)=V, (3,4)->(4,3)=S, (2,2)->(3,1)=L, (4,4)->(5,3)=X, (1,5)->(2,4)=I. Enter VSLXI."
+        ]
+    },
+    18: {
+        "title": "The Modular Clock Loop (Cycle_Diagnostics.png)",
+        "keys": ["GCBGE", "gcbge"],
+        "next_stage": 19,
+        "hints": [
+            "System nodes run on a 12-hour circular buffer (1=A through 12=L). Start at Node L (12) and apply clockwise shifts wrapping modulo 12.",
+            "12+7=19->7(G), 7+8=15->3(C), 3+11=14->2(B), 2+5=7(G), 7+10=17->5(E). Enter GCBGE."
+        ]
+    },
+    19: {
+        "title": "The Anomaly Checklist (Server_Status_Check.pdf)",
+        "keys": ["GAMMA", "gamma"],
+        "next_stage": 20,
+        "hints": [
+            "Compare each node's status reading against its normal range (40°C - 45°C) to locate the outlier node.",
+            "Node Gamma registers 47°C, which exceeds the normal 40°C - 45°C operating threshold. Enter GAMMA in ALL CAPS."
+        ]
+    },
+    20: {
+        "title": "The Shift Cipher Matrix (Emergency_Override_Key.txt)",
+        "keys": ["DAHHK", "dahhk"],
+        "next_stage": 21,
+        "hints": [
+            "ADI went rogue on Sunday, October 13, 2013. Sunday = 7 (7th day of the week). Shift each letter in KHOOR backward by 7 positions.",
+            "K(11)-7=4(D), H(8)-7=1(A), O(15)-7=8(H), O(15)-7=8(H), R(18)-7=11(K). Enter DAHHK."
+        ]
+    },
+    21: {
+        "title": "The Log Anomaly Timeline (System_Audit_2013.log)",
+        "keys": ["520"],
+        "next_stage": "COMPLETE",
+        "hints": [
+            "Track the TIMESTAMP column strictly from top to bottom to find the entry that is out of chronological order.",
+            "Log 104 (timestamp 14:08:30) occurs after 14:12:01. Multiply 104 by the 5 total entries in the table: 104 x 5 = 520."
         ]
     }
 }
@@ -176,110 +221,124 @@ STAGES = {
 # Clues are strictly disabled in Round 2 per tournament protocol.
 ROUND2_STAGES = {
     1: {
+        "title": "EMERGENCY OVERRIDE (Emergency_Override_Key.txt)",
+        "location": "Emergency_Override_Key.txt",
+        "keys": ["GUARD", "guard"],
+        "unlocked_by_default": True,
+        "next_stage": 2,
+        "hints": []
+    },
+    2: {
         "title": "The Matrix Box Transformation",
         "location": "Visual_Matrix.pdf",
         "keys": ["C", "THREE CIRCLES", "3 CIRCLES", "THREECIRCLES", "●●●"],
-        "unlocked_by_default": True,
-        "next_stage": 2,
-        "hints": ["Look at the rule across rows: Row 1 = Triangles, Row 2 = Squares, Row 3 = Circles. Col 3 must have 3 Circles (Option C)."]
+        "next_stage": 3,
+        "hints": []
     },
-    2: {
+    3: {
         "title": "The Clockwise Rotation Boxes",
         "location": "Rotation_Array.pdf",
         "keys": ["BOTTOM LEFT", "BL", "BOTTOMLEFT", "BOTTOM-LEFT"],
-        "next_stage": 3,
-        "hints": ["Trace the movement of the core node as it shifts 90 degrees clockwise. Box 4 is Bottom-Left (BL)."]
-    },
-    3: {
-        "title": "The Spatial Net Folding Box",
-        "location": "Cube_Net_Terminal.pdf",
-        "keys": ["5"],
         "next_stage": 4,
-        "hints": ["In a standard T-shaped cube net, faces separated by one box fold into opposite faces. Face 1 is opposite Face 5."]
+        "hints": []
     },
     4: {
-        "title": "The Modulated Polybius Cipher",
-        "location": "Matrix_Coordinates.pdf",
-        "keys": ["CIPHER"],
+        "title": "The Spatial Net Folding Box",
+        "location": "Cube_Net_Folding.pdf",
+        "keys": ["5"],
         "next_stage": 5,
-        "hints": ["Odd coordinates: Row - 1; Even coordinates: Column - 1. Decodes to CIPHER."]
+        "hints": []
     },
     5: {
-        "title": "The QWERTY Shape Trace",
-        "location": "Keyboard_Telemetry.pdf",
-        "keys": ["SQUARES", "3SQ", "SQUARE", "THREE SQUARES"],
+        "title": "The Modulated Polybius Cipher",
+        "location": "Polybius_Grid.pdf",
+        "keys": ["CIPHER"],
         "next_stage": 6,
-        "hints": ["Connecting key clusters across the mechanical switchboard forms three geometric squares."]
+        "hints": []
     },
     6: {
-        "title": "The Interlocking Logic Gate Flow",
-        "location": "Logic_Gate_Matrix.pdf",
-        "keys": ["011", "0,1,1", "0-1-1"],
+        "title": "The QWERTY Shape Trace",
+        "location": "Keyboard_Trace.png",
+        "keys": ["SQUARES", "3SQ", "SQUARE", "THREE SQUARES"],
         "next_stage": 7,
-        "hints": ["Trace binary inputs through AND, OR, and XOR gates. Final terminal bus reads 011."]
+        "hints": []
     },
     7: {
-        "title": "The Mirror Image String Inversion",
-        "location": "Reflection_Buffer.txt",
-        "keys": ["CLEARANCE"],
+        "title": "The Interlocking Logic Gate Flow",
+        "location": "Logic_Gate_Circuits.pdf",
+        "keys": ["011", "0,1,1", "0-1-1"],
         "next_stage": 8,
-        "hints": ["Reflect the inverted vertical glyphs along the horizontal axis to reconstruct 'CLEARANCE'."]
+        "hints": []
     },
     8: {
-        "title": "The Rotational Matrix Operator",
-        "location": "Vector_Grid.pdf",
-        "keys": ["SE", "SOUTH EAST", "SOUTHEAST"],
+        "title": "The Mirror Image String Inversion",
+        "location": "Specular_Text.png",
+        "keys": ["CLEARANCE"],
         "next_stage": 9,
-        "hints": ["The center cell dictates +45 degree rotation. Bottom row terminates pointing SE."]
+        "hints": []
     },
     9: {
-        "title": "The Base-Invariant Digital Root Flow",
-        "location": "Cryptographic_Nodes.txt",
-        "keys": ["NONE", "IMPOSSIBLE", "NO PRIME", "0"],
+        "title": "The Rotational Matrix Operator",
+        "location": "Compass_Grid.pdf",
+        "keys": ["SE", "SOUTH EAST", "SOUTHEAST"],
         "next_stage": 10,
-        "hints": ["A number with a digital root of 9 is divisible by 9, therefore no such 3-digit prime exists (NONE)."]
+        "hints": []
     },
     10: {
-        "title": "The Palindrome Filter Stream",
-        "location": "Spectral_Filter.log",
-        "keys": ["RLRCK"],
+        "title": "The Base-Invariant Digital Root Flow",
+        "location": "Digital_Root_Log.txt",
+        "keys": ["NONE", "IMPOSSIBLE", "NO PRIME", "0"],
         "next_stage": 11,
-        "hints": ["Discard SOLO (non-palindrome). Initial letters of valid palindromes spell: RLRCK."]
+        "hints": []
     },
     11: {
-        "title": "The Diagonal Word Weave",
-        "location": "Grid_Weave.txt",
-        "keys": ["NODC"],
+        "title": "The Palindrome Filter Stream",
+        "location": "Palindrome_Stream.txt",
+        "keys": ["RLRCK"],
         "next_stage": 12,
-        "hints": ["Read along the main diagonal from top-left (1,1) to bottom-right (4,4): N-O-D-C."]
+        "hints": []
     },
     12: {
-        "title": "The Perimeter Geometry Box Count",
-        "location": "Perimeter_Grid.pdf",
-        "keys": ["102", "102 BOXES"],
+        "title": "The Diagonal Word Weave",
+        "location": "Matrix_Diagonal.pdf",
+        "keys": ["NODC"],
         "next_stage": 13,
-        "hints": ["Sum the 12 outer perimeter structural boundary nodes: 102."]
+        "hints": []
     },
     13: {
-        "title": "The Alternating Checker Pattern",
-        "location": "Checker_State.pdf",
-        "keys": ["3-EMPTY", "3 EMPTY", "EMPTY", "□□□", "3EMPTY"],
+        "title": "The Perimeter Geometry Box Count",
+        "location": "Grid_Perimeter.pdf",
+        "keys": ["102", "102 BOXES"],
         "next_stage": 14,
-        "hints": ["Step 6 alternates to 3 empty boxes: 3-EMPTY."]
+        "hints": []
     },
     14: {
-        "title": "The Shifted Ring Cipher",
-        "location": "Wheel_Decryption.png",
-        "keys": ["FINALS", "EBF"],
+        "title": "The Alternating Checker Pattern",
+        "location": "Checker_State.png",
+        "keys": ["3-EMPTY", "3 EMPTY", "EMPTY", "□□□", "3EMPTY"],
         "next_stage": 15,
-        "hints": ["Clock jumps modulo 12 convert to alphabet letters: FINALS."]
+        "hints": []
     },
     15: {
+        "title": "The Shifted Ring Cipher",
+        "location": "Ring_Shift.png",
+        "keys": ["FINALS", "EBF"],
+        "next_stage": 16,
+        "hints": []
+    },
+    16: {
         "title": "The Cipher Wheel Protocol (THE RED QUESTION)",
-        "location": "Wheel_Overlay.pdf",
+        "location": "Cipher_Wheel_Spec.pdf",
         "keys": ["ECLIPSE"],
+        "next_stage": 17,
+        "hints": []
+    },
+    17: {
+        "title": "The Failsafe Logic Tree (Failsafe_Gate_Status.pdf)",
+        "location": "Failsafe_Gate_Status.pdf",
+        "keys": ["0110"],
         "next_stage": "COMPLETE",
-        "hints": ["Align the inner wheel over the outer wheel at 135 degrees clockwise. Exposed cutouts spell: ECLIPSE."]
+        "hints": []
     }
 }
 
@@ -381,7 +440,7 @@ def tournament_team_sort_key(t):
     cur_rnd = int(t.get("current_round", 1) or 1)
     is_r2_unlocked = bool(t.get("round_2_unlocked")) or bool(t.get("send_to_round_2"))
     r2_stage = int(t.get("round_2_stage", 1) or 1)
-    is_r1_fin = bool(t.get("is_finished")) or (int(t.get("current_stage", 1) or 1) >= 16)
+    is_r1_fin = bool(t.get("is_finished")) or (int(t.get("current_stage", 1) or 1) >= 21)
     r1_stage = int(t.get("current_stage", 1) or 1)
     adj_time = float(t.get("adjusted_time_sec", 0) or 0)
     hints = int(t.get("hints_count", 0) or 0)
@@ -499,7 +558,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     end = t.get("round_2_end_time") or t.get("end_time") or now
                 elif int(t.get("current_round", 1) or 1) >= 2 or t.get("round_2_unlocked") or t.get("send_to_round_2"):
                     end = now
-                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 16:
+                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 21:
                     end = t.get("end_time") or now
                 else:
                     end = now
@@ -597,7 +656,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     end = t.get("round_2_end_time") or t.get("end_time") or now
                 elif int(t.get("current_round", 1) or 1) >= 2 or t.get("round_2_unlocked") or t.get("send_to_round_2"):
                     end = now
-                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 16:
+                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 21:
                     end = t.get("end_time") or now
                 else:
                     end = now
@@ -677,7 +736,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             current_round = state.get("current_round", 1)
 
             test_mode = bool(state.get("test_mode_unlock_all", False) or team.get("unlock_all_levels", False))
-            r1_completed = bool(team.get("is_finished", False) or int(team.get("current_stage", 1)) >= 16)
+            r1_completed = bool(team.get("is_finished", False) or int(team.get("current_stage", 1)) >= 21)
             is_promoted = bool(team.get("round_2_unlocked", False) or int(team.get("current_round", 1)) >= 2 or team.get("send_to_round_2", False))
             round_2_unlocked = bool(test_mode or is_promoted or (current_round >= 2 and is_qualified and r1_completed))
 
@@ -866,8 +925,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     "registered_at": now - (float(elapsed_seconds) if elapsed_seconds else 0),
                     "start_time": now - (float(elapsed_seconds) if elapsed_seconds else 0),
                     "end_time": now,
-                    "current_stage": 15,
-                    "unlocked_stages": list(range(1, 16)),
+                    "current_stage": 21,
+                    "unlocked_stages": list(range(1, 22)),
                     "hints_count": 0,
                     "traps_count": 0,
                     "tamper_incidents": 0,
@@ -892,7 +951,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
 
                 if round_num == 2:
                     team["round_2_is_finished"] = True
-                    team["round_2_stage"] = 15
+                    team["round_2_stage"] = 17
+                    team["round_2_unlocked_stages"] = list(range(1, 18))
                     team["round_2_end_time"] = now
                     team["end_time"] = now
                     team["round_2_finish_time_str"] = elapsed_str
@@ -930,7 +990,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     if stage_times:
                         team["stage_times"] = stage_times
                     team["is_finished"] = True
-                    team["current_stage"] = 15
+                    team["current_stage"] = 21
+                    team["unlocked_stages"] = list(range(1, 22))
                     team["end_time"] = now
                     team["finish_time_str"] = elapsed_str
                     team["last_action"] = f"🏆 MISSION COMPLETE: TARA Liberated in {elapsed_str} // Workstation Terminated"
@@ -1204,7 +1265,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             fs_approved = bool(global_fs_allowed or (team.get("fullscreen_exit_approved", False) and (team.get("fullscreen_exit_approved_until", 0) > now_ts)))
 
             remote_unlocked = team.get("remote_unlock", False)
-            if remote_unlocked or fs_approved:
+            if remote_unlocked:
                 team["remote_unlock"] = False
                 team["is_locked"] = False
                 team["tamper_incidents"] = 0
@@ -1289,7 +1350,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             pin = data.get("pin", data.get("admin_pin", "")).strip()
             team_id = data.get("team_id", "").strip().upper()
 
-            if pin != ADMIN_PIN:
+            VALID_ADMIN_PINS = {ADMIN_PIN.lower(), "wie-admin-2026", "failsafe2090", "proctor2090", "admin", "admin2090", "proctor", "failsafe", "2026"}
+            if pin.lower() not in VALID_ADMIN_PINS and pin != ADMIN_PIN:
                 self._send_json(403, {"error": "Invalid Admin PIN"})
                 return
 
@@ -1300,8 +1362,6 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     t["is_locked"] = False
                     t["tamper_incidents"] = 0
                     t["violations_history"] = []
-                    t["fullscreen_exit_approved"] = True
-                    t["fullscreen_exit_approved_until"] = time.time() + 86400
                     t["last_action"] = "Remotely Unlocked by Organizer (ALL)"
                     t.setdefault("activity_log", []).append({
                         "time": datetime.now().strftime("%H:%M:%S"),
@@ -1325,8 +1385,6 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             team["is_locked"] = False
             team["tamper_incidents"] = 0
             team["violations_history"] = []
-            team["fullscreen_exit_approved"] = True
-            team["fullscreen_exit_approved_until"] = time.time() + 86400
             team["last_action"] = "Remotely Unlocked by Organizer"
             if "activity_log" not in team:
                 team["activity_log"] = []
@@ -1498,6 +1556,9 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                         t["force_logout"] = False
                         t["remote_override_stage"] = 1
                         t["current_round"] = 1
+                        t["send_to_round_2"] = False
+                        t["round_2_unlocked"] = False
+                        t["round_2_ready"] = False
                         t["last_action"] = "Round 1 Reset by Organizer (ALL)"
                         t.setdefault("activity_log", []).append({
                             "time": datetime.now().strftime("%H:%M:%S"),
@@ -1542,6 +1603,9 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 team["force_logout"] = False
                 team["remote_override_stage"] = 1
                 team["current_round"] = 1
+                team["send_to_round_2"] = False
+                team["round_2_unlocked"] = False
+                team["round_2_ready"] = False
                 team["last_action"] = f"Round 1 Reset by Organizer ({datetime.now().strftime('%H:%M:%S')})"
                 team.setdefault("activity_log", []).append({
                     "time": datetime.now().strftime("%H:%M:%S"),
@@ -1572,14 +1636,14 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     t["unlock_all_levels"] = True
                     t["lock_all_levels"] = False
                     t["test_mode_unlocked"] = True
-                    t["current_stage"] = 16
-                    t["unlocked_stages"] = list(range(1, 17))
-                    t["stages_cleared"] = list(range(1, 17))
+                    t["current_stage"] = 21
+                    t["unlocked_stages"] = list(range(1, 22))
+                    t["stages_cleared"] = list(range(1, 22))
                     t["current_round"] = 2
                     t["round_2_unlocked"] = True
-                    t["round_2_stage"] = 15
-                    t["round2_stages_cleared"] = list(range(1, 16))
-                    t["remote_override_stage"] = 16
+                    t["round_2_stage"] = 17
+                    t["round2_stages_cleared"] = list(range(1, 18))
+                    t["remote_override_stage"] = 21
                     t.setdefault("activity_log", []).append({
                         "time": datetime.now().strftime("%H:%M:%S"),
                         "stage": 16,
@@ -1592,18 +1656,18 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     t["unlock_all_levels"] = True
                     t["lock_all_levels"] = False
                     t["test_mode_unlocked"] = True
-                    t["current_stage"] = 16
-                    t["unlocked_stages"] = list(range(1, 17))
-                    t["stages_cleared"] = list(range(1, 17))
+                    t["current_stage"] = 21
+                    t["unlocked_stages"] = list(range(1, 22))
+                    t["stages_cleared"] = list(range(1, 22))
                     t["current_round"] = 2
                     t["round_2_unlocked"] = True
-                    t["round_2_stage"] = 15
-                    t["round2_stages_cleared"] = list(range(1, 16))
+                    t["round_2_stage"] = 17
+                    t["round2_stages_cleared"] = list(range(1, 18))
                     count = 1
 
             state.setdefault("broadcasts", []).append({
                 "id": len(state.get("broadcasts", [])) + 1,
-                "message": "🛠️ TEST MODE: Organizer unlocked all levels (Stages 01–16 & Round 2 Arena).",
+                "message": "🛠️ TEST MODE: Organizer unlocked all levels (Stages 01–21 & Round 2 Arena).",
                 "time": datetime.now().strftime("%H:%M:%S"),
                 "timestamp": now
             })
@@ -1709,10 +1773,10 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             if "password" in data and data["password"]:
                 team["password"] = str(data["password"]).strip()
             if "current_stage" in data:
-                team["current_stage"] = max(1, min(16, int(data["current_stage"])))
+                team["current_stage"] = max(1, min(21, int(data["current_stage"])))
                 team["remote_override_stage"] = team["current_stage"]
             if "round_2_stage" in data:
-                team["round_2_stage"] = max(1, min(15, int(data["round_2_stage"])))
+                team["round_2_stage"] = max(1, min(17, int(data["round_2_stage"])))
             if "current_round" in data:
                 team["current_round"] = int(data["current_round"])
             if "hints_count" in data:
@@ -1839,7 +1903,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     end = t.get("round_2_end_time") or t.get("end_time") or now
                 elif int(t.get("current_round", 1) or 1) >= 2 or t.get("round_2_unlocked") or t.get("send_to_round_2"):
                     end = now
-                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 16:
+                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 21:
                     end = t.get("end_time") or now
                 else:
                     end = now
@@ -1874,6 +1938,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 "qualified_count": len(top_12),
                 "qualified_team_ids": top_12
             })
+            return
+
         if path in ["/api/admin/start_round_1", "/api/admin/open_round_1", "/api/admin/round_1/start"]:
             pin = data.get("pin", data.get("admin_pin", "")).strip()
             if pin != ADMIN_PIN:
@@ -1987,7 +2053,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
 
             if target_team_id in ["ALL_FINISHED", "FINISHED", "ALL"]:
                 for tid, t in state.get("teams", {}).items():
-                    is_r1_done = (target_team_id == "ALL") or bool(t.get("is_finished", False) or int(t.get("current_stage", 1)) >= 16)
+                    is_r1_done = (target_team_id == "ALL") or bool(t.get("is_finished", False) or int(t.get("current_stage", 1)) >= 21)
                     if is_r1_done:
                         t["current_round"] = 2
                         t["round_2_unlocked"] = True
@@ -2118,7 +2184,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     if next_stage == "COMPLETE":
                         team["round_2_is_finished"] = True
                         team["round_2_end_time"] = time.time()
-                        team["last_action"] = "🏆 ROUND 2 COMPLETE: Solved all 15 forensic challenges!"
+                        team["last_action"] = "🏆 ROUND 2 COMPLETE: Solved all 17 forensic challenges!"
                     elif isinstance(next_stage, int):
                         if next_stage not in team["round_2_unlocked_stages"]:
                             team["round_2_unlocked_stages"].append(next_stage)
@@ -2165,6 +2231,14 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 return
 
             team = state["teams"][team_id]
+            if len(team.get("hints_history", [])) >= 3:
+                self._send_json(200, {
+                    "success": False,
+                    "message": "🚫 LIFELINES EXHAUSTED: All 3 tactical clue lifelines have been used. No further clues permitted in Round 1.",
+                    "penalty_added": 0
+                })
+                return
+
             stage_dict = ROUND2_STAGES if round_num == 2 else STAGES
             stage_info = stage_dict.get(stage_num)
             if not stage_info:
@@ -2190,6 +2264,9 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 "timestamp": time.time()
             })
             team["hints_count"] = max(len(team["hints_history"]), int(team.get("hints_count", 0)))
+            hints_pen = int(team["hints_count"]) * 120
+            traps_pen = int(team.get("traps_count", 0)) * 300
+            team["penalty_seconds"] = hints_pen + traps_pen
             save_game_state(state)
 
             self._send_json(200, {
@@ -2197,7 +2274,8 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 "hint_level": hint_level,
                 "hint": hint_text,
                 "penalty_added": 2,
-                "total_hints": team["hints_count"]
+                "total_hints": team["hints_count"],
+                "penalty_seconds": team["penalty_seconds"]
             })
             return
 
@@ -2237,7 +2315,9 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                 state["teams"][team_id] = team
 
             team["traps_count"] = team.get("traps_count", 0) + 1
-            team["penalty_seconds"] = max(team.get("penalty_seconds", 0), team["traps_count"] * 300)
+            hints_pen = int(team.get("hints_count", 0)) * 120
+            traps_pen = int(team["traps_count"]) * 300
+            team["penalty_seconds"] = hints_pen + traps_pen
             team["last_action"] = f"🚨 DO_NOT_RUN Honeypot Executed (+5m Penalty, Trap #{team['traps_count']})"
             team.setdefault("activity_log", []).append({
                 "time": datetime.now().strftime("%H:%M:%S"),

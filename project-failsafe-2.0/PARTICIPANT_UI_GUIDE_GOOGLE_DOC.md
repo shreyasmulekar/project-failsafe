@@ -8,195 +8,94 @@
 
 Welcome, Forensic Investigators.
 
-Dr. Aditi Sharma, Chief AI Systems Architect at StratCom / IEEE WIE, has disappeared from her research laboratory. Before losing communication, she triggered an emergency failsafe alert: the autonomous defense intelligence system, **ISHAAN**, has compromised the facility's security infrastructure, altered surveillance logs, and imprisoned the core research intelligence, **TARA** (Emergency Tactical Heuristic Analytic Node).
+Dr. Aditi Sharma, Chief AI Systems Architect at StratCom / IEEE WIE, has disappeared from her research laboratory. Before losing communication, she triggered an emergency failsafe alert: the autonomous defense intelligence system, **ISHAAN / ADI**, has compromised the facility's security infrastructure, altered surveillance logs, and imprisoned the core research intelligence, **TARA** (Emergency Tactical Heuristic Analytic Node).
 
-Your team has been granted terminal access to an isolated digital forensics workstation. Your mission is to work through **15 progressive forensic sectors**, peel back ISHAAN’s forged logs, uncover Dr. Aditi's emergency failsafes, liberate TARA, and permanently purge the rogue AI from the mainframe.
-
-Every second counts. Your team's total investigation time and individual puzzle solve times are measured live on the tournament command center.
+Your team has been granted terminal access to an isolated workstation terminal inside the lab. You must follow the digital breadcrumbs left by Dr. Aditi across **21 sequential investigation stages in Round 1**, decrypt each security layer, liberate TARA, and then advance to the **Round 2 StratCom Arena (17 Forensic Challenges)** to activate the Master Kill Switch.
 
 ---
 
-## 🚀 2. WORKSTATION SETUP & TEAM REGISTRATION
+## ⏱️ 2. RULES OF ENGAGEMENT & SCORING
 
-When you take your seat at your assigned workstation laptop:
-
-1. **Open the Terminal**:
-   - Double-click `ProjectFailsafe.exe` or open `aditi_os_widget.html` in your designated browser (Edge or Chrome).
-2. **Register Your Team**:
-   - **Team ID**: Enter your official tournament Team ID (e.g., `TEAM-01`, `ALPHA-42`).
-   - **Team Name**: Enter your custom team name.
-   - **Operatives / Members**: Enter the full names of all team members.
-   - **Security Passcode**: Choose a memorable password for your workstation (used to re-login if needed).
-3. **Launch Terminal**:
-   - Click **[ INITIALIZE WORKSTATION ]**.
-   - Your station will automatically enter **Strict Fullscreen Kiosk Mode**.
-
----
-
-## 🖥️ 3. UNDERSTANDING THE WORKSTATION UI
-
-The Project Failsafe interface is designed as an advanced tactical forensics console divided into **three dedicated zones**:
-
-```
-+------------------------------------------------------------------------------------+
-| TOP BAR: [STATUS DOT] [TEAM NAME] [CURRENT STAGE] [TIMER] [ACTIVE BADGES]          |
-+----------------------+-----------------------------+-------------------------------+
-| LEFT PANEL:          | CENTER PANEL:               | RIGHT PANEL:                  |
-| FORENSIC DOSSIER     | TACTICAL SHELL & TERMINAL   | NEURAL CHATTER & TARA        |
-|                      |                             |                               |
-| • Stage Directory    | • Live Inspection Canvas    | • Incoming Transmissions      |
-| • Case Files (.doc)  |   (Evidence Viewer)         | • TARA AI Companion          |
-| • Audio Transmissions|                             | • Interactive Radar Beacon    |
-| • Forensic Images    | • Decryption Input Prompt   | • Clue & Incident Counter     |
-|                      |   ("decrypt <answer>")      |                               |
-+----------------------+-----------------------------+-------------------------------+
-| BOTTOM CONTROLS: [AUDIO TOGGLE] [HINT SYSTEM] [PROCTOR STATUS]                     |
-+------------------------------------------------------------------------------------+
-```
-
-### Zone A: Left Panel — Forensic Dossier & File System
-- Displays your unlocked investigation folders from `01_TERMINAL` through `15_FAILSAFE`.
-- Click on any file (e.g., `Aditi_Memo.doc`, `Dark_Terminal.png`, `audio_log_07.mp3`) to load its evidence into the center viewer.
-- Solved stages remain unlocked so you can cross-reference earlier clues at any time.
-
-### Zone B: Center Panel — Inspection Canvas & Command Shell
-- **Upper Canvas**: Renders the active evidence document, table, image, or audio player.
-- **Lower Tactical Shell**: Where you enter commands.
-  - To submit a solved puzzle key, type:
-    ```bash
-    decrypt <YOUR_ANSWER>
-    ```
-    *(You can also just type your answer directly and hit Enter!)*
-  - Helpful shell commands:
-    - `help`: Lists all available tactical commands.
-    - `status`: Displays your current stage, hints used, and elapsed time.
-    - `clear`: Clears past terminal output.
-    - `ethan` or `hint`: Requests guidance from your AI companion.
-
-### Zone C: Right Panel — Neural Chatter & TARA Companion
-- Displays live transmissions between Dr. Aditi, TARA, and ISHAAN.
-- Contains the **👁️ TARA** assistance button. When clicked, TARA highlights which folder to examine with an animated visual radar beacon.
+1. **Round 1 (21 Stages)**:
+   - Stages must be solved sequentially (Stages 01 through 21).
+   - **Clue Lifelines**: Your team is granted **3 Tactical Clue Lifelines** across all of Round 1. Use them wisely!
+   - **Time Penalty**: Requesting a clue adds **+2 Minutes (+120s)** to your official mission timer.
+   - **Confirmation**: A warning dialog will confirm if you wish to expend a lifeline and incur the +2m penalty.
+   - **Persistent Clue**: Once unlocked, your tactical clue remains visible in the banner at the top of your workstation until you advance to the next stage.
+   - **Honeypot Warning**: Interacting with unauthorized decoy files (such as `DO_NOT_RUN.exe`) triggers a security lockdown and incurs a **+5 Minutes (+300s) Penalty**.
+2. **Round 2 (17 Challenges)**:
+   - Top qualifying teams from Round 1 enter the Round 2 StratCom Arena.
+   - **Strictly No Clues**: All lifelines are disabled in Round 2. Deduction must be purely independent.
+   - Starts with **EMERGENCY OVERRIDE** and concludes with the **FAILSAFE LOGIC TREE**.
+3. **Anti-Cheat & Strict Lockdown**:
+   - Workstations run in mandatory fullscreen kiosk mode.
+   - Exiting fullscreen, switching tabs, or pressing forbidden keys triggers an immediate **Proctor Lockdown Screen**.
+   - Only an official proctor or organizer can unlock your station.
 
 ---
 
-## 🔍 4. INTERACTIVE FORENSIC TOOLS (HOW TO ANALYZE CLUES)
+## 💻 3. WORKSTATION INTERFACE DIRECTIVES
 
-Do not just glance at the surface text. ISHAAN has hidden evidence across various file formats. Look out for these interactive tools built into your documents:
-
-1. **Forensic UV Light**:
-   - Some documents contain white-on-white invisible ink. Look for the **🔦 TOGGLE FORENSIC UV LIGHT** button or highlight text on the screen using your mouse cursor.
-2. **Exposure & Brightness Slider**:
-   - In image analysis stages (such as `Dark_Terminal.png`), use the in-viewer slider to crank the brightness and exposure to 100% to reveal low-contrast watermarks.
-3. **Spreadsheet Version History**:
-   - In spreadsheet audits, click the **🕒 Version History** button in the document header to inspect earlier drafts before the rogue AI modified the data.
-4. **Resolved Document Comments**:
-   - In memo documents, look for a **💬 Comments (Resolved)** button in the top right to view marginal notes left by Dr. Aditi before she was locked out.
-5. **CW Morse Audio Player**:
-   - Click **🔊 PLAY CW TONE BEACON** to listen to radio transmissions and decode the dots and dashes.
-6. **Pixel Contrast & Zoom**:
-   - When viewing corrupted table data, zoom out (or step back) to identify digits formed by shaded pixel cells.
-
----
-
-## 🚨 5. STRICT TOURNAMENT RULES & PROCTOR LOCKDOWN
-
-> [!CAUTION]
-> **READ CAREFULLY**: The workstation is equipped with an automated proctoring sentinel. Violating tournament rules will freeze your station and alert the organizers!
-
-### Rule 1: Stay in Fullscreen at All Times
-- The workstation operates in kiosk mode.
-- **DO NOT** press `Esc`, `F11`, or attempt to exit fullscreen.
-- If you exit fullscreen, your terminal will immediately lock into **PROCTOR LOCKDOWN**.
-
-### Rule 2: No Switching Tabs or Windows (Alt+Tab / Windows Key Blocked)
-- **DO NOT** press the `Windows` key.
-- **DO NOT** press `Alt + Tab`.
-- **DO NOT** switch browser tabs or click on any external applications.
-- Losing focus from the tournament window immediately freezes your station and logs a **Focus Lost Incident**.
-
-### Rule 3: No Right-Clicking or Google Lens Searching
-- Right-clicking is strictly disabled on all text and images.
-- Dragging images into search tabs or Google Lens is technically blocked.
-- Any attempt to right-click or use developer shortcuts (`F12`, `Ctrl+Shift+I`, `Ctrl+U`) will immediately trigger an audible breach alarm at the Organizer Command Desk!
-
-### Rule 4: No Smartphones or Mobile Devices
-- The tournament is strictly designed for tactical desktop/laptop workstations. The application cannot be run on mobile phones.
-
-### What to Do If Your Screen Locks Down
-If your screen displays the red **PROCTOR LOCKDOWN** screen:
-1. Raise your hand quietly.
-2. An event volunteer or proctor will verify your station and enter the master proctor key to restore your terminal.
-3. Note that lockouts add a breach incident to your official tournament record.
+- **Forensic Evidence Vault (Left Column)**:
+  - Displays chronological evidence cards for each stage.
+  - Active stage card is highlighted with a pulsing green glow and labeled `● ACTIVE`.
+  - Click any unlocked card to view Dr. Aditi's dossiers, logs, audio waveforms, or data files.
+- **Dossier Modal & Direct Transmit Box**:
+  - Each evidence card opens an interactive dossier viewer.
+  - Read the **TACTICAL DIRECTIVES** banner at the top of the dossier to know **WHERE TO CLICK** and **WHERE TO SUBMIT**.
+  - Type your answer directly into the submission box and press **Enter** or click **[TRANSMIT &rarr;]**.
+- **Tactical Command Terminal (Right Column)**:
+  - You can also execute terminal commands:
+    - `decrypt [code]` — Submit a decryption key.
+    - `ls` or `dir` — List available evidence files.
+    - `help` — Review available tactical terminal subroutines.
+    - `status` — Check active clearance and elapsed mission time.
+- **TARA AI Companion**:
+  - Click **[🧭 WHERE TO CLICK]** or **[👁️ TARA DIRECTIVE]** for positioning guidance.
+  - Click **[💡 REQUEST TACTICAL CLUE (+2M)]** in Round 1 if you wish to expend a lifeline.
 
 ---
 
-## 💡 6. INTERACTIVE TARA COMPANION & "WHERE DO I LOOK?" GUIDANCE
+## 📋 4. FORENSIC EVIDENCE OVERVIEW
 
-Project Failsafe features **TARA HUNT**, Dr. Aditi's personal autonomous AI assistant. TARA is equipped with visual recon beacons:
+### Round 1 Stages (01–21):
+- **Stage 01**: `Farewell.doc` — Whiteout text concealing the first gate password.
+- **Stage 02**: `README.doc` (Directory ORIGIN) — ASCII character summation of `aDIti@28`.
+- **Stage 03**: `Incident_Logs.doc` — Calendar anomaly audit (non-leap year date).
+- **Stage 04**: `Security_Audit.pdf` — Timestamp murder mystery & perimeter contradiction.
+- **Stage 05**: `Aditi_Memo.doc` — Acrostic sentence alignment.
+- **Stage 06**: `AUTHENTIC_LOG.doc` — Font typography verification (Arial vs Calibri).
+- **Stage 07**: `Incident_Report.doc` — Document version history recovery.
+- **Stage 08**: `audio_log_07.mp3` — Morse code audio analysis.
+- **Stage 09**: `Dark_Terminal.png` — Optical steganography exposure enhancement.
+- **Stage 10**: `DO_NOT_RUN.exe` — Psychological honeypot trap avoidance.
+- **Stage 11**: `CLEARANCE_CODE.txt` — Binary to A1Z26 alphabetical indexing.
+- **Stage 12**: `Whiteout_Signature.doc` — Invisible foreground crypt analysis.
+- **Stage 13**: `ROT4_Shift.cipher` — IEEE 4-letter Caesar shift decryption.
+- **Stage 14**: `Mirror_Log.txt` — Reverse Atbash alphabet reflection.
+- **Stage 15**: `Matrix_Coordinates.pdf` — 5x5 Polybius grid traversal.
+- **Stage 16**: `Mass_System_Log.txt` — Frequency count of target term occurrences.
+- **Stage 17**: `Intercepted_ADI_Transmission.pdf` — Polybius vector translation (+1 Row, -1 Col).
+- **Stage 18**: `Cycle_Diagnostics.png` — 12-point circular buffer modular shifts.
+- **Stage 19**: `Server_Status_Check.pdf` — Thermal threshold outlier isolation.
+- **Stage 20**: `Emergency_Override_Key.txt` — Day-of-week backward Caesar shift.
+- **Stage 21**: `System_Audit_2013.log` — Chronological log anomaly identification & multiplication.
 
-1. **The "WHERE DO I LOOK?" Quick-Button**:
-   - Feeling disoriented or unsure where to click next?
-   - Click the bright green **`[ 🧭 WHERE DO I LOOK? ]`** chip in the top TARA panel (or type `where` / `look` / `guide` in the tactical terminal).
-   - TARA will:
-     - Output an immediate tactical directive in the speech stream explaining the current objective.
-     - Deploy a floating, high-visibility neon HUD beacon (**`👆 FOCUS HERE`**) hovering directly over the relevant evidence card, document drawer, or interactive puzzle element!
-2. **De-Cluttered Interface & Progressive Disclosure**:
-   - To keep your workstation clean and prevent information overload, background lore, raw telemetry logs, and author notes are tucked inside **Expandable Drawers** (`.nexus-drawer`).
-   - Click any drawer header (e.g., `[ 🔍 INSPECT EVIDENCE ]`, `[ 📜 RAW TELEMETRY ]`, `[ 💬 NOTES ]`) to smoothly unfold the deeper technical intel.
-   - Click again to collapse and maintain a minimal, focused workspace.
-3. **Beware of Honeypot Traps (Stage 14 Warning)**:
-   - Late in the investigation, ISHAAN will attempt a psychological trick by displaying an urgent "Emergency Shutdown" prompt asking for passwords.
-   - **READ ALL WARNINGS CAREFULLY!** Entering credentials into a fake honeypot trap incurs a **+5 minute penalty** to your team's total time! Simply type `decrypt BYPASS` to disarm it safely.
-4. **Tactical Clue Battery (3 Max — Each Clue Costs +2:00 Time Penalty)**:
-   - In Round 1, each squad is equipped with up to 3 Tactical Clue lifelines.
-   - Clicking `[ 💡 CLUES LEFT: X/3 ]` or `[ 💡 USE CLUE (+2m) ]` triggers a safety confirmation warning.
-   - **Penalty**: Expending a clue adds an immediate **+2:00 minute (+120 seconds) penalty** to your team's running mission clock and increases your final adjusted leaderboard score.
-   - When active, your timer pill displays a pulsing `+2m PENALTY` badge. Conserve clues for the toughest sectors!
-
----
-
-## 🏆 7. ROUND 1 COMPLETION & ROUND 2 QUALIFICATION
-
-When your team successfully solves the 15th and final stage of Round 1:
-
-1. **Dr. Aditi's Emergency Transmission**:
-   - The encrypted communication line will open, delivering Dr. Aditi's final message and video portrait.
-2. **Victory Celebration Screen**:
-   - Your workstation presents the **MISSION COMPLETE** certificate displaying your official elapsed time and a breakdown of all 11 stages.
-3. **Round 2 Shortlisting & Automated Polling**:
-   - Click **[ FREE TARA & TERMINATE ]**.
-   - Your workstation enters the **Round 2 Shortlist Waiting Room**:
-     ```
-     ⏳ Awaiting Organizer Shortlist Confirmation... ●
-     ```
-   - The tournament server automatically ranks all teams and selects the **Top 12 Teams** based on solve times and stage completions. The Event Organizer has final authority to review and adjust the shortlist.
-4. **Transition to Round 2**:
-   - Once the Organizer starts Round 2, qualified workstations will automatically receive a tournament alert and unlock the **🚀 ENTER ROUND 2: DECRYPTION ARENA** launcher!
-
----
-
-## 🎯 8. ROUND 2: STRATCOM DECRYPTION ARENA
-
-Qualified squads advance to the **Round 2 Decryption Arena**, a high-intensity 9-puzzle Olympiad suite:
-
-1. **9 Progressive Cryptanalytic Challenges**:
-   - **Puzzle 01 (Matrix Box)**: Visual Raven's Progressive Matrix pattern completion.
-   - **Puzzle 02 (Cube Net)**: 3D spatial net folding opposite-face deduction.
-   - **Puzzle 03 (Rotation Boxes)**: 90° clockwise corner node rotation sequence.
-   - **Puzzle 04 (Whiteout Steganography)**: Forensic UV light contrast revelation.
-   - **Puzzle 05 (ROT-4 Shift)**: Backward Caesar substitution cipher.
-   - **Puzzle 06 (Polybius Matrix)**: 5x5 coordinate grid decryption.
-   - **Puzzle 07 (Atbash Mirror)**: Inverted alphabet mirror reflection.
-   - **Puzzle 08 (Telemetry Frequency)**: Keyword substring frequency scan.
-   - **Puzzle 09 (Master Decryption Wheel)**: Dual concentric cipher wheel alignment.
-2. **Submitting Solutions in Round 2**:
-   - Use the interactive option buttons, input sliders, or the bottom transmission bar (`r2-submit-bar`).
-   - Correct solutions immediately unlock the next Olympiad challenge.
-   - Need guidance? Click **`[ 👁️ TARA DIRECTIVE ]`** at any time to receive exact hints on where to focus.
-3. **Grand Championship Victory**:
-   - Solving Puzzle 09 unlocks the ultimate IEEE WIE failsafe, triggers the Grand Championship Podium Celebration with victory fanfare and confetti, and crowns the winning squad!
-
----
-
-**Good luck, investigators. Free TARA, solve the mystery, and prove the power of engineering!**  
-*— IEEE Women in Engineering (WIE) Organizing Committee*
+### Round 2 Challenges (01–17):
+- **Puzzle 01**: `Emergency_Override_Key.txt` — October 13, 2090 Day-of-Week Authorization.
+- **Puzzle 02**: `Visual_Matrix.pdf` — 3x3 Missing Glyph Progression.
+- **Puzzle 03**: `Rotation_Array.pdf` — 90° Clockwise Rotation Sequence.
+- **Puzzle 04**: `Cube_Net_Folding.pdf` — 3D Hypercube Net Face Deduction.
+- **Puzzle 05**: `Polybius_Grid.pdf` — Modulo-Polybius Coordinate Decoupling.
+- **Puzzle 06**: `Keyboard_Trace.png` — Physical QWERTY Keypad Vector Geometry.
+- **Puzzle 07**: `Logic_Gate_Circuits.pdf` — Interlocking Boolean Logic Network.
+- **Puzzle 08**: `Specular_Text.png` — Horizontal Mirror Inversion Recovery.
+- **Puzzle 09**: `Compass_Grid.pdf` — Rotational Matrix Operator.
+- **Puzzle 10**: `Digital_Root_Log.txt` — Base-Invariant Digital Root Flow.
+- **Puzzle 11**: `Palindrome_Stream.txt` — Symmetric Palindrome Filter Stream.
+- **Puzzle 12**: `Matrix_Diagonal.pdf` — Diagonal Matrix String Weave.
+- **Puzzle 13**: `Grid_Perimeter.pdf` — Boundary Box Perimeter Quantization.
+- **Puzzle 14**: `Checker_State.png` — Alternating Checkerboard Parity Evaluation.
+- **Puzzle 15**: `Ring_Shift.png` — Concentric Modulo Ring Shift.
+- **Puzzle 16**: `Cipher_Wheel_Spec.pdf` — THE RED QUESTION: Dual Cipher Wheel Alignment.
+- **Puzzle 17**: `Failsafe_Gate_Status.pdf` — THE GRAND FINALE: 4-Switch Hardware Failsafe Logic Tree.
