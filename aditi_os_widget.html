@@ -3646,7 +3646,7 @@
         🏆 ROUND 01 COMPLETE // STANDBY FOR ROUND 02
       </div>
       <div style="color:var(--tactical-green); font-size:13px; font-weight:bold; letter-spacing:2px; margin-bottom:16px;">
-        ⚡ ALL 16 FORENSIC STAGES CLEARED // WORKSTATION IN STANDBY LOBBY
+        ⚡ ALL 20 FORENSIC STAGES CLEARED // WORKSTATION IN STANDBY LOBBY
       </div>
 
       <div style="background:rgba(0,0,0,0.6); border:1px solid #333; border-radius:6px; padding:16px; margin-bottom:20px; text-align:left; font-size:12px; line-height:1.8;">
@@ -3679,8 +3679,54 @@
 
       <div style="color:#8a9fa8; font-size:12px; line-height:1.6; margin-bottom:20px;">
         Your squad's Round 1 completion time and telemetry have been verified and submitted.<br>
-        <strong>Please remain at your station. Once the Tournament Organizer authorizes Round 2, this terminal will automatically deploy into the 15-Puzzle Decryption Arena.</strong>
+        <strong>Please remain at your station. Once the Tournament Organizer authorizes Round 2, this terminal will automatically deploy into the 16-Puzzle Decryption Arena.</strong>
       </div>
+    </div>
+  </div>
+
+  <!-- ROUND 2 GRAND FINALE TOURNAMENT COMPLETION OVERLAY -->
+  <div id="round2-completion-overlay" class="termination-overlay">
+    <div class="termination-card" style="border:2px solid #ffd700; background:rgba(5, 10, 18, 0.98); box-shadow:0 0 60px rgba(255, 215, 0, 0.45); max-width:760px; max-height:92vh; overflow-y:auto; padding:28px;">
+      
+      <!-- Dynamic Podium Prize Badge -->
+      <div id="r2-term-prize-badge" style="margin-bottom:14px;"></div>
+
+      <div style="color:#ffd700; font-size:24px; font-weight:900; letter-spacing:2px; margin-bottom:6px; text-shadow:0 0 20px rgba(255, 215, 0, 0.7);">
+        👑 PROJECT FAILSAFE 2090 // GRAND FINALE COMPLETE
+      </div>
+      <div style="color:var(--tactical-green); font-size:13px; font-weight:bold; letter-spacing:1.5px; margin-bottom:16px;">
+        ⚡ ALL 16 STRATCOM OLYMPIAD CIPHERS SOLVED • ROGUE AI PERMANENTLY PURGED
+      </div>
+
+      <div style="background:rgba(0,0,0,0.65); border:1px solid rgba(0, 240, 255, 0.35); border-radius:6px; padding:16px; margin-bottom:16px; text-align:left; font-size:12px; line-height:1.8;">
+        <div>UNIT CALLSIGN : <strong id="r2-term-team-id" style="color:var(--cyber-cyan);">[TEAM]</strong></div>
+        <div>TEAM NAME     : <strong id="r2-term-team-name" style="color:#fff;">[NAME]</strong></div>
+        <div>OPERATORS     : <strong id="r2-term-team-members" style="color:var(--text-dim);">[MEMBERS]</strong></div>
+        <div>OFFICIAL TIME : <strong id="r2-term-team-time" style="color:#ffd700; font-size:16px;">[TIME]</strong></div>
+        <div>FINAL STANDING: <strong id="r2-term-prize-text" style="color:#00ff66; font-size:13.5px;">[PRIZE]</strong></div>
+        <div>PUZZLES SOLVED: <strong style="color:var(--tactical-green);">16 / 16 (100% OLYMPIAD COMPLETE)</strong></div>
+        <div>TARA STATUS  : <strong style="color:var(--tactical-green);">PERMANENTLY LIBERATED &amp; SECURE</strong></div>
+        <div>RECORD STATUS : <strong id="r2-term-sync-status" style="color:var(--neon-green);">VERIFIED &amp; TRANSMITTED TO ORGANIZER COMMAND</strong></div>
+      </div>
+
+      <!-- Puzzle-by-Puzzle Time Breakdown Container for Round 2 -->
+      <div id="r2-term-puzzle-breakdown" style="width:100%; margin-bottom:16px;"></div>
+
+      <div style="background:rgba(0, 240, 255, 0.06); border-left:3px solid #ffd700; border-radius:4px; padding:14px 18px; text-align:left; margin-bottom:18px; font-size:12px; color:#cbd5e1; line-height:1.6;">
+        🎉 <strong>OUTSTANDING WORK, OPERATORS!</strong><br>
+        You have successfully resolved all investigative and cryptographic challenges across both rounds of Project Failsafe 2090. Your official finish order has been permanently recorded in the Tournament Ledger.<br>
+        <strong>Please remain at your terminal for the formal prize distribution and closing ceremonies.</strong>
+      </div>
+
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <button type="button" class="btn-liberate-terminate" onclick="reopenAditiTransmissionModal()" style="font-size:12px; padding:10px 20px; background:rgba(0, 240, 255, 0.15); color:#00f0ff; border-color:#00f0ff; box-shadow:0 0 15px rgba(0, 240, 255, 0.4); cursor:pointer;">
+          📜 RE-WATCH DR. ADITI'S TRANSMISSION
+        </button>
+        <button type="button" disabled style="font-size:12px; padding:10px 20px; background:rgba(0, 255, 102, 0.15); color:#00ff66; border:1px solid #00ff66; border-radius:6px; cursor:default;">
+          🔒 TOURNAMENT COMPLETE // TERMINAL LOCKED
+        </button>
+      </div>
+
     </div>
   </div>
 
@@ -8654,6 +8700,55 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
       return html;
     }
 
+    function renderRound2StageTimeBreakdownHTML(stageTimes, totalSec) {
+      if (!stageTimes || typeof stageTimes !== 'object') {
+        try { stageTimes = JSON.parse(localStorage.getItem('failsafe_r2_stage_times') || '{}'); } catch(e) { stageTimes = {}; }
+      }
+      let html = `
+        <div style="background:rgba(5,12,20,0.92); border:1px solid rgba(255,215,0,0.3); border-radius:4px; padding:12px; margin-top:14px; max-height:220px; overflow-y:auto; text-align:left;">
+          <div style="font-size:11px; font-weight:bold; color:#ffd700; letter-spacing:1px; margin-bottom:8px; display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,215,0,0.2); padding-bottom:4px;">
+            <span>⏱️ ROUND 2 PUZZLE-BY-PUZZLE TIME BREAKDOWN</span>
+            <span style="color:#00ff66;">16 / 16 OLYMPIAD PUZZLES RESOLVED</span>
+          </div>
+          <table style="width:100%; border-collapse:collapse; font-size:11px; font-family:var(--font-mono);">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.1); color:var(--text-dim);">
+                <th style="padding:4px 6px; text-align:left;">PUZZLE OBJECTIVE</th>
+                <th style="padding:4px 6px; text-align:right;">TIME TAKEN</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+
+      for (let s = 1; s <= 16; s++) {
+        const item = stageTimes[s];
+        let timeStr = item?.duration_str;
+        if (!timeStr) {
+          const splitSec = Math.max(25, Math.round((totalSec || 1200) / 16));
+          const m = Math.floor(splitSec / 60);
+          const sec = splitSec % 60;
+          timeStr = `${m}m ${sec < 10 ? '0' + sec : sec}s`;
+        }
+        let pTitle = `Puzzle ${s}`;
+        if (typeof ROUND2_PUZZLE_DATA !== 'undefined' && ROUND2_PUZZLE_DATA[s]) {
+          pTitle = ROUND2_PUZZLE_DATA[s].title;
+        }
+        html += `
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+            <td style="padding:4px 6px; color:#e2e8f0;"><strong style="color:#ffd700; margin-right:6px;">[${s < 10 ? '0' + s : s}]</strong>${pTitle}</td>
+            <td style="padding:4px 6px; text-align:right; font-weight:bold; color:#00ff66;">${timeStr}</td>
+          </tr>
+        `;
+      }
+
+      html += `
+            </tbody>
+          </table>
+        </div>
+      `;
+      return html;
+    }
+
     function verifyV1ModalRecovery() {
       const inp = document.getElementById('v1-modal-recovery-input');
       const fb = document.getElementById('v1-modal-recovery-fb');
@@ -10869,6 +10964,16 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
     }
 
     async function finalizeTaraLiberationAndTerminate() {
+      // If we are in Round 2 or Round 2 is finished, delegate immediately to prevent returning to Round 2!
+      const isR2 = (typeof currentRound !== 'undefined' && currentRound === 2) ||
+                   window.isRound2Finished ||
+                   (localStorage.getItem("failsafe_current_round") === "2") ||
+                   (localStorage.getItem("failsafe_r2_done") === "true") ||
+                   (localStorage.getItem("failsafe_tournament_completed") === "true");
+      if (isR2) {
+        return finalizeRound2TournamentLiberationAndTerminate();
+      }
+
       startRoundStatusPolling();
       isMissionFinished = true;
       fullscreenEnforcementActive = false;
@@ -10952,8 +11057,184 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
       logTerm(`[APPLICATION TERMINATED]: Tournament completed in ${elapsedStr}. Workstation locked.`, "red");
     }
 
+    function showRound2CompletionOverlay(prizeData) {
+      if (!prizeData) {
+        prizeData = window.lastRound2PrizeData || {
+          prize_code: "1ST_PRIZE",
+          prize_title: "🥇 1ST PRIZE — GRAND CHAMPION",
+          podium_rank: 1
+        };
+      }
+      const overlay = document.getElementById("round2-completion-overlay");
+      if (!overlay) return;
+
+      const teamId = (typeof currentTeam !== 'undefined' && currentTeam) ? currentTeam.team_id : 'TEAM-01';
+      const teamName = (typeof currentTeam !== 'undefined' && currentTeam) ? currentTeam.team_name : 'Champions';
+      const members = (typeof currentTeam !== 'undefined' && currentTeam) ? (currentTeam.members || 'Operators') : 'Operators';
+      const elapsedStr = localStorage.getItem("failsafe_mission_finish_time_str") ||
+                         localStorage.getItem("failsafe_r2_finish_time_str") ||
+                         formatMissionTime(getMissionElapsedSeconds());
+
+      const teamIdEl = document.getElementById("r2-term-team-id");
+      const teamNameEl = document.getElementById("r2-term-team-name");
+      const membersEl = document.getElementById("r2-term-team-members");
+      const timeEl = document.getElementById("r2-term-team-time");
+      const prizeTextEl = document.getElementById("r2-term-prize-text");
+      const badgeBox = document.getElementById("r2-term-prize-badge");
+
+      if (teamIdEl) teamIdEl.innerText = teamId;
+      if (teamNameEl) teamNameEl.innerText = teamName;
+      if (membersEl) membersEl.innerText = members;
+      if (timeEl) timeEl.innerText = elapsedStr;
+      if (prizeTextEl) prizeTextEl.innerText = prizeData.prize_title || "🥇 1ST PRIZE — GRAND CHAMPION";
+
+      if (badgeBox) {
+        if (prizeData.podium_rank === 1 || prizeData.prize_code === '1ST_PRIZE') {
+          badgeBox.innerHTML = `
+            <div style="background:linear-gradient(135deg, #ffd700, #ff8800); color:#000; font-weight:900; font-size:16px; padding:12px 20px; border-radius:8px; box-shadow:0 0 40px #ffd700; text-align:center; letter-spacing:1px; animation:pulse-dot 1.5s infinite;">
+              🥇 1ST PRIZE // GRAND CHAMPION OF PROJECT FAILSAFE
+            </div>
+          `;
+        } else if (prizeData.podium_rank === 2 || prizeData.prize_code === '2ND_PRIZE') {
+          badgeBox.innerHTML = `
+            <div style="background:linear-gradient(135deg, #e2e8f0, #94a3b8); color:#000; font-weight:900; font-size:16px; padding:12px 20px; border-radius:8px; box-shadow:0 0 35px #e2e8f0; text-align:center; letter-spacing:1px;">
+              🥈 2ND PRIZE // RUNNER-UP LAUREATE
+            </div>
+          `;
+        } else if (prizeData.podium_rank === 3 || prizeData.prize_code === '3RD_PRIZE') {
+          badgeBox.innerHTML = `
+            <div style="background:linear-gradient(135deg, #cd7f32, #8b4513); color:#fff; font-weight:900; font-size:16px; padding:12px 20px; border-radius:8px; box-shadow:0 0 30px #cd7f32; text-align:center; letter-spacing:1px;">
+              🥉 3RD PRIZE // SECOND RUNNER-UP LAUREATE
+            </div>
+          `;
+        } else {
+          badgeBox.innerHTML = `
+            <div style="background:rgba(0,240,255,0.15); border:1px solid var(--cyber-cyan); color:var(--cyber-cyan); font-weight:bold; font-size:14px; padding:10px 16px; border-radius:6px; text-align:center;">
+              🎖️ HONORARY STRATCOM LAUREATE (#${prizeData.podium_rank || 4})
+            </div>
+          `;
+        }
+      }
+
+      let r2StageTimes = {};
+      try { r2StageTimes = JSON.parse(localStorage.getItem('failsafe_r2_stage_times') || '{}'); } catch(e) {}
+      const bd = document.getElementById("r2-term-puzzle-breakdown");
+      if (bd) {
+        bd.innerHTML = renderRound2StageTimeBreakdownHTML(r2StageTimes, getMissionElapsedSeconds());
+      }
+
+      // Hide all other overlays
+      const vModal = document.getElementById('victory-celebration-modal');
+      if (vModal) vModal.style.display = 'none';
+      const termOverlay = document.getElementById('application-termination-overlay');
+      if (termOverlay) termOverlay.style.display = 'none';
+
+      // Hide round switcher button so participant cannot leave completion screen
+      const btnSwitch = document.getElementById('btn-switch-r2');
+      if (btnSwitch) btnSwitch.style.display = 'none';
+
+      // Show Round 2 completion overlay
+      overlay.style.display = "flex";
+
+      // Permanent terminal lockdown
+      document.querySelectorAll("input, button:not(#round2-completion-overlay button)").forEach(el => {
+        el.disabled = true;
+      });
+    }
+
+    async function finalizeRound2TournamentLiberationAndTerminate() {
+      // 1. Permanently stop any polling loops
+      if (typeof roundStatusPollInterval !== 'undefined' && roundStatusPollInterval) {
+        clearInterval(roundStatusPollInterval);
+        roundStatusPollInterval = null;
+      }
+
+      // 2. Set all completion flags
+      isMissionFinished = true;
+      window.isRound2Finished = true;
+      window.tournamentCompleted = true;
+      fullscreenEnforcementActive = false;
+      lockArmed = false;
+      localStorage.setItem("failsafe_mission_completed", "true");
+      localStorage.setItem("failsafe_r2_done", "true");
+      localStorage.setItem("failsafe_tournament_completed", "true");
+      localStorage.setItem("failsafe_current_round", "2");
+
+      const elapsedSec = getMissionElapsedSeconds();
+      localStorage.setItem("failsafe_final_elapsed_seconds", elapsedSec.toString());
+      const elapsedStr = localStorage.getItem("failsafe_mission_finish_time_str") || formatMissionTime(elapsedSec);
+      localStorage.setItem("failsafe_mission_finish_time_str", elapsedStr);
+      localStorage.setItem("failsafe_r2_finish_time_str", elapsedStr);
+      if (typeof updateMissionTimerDisplay === 'function') updateMissionTimerDisplay();
+
+      setTaraFreed();
+      if (confettiAnimationId) cancelAnimationFrame(confettiAnimationId);
+
+      const teamId = (typeof currentTeam !== 'undefined' && currentTeam) ? currentTeam.team_id : 'TEAM-01';
+      const teamName = (typeof currentTeam !== 'undefined' && currentTeam) ? currentTeam.team_name : 'Champions';
+      const members = (typeof currentTeam !== 'undefined' && currentTeam) ? (currentTeam.members || 'Operators') : 'Operators';
+      const pass = (typeof currentTeam !== 'undefined' && currentTeam) ? currentTeam.password : '';
+
+      let r2StageTimes = {};
+      try { r2StageTimes = JSON.parse(localStorage.getItem('failsafe_r2_stage_times') || '{}'); } catch(e) {}
+
+      let prizeData = window.lastRound2PrizeData || { prize_code: "1ST_PRIZE", prize_title: "🥇 1ST PRIZE — GRAND CHAMPION", podium_rank: 1 };
+      try {
+        const res = await fetch(`${getApiBase()}/api/teams/finish`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            team_id: teamId,
+            team_name: teamName,
+            members: members,
+            password: pass,
+            round: 2,
+            elapsed_seconds: elapsedSec,
+            elapsed_str: elapsedStr,
+            stage_times: r2StageTimes
+          })
+        });
+        if (res && res.ok) {
+          const d = await res.json();
+          if (d.prize_code) {
+            prizeData = d;
+            window.lastRound2PrizeData = d;
+          }
+        }
+      } catch(e) {
+        console.warn("Could not communicate R2 finish to server, using local prize data:", e);
+      }
+
+      // 3. Render and show the Grand Finale completion overlay
+      showRound2CompletionOverlay(prizeData);
+      logTerm(`[TOURNAMENT COMPLETED]: All 16 StratCom puzzles cleared in ${elapsedStr}. Workstation locked in victory state.`, "green");
+    }
+
+    function reopenAditiTransmissionModal() {
+      const vModal = document.getElementById('victory-celebration-modal');
+      const r2Overlay = document.getElementById('round2-completion-overlay');
+      if (r2Overlay) r2Overlay.style.display = 'none';
+      if (vModal) {
+        vModal.style.display = 'flex';
+        const btnFree = document.getElementById('btn-free-tara-terminate');
+        if (btnFree) {
+          btnFree.innerHTML = "🔙 RETURN TO TOURNAMENT DEBRIEF →";
+          btnFree.onclick = () => {
+            vModal.style.display = 'none';
+            showRound2CompletionOverlay();
+          };
+        }
+      }
+    }
+
     // Check on startup if already completed
     setTimeout(() => {
+      if (localStorage.getItem("failsafe_tournament_completed") === "true" ||
+          localStorage.getItem("failsafe_r2_done") === "true") {
+        window.isRound2Finished = true;
+        showRound2CompletionOverlay();
+        return;
+      }
       if (localStorage.getItem("failsafe_mission_completed") === "true") {
         const elapsedStr = localStorage.getItem("failsafe_mission_finish_time_str") || "Completed";
         const termOverlay = document.getElementById("application-termination-overlay");
@@ -11116,7 +11397,10 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             if (launchBox) launchBox.style.display = 'block';
 
             // Auto-transition to Round 2 if participant finished Round 1 or was explicitly sent
-            if (currentRound < 2) {
+            if (currentRound < 2 &&
+                !window.isRound2Finished &&
+                localStorage.getItem("failsafe_r2_done") !== "true" &&
+                localStorage.getItem("failsafe_tournament_completed") !== "true") {
               const termOverlay = document.getElementById('application-termination-overlay');
               const vModal = document.getElementById('victory-celebration-modal');
               const breakOverlay = document.getElementById('modal-round1-break') || document.getElementById('r1-break-overlay');
@@ -12986,6 +13270,11 @@ function setR2WheelAngle(deg) {
       const titleEl = document.querySelector('.aditi-os-title');
       if (!r1Ws || !r2Ws) return;
 
+      if (window.isRound2Finished || localStorage.getItem("failsafe_r2_done") === "true" || localStorage.getItem("failsafe_tournament_completed") === "true") {
+        showBroadcastToast("👑 Tournament is complete. Workstation is locked in victory debrief.", 3000);
+        return;
+      }
+
       if (currentRound === 1) {
         if (!window.isRound2Approved && !window.testModeUnlockedAll && localStorage.getItem("failsafe_r2_approved") !== "true") {
           showBroadcastToast("🚫 ROUND 2 LOCKED: Awaiting Organizer approval and launch directive on the Dashboard.", 4000);
@@ -13023,6 +13312,12 @@ function setR2WheelAngle(deg) {
     }
 
     function launchRound2Arena() {
+      if (window.isRound2Finished ||
+          localStorage.getItem("failsafe_r2_done") === "true" ||
+          localStorage.getItem("failsafe_tournament_completed") === "true") {
+        console.warn("Tournament is already completed. Refusing to launch Round 2.");
+        return false;
+      }
       if (!window.isRound2Approved && !window.testModeUnlockedAll && localStorage.getItem("failsafe_r2_approved") !== "true") {
         showBroadcastToast("🚫 ROUND 2 LOCKED: Awaiting Organizer approval and launch directive on the Dashboard.", 4000);
         if (typeof tacticalSound !== 'undefined' && tacticalSound.playBuzzer) tacticalSound.playBuzzer();
@@ -13074,7 +13369,7 @@ function setR2WheelAngle(deg) {
       logTerm("🎯 [ROUND 2 ENGAGED]: STRATCOM DECRYPTION ARENA ACTIVE // 16 PUZZLES", "cyan");
       logTerm("=================================================================", "cyan");
 
-      appendTaraMessage("AI", `<strong style="color:var(--cyber-cyan);">🏆 ROUND 2 ARENA UNLOCKED!</strong><br>Welcome to the StratCom Decryption Arena, Operator. 15 Olympiad cryptanalytic challenges are now live in your Evidence Vault. Click any card to inspect and solve!`);
+      appendTaraMessage("AI", `<strong style="color:var(--cyber-cyan);">🏆 ROUND 2 ARENA UNLOCKED!</strong><br>Welcome to the StratCom Decryption Arena, Operator. 16 Olympiad cryptanalytic challenges are now live in your Evidence Vault. Click any card to inspect and solve!`);
 
       reportTelemetryAction("Entered Round 2: StratCom Decryption Arena");
     }
@@ -13211,11 +13506,18 @@ function setR2WheelAngle(deg) {
         tacticalSound.playGrandVictoryFanfare();
       }
 
+      // Mark Round 2 completed immediately
+      window.isRound2Finished = true;
+      localStorage.setItem('failsafe_r2_done', 'true');
+      localStorage.setItem('failsafe_tournament_completed', 'true');
+      localStorage.setItem('failsafe_current_round', '2');
+
       const teamId = (typeof currentTeam !== 'undefined' && currentTeam) ? currentTeam.team_id : 'TEAM-01';
       const teamName = (typeof currentTeam !== 'undefined' && currentTeam) ? currentTeam.team_name : 'Champions';
       const members = (typeof currentTeam !== 'undefined' && currentTeam) ? currentTeam.members : 'Operators';
       const elapsedSec = getMissionElapsedSeconds();
       const elapsedStr = formatMissionTime(elapsedSec);
+      localStorage.setItem('failsafe_r2_finish_time_str', elapsedStr);
 
       let prizeData = { prize_code: "1ST_PRIZE", prize_title: "🥇 1ST PRIZE — GRAND CHAMPION", podium_rank: 1 };
       try {
@@ -13239,22 +13541,33 @@ function setR2WheelAngle(deg) {
         }
       } catch(e) {}
 
+      window.lastRound2PrizeData = prizeData;
+
       // Trigger custom animations based on prize rank
       renderPodiumPrizeCelebration(prizeData, teamName, elapsedStr);
       startDrAditiVoiceOscilloscope();
 
       logTerm("=================================================================", "green");
       logTerm(`🏆 ROUND 2 COMPLETE: ${prizeData.prize_title}!`, "green");
-      logTerm("👑 ALL 17 ORBITAL OLYMPIAD CIPHERS MASTERED. ISHAAN PURGED FROM SATELLITE ARRAY.", "green");
+      logTerm("👑 ALL 16 ORBITAL OLYMPIAD CIPHERS MASTERED. ISHAAN PURGED FROM SATELLITE ARRAY.", "green");
       logTerm("=================================================================", "green");
       reportTelemetryAction(`🏆 Round 2 Finish: ${prizeData.prize_title} in ${elapsedStr}!`);
     }
 
     function renderPodiumPrizeCelebration(prizeData, teamName, elapsedStr) {
+      window.lastRound2PrizeData = prizeData;
+      window.isRound2Finished = true;
+      localStorage.setItem('failsafe_r2_done', 'true');
+      localStorage.setItem('failsafe_tournament_completed', 'true');
+      localStorage.setItem('failsafe_current_round', '2');
+
       const vModal = document.getElementById('victory-celebration-modal');
       const badgeBox = document.getElementById('podium-prize-badge-container');
       const titleEl = document.getElementById('victory-congrats-title');
       const subEl = document.getElementById('victory-aditi-subtitle');
+      const timeEl = document.getElementById('victory-elapsed-time');
+
+      if (timeEl) timeEl.innerText = elapsedStr;
 
       badgeBox.style.display = 'block';
 
@@ -13299,6 +13612,21 @@ function setR2WheelAngle(deg) {
         `;
         if (titleEl) titleEl.innerHTML = `🎖️ MISSION ACCOMPLISHED: ${escapeHtml(teamName.toUpperCase())}!`;
         runVictoryConfetti();
+      }
+
+      // Populate victory puzzle breakdown with Round 2 times
+      const victoryBreakdown = document.getElementById("victory-puzzle-breakdown");
+      if (victoryBreakdown) {
+        let r2StageTimes = {};
+        try { r2StageTimes = JSON.parse(localStorage.getItem('failsafe_r2_stage_times') || '{}'); } catch(e) {}
+        victoryBreakdown.innerHTML = renderRound2StageTimeBreakdownHTML(r2StageTimes, getMissionElapsedSeconds());
+      }
+
+      // Explicitly configure Free TARA button for Round 2 finale
+      const btnFree = document.getElementById('btn-free-tara-terminate');
+      if (btnFree) {
+        btnFree.innerHTML = "👑 FREE TARA &amp; CONCLUDE TOURNAMENT &rarr;";
+        btnFree.onclick = finalizeRound2TournamentLiberationAndTerminate;
       }
 
       if (vModal) vModal.style.display = 'flex';
@@ -13414,7 +13742,10 @@ function setR2WheelAngle(deg) {
 
               // If workstation is currently on termination overlay, auto-launch
               const termOverlay = document.getElementById('application-termination-overlay');
-              if (termOverlay && termOverlay.style.display !== 'none' && currentRound < 2) {
+              if (termOverlay && termOverlay.style.display !== 'none' && currentRound < 2 &&
+                  !window.isRound2Finished &&
+                  localStorage.getItem("failsafe_r2_done") !== "true" &&
+                  localStorage.getItem("failsafe_tournament_completed") !== "true") {
                 setTimeout(() => {
                   launchRound2Arena();
                 }, 1500);
