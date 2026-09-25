@@ -56,7 +56,7 @@ print("Honeypot Triggered:", trap.get("success"), "| penalty:", trap.get("penalt
 # 3 hints * 120s (360s) + 1 trap * 300s (300s) = 660s penalty
 assert trap.get("penalty_seconds") == 660, f"Expected 660s penalty, got {trap.get('penalty_seconds')}"
 
-print("\n=== 4. SOLVE ALL 21 ROUND 1 STAGES SEQUENTIALLY ===")
+print("\n=== 4. SOLVE ALL 20 ROUND 1 STAGES SEQUENTIALLY ===")
 R1_SOLUTIONS = [
     (1, "ORIGIN", 2),
     (2, "629", 3),
@@ -64,21 +64,20 @@ R1_SOLUTIONS = [
     (4, "22:45", 5),
     (5, "SAFE", 6),
     (6, "ARIAL", 7),
-    (7, "CORRUPTED", 8),
-    (8, "WHITE", 9),
-    (9, "SHADOW_CORE", 10),
-    (10, "CONTINUE", 11),
-    (11, "ailnors", 12),
-    (12, "CLEARANCE_ALPHA", 13),
-    (13, "ADITIS13", 14),
-    (14, "PROJECT", 15),
-    (15, "VECTOR", 16),
-    (16, "1400", 17),
-    (17, "VSLXI", 18),
-    (18, "GCBGE", 19),
-    (19, "GAMMA", 20),
-    (20, "DAHHK", 21),
-    (21, "520", "COMPLETE")
+    (7, "WHITE", 8),
+    (8, "SHADOW_CORE", 9),
+    (9, "CONTINUE", 10),
+    (10, "ailnors", 11),
+    (11, "CLEARANCE_ALPHA", 12),
+    (12, "ADITIS13", 13),
+    (13, "PROJECT", 14),
+    (14, "VECTOR", 15),
+    (15, "1400", 16),
+    (16, "VSLXI", 17),
+    (17, "GCBGE", 18),
+    (18, "GAMMA", 19),
+    (19, "DAHHK", 20),
+    (20, "520", "COMPLETE")
 ]
 
 for stage_num, key, expected_next in R1_SOLUTIONS:
@@ -93,7 +92,7 @@ for stage_num, key, expected_next in R1_SOLUTIONS:
     assert res.get("success") == True, f"Failed at Stage {stage_num}"
     assert next_s == expected_next, f"Stage {stage_num} expected next {expected_next}, got {next_s}"
 
-print("✓ All 21 Round 1 Stages verified!")
+print("✓ All 20 Round 1 Stages verified!")
 
 print("\n=== 5. ADVANCE TEAM TO ROUND 2 ===")
 adv = post("/api/admin/send_to_round_2", {

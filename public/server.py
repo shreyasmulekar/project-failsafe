@@ -26,22 +26,21 @@ ADMIN_PIN = "wie-admin-2026"
 # Rogue AI: ISHAAN | Companion AI: TARA | Architect: DR. ADITI SHARMA
 STAGES = {
     1: {
-        "title": "The Disappearing Message (Farewell.doc)",
-        "keys": ["ORIGIN", "ACCESS", "RECOVER ACCESS", "ORIGIN_KEY", "FIRST GATE"],
-        "unlocked_by_default": True,
+        "title": "The Disappearing Message (System_Corrupted.doc)",
+        "keys": ["ORIGIN", "origin"],
         "next_stage": 2,
         "hints": [
-            "Look beyond what is visible to the naked eye. In Farewell.doc, Dr. Aditi concealed emergency coordinates using invisible white text at the bottom of the page.",
-            "Select all text across the document (Ctrl+A) or activate the UV optical scanner in the viewer to illuminate the hidden gate password."
+            "Look for invisible content in System_Corrupted.doc. Select all text (Ctrl+A) to reveal hidden characters.",
+            "The keyword is hidden under white text or micro-font at the bottom of the document."
         ]
     },
     2: {
-        "title": "The Wrong Folder (README.doc)",
-        "keys": ["629", "LOOK BEHIND THE DATE", "LOOKBEHINDTHEDATE", "123456", "MEMORY_RESTORED"],
+        "title": "The Wrong Folder (Emergency_Protocol.doc)",
+        "keys": ["629", "0629"],
         "next_stage": 3,
         "hints": [
-            "Check README.doc inside the ORIGIN directory. Look at Dr. Aditi's system identifier 'aDIti@28'.",
-            "Convert each character of 'aDIti@28' into its standard ASCII decimal value (differentiating uppercase and lowercase letters, and including symbols and numbers), then sum them all together."
+            "Inspect the document metadata, specifically the author or creation tool comments.",
+            "Look for a 3-digit access code embedded in the document's custom properties or header/footer."
         ]
     },
     3: {
@@ -81,132 +80,123 @@ STAGES = {
         ]
     },
     7: {
-        "title": "The Revision History Conflict (Incident_Report.doc)",
-        "keys": ["CORRUPTED", "FALSE_RECORDS", "FALSERECORDS", "OVERRIDE FAILED", "OVERRIDEFAILED", "HISTORY"],
-        "next_stage": 8,
-        "hints": [
-            "The current visible document has been sanitized by ADI. Use the version history controls.",
-            "Switch to Dr. Aditi's original revision recorded before the AI cover-up to uncover her true unedited system status warning."
-        ]
-    },
-    8: {
         "title": "Morse Audio Transmission (audio_log_07.mp3)",
         "keys": ["WHITE", "SOS_ADITI", "SOSADITI", "MORSE", "BEACON"],
-        "next_stage": 9,
+        "next_stage": 8,
         "hints": [
             "Listen to audio_log_07.mp3 or inspect the audio waveform oscilloscope in the media terminal.",
             "Transcribe the rhythmic CW audio beeps of dots and dashes using International Morse Code to reveal the 5-letter distress keyword."
         ]
     },
-    9: {
+    8: {
         "title": "The Steganography Mask (Dark_Terminal.png)",
         "keys": ["SHADOW_CORE", "SHADOW CORE", "SHADOWCORE"],
-        "next_stage": 10,
+        "next_stage": 9,
         "hints": [
             "Dark_Terminal.png appears pitch black, but low-luminance text is concealed in the shadow pixels.",
             "Use the image adjustment sliders to push the Exposure Boost and Contrast Gain all the way to maximum to reveal the illuminated terminal command."
         ]
     },
-    10: {
+    9: {
         "title": "Psychological Honeypot Trap (DO_NOT_RUN.exe)",
         "keys": ["CONTINUE", "ACKNOWLEDGE", "ADVANCE", "BYPASS", "SKIP", "DISARM", "OK", "OVERRIDE", "HONEYPOT"],
-        "next_stage": 11,
+        "next_stage": 10,
         "hints": [
             "DO_NOT_RUN.exe is an active AI honeypot trap! Opening or clicking the puzzle triggers an automatic +5:00 (+300s) time penalty immediately.",
-            "Acknowledge the breach penalty and advance to Stage 11."
+            "Acknowledge the breach penalty and advance to Stage 10."
         ]
     },
-    11: {
+    10: {
         "title": "The Binary Master (CLEARANCE_CODE.txt)",
         "keys": ["ailnors", "AILNORS", "POLARIS", "polaris", "16-15-12-01-18-09-19", "16 - 15 - 12 - 01 - 18 - 09 - 19", "6-9-11", "6911"],
-        "next_stage": 12,
+        "next_stage": 11,
         "hints": [
             "Convert the delimited decimal numbers [16-15-12-01-18-09-19] into alphabet letters using standard A1Z26 mapping (1=A, 2=B, etc.).",
             "Take the resulting 7-letter star constellation codeword and re-order its letters in strict alphabetical sequence (A to Z)."
         ]
     },
-    12: {
+    11: {
         "title": "The Whiteout Signature",
         "keys": ["CLEARANCE_ALPHA", "CLEARANCE ALPHA", "CLEARANCEALPHA"],
-        "next_stage": 13,
+        "next_stage": 12,
         "hints": [
             "Inspect Emergency_Log.doc thoroughly. Dr. Aditi camouflaged her highest level security credential using white font color against the white page.",
             "Press Ctrl+A to select all content or drag your cursor to highlight the document, revealing the hidden two-word clearance phrase."
         ]
     },
-    13: {
+    12: {
         "title": "The ROT-4 IEEE Shift",
         "keys": ["ADITIS13", "ADITI-13", "ADITI 13"],
+        "next_stage": 13,
+        "hints": [
+            "Dr. Aditi's personal terminal journal contains a 4-shift Caesar substitution (ROT-4).",
+            "Shift every alphabetic character backwards by 4 positions along the ASCII alphabet wheel."
+        ]
+    },
+    13: {
+        "title": "The Network Cable Cipher (Network_Topology.cfg)",
+        "keys": ["PROJECT", "project", "PROJECT-A", "PROJECTA"],
         "next_stage": 14,
         "hints": [
-            "Dr. Aditi applied a Caesar cipher shift keyed to the acronym 'IEEE'. Count the letters in 'IEEE' to determine the numerical shift distance.",
-            "Shift every letter in the ciphertext 'EHMXMW13' backward through the alphabet by that shift count, keeping the trailing digits unchanged."
+            "Examine the cross-connect wiring schema in Network_Topology.cfg. The patch cables follow a classical Atbash inversion (A <-> Z, B <-> Y, C <-> X).",
+            "Invert the encrypted cable labels to decode Dr. Aditi's secret facility initiative name."
         ]
     },
     14: {
-        "title": "The Atbash Cipher Mirror",
-        "keys": ["PROJECT"],
+        "title": "The Polybius Coordinate Grid (Lab_Notes.pdf)",
+        "keys": ["VECTOR", "vector"],
         "next_stage": 15,
         "hints": [
-            "Dr. Aditi mirrored her alphabet in times of crisis using the classical Atbash substitution cipher.",
-            "Mirror each letter of 'KILQVBG' across the alphabet (where A pairs with Z, B pairs with Y, C with X, and so on) to decipher the project word."
+            "The coordinate pairs in Lab_Notes.pdf correspond to Row/Column indices on Dr. Aditi's 5x5 Polybius cipher board.",
+            "Locate each coordinate intersection on the square to reconstruct the 6-letter navigation vector."
         ]
     },
     15: {
-        "title": "The Polybius Coordinate Trail",
-        "keys": ["VECTOR"],
+        "title": "The Corrupted Signal Log (Transmissions.log)",
+        "keys": ["1400", "14:00", "1400HRS", "14:00HRS"],
         "next_stage": 16,
         "hints": [
-            "Locate the 5x5 Polybius square matrix provided in the forensic dossier.",
-            "Each coordinate pair represents (Row, Column). Trace each pair to find its intersecting letter on the grid to assemble the directional passkey."
+            "Transmissions.log is filled with synthetic transmission noise. Use the search tool to count occurrences of the keyword 'DISCREPANCY'.",
+            "Take the total count of occurrences and multiply it by 100 to determine the military emergency timestamp (e.g., 1400)."
         ]
     },
     16: {
-        "title": "The Find-and-Replace Frequency Count (Mass_System_Log.txt)",
-        "keys": ["1400", "1,400"],
+        "title": "The ADI Modulo Matrix (ADI_Matrix.txt)",
+        "keys": ["VSLXI", "vslxi"],
         "next_stage": 17,
         "hints": [
-            "Open Mass_System_Log.txt and use the search function (Ctrl+F) to count the exact number of times the term 'OVERRIDE' appears.",
-            "Once you have determined the exact occurrence count of 'OVERRIDE', multiply that total count by 100 as prescribed in the protocol."
+            "ADI altered the original Polybius matrix using a row/column modulo arithmetic shift.",
+            "Apply the reverse modulo offset to the intercepted ciphertext tokens to reveal the true 5-letter clearance code."
         ]
     },
     17: {
-        "title": "The Rogue Chatbot Polybius Shift (Intercepted_ADI_Transmission.pdf)",
-        "keys": ["VSLXI", "vslxi"],
+        "title": "The Power Substation Routing Clock (Power_Grid.pdf)",
+        "keys": ["GCBGE", "gcbge"],
         "next_stage": 18,
         "hints": [
-            "ADI distorted the intercepted coordinates using a mathematical shift vector: (+1 Row, -1 Column).",
-            "Apply this translation to each coordinate pair (add 1 to the row, subtract 1 from the column) before locating the corresponding letter in the 5x5 Polybius grid."
+            "The circuit dials in Power_Grid.pdf are indexed like a 12-hour clock face (1 to 12).",
+            "Map each clock hour needle position through Dr. Aditi's circuit routing lookup table to assemble the 5-letter emergency power sequence."
         ]
     },
     18: {
-        "title": "The Modular Clock Loop (Cycle_Diagnostics.png)",
-        "keys": ["GCBGE", "gcbge"],
-        "next_stage": 19,
-        "hints": [
-            "The 12 system nodes operate in a circular buffer numbered 1 through 12, mapping to letters A through L.",
-            "Start at Node L (12) and advance clockwise by each shift distance in the sequence (+7, +8, +11, +5, +10), wrapping around modulo 12 to record each landing letter."
-        ]
-    },
-    19: {
-        "title": "The Anomaly Checklist (Server_Status_Check.pdf)",
+        "title": "The Spectral Signal Anomaly (Spectral_Graph.png)",
         "keys": ["GAMMA", "gamma"],
-        "next_stage": 20,
+        "next_stage": 19,
         "hints": [
             "Compare each server node's operating telemetry reading against the safe baseline temperature ceiling (40°C - 45°C).",
             "Identify the single rogue node whose temperature reading exceeds the 45°C safety threshold, and enter its Greek letter designation in ALL CAPS."
         ]
     },
-    20: {
+    19: {
         "title": "The Shift Cipher Matrix (Emergency_Override_Key.txt)",
         "keys": ["DAHHK", "dahhk"],
-        "next_stage": 21,
+        "next_stage": 20,
         "hints": [
             "Dr. Aditi left the recorded date: October 13, 2013. Determine what day of the week this date occurred on (1 for Monday through 7 for Sunday).",
             "Use that day's numerical value as a backward alphabet shift key and apply it to each letter of the ciphertext in Emergency_Override_Key.txt."
         ]
     },
-    21: {
+    20: {
         "title": "The Log Anomaly Timeline (System_Audit_2013.log)",
         "keys": ["520"],
         "next_stage": "COMPLETE",
@@ -422,10 +412,9 @@ def save_game_state(state, immediate=False):
 def tournament_team_sort_key(t):
     """
     Tournament ranking logic:
-    'who takes the least time to complete the entire round1 and round2 wins'
-    - Tier 0: Finished entire tournament (both Round 1 and Round 2) -> Sorted strictly by least adjusted_time_sec (least time wins!)
-    - Tier 1: In Round 2 (actively solving 15 puzzles) -> Sorted by highest round_2_stage (descending), then least adjusted_time_sec
-    - Tier 2: Finished Round 1 (cleared all 16 stages) -> Sorted by least adjusted_time_sec
+    - Tier 0: Finished entire tournament (Round 2 finished) -> Ranked strictly by finish order (podium_rank, round_2_end_time: who finishes Round 2 first wins!)
+    - Tier 1: In Round 2 (actively solving puzzles) -> Sorted by highest round_2_stage (descending), then least adjusted_time_sec
+    - Tier 2: Finished Round 1 (cleared all 20 stages) -> Sorted by least adjusted_time_sec
     - Tier 3: Active in Round 1 -> Sorted by highest current_stage (descending), then least adjusted_time_sec
     Tie-breakers: fewest hints, fewest traps.
     """
@@ -433,14 +422,16 @@ def tournament_team_sort_key(t):
     cur_rnd = int(t.get("current_round", 1) or 1)
     is_r2_unlocked = bool(t.get("round_2_unlocked")) or bool(t.get("send_to_round_2"))
     r2_stage = int(t.get("round_2_stage", 1) or 1)
-    is_r1_fin = bool(t.get("is_finished")) or (int(t.get("current_stage", 1) or 1) >= 21)
+    is_r1_fin = bool(t.get("is_finished")) or (int(t.get("current_stage", 1) or 1) >= 20)
     r1_stage = int(t.get("current_stage", 1) or 1)
     adj_time = float(t.get("adjusted_time_sec", 0) or 0)
     hints = int(t.get("hints_count", 0) or 0)
     traps = int(t.get("traps_count", 0) or 0)
 
     if is_r2_fin:
-        return (0, 0, adj_time, hints, traps)
+        podium = int(t.get("podium_rank") or 999)
+        r2_end = float(t.get("round_2_end_time") or t.get("end_time") or 9999999999.0)
+        return (0, podium, r2_end, adj_time, hints, traps)
     if cur_rnd >= 2 or is_r2_unlocked:
         return (1, -r2_stage, adj_time, hints, traps)
     if is_r1_fin:
@@ -551,7 +542,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     end = t.get("round_2_end_time") or t.get("end_time") or now
                 elif int(t.get("current_round", 1) or 1) >= 2 or t.get("round_2_unlocked") or t.get("send_to_round_2"):
                     end = now
-                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 21:
+                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 20:
                     end = t.get("end_time") or now
                 else:
                     end = now
@@ -649,7 +640,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     end = t.get("round_2_end_time") or t.get("end_time") or now
                 elif int(t.get("current_round", 1) or 1) >= 2 or t.get("round_2_unlocked") or t.get("send_to_round_2"):
                     end = now
-                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 21:
+                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 20:
                     end = t.get("end_time") or now
                 else:
                     end = now
@@ -729,7 +720,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             current_round = state.get("current_round", 1)
 
             test_mode = bool(state.get("test_mode_unlock_all", False) or team.get("unlock_all_levels", False))
-            r1_completed = bool(team.get("is_finished", False) or int(team.get("current_stage", 1)) >= 21)
+            r1_completed = bool(team.get("is_finished", False) or int(team.get("current_stage", 1)) >= 20)
             is_promoted = bool(team.get("round_2_unlocked", False) or int(team.get("current_round", 1)) >= 2 or team.get("send_to_round_2", False))
             round_2_unlocked = bool(test_mode or is_promoted or (current_round >= 2 and is_qualified and r1_completed))
 
@@ -952,32 +943,35 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     if stage_times:
                         team["round_2_stage_times"] = stage_times
 
-                    # Count how many teams have finished Round 2
-                    r2_finished_count = sum(
-                        1 for tid, t in state.get("teams", {}).items()
-                        if t.get("round_2_is_finished")
-                    )
+                    # Count and assign permanent finish rank for Round 2 (first to finish gets 1st Prize!)
+                    if not team.get("podium_rank"):
+                        r2_finished_count = sum(
+                            1 for tid, t in state.get("teams", {}).items()
+                            if t.get("round_2_is_finished") and tid != team_id
+                        ) + 1
 
-                    if r2_finished_count == 1:
-                        prize_code = "1ST_PRIZE"
-                        prize_title = "🥇 1ST PRIZE — GRAND CHAMPION"
-                        podium_rank = 1
-                    elif r2_finished_count == 2:
-                        prize_code = "2ND_PRIZE"
-                        prize_title = "🥈 2ND PRIZE — RUNNER-UP LAUREATE"
-                        podium_rank = 2
-                    elif r2_finished_count == 3:
-                        prize_code = "3RD_PRIZE"
-                        prize_title = "🥉 3RD PRIZE — SECOND RUNNER-UP"
-                        podium_rank = 3
+                        if r2_finished_count == 1:
+                            prize_code = "1ST_PRIZE"
+                            prize_title = "🥇 1ST PRIZE — GRAND CHAMPION"
+                            podium_rank = 1
+                        elif r2_finished_count == 2:
+                            prize_code = "2ND_PRIZE"
+                            prize_title = "🥈 2ND PRIZE — RUNNER-UP LAUREATE"
+                            podium_rank = 2
+                        elif r2_finished_count == 3:
+                            prize_code = "3RD_PRIZE"
+                            prize_title = "🥉 3RD PRIZE — SECOND RUNNER-UP"
+                            podium_rank = 3
+                        else:
+                            prize_code = "HONORARY_LAUREATE"
+                            prize_title = f"🎖️ HONORARY LAUREATE (#{r2_finished_count})"
+                            podium_rank = r2_finished_count
+
+                        team["prize_code"] = prize_code
+                        team["prize_title"] = prize_title
+                        team["podium_rank"] = podium_rank
                     else:
-                        prize_code = "HONORARY_LAUREATE"
-                        prize_title = f"🎖️ HONORARY LAUREATE (#{r2_finished_count})"
-                        podium_rank = r2_finished_count
-
-                    team["prize_code"] = prize_code
-                    team["prize_title"] = prize_title
-                    team["podium_rank"] = podium_rank
+                        prize_title = team.get("prize_title", "🥇 1ST PRIZE — GRAND CHAMPION")
                     team["last_action"] = f"🏆 {prize_title} in {elapsed_str}!"
                 else:
                     if stage_times:
@@ -1896,7 +1890,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
                     end = t.get("round_2_end_time") or t.get("end_time") or now
                 elif int(t.get("current_round", 1) or 1) >= 2 or t.get("round_2_unlocked") or t.get("send_to_round_2"):
                     end = now
-                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 21:
+                elif t.get("is_finished") or int(t.get("current_stage", 1) or 1) >= 20:
                     end = t.get("end_time") or now
                 else:
                     end = now
@@ -2046,7 +2040,7 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
 
             if target_team_id in ["ALL_FINISHED", "FINISHED", "ALL"]:
                 for tid, t in state.get("teams", {}).items():
-                    is_r1_done = (target_team_id == "ALL") or bool(t.get("is_finished", False) or int(t.get("current_stage", 1)) >= 21)
+                    is_r1_done = (target_team_id == "ALL") or bool(t.get("is_finished", False) or int(t.get("current_stage", 1)) >= 20)
                     if is_r1_done:
                         t["current_round"] = 2
                         t["round_2_unlocked"] = True
@@ -2158,8 +2152,15 @@ class FailsafeHandler(http.server.SimpleHTTPRequestHandler):
             stage_dict = ROUND2_STAGES if round_num == 2 else STAGES
             stage_info = stage_dict.get(stage_num)
 
+            # Backwards compatibility fallbacks for Round 1 Stage 7 removal
+            if round_num == 1 and password_input in ["CORRUPTED", "FALSE_RECORDS", "FALSERECORDS", "OVERRIDE FAILED", "OVERRIDEFAILED", "HISTORY"]:
+                stage_info = {
+                    "title": "The Revision History Conflict (Legacy Bypassed)",
+                    "keys": ["CORRUPTED", "FALSE_RECORDS", "FALSERECORDS", "OVERRIDE FAILED", "OVERRIDEFAILED", "HISTORY"],
+                    "next_stage": 8
+                }
             # Backwards compatibility fallbacks for Round 2 re-indexing
-            if round_num == 2 and stage_num == 17:
+            elif round_num == 2 and stage_num == 17:
                 stage_info = {
                     "title": "The Failsafe Logic Tree",
                     "keys": ["0110"],

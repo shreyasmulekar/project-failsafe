@@ -58,30 +58,29 @@ Your team has been granted terminal access to an isolated workstation terminal i
 
 ## 📋 4. FORENSIC EVIDENCE OVERVIEW
 
-### Round 1 Stages (01–21):
+### Round 1 Stages (01–20):
 - **Stage 01**: `Farewell.doc` — Whiteout text concealing the first gate password.
 - **Stage 02**: `README.doc` (Directory ORIGIN) — ASCII character summation of `aDIti@28`.
 - **Stage 03**: `Incident_Logs.doc` — Calendar anomaly audit (non-leap year date).
 - **Stage 04**: `Security_Audit.pdf` — Timestamp murder mystery & perimeter contradiction.
 - **Stage 05**: `Aditi_Memo.doc` — Acrostic sentence alignment.
 - **Stage 06**: `AUTHENTIC_LOG.doc` — Font typography verification (Arial vs Calibri).
-- **Stage 07**: `Incident_Report.doc` — Document version history recovery.
-- **Stage 08**: `audio_log_07.mp3` — Morse code audio analysis.
-- **Stage 09**: `Dark_Terminal.png` — Optical steganography exposure enhancement.
-- **Stage 10**: `DO_NOT_RUN.exe` — Psychological honeypot trap avoidance.
-- **Stage 11**: `CLEARANCE_CODE.txt` — Binary to A1Z26 alphabetical indexing.
-- **Stage 12**: `Whiteout_Signature.doc` — Invisible foreground crypt analysis.
-- **Stage 13**: `ROT4_Shift.cipher` — IEEE 4-letter Caesar shift decryption.
-- **Stage 14**: `Mirror_Log.txt` — Reverse Atbash alphabet reflection.
-- **Stage 15**: `Matrix_Coordinates.pdf` — 5x5 Polybius grid traversal.
-- **Stage 16**: `Mass_System_Log.txt` — Frequency count of target term occurrences.
-- **Stage 17**: `Intercepted_ADI_Transmission.pdf` — Polybius vector translation (+1 Row, -1 Col).
-- **Stage 18**: `Cycle_Diagnostics.png` — 12-point circular buffer modular shifts.
-- **Stage 19**: `Server_Status_Check.pdf` — Thermal threshold outlier isolation.
-- **Stage 20**: `Emergency_Override_Key.txt` — Day-of-week backward Caesar shift.
-- **Stage 21**: `System_Audit_2013.log` — Chronological log anomaly identification & multiplication.
+- **Stage 07**: `audio_log_07.mp3` — Morse code audio analysis.
+- **Stage 08**: `Dark_Terminal.png` — Optical steganography exposure enhancement.
+- **Stage 09**: `DO_NOT_RUN.exe` — Psychological honeypot trap avoidance.
+- **Stage 10**: `CLEARANCE_CODE.txt` — Binary to A1Z26 alphabetical indexing.
+- **Stage 11**: `Whiteout_Signature.doc` — Invisible foreground crypt analysis.
+- **Stage 12**: `ROT4_Shift.cipher` — IEEE 4-letter Caesar shift decryption.
+- **Stage 13**: `Mirror_Log.txt` — Reverse Atbash alphabet reflection.
+- **Stage 14**: `Matrix_Coordinates.pdf` — 5x5 Polybius grid traversal.
+- **Stage 15**: `Mass_System_Log.txt` — Frequency count of target term occurrences.
+- **Stage 16**: `Intercepted_ADI_Transmission.pdf` — Polybius vector translation (+1 Row, -1 Col).
+- **Stage 17**: `Cycle_Diagnostics.png` — 12-point circular buffer modular shifts.
+- **Stage 18**: `Server_Status_Check.pdf` — Thermal threshold outlier isolation.
+- **Stage 19**: `Emergency_Override_Key.txt` — Day-of-week backward Caesar shift.
+- **Stage 20**: `System_Audit_2013.log` — Chronological log anomaly identification & multiplication.
 
-### Round 2 Challenges (01–17):
+### Round 2 Challenges (01–16):
 - **Puzzle 01**: `Emergency_Override_Key.txt` — October 13, 2090 Day-of-Week Authorization.
 - **Puzzle 02**: `Visual_Matrix.pdf` — 3x3 Missing Glyph Progression.
 - **Puzzle 03**: `Rotation_Array.pdf` — 90° Clockwise Rotation Sequence.
@@ -94,8 +93,7 @@ Your team has been granted terminal access to an isolated workstation terminal i
 - **Puzzle 10**: `Digital_Root_Log.txt` — Base-Invariant Digital Root Flow.
 - **Puzzle 11**: `Palindrome_Stream.txt` — Symmetric Palindrome Filter Stream.
 - **Puzzle 12**: `Matrix_Diagonal.pdf` — Diagonal Matrix String Weave.
-- **Puzzle 13**: `Grid_Perimeter.pdf` — Boundary Box Perimeter Quantization.
-- **Puzzle 14**: `Checker_State.png` — Alternating Checkerboard Parity Evaluation.
-- **Puzzle 15**: `Ring_Shift.png` — Concentric Modulo Ring Shift.
-- **Puzzle 16**: `Cipher_Wheel_Spec.pdf` — THE RED QUESTION: Dual Cipher Wheel Alignment.
-- **Puzzle 17**: `Failsafe_Gate_Status.pdf` — THE GRAND FINALE: 4-Switch Hardware Failsafe Logic Tree.
+- **Puzzle 13**: `Checker_State.png` — Alternating Checkerboard Parity Evaluation.
+- **Puzzle 14**: `Ring_Shift.png` — Concentric Modulo Ring Shift.
+- **Puzzle 15**: `Cipher_Wheel_Spec.pdf` — THE RED QUESTION: Dual Cipher Wheel Alignment.
+- **Puzzle 16**: `Failsafe_Gate_Status.pdf` — THE GRAND FINALE: 4-Switch Hardware Failsafe Logic Tree.

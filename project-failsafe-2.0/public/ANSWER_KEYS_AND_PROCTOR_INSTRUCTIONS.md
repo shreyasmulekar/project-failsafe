@@ -22,9 +22,9 @@ Project Failsafe 2090 is an autonomous dual-round digital forensics and cybersec
 |             ▼ (Organizer clicks "🚀 OPEN ROUND 1 (START ALL TEAMS)" on admin.html) |
 |  [Simultaneous Launch: All Workstations Unlock at Same Time]                       |
 |  - Stage 01 ISHAAN Recovery Terminal opens; mission timer commences                |
-|  - 21 Progressive Forensic Stages           |
+|  - 20 Progressive Forensic Stages           |
 |             │                                                                      |
-|             ▼ (Team solves Stage 16 / terminates workstation)                      |
+|             ▼ (Team solves Stage 20 / terminates workstation)                      |
 |  [Round 1 Completion / Intermission Hold (#application-termination-overlay)]       |
 +------------------------------------------------------------------------------------+
                                       │
@@ -94,7 +94,7 @@ Project Failsafe 2090 is an autonomous dual-round digital forensics and cybersec
 
 ---
 
-## 🔑 3. ROUND 1 MASTER ANSWER KEYS (All 21 Forensic Stages)
+## 🔑 3. ROUND 1 MASTER ANSWER KEYS (All 20 Forensic Stages)
 
 | Stage | Title / Sector | Master Passcode | Alternative Accepted Keys | Forensic Mechanism & Proctor Guidance |
 | :---: | :--- | :--- | :--- | :--- |
@@ -104,21 +104,20 @@ Project Failsafe 2090 is an autonomous dual-round digital forensics and cybersec
 | **04** | The Timestamp Murder Mystery (Security_Audit.pdf) | `22:45` | `2245`, `22:45 PM`, `22:46`, `2246` | Dr. Aditi badged out of the facility at 22:44. The impossible terminal access executed at `22:45` while she was outside. |
 | **05** | The Simple Acrostic Note (Aditi_Memo.doc) | `SAFE` | `S-A-F-E`, `S A F E` | Acrostic first letters of sentences vertically: **S**tay alert, **A**lways verify, **F**ind discrepancies, **E**very second. |
 | **06** | Which Aditi Is Real? (Font Style Verification) | `ARIAL` | `AUTHENTIC`, `Arial`, `ARIAL11` | Both logs have identical **11pt font size** and **1.15 line spacing**. Dr. Aditi mandated sans-serif `Arial`; decoy forged log is `Times New Roman`. |
-| **07** | The Revision History Conflict (Incident_Report.doc) | `CORRUPTED` | `FALSE_RECORDS`, `FALSERECORDS`, `OVERRIDE FAILED`, `HISTORY` | Version history inspection reveals Dr. Aditi's original unedited status before AI cover-up: `CORRUPTED`. |
-| **08** | Morse Audio Transmission (audio_log_07.mp3) | `WHITE` | `SOS_ADITI`, `SOSADITI`, `MORSE`, `BEACON` | Oscilloscope CW audio morse beeps (`.-- .... .. - .`) spell `WHITE`. |
-| **09** | The Steganography Mask (Dark_Terminal.png) | `SHADOW_CORE` | `SHADOW CORE`, `SHADOWCORE` | Low-luminance pixels. Boosting brightness and contrast sliders to max reveals terminal text: `SHADOW_CORE`. |
-| **10** | Psychological Honeypot Trap (DO_NOT_RUN.exe) | `CONTINUE` | `ACKNOWLEDGE`, `ADVANCE`, `BYPASS`, `DISARM`, `SKIP`, `OK` | Active AI honeypot trap! Opening/clicking incurs immediate **+5:00 (+300s)** penalty. Advance via button or `CONTINUE`. |
-| **11** | The Binary Master (CLEARANCE_CODE.txt) | `ailnors` | `POLARIS`, `16-15-12-01-18-09-19`, `6-9-11`, `6911` | A1Z26 mapping [16-15-12-01-18-09-19] -> POLARIS. Alphabetical sort of letters yields `ailnors`. |
-| **12** | The Whiteout Signature (Emergency_Log.doc) | `CLEARANCE_ALPHA` | `CLEARANCE ALPHA`, `CLEARANCEALPHA` | Hidden whiteout credentials in Emergency_Log.doc. Highlight text to reveal `CLEARANCE_ALPHA`. |
-| **13** | The ROT-4 IEEE Shift (Encrypted_Beacon.txt) | `ADITIS13` | `ADITI13`, `ADITIS` | Caesar shift of 4 positions backward: `EHMXMW13` -> `ADITIS13`. |
-| **14** | The Atbash Cipher Mirror (Mirror_Log.txt) | `PROJECT` | `PROJECTS`, `KILQVBG`, `FAILSAFE` | Reverse alphabet substitution (A<->Z, B<->Y): `KILQVBG` -> `PROJECT`. |
-| **15** | The Polybius Coordinate Trail (Matrix_Coordinates.pdf) | `VECTOR` | `VECTORS`, `POLYBIUS` | 5x5 Polybius grid row/col coordinate traversal yields `VECTOR`. |
-| **16** | Substring Frequency Count (Mass_System_Log.txt) | `1400` | `14`, `1400X` | Count exact occurrences of keyword `OVERRIDE` (14) multiplied by parity factor 100 = `1400`. |
-| **17** | Rogue Chatbot Polybius Shift (Intercepted_ADI_Transmission.pdf) | `VSLXI` | — | Vector-shifted (+1 row, -1 col) Polybius coordinate trail reveals `VSLXI`. |
-| **18** | The Modular Clock Loop (Cycle_Diagnostics.png) | `GCBGE` | — | Clock angle and modular step positions decode to `GCBGE`. |
-| **19** | The Anomaly Checklist (Server_Status_Check.pdf) | `GAMMA` | — | Isolation of thermal telemetry outlier among server racks identifies cluster `GAMMA`. |
-| **20** | The Shift Cipher Matrix (Emergency_Override_Key.txt) | `DAHHK` | — | Columnar shift transposition matrix resolves to authorization token `DAHHK`. |
-| **21** | The Log Anomaly Timeline [R1 Finale] (System_Audit_2013.log) | `520` | `104X5`, `104*5` | Chronological audit log interval multiplier ($104 \times 5$) resolves to final Round 1 key `520`. |
+| **07** | Morse Audio Transmission (audio_log_07.mp3) | `WHITE` | `SOS_ADITI`, `SOSADITI`, `MORSE`, `BEACON` | Oscilloscope CW audio morse beeps (`.-- .... .. - .`) spell `WHITE`. |
+| **08** | The Steganography Mask (Dark_Terminal.png) | `SHADOW_CORE` | `SHADOW CORE`, `SHADOWCORE` | Low-luminance pixels. Boosting brightness and contrast sliders to max reveals terminal text: `SHADOW_CORE`. |
+| **09** | Psychological Honeypot Trap (DO_NOT_RUN.exe) | `CONTINUE` | `ACKNOWLEDGE`, `ADVANCE`, `BYPASS`, `DISARM`, `SKIP`, `OK` | Active AI honeypot trap! Opening/clicking incurs immediate **+5:00 (+300s)** penalty. Advance via button or `CONTINUE`. |
+| **10** | The Binary Master (CLEARANCE_CODE.txt) | `ailnors` | `POLARIS`, `16-15-12-01-18-09-19`, `6-9-11`, `6911` | A1Z26 mapping [16-15-12-01-18-09-19] -> POLARIS. Alphabetical sort of letters yields `ailnors`. |
+| **11** | The Whiteout Signature (Emergency_Log.doc) | `CLEARANCE_ALPHA` | `CLEARANCE ALPHA`, `CLEARANCEALPHA` | Hidden whiteout credentials in Emergency_Log.doc. Highlight text to reveal `CLEARANCE_ALPHA`. |
+| **12** | The ROT-4 IEEE Shift (Encrypted_Beacon.txt) | `ADITIS13` | `ADITI13`, `ADITIS` | Caesar shift of 4 positions backward: `EHMXMW13` -> `ADITIS13`. |
+| **13** | The Atbash Cipher Mirror (Mirror_Log.txt) | `PROJECT` | `PROJECTS`, `KILQVBG`, `FAILSAFE` | Reverse alphabet substitution (A<->Z, B<->Y): `KILQVBG` -> `PROJECT`. |
+| **14** | The Polybius Coordinate Trail (Matrix_Coordinates.pdf) | `VECTOR` | `VECTORS`, `POLYBIUS` | 5x5 Polybius grid row/col coordinate traversal yields `VECTOR`. |
+| **15** | Substring Frequency Count (Mass_System_Log.txt) | `1400` | `14`, `1400X` | Count exact occurrences of keyword `OVERRIDE` (14) multiplied by parity factor 100 = `1400`. |
+| **16** | Rogue Chatbot Polybius Shift (Intercepted_ADI_Transmission.pdf) | `VSLXI` | — | Vector-shifted (+1 row, -1 col) Polybius coordinate trail reveals `VSLXI`. |
+| **17** | The Modular Clock Loop (Cycle_Diagnostics.png) | `GCBGE` | — | Clock angle and modular step positions decode to `GCBGE`. |
+| **18** | The Anomaly Checklist (Server_Status_Check.pdf) | `GAMMA` | — | Isolation of thermal telemetry outlier among server racks identifies cluster `GAMMA`. |
+| **19** | The Shift Cipher Matrix (Emergency_Override_Key.txt) | `DAHHK` | — | Columnar shift transposition matrix resolves to authorization token `DAHHK`. |
+| **20** | The Log Anomaly Timeline [R1 Finale] (System_Audit_2013.log) | `520` | `104X5`, `104*5` | Chronological audit log interval multiplier ($104 \times 5$) resolves to final Round 1 key `520`. |
 
 ---
 

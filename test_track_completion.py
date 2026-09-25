@@ -36,14 +36,14 @@ print("Registered:", reg.get("message"))
 # Start round 1
 post("/api/admin/start_round_1", {"pin": PIN})
 
-print("\n=== 2. SOLVE ALL 21 ROUND 1 STAGES ===")
+print("\n=== 2. SOLVE ALL 20 ROUND 1 STAGES ===")
 R1_KEYS = [
     (1, "ORIGIN"), (2, "629"), (3, "28/02/2025"), (4, "22:45"),
-    (5, "SAFE"), (6, "ARIAL"), (7, "CORRUPTED"), (8, "WHITE"),
-    (9, "SHADOW_CORE"), (10, "CONTINUE"), (11, "ailnors"), (12, "CLEARANCE_ALPHA"),
-    (13, "ADITIS13"), (14, "PROJECT"), (15, "VECTOR"), (16, "1400"),
-    (17, "VSLXI"), (18, "GCBGE"), (19, "GAMMA"), (20, "DAHHK"),
-    (21, "520")
+    (5, "SAFE"), (6, "ARIAL"), (7, "WHITE"), (8, "SHADOW_CORE"),
+    (9, "CONTINUE"), (10, "ailnors"), (11, "CLEARANCE_ALPHA"),
+    (12, "ADITIS13"), (13, "PROJECT"), (14, "VECTOR"), (15, "1400"),
+    (16, "VSLXI"), (17, "GCBGE"), (18, "GAMMA"), (19, "DAHHK"),
+    (20, "520")
 ]
 
 mock_stage_times = {}
@@ -63,7 +63,7 @@ for s, k in R1_KEYS:
         "duration_str": "0m 50s"
     }
 
-print("All 21 stages solved on backend.")
+print("All 20 stages solved on backend.")
 
 print("\n=== 3. RECORD ROUND 1 TRACK FINISH ===")
 fin_r1 = post("/api/teams/finish", {
@@ -140,7 +140,7 @@ lb_final = get_leaderboard()
 team_final = next(t for t in lb_final["leaderboard"] if t["team_id"] == team_id)
 print("\n=== FINAL TEAM LEADERBOARD VERIFICATION ===")
 print(f"  Team ID: {team_id}")
-print(f"  R1 Finished: {team_final.get('is_finished')} (Stage {team_final.get('current_stage')}/21)")
+print(f"  R1 Finished: {team_final.get('is_finished')} (Stage {team_final.get('current_stage')}/20)")
 print(f"  R2 Finished: {team_final.get('round_2_is_finished')} (Stage {team_final.get('round_2_stage')}/16)")
 print(f"  Prize: {team_final.get('prize_title')}")
 print(f"  Podium Rank: #{team_final.get('podium_rank')}")
