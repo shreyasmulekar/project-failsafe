@@ -55,11 +55,11 @@ STAGES = {
     },
     4: {
         "title": "The Timestamp Murder Mystery (Security_Audit.pdf)",
-        "keys": ["22:46", "2246", "22:46 PM", "2246PM"],
+        "keys": ["22:45", "2245", "22:45 PM", "2245PM", "22:46", "2246", "22:46 PM", "2246PM"],
         "next_stage": 5,
         "hints": [
             "Compare Dr. Aditi's building exit card-swipe against the chronological terminal activity in Security_Audit.pdf.",
-            "Notice that Dr. Aditi badged out through the exterior perimeter gate at 22:44. Find the timestamp of the internal local terminal override executed after she had already departed."
+            "Notice that Dr. Aditi badged out through the exterior perimeter gate at 22:44. Find the timestamp of the internal local terminal access executed immediately after she had already departed."
         ]
     },
     5: {
@@ -109,11 +109,11 @@ STAGES = {
     },
     10: {
         "title": "Psychological Honeypot Trap (DO_NOT_RUN.exe)",
-        "keys": ["BYPASS", "SKIP", "DISARM"],
+        "keys": ["CONTINUE", "ACKNOWLEDGE", "ADVANCE", "BYPASS", "SKIP", "DISARM", "OK", "OVERRIDE", "HONEYPOT"],
         "next_stage": 11,
         "hints": [
-            "DO_NOT_RUN.exe is an active AI honeypot trap! Interacting with the execution trigger incurs an automatic +5:00 penalty.",
-            "Read the quarantine documentation to locate the designated safe disarm keyword to submit directly into the Tactical Shell instead."
+            "DO_NOT_RUN.exe is an active AI honeypot trap! Opening or clicking the puzzle triggers an automatic +5:00 (+300s) time penalty immediately.",
+            "Acknowledge the breach penalty and advance to Stage 11."
         ]
     },
     11: {

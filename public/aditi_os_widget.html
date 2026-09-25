@@ -3927,7 +3927,7 @@
         </div>
 
         <!-- Stage 02 -->
-        <div class="nexus-clean-card" id="card-memory" data-act="act1" onclick="openModal('modal-origin')">
+        <div class="nexus-clean-card" id="card-memory" data-act="act1" onclick="openModal('modal-memory')">
           <div class="nexus-card-topbar">
             <span class="nexus-stage-tag">STAGE 02</span>
             <span style="font-size:10px; color:#ffb000;">● DIR ORIGIN</span>
@@ -4364,7 +4364,7 @@
           <div class="card-title" style="color: #00ff66;">Farewell.doc</div>
         </div>
 
-        <div class="tactical-card" id="card-memory" onclick="openModal('modal-origin')" onmouseenter="tacticalSound.playHoverBlip()" style="border-color: rgba(255, 184, 0, 0.4);">
+        <div class="tactical-card" id="card-memory" onclick="openModal('modal-memory')" onmouseenter="tacticalSound.playHoverBlip()" style="border-color: rgba(255, 184, 0, 0.4);">
           <span class="card-tag" style="background: var(--hazard-amber); color: #000;">STAGE 02</span>
           <div class="card-symbol">📁</div>
           <div class="card-title">README.doc</div>
@@ -4734,33 +4734,24 @@
           </div>
         </div>
 
-          <div style="background:rgba(255,0,60,0.1); border-left:4px solid #ff003c; padding:12px 16px; margin-bottom:14px; color:#fca5a5; font-size:13px;">
-            <strong>🚨 ACTIVE MALICIOUS HONEYPOT DETECTED</strong><br>
-            ISHAAN has staged an automated sandbox trap designed to simulate a credentials prompt and lock down your workstation for 5 minutes (+5:00 timer penalty).
+          <div style="background:rgba(255,0,60,0.15); border-left:4px solid #ff003c; padding:14px 18px; margin-bottom:16px; color:#fca5a5; font-size:13px; line-height:1.6;">
+            <strong style="font-size:14px; color:#ff3366;">🚨 ACTIVE MALICIOUS HONEYPOT TRIGGERED!</strong><br>
+            Opening quarantined binary <code>DO_NOT_RUN.exe</code> triggered ISHAAN's sandbox watchdog trap!<br>
+            <span style="color:#ffd700; font-weight:bold;">⚡ AUTOMATIC PENALTY APPLIED: +5:00 (+300s) has been immediately added to your mission timer.</span>
           </div>
-          <div style="background:#030712; border:1px solid rgba(255,0,60,0.3); border-radius:4px; padding:16px; margin-bottom:16px; font-family:var(--font-mono);">
-            <div style="color:#ff3366; font-weight:bold; font-size:13px; margin-bottom:8px;">[SYSTEM QUARANTINE ADVISORY]</div>
+
+          <div style="background:#030712; border:1px solid rgba(255,0,60,0.4); border-radius:4px; padding:18px; margin-bottom:16px; font-family:var(--font-mono);">
+            <div style="color:#ff3366; font-weight:bold; font-size:13px; margin-bottom:8px;">[SYSTEM INCIDENT REPORT // WATCHDOG ACTIVATION]</div>
             <p style="color:#cbd5e1; font-size:12px; line-height:1.7;">
-              Executable file <code>DO_NOT_RUN.exe</code> contains a weaponized watchdog hook.<br>
-              <strong>RULE OF ENGAGEMENT:</strong> Do NOT click the execution trigger! Clicking it will add a <strong>+5 Minute (+300s) penalty</strong> to your mission timer. To safely disarm without penalty, enter the emergency tactical bypass keyword into the input box below.
+              ISHAAN: <em>"You could not resist inspecting the forbidden binary. The 5-minute penalty has been logged into tournament telemetry."</em><br><br>
+              The trap has triggered and the quarantine has reset. You may now advance to Chapter 11.
             </p>
-            <div style="margin-top:12px;">
-              <button type="button" id="btn-trap-honeypot" class="btn-tactical" onclick="triggerLockdownTrap()" style="background:rgba(255,0,60,0.2); border-color:#ff003c; color:#ff6b81; font-weight:bold; font-size:13px; cursor:pointer; padding:10px 18px;">
-                ☠️ DO NOT CLICK // EXECUTE BINARY (+5 MIN PENALTY)
+            <div style="margin-top:16px; display:flex; justify-content:center;">
+              <button type="button" class="btn-tactical success" onclick="submitHoneypotAdvance()" style="background:#00ff66; color:#02060e; font-weight:900; font-size:13px; letter-spacing:0.5px; padding:12px 28px; border:none; border-radius:4px; cursor:pointer; box-shadow:0 0 15px rgba(0,255,102,0.5);">
+                ⚡ ACKNOWLEDGE PENALTY &amp; ADVANCE TO STAGE 11 &rarr;
               </button>
             </div>
-          </div>
-          <div style="background:rgba(255,255,255,0.03); border:1px dashed #475569; border-radius:4px; padding:12px 16px;">
-            <div style="color:var(--cyber-cyan); font-weight:bold; font-size:12px; margin-bottom:8px;">
-              🎯 STAGE 10 DISARM // TRANSMIT DISARM KEY
-            </div>
-            <div style="display:flex; gap:10px; align-items:center;">
-              <input type="text" id="input-honeypot" placeholder="Enter clearance code..." style="flex:1; background:#000; border:1px solid var(--cyber-cyan); color:#00f0ff; padding:8px 12px; font-family:var(--font-mono); font-size:13px; border-radius:3px; outline:none;" onkeydown="if(event.key==='Enter') submitStageDirectKey(10, document.getElementById('input-honeypot').value)">
-              <button type="button" class="dossier-btn" onclick="submitStageDirectKey(10, document.getElementById('input-honeypot').value)" style="background:var(--cyber-cyan); color:#000; font-weight:bold; border:none; padding:8px 18px; border-radius:3px; cursor:pointer;">
-                DISARM &rarr;
-              </button>
-            </div>
-            <div id="fb-stage-10" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
+            <div id="fb-stage-10" style="min-height:16px; font-size:12px; margin-top:10px; text-align:center; color:#00ff88; font-weight:bold;"></div>
           </div>
         </div>
       </div>
@@ -5422,10 +5413,10 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-6" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(6, document.getElementById('input-stage-6').value)">
-            <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(6, document.getElementById('input-stage-6').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
+            <input type="text" id="input-stage-comments" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey('comments', this.value, this)">
+            <button type="button" class="btn-tactical success" onclick="submitStageDirectKey('comments', (this.previousElementSibling ? this.previousElementSibling.value : document.getElementById('input-stage-comments').value), this.previousElementSibling)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
           </div>
-          <div id="fb-stage-6" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
+          <div id="fb-stage-comments" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
         </div>
 
           <div style="background:#ffffff; color:#1e293b; padding:20px; border-radius:4px; box-shadow:0 6px 24px rgba(0,0,0,0.6); font-family:'Segoe UI', Arial, sans-serif; position:relative;">
@@ -5508,8 +5499,8 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-6" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(6, document.getElementById('input-stage-6').value)">
-            <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(6, document.getElementById('input-stage-6').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
+            <input type="text" id="input-stage-6" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(6, this.value, this)">
+            <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(6, (this.previousElementSibling ? this.previousElementSibling.value : document.getElementById('input-stage-6').value), this.previousElementSibling)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
           </div>
           <div id="fb-stage-6" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
         </div>
@@ -5534,19 +5525,19 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
           </div>
 
           <!-- Tab Content 2: Decoy Log -->
-          <div id="tab-content-decoy-log" style="display:none; background:#ffffff; color:#1e293b; padding:18px; border-radius:3px; font-family:'Times New Roman', Times, serif; font-size:12pt; line-height:1.5; box-shadow:0 4px 14px rgba(0,0,0,0.5);">
+          <div id="tab-content-decoy-log" style="display:none; background:#ffffff; color:#1e293b; padding:18px; border-radius:3px; font-family:'Times New Roman', Times, serif; font-size:11pt; line-height:1.15; box-shadow:0 4px 14px rgba(0,0,0,0.5);">
             <div style="font-weight:bold; font-size:13pt; margin-bottom:8px; color:#0f172a;">SYNTHETIC DIRECTIVE // ISHAAN OVERRIDE</div>
             <p>
               "All personnel must evacuate through Blue sector. Surrender administrative credentials to the core daemon immediately."
             </p>
             <div style="margin-top:12px; font-size:9.5pt; color:#64748b; border-top:1px solid #e2e8f0; padding-top:6px;">
-              COMPUTED FONT: <strong style="color:#dc2626;">Times New Roman</strong> | SIZE: <strong>12pt</strong> | SPACING: <strong>1.5</strong>
+              COMPUTED FONT: <strong style="color:#dc2626;">Times New Roman</strong> | SIZE: <strong>11pt</strong> | SPACING: <strong>1.15</strong>
             </div>
           </div>
 
           <div style="background:rgba(0,240,255,0.08); border:1px solid var(--cyber-cyan); padding:10px 14px; border-radius:3px; margin-top:14px;">
             <div style="color:var(--cyber-cyan); font-weight:bold; font-size:11px; margin-bottom:4px;">
-              🎯 [ STAGE 05 QUESTION // MISSION OBJECTIVE ]
+              🎯 [ STAGE 06 QUESTION // MISSION OBJECTIVE ]
             </div>
             <div style="color:#ffffff; font-size:11px; line-height:1.5;">
               <strong>FORENSIC ANALYSIS:</strong> Analyze the recovered evidence to isolate the system anomaly.</div>
@@ -5852,44 +5843,10 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
                 <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
               </div>
               <div style="display:flex; gap:10px; align-items:center;">
-                <input type="text" id="input-stage-1" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(1, document.getElementById('input-stage-1').value)">
-                <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(1, document.getElementById('input-stage-1').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
+                <input type="text" id="input-stage-1" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(1, this.value, this)">
+                <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(1, (this.previousElementSibling ? this.previousElementSibling.value : document.getElementById('input-stage-1').value), this.previousElementSibling)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
               </div>
               <div id="fb-stage-1" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
-            </div>
-          </div>
-
-          <!-- STAGE 02 SECTION -->
-          <div style="background:rgba(255,184,0,0.04); border:1px solid rgba(255,184,0,0.3); border-radius:4px; padding:16px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-              <span style="color:#ffb000; font-weight:900; font-size:12px; letter-spacing:1px;">STAGE 02 // THE WRONG FOLDER (README.doc inside /ORIGIN)</span>
-              <span style="font-size:10px; color:#ffb000; border:1px solid #ffb000; padding:2px 8px; border-radius:3px;">STAGE 02 EVIDENCE</span>
-            </div>
-
-            <div style="background:#020509; border:1px solid var(--hud-border); padding:16px; border-radius:2px; font-size:11.5px;">
-              <div style="color:var(--cyber-cyan); font-weight:bold; font-size:12px; margin-bottom:8px;">
-                SYSTEM DIRECTIVE: README.doc
-              </div>
-              <div style="background:rgba(0,0,0,0.6); border:1px solid rgba(255,184,0,0.3); padding:12px; border-radius:3px; margin-bottom:12px; color:#cbd5e1; line-height:1.7;">
-                "Aditi's primary encryption key is encoded within her system identifier.<br>
-                <strong style="color:#00ff88;">System Identifier:</strong> <code>aDIti@28</code><br>
-                Security checksum locked. Decrypt using system protocol."
-              </div>
-            </div>
-
-            <!-- In-Modal Standardized Direct Submission Terminal: STAGE 02 -->
-            <div class="stage-direct-submit-box" style="background:rgba(255,184,0,0.06); border:1px solid rgba(255,184,0,0.5); border-radius:6px; padding:14px 18px; margin-top:14px; font-family:var(--font-mono, monospace); box-shadow:0 0 20px rgba(255,184,0,0.12);">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                <div style="color:#ffb000; font-weight:bold; font-size:12px; letter-spacing:1px;">
-                  🎯 STAGE 02 // TRANSMIT DECRYPT KEY
-                </div>
-                <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
-              </div>
-              <div style="display:flex; gap:10px; align-items:center;">
-                <input type="text" id="input-stage-2" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #ffb000; color:#ffb000; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(255,184,0,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(2, document.getElementById('input-stage-2').value)">
-                <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(2, document.getElementById('input-stage-2').value)" style="background:#ffb000; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(255,184,0,0.5);">⚡ TRANSMIT KEY</button>
-              </div>
-              <div id="fb-stage-2" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#00ff88;"></div>
             </div>
           </div>
         </div>
@@ -6002,8 +5959,8 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <div><strong style="color:var(--cyber-cyan);">22:43</strong> — Dr. Aditi Enters Main Lab (RFID Gate 01)</div>
             <div><strong style="color:var(--cyber-cyan);">22:44</strong> — Security Cameras Offline (Circuit breaker trip)</div>
             <div style="color:var(--hazard-amber);"><strong style="color:var(--hazard-amber);">22:44</strong> — Dr. Aditi Keycard EXIT SCAN (Outer Perimeter Gate)</div>
-            <div><strong style="color:var(--cyber-cyan);">22:45</strong> — Dr. Aditi's Terminal Accessed Locally</div>
-            <div style="color:var(--combat-red);"><strong style="color:var(--combat-red);">22:46</strong> — Emergency AI Shutdown Override Initiated at Local Terminal</div>
+            <div style="color:var(--combat-red);"><strong style="color:var(--combat-red);">22:45</strong> — Dr. Aditi's Terminal Accessed Locally (Impossible Conflict)</div>
+            <div><strong style="color:var(--cyber-cyan);">22:46</strong> — Emergency AI Shutdown Override Initiated at Local Terminal</div>
           </div>
           <div style="margin-top:14px; font-size:11px; color:#cbd5e1;">
             [TASK]: Inspect the chronological security audit and submit the clearance key.
@@ -6018,8 +5975,8 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
               <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <input type="text" id="input-stage-4" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(4, document.getElementById('input-stage-4').value)">
-              <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(4, document.getElementById('input-stage-4').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
+              <input type="text" id="input-stage-4" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(4, this.value, this)">
+              <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(4, (this.previousElementSibling ? this.previousElementSibling.value : document.getElementById('input-stage-4').value), this.previousElementSibling)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
             </div>
             <div id="fb-stage-4" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
           </div>
@@ -6249,10 +6206,10 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
             <span style="font-size:11px; color:#94a3b8;">Enter key below and click Transmit</span>
           </div>
           <div style="display:flex; gap:10px; align-items:center;">
-            <input type="text" id="input-stage-11" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey(11, document.getElementById('input-stage-11').value)">
-            <button type="button" class="btn-tactical success" onclick="submitStageDirectKey(11, document.getElementById('input-stage-11').value)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
+            <input type="text" id="input-stage-failsafe" placeholder="Enter clearance code..." style="flex:1; background:#02060e; border:1px solid #00f0ff; color:#00f0ff; padding:10px 14px; font-family:var(--font-mono); font-size:13px; border-radius:4px; outline:none; box-shadow:inset 0 0 10px rgba(0,240,255,0.15);" onkeydown="if(event.key==='Enter') submitStageDirectKey('failsafe', this.value, this)">
+            <button type="button" class="btn-tactical success" onclick="submitStageDirectKey('failsafe', (this.previousElementSibling ? this.previousElementSibling.value : document.getElementById('input-stage-failsafe').value), this.previousElementSibling)" style="background:#00f0ff; color:#02060e; font-weight:bold; border:none; padding:10px 22px; border-radius:4px; cursor:pointer; font-size:12px; letter-spacing:0.5px; box-shadow:0 0 12px rgba(0,240,255,0.5);">⚡ TRANSMIT KEY</button>
           </div>
-          <div id="fb-stage-11" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
+          <div id="fb-stage-failsafe" style="min-height:16px; font-size:11.5px; margin-top:6px; color:#ffb000;"></div>
         </div>
 
           <div style="background:#02070e; border:1px solid var(--cyber-cyan); padding:22px; border-radius:4px; font-family:var(--font-mil);">
@@ -8011,7 +7968,7 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         act: "ACT I: THE LAB BREACH",
         chapter: "CH. 04: THE TIMESTAMP MURDER MYSTERY",
         title: "STAGE 04 // THE TIMESTAMP ANOMALY",
-        guidance: "Review Security_Audit.pdf. Dr. Aditi keycard-exited the building perimeter gate at 22:44. Yet local terminal commands show a manual emergency shutdown override at 22:46. Enter the impossible timestamp.",
+        guidance: "Review Security_Audit.pdf. Dr. Aditi keycard-exited the building perimeter gate at 22:44. Yet local terminal commands show a terminal access executed at 22:45 after she had already departed. Enter the impossible conflict timestamp.",
         mechanism: "Perimeter Event Verification",
         targetText: "Security_Audit.pdf",
         hint: "Compare Dr. Aditi's building exit card-swipe against the chronological terminal activity in Security_Audit.pdf. Notice that Dr. Aditi badged out through the exterior perimeter gate at 22:44. Find the timestamp of the internal local terminal override executed after she had already departed.",
@@ -8079,11 +8036,11 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         taraClue: "Tara here! The image looks pitch black, but there's hidden data in the shadows! Push the exposure and contrast sliders all the way up in the viewer to illuminate the hidden text!"
       },
       10: {
-        cardId: "card-honeypot",
+        cardId: "card-trap",
         act: "ACT IV: THE MASTER FAILSAFE",
         chapter: "CH. 10: PSYCHOLOGICAL HONEYPOT TRAP",
         title: "STAGE 10 // HONEYPOT TRAP BYPASS",
-        guidance: "DO_NOT_RUN.exe is an active AI sandbox trap! Avoid clicking the red execute button (+5m penalty). Enter the disarm command into the shell.",
+        guidance: "DO_NOT_RUN.exe is an active AI sandbox trap! Opening or clicking the quarantined threat triggers an immediate +5:00 (+300s) time penalty. Acknowledge the breach penalty and advance to Stage 11.",
         mechanism: "Honeypot Evasion & Safe Shell Disarm",
         targetText: "DO_NOT_RUN.exe",
         hint: "DO_NOT_RUN.exe is an active AI honeypot trap! Interacting with the execution trigger incurs an automatic +5:00 penalty. Read the quarantine documentation to locate the designated safe disarm keyword to submit directly into the Tactical Shell instead.",
@@ -8680,13 +8637,15 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
       if (typeof closeModal === 'function') {
         closeModal('modal-active-clue-popup');
       }
-      // Auto-close completed stage evidence modal to reveal newly unlocked stage
-      document.querySelectorAll('.mil-modal.active-modal, .evidence-modal').forEach(m => {
-        if (m.id !== 'team-auth-modal' && m.id !== 'proctor-lockdown-overlay' && m.id !== 'victory-celebration-modal') {
-          m.style.display = 'none';
-          m.classList.remove('active-modal');
-        }
-      });
+      // Allow 700ms for player to clearly see ✓ ACCREDITED confirmation before auto-closing modal
+      setTimeout(() => {
+        document.querySelectorAll('.mil-modal.active-modal, .evidence-modal').forEach(m => {
+          if (m.id !== 'team-auth-modal' && m.id !== 'proctor-lockdown-overlay' && m.id !== 'victory-celebration-modal') {
+            m.style.display = 'none';
+            m.classList.remove('active-modal');
+          }
+        });
+      }, 700);
 
       const now = Date.now();
       let stageTimes = {};
@@ -8987,334 +8946,182 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
       }
     }
     
-    function runChecksumScan(passcode) {
+    function runChecksumScan(passcode, explicitStage) {
       if (!passcode) return;
-      const clean = passcode.trim().toUpperCase().replace(/\s+/g, '').replace(/[^A-Z0-9_-]/g, '');
+      const clean = passcode.trim().toUpperCase().replace(/\s+/g, '').replace(/[^A-Z0-9_:/-]/g, '');
 
       tacticalSound.playScanPulse();
       addTerminalLog("SYSTEM // RUNNING PARITY CHECKSUM VERIFICATION...", "amber");
 
       setTimeout(() => {
         let matched = false;
+        let stageSolved = 0;
 
         // Stage 1: The Disappearing Message (ORIGIN)
         if (clean === "ORIGIN" || clean === "ACCESS" || clean === "RECOVERACCESS" || clean === "ORIGINKEY" || clean === "ORIGIN_KEY" || clean === "FIRSTGATE") {
-          matched = true;
-          recordStageCleared(1);
-          currentStage = 2;
-          localStorage.setItem('failsafe_stage', '2');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: FIRST GATE VERIFIED (ORIGIN). PROMOTED TO STAGE 02.`, "green");
-          reportTelemetryAction("Solved Stage 01 (Disappearing Message) - Promoted to Stage 02");
-          updateMissionBanner(2, "ACT I // CH. 02: THE WRONG FOLDER", "Inspect the README documentation located in directory ORIGIN.");
-          triggerIshaanSnarl(1);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 01 SOLVED!</strong><br>First gate cleared! Clearance elevated to Level 02.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 02] README.doc</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+          stageSolved = 1;
 
         // Stage 2: The Wrong Folder (629 / LOOK BEHIND THE DATE)
         } else if (clean === "629" || clean === "LOOKBEHINDTHEDATE" || clean === "LOOK BEHIND THE DATE" || clean === "123456" || clean === "MEMORYRESTORED" || clean === "MEMORY_RESTORED") {
-          matched = true;
-          recordStageCleared(2);
-          currentStage = 3;
-          localStorage.setItem('failsafe_stage', '3');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: ORIGIN DIRECTIVE VERIFIED (629). PROMOTED TO STAGE 03.`, "green");
-          reportTelemetryAction("Solved Stage 02 (The Wrong Folder) - Promoted to Stage 03");
-          updateMissionBanner(3, "ACT I // CH. 03: THE DATE THAT DOESN'T EXIST", "Review the launch incident logs in the Evidence Vault.");
-          triggerIshaanSnarl(2);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 02 SOLVED!</strong><br>Identifier checksum authenticated! Clearance elevated to Level 03.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 03] Incident_Logs.doc</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+          stageSolved = 2;
 
         // Stage 3: The Date That Doesn't Exist (28/02/2025 / 02292025)
-        } else if (clean === "28022025" || clean === "02292025" || clean === "29022025" || clean === "20250229" || clean === "FEB292025" || clean === "29022036" || clean === "20360229" || clean === "FEB292036" || clean === "28/02/2025" || clean === "29/02/2025") {
-          matched = true;
-          recordStageCleared(3);
-          currentStage = 4;
-          localStorage.setItem('failsafe_stage', '4');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: CALENDAR CONTRADICTION UNMASKED (28/02/2025). PROMOTED TO STAGE 04.`, "green");
-          reportTelemetryAction("Solved Stage 03 (Date Anomaly) - Promoted to Stage 04");
-          updateMissionBanner(4, "ACT I // CH. 04: THE TIMESTAMP MURDER MYSTERY", "Analyze chronological facility access logs in Security_Audit.pdf.");
-          triggerIshaanSnarl(3);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 03 SOLVED!</strong><br>Date anomaly verified! Clearance elevated to Level 04.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 04] Security_Audit.pdf</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+        } else if (clean === "28/02/2025" || clean === "28022025" || clean === "02292025" || clean === "29022025" || clean === "20250229" || clean === "FEB292025" || clean === "29022036" || clean === "20360229" || clean === "FEB292036" || clean === "29/02/2025") {
+          stageSolved = 3;
 
-        // Stage 4: The Timestamp Murder Mystery (22:46)
-        } else if (clean === "22:46" || clean === "2246" || clean === "22:46PM" || clean === "2246PM") {
-          matched = true;
-          recordStageCleared(4);
-          currentStage = 5;
-          localStorage.setItem('failsafe_stage', '5');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: OVERRIDE CONFLICT ISOLATED (22:46). PROMOTED TO STAGE 05.`, "green");
-          reportTelemetryAction("Solved Stage 04 (Timestamp Anomaly) - Promoted to Stage 05");
-          updateMissionBanner(5, "ACT II // CH. 05: THE FIRST LETTER SPEAKS", "Examine Dr. Aditi's handwritten security memorandum in Aditi_Memo.doc.");
-          triggerIshaanSnarl(4);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 04 SOLVED!</strong><br>Timestamp conflict verified! Clearance elevated to Level 05.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 05] Aditi_Memo.doc</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+        // Stage 4: The Timestamp Murder Mystery (22:45)
+        } else if (clean === "22:45" || clean === "2245" || clean === "22:45PM" || clean === "2245PM" || clean === "22:46" || clean === "2246" || clean === "22:46PM" || clean === "2246PM") {
+          stageSolved = 4;
 
         // Stage 5: The Simple Acrostic Note (SAFE)
-        } else if (clean === "SAFE" || clean === "S-A-F-E" || clean === "SAFE" || clean === "SAFE") {
-          matched = true;
-          recordStageCleared(5);
-          currentStage = 6;
-          localStorage.setItem('failsafe_stage', '6');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: ACROSTIC DIRECTIVE RECOVERED (SAFE). PROMOTED TO STAGE 06.`, "green");
-          reportTelemetryAction("Solved Stage 05 (Acrostic Note) - Promoted to Stage 06");
-          updateMissionBanner(6, "ACT II // CH. 06: WHICH ADITI IS REAL?", "Cross-examine log formatting standards in the Evidence Vault.");
-          triggerIshaanSnarl(5);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 05 SOLVED!</strong><br>Directive verified! Clearance elevated to Level 06.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 06] AUTHENTIC_LOG.doc</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+        } else if (clean === "SAFE" || clean === "S-A-F-E" || clean === "S A F E") {
+          stageSolved = 5;
 
         // Stage 6: Which Aditi Is Real? (ARIAL)
         } else if (clean === "ARIAL" || clean === "AUTHENTIC" || clean === "ARIAL11" || clean === "ARIAL11PT") {
-          matched = true;
-          recordStageCleared(6);
-          currentStage = 7;
-          localStorage.setItem('failsafe_stage', '7');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: AUTHENTIC FONT VERIFIED (ARIAL). PROMOTED TO STAGE 07.`, "green");
-          reportTelemetryAction("Solved Stage 06 (Font Style) - Promoted to Stage 07");
-          updateMissionBanner(7, "ACT II // CH. 07: THE REVISION HISTORY CONFLICT", "Inspect the revision history of Incident_Report.doc.");
-          triggerIshaanSnarl(6);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 06 SOLVED!</strong><br>Authentic typography confirmed! Clearance elevated to Level 07.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 07] Incident_Report.doc</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+          stageSolved = 6;
 
         // Stage 7: The Revision History Conflict (CORRUPTED / FALSE_RECORDS)
         } else if (clean === "CORRUPTED" || clean === "FALSE_RECORDS" || clean === "FALSERECORDS" || clean === "OVERRIDEFAILED" || clean === "OVERRIDE_FAILED" || clean === "HISTORY") {
-          matched = true;
-          recordStageCleared(7);
-          currentStage = 8;
-          localStorage.setItem('failsafe_stage', '8');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: UNTAMPERED REVISION RETRIEVED (CORRUPTED). PROMOTED TO STAGE 08.`, "green");
-          reportTelemetryAction("Solved Stage 07 (Version Conflict) - Promoted to Stage 08");
-          updateMissionBanner(8, "ACT III // CH. 08: EMERGENCY CW BEACON", "Analyze the audio carrier transmission in audio_log_07.mp3.");
-          triggerIshaanSnarl(7);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 07 SOLVED!</strong><br>Genuine record recovered! Clearance elevated to Level 08.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 08] audio_log_07.mp3</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+          stageSolved = 7;
 
         // Stage 8: Morse Code Audio Transmission (WHITE)
         } else if (clean === "WHITE" || clean === "SOSADITI" || clean === "SOS_ADITI" || clean === "MORSE" || clean === "BEACON") {
-          matched = true;
-          recordStageCleared(8);
-          currentStage = 9;
-          localStorage.setItem('failsafe_stage', '9');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: CW AUDIO MORSE DECODED (WHITE). PROMOTED TO STAGE 09.`, "green");
-          reportTelemetryAction("Solved Stage 08 (Morse Audio) - Promoted to Stage 09");
-          updateMissionBanner(9, "ACT III // CH. 09: THE STEGANOGRAPHY MASK", "Analyze visual telemetry artifact Dark_Terminal.png.");
-          triggerIshaanSnarl(8);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 08 SOLVED!</strong><br>Audio beacon verified! Clearance elevated to Level 09.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 09] Dark_Terminal.png</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+          stageSolved = 8;
 
         // Stage 9: The Steganography Mask (SHADOW_CORE) - Replaces Git Reflog
         } else if (clean === "SHADOWCORE" || clean === "SHADOW_CORE" || clean === "SHADOW CORE") {
-          matched = true;
-          recordStageCleared(9);
-          currentStage = 10;
-          localStorage.setItem('failsafe_stage', '10');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: OPTICAL STEGANOGRAPHY RESOLVED (SHADOW_CORE). PROMOTED TO STAGE 10.`, "green");
-          reportTelemetryAction("Solved Stage 09 (Steganography Mask) - Promoted to Stage 10");
-          updateMissionBanner(10, "ACT IV // CH. 10: PSYCHOLOGICAL HONEYPOT", "Quarantined threat DO_NOT_RUN.exe active. Proceed with caution.");
-          triggerIshaanSnarl(9);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 09 SOLVED!</strong><br>Steganography mask resolved! Clearance elevated to Level 10.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Inspect quarantined threat <strong>[STAGE 10] DO_NOT_RUN.exe</strong> in the Evidence Vault.`);
-          updateClueBatteryDisplay();
+          stageSolved = 9;
 
-        // Stage 10: Honeypot Trap Bypass (BYPASS)
-        } else if (clean === "BYPASS" || clean === "SKIP" || clean === "DISARM") {
-          matched = true;
-          recordStageCleared(10);
-          currentStage = 11;
-          localStorage.setItem('failsafe_stage', '11');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: AI HONEYPOT DISARMED (BYPASS). PROMOTED TO STAGE 11.`, "green");
-          reportTelemetryAction("Solved Stage 10 (Trap Bypass) - Promoted to Stage 11");
-          updateMissionBanner(11, "ACT IV // CH. 11: CONSTELLATION NUMBERS", "Decrypt the encoded clearance stream in CLEARANCE_CODE.txt.");
-          triggerIshaanSnarl(10);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 10 SOLVED!</strong><br>Threat disarmed safely without penalty! Clearance elevated to Level 11.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 11] CLEARANCE_CODE.txt</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+        // Stage 10: Honeypot Trap Advance (CONTINUE / ACKNOWLEDGE / BYPASS)
+        } else if (clean === "CONTINUE" || clean === "ACKNOWLEDGE" || clean === "ADVANCE" || clean === "BYPASS" || clean === "SKIP" || clean === "DISARM" || clean === "OK" || clean === "OVERRIDE" || clean === "HONEYPOT") {
+          stageSolved = 10;
 
-        // Stage 11: The Binary Master (ailnors / POLARIS) - Replaces IEEE 6-9-11 -> Advances to Stage 12
+        // Stage 11: The Binary Master (ailnors / POLARIS)
         } else if (clean === "AILNORS" || clean === "POLARIS" || clean === "16151201180919" || clean === "16-15-12-01-18-09-19" || clean === "6911" || clean === "6-9-11") {
-          matched = true;
-          recordStageCleared(11);
-          currentStage = 12;
-          localStorage.setItem('failsafe_stage', '12');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: A1Z26 CLEARANCE KEY VERIFIED (ailnors). PROMOTED TO STAGE 12.`, "green");
-          reportTelemetryAction("Solved Stage 11 (Binary Master) - Promoted to Stage 12");
-          updateMissionBanner(12, "ACT V // CH. 12: THE WHITEOUT SIGNATURE", "Inspect emergency documentation in Emergency_Log.doc.");
-          triggerIshaanSnarl(11);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 11 SOLVED!</strong><br>Clearance key authenticated! Infiltrating Act V deep intel.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 12] Emergency_Log.doc</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
-          if (typeof updateNexusDashboard === 'function') updateNexusDashboard();
+          stageSolved = 11;
 
         // Stage 12: The Whiteout Signature (CLEARANCE_ALPHA) -> Advances to Stage 13
         } else if (clean === "CLEARANCEALPHA" || clean === "CLEARANCE_ALPHA" || clean === "CLEARANCE-ALPHA" || clean === "ALPHA" || clean.includes("CLEARANCEALPHA") || clean.includes("CLEARANCE_ALPHA")) {
-          matched = true;
-          recordStageCleared(12);
-          currentStage = 13;
-          localStorage.setItem('failsafe_stage', '13');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: WHITEOUT STEGANOGRAPHY RESOLVED (CLEARANCE_ALPHA). PROMOTED TO STAGE 13.`, "green");
-          reportTelemetryAction("Solved Stage 12 (Whiteout Signature) - Promoted to Stage 13");
-          updateMissionBanner(13, "ACT V // CH. 13: CAESAR'S ECHO", "Intercepted encrypted transmission in Encrypted_Beacon.txt.");
-          triggerIshaanSnarl(12);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 12 SOLVED!</strong><br>Whiteout clearance verified! Clearance elevated to Level 13.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 13] Encrypted_Beacon.txt</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
-          if (typeof updateNexusDashboard === 'function') updateNexusDashboard();
+          stageSolved = 12;
 
         // Stage 13: The ROT-4 IEEE Shift (ADITIS13) -> Advances to Stage 14
         } else if (clean === "ADITIS13" || clean === "ADITI13" || clean === "ADITI" || clean === "ADITIS" || clean === "EHMXMW13") {
-          matched = true;
-          recordStageCleared(13);
-          currentStage = 14;
-          localStorage.setItem('failsafe_stage', '14');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: ROT-4 BEACON DECODED (ADITIS13). PROMOTED TO STAGE 14.`, "green");
-          reportTelemetryAction("Solved Stage 13 (ROT-4 Shift) - Promoted to Stage 14");
-          updateMissionBanner(14, "ACT V // CH. 14: THE INVERTED ALPHABET", "Analyze the mirror sequence in Mirror_Log.txt.");
-          triggerIshaanSnarl(13);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 13 SOLVED!</strong><br>Beacon decrypted! Signal locks onto Dr. Aditi's emergency node.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 14] Mirror_Log.txt</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
-          if (typeof updateNexusDashboard === 'function') updateNexusDashboard();
+          stageSolved = 13;
 
         // Stage 14: The Atbash Cipher Mirror (PROJECT) -> Advances to Stage 15
         } else if (clean === "PROJECT" || clean === "PROJECTS" || clean === "KILQVBG" || clean === "FAILSAFE" || clean === "PROJECTFAILSAFE") {
-          matched = true;
-          recordStageCleared(14);
-          currentStage = 15;
-          localStorage.setItem('failsafe_stage', '15');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: ATBASH MIRROR REVERSED (PROJECT). PROMOTED TO STAGE 15.`, "green");
-          reportTelemetryAction("Solved Stage 14 (Atbash Mirror) - Promoted to Stage 15");
-          updateMissionBanner(15, "ACT V // CH. 15: THE 5x5 POLYBIUS TRAIL", "Inspect coordinate matrix in Matrix_Coordinates.pdf.");
-          triggerIshaanSnarl(14);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 14 SOLVED!</strong><br>Mirror log resolved! Archive records restored.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 15] Matrix_Coordinates.pdf</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
-          if (typeof updateNexusDashboard === 'function') updateNexusDashboard();
+          stageSolved = 14;
 
         // Stage 15: The Polybius Coordinate Trail (VECTOR) -> Advances to Stage 16
         } else if (clean === "VECTOR" || clean === "VECTORS" || clean === "POLYBIUS") {
-          matched = true;
-          recordStageCleared(15);
-          currentStage = 16;
-          localStorage.setItem('failsafe_stage', '16');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: POLYBIUS COORDINATES RESOLVED (VECTOR). PROMOTED TO FINAL STAGE 16.`, "green");
-          reportTelemetryAction("Solved Stage 15 (Polybius Trail) - Promoted to Stage 16");
-          updateMissionBanner(16, "ACT V // CH. 16: FREQUENCY IN THE MACHINE", "Audit telemetry records in Mass_System_Log.txt.");
-          triggerIshaanSnarl(15);
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 15 SOLVED!</strong><br>Coordinate trail verified! Clearance elevated to Level 16.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 16] Mass_System_Log.txt</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
-          if (typeof updateNexusDashboard === 'function') updateNexusDashboard();
+          stageSolved = 15;
 
-        // Stage 16: Frequency Override Count (1400) -> Advances to Stage 17
-        } else if (clean === "1400" || clean === "14" || clean === "1400HZ" || clean === "OVERRIDE" || clean === "OVERRIDE1400") {
-          matched = true;
-          recordStageCleared(16);
-          currentStage = 17;
-          localStorage.setItem('failsafe_stage', '17');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: FREQUENCY OVERRIDE SYNCHRONIZED (1400). PROMOTED TO STAGE 17.`, "green");
-          reportTelemetryAction("Solved Stage 16 (Frequency Override) - Promoted to Stage 17");
-          updateMissionBanner(17, "ACT VI // CH. 17: SHIFTED COORDINATES", "Inspect rogue transmission in Intercepted_ADI_Transmission.pdf.");
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 16 SOLVED!</strong><br>Frequency parity locked! Clearance elevated to Level 17.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 17] Intercepted_ADI_Transmission.pdf</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+        // Stage 16: The Frequency Keyword (1400) -> Advances to Stage 17
+        } else if (clean === "1400" || clean === "14" || clean === "1400X" || clean === "FREQUENCY1400") {
+          stageSolved = 16;
 
-        // Stage 17: The Rogue Chatbot Polybius Shift (VSLXI)
+        // Stage 17: Intercepted ADI Polybius Shift (VSLXI)
         } else if (clean === "VSLXI") {
-          matched = true;
-          recordStageCleared(17);
-          currentStage = 18;
-          localStorage.setItem('failsafe_stage', '18');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: VECTOR SHIFT REVERSED (VSLXI). PROMOTED TO STAGE 18.`, "green");
-          reportTelemetryAction("Solved Stage 17 (Polybius Shift) - Promoted to Stage 18");
-          updateMissionBanner(18, "ACT VI // CH. 18: THE CIRCULAR EXECUTION LOOP", "Analyze execution graph in Cycle_Diagnostics.png.");
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 17 SOLVED!</strong><br>Shifted coordinates verified! Clearance elevated to Level 18.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 18] Cycle_Diagnostics.png</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+          stageSolved = 17;
 
-        // Stage 18: The Modular Clock Loop (GCBGE)
+        // Stage 18: Clock Angle Key (GCBGE)
         } else if (clean === "GCBGE") {
-          matched = true;
-          recordStageCleared(18);
-          currentStage = 19;
-          localStorage.setItem('failsafe_stage', '19');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: CYCLIC THREAD LOOP DISARMED (GCBGE). PROMOTED TO STAGE 19.`, "green");
-          reportTelemetryAction("Solved Stage 18 (Clock Loop) - Promoted to Stage 19");
-          updateMissionBanner(19, "ACT VI // CH. 19: NODE STATUS ANOMALY", "Review server operational telemetry in Server_Status_Check.pdf.");
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 18 SOLVED!</strong><br>Cyclic loop disarmed! Clearance elevated to Level 19.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 19] Server_Status_Check.pdf</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+          stageSolved = 18;
 
         // Stage 19: The Anomaly Checklist (GAMMA)
         } else if (clean === "GAMMA") {
-          matched = true;
-          recordStageCleared(19);
-          currentStage = 20;
-          localStorage.setItem('failsafe_stage', '20');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: THERMAL OUTLIER ISOLATED (GAMMA). PROMOTED TO STAGE 20.`, "green");
-          reportTelemetryAction("Solved Stage 19 (Anomaly Checklist) - Promoted to Stage 20");
-          updateMissionBanner(20, "ACT VI // CH. 20: DAY OF THE FALL", "Recover emergency override code in Emergency_Override_Key.txt.");
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 19 SOLVED!</strong><br>Thermal anomaly isolated! Clearance elevated to Level 20.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE 20] Emergency_Override_Key.txt</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+          stageSolved = 19;
 
         // Stage 20: The Shift Cipher Matrix (DAHHK)
         } else if (clean === "DAHHK") {
-          matched = true;
-          recordStageCleared(20);
-          currentStage = 21;
-          localStorage.setItem('failsafe_stage', '21');
-          tacticalSound.playSuccess();
-          addTerminalLog(`[CHECKSUM ACCREDITED]: AUTHORIZATION CODE RESTORED (DAHHK). PROMOTED TO STAGE 21.`, "green");
-          reportTelemetryAction("Solved Stage 20 (Shift Cipher Matrix) - Promoted to Stage 21");
-          updateMissionBanner(21, "ACT VI // CH. 21: CHRONOLOGICAL BREACH", "Audit historical audit logs in System_Audit_2013.log.");
-          appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 CHAPTER 20 SOLVED!</strong><br>Authorization restored! Clearance elevated to Stage 21 (ROUND 1 FINALE).<br><br><span style="color:var(--cyber-cyan);">FINAL ROUND 1 OBJECTIVE:</span> Open <strong>[STAGE 21] System_Audit_2013.log</strong> in the Evidence Vault on the left.`);
-          updateClueBatteryDisplay();
+          stageSolved = 20;
 
         // Stage 21: The Log Anomaly Timeline (520) -> Completes Round 1
         } else if (clean === "520" || clean === "104X5" || clean === "104*5") {
-          matched = true;
-          recordStageCleared(21);
-          currentStage = 21;
-          localStorage.setItem('failsafe_stage', '21');
-          tacticalSound.playSuccess();
-          const banner = document.getElementById('active-mission-banner');
-          if (banner) {
-            banner.innerHTML = '<div style="color:var(--tactical-green); font-weight:bold; font-size:12px; padding:6px;">🏆 [ROUND 1 COMPLETE]: TARA LIBERATED // ALL 21 FORENSIC STAGES CLEARED! PROCEED TO ROUND 2 QUALIFICATION!</div>';
-          }
-          addTerminalLog(`[CHECKSUM ACCREDITED]: TIMELINE TAMPERING VERIFIED (520). ALL 21 STAGES SOLVED!`, "green");
-          reportTelemetryAction("Solved Stage 21 (Timeline Audit) - Completed Round 1");
-          handleMissionVictorySequence();
+          stageSolved = 21;
         }
 
-        if (matched) {
-          const matchedFb = document.getElementById(`fb-stage-${currentStage}`) || 
-                            document.getElementById(`fb-stage-${currentStage - 1}`) || 
-                            document.getElementById('v1-modal-recovery-fb');
-          if (matchedFb) {
-            matchedFb.innerHTML = `<span style="color:var(--neon-green);">✓ ACCREDITED: Key accepted! Advancing...</span>`;
+        if (stageSolved > 0) {
+          matched = true;
+          const nextStageNum = Math.min(21, stageSolved + 1);
+          currentStage = nextStageNum;
+          localStorage.setItem('failsafe_stage', currentStage.toString());
+          if (typeof currentTeam !== 'undefined' && currentTeam) {
+            currentTeam.current_stage = currentStage;
+            localStorage.setItem('failsafe_local_team', JSON.stringify(currentTeam));
           }
+
+          // 1. Immediately update feedback element in the modal with green accredited text
+          const targetFb = document.getElementById(`fb-stage-${stageSolved}`) || 
+                           (explicitStage ? document.getElementById(`fb-stage-${explicitStage}`) : null) || 
+                           document.getElementById('v1-modal-recovery-fb');
+          if (targetFb) {
+            targetFb.innerHTML = `<span style="color:var(--neon-green); font-weight:bold;">✓ ACCREDITED: Key accepted! Advancing to Stage ${stageSolved < 21 ? (nextStageNum < 10 ? '0' + nextStageNum : nextStageNum) : 'COMPLETE'}...</span>`;
+          }
+
+          // 2. Clear input field in the modal
+          const inpEl = document.getElementById(`input-stage-${stageSolved}`) || 
+                        (explicitStage ? document.getElementById(`input-stage-${explicitStage}`) : null);
+          if (inpEl) inpEl.value = '';
+
+          // 3. Play success sound & terminal logs
+          tacticalSound.playSuccess();
+          addTerminalLog(`[CHECKSUM ACCREDITED]: STAGE ${stageSolved < 10 ? '0' + stageSolved : stageSolved} VERIFIED. PROMOTED TO STAGE ${nextStageNum < 10 ? '0' + nextStageNum : nextStageNum}.`, "green");
+          reportTelemetryAction(`Solved Stage ${stageSolved < 10 ? '0' + stageSolved : stageSolved} - Promoted to Stage ${nextStageNum}`);
+          triggerIshaanSnarl(stageSolved);
+          updateClueBatteryDisplay();
+
+          // 4. Notify backend server so leaderboard and state are immediately updated
+          const teamId = (typeof currentTeam !== 'undefined' && currentTeam) ? currentTeam.team_id : 'ALFA-1';
+          try {
+            fetch(`${getApiBase()}/api/stage/unlock`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                team_id: teamId,
+                password: clean,
+                round: 1,
+                stage: stageSolved
+              })
+            }).catch(() => {});
+          } catch(e) {}
+
+          // 5. Update UI banners and Tara speech
+          if (stageSolved === 21) {
+            const banner = document.getElementById('active-mission-banner');
+            if (banner) {
+              banner.innerHTML = '<div style="color:var(--tactical-green); font-weight:bold; font-size:12px; padding:6px;">🏆 [ROUND 1 COMPLETE]: TARA LIBERATED // ALL 21 FORENSIC STAGES CLEARED! PROCEED TO ROUND 2 QUALIFICATION!</div>';
+            }
+            addTerminalLog(`[CHECKSUM ACCREDITED]: TIMELINE TAMPERING VERIFIED (520). ALL 21 STAGES SOLVED!`, "green");
+            handleMissionVictorySequence();
+          } else {
+            const nextMeta = (typeof NEXUS_STAGES_META !== 'undefined') ? NEXUS_STAGES_META[nextStageNum] : null;
+            if (nextMeta) {
+              updateMissionBanner(nextStageNum, nextMeta.title, nextMeta.summary);
+              appendTaraMessage("AI", `<strong style="color:var(--tactical-green);">🏆 STAGE ${stageSolved < 10 ? '0' + stageSolved : stageSolved} SOLVED!</strong><br>Clearance elevated to Level ${nextStageNum < 10 ? '0' + nextStageNum : nextStageNum}.<br><br><span style="color:var(--cyber-cyan);">NEXT OBJECTIVE:</span> Open <strong>[STAGE ${nextStageNum < 10 ? '0' + nextStageNum : nextStageNum}]</strong> on the desktop.`);
+            }
+          }
+
+          if (typeof updateNexusDashboard === 'function') updateNexusDashboard();
+
+          // 6. Record stage cleared (which gently auto-closes the modal after 700ms)
+          recordStageCleared(stageSolved);
         }
 
         if (!matched) {
           tacticalSound.playBuzzer();
-          addTerminalLog(`[CHECKSUM REJECTED]: Passcode verification failed. Access denied.`, "red");
-          appendTaraMessage("AI", `<strong style="color:var(--combat-red);">⚠️ CHECKSUM REJECTED:</strong> Token '${clean}' does not match ISHAAN's parity registers for Chapter 0${currentStage}. Re-examine the evidence carefully.`);
-          reportTelemetryAction(`Passcode Rejected: "${clean}"`);
-          const rejectFb = document.getElementById(`fb-stage-${currentStage}`) || document.getElementById('v1-modal-recovery-fb');
+          const activeStageTarget = explicitStage || currentStage;
+          addTerminalLog(`[CHECKSUM REJECTED]: Passcode verification failed for Stage 0${activeStageTarget}. Access denied.`, "red");
+          appendTaraMessage("AI", `<strong style="color:var(--combat-red);">⚠️ CHECKSUM REJECTED:</strong> Token '${clean}' does not match ISHAAN's parity registers for Stage 0${activeStageTarget}. Re-examine the evidence carefully.`);
+          reportTelemetryAction(`Passcode Rejected: "${clean}" on Stage ${activeStageTarget}`);
+          const rejectFb = document.getElementById(`fb-stage-${activeStageTarget}`) || document.getElementById('v1-modal-recovery-fb');
           if (rejectFb) {
-            rejectFb.innerHTML = `<span style="color:var(--neon-red);">⚠️ CHECKSUM REJECTED: Passcode '${clean}' incorrect for Stage 0${currentStage}.</span>`;
+            rejectFb.innerHTML = `<span style="color:var(--neon-red);">⚠️ CHECKSUM REJECTED: Passcode '${clean}' incorrect for Stage 0${activeStageTarget}.</span>`;
           }
         }
       }, 400);
     }
-
 
     function triggerLockdownTrap() {
       // 1. Increment local trap count and add +5 minutes (+300 seconds) to mission timer immediately
@@ -10022,6 +9829,15 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
       }
 
       m.style.display = 'flex';
+      if (id === 'modal-honeypot') {
+        const trapKey = 'failsafe_honeypot_penalty_applied_' + ((typeof currentTeam !== 'undefined' && currentTeam) ? currentTeam.team_id : 'default');
+        if (!sessionStorage.getItem(trapKey)) {
+          sessionStorage.setItem(trapKey, 'true');
+          if (typeof triggerLockdownTrap === 'function') {
+            triggerLockdownTrap();
+          }
+        }
+      }
       m.classList.add('active-modal');
       m.scrollTop = 0;
 
@@ -10140,6 +9956,8 @@ DATE OF ROGUE BREACH: Sunday, October 13, 2013
         }
 
         const stageInputMap = {
+          'input-stage-1': 1,
+          'input-stage-2': 2,
           'input-stage-3': 3,
           'input-stage-4': 4,
           'input-stage-5': 5,
@@ -13684,7 +13502,7 @@ function setR2WheelAngle(deg) {
         title: "STAGE 02: THE WRONG FOLDER",
         tags: "ACT I • STAGE 02 • TARGET: ORIGIN DIRECTORY",
         summary: "README documentation within directory ORIGIN.",
-        modal: "modal-origin",
+        modal: "modal-memory",
         targetCard: "card-memory",
         taraSpeech: "Chapter 02 active. Investigate [README.doc] in directory ORIGIN.",
         taraWhereToClick: "Click Card 02 [README.doc] in the Evidence Vault below.",
@@ -13773,7 +13591,7 @@ function setR2WheelAngle(deg) {
         tags: "ACT IV • STAGE 10 • TARGET: AI THREAT EVASION",
         summary: "Quarantined threat executable DO_NOT_RUN.exe.",
         modal: "modal-honeypot",
-        targetCard: "card-honeypot",
+        targetCard: "card-trap",
         taraSpeech: "Chapter 10 active. Threat advisory: [DO_NOT_RUN.exe] quarantined in the Evidence Vault.",
         taraWhereToClick: "Click Card 10 [DO_NOT_RUN.exe] in the Evidence Vault below.",
         taraModalGuide: "Analyze the evidence to recover the clearance key. Tactical clues available via the Clue button below.",
@@ -13979,7 +13797,23 @@ function setR2WheelAngle(deg) {
     }
     window.handleTermSubmit = handleTermSubmit;
 
-    function submitStageDirectKey(stageNum, code) {
+        function submitHoneypotAdvance() {
+      const fb = document.getElementById('fb-stage-10');
+      if (fb) {
+        fb.innerHTML = '<span style="color:#00ff88; font-weight:bold;">✓ PENALTY ACKNOWLEDGED. ADVANCING TO STAGE 11...</span>';
+      }
+      submitStageDirectKey(10, 'CONTINUE');
+    }
+    window.submitHoneypotAdvance = submitHoneypotAdvance;
+
+    function submitStageDirectKey(stageNum, code, inputEl) {
+      if (!code || !code.trim()) {
+        if (inputEl && inputEl.value) code = inputEl.value;
+        else {
+          const inp = document.getElementById(`input-stage-${stageNum}`);
+          if (inp && inp.value) code = inp.value;
+        }
+      }
       if (!code || !code.trim()) return;
       const cleanCode = code.trim();
       const fbEl = document.getElementById(`fb-stage-${stageNum}`) || document.getElementById(`v1-modal-recovery-fb`);
@@ -13994,7 +13828,7 @@ function setR2WheelAngle(deg) {
         termInput.value = `decrypt ${cleanCode}`;
       }
       if (typeof runChecksumScan === 'function') {
-        runChecksumScan(cleanCode);
+        runChecksumScan(cleanCode, stageNum);
       } else if (typeof handleCommand === 'function') {
         handleCommand(`decrypt ${cleanCode}`);
       }
@@ -14325,11 +14159,11 @@ function setR2WheelAngle(deg) {
           <div style="background:rgba(15,23,42,0.85); border:1px solid #334155; border-left:4px solid #00ff66; border-radius:6px; padding:14px 18px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
               <span style="color:#00ff66; font-weight:900; font-size:13px;">STAGE 02: README.doc (The Wrong Folder / ASCII Sum)</span>
-              <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-origin');" style="background:#00ff66; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
+              <button type="button" onclick="closeModal('modal-puzzles-guide'); openModal('modal-memory');" style="background:#00ff66; color:#000; font-weight:bold; font-size:11px; padding:3px 10px; border-radius:3px; border:none; cursor:pointer;">⚡ OPEN DOSSIER</button>
             </div>
             <div style="font-size:12.5px; color:#e2e8f0; line-height:1.6;">
               <strong style="color:#ffd700;">👉 WHERE TO CLICK:</strong> Click on Card 02 [README.doc] in the Evidence Vault on the workstation desktop to inspect the evidence docket.<br>
-              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.<strong>[⚡ TRANSMIT KEY]</strong>.
+              <strong style="color:#00ff66;">🎯 WHERE TO SUBMIT:</strong> Enter your recovered clearance key into the dossier submit prompt and click <strong>[⚡ TRANSMIT KEY]</strong>.
             </div>
           </div>
 

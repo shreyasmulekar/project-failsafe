@@ -10,7 +10,7 @@
 ---
 
 ## 📖 Master Answer Keys & Proctor Handbook
-- Complete step-by-step master solution keys for **all 16 Round 1 Stages** and **all 15 Round 2 Olympiad Ciphers** are documented in:  
+- Complete step-by-step master solution keys for **all 21 Round 1 Stages** and **all 17 Round 2 Olympiad Challenges** are documented in:  
   👉 **[`ANSWER_KEYS_AND_PROCTOR_INSTRUCTIONS.md`](ANSWER_KEYS_AND_PROCTOR_INSTRUCTIONS.md)**
 - Additional volunteer and participant guidelines:  
   👉 **[`VOLUNTEER_PUZZLE_GUIDE.md`](VOLUNTEER_PUZZLE_GUIDE.md)** and **[`PARTICIPANT_UI_GUIDE_GOOGLE_DOC.md`](PARTICIPANT_UI_GUIDE_GOOGLE_DOC.md)**
@@ -77,13 +77,13 @@ The Organizer Command Center provides complete real-time situational awareness a
 * **Simultaneous 100-Station Monitoring & Tactical Grid**:
   - **🎛️ 100-Station Tactical Grid View**: High-density visual matrix of all room stations (Stations 01–100) with color-coded status badges: 🟢 Active, 🟡 Idle, 🔴 Locked (Breach), 🟣 Liberated (Finished), and ⚫ Offline.
   - **📋 Detailed Table View**: Sortable leaderboard ranking all teams by stage, adjusted score, hint count, and breach count.
-  - Instantly tracks progression from Stage 01 through Final Stage 15 in real-time.
+  - Instantly tracks progression from Stage 01 through Final Stage 21 in real-time.
 * **🔍 Detailed Participant Telemetry Inspector (`[ 🔍 TELEMETRY ]`)**:
   - Organizers can click `[ 🔍 TELEMETRY ]` on any team to open the **Deep Hardware & Proctoring Inspector**:
     - **Display & Environment**: Real-time client screen resolution (e.g. `2560x1440`), browser window viewport, and operating system.
     - **Proctored Fullscreen State**: Live status indicating whether the team is in proctored fullscreen mode or in violation.
     - **Integrity Breaches & Violations**: Chronological log of proctoring events, tab switches, Google Lens attempts, and window blur events.
-    - **Stage-by-Stage Forensic Solve Times**: Granular solve duration for every stage (Stage 01 through Stage 15).
+    - **Stage-by-Stage Forensic Solve Times**: Granular solve duration for every stage (Stage 01 through Stage 21).
     - **Penalty & Score Breakdown**: Exact hint penalties (+2m per hint) and honeypot trap penalties (+5m per trap) alongside raw and adjusted finish scores.
 
 * **✏️ Real-Time Team Manipulation & Editing (`[ ✏️ EDIT ]`)**:

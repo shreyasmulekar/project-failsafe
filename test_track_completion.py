@@ -4,7 +4,7 @@ import urllib.request
 import json
 import time
 
-BASE = "http://localhost:8000"
+BASE = "http://127.0.0.1:8000"
 PIN = "wie-admin-2026"
 
 def post(endpoint, data):
@@ -38,9 +38,9 @@ post("/api/admin/start_round_1", {"pin": PIN})
 
 print("\n=== 2. SOLVE ALL 21 ROUND 1 STAGES ===")
 R1_KEYS = [
-    (1, "ORIGIN"), (2, "629"), (3, "28/02/2025"), (4, "22:46"),
+    (1, "ORIGIN"), (2, "629"), (3, "28/02/2025"), (4, "22:45"),
     (5, "SAFE"), (6, "ARIAL"), (7, "CORRUPTED"), (8, "WHITE"),
-    (9, "SHADOW_CORE"), (10, "BYPASS"), (11, "ailnors"), (12, "CLEARANCE_ALPHA"),
+    (9, "SHADOW_CORE"), (10, "CONTINUE"), (11, "ailnors"), (12, "CLEARANCE_ALPHA"),
     (13, "ADITIS13"), (14, "PROJECT"), (15, "VECTOR"), (16, "1400"),
     (17, "VSLXI"), (18, "GCBGE"), (19, "GAMMA"), (20, "DAHHK"),
     (21, "520")

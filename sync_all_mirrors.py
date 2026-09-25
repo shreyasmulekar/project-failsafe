@@ -2,7 +2,14 @@ import shutil
 import os
 
 print("--- Syncing All Mirrors ---")
-files_to_sync = ["aditi_os_widget.html", "admin.html", "server.py"]
+files_to_sync = [
+    "aditi_os_widget.html",
+    "admin.html",
+    "server.py",
+    "ANSWER_KEYS_AND_PROCTOR_INSTRUCTIONS.md",
+    "VOLUNTEER_PUZZLE_GUIDE.md",
+    "README.md"
+]
 targets = [
     "public",
     "project-failsafe-2.0",

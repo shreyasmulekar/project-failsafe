@@ -5,7 +5,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-BASE = "http://localhost:8000"
+BASE = "http://127.0.0.1:8000"
 
 def post(endpoint, data):
     req = urllib.request.Request(
@@ -61,13 +61,13 @@ R1_SOLUTIONS = [
     (1, "ORIGIN", 2),
     (2, "629", 3),
     (3, "28/02/2025", 4),
-    (4, "22:46", 5),
+    (4, "22:45", 5),
     (5, "SAFE", 6),
     (6, "ARIAL", 7),
     (7, "CORRUPTED", 8),
     (8, "WHITE", 9),
     (9, "SHADOW_CORE", 10),
-    (10, "BYPASS", 11),
+    (10, "CONTINUE", 11),
     (11, "ailnors", 12),
     (12, "CLEARANCE_ALPHA", 13),
     (13, "ADITIS13", 14),

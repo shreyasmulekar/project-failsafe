@@ -29,13 +29,13 @@
 | **R1** | **01** | The Disappearing Message | Farewell.doc | `ORIGIN` |
 | **R1** | **02** | The Wrong Folder | README.doc | `629` / `LOOK BEHIND THE DATE` |
 | **R1** | **03** | The Date That Doesn't Exist | Incident_Logs.doc | `28/02/2025` |
-| **R1** | **04** | The Timestamp Murder Mystery | Security_Audit.pdf | `22:46` |
+| **R1** | **04** | The Timestamp Murder Mystery | Security_Audit.pdf | `22:45` |
 | **R1** | **05** | The Simple Acrostic Note | Aditi_Memo.doc | `SAFE` |
 | **R1** | **06** | Which Aditi Is Real? | AUTHENTIC_LOG.doc | `ARIAL` |
 | **R1** | **07** | The Revision History Conflict | Incident_Report.doc | `CORRUPTED` |
 | **R1** | **08** | Morse Audio Transmission | audio_log_07.mp3 | `WHITE` |
 | **R1** | **09** | The Steganography Mask | Dark_Terminal.png | `SHADOW_CORE` |
-| **R1** | **10** | Psychological Honeypot Trap | DO_NOT_RUN.exe | `BYPASS` |
+| **R1** | **10** | Psychological Honeypot Trap | DO_NOT_RUN.exe | `CONTINUE` / `ACKNOWLEDGE` |
 | **R1** | **11** | The Binary Master | CLEARANCE_CODE.txt | `ailnors` / `POLARIS` |
 | **R1** | **12** | The Whiteout Signature | Whiteout_Signature.doc | `CLEARANCE_ALPHA` |
 | **R1** | **13** | The ROT-4 IEEE Shift | ROT4_Shift.cipher | `ADITIS13` |
@@ -88,8 +88,8 @@
 
 ### STAGE 04: The Timestamp Murder Mystery
 - **Evidence**: `Security_Audit.pdf`
-- **Mechanism**: Physical impossibility contradiction. Dr. Aditi keycarded out of the building at 22:44, yet a manual terminal command was executed at 22:46.
-- **Key**: `22:46`
+- **Mechanism**: Physical impossibility contradiction. Dr. Aditi keycarded out of the building at 22:44, yet her terminal was accessed locally at 22:45 while she was already outside the perimeter.
+- **Key**: `22:45` (Also accepts: `2245`, `22:46`, `2246`)
 
 ### STAGE 05: The Simple Acrostic Note
 - **Evidence**: `Aditi_Memo.doc`
@@ -122,8 +122,8 @@
 
 ### STAGE 10: Psychological Honeypot Trap
 - **Evidence**: `DO_NOT_RUN.exe`
-- **Mechanism**: Honeypot avoidance. Clicking the executable incurs a +5 minute penalty. The real bypass key is found in the disclaimer.
-- **Key**: `BYPASS`
+- **Mechanism**: Active AI honeypot trap. Opening or inspecting `DO_NOT_RUN.exe` automatically incurs an immediate **+5:00 (+300s) time penalty** on the mission timer. The bypass input box has been removed; teams advance by clicking the green **[⚡ ACKNOWLEDGE PENALTY & ADVANCE TO STAGE 11 →]** button or transmitting `CONTINUE`.
+- **Key**: `CONTINUE` (Also accepts: `ACKNOWLEDGE`, `ADVANCE`, `BYPASS`, `DISARM`, `SKIP`, `OK`)
 
 ### STAGE 11: The Binary Master
 - **Evidence**: `CLEARANCE_CODE.txt`
